@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#10101c">
+    <title th:text="${gameName}">Nghịch Thiên Chiến Ký</title>
+    <link rel="stylesheet" th:href="@{/css/game.css}">
+</head>
+<body>
+<main class="landing">
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+
+    <section class="hero-panel">
+        <div class="eyebrow">TU TIÊN • CHIẾN THUẬT • ĐỊNH MỆNH</div>
+        <h1 th:text="${gameName}">Nghịch Thiên Chiến Ký</h1>
+        <p class="subtitle">Một hành trình nghịch thiên bắt đầu từ đây.</p>
+
+        <div class="status-panel">
+            <span class="status-dot"></span>
+            <span>Backend và giao diện Thymeleaf đã khởi chạy</span>
+        </div>
+
+        <div class="version" th:text="'Build ' + ${buildVersion}">Build 0.1.0-SNAPSHOT</div>
+    </section>
+</main>
+<script th:src="@{/js/game.js}" defer></script>
+</body>
+</html>

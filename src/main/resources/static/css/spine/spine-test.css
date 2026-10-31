@@ -1,0 +1,112 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    background: #171923;
+    color: #eee;
+    font-family: Arial, sans-serif;
+}
+
+.spine-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.spine-stage {
+    width: 100%;
+    height: 650px;
+    overflow: hidden;
+    position: relative;
+    background: radial-gradient(circle, #30374c 0%, #151925 75%);
+    border: 1px solid #414b65;
+    border-radius: 8px;
+}
+
+.spine-stage canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.spine-panel {
+    padding: 16px;
+    margin-top: 16px;
+    background: #252a3a;
+    border-radius: 8px;
+}
+
+.spine-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.spine-buttons button {
+    padding: 9px 13px;
+    border: 0;
+    border-radius: 5px;
+    background: #414b65;
+    color: white;
+    cursor: pointer;
+}
+
+.spine-buttons button:hover {
+    background: #59698e;
+}
+
+.spine-buttons button.active {
+    background: #167c61;
+}
+
+.spine-buttons button:disabled {
+    opacity: .4;
+    cursor: not-allowed;
+}
+
+.spine-settings {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 16px;
+}
+
+.spine-settings input[type="range"] {
+    width: 130px;
+}
+
+.spine-status {
+    margin-top: 16px;
+    color: #a9b6d0;
+    font-size: 13px;
+    white-space: pre-wrap;
+}
+
+@media (max-width: 700px) {
+    body {
+        padding: 10px;
+    }
+
+    .spine-stage {
+        height: 500px;
+    }
+}
+
+#animationButtons {
+    max-height: 180px;
+    overflow-y: auto;
+    padding: 4px;
+}
+
+#animationButtons button {
+    min-width: 85px;
+}
+
+#animationButtons button.active {
+    background: #167c61;
+}

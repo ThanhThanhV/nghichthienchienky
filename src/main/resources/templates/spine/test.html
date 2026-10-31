@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Spine Character Tester</title>
+
+    <link rel="stylesheet" th:href="@{/css/spine/spine-test.css}">
+
+    <!-- Spine Runtime 3.5 WebGL -->
+    <script th:src="@{/lib/spine/spine-runtime-3.5/spine-ts/build/spine-webgl.js}"></script>
+
+    <!-- Spine configuration -->
+    <script th:src="@{/js/spine/SpineConfig.js}"></script>
+
+    <!-- Spine modules -->
+    <script th:src="@{/js/spine/SpineAnimationController.js}"></script>
+    <script th:src="@{/js/spine/SpineCharacter.js}"></script>
+    <script th:src="@{/js/spine/SpineManager.js}"></script>
+
+    <!-- Test application -->
+    <script th:src="@{/js/spine/SpineTest.js}" defer></script>
+</head>
+
+<body>
+
+<div class="spine-container">
+
+    <h2>Spine Character Tester</h2>
+
+    <!-- Character stage -->
+    <div class="spine-stage">
+        <canvas id="spineCanvas"></canvas>
+    </div>
+
+    <!-- Animation controls -->
+    <div class="spine-panel">
+
+        <h3>Animations</h3>
+
+        <!-- JavaScript tự sinh nút theo animation trong skeleton -->
+        <div id="animationButtons" class="spine-buttons">
+            <span>Đang tải danh sách animation...</span>
+        </div>
+
+        <!-- Playback controls -->
+        <div class="spine-buttons">
+
+            <button
+                    type="button"
+                    id="pauseButton"
+                    data-spine-control
+                    disabled>
+                Pause
+            </button>
+
+            <button
+                    type="button"
+                    id="resumeButton"
+                    data-spine-control
+                    disabled>
+                Resume
+            </button>
+
+            <button
+                    type="button"
+                    id="restartButton"
+                    data-spine-control
+                    disabled>
+                Restart
+            </button>
+
+            <button
+                    type="button"
+                    id="clearButton"
+                    data-spine-control
+                    disabled>
+                Clear Tracks
+            </button>
+
+            <button
+                    type="button"
+                    id="centerButton"
+                    data-spine-control
+                    disabled>
+                Center
+            </button>
+
+        </div>
+
+        <!-- Settings -->
+        <div class="spine-settings">
+
+            <label>
+                <input
+                        type="checkbox"
+                        id="loopCheckbox"
+                        checked>
+                Loop
+            </label>
+
+            <label>
+                Speed
+
+                <input
+                        type="range"
+                        id="speedInput"
+                        min="0.1"
+                        max="3"
+                        step="0.1"
+                        value="1">
+
+                <span id="speedValue">1.0x</span>
+            </label>
+
+            <label>
+                Zoom
+
+                <input
+                        type="range"
+                        id="zoomInput"
+                        min="0.2"
+                        max="2"
+                        step="0.1"
+                        value="1">
+
+                <span id="zoomValue">1.0x</span>
+            </label>
+
+            <label>
+                <input
+                        type="checkbox"
+                        id="debugCheckbox">
+                Debug
+            </label>
+
+        </div>
+
+        <!-- Loading and runtime status -->
+        <div id="spineStatus" class="spine-status">
+            Đang khởi tạo Spine...
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

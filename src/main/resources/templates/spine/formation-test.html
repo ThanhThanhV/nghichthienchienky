@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Spine Formation Test</title>
+
+    <link rel="stylesheet" th:href="@{/css/spine/spine-test.css}">
+
+    <script th:src="@{/lib/spine/spine-runtime-3.5/spine-ts/build/spine-webgl.js}"></script>
+
+    <script th:src="@{/js/spine/SpineConfig.js}"></script>
+    <script th:src="@{/js/spine/SpineAnimationController.js}"></script>
+    <script th:src="@{/js/spine/SpineCharacter.js}"></script>
+    <script th:src="@{/js/spine/SpineManager.js}"></script>
+    <script th:src="@{/js/spine/SpineFormation.js}"></script>
+    <script th:src="@{/js/spine/SpineFormationTest.js}" defer></script>
+</head>
+
+<body>
+
+<div class="spine-container">
+
+    <h2>Battle Formation Test</h2>
+
+    <div class="spine-stage">
+        <canvas id="battleCanvas"></canvas>
+    </div>
+
+    <div class="spine-panel">
+
+        <div class="spine-buttons">
+            <button id="attackDemo">Demo Attack</button>
+            <button id="spreadDemo">Spread Formation</button>
+        </div>
+
+        <div id="battleStatus" class="spine-status">
+            Đang khởi tạo đội hình...
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Đăng ký - Nghịch Thiên Chiến Ký</title>
+    <link rel="stylesheet" th:href="@{/css/game.css}">
+</head>
+<body>
+<main class="auth-wrap">
+    <form class="auth-card" th:action="@{/register}" th:object="${registerRequest}" method="post">
+        <a class="back-link" th:href="@{/}">← Trang chủ</a>
+        <div class="eyebrow">NGHỊCH THIÊN CHIẾN KÝ</div>
+        <h1>Tạo tài khoản</h1>
+        <p class="subtitle">Khởi tạo hành trình của riêng ngươi.</p>
+
+        <div class="notice error" th:if="${registrationError}" th:text="${registrationError}"></div>
+
+        <label for="username">Tên đăng nhập</label>
+        <input id="username" th:field="*{username}" autocomplete="username" required>
+        <small class="field-error" th:errors="*{username}"></small>
+
+        <label for="email">Email</label>
+        <input id="email" type="email" th:field="*{email}" autocomplete="email" required>
+        <small class="field-error" th:errors="*{email}"></small>
+
+        <label for="password">Mật khẩu</label>
+        <input id="password" type="password" th:field="*{password}" autocomplete="new-password" required>
+        <small class="field-error" th:errors="*{password}"></small>
+
+        <label for="confirmPassword">Xác nhận mật khẩu</label>
+        <input id="confirmPassword" type="password" th:field="*{confirmPassword}" autocomplete="new-password" required>
+        <small class="field-error" th:errors="*{confirmPassword}"></small>
+
+        <button class="primary-button" type="submit">Đăng ký</button>
+        <p class="form-foot">Đã có tài khoản? <a th:href="@{/login}">Đăng nhập</a></p>
+    </form>
+</main>
+</body>
+</html>

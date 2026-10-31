@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Đăng nhập - Nghịch Thiên Chiến Ký</title>
+    <link rel="stylesheet" th:href="@{/css/game.css}">
+</head>
+<body>
+<main class="auth-wrap">
+    <form class="auth-card" th:action="@{/login}" method="post">
+        <a class="back-link" th:href="@{/}">← Trang chủ</a>
+        <div class="eyebrow">NGHỊCH THIÊN CHIẾN KÝ</div>
+        <h1>Đăng nhập</h1>
+        <p class="subtitle">Tiếp tục hành trình tu luyện của ngươi.</p>
+
+        <div class="notice success" th:if="${param.registered}">Đăng ký thành công. Hãy đăng nhập.</div>
+        <div class="notice error" th:if="${param.error}">Tên đăng nhập hoặc mật khẩu không chính xác.</div>
+        <div class="notice success" th:if="${param.logout}">Đã đăng xuất thành công.</div>
+
+        <label for="username">Tên đăng nhập</label>
+        <input id="username" name="username" type="text" autocomplete="username" required maxlength="30">
+        <label for="password">Mật khẩu</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required>
+        <button class="primary-button" type="submit">Đăng nhập</button>
+        <p class="form-foot">Chưa có tài khoản? <a th:href="@{/register}">Đăng ký</a></p>
+    </form>
+</main>
+</body>
+</html>
