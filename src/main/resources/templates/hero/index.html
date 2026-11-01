@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#090d18">
+    <meta name="_csrf" th:content="${_csrf.token}">
+    <meta name="_csrf_header" th:content="${_csrf.headerName}">
+    <title>Nghịch Thiên Chiến Ký - Nhân Vật</title>
+    <link rel="stylesheet" th:href="@{/css/hero/hero.css}">
+</head>
+<body>
+<main class="hero-page">
+    <header class="hero-header">
+        <div>
+            <a class="back-link" th:href="@{/dashboard}">← TRỞ VỀ ĐẠI SẢNH</a>
+            <div class="eyebrow">TÀNG KINH CÁC · TU LUYỆN · ĐỘT PHÁ</div>
+            <h1>NHÂN VẬT CỦA TA</h1>
+            <p class="subtitle">Xem chỉ số, kỹ năng và bồi dưỡng những chiến tướng đang sở hữu.</p>
+        </div>
+        <nav class="header-actions">
+            <a class="nav-button secondary" th:href="@{/formation}">ĐỘI HÌNH</a>
+            <a class="nav-button" th:href="@{/battle}">CHIẾN ĐẤU</a>
+        </nav>
+    </header>
+
+    <div id="hero-message" class="hero-message" role="status" aria-live="polite" hidden></div>
+
+    <section class="hero-layout">
+        <aside class="panel roster-panel">
+            <div class="panel-heading">
+                <div>
+                    <span class="panel-kicker">DANH SÁCH SỞ HỮU</span>
+                    <h2>Tướng lĩnh</h2>
+                </div>
+                <span id="hero-count" class="hero-count">0</span>
+            </div>
+            <div id="hero-roster" class="hero-roster">
+                <div class="loading-state">Đang tải nhân vật...</div>
+            </div>
+        </aside>
+
+        <section id="hero-detail" class="hero-detail" aria-live="polite">
+            <div class="panel hero-showcase">
+                <div class="panel-heading">
+                    <div>
+                        <span class="panel-kicker">LINH THỂ · SPINE PREVIEW</span>
+                        <h2 id="preview-title">Chọn một nhân vật</h2>
+                    </div>
+                    <span id="spine-status" class="preview-status">Đang chờ dữ liệu</span>
+                </div>
+                <div class="hero-preview">
+                    <canvas id="hero-spine-canvas" aria-label="Mô hình Spine nhân vật"></canvas>
+                    <div class="preview-caption">HERO SHOWCASE</div>
+                </div>
+                <div class="hero-identity">
+                    <div>
+                        <div id="hero-name" class="hero-name">—</div>
+                        <div id="hero-description" class="hero-description">Chọn nhân vật ở danh sách bên trái.</div>
+                    </div>
+                    <div id="hero-tags" class="hero-tags"></div>
+                </div>
+            </div>
+
+            <section class="panel progression-panel">
+                <div class="panel-heading">
+                    <div>
+                        <span class="panel-kicker">TU VI NHÂN VẬT</span>
+                        <h2>Cấp độ và cảnh giới</h2>
+                    </div>
+                    <span id="hero-instance" class="instance-label"></span>
+                </div>
+                <div class="progression-grid">
+                    <div class="progression-stat"><span>CẤP ĐỘ</span><strong id="hero-level">—</strong></div>
+                    <div class="progression-stat"><span>SAO</span><strong id="hero-stars">—</strong></div>
+                    <div class="progression-stat"><span>ĐỘT PHÁ</span><strong id="hero-breakthrough">—</strong></div>
+                    <div class="progression-stat"><span>EXP TÍCH LŨY</span><strong id="hero-exp">—</strong></div>
+                </div>
+                <div class="exp-form">
+                    <div class="exp-form-heading">
+                        <div>
+                            <strong>Bồi dưỡng bằng EXP</strong>
+                            <p>Vật phẩm và lượng EXP lấy từ cấu hình máy chủ.</p>
+                        </div>
+                    </div>
+                    <form id="exp-item-form">
+                        <label for="exp-item-select">Vật phẩm EXP</label>
+                        <select id="exp-item-select" required>
+                            <option value="">Đang tải vật phẩm...</option>
+                        </select>
+                        <div id="exp-item-info" class="exp-item-info">Chọn vật phẩm để xem số dư và EXP mỗi vật phẩm.</div>
+                        <div class="exp-form-actions">
+                            <div class="quantity-field">
+                                <label for="exp-item-quantity">Số lượng</label>
+                                <input id="exp-item-quantity" type="number" min="1" step="1" value="1" required>
+                            </div>
+                            <button id="use-exp-button" class="action-button primary" type="submit">SỬ DỤNG EXP</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <section class="panel stats-panel">
+                <div class="panel-heading">
+                    <div>
+                        <span class="panel-kicker">THUỘC TÍNH CHIẾN ĐẤU</span>
+                        <h2>Chỉ số hiện tại</h2>
+                    </div>
+                </div>
+                <div id="hero-stats" class="stats-grid">
+                    <div class="loading-state">Chỉ số sẽ hiển thị theo dữ liệu máy chủ.</div>
+                </div>
+            </section>
+
+            <section class="panel skills-panel">
+                <div class="panel-heading">
+                    <div>
+                        <span class="panel-kicker">CÔNG PHÁP VÀ THẦN THÔNG</span>
+                        <h2>Kỹ năng nhân vật</h2>
+                    </div>
+                    <span class="skill-count">5 KỸ NĂNG</span>
+                </div>
+                <div id="hero-skills" class="skills-list">
+                    <div class="loading-state">Chọn nhân vật để xem kỹ năng.</div>
+                </div>
+            </section>
+        </section>
+    </section>
+
+    <footer class="hero-footer">NGHỊCH THIÊN CHIẾN KÝ · THIÊN ĐỊA TRANH PHONG</footer>
+</main>
+
+<script th:src="@{/lib/spine/spine-runtime-3.5/spine-ts/build/spine-webgl.js}"></script>
+<script th:src="@{/js/spine/SpineConfig.js}"></script>
+<script th:src="@{/js/spine/SpineAnimationController.js}"></script>
+<script th:src="@{/js/spine/SpineCharacter.js}"></script>
+<script th:src="@{/js/spine/SpineManager.js}"></script>
+<script th:src="@{/js/spine/SpineFormation.js}"></script>
+<script th:src="@{/js/formation/FormationSpinePreview.js}"></script>
+<script th:src="@{/js/hero/hero.js}"></script>
+</body>
+</html>
