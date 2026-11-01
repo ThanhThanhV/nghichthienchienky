@@ -64,7 +64,7 @@ class SpineManager {
 
     async loadTextures(paths) {
         this.initialize();
-        const newPaths = paths.filter(path => !this.textureUrls.has(path));
+        const newPaths = paths.filter(path => !this.textureUrls.has(this.normalizePath(path)));
         if (newPaths.length === 0) return;
         for (const path of newPaths) {
             this.textureUrls.set(this.normalizePath(path), path);
