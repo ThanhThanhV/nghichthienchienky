@@ -57,6 +57,42 @@ public class HeroController {
     }
 
     /**
+     * Lấy điều kiện và chi phí nâng sao, đột phá kế tiếp.
+     *
+     * @param authentication Thông tin xác thực
+     * @param instanceId ID bản sao nhân vật
+     * @return Các lựa chọn nâng cấp
+     */
+    @GetMapping("/{instanceId}/progression-options")
+    public List<HeroProgressionOptionResponse> getProgressionOptions(
+            Authentication authentication,
+            @PathVariable Long instanceId
+    ) {
+        return heroService.getProgressionOptions(
+                authentication.getName(),
+                instanceId
+        );
+    }
+
+    /**
+     * Lấy điều kiện và chi phí nâng cấp kế tiếp của các kỹ năng.
+     *
+     * @param authentication Thông tin xác thực
+     * @param instanceId ID bản sao nhân vật
+     * @return Các lựa chọn nâng kỹ năng
+     */
+    @GetMapping("/{instanceId}/skill-upgrade-options")
+    public List<HeroSkillUpgradeOptionResponse> getSkillUpgradeOptions(
+            Authentication authentication,
+            @PathVariable Long instanceId
+    ) {
+        return heroService.getSkillUpgradeOptions(
+                authentication.getName(),
+                instanceId
+        );
+    }
+
+    /**
      * Lấy chi tiết một nhân vật thuộc tài khoản đang đăng nhập.
      *
      * @param authentication Thông tin xác thực
