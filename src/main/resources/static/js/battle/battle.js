@@ -328,6 +328,8 @@
         renderUnit(slot, unit, team) {
             slot.dataset.instanceId = String(unit.instanceId);
             slot.dataset.team = team;
+            slot.dataset.avatarCode = unit.avatarCode || "";
+            slot.dataset.spineSkeleton = unit.spineSkeleton || "";
             if (unit.alive === false) slot.classList.add("unit-dead");
 
             const level = document.createElement("span");
@@ -336,6 +338,8 @@
 
             const visual = document.createElement("div");
             visual.className = "unit-visual";
+            visual.dataset.avatarCode = unit.avatarCode || "";
+            visual.dataset.spineSkeleton = unit.spineSkeleton || "";
             visual.textContent = this.avatarText(unit.heroName || unit.heroCode);
 
             const effects = document.createElement("div");
