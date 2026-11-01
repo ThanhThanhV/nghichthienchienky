@@ -59,7 +59,7 @@ class SpineManager {
     }
 
     normalizePath(path) {
-        return String(path || "").replace(/\\/g, "/").replace(/^\\/+/, "").toLowerCase();
+        return String(path || "").replace(/\\/g, "/").replace(/^\/+/, "").toLowerCase();
     }
 
     async loadTextures(paths) {
