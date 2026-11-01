@@ -155,15 +155,22 @@ public class BattleSessionService {
 
         BattleState battle = new BattleState(units);
         BattleSession session = new BattleSession(
-                battle, Map.copyOf(definitions), Map.copyOf(levels)
+                battle, Map.copyOf(definitions), Map.copyOf(levels), username
         );
         sessions.put(battle.getBattleId(), session);
         return toPlayback(session, List.of());
     }
 
-    public BattlePlaybackDTO advanceRound(String battleId) {
+    public void closeBattle(String battleId, String username) {
         BattleSession session = sessions.get(battleId);
-        if (session == null) {
+        if (session != null && session.ownerUsername.equals(username)) {
+            sessions.remove(battleId, session);
+        }
+    }
+
+    public BattlePlaybackDTO advanceRound(String battleId, String username) {
+        BattleSession session = sessions.get(battleId);
+        if (session == null || !session.ownerUsername.equals(username)) {
             throw new IllegalArgumentException(
                     "Không tìm thấy trận đấu hoặc phiên chiến đấu đã hết hạn."
             );
@@ -220,16 +227,19 @@ public class BattleSessionService {
         private final BattleState battle;
         private final Map<String, HeroDefinition> definitions;
         private final Map<Long, Integer> levels;
+        private final String ownerUsername;
         private int emittedEventCount;
 
         private BattleSession(
                 BattleState battle,
                 Map<String, HeroDefinition> definitions,
-                Map<Long, Integer> levels
+                Map<Long, Integer> levels,
+                String ownerUsername
         ) {
             this.battle = battle;
             this.definitions = definitions;
             this.levels = levels;
+            this.ownerUsername = ownerUsername;
         }
     }
 }

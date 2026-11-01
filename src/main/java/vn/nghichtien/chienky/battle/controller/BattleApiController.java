@@ -2,6 +2,7 @@ package vn.nghichtien.chienky.battle.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,14 +41,28 @@ public class BattleApiController {
     }
 
     /**
+     * Giải phóng phiên chiến đấu của chính người chơi hiện tại.
+     */
+    @DeleteMapping("/{battleId}")
+    public void close(
+            Authentication authentication,
+            @PathVariable String battleId
+    ) {
+        battleSessionService.closeBattle(battleId, authentication.getName());
+    }
+
+    /**
      * Xử lý một round và trả về các sự kiện mới để frontend phát lại.
      */
     @PostMapping("/{battleId}/round")
     public BattlePlaybackDTO advanceRound(
+            Authentication authentication,
             @PathVariable String battleId
     ) {
         try {
-            return battleSessionService.advanceRound(battleId);
+            return battleSessionService.advanceRound(
+                    battleId, authentication.getName()
+            );
         } catch (IllegalArgumentException exception) {
             throw new ResponseStatusException(
                     HttpStatus.NOT_FOUND,
