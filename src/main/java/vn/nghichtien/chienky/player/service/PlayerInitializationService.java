@@ -138,6 +138,8 @@ public class PlayerInitializationService {
         return heroDefinitionRepository
                 .findAllByEnabledTrueOrderBySortOrderAscHeroNameAsc()
                 .stream()
+                .filter(definition -> definition.getSpineSkeleton() != null
+                        && !definition.getSpineSkeleton().isBlank())
                 .filter(this::hasValidStarterSkills)
                 .findFirst()
                 .orElseThrow(() -> new IllegalStateException(
