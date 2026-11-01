@@ -5,6 +5,7 @@ import vn.nghichtien.chienky.account.dto.RegisterRequest;
 import vn.nghichtien.chienky.account.entity.Account;
 import vn.nghichtien.chienky.account.entity.AccountRole;
 import vn.nghichtien.chienky.account.repository.AccountRepository;
+import vn.nghichtien.chienky.player.service.PlayerInitializationService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -18,13 +19,16 @@ public class AccountService {
 
     private final AccountRepository accountRepository;
     private final PasswordEncoder passwordEncoder;
+    private final PlayerInitializationService playerInitializationService;
 
     public AccountService(
             AccountRepository accountRepository,
-            PasswordEncoder passwordEncoder
+            PasswordEncoder passwordEncoder,
+            PlayerInitializationService playerInitializationService
     ) {
         this.accountRepository = accountRepository;
         this.passwordEncoder = passwordEncoder;
+        this.playerInitializationService = playerInitializationService;
     }
 
     /**
@@ -59,6 +63,11 @@ public class AccountService {
         account.setRole(AccountRole.USER);
         account.setEnabled(true);
 
-        return accountRepository.save(account);
+        Account savedAccount = accountRepository.save(account);
+
+        // Khởi tạo hồ sơ và số dư tài nguyên mặc định trong cùng transaction.
+        playerInitializationService.initialize(savedAccount);
+
+        return savedAccount;
     }
 }
