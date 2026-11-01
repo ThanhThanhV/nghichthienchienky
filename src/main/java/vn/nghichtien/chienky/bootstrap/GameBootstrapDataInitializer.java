@@ -17,7 +17,10 @@ import vn.nghichtien.chienky.hero.repository.HeroGrowthConfigRepository;
 import vn.nghichtien.chienky.hero.repository.HeroSkillDefinitionRepository;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Khởi tạo dữ liệu nhân vật khởi đầu cho database mới.
@@ -53,9 +56,15 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                 .findById(STARTER_HERO_CODE)
                 .orElseGet(this::createStarterDefinition);
 
-        // Mã nhân vật đã được khai báo trong SpineConfig.js.
-        definition.updateAssets(STARTER_HERO_CODE, STARTER_HERO_CODE);
-        definition.changeEnabled(true);
+        // Chỉ bổ sung asset khi chưa được cấu hình, không ghi đè chỉnh sửa quản trị.
+        String avatarCode = definition.getAvatarCode();
+        String spineSkeleton = definition.getSpineSkeleton();
+        definition.updateAssets(
+                avatarCode == null || avatarCode.isBlank()
+                        ? STARTER_HERO_CODE : avatarCode,
+                spineSkeleton == null || spineSkeleton.isBlank()
+                        ? STARTER_HERO_CODE : spineSkeleton
+        );
         heroDefinitionRepository.save(definition);
 
         seedBaseStats(definition);
@@ -113,46 +122,64 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
     }
 
     private void seedStarterSkills(HeroDefinition definition) {
-        List<HeroSkillDefinition> existingSkills =
-                heroSkillDefinitionRepository
-                        .findAllByHeroDefinitionHeroCodeAndEnabledTrueOrderBySkillOrderAsc(
-                                STARTER_HERO_CODE
-                        );
+        List<HeroSkillDefinition> existingSkills = heroSkillDefinitionRepository
+                .findAll()
+                .stream()
+                .filter(skill -> STARTER_HERO_CODE.equals(
+                        skill.getHeroDefinition().getHeroCode()
+                ))
+                .toList();
 
-        if (!existingSkills.isEmpty()) {
-            return;
-        }
-
-        List<HeroSkillDefinition> skills = List.of(
-                createSkill(definition, "TOHKA_BASIC", "Kiếm chém", "BASIC", 1),
-                createSkill(definition, "TOHKA_ACTIVE", "Kiếm khí", "ACTIVE", 2),
-                createSkill(definition, "TOHKA_ULTIMATE", "Thiên thần giáng thế", "ULTIMATE", 3),
-                createSkill(definition, "TOHKA_PASSIVE_1", "Ý chí chiến đấu", "PASSIVE", 4),
-                createSkill(definition, "TOHKA_PASSIVE_2", "Linh lực hộ thể", "PASSIVE", 5)
+        Map<Integer, HeroSkillDefinition> skillsByOrder = new HashMap<>();
+        existingSkills.forEach(skill ->
+                skillsByOrder.put(skill.getSkillOrder(), skill)
         );
 
-        addDamageEffect(skills.get(0), "FRONT", "1.0");
-        addDamageEffect(skills.get(1), "ALL_ENEMIES", "1.5");
-        addDamageEffect(skills.get(2), "ALL_ENEMIES", "2.5");
+        List<HeroSkillDefinition> skillsToSave = new ArrayList<>();
+        List<StarterSkill> starterSkills = List.of(
+                new StarterSkill("TOHKA_BASIC", "Kiếm chém", "BASIC", 1),
+                new StarterSkill("TOHKA_ACTIVE", "Kiếm khí", "ACTIVE", 2),
+                new StarterSkill("TOHKA_ULTIMATE", "Thiên thần giáng thế", "ULTIMATE", 3),
+                new StarterSkill("TOHKA_PASSIVE_1", "Ý chí chiến đấu", "PASSIVE", 4),
+                new StarterSkill("TOHKA_PASSIVE_2", "Linh lực hộ thể", "PASSIVE", 5)
+        );
 
-        heroSkillDefinitionRepository.saveAll(skills);
+        for (StarterSkill starterSkill : starterSkills) {
+            HeroSkillDefinition skill = skillsByOrder.get(starterSkill.order());
+
+            if (skill == null) {
+                skill = createSkill(definition, starterSkill);
+                skillsToSave.add(skill);
+            } else {
+                skill.changeEnabled(true);
+            }
+
+            if (starterSkill.order() == 1 && skill.getEffects().isEmpty()) {
+                addDamageEffect(skill, "FRONT", "1.0");
+            } else if (starterSkill.order() == 2 && skill.getEffects().isEmpty()) {
+                addDamageEffect(skill, "ALL_ENEMIES", "1.5");
+            } else if (starterSkill.order() == 3 && skill.getEffects().isEmpty()) {
+                addDamageEffect(skill, "ALL_ENEMIES", "2.5");
+            }
+        }
+
+        if (!skillsToSave.isEmpty()) {
+            heroSkillDefinitionRepository.saveAll(skillsToSave);
+        }
     }
 
     private HeroSkillDefinition createSkill(
             HeroDefinition definition,
-            String skillCode,
-            String skillName,
-            String skillType,
-            int skillOrder
+            StarterSkill starterSkill
     ) {
         HeroSkillDefinition skill = new HeroSkillDefinition(
                 definition,
-                skillCode,
-                skillName,
-                skillType,
-                skillOrder
+                starterSkill.code(),
+                starterSkill.name(),
+                starterSkill.type(),
+                starterSkill.order()
         );
-        skill.updateInformation(skillName, null, null);
+        skill.updateInformation(starterSkill.name(), null, null);
         return skill;
     }
 
@@ -172,5 +199,13 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                 null
         );
         skill.addEffect(effect);
+    }
+
+    private record StarterSkill(
+            String code,
+            String name,
+            String type,
+            int order
+    ) {
     }
 }
