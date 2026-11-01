@@ -82,6 +82,23 @@ public class HeroService {
     }
 
     /**
+     * Lấy danh sách vật phẩm EXP đang được phép sử dụng.
+     *
+     * @return Danh sách mã vật phẩm và lượng EXP mỗi vật phẩm
+     */
+    @Transactional(readOnly = true)
+    public List<vn.nghichtien.chienky.hero.dto.HeroExpItemResponse> getEnabledExpItems() {
+        return heroExpItemRepository.findAll().stream()
+                .filter(item -> Boolean.TRUE.equals(item.getEnabled()))
+                .sorted(Comparator.comparing(HeroExpItem::getResourceCode))
+                .map(item -> new vn.nghichtien.chienky.hero.dto.HeroExpItemResponse(
+                        item.getResourceCode(),
+                        item.getExpPerItem()
+                ))
+                .toList();
+    }
+
+    /**
      * Lấy toàn bộ nhân vật mà tài khoản hiện tại sở hữu.
      *
      * @param username Username tài khoản đăng nhập
