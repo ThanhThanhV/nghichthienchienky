@@ -6,7 +6,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import vn.nghichtien.chienky.battle.domain.BattleActionType;
-import vn.nghichtien.chienky.battle.domain.BattleEventCollector;
+import vn.nghichtien.chienky.battle.engine.BattleEventCollector;
 import vn.nghichtien.chienky.battle.domain.BattleState;
 import vn.nghichtien.chienky.battle.domain.BattleTeam;
 import vn.nghichtien.chienky.battle.domain.BattleUnitState;
