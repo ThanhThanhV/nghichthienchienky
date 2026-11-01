@@ -1,13 +1,10 @@
-
 package vn.nghichtien.chienky.battle.engine;
 
 import org.springframework.stereotype.Component;
 import vn.nghichtien.chienky.battle.domain.BattleState;
 import vn.nghichtien.chienky.battle.domain.BattleTargetMode;
-import vn.nghichtien.chienky.battle.domain.BattleTeam;
 import vn.nghichtien.chienky.battle.domain.BattleUnitState;
 
-import java.math.BigDecimal;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
@@ -15,19 +12,11 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
 /**
- * Chọn mục tiêu cho các kỹ năng chiến đấu.
+ * Chọn mục tiêu cho các kỹ năng.
  */
 @Component
 public class BattleTargetSelector {
 
-    /**
-     * Chọn mục tiêu dựa trên chế độ chỉ định.
-     *
-     * @param battle Trạng thái trận chiến.
-     * @param source Nhân vật sử dụng kỹ năng.
-     * @param mode Chế độ chọn mục tiêu.
-     * @return Danh sách mục tiêu hợp lệ.
-     */
     public List<BattleUnitState> selectTargets(
             BattleState battle,
             BattleUnitState source,
@@ -41,6 +30,10 @@ public class BattleTargetSelector {
             return List.of();
         }
 
+        if (mode == BattleTargetMode.SELF) {
+            return List.of(source);
+        }
+
         List<BattleUnitState> enemies = battle.getUnits()
                 .stream()
                 .filter(BattleUnitState::isAlive)
@@ -52,14 +45,11 @@ public class BattleTargetSelector {
         }
 
         return switch (mode) {
+            case SELF -> List.of(source);
             case RANDOM -> selectRandom(enemies);
-
             case FRONT -> selectFront(enemies);
-
             case LOWEST_HP -> selectLowestHp(enemies);
-
             case HIGHEST_ATK -> selectHighestAttack(enemies);
-
             case ALL_ENEMIES -> enemies;
         };
     }
@@ -67,9 +57,7 @@ public class BattleTargetSelector {
     private List<BattleUnitState> selectRandom(
             List<BattleUnitState> candidates
     ) {
-        int index = ThreadLocalRandom.current()
-                .nextInt(candidates.size());
-
+        int index = ThreadLocalRandom.current().nextInt(candidates.size());
         return List.of(candidates.get(index));
     }
 
