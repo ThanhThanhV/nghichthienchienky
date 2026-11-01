@@ -99,7 +99,7 @@ public class PlayerInitializationService {
             throw new IllegalArgumentException("Player ID không hợp lệ");
         }
 
-        PlayerProfile profile = playerProfileRepository.findById(playerId)
+        PlayerProfile profile = playerProfileRepository.findByIdForUpdate(playerId)
                 .orElseThrow(() -> new IllegalArgumentException(
                         "Không tìm thấy hồ sơ người chơi"
                 ));
