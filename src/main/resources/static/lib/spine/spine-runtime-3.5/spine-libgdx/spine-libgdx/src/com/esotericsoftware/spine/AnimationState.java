@@ -576,7 +576,7 @@ public class AnimationState {
 		entry.drawOrderThreshold = 0;
 
 		entry.animationStart = 0;
-		entry.animationEnd = animation.getDuration();
+		entry.animationEnd = animation.duration;
 		entry.animationLast = -1;
 		entry.nextAnimationLast = -1;
 

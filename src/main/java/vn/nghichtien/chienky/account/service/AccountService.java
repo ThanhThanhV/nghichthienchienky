@@ -1,75 +1,64 @@
 package vn.nghichtien.chienky.account.service;
 
-import vn.nghichtien.chienky.account.domain.Account;
+import jakarta.transaction.Transactional;
 import vn.nghichtien.chienky.account.dto.RegisterRequest;
+import vn.nghichtien.chienky.account.entity.Account;
+import vn.nghichtien.chienky.account.entity.AccountRole;
 import vn.nghichtien.chienky.account.repository.AccountRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import vn.nghichtien.chienky.player.service.PlayerInitializationService;
+
+import java.util.Locale;
 
 /**
- * Xử lý nghiệp vụ đăng ký và tra cứu tài khoản.
- * Quyền USER được gán mặc định; service không cung cấp chức năng tự đăng ký ADMIN.
+ * Xử lý nghiệp vụ tài khoản.
  */
 @Service
 public class AccountService {
 
     private final AccountRepository accountRepository;
     private final PasswordEncoder passwordEncoder;
-    private final PlayerInitializationService playerInitializationService;
 
-    /**
-     * Khởi tạo service đăng ký tài khoản và khởi tạo hồ sơ người chơi.
-     *
-     * @param accountRepository Repository tài khoản
-     * @param passwordEncoder Bộ mã hóa mật khẩu
-     * @param playerInitializationService Service khởi tạo dữ liệu người chơi
-     */
     public AccountService(
             AccountRepository accountRepository,
-            PasswordEncoder passwordEncoder,
-            PlayerInitializationService playerInitializationService
+            PasswordEncoder passwordEncoder
     ) {
         this.accountRepository = accountRepository;
         this.passwordEncoder = passwordEncoder;
-        this.playerInitializationService = playerInitializationService;
     }
 
     /**
-     * Đăng ký tài khoản mới và tự động khởi tạo hồ sơ cùng tài nguyên mặc định.
-     * Toàn bộ quá trình chạy trong một transaction để đảm bảo dữ liệu nhất quán.
-     *
-     * @param request Dữ liệu đăng ký đã qua validation cơ bản
-     * @return Tài khoản vừa tạo
+     * Đăng ký tài khoản người chơi mới.
      */
     @Transactional
     public Account register(RegisterRequest request) {
         String username = request.getUsername().trim();
-        String email = request.getEmail().trim().toLowerCase();
+        String email = request.getEmail().trim().toLowerCase(Locale.ROOT);
 
         if (!request.getPassword().equals(request.getConfirmPassword())) {
-            throw new IllegalArgumentException("Mật khẩu xác nhận không khớp");
+            throw new IllegalArgumentException("Mật khẩu xác nhận không khớp.");
         }
 
         if (accountRepository.existsByUsername(username)) {
-            throw new IllegalArgumentException("Tên đăng nhập đã được sử dụng");
+            throw new IllegalArgumentException("Username đã được sử dụng.");
         }
 
         if (accountRepository.existsByEmail(email)) {
-            throw new IllegalArgumentException("Email đã được sử dụng");
+            throw new IllegalArgumentException("Email đã được sử dụng.");
         }
 
-        Account account = new Account(
-                username,
-                email,
+        Account account = new Account();
+        account.setUsername(username);
+        account.setEmail(email);
+        account.setPasswordHash(
                 passwordEncoder.encode(request.getPassword())
         );
 
-        account = accountRepository.save(account);
+        // Người đăng ký thông thường luôn là USER.
+        // Không nhận role từ dữ liệu phía trình duyệt.
+        account.setRole(AccountRole.USER);
+        account.setEnabled(true);
 
-        playerInitializationService.initialize(account);
-
-        return account;
+        return accountRepository.save(account);
     }
 }

@@ -110,3 +110,263 @@ body {
 #animationButtons button.active {
     background: #167c61;
 }
+
+/* Battle stage */
+.battle-stage {
+    position: relative;
+    overflow: hidden;
+}
+
+.battle-stage canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.damage-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 10;
+}
+
+.damage-number {
+    position: absolute;
+    transform: translate(-50%, 0) scale(0.7);
+    opacity: 0;
+
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: 900;
+    font-family: Arial, sans-serif;
+
+    text-shadow:
+            1px 1px 2px #000000,
+            0 0 6px #000000;
+
+    white-space: nowrap;
+    transition:
+            transform 0.25s ease-out,
+            opacity 0.25s ease-out;
+}
+
+.damage-number.show {
+    opacity: 1;
+    transform: translate(-50%, -35px) scale(1);
+}
+
+.damage-number.damage {
+    color: #ff4545;
+}
+
+.damage-number.damage.critical {
+    color: #ffcc00;
+    font-size: 34px;
+    text-shadow:
+            0 0 5px #ff3300,
+            0 0 12px #ff6600,
+            2px 2px 2px #000000;
+}
+
+.damage-number.heal {
+    color: #45ff78;
+    text-shadow:
+            0 0 6px #00aa44,
+            1px 1px 2px #000000;
+}
+
+/* Status effect overlay */
+.status-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 11;
+}
+
+.status-effect {
+    position: absolute;
+    transform: translate(-50%, 0) scale(0.7);
+    opacity: 0;
+
+    padding: 4px 8px;
+    border-radius: 6px;
+
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 900;
+    white-space: nowrap;
+
+    color: #ffffff;
+    background: rgba(20, 20, 20, 0.85);
+
+    border: 1px solid rgba(255, 255, 255, 0.4);
+
+    transition:
+            opacity 0.2s ease,
+            transform 0.2s ease;
+}
+
+.status-effect.show {
+    opacity: 1;
+    transform: translate(-50%, -10px) scale(1);
+}
+
+.status-effect.buff {
+    color: #7dff9c;
+    border-color: #28c76f;
+}
+
+.status-effect.debuff {
+    color: #ff8585;
+    border-color: #e63946;
+}
+
+.status-effect.cc {
+    color: #ffe477;
+    border-color: #f0ad28;
+}
+
+.status-effect.immunity {
+    color: #83dfff;
+    border-color: #21a6d8;
+}
+/* Battle UI overlay */
+.battle-ui-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 9;
+}
+
+.battle-character-ui {
+    position: absolute;
+    width: 110px;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    transition: opacity 0.3s ease;
+}
+
+.battle-character-name {
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px #000000;
+    margin-bottom: 3px;
+}
+
+.battle-hp-track {
+    height: 9px;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #252525;
+    border: 1px solid rgba(255,255,255,0.6);
+}
+
+.battle-hp-fill {
+    height: 100%;
+    width: 100%;
+    background: #35d16b;
+    transition: width 0.3s ease;
+}
+
+.battle-character-ui.low-hp .battle-hp-fill {
+    background: #ed4242;
+}
+
+.battle-hp-text {
+    color: white;
+    font-size: 10px;
+    text-shadow: 1px 1px 2px black;
+    margin-top: 2px;
+}
+
+.battle-character-state {
+    color: #ff5555;
+    font-size: 12px;
+    font-weight: 900;
+    text-shadow: 1px 1px 3px black;
+}
+
+.battle-character-ui.dead {
+    opacity: 0.35;
+}
+
+.battle-character-ui.dead .battle-hp-fill {
+    width: 0 !important;
+    background: #555;
+}
+
+/* Battle Effect Tester */
+.effect-test-panel {
+    position: relative;
+    z-index: 20;
+    width: min(720px, calc(100% - 24px));
+    margin: 16px auto;
+    padding: 16px;
+    color: #fff;
+    background: rgba(12, 18, 32, 0.94);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.effect-test-panel h3 {
+    margin: 0 0 14px;
+    font-size: 18px;
+}
+
+.effect-test-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.effect-test-row label {
+    font-size: 13px;
+}
+
+.effect-test-panel select,
+.effect-test-panel input {
+    min-width: 100px;
+    padding: 7px;
+    color: #fff;
+    background: #202b40;
+    border: 1px solid #52617a;
+    border-radius: 5px;
+}
+
+.effect-test-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.effect-test-actions button {
+    padding: 8px 12px;
+    color: #fff;
+    background: #245b8f;
+    border: 0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.effect-test-actions button:hover {
+    background: #347bb8;
+}
+
+.effect-test-log {
+    margin-top: 12px;
+    padding: 9px;
+    min-height: 20px;
+    color: #b8d8ff;
+    background: #101827;
+    border-radius: 5px;
+    font-size: 13px;
+    overflow-wrap: anywhere;
+}

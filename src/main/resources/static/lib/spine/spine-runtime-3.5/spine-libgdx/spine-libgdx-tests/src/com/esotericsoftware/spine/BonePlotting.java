@@ -75,7 +75,7 @@ public class BonePlotting {
 		float fps = 1 / 15f;
 		for (Animation animation : skeletonData.getAnimations()) {
 			float time = 0;
-			while (time < animation.getDuration()) {
+			while (time < animation.duration) {
 				animation.apply(skeleton, time, time, false, null, 1, MixPose.current, MixDirection.in);
 				skeleton.updateWorldTransform();
 				System.out

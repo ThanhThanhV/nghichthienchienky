@@ -2,39 +2,164 @@
 <html lang="vi" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng ký - Nghịch Thiên Chiến Ký</title>
-    <link rel="stylesheet" th:href="@{/css/game.css}">
+
+    <style>
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: #080d19;
+            color: #f8fafc;
+            font-family: Arial, sans-serif;
+        }
+
+        .auth-card {
+            width: 100%;
+            max-width: 440px;
+            padding: 30px;
+            border: 1px solid #334155;
+            border-radius: 14px;
+            background: #111827;
+        }
+
+        h1 {
+            color: #fbbf24;
+            text-align: center;
+            font-size: 22px;
+        }
+
+        .subtitle {
+            margin-bottom: 25px;
+            color: #94a3b8;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin: 14px 0 7px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            color: white;
+            border: 1px solid #475569;
+            border-radius: 7px;
+            background: #1e293b;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 22px;
+            padding: 13px;
+            color: #111827;
+            border: 0;
+            border-radius: 7px;
+            background: #fbbf24;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .message {
+            margin-top: 7px;
+            color: #f87171;
+            font-size: 12px;
+        }
+
+        .error-box {
+            margin: 12px 0;
+            color: #f87171;
+            text-align: center;
+        }
+
+        .bottom {
+            margin-top: 20px;
+            color: #94a3b8;
+            text-align: center;
+        }
+
+        a { color: #fbbf24; }
+    </style>
 </head>
+
 <body>
-<main class="auth-wrap">
-    <form class="auth-card" th:action="@{/register}" th:object="${registerRequest}" method="post">
-        <a class="back-link" th:href="@{/}">← Trang chủ</a>
-        <div class="eyebrow">NGHỊCH THIÊN CHIẾN KÝ</div>
-        <h1>Tạo tài khoản</h1>
-        <p class="subtitle">Khởi tạo hành trình của riêng ngươi.</p>
 
-        <div class="notice error" th:if="${registrationError}" th:text="${registrationError}"></div>
+<div class="auth-card">
 
-        <label for="username">Tên đăng nhập</label>
-        <input id="username" th:field="*{username}" autocomplete="username" required>
-        <small class="field-error" th:errors="*{username}"></small>
+    <h1>NGHỊCH THIÊN CHIẾN KÝ</h1>
+    <div class="subtitle">TẠO TÀI KHOẢN MỚI</div>
 
-        <label for="email">Email</label>
-        <input id="email" type="email" th:field="*{email}" autocomplete="email" required>
-        <small class="field-error" th:errors="*{email}"></small>
+    <div class="error-box"
+         th:if="${errorMessage}"
+         th:text="${errorMessage}">
+    </div>
 
-        <label for="password">Mật khẩu</label>
-        <input id="password" type="password" th:field="*{password}" autocomplete="new-password" required>
-        <small class="field-error" th:errors="*{password}"></small>
+    <form th:action="@{/register}"
+          th:object="${registerRequest}"
+          method="post">
 
-        <label for="confirmPassword">Xác nhận mật khẩu</label>
-        <input id="confirmPassword" type="password" th:field="*{confirmPassword}" autocomplete="new-password" required>
-        <small class="field-error" th:errors="*{confirmPassword}"></small>
+        <label>Username</label>
+        <input type="text"
+               th:field="*{username}"
+               minlength="4"
+               maxlength="50"
+               required>
 
-        <button class="primary-button" type="submit">Đăng ký</button>
-        <p class="form-foot">Đã có tài khoản? <a th:href="@{/login}">Đăng nhập</a></p>
+        <div class="message"
+             th:if="${#fields.hasErrors('username')}"
+             th:errors="*{username}">
+        </div>
+
+        <label>Email</label>
+        <input type="email"
+               th:field="*{email}"
+               maxlength="150"
+               required>
+
+        <div class="message"
+             th:if="${#fields.hasErrors('email')}"
+             th:errors="*{email}">
+        </div>
+
+        <label>Mật khẩu</label>
+        <input type="password"
+               th:field="*{password}"
+               minlength="8"
+               maxlength="72"
+               required>
+
+        <div class="message"
+             th:if="${#fields.hasErrors('password')}"
+             th:errors="*{password}">
+        </div>
+
+        <label>Xác nhận mật khẩu</label>
+        <input type="password"
+               th:field="*{confirmPassword}"
+               required>
+
+        <div class="message"
+             th:if="${#fields.hasErrors('confirmPassword')}"
+             th:errors="*{confirmPassword}">
+        </div>
+
+        <button type="submit">ĐĂNG KÝ</button>
+
     </form>
-</main>
+
+    <div class="bottom">
+        Đã có tài khoản?
+        <a th:href="@{/login}">Đăng nhập</a>
+    </div>
+
+</div>
+
 </body>
 </html>

@@ -83,7 +83,7 @@ public class MixTest extends ApplicationAdapter {
 	public void render () {
 		float delta = Gdx.graphics.getDeltaTime() * 0.25f; // Reduced to make mixing easier to see.
 
-		float jump = jumpAnimation.getDuration();
+		float jump = jumpAnimation.duration;
 		float beforeJump = 1f;
 		float blendIn = 0.2f;
 		float blendOut = 0.2f;

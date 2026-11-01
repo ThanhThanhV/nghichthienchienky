@@ -6,6 +6,119 @@ document.addEventListener("DOMContentLoaded", async () => {
     const formation = new SpineFormation(manager);
 
     const config = SPINE_CONFIG.character;
+    //
+    const battleRenderer = new BattleRenderer({
+        formation,
+        eventDelay: 150,
+        animationDelay: 350,
+        damageContainer: document.getElementById("damageOverlay"),
+        statusContainer: document.getElementById("statusOverlay"),
+        battleUIContainer: document.getElementById("battleUI")
+    });
+
+    window.battleRenderer = battleRenderer;
+
+    battleRenderer.battleUI.initialize();
+
+    battleRenderer.renderEvent({
+        type: "DAMAGE",
+        targetTeam: "ENEMY",
+        targetInstanceId: "201",
+        amount: 1500,
+        isCritical: true
+    });
+
+    battleRenderer.renderEvent({
+        type: "HEAL",
+        targetTeam: "PLAYER",
+        targetInstanceId: "101",
+        amount: 800
+    });
+
+    // Test buff.
+    battleRenderer.renderEvent({
+        type: "BUFF",
+        targetTeam: "PLAYER",
+        targetInstanceId: "101",
+        effectCode: "ATK_UP"
+    });
+
+// Test debuff.
+    battleRenderer.renderEvent({
+        type: "DEBUFF",
+        targetTeam: "ENEMY",
+        targetInstanceId: "201",
+        effectCode: "DEF_DOWN"
+    });
+
+// Test khống chế.
+    battleRenderer.renderEvent({
+        type: "CC",
+        targetTeam: "ENEMY",
+        targetInstanceId: "202",
+        effectCode: "STUN"
+    });
+
+// Test miễn nhiễm.
+    battleRenderer.renderEvent({
+        type: "IMMUNITY",
+        targetTeam: "PLAYER",
+        targetInstanceId: "102",
+        effectCode: "IMMUNITY_CC"
+    });
+
+    battleRenderer.renderEvent({
+        type: "DAMAGE",
+        targetTeam: "ENEMY",
+        targetInstanceId: "201",
+        amount: 1500,
+        isCritical: true,
+        currentHp: 3500,
+        maxHp: 5000,
+        alive: true
+    });
+
+    battleRenderer.renderEvent({
+        type: "DEATH",
+        targetTeam: "ENEMY",
+        targetInstanceId: "201",
+        currentHp: 0,
+        maxHp: 5000,
+        alive: false
+    });
+
+    battleRenderer.renderEvent({
+        type: "REVIVE",
+        targetTeam: "ENEMY",
+        targetInstanceId: "201",
+        currentHp: 2000,
+        maxHp: 5000,
+        alive: true
+    });
+
+    const testEvents = [
+        {
+            type: "ATTACK",
+            team: "PLAYER",
+            instanceId: "101"
+        },
+        {
+            type: "ATTACK",
+            team: "ENEMY",
+            instanceId: "201"
+        },
+        {
+            type: "DEATH",
+            team: "ENEMY",
+            instanceId: "201"
+        }
+    ];
+
+    battleRenderer.loadEvents(testEvents);
+    battleRenderer.play();
+    //
+
+    window.battleRenderer = battleRenderer;
 
     /**
      * Hiển thị trạng thái đội hình.

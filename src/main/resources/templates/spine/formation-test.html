@@ -16,6 +16,8 @@
     <script th:src="@{/js/spine/SpineManager.js}"></script>
     <script th:src="@{/js/spine/SpineFormation.js}"></script>
     <script th:src="@{/js/spine/SpineFormationTest.js}" defer></script>
+    <script th:src="@{/js/battle/BattleRendererConfig.js}"></script>
+    <script th:src="@{/js/battle/BattleRenderer.js}"></script>
 </head>
 
 <body>
@@ -24,8 +26,12 @@
 
     <h2>Battle Formation Test</h2>
 
-    <div class="spine-stage">
+    <div class="spine-stage battle-stage">
         <canvas id="battleCanvas"></canvas>
+
+        <div id="damageOverlay" class="damage-overlay"></div>
+        <div id="statusOverlay" class="status-overlay"></div>
+        <div id="battleUI" class="battle-ui-overlay"></div>
     </div>
 
     <div class="spine-panel">
@@ -43,5 +49,64 @@
 
 </div>
 
+<section id="effectTestPanel" class="effect-test-panel">
+    <h3>Battle Effect Tester</h3>
+
+    <div class="effect-test-row">
+        <label for="effectTargetTeam">Team</label>
+        <select id="effectTargetTeam">
+            <option value="PLAYER">PLAYER</option>
+            <option value="ENEMY">ENEMY</option>
+        </select>
+
+        <label for="effectTargetId">Character ID</label>
+        <input id="effectTargetId" type="text" value="101">
+    </div>
+
+    <div class="effect-test-row">
+        <label for="effectCode">Effect</label>
+        <select id="effectCode">
+            <optgroup label="BUFF">
+                <option value="ATK_UP">ATK UP</option>
+                <option value="DEF_UP">DEF UP</option>
+                <option value="SPEED_UP">SPEED UP</option>
+            </optgroup>
+
+            <optgroup label="DEBUFF">
+                <option value="ATK_DOWN">ATK DOWN</option>
+                <option value="DEF_DOWN">DEF DOWN</option>
+                <option value="SPEED_DOWN">SPEED DOWN</option>
+            </optgroup>
+
+            <optgroup label="CC">
+                <option value="STUN">STUN</option>
+                <option value="FREEZE">FREEZE</option>
+                <option value="SILENCE">SILENCE</option>
+                <option value="TAUNT">TAUNT</option>
+            </optgroup>
+
+            <optgroup label="IMMUNITY">
+                <option value="IMMUNITY_CC">IMMUNITY CC</option>
+                <option value="IMMUNITY_BUFF">IMMUNITY BUFF</option>
+                <option value="IMMUNITY_DEBUFF">IMMUNITY DEBUFF</option>
+            </optgroup>
+        </select>
+
+        <label for="effectDuration">Duration</label>
+        <input id="effectDuration" type="number" min="1" value="2">
+    </div>
+
+    <div class="effect-test-actions">
+        <button type="button" data-effect-action="apply">Apply Effect</button>
+        <button type="button" data-effect-action="dispel-buff">Dispel Buff</button>
+        <button type="button" data-effect-action="dispel-debuff">Dispel Debuff</button>
+        <button type="button" data-effect-action="dispel-cc">Dispel CC</button>
+        <button type="button" data-effect-action="next-round">Next Round</button>
+    </div>
+
+    <div id="effectTestLog" class="effect-test-log">
+        Ready.
+    </div>
+</section>
 </body>
 </html>

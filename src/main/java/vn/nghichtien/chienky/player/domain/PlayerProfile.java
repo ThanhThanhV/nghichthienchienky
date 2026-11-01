@@ -2,7 +2,8 @@
 package vn.nghichtien.chienky.player.domain;
 
 import jakarta.persistence.*;
-import vn.nghichtien.chienky.account.domain.Account;
+import vn.nghichtien.chienky.account.entity.Account;
+
 
 import java.time.Instant;
 

@@ -2,143 +2,77 @@
 <html lang="vi" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Nghịch Thiên Chiến Ký</title>
 
-    <title>Đại sảnh - Nghịch Thiên Chiến Ký</title>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #080d19;
+            color: #f8fafc;
+            font-family: Arial, sans-serif;
+        }
 
-    <link rel="stylesheet" th:href="@{/css/game.css}">
+        .container {
+            width: 90%;
+            max-width: 600px;
+            padding: 35px;
+            text-align: center;
+            border: 1px solid #334155;
+            border-radius: 14px;
+            background: #111827;
+        }
+
+        h1 { color: #fbbf24; }
+
+        .button {
+            display: inline-block;
+            margin: 10px;
+            padding: 12px 22px;
+            color: #111827;
+            border-radius: 7px;
+            background: #fbbf24;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        button {
+            padding: 12px 22px;
+            color: white;
+            border: 1px solid #475569;
+            border-radius: 7px;
+            background: #334155;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
-<body class="game-dashboard">
+<body>
 
-<header class="game-header">
-    <div class="game-brand">
-        <span class="game-brand-icon">⚔</span>
-        <span>NGHỊCH THIÊN CHIẾN KÝ</span>
-    </div>
+<div class="container">
+
+    <h1>NGHỊCH THIÊN CHIẾN KÝ</h1>
+
+    <p>
+        Xin chào,
+        <strong th:text="${username}"></strong>
+    </p>
+
+    <p>Đăng nhập thành công!</p>
+
+    <a class="button" th:href="@{/battle}">
+        VÀO CHIẾN ĐẤU
+    </a>
 
     <form th:action="@{/logout}" method="post">
-        <button class="logout-button" type="submit">
-            Đăng xuất
-        </button>
+        <button type="submit">ĐĂNG XUẤT</button>
     </form>
-</header>
 
-<main class="dashboard-container">
-
-    <section class="player-overview">
-        <div class="player-avatar">
-            <span>?</span>
-        </div>
-
-        <div class="player-information">
-            <div class="player-level">
-                CẤP <span>1</span>
-            </div>
-
-            <h1 id="playerNickname">Đang tải nhân vật...</h1>
-
-            <p>
-                ID nhân vật:
-                <span id="playerId">---</span>
-            </p>
-
-            <div class="player-exp">
-                <div class="exp-label">
-                    <span>Kinh nghiệm</span>
-                    <span id="playerExp">0</span>
-                </div>
-
-                <div class="exp-progress">
-                    <div id="expProgressBar"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="resource-section">
-        <h2>Tài nguyên</h2>
-
-        <div class="resource-grid">
-
-            <article class="resource-card">
-                <div class="resource-icon gold-icon">金</div>
-                <div>
-                    <span>Vàng</span>
-                    <strong id="resource-GOLD">---</strong>
-                </div>
-            </article>
-
-            <article class="resource-card">
-                <div class="resource-icon stamina-icon">⚡</div>
-                <div>
-                    <span>Thể lực</span>
-                    <strong id="resource-STAMINA">---</strong>
-                </div>
-            </article>
-
-            <article class="resource-card">
-                <div class="resource-icon exp-icon">✦</div>
-                <div>
-                    <span>Kinh nghiệm</span>
-                    <strong id="resource-PLAYER_EXP">---</strong>
-                </div>
-            </article>
-
-            <article class="resource-card">
-                <div class="resource-icon premium-icon">♦</div>
-                <div>
-                    <span>Nguyên bảo</span>
-                    <strong id="resource-PREMIUM_CURRENCY">---</strong>
-                </div>
-            </article>
-
-        </div>
-    </section>
-
-    <section class="game-menu-section">
-        <h2>Đại sảnh</h2>
-
-        <div class="game-menu-grid">
-
-            <article class="game-menu-card">
-                <div class="menu-icon">⚔</div>
-                <h3>Đội hình</h3>
-                <p>Quản lý và sắp xếp nhân vật chiến đấu.</p>
-                <span>Đang phát triển</span>
-            </article>
-
-            <article class="game-menu-card">
-                <div class="menu-icon">🎒</div>
-                <h3>Túi đồ</h3>
-                <p>Quản lý vật phẩm và trang bị.</p>
-                <span>Đang phát triển</span>
-            </article>
-
-            <article class="game-menu-card">
-                <div class="menu-icon">🏯</div>
-                <h3>Chiến dịch</h3>
-                <p>Khám phá các chương và thử thách.</p>
-                <span>Đang phát triển</span>
-            </article>
-
-            <article class="game-menu-card">
-                <div class="menu-icon">✧</div>
-                <h3>Chiêu mộ</h3>
-                <p>Chiêu mộ các nhân vật mới.</p>
-                <span>Đang phát triển</span>
-            </article>
-
-        </div>
-    </section>
-
-    <div id="dashboardError" class="dashboard-error" hidden>
-        Không thể tải dữ liệu nhân vật. Vui lòng đăng nhập lại.
-    </div>
-
-</main>
-
-<script th:src="@{/js/dashboard.js}"></script>
+</div>
 
 </body>
 </html>
