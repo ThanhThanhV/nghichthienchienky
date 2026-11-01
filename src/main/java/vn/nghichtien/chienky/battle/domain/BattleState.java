@@ -14,22 +14,13 @@ import java.util.UUID;
 public class BattleState {
 
     private final String battleId;
-
     private final List<BattleUnitState> units;
-
     private final BattleEventCollector eventCollector;
-
     private int currentRound;
-
     private boolean finished;
-
+    private boolean passiveInitializationStarted;
     private BattleTeam winner;
 
-    /**
-     * Khởi tạo trận đấu mới.
-     *
-     * @param units Danh sách nhân vật tham gia trận đấu.
-     */
     public BattleState(List<BattleUnitState> units) {
         if (units == null || units.isEmpty()) {
             throw new IllegalArgumentException("Battle units must not be empty");
@@ -40,17 +31,14 @@ public class BattleState {
         this.eventCollector = new BattleEventCollector();
         this.currentRound = 0;
         this.finished = false;
+        this.passiveInitializationStarted = false;
 
         validateTeams();
     }
 
-    /**
-     * Kiểm tra hai đội có nhân vật tham gia hay không.
-     */
     private void validateTeams() {
         boolean hasPlayer = units.stream()
                 .anyMatch(unit -> unit.getTeam() == BattleTeam.PLAYER);
-
         boolean hasEnemy = units.stream()
                 .anyMatch(unit -> unit.getTeam() == BattleTeam.ENEMY);
 
@@ -73,23 +61,23 @@ public class BattleState {
     }
 
     /**
-     * Tăng số round hiện tại.
-     *
-     * @return Round mới.
+     * Đảm bảo nội tại đầu trận chỉ được khởi tạo một lần.
      */
+    public boolean beginPassiveInitialization() {
+        if (passiveInitializationStarted) {
+            return false;
+        }
+        passiveInitializationStarted = true;
+        return true;
+    }
+
     public int nextRound() {
         if (finished) {
             throw new IllegalStateException("Battle already finished");
         }
-
         return ++currentRound;
     }
 
-    /**
-     * Lấy danh sách nhân vật theo thứ tự tốc độ giảm dần.
-     *
-     * @return Danh sách nhân vật còn sống.
-     */
     public List<BattleUnitState> getActionOrder() {
         return units.stream()
                 .filter(BattleUnitState::isAlive)
@@ -102,12 +90,6 @@ public class BattleState {
                 .toList();
     }
 
-    /**
-     * Tìm nhân vật theo ID.
-     *
-     * @param instanceId ID nhân vật.
-     * @return Trạng thái nhân vật hoặc null nếu không tồn tại.
-     */
     public BattleUnitState findUnit(Long instanceId) {
         return units.stream()
                 .filter(unit -> Objects.equals(
@@ -117,34 +99,23 @@ public class BattleState {
                 .orElse(null);
     }
 
-    /**
-     * Kiểm tra trận đấu đã kết thúc hay chưa.
-     *
-     * @return true nếu một đội không còn nhân vật sống.
-     */
     public boolean checkFinished() {
         boolean playerAlive = units.stream().anyMatch(
-                unit -> unit.getTeam() == BattleTeam.PLAYER
-                        && unit.isAlive()
+                unit -> unit.getTeam() == BattleTeam.PLAYER && unit.isAlive()
         );
-
         boolean enemyAlive = units.stream().anyMatch(
-                unit -> unit.getTeam() == BattleTeam.ENEMY
-                        && unit.isAlive()
+                unit -> unit.getTeam() == BattleTeam.ENEMY && unit.isAlive()
         );
 
         if (!playerAlive || !enemyAlive) {
             finished = true;
-
             if (playerAlive) {
                 winner = BattleTeam.PLAYER;
             } else if (enemyAlive) {
                 winner = BattleTeam.ENEMY;
             }
-
             return true;
         }
-
         return false;
     }
 
@@ -171,5 +142,4 @@ public class BattleState {
     public BattleTeam getWinner() {
         return winner;
     }
-
 }

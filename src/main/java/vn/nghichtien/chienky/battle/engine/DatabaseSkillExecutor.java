@@ -61,12 +61,7 @@ public class DatabaseSkillExecutor {
             return requestedAction;
         }
 
-        List<HeroSkillDefinition> skills =
-                skillRepository
-                        .findAllByHeroDefinitionHeroCodeAndEnabledTrueOrderBySkillOrderAsc(
-                                source.getHeroCode()
-                        );
-
+        List<HeroSkillDefinition> skills = loadSkills(source);
         String requestedType = toSkillType(requestedAction);
 
         HeroSkillDefinition skill = findSkill(skills, requestedType);
@@ -101,8 +96,76 @@ public class DatabaseSkillExecutor {
     }
 
     /**
-     * Tìm kỹ năng theo loại, không phân biệt chữ hoa/chữ thường.
+     * Tự động thực thi các nội tại có trigger trùng với sự kiện hiện tại.
+     * Mặc định trigger là BATTLE_START nếu configJson không khai báo.
      */
+    @Transactional(readOnly = true)
+    public void executePassives(
+            BattleState battle,
+            BattleUnitState source,
+            BattlePassiveTrigger trigger
+    ) {
+        if (battle == null || source == null || trigger == null) {
+            throw new IllegalArgumentException(
+                    "Battle, source and trigger must not be null"
+            );
+        }
+        if (battle.isFinished() || !source.isAlive()) {
+            return;
+        }
+
+        List<HeroSkillDefinition> passiveSkills = loadSkills(source).stream()
+                .filter(skill -> "PASSIVE".equalsIgnoreCase(skill.getSkillType()))
+                .toList();
+
+        for (HeroSkillDefinition skill : passiveSkills) {
+            if (battle.isFinished() || !source.isAlive()) {
+                break;
+            }
+
+            List<BattleEffectConfig> effects = skill.getEffects().stream()
+                    .filter(effect -> Boolean.TRUE.equals(effect.getEnabled()))
+                    .sorted(Comparator.comparing(
+                            HeroSkillEffect::getEffectOrder,
+                            Comparator.nullsLast(Integer::compareTo)
+                    ))
+                    .filter(effect -> getPassiveTrigger(effect) == trigger)
+                    .filter(this::passesChance)
+                    .map(this::toEffectConfig)
+                    .toList();
+
+            if (effects.isEmpty()) {
+                continue;
+            }
+
+            recordPassiveActivation(battle, source, skill, trigger);
+            effectProcessor.executeEffects(battle, source, effects);
+        }
+    }
+
+    private List<HeroSkillDefinition> loadSkills(BattleUnitState source) {
+        return skillRepository
+                .findAllByHeroDefinitionHeroCodeAndEnabledTrueOrderBySkillOrderAsc(
+                        source.getHeroCode()
+                );
+    }
+
+    private BattlePassiveTrigger getPassiveTrigger(HeroSkillEffect effect) {
+        JsonNode config = readConfig(effect.getConfigJson());
+        JsonNode triggerNode = config.get("trigger");
+
+        if (triggerNode == null || triggerNode.isNull()
+                || triggerNode.asText().isBlank()) {
+            return BattlePassiveTrigger.BATTLE_START;
+        }
+
+        return parseEnum(
+                BattlePassiveTrigger.class,
+                triggerNode.asText(),
+                "configJson.trigger"
+        );
+    }
+
     private HeroSkillDefinition findSkill(
             List<HeroSkillDefinition> skills,
             String skillType
@@ -113,9 +176,6 @@ public class DatabaseSkillExecutor {
                 .orElse(null);
     }
 
-    /**
-     * Chuyển loại hành động runtime thành loại kỹ năng trong database.
-     */
     private String toSkillType(BattleActionType actionType) {
         return switch (actionType) {
             case BASIC_ATTACK -> "BASIC";
@@ -125,7 +185,6 @@ public class DatabaseSkillExecutor {
     }
 
     /**
-     * Kiểm tra xác suất kích hoạt hiệu ứng.
      * chance null được hiểu là 100%; giá trị hợp lệ nằm trong [0, 1].
      */
     private boolean passesChance(HeroSkillEffect effect) {
@@ -134,7 +193,6 @@ public class DatabaseSkillExecutor {
         if (chance == null) {
             return true;
         }
-
         if (chance.signum() < 0 || chance.compareTo(ONE) > 0) {
             throw new IllegalArgumentException(
                     "Effect chance must be between 0 and 1: " + effect.getId()
@@ -145,22 +203,13 @@ public class DatabaseSkillExecutor {
                 || ThreadLocalRandom.current().nextDouble() < chance.doubleValue();
     }
 
-    /**
-     * Chuyển một hiệu ứng database thành cấu hình mà battle engine hiểu.
-     */
     private BattleEffectConfig toEffectConfig(HeroSkillEffect effect) {
         BattleEffectType effectType = parseEnum(
-                BattleEffectType.class,
-                effect.getEffectType(),
-                "effectType"
+                BattleEffectType.class, effect.getEffectType(), "effectType"
         );
-
         BattleTargetMode targetMode = parseEnum(
-                BattleTargetMode.class,
-                effect.getTargetType(),
-                "targetType"
+                BattleTargetMode.class, effect.getTargetType(), "targetType"
         );
-
         JsonNode config = readConfig(effect.getConfigJson());
 
         return new BattleEffectConfig(
@@ -174,13 +223,11 @@ public class DatabaseSkillExecutor {
                 enumFromJson(config, "statType", BattleStatType.class),
                 enumFromJson(config, "statusType", BattleStatusType.class),
                 enumFromJson(config, "immunityType", BattleImmunityType.class),
-                enumFromJson(config, "dispelType", BattleDispelType.class)
+                enumFromJson(config, "dispelType", BattleDispelType.class),
+                booleanFromJson(config, "permanent")
         );
     }
 
-    /**
-     * Đọc configJson; cấu hình trống được xem là object rỗng.
-     */
     private JsonNode readConfig(String json) {
         if (json == null || json.isBlank()) {
             return objectMapper.createObjectNode();
@@ -202,16 +249,11 @@ public class DatabaseSkillExecutor {
         }
     }
 
-    /**
-     * Đọc giá trị số trong configJson.
-     */
     private BigDecimal decimalFromJson(JsonNode config, String field) {
         JsonNode value = config.get(field);
-
         if (value == null || value.isNull()) {
             return BigDecimal.ZERO;
         }
-
         if (!value.isNumber()) {
             throw new IllegalArgumentException(
                     "configJson." + field + " phải là số"
@@ -227,26 +269,31 @@ public class DatabaseSkillExecutor {
         return result;
     }
 
-    /**
-     * Đọc enum tùy chọn trong configJson.
-     */
+    private boolean booleanFromJson(JsonNode config, String field) {
+        JsonNode value = config.get(field);
+        if (value == null || value.isNull()) {
+            return false;
+        }
+        if (!value.isBoolean()) {
+            throw new IllegalArgumentException(
+                    "configJson." + field + " phải là boolean"
+            );
+        }
+        return value.booleanValue();
+    }
+
     private <E extends Enum<E>> E enumFromJson(
             JsonNode config,
             String field,
             Class<E> enumType
     ) {
         JsonNode value = config.get(field);
-
         if (value == null || value.isNull() || value.asText().isBlank()) {
             return null;
         }
-
         return parseEnum(enumType, value.asText(), "configJson." + field);
     }
 
-    /**
-     * Parse enum an toàn và báo rõ trường cấu hình sai.
-     */
     private <E extends Enum<E>> E parseEnum(
             Class<E> enumType,
             String value,
@@ -260,8 +307,7 @@ public class DatabaseSkillExecutor {
 
         try {
             return Enum.valueOf(
-                    enumType,
-                    value.trim().toUpperCase(Locale.ROOT)
+                    enumType, value.trim().toUpperCase(Locale.ROOT)
             );
         } catch (IllegalArgumentException exception) {
             throw new IllegalArgumentException(
@@ -271,10 +317,6 @@ public class DatabaseSkillExecutor {
         }
     }
 
-    /**
-     * Ghi một sự kiện kích hoạt kỹ năng. Đây là nơi duy nhất ghi event
-     * BASIC/ACTIVE/ULTIMATE để tránh tạo sự kiện trùng lặp.
-     */
     private void recordSkillActivation(
             BattleState battle,
             BattleUnitState source,
@@ -291,6 +333,28 @@ public class DatabaseSkillExecutor {
                 eventType,
                 source.getTeam().name(),
                 source.getInstanceId(),
+                null, null,
+                skill.getSkillCode(),
+                null,
+                false,
+                source.getCurrentHp(),
+                source.getMaxHp(),
+                source.isAlive(),
+                null, null, null,
+                "Skill activated: " + skill.getSkillName()
+        );
+    }
+
+    private void recordPassiveActivation(
+            BattleState battle,
+            BattleUnitState source,
+            HeroSkillDefinition skill,
+            BattlePassiveTrigger trigger
+    ) {
+        battle.getEventCollector().record(
+                BattleEventType.PASSIVE,
+                source.getTeam().name(),
+                source.getInstanceId(),
                 null,
                 null,
                 skill.getSkillCode(),
@@ -300,9 +364,9 @@ public class DatabaseSkillExecutor {
                 source.getMaxHp(),
                 source.isAlive(),
                 null,
+                trigger.name(),
                 null,
-                null,
-                "Skill activated: " + skill.getSkillName()
+                "Passive activated: " + skill.getSkillName()
         );
     }
 }

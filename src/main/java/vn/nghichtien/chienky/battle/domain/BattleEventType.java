@@ -1,4 +1,3 @@
-
 package vn.nghichtien.chienky.battle.domain;
 
 /**
@@ -18,6 +17,7 @@ public enum BattleEventType {
     BASIC_ATTACK,
     ACTIVE_SKILL,
     ULTIMATE_SKILL,
+    PASSIVE,
 
     DAMAGE,
     HEAL,
