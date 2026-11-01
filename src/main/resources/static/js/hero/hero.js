@@ -8,6 +8,8 @@ class HeroManagementScreen {
         this.heroes = [];
         this.resources = [];
         this.expItems = [];
+        this.progressionOptions = [];
+        this.skillUpgradeOptions = [];
         this.selectedHero = null;
         this.preview = null;
         this.busy = false;
@@ -142,7 +144,22 @@ class HeroManagementScreen {
         if (!hero) return;
 
         this.selectedHero = hero;
+        this.progressionOptions = [];
+        this.skillUpgradeOptions = [];
         this.renderRoster();
+
+        try {
+            const [progression, skills] = await Promise.all([
+                this.request("/api/player/heroes/" + encodeURIComponent(instanceId) + "/progression-options"),
+                this.request("/api/player/heroes/" + encodeURIComponent(instanceId) + "/skill-upgrade-options")
+            ]);
+            this.progressionOptions = Array.isArray(progression) ? progression : [];
+            this.skillUpgradeOptions = Array.isArray(skills) ? skills : [];
+        } catch (error) {
+            console.error("Could not load hero upgrade options:", error);
+            this.showMessage("Không tải được điều kiện nâng cấp: " + error.message, "error");
+        }
+
         this.renderDetail();
         await this.previewSelectedHero();
     }
@@ -181,6 +198,7 @@ class HeroManagementScreen {
         this.renderStats(hero.stats?.stats || {});
         this.renderSkills(hero.skills || []);
         this.renderExpItems();
+        this.renderProgressionOptions();
     }
 
     renderStats(stats) {
@@ -264,6 +282,44 @@ class HeroManagementScreen {
             });
             if (effects.childElementCount) card.append(effects);
 
+            const upgrade = this.skillUpgradeOptions.find(
+                option => Number(option.skillId) === Number(skill.skillId)
+            );
+            if (upgrade) {
+                const upgradeInfo = document.createElement("div");
+                upgradeInfo.className = "skill-upgrade-info";
+                upgradeInfo.textContent = "Nâng lên cấp " + upgrade.targetSkillLevel +
+                    " · Yêu cầu nhân vật cấp " + upgrade.requiredHeroLevel;
+                card.append(upgradeInfo);
+
+                const costs = this.createCostSummary(upgrade.costs);
+                card.append(costs);
+
+                const canAfford = this.hasEnoughResources(upgrade.costs);
+                const button = this.createUpgradeButton(
+                    "NÂNG KỸ NĂNG",
+                    this.busy || !upgrade.configured || !upgrade.canUpgrade || !canAfford,
+                    () => this.submitUpgrade(
+                        "/api/player/heroes/" + this.selectedHero.instanceId +
+                        "/skills/" + upgrade.skillId + "/upgrade",
+                        "Đã nâng kỹ năng " + (skill.skillName || skill.skillCode) + "."
+                    )
+                );
+                card.append(button);
+
+                if (upgrade.unavailableReason) {
+                    const reason = document.createElement("div");
+                    reason.className = "upgrade-reason";
+                    reason.textContent = upgrade.unavailableReason;
+                    card.append(reason);
+                } else if (!canAfford) {
+                    const reason = document.createElement("div");
+                    reason.className = "upgrade-reason insufficient";
+                    reason.textContent = "Không đủ tài nguyên để nâng cấp.";
+                    card.append(reason);
+                }
+            }
+
             container.append(card);
         });
     }
@@ -314,6 +370,162 @@ class HeroManagementScreen {
             ? "Số dư: " + this.formatNumber(balance) +
                 " · EXP mỗi vật phẩm: " + this.formatNumber(selected.expPerItem)
             : "Chọn vật phẩm để xem số dư và EXP mỗi vật phẩm.";
+    }
+
+    renderProgressionOptions() {
+        const star = this.progressionOptions.find(option => option.progressionType === "STAR");
+        const breakthrough = this.progressionOptions.find(
+            option => option.progressionType === "BREAKTHROUGH"
+        );
+        this.renderProgressionOption("star-upgrade-option", star, "NÂNG SAO");
+        this.renderProgressionOption(
+            "breakthrough-upgrade-option",
+            breakthrough,
+            "ĐỘT PHÁ"
+        );
+    }
+
+    renderProgressionOption(elementId, option, buttonLabel) {
+        const container = document.getElementById(elementId);
+        container.replaceChildren();
+
+        if (!option) {
+            container.append(this.createMessage("Không có dữ liệu nâng cấp."));
+            return;
+        }
+
+        const level = document.createElement("div");
+        level.className = "upgrade-level-line";
+        level.textContent = "Cấp " + option.currentLevel + "  →  Cấp " + option.targetLevel;
+        container.append(level);
+
+        if (option.requiredHeroLevel != null) {
+            const requirement = document.createElement("div");
+            requirement.className = "upgrade-requirement";
+            requirement.textContent = "Cấp nhân vật tối thiểu: " + option.requiredHeroLevel;
+            container.append(requirement);
+        }
+        if (option.requiredStarLevel != null) {
+            const requirement = document.createElement("div");
+            requirement.className = "upgrade-requirement";
+            requirement.textContent = "Cấp sao tối thiểu: " + option.requiredStarLevel;
+            container.append(requirement);
+        }
+
+        container.append(this.createCostSummary(option.costs));
+
+        const canAfford = this.hasEnoughResources(option.costs);
+        const endpoint = option.progressionType === "STAR" ? "upgrade-star" : "breakthrough";
+        const button = this.createUpgradeButton(
+            buttonLabel,
+            this.busy || !option.configured || !option.canUpgrade || !canAfford,
+            () => this.submitUpgrade(
+                "/api/player/heroes/" + this.selectedHero.instanceId + "/" + endpoint,
+                option.progressionType === "STAR"
+                    ? "Nâng sao nhân vật thành công."
+                    : "Đột phá nhân vật thành công."
+            )
+        );
+        container.append(button);
+
+        if (option.unavailableReason) {
+            const reason = document.createElement("div");
+            reason.className = "upgrade-reason";
+            reason.textContent = option.unavailableReason;
+            container.append(reason);
+        } else if (!canAfford) {
+            const reason = document.createElement("div");
+            reason.className = "upgrade-reason insufficient";
+            reason.textContent = "Số dư tài nguyên hiện tại không đủ.";
+            container.append(reason);
+        }
+    }
+
+    createCostSummary(costs) {
+        const wrapper = document.createElement("div");
+        wrapper.className = "upgrade-costs";
+
+        if (!costs || costs.length === 0) {
+            wrapper.textContent = "Chưa có chi phí được cấu hình.";
+            return wrapper;
+        }
+
+        costs.forEach(cost => {
+            const resource = this.resources.find(
+                item => item.resourceCode === cost.resourceCode
+            );
+            const balance = Number(resource?.balance || 0);
+            const line = document.createElement("div");
+            line.className = "upgrade-cost-line";
+            line.textContent = cost.resourceCode + ": " +
+                this.formatNumber(cost.requiredAmount) +
+                "  ·  Đang có " + this.formatNumber(balance);
+            if (balance < Number(cost.requiredAmount)) {
+                line.classList.add("insufficient");
+            }
+            wrapper.append(line);
+        });
+        return wrapper;
+    }
+
+    hasEnoughResources(costs) {
+        if (!costs || costs.length === 0) return false;
+        return costs.every(cost => {
+            const resource = this.resources.find(
+                item => item.resourceCode === cost.resourceCode
+            );
+            return Number(resource?.balance || 0) >= Number(cost.requiredAmount);
+        });
+    }
+
+    createUpgradeButton(label, disabled, onClick) {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "action-button upgrade-action";
+        button.textContent = label;
+        button.disabled = disabled;
+        button.addEventListener("click", onClick);
+        return button;
+    }
+
+    async submitUpgrade(url, successMessage) {
+        if (!this.selectedHero || this.busy) return;
+
+        this.busy = true;
+        this.renderDetail();
+
+        try {
+            const updatedHero = await this.request(url, {
+                method: "POST",
+                body: JSON.stringify({
+                    transactionKey: this.createTransactionKey()
+                })
+            });
+
+            this.replaceHero(updatedHero);
+            this.selectedHero = updatedHero;
+
+            const [profile, progression, skills] = await Promise.all([
+                this.request("/api/player/me"),
+                this.request("/api/player/heroes/" + updatedHero.instanceId + "/progression-options"),
+                this.request("/api/player/heroes/" + updatedHero.instanceId + "/skill-upgrade-options")
+            ]);
+
+            this.resources = profile.resources || [];
+            this.progressionOptions = Array.isArray(progression) ? progression : [];
+            this.skillUpgradeOptions = Array.isArray(skills) ? skills : [];
+
+            this.renderRoster();
+            this.renderDetail();
+            await this.previewSelectedHero();
+            this.showMessage(successMessage, "success");
+        } catch (error) {
+            console.error("Hero upgrade failed:", error);
+            this.showMessage(error.message || "Không thể thực hiện nâng cấp.", "error");
+        } finally {
+            this.busy = false;
+            this.renderDetail();
+        }
     }
 
     async useSelectedExpItems() {
