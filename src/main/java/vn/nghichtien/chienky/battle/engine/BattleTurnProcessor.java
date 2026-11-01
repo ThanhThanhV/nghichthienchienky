@@ -31,9 +31,6 @@ public class BattleTurnProcessor {
         };
     }
 
-    /**
-     * Xử lý một round chiến đấu.
-     */
     public void processRound(BattleState battle) {
         if (battle == null) {
             throw new IllegalArgumentException("Battle must not be null");
@@ -42,18 +39,18 @@ public class BattleTurnProcessor {
             return;
         }
 
-        initializeBattlePassives(battle);
-
         int round = battle.nextRound();
         var collector = battle.getEventCollector();
 
-        // Giảm thời hạn hiệu ứng trước khi bắt đầu round mới.
+        // Tick hiệu ứng round trước khi kích hoạt passive BATTLE_START.
         for (BattleUnitState unit : battle.getUnits()) {
             unit.getStatusEffectManager().decreaseDurations();
             unit.getImmunityManager().decreaseDurations();
             unit.getShieldManager().decreaseDurations();
             unit.getDefenseEffectManager().decreaseDurations();
         }
+
+        initializeBattlePassives(battle);
 
         collector.record(
                 BattleEventType.ROUND_START,
@@ -109,7 +106,6 @@ public class BattleTurnProcessor {
                 continue;
             }
 
-            // SILENCE chỉ chặn Active và Ultimate.
             if (statusManager.isSilenced()
                     && actionType != BattleActionType.BASIC_ATTACK) {
                 actionType = BattleActionType.BASIC_ATTACK;
@@ -118,8 +114,7 @@ public class BattleTurnProcessor {
             int eventStartIndex = collector.getEvents().size();
             skillExecutor.execute(battle, unit, actionType);
 
-            // Chỉ dispatch dựa trên event do action chính vừa tạo.
-            // Event do passive tạo ra không tự kích hoạt dây chuyền trong cùng lượt.
+            // Chỉ dispatch event do action chính tạo ra, không tạo chuỗi passive vô hạn.
             List<BattleEventDTO> actionEvents = collector.getEvents()
                     .subList(eventStartIndex, collector.getEvents().size());
             dispatchActionEventPassives(battle, actionEvents);
@@ -189,9 +184,7 @@ public class BattleTurnProcessor {
             if (event.type() == BattleEventType.BASIC_ATTACK
                     || event.type() == BattleEventType.ACTIVE_SKILL
                     || event.type() == BattleEventType.ULTIMATE_SKILL) {
-                BattleUnitState attacker = battle.findUnit(
-                        event.sourceInstanceId()
-                );
+                BattleUnitState attacker = battle.findUnit(event.sourceInstanceId());
                 if (attacker != null && attacker.isAlive()) {
                     skillExecutor.executePassives(
                             battle, attacker, BattlePassiveTrigger.ON_ATTACK
@@ -200,9 +193,7 @@ public class BattleTurnProcessor {
             }
 
             if (event.type() == BattleEventType.DAMAGE) {
-                BattleUnitState damaged = battle.findUnit(
-                        event.targetInstanceId()
-                );
+                BattleUnitState damaged = battle.findUnit(event.targetInstanceId());
                 if (damaged != null && damaged.isAlive()) {
                     skillExecutor.executePassives(
                             battle, damaged, BattlePassiveTrigger.ON_DAMAGED
@@ -211,9 +202,7 @@ public class BattleTurnProcessor {
             }
 
             if (event.type() == BattleEventType.DEATH) {
-                BattleUnitState killer = battle.findUnit(
-                        event.sourceInstanceId()
-                );
+                BattleUnitState killer = battle.findUnit(event.sourceInstanceId());
                 if (killer != null && killer.isAlive()) {
                     skillExecutor.executePassives(
                             battle, killer, BattlePassiveTrigger.ON_KILL
