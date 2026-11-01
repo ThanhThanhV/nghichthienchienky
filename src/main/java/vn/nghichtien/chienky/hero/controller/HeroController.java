@@ -47,6 +47,16 @@ public class HeroController {
     }
 
     /**
+     * Lấy danh sách vật phẩm EXP đang được bật.
+     *
+     * @return Danh sách vật phẩm EXP
+     */
+    @GetMapping("/exp-items")
+    public List<HeroExpItemResponse> getEnabledExpItems() {
+        return heroService.getEnabledExpItems();
+    }
+
+    /**
      * Lấy chi tiết một nhân vật thuộc tài khoản đang đăng nhập.
      *
      * @param authentication Thông tin xác thực
