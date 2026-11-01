@@ -67,6 +67,11 @@ class BattleSpineIntegration {
      */
     resolveCharacterConfig(unit) {
         const spineConfig = window.SPINE_CONFIG || {};
+
+        if (typeof spineConfig.resolveCharacterConfig === "function") {
+            return spineConfig.resolveCharacterConfig(unit);
+        }
+
         const characterConfigs = spineConfig.characters || {};
         const keys = [
             unit.spineSkeleton,
