@@ -293,8 +293,11 @@ class HeroManagementScreen {
             if (upgrade) {
                 const upgradeInfo = document.createElement("div");
                 upgradeInfo.className = "skill-upgrade-info";
-                upgradeInfo.textContent = "Nâng lên cấp " + upgrade.targetSkillLevel +
-                    " · Yêu cầu nhân vật cấp " + upgrade.requiredHeroLevel;
+                upgradeInfo.textContent = "Nâng lên cấp " + upgrade.targetSkillLevel;
+                if (upgrade.requiredHeroLevel != null) {
+                    upgradeInfo.textContent +=
+                        " · Yêu cầu nhân vật cấp " + upgrade.requiredHeroLevel;
+                }
                 card.append(upgradeInfo);
 
                 const costs = this.createCostSummary(upgrade.costs);
