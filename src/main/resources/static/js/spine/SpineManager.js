@@ -112,11 +112,13 @@ class SpineManager {
 
     resize() {
         const rect = this.canvas.getBoundingClientRect();
-        const dpr = window.devicePixelRatio || 1;
-        this.canvas.width = Math.floor(rect.width * dpr);
-        this.canvas.height = Math.floor(rect.height * dpr);
-        if (this.renderer) this.renderer.resize(spine.webgl.ResizeMode.Fit);
-        this.characters.forEach(character => character.center());
+        this.canvas.width = Math.max(1, Math.floor(rect.width));
+        this.canvas.height = Math.max(1, Math.floor(rect.height));
+
+        // Expand makes Spine world coordinates match the canvas CSS-pixel size.
+        if (this.renderer) {
+            this.renderer.resize(spine.webgl.ResizeMode.Expand);
+        }
     }
 
     setZoom(zoom) {
@@ -137,6 +139,9 @@ class SpineManager {
             if (!this.renderer || !this.timeKeeper) return;
             this.timeKeeper.update();
             const delta = this.timeKeeper.delta;
+            const gl = this.context.gl;
+            gl.clearColor(0, 0, 0, 0);
+            gl.clear(gl.COLOR_BUFFER_BIT);
             this.renderer.begin();
             this.characters.forEach(character => {
                 character.update(delta);
@@ -159,6 +164,11 @@ class SpineManager {
         this.stop();
         this.characters.forEach(character => character.dispose());
         this.characters = [];
+        this.renderer?.dispose();
+        this.renderer = null;
+        this.assetManager = null;
+        this.timeKeeper = null;
+        this.context = null;
         this.initialized = false;
     }
 
