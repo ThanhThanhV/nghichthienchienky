@@ -2,6 +2,7 @@ package vn.nghichtien.chienky.hero.service;
 
 import vn.nghichtien.chienky.hero.domain.*;
 import vn.nghichtien.chienky.hero.dto.HeroResponse;
+import vn.nghichtien.chienky.hero.dto.HeroExpItemResponse;
 import vn.nghichtien.chienky.hero.dto.HeroSkillResponse;
 import vn.nghichtien.chienky.hero.dto.HeroStatsResponse;
 import vn.nghichtien.chienky.hero.repository.*;
@@ -79,6 +80,23 @@ public class HeroService {
         this.resourceTransactionService = resourceTransactionService;
         this.heroProgressionConfigRepository = heroProgressionConfigRepository;
         this.heroSkillUpgradeConfigRepository = heroSkillUpgradeConfigRepository;
+    }
+
+    /**
+     * Lấy danh sách vật phẩm EXP đang được phép sử dụng.
+     *
+     * @return Danh sách mã vật phẩm và lượng EXP mỗi vật phẩm
+     */
+    @Transactional(readOnly = true)
+    public List<HeroExpItemResponse> getEnabledExpItems() {
+        return heroExpItemRepository.findAll().stream()
+                .filter(item -> Boolean.TRUE.equals(item.getEnabled()))
+                .sorted(Comparator.comparing(HeroExpItem::getResourceCode))
+                .map(item -> new HeroExpItemResponse(
+                        item.getResourceCode(),
+                        item.getExpPerItem()
+                ))
+                .toList();
     }
 
     /**
