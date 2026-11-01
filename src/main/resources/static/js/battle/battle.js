@@ -172,6 +172,7 @@
                     this.addLog("Trận chiến bắt đầu!", "skill");
                     break;
                 case "ROUND_START":
+                    if (this.state && this.state.round > 0) this.decreaseActiveEffectDurations();
                     this.setRound(event.message?.match(/\d+/)?.[0] || (this.state.round + 1));
                     this.addLog("━━ " + (event.message || "Bắt đầu round mới") + " ━━", "skill");
                     break;
