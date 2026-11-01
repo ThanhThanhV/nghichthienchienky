@@ -1,155 +1,94 @@
 <!DOCTYPE html>
-<html lang="vi"
-      xmlns:th="http://www.thymeleaf.org">
-
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>Nghịch Thiên Chiến Ký - Battle</title>
-
-    <link rel="stylesheet"
-          th:href="@{/css/battle/battle.css}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#090d18">
+    <title>Nghịch Thiên Chiến Ký - Chiến Đấu</title>
+    <link rel="stylesheet" th:href="@{/css/battle/battle.css}">
 </head>
-
 <body>
-
 <div class="battle-page">
-
-    <!-- HEADER -->
     <header class="battle-header">
         <div class="battle-title">
             <h1>NGHỊCH THIÊN CHIẾN KÝ</h1>
-            <span>CHIẾN ĐẤU</span>
+            <span>THIÊN ĐỊA TRANH PHONG · CHIẾN TRƯỜNG</span>
         </div>
-
         <div class="battle-information">
             <div class="info-item">
-                <span class="info-label">VÒNG</span>
-                <strong id="battle-round">0</strong>
+                <span class="info-label">VÒNG ĐẤU</span>
+                <strong id="battle-round">01</strong>
             </div>
-
             <div class="info-item">
                 <span class="info-label">TRẠNG THÁI</span>
-                <strong id="battle-status">CHỜ TRẬN ĐẤU</strong>
+                <strong id="battle-status" class="battle-status-pill">SẴN SÀNG</strong>
+            </div>
+            <div class="info-item">
+                <span class="info-label">CHẾ ĐỘ</span>
+                <strong id="battle-mode-label">XEM TRƯỚC</strong>
             </div>
         </div>
     </header>
 
-    <!-- BATTLE CONTROLS -->
-    <section class="battle-controls">
+    <section class="battle-controls" aria-label="Điều khiển trận đấu">
         <div class="battle-control-left">
             <span class="control-label">TỐC ĐỘ</span>
-
-            <button id="speed-button"
-                    class="control-button"
-                    type="button">
-                x1
-            </button>
-
-            <button id="auto-button"
-                    class="control-button"
-                    type="button">
-                AUTO: OFF
-            </button>
+            <button id="speed-button" class="control-button" type="button" aria-label="Đổi tốc độ">x1</button>
+            <button id="auto-button" class="control-button" type="button" aria-pressed="false">AUTO: OFF</button>
         </div>
-
         <div class="battle-control-right">
-            <button id="start-button"
-                    class="control-button primary-button"
-                    type="button">
-                BẮT ĐẦU
-            </button>
+            <button id="start-button" class="control-button primary-button" type="button">▶ BẮT ĐẦU MÔ PHỎNG</button>
+            <button id="reset-button" class="control-button" type="button">↺ ĐẶT LẠI</button>
         </div>
     </section>
 
-    <!-- TURN ORDER -->
     <section class="turn-order-section">
         <h2>THỨ TỰ HÀNH ĐỘNG</h2>
-
-        <div id="turn-order"
-             class="turn-order-list">
-            <span class="empty-message">
-                Chưa có dữ liệu lượt đánh
-            </span>
+        <div id="turn-order" class="turn-order-list">
+            <span class="empty-message">Đang chờ khai chiến...</span>
         </div>
     </section>
 
-    <!-- BATTLE FIELD -->
-    <main class="battle-field">
-
-        <!-- PLAYER TEAM -->
-        <section class="battle-team player-team">
-
+    <main class="battle-field" aria-label="Sân đấu">
+        <section class="battle-team player-team" aria-label="Đội hình người chơi">
             <div class="team-heading">
-                <h2>ĐỘI HÌNH CỦA BẠN</h2>
-                <span class="team-side">PLAYER</span>
+                <h2>TIÊN MINH CỦA BẠN</h2>
+                <span class="team-side">PLAYER · 5/5</span>
             </div>
-
-            <div id="player-formation"
-                 class="team-formation">
-
-                <!-- 9 ô vị trí được JavaScript tạo -->
-            </div>
-
+            <div id="player-formation" class="team-formation"></div>
         </section>
 
-        <!-- VS -->
-        <div class="battle-vs">
-            VS
-        </div>
+        <div class="battle-vs" aria-hidden="true">VS</div>
 
-        <!-- ENEMY TEAM -->
-        <section class="battle-team enemy-team">
-
+        <section class="battle-team enemy-team" aria-label="Đội hình đối thủ">
             <div class="team-heading">
-                <h2>ĐỘI HÌNH ĐỐI THỦ</h2>
-                <span class="team-side">ENEMY</span>
+                <h2>MA TÔN ĐỐI ĐỊCH</h2>
+                <span class="team-side">ENEMY · 5/5</span>
             </div>
-
-            <div id="enemy-formation"
-                 class="team-formation">
-
-                <!-- 9 ô vị trí được JavaScript tạo -->
-            </div>
-
+            <div id="enemy-formation" class="team-formation"></div>
         </section>
-
     </main>
 
-    <!-- BATTLE LOG -->
-    <section class="battle-log-section">
-
-        <div class="section-heading">
-            <h2>NHẬT KÝ CHIẾN ĐẤU</h2>
-
-            <button id="clear-log-button"
-                    class="small-button"
-                    type="button">
-                XÓA NHẬT KÝ
-            </button>
-        </div>
-
-        <div id="battle-log"
-             class="battle-log">
-
-            <div class="empty-message">
-                Nhật ký chiến đấu sẽ xuất hiện tại đây.
+    <div class="battle-bottom">
+        <section class="battle-log-section">
+            <div class="section-heading">
+                <h2>NHẬT KÝ CHIẾN ĐẤU</h2>
+                <button id="clear-log-button" class="small-button" type="button">XÓA NHẬT KÝ</button>
             </div>
+            <div id="battle-log" class="battle-log" aria-live="polite">
+                <div class="empty-message">Trận chiến chưa bắt đầu.</div>
+            </div>
+        </section>
+        <aside class="battle-summary">
+            <div class="summary-title">CHIẾN TRƯỜNG CỬU U</div>
+            <div class="summary-text" id="battle-summary">
+                Hai phe đã vào vị trí. Nhấn “Bắt đầu mô phỏng” để xem thử nhịp đánh, hiệu ứng sát thương và thanh sinh mệnh.
+            </div>
+        </aside>
+    </div>
 
-        </div>
-
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="battle-footer">
-        NGHỊCH THIÊN CHIẾN KÝ
-    </footer>
-
+    <footer class="battle-footer">NGHỊCH THIÊN CHIẾN KÝ</footer>
 </div>
-
 <script th:src="@{/js/battle/battle.js}"></script>
-
 </body>
 </html>
