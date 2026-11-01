@@ -181,11 +181,22 @@
                 case "BASIC_ATTACK":
                 case "ACTIVE_SKILL":
                 case "ULTIMATE_SKILL":
-                case "PASSIVE":
-                    this.animateUnit(event.sourceTeam, event.sourceInstanceId, "attacking");
-                    this.addLog(event.message || this.unitName(event.sourceTeam, event.sourceInstanceId) + " kích hoạt kỹ năng.", "skill");
-                    await this.delay(220);
+                case "PASSIVE": {
+                    const actionClass = event.type === "ULTIMATE_SKILL"
+                        ? "ultimate-casting"
+                        : event.type === "ACTIVE_SKILL"
+                            ? "skill-casting"
+                            : event.type === "PASSIVE" ? "passive-triggered" : "attacking";
+                    this.animateUnit(event.sourceTeam, event.sourceInstanceId, actionClass);
+                    this.showSkillLabel(event);
+                    this.addLog(
+                        event.message || this.unitName(event.sourceTeam, event.sourceInstanceId) +
+                        " kích hoạt " + (event.skillCode || "kỹ năng") + ".",
+                        "skill"
+                    );
+                    await this.delay(event.type === "ULTIMATE_SKILL" ? 420 : 260);
                     break;
+                }
                 case "DAMAGE":
                     this.applyEventHp(event, "damage");
                     this.animateUnit(event.targetTeam, event.targetInstanceId, "damaged");
@@ -447,6 +458,35 @@
             number.textContent = (kind === "heal" ? "+" : "-") + this.formatNumber(amount);
             card.appendChild(number);
             window.setTimeout(() => number.remove(), 950);
+        },
+
+        showSkillLabel(event) {
+            const team = event.sourceTeam;
+            const instanceId = event.sourceInstanceId;
+            if (!team || instanceId == null) return;
+
+            const container = document.getElementById(team === "PLAYER" ? "player-formation" : "enemy-formation");
+            const card = container?.querySelector('[data-instance-id="' + instanceId + '"]');
+            if (!card) return;
+
+            const label = document.createElement("div");
+            const isUltimate = event.type === "ULTIMATE_SKILL";
+            label.className = "skill-effect-label" + (isUltimate ? " ultimate" : "");
+            const code = event.skillCode || (event.type === "PASSIVE" ? "PASSIVE" : "SKILL");
+            label.textContent = code.replace(/[_-]+/g, " ");
+            card.appendChild(label);
+            window.setTimeout(() => label.remove(), isUltimate ? 1350 : 900);
+
+            if (event.effectCode || event.effectCategory) {
+                const effect = document.createElement("div");
+                effect.className = "effect-code-label";
+                effect.textContent = [event.effectCode, event.effectCategory]
+                    .filter(Boolean)
+                    .join(" · ")
+                    .replace(/[_-]+/g, " ");
+                card.appendChild(effect);
+                window.setTimeout(() => effect.remove(), 1250);
+            }
         },
 
         unitName(team, instanceId) {
