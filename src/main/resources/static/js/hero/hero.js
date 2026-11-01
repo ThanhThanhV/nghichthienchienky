@@ -564,8 +564,14 @@ class HeroManagementScreen {
 
             this.replaceHero(updatedHero);
             this.selectedHero = updatedHero;
-            const profile = await this.request("/api/player/me");
+            const [profile, progression, skills] = await Promise.all([
+                this.request("/api/player/me"),
+                this.request("/api/player/heroes/" + updatedHero.instanceId + "/progression-options"),
+                this.request("/api/player/heroes/" + updatedHero.instanceId + "/skill-upgrade-options")
+            ]);
             this.resources = profile.resources || [];
+            this.progressionOptions = Array.isArray(progression) ? progression : [];
+            this.skillUpgradeOptions = Array.isArray(skills) ? skills : [];
 
             this.renderRoster();
             this.renderDetail();
