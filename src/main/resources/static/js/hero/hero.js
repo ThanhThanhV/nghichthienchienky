@@ -10,6 +10,7 @@ class HeroManagementScreen {
         this.expItems = [];
         this.progressionOptions = [];
         this.skillUpgradeOptions = [];
+        this.selectionVersion = 0;
         this.selectedHero = null;
         this.preview = null;
         this.busy = false;
@@ -143,6 +144,7 @@ class HeroManagementScreen {
         const hero = this.heroes.find(item => Number(item.instanceId) === Number(instanceId));
         if (!hero) return;
 
+        const selectionVersion = ++this.selectionVersion;
         this.selectedHero = hero;
         this.progressionOptions = [];
         this.skillUpgradeOptions = [];
@@ -153,13 +155,16 @@ class HeroManagementScreen {
                 this.request("/api/player/heroes/" + encodeURIComponent(instanceId) + "/progression-options"),
                 this.request("/api/player/heroes/" + encodeURIComponent(instanceId) + "/skill-upgrade-options")
             ]);
+            if (selectionVersion !== this.selectionVersion) return;
             this.progressionOptions = Array.isArray(progression) ? progression : [];
             this.skillUpgradeOptions = Array.isArray(skills) ? skills : [];
         } catch (error) {
+            if (selectionVersion !== this.selectionVersion) return;
             console.error("Could not load hero upgrade options:", error);
             this.showMessage("Không tải được điều kiện nâng cấp: " + error.message, "error");
         }
 
+        if (selectionVersion !== this.selectionVersion) return;
         this.renderDetail();
         await this.previewSelectedHero();
     }
