@@ -214,6 +214,7 @@ public class HeroStatsService {
      * @param instance tướng của người chơi
      * @return thông tin chỉ số tổng hợp của tướng
      */
+    @Transactional(readOnly = true)
     public HeroStatsResponse calculateStats(HeroInstance instance) {
         if (instance == null) {
             throw new IllegalArgumentException("Hero instance is required.");
