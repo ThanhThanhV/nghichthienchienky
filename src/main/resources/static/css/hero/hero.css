@@ -73,3 +73,76 @@ h1 { margin:9px 0 5px; color:var(--gold-bright); font:700 clamp(25px,4vw,38px) G
 .hero-footer { padding:22px 0 4px; color:#626f85; text-align:center; font-size:8px; letter-spacing:.28em; }
 @media (max-width:1050px) { .hero-layout { grid-template-columns:1fr; } .roster-panel { position:static; } .hero-roster { grid-template-columns:repeat(2,minmax(0,1fr)); max-height:none; } }
 @media (max-width:650px) { .hero-page { padding:15px 10px; } .hero-header { align-items:flex-start; flex-direction:column; } .header-actions { width:100%; } .nav-button { flex:1; } .roster-panel,.hero-showcase,.progression-panel,.stats-panel,.skills-panel { padding:12px; } .hero-roster,.skills-list { grid-template-columns:1fr; } .hero-preview { height:235px; } .hero-identity { flex-direction:column; } .hero-tags { justify-content:flex-start; } .progression-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .exp-form-actions { align-items:stretch; flex-direction:column; } .quantity-field { width:100%; } }
+
+
+/* Hero progression and skill upgrade controls */
+.upgrade-options-grid {
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:10px;
+    margin-top:15px;
+}
+.upgrade-option-card {
+    min-width:0;
+    padding:13px;
+    border:1px solid rgba(218,190,132,.2);
+    border-radius:9px;
+    background:linear-gradient(145deg,rgba(54,47,36,.35),rgba(19,28,44,.72));
+}
+.upgrade-option-heading {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    margin-bottom:10px;
+}
+.upgrade-option-heading h3 {
+    margin:5px 0 0;
+    color:#f0dfbb;
+    font:700 15px Georgia,serif;
+}
+.upgrade-symbol { color:#e8c982; font-size:23px; }
+.upgrade-option-content { display:grid; gap:8px; }
+.upgrade-level-line { color:#f5e4bf; font-size:13px; font-weight:800; }
+.upgrade-requirement,.skill-upgrade-info {
+    color:#98a7be;
+    font-size:10px;
+    line-height:1.5;
+}
+.upgrade-costs {
+    display:grid;
+    gap:5px;
+    padding:8px;
+    border:1px solid rgba(145,165,196,.14);
+    border-radius:6px;
+    background:rgba(6,12,22,.45);
+}
+.upgrade-cost-line {
+    display:flex;
+    justify-content:space-between;
+    gap:8px;
+    color:#c5d1e3;
+    font-size:9px;
+}
+.upgrade-cost-line.insufficient { color:#f0a3a3; }
+.upgrade-reason {
+    color:#e5bd7e;
+    font-size:9px;
+    line-height:1.5;
+}
+.upgrade-reason.insufficient { color:#ed9a9a; }
+.upgrade-action {
+    width:100%;
+    min-height:34px;
+    margin-top:2px;
+    font-size:9px;
+}
+.skill-upgrade-info {
+    margin-top:10px;
+    padding-top:8px;
+    border-top:1px solid rgba(145,165,196,.13);
+}
+@media (max-width:650px) {
+    .upgrade-options-grid { grid-template-columns:1fr; }
+    .upgrade-cost-line { flex-direction:column; gap:2px; }
+}
