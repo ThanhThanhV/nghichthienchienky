@@ -8,6 +8,7 @@
         battleId: null,
         busy: false,
         autoTimer: null,
+        activeEffects: new Map(),
 
         init() {
             this.bindControls();
@@ -123,6 +124,7 @@
             }
 
             this.battleId = payload.screen.battleId;
+            this.activeEffects.clear();
             this.applyScreen(payload.screen, true);
             this.setStatus("SẴN SÀNG");
             this.addLog("Đã tạo trận PvE từ đội hình và dữ liệu nhân vật trong database.", "skill");
@@ -170,6 +172,7 @@
                     this.addLog("Trận chiến bắt đầu!", "skill");
                     break;
                 case "ROUND_START":
+                    if (this.state && this.state.round > 0) this.decreaseActiveEffectDurations();
                     this.setRound(event.message?.match(/\d+/)?.[0] || (this.state.round + 1));
                     this.addLog("━━ " + (event.message || "Bắt đầu round mới") + " ━━", "skill");
                     break;
@@ -238,6 +241,11 @@
                 case "COUNTER":
                 case "EXTRA_ACTION":
                     if (event.currentHp != null) this.applyEventHp(event, "neutral");
+                    if (event.type === "DISPEL") {
+                        this.removeDispelledEffects(event);
+                    } else if (["SHIELD", "BUFF", "DEBUFF", "CC", "IMMUNITY", "EVASION", "BLOCK"].includes(event.type)) {
+                        this.addActiveEffect(event);
+                    }
                     this.addLog(event.message || (event.type + " · " + this.unitName(event.targetTeam, event.targetInstanceId)), "skill");
                     await this.delay(150);
                     break;
@@ -330,6 +338,10 @@
             visual.className = "unit-visual";
             visual.textContent = this.avatarText(unit.heroName || unit.heroCode);
 
+            const effects = document.createElement("div");
+            effects.className = "unit-effects";
+            effects.setAttribute("aria-label", "Hiệu ứng đang có");
+
             const info = document.createElement("div");
             info.className = "unit-info";
 
@@ -361,7 +373,8 @@
             hpText.textContent = this.formatNumber(unit.currentHp) + " / " + this.formatNumber(unit.maxHp);
 
             info.append(name, role, hpBar, resourceBar, hpText);
-            slot.append(level, visual, info);
+            slot.append(level, visual, effects, info);
+            this.renderEffectBadges(team, unit.instanceId);
         },
 
         updateUnitCard(unit) {
@@ -407,6 +420,78 @@
                 empty.className = "empty-message";
                 empty.textContent = "Không còn nhân vật có thể hành động.";
                 container.appendChild(empty);
+            }
+        },
+
+        effectUnitKey(team, instanceId) {
+            return String(team || "") + ":" + String(instanceId);
+        },
+
+        addActiveEffect(event) {
+            if (!event.targetTeam || event.targetInstanceId == null) return;
+            const category = String(event.effectCategory || event.type).toUpperCase();
+            const code = String(event.effectCode || event.skillCode || event.type);
+            const key = this.effectUnitKey(event.targetTeam, event.targetInstanceId);
+            const effects = this.activeEffects.get(key) || new Map();
+            effects.set(category + ":" + code, {
+                category,
+                code,
+                duration: Number.isFinite(Number(event.duration)) ? Number(event.duration) : 0
+            });
+            this.activeEffects.set(key, effects);
+            this.renderEffectBadges(event.targetTeam, event.targetInstanceId);
+        },
+
+        removeDispelledEffects(event) {
+            if (!event.targetTeam || event.targetInstanceId == null) return;
+            const match = String(event.message || "").match(/DISPEL applied:\\s*(BUFF|DEBUFF|CC)/i);
+            if (!match) return;
+            const category = match[1].toUpperCase();
+            const key = this.effectUnitKey(event.targetTeam, event.targetInstanceId);
+            const effects = this.activeEffects.get(key);
+            if (!effects) return;
+            for (const [effectKey, effect] of effects) {
+                if (category === "CC" ? effect.category === "CC" : effect.category === category) {
+                    effects.delete(effectKey);
+                }
+            }
+            if (effects.size === 0) this.activeEffects.delete(key);
+            this.renderEffectBadges(event.targetTeam, event.targetInstanceId);
+        },
+
+        decreaseActiveEffectDurations() {
+            for (const [unitKey, effects] of this.activeEffects) {
+                for (const [effectKey, effect] of effects) {
+                    if (effect.duration > 0) {
+                        effect.duration -= 1;
+                        if (effect.duration <= 0) effects.delete(effectKey);
+                    }
+                }
+                if (effects.size === 0) this.activeEffects.delete(unitKey);
+                const separator = unitKey.indexOf(":");
+                const team = unitKey.slice(0, separator);
+                const instanceId = unitKey.slice(separator + 1);
+                this.renderEffectBadges(team, instanceId);
+            }
+        },
+
+        renderEffectBadges(team, instanceId) {
+            const container = document.getElementById(team === "PLAYER" ? "player-formation" : "enemy-formation");
+            const card = container?.querySelector('[data-instance-id="' + instanceId + '"]');
+            const badgeContainer = card?.querySelector(".unit-effects");
+            if (!badgeContainer) return;
+            badgeContainer.replaceChildren();
+
+            const effects = this.activeEffects.get(this.effectUnitKey(team, instanceId));
+            if (!effects) return;
+
+            for (const effect of effects.values()) {
+                const badge = document.createElement("span");
+                badge.className = "unit-effect-badge " + effect.category.toLowerCase();
+                const durationText = effect.duration === 0 ? "∞" : String(effect.duration);
+                badge.textContent = effect.code.replace(/[_-]+/g, " ") + " · " + durationText;
+                badge.title = effect.code + " (" + (effect.duration === 0 ? "vĩnh viễn" : effect.duration + " round") + ")";
+                badgeContainer.appendChild(badge);
             }
         },
 
@@ -556,6 +641,7 @@
             this.busy = false;
             this.battleId = null;
             this.state = null;
+            this.activeEffects.clear();
             this.renderEmptyTeams();
             this.clearLog();
             this.setRound(0);
