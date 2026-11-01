@@ -38,7 +38,7 @@ class SpineManager {
 
         this.context = new spine.webgl.ManagedWebGLRenderingContext(
             this.canvas,
-            { alpha: false }
+            { alpha: true }
         );
 
         this.renderer = new spine.webgl.SceneRenderer(
@@ -79,7 +79,7 @@ class SpineManager {
     async loadTextures(paths) {
         this.initialize();
 
-        const newPaths = paths.filter(path => !this.textureUrls.has(path));
+        const newPaths = paths.filter(path => !this.textureUrls.has(this.normalizePath(path)));
 
         if (newPaths.length === 0) {
             return;
@@ -177,16 +177,14 @@ class SpineManager {
      */
     resize() {
         const rect = this.canvas.getBoundingClientRect();
-        const dpr = window.devicePixelRatio || 1;
 
-        this.canvas.width = Math.floor(rect.width * dpr);
-        this.canvas.height = Math.floor(rect.height * dpr);
+        this.canvas.width = Math.max(1, Math.floor(rect.width));
+        this.canvas.height = Math.max(1, Math.floor(rect.height));
 
         if (this.renderer) {
-            this.renderer.resize(spine.webgl.ResizeMode.Fit);
+            // Expand keeps formation coordinates in CSS-pixel world units.
+            this.renderer.resize(spine.webgl.ResizeMode.Expand);
         }
-
-        this.characters.forEach(character => character.center());
     }
 
     /**
@@ -236,6 +234,11 @@ class SpineManager {
 
             const delta = this.timeKeeper.delta;
 
+            // Clear the previous frame with alpha 0 to preserve canvas transparency.
+            const gl = this.context.gl;
+            gl.clearColor(0, 0, 0, 0);
+            gl.clear(gl.COLOR_BUFFER_BIT);
+
             this.renderer.begin();
 
             this.characters.forEach(character => {
@@ -270,6 +273,11 @@ class SpineManager {
         this.characters.forEach(character => character.dispose());
 
         this.characters = [];
+        this.renderer?.dispose();
+        this.renderer = null;
+        this.assetManager = null;
+        this.timeKeeper = null;
+        this.context = null;
         this.initialized = false;
     }
 

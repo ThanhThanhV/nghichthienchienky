@@ -85,7 +85,7 @@ class SpineAnimationController {
      * @param {number} speed tốc độ phát
      */
     setSpeed(speed) {
-        this.speed = Math.max(0.1, Math.min(3, Number(speed) || 1));
+        this.speed = Math.max(0.1, Math.min(4, Number(speed) || 1));
     }
 
     /**
