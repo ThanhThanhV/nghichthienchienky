@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#090d18">
+    <meta name="_csrf" th:content="${_csrf.token}">
+    <meta name="_csrf_header" th:content="${_csrf.headerName}">
+    <title>Nghịch Thiên Chiến Ký - Đội Hình</title>
+    <link rel="stylesheet" th:href="@{/css/formation/formation.css}">
+</head>
+<body>
+<main class="formation-page">
+    <header class="formation-header">
+        <div>
+            <a class="back-link" th:href="@{/dashboard}">← TRỞ VỀ ĐẠI SẢNH</a>
+            <div class="eyebrow">THIÊN MỆNH · TU LUYỆN · CHIẾN THUẬT</div>
+            <h1>ĐỘI HÌNH CHIẾN ĐẤU</h1>
+            <p class="subtitle">Chọn tối đa 5 nhân vật và bố trí trận pháp 3 × 3.</p>
+        </div>
+        <div class="header-actions">
+            <span id="formation-count" class="formation-count">0 / 5 ĐẠI TƯỚNG</span>
+            <a class="action-button secondary" th:href="@{/battle}">VÀO CHIẾN TRƯỜNG</a>
+            <button id="save-formation" class="action-button primary" type="button">LƯU ĐỘI HÌNH</button>
+        </div>
+    </header>
+
+    <div id="formation-message" class="formation-message" role="status" aria-live="polite" hidden></div>
+
+    <section class="formation-layout">
+        <div class="formation-main">
+            <section class="panel preview-panel">
+                <div class="panel-heading">
+                    <div>
+                        <span class="panel-kicker">TRẬN PHÁP HIỆN TẠI</span>
+                        <h2>Đội hình của ngươi</h2>
+                    </div>
+                    <span id="spine-preview-status" class="preview-status">Đang tải nhân vật...</span>
+                </div>
+                <div class="formation-preview">
+                    <canvas id="formation-spine-canvas" aria-label="Mô hình Spine của đội hình"></canvas>
+                    <div class="preview-grid-lines" aria-hidden="true"></div>
+                    <div class="preview-caption">PLAYER FORMATION · SPINE PREVIEW</div>
+                </div>
+            </section>
+
+            <section class="panel board-panel">
+                <div class="panel-heading">
+                    <div>
+                        <span class="panel-kicker">BỐ TRÍ VỊ TRÍ</span>
+                        <h2>Trận pháp cửu cung</h2>
+                    </div>
+                    <span class="board-hint">Chọn tướng bên phải → chọn ô trống</span>
+                </div>
+                <div id="formation-grid" class="formation-grid" aria-label="Lưới đội hình 3 nhân 3"></div>
+                <p class="board-note">Hàng và cột được lưu trực tiếp vào đội hình chiến đấu. Có thể đổi vị trí trước khi lưu.</p>
+            </section>
+        </div>
+
+        <aside class="panel roster-panel">
+            <div class="panel-heading roster-heading">
+                <div>
+                    <span class="panel-kicker">TÀNG KINH CÁC</span>
+                    <h2>Nhân vật sở hữu</h2>
+                </div>
+                <span id="hero-total" class="hero-total">0</span>
+            </div>
+            <p class="roster-description">Chọn một nhân vật để đưa vào trận pháp. Nhân vật đã xếp sẽ được đánh dấu.</p>
+            <div id="owned-heroes" class="owned-heroes">
+                <div class="loading-state">Đang triệu hồi danh sách nhân vật...</div>
+            </div>
+        </aside>
+    </section>
+
+    <footer class="formation-footer">NGHỊCH THIÊN CHIẾN KÝ · THIÊN ĐỊA TRANH PHONG</footer>
+</main>
+
+<script th:src="@{/lib/spine/spine-runtime-3.5/spine-ts/build/spine-webgl.js}"></script>
+<script th:src="@{/js/spine/SpineConfig.js}"></script>
+<script th:src="@{/js/spine/SpineAnimationController.js}"></script>
+<script th:src="@{/js/spine/SpineCharacter.js}"></script>
+<script th:src="@{/js/spine/SpineManager.js}"></script>
+<script th:src="@{/js/spine/SpineFormation.js}"></script>
+<script th:src="@{/js/formation/FormationSpinePreview.js}"></script>
+<script th:src="@{/js/formation/formation.js}"></script>
+</body>
+</html>
