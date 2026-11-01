@@ -42,7 +42,7 @@ public class BattleTurnProcessor {
         int round = battle.nextRound();
         var collector = battle.getEventCollector();
 
-        // Tick hiệu ứng round trước khi kích hoạt passive BATTLE_START.
+        // Tick hiệu ứng cũ trước khi áp dụng nội tại đầu trận.
         for (BattleUnitState unit : battle.getUnits()) {
             unit.getStatusEffectManager().decreaseDurations();
             unit.getImmunityManager().decreaseDurations();
@@ -110,6 +110,11 @@ public class BattleTurnProcessor {
                     && actionType != BattleActionType.BASIC_ATTACK) {
                 actionType = BattleActionType.BASIC_ATTACK;
             }
+
+            // ON_ATTACK chạy trước effect chính để buff nội tại có tác dụng ngay đòn này.
+            skillExecutor.executePassives(
+                    battle, unit, BattlePassiveTrigger.ON_ATTACK
+            );
 
             int eventStartIndex = collector.getEvents().size();
             skillExecutor.execute(battle, unit, actionType);
@@ -179,17 +184,6 @@ public class BattleTurnProcessor {
         for (BattleEventDTO event : events) {
             if (battle.isFinished()) {
                 return;
-            }
-
-            if (event.type() == BattleEventType.BASIC_ATTACK
-                    || event.type() == BattleEventType.ACTIVE_SKILL
-                    || event.type() == BattleEventType.ULTIMATE_SKILL) {
-                BattleUnitState attacker = battle.findUnit(event.sourceInstanceId());
-                if (attacker != null && attacker.isAlive()) {
-                    skillExecutor.executePassives(
-                            battle, attacker, BattlePassiveTrigger.ON_ATTACK
-                    );
-                }
             }
 
             if (event.type() == BattleEventType.DAMAGE) {
