@@ -231,6 +231,12 @@ class PlayerFormationScreen {
         const targetSlot = this.slots[targetIndex];
         const targetRow = Math.floor(targetIndex / 3);
         const targetColumn = targetIndex % 3;
+        const currentCount = this.getSelectedSlots().length;
+
+        if (previousIndex < 0 && !targetSlot && currentCount >= 5) {
+            this.showMessage("Đội hình đã đủ 5 nhân vật. Hãy thay thế một vị trí hoặc bỏ bớt nhân vật.", "error");
+            return;
+        }
 
         if (previousIndex >= 0) {
             if (targetSlot) {
