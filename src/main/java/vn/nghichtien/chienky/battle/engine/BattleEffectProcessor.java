@@ -1,4 +1,3 @@
-
 package vn.nghichtien.chienky.battle.engine;
 
 import org.springframework.stereotype.Component;
@@ -26,9 +25,6 @@ public class BattleEffectProcessor {
         this.damageProcessor = damageProcessor;
     }
 
-    /**
-     * Thực thi danh sách hiệu ứng theo thứ tự cấu hình.
-     */
     public void executeEffects(
             BattleState battle,
             BattleUnitState source,
@@ -46,14 +42,10 @@ public class BattleEffectProcessor {
             if (battle.isFinished() || !source.isAlive()) {
                 break;
             }
-
             executeEffect(battle, source, effect);
         }
     }
 
-    /**
-     * Thực thi một hiệu ứng.
-     */
     private void executeEffect(
             BattleState battle,
             BattleUnitState source,
@@ -70,20 +62,14 @@ public class BattleEffectProcessor {
             case IMMUNITY -> executeImmunity(battle, source, effect);
             case DISPEL -> executeDispel(battle, source, effect);
             case SHIELD -> executeShield(battle, source, effect);
-            case EVASION -> executeDefenseEffect(battle, source, effect);
-            case BLOCK -> executeDefenseEffect(battle, source, effect);
-            case REFLECT  -> executeDefenseEffect(battle, source, effect);
-
+            case EVASION, BLOCK, REFLECT ->
+                    executeDefenseEffect(battle, source, effect);
             default -> throw new UnsupportedOperationException(
-                    "Effect type has not been implemented: "
-                            + effect.effectType()
+                    "Effect type has not been implemented: " + effect.effectType()
             );
         }
     }
 
-    /**
-     * Thực thi hiệu ứng gây sát thương.
-     */
     private void executeDamage(
             BattleState battle,
             BattleUnitState source,
@@ -97,21 +83,15 @@ public class BattleEffectProcessor {
             if (battle.isFinished()) {
                 break;
             }
-
             if (!target.isAlive()) {
                 continue;
             }
-
             damageProcessor.executeDamage(
-                    battle, source, target,
-                    effect.multiplier(), effect.effectCode()
+                    battle, source, target, effect.multiplier(), effect.effectCode()
             );
         }
     }
 
-    /**
-     * Thực thi hiệu ứng hồi HP.
-     */
     private void executeHeal(
             BattleState battle,
             BattleUnitState source,
@@ -129,7 +109,6 @@ public class BattleEffectProcessor {
             BigDecimal amount = source.getAttack()
                     .multiply(effect.multiplier())
                     .add(effect.flatValue());
-
             BigDecimal actualHeal = target.heal(amount);
 
             if (actualHeal.signum() <= 0) {
@@ -156,16 +135,19 @@ public class BattleEffectProcessor {
         }
     }
 
-    /**
-     * Áp dụng BUFF hoặc DEBUFF.
-     */
     private void executeModifier(
             BattleState battle,
             BattleUnitState source,
             BattleEffectConfig effect,
             boolean buff
     ) {
-        if (effect.duration() <= 0) {
+        if (effect.permanent()) {
+            if (effect.duration() != 0) {
+                throw new IllegalArgumentException(
+                        "Permanent modifier must have duration 0"
+                );
+            }
+        } else if (effect.duration() <= 0) {
             throw new IllegalArgumentException(
                     "Modifier duration must be positive"
             );
@@ -173,9 +155,7 @@ public class BattleEffectProcessor {
 
         List<BattleUnitState> targets = buff
                 ? selectAllies(battle, source, effect.targetMode())
-                : targetSelector.selectTargets(
-                battle, source, effect.targetMode()
-        );
+                : targetSelector.selectTargets(battle, source, effect.targetMode());
 
         BigDecimal value = effect.multiplier()
                 .multiply(new BigDecimal("100"))
@@ -203,7 +183,8 @@ public class BattleEffectProcessor {
                             effect.statType(),
                             value,
                             buff,
-                            effect.duration()
+                            effect.duration(),
+                            effect.permanent()
                     )
             );
 
@@ -211,23 +192,20 @@ public class BattleEffectProcessor {
                     battle, source, target, effect,
                     buff ? BattleEventType.BUFF : BattleEventType.DEBUFF,
                     buff ? "BUFF" : "DEBUFF",
-                    effect.statType().name() + " modifier applied"
+                    effect.statType().name()
+                            + (effect.permanent() ? " permanent modifier applied"
+                            : " modifier applied")
             );
         }
     }
 
-    /**
-     * Áp dụng CC, kiểm tra miễn nhiễm CC trước.
-     */
     private void executeCrowdControl(
             BattleState battle,
             BattleUnitState source,
             BattleEffectConfig effect
     ) {
         if (effect.duration() <= 0) {
-            throw new IllegalArgumentException(
-                    "CC duration must be positive"
-            );
+            throw new IllegalArgumentException("CC duration must be positive");
         }
 
         List<BattleUnitState> targets = targetSelector.selectTargets(
@@ -257,16 +235,12 @@ public class BattleEffectProcessor {
                     battle, source, target, effect,
                     BattleEventType.CC,
                     "CC",
-                    applied
-                            ? "CC applied: " + effect.statusType()
+                    applied ? "CC applied: " + effect.statusType()
                             : "CC was not applied"
             );
         }
     }
 
-    /**
-     * Áp dụng miễn nhiễm.
-     */
     private void executeImmunity(
             BattleState battle,
             BattleUnitState source,
@@ -284,12 +258,9 @@ public class BattleEffectProcessor {
 
         for (BattleUnitState target : targets) {
             target.getImmunityManager().apply(
-                    effect.immunityType(),
-                    effect.effectCode(),
-                    effect.duration()
+                    effect.immunityType(), effect.effectCode(), effect.duration()
             );
 
-            // Miễn nhiễm CC đồng thời xóa CC hiện tại.
             if (effect.immunityType() == BattleImmunityType.CC) {
                 target.getStatusEffectManager().dispelCrowdControl();
             }
@@ -303,9 +274,6 @@ public class BattleEffectProcessor {
         }
     }
 
-    /**
-     * Giải BUFF, DEBUFF hoặc CC.
-     */
     private void executeDispel(
             BattleState battle,
             BattleUnitState source,
@@ -320,25 +288,17 @@ public class BattleEffectProcessor {
                 case BUFF -> {
                     int before = target.getStatusEffectManager()
                             .getModifiers().size();
-
-                    target.getStatusEffectManager()
-                            .dispelModifiers(true);
-
+                    target.getStatusEffectManager().dispelModifiers(true);
                     yield before != target.getStatusEffectManager()
                             .getModifiers().size();
                 }
-
                 case DEBUFF -> {
                     int before = target.getStatusEffectManager()
                             .getModifiers().size();
-
-                    target.getStatusEffectManager()
-                            .dispelModifiers(false);
-
+                    target.getStatusEffectManager().dispelModifiers(false);
                     yield before != target.getStatusEffectManager()
                             .getModifiers().size();
                 }
-
                 case CC -> target.getStatusEffectManager()
                         .dispelCrowdControl();
             };
@@ -347,16 +307,12 @@ public class BattleEffectProcessor {
                     battle, source, target, effect,
                     BattleEventType.DISPEL,
                     "DISPEL",
-                    removed
-                            ? "DISPEL applied: " + effect.dispelType()
+                    removed ? "DISPEL applied: " + effect.dispelType()
                             : "No matching effect to dispel"
             );
         }
     }
 
-    /**
-     * Ghi nhận sự kiện IMMUNE khi mục tiêu được miễn nhiễm.
-     */
     private void recordImmune(
             BattleState battle,
             BattleUnitState source,
@@ -382,9 +338,6 @@ public class BattleEffectProcessor {
         );
     }
 
-    /**
-     * Ghi nhận sự kiện trạng thái.
-     */
     private void recordStatus(
             BattleState battle,
             BattleUnitState source,
@@ -408,21 +361,17 @@ public class BattleEffectProcessor {
                 target.isAlive(),
                 effect.effectCode(),
                 category,
-                effect.duration(),
+                effect.permanent() ? 0 : effect.duration(),
                 message
         );
     }
 
-    /**
-     * Chọn đồng minh theo chế độ mục tiêu.
-     */
     private List<BattleUnitState> selectAllies(
             BattleState battle,
             BattleUnitState source,
             BattleTargetMode mode
     ) {
-        List<BattleUnitState> allies = battle.getUnits()
-                .stream()
+        List<BattleUnitState> allies = battle.getUnits().stream()
                 .filter(BattleUnitState::isAlive)
                 .filter(unit -> unit.getTeam() == source.getTeam())
                 .toList();
@@ -432,19 +381,14 @@ public class BattleEffectProcessor {
         }
 
         return switch (mode) {
-            case RANDOM -> List.of(
-                    allies.get(
-                            java.util.concurrent.ThreadLocalRandom.current()
-                                    .nextInt(allies.size())
-                    )
-            );
-
+            case RANDOM -> List.of(allies.get(
+                    ThreadLocalRandom.current().nextInt(allies.size())
+            ));
             case FRONT -> {
                 int frontRow = allies.stream()
                         .mapToInt(BattleUnitState::getRow)
                         .min()
                         .orElseThrow();
-
                 yield allies.stream()
                         .filter(unit -> unit.getRow() == frontRow)
                         .sorted(java.util.Comparator.comparingInt(
@@ -452,38 +396,29 @@ public class BattleEffectProcessor {
                         ))
                         .toList();
             }
-
             case LOWEST_HP -> allies.stream()
                     .min(java.util.Comparator.comparing(
                             BattleUnitState::getCurrentHp
                     ))
                     .map(List::of)
                     .orElse(List.of());
-
             case HIGHEST_ATK -> allies.stream()
                     .max(java.util.Comparator.comparing(
                             BattleUnitState::getAttack
                     ))
                     .map(List::of)
                     .orElse(List.of());
-
             case ALL_ENEMIES -> allies;
         };
     }
 
-
-    /**
-     * Tạo khiên cho đồng minh.
-     */
     private void executeShield(
             BattleState battle,
             BattleUnitState source,
             BattleEffectConfig effect
     ) {
         if (effect.duration() <= 0) {
-            throw new IllegalArgumentException(
-                    "Shield duration must be positive"
-            );
+            throw new IllegalArgumentException("Shield duration must be positive");
         }
 
         List<BattleUnitState> targets = selectAllies(
@@ -527,10 +462,6 @@ public class BattleEffectProcessor {
         }
     }
 
-
-    /**
-     * Áp dụng hiệu ứng né tránh hoặc chặn sát thương cho đồng minh.
-     */
     private void executeDefenseEffect(
             BattleState battle,
             BattleUnitState source,
@@ -581,6 +512,4 @@ public class BattleEffectProcessor {
             );
         }
     }
-
-
 }
