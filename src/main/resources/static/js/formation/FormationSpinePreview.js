@@ -71,6 +71,13 @@ class FormationSpinePreview {
                     ...config,
                     code: String(config.code || hero.heroCode) + "-preview-" + hero.instanceId
                 });
+
+                if (version !== this.syncVersion) {
+                    this.manager.removeCharacter(character);
+                    character.dispose();
+                    return;
+                }
+
                 character.setScale(Number(config.displayScale ?? 0.85));
                 this.formation.addCharacter(
                     "PLAYER",
