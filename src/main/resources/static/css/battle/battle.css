@@ -249,3 +249,91 @@ button { font: inherit; cursor: pointer; }
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
+
+/* Skill playback: visual feedback is driven by BattleEventDTO fields. */
+.unit-slot.skill-casting {
+    z-index: 4;
+    border-color: #a9d8ff;
+    box-shadow: 0 0 18px rgba(105, 180, 255, .48), inset 0 0 24px rgba(90, 151, 255, .18);
+    animation: skill-cast .48s ease;
+}
+.unit-slot.ultimate-casting {
+    z-index: 5;
+    border-color: #ffe29a;
+    box-shadow: 0 0 28px rgba(255, 211, 120, .72), inset 0 0 34px rgba(255, 194, 93, .24);
+    animation: ultimate-cast .72s ease;
+}
+.unit-slot.passive-triggered {
+    border-color: #c9a7ff;
+    box-shadow: 0 0 18px rgba(174, 132, 255, .48);
+    animation: passive-pulse .42s ease;
+}
+.skill-effect-label {
+    position: absolute;
+    z-index: 9;
+    top: 35%;
+    left: 50%;
+    max-width: 90%;
+    padding: 5px 9px;
+    overflow: hidden;
+    color: #d9efff;
+    border: 1px solid rgba(145, 204, 255, .7);
+    border-radius: 5px;
+    background: rgba(12, 34, 64, .92);
+    box-shadow: 0 0 18px rgba(83, 166, 255, .55);
+    font: 800 9px Arial, sans-serif;
+    letter-spacing: .1em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    pointer-events: none;
+    transform: translate(-50%, 0);
+    animation: skill-label-rise .85s ease-out forwards;
+}
+.skill-effect-label.ultimate {
+    color: #fff0bd;
+    border-color: rgba(255, 220, 139, .9);
+    background: rgba(83, 48, 13, .95);
+    box-shadow: 0 0 24px rgba(255, 193, 83, .75);
+    font-size: 10px;
+}
+.effect-code-label {
+    position: absolute;
+    z-index: 9;
+    left: 50%;
+    bottom: 38%;
+    max-width: 92%;
+    padding: 3px 6px;
+    overflow: hidden;
+    color: #bdf4d2;
+    border-radius: 4px;
+    background: rgba(7, 42, 31, .92);
+    font: 700 8px Arial, sans-serif;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    pointer-events: none;
+    transform: translate(-50%, 0);
+    animation: effect-label-rise 1.15s ease-out forwards;
+}
+@keyframes skill-cast {
+    0%, 100% { transform: scale(1); filter: brightness(1); }
+    45% { transform: scale(1.055); filter: brightness(1.65); }
+}
+@keyframes ultimate-cast {
+    0% { transform: scale(1); filter: brightness(1); }
+    35% { transform: scale(1.09); filter: brightness(2) saturate(1.5); }
+    100% { transform: scale(1); filter: brightness(1.15); }
+}
+@keyframes passive-pulse {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.7) hue-rotate(22deg); }
+}
+@keyframes skill-label-rise {
+    0% { opacity: 0; transform: translate(-50%, 12px) scale(.85); }
+    18% { opacity: 1; }
+    100% { opacity: 0; transform: translate(-50%, -24px) scale(1.05); }
+}
+@keyframes effect-label-rise {
+    0% { opacity: 0; transform: translate(-50%, 8px); }
+    20% { opacity: 1; }
+    100% { opacity: 0; transform: translate(-50%, -18px); }
+}
