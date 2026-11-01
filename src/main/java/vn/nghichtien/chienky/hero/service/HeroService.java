@@ -114,6 +114,10 @@ public class HeroService {
             String username,
             Long instanceId
     ) {
+        if (instanceId == null || instanceId <= 0) {
+            throw new IllegalArgumentException("ID nhân vật không hợp lệ");
+        }
+
         PlayerProfile player = getPlayer(username);
         HeroInstance instance = heroInstanceRepository
                 .findByIdAndPlayerProfileId(instanceId, player.getId())
@@ -200,6 +204,10 @@ public class HeroService {
             String username,
             Long instanceId
     ) {
+        if (instanceId == null || instanceId <= 0) {
+            throw new IllegalArgumentException("ID nhân vật không hợp lệ");
+        }
+
         PlayerProfile player = getPlayer(username);
         HeroInstance instance = heroInstanceRepository
                 .findByIdAndPlayerProfileId(instanceId, player.getId())
