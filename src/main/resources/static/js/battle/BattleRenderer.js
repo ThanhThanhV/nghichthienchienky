@@ -35,6 +35,7 @@ class BattleRenderer {
             BASIC_ATTACK: "att",
             ACTIVE_SKILL: "skill",
             ULTIMATE_SKILL: "ultimateskill",
+            PASSIVE: "skill",
             HIT: "behit",
             DAMAGE: "behit",
             DEATH: "death",
@@ -196,6 +197,7 @@ class BattleRenderer {
             case "BASIC_ATTACK":
             case "ACTIVE_SKILL":
             case "ULTIMATE_SKILL":
+            case "PASSIVE":
                 await this.renderAttack(event);
                 break;
 
@@ -287,7 +289,8 @@ class BattleRenderer {
         }
 
         // Nếu mục tiêu chết, phát animation chết.
-        if (event.alive === false || Number(event.currentHp) <= 0) {
+        if (event.alive === false ||
+            (event.currentHp != null && Number(event.currentHp) <= 0)) {
             if (character) {
                 this.playCharacterAnimation(character, "death", false);
             }
@@ -309,6 +312,18 @@ class BattleRenderer {
      * @param {Object} event sự kiện hồi máu
      */
     async renderHeal(event) {
+        const character = this.getTargetCharacter(event);
+        if (character) {
+            const animations = character.getAnimationNames();
+            const idleAnimation = animations.includes("holdon")
+                ? "holdon"
+                : animations[0];
+
+            if (idleAnimation) {
+                this.playCharacterAnimation(character, idleAnimation, true);
+            }
+        }
+
         if (this.damageRenderer) {
             await this.damageRenderer.showHeal(event);
         }
@@ -344,7 +359,7 @@ class BattleRenderer {
      * @param {Object} event sự kiện chết
      */
     async renderDeath(event) {
-        const character = this.getCharacter(event);
+        const character = this.getTargetCharacter(event);
 
         if (character) {
             this.playCharacterAnimation(
@@ -425,14 +440,14 @@ class BattleRenderer {
             return null;
         }
 
-        if (!event.team || event.instanceId == null) {
+        const team = event.team || event.sourceTeam;
+        const instanceId = event.instanceId ?? event.sourceInstanceId;
+
+        if (!team || instanceId == null) {
             return null;
         }
 
-        return this.formation.getCharacter(
-            event.team,
-            event.instanceId
-        );
+        return this.formation.getCharacter(team, instanceId);
     }
 
     /**
