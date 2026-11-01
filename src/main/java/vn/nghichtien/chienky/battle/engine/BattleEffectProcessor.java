@@ -381,6 +381,7 @@ public class BattleEffectProcessor {
         }
 
         return switch (mode) {
+            case SELF -> List.of(source);
             case RANDOM -> List.of(allies.get(
                     ThreadLocalRandom.current().nextInt(allies.size())
             ));
@@ -424,7 +425,6 @@ public class BattleEffectProcessor {
         List<BattleUnitState> targets = selectAllies(
                 battle, source, effect.targetMode()
         );
-
         BigDecimal amount = source.getAttack()
                 .multiply(effect.multiplier())
                 .add(effect.flatValue());
