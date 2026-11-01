@@ -41,7 +41,9 @@ class SpineFormation {
             enemyX: 180,
             rowSpacing: 110,
             columnSpacing: 100,
-            verticalOffset: 0
+            verticalOffset: 0,
+            playerYOffset: 0,
+            enemyYOffset: 0
         };
     }
 
@@ -241,9 +243,13 @@ class SpineFormation {
 
         const direction = team === "PLAYER" ? 1 : -1;
 
+        const teamYOffset = team === "PLAYER"
+            ? this.layout.playerYOffset
+            : this.layout.enemyYOffset;
+
         return {
             x: baseX + direction * slot.col * this.layout.columnSpacing,
-            y: this.layout.verticalOffset
+            y: teamYOffset + this.layout.verticalOffset
                 - slot.row * this.layout.rowSpacing
                 + this.layout.rowSpacing
         };
