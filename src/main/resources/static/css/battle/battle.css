@@ -337,3 +337,36 @@ button { font: inherit; cursor: pointer; }
     20% { opacity: 1; }
     100% { opacity: 0; transform: translate(-50%, -18px); }
 }
+
+
+/* Persistent status markers synchronized from battle effect events. */
+.unit-effects {
+    position: absolute;
+    z-index: 4;
+    top: 7px;
+    right: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 3px;
+    max-width: 54%;
+    pointer-events: none;
+}
+.unit-effect-badge {
+    max-width: 100%;
+    padding: 3px 5px;
+    overflow: hidden;
+    color: #e8edff;
+    border: 1px solid rgba(169, 191, 231, .48);
+    border-radius: 4px;
+    background: rgba(18, 28, 49, .92);
+    font: 700 7px/1.2 Arial, sans-serif;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    box-shadow: 0 2px 7px rgba(0, 0, 0, .35);
+}
+.unit-effect-badge.buff { color: #b9ffd0; border-color: rgba(111, 222, 151, .65); background: rgba(13, 57, 37, .94); }
+.unit-effect-badge.debuff, .unit-effect-badge.cc { color: #ffd0d0; border-color: rgba(237, 119, 119, .7); background: rgba(75, 19, 31, .94); }
+.unit-effect-badge.shield { color: #c8eaff; border-color: rgba(107, 183, 239, .72); background: rgba(15, 48, 75, .94); }
+.unit-effect-badge.immunity { color: #f0dcff; border-color: rgba(191, 145, 255, .72); background: rgba(54, 31, 81, .94); }
+.unit-effect-badge.evasion, .unit-effect-badge.block { color: #fff0bd; border-color: rgba(239, 204, 119, .7); background: rgba(75, 56, 18, .94); }
