@@ -3,6 +3,9 @@ package vn.nghichtien.chienky.hero.service;
 import vn.nghichtien.chienky.hero.domain.*;
 import vn.nghichtien.chienky.hero.dto.HeroResponse;
 import vn.nghichtien.chienky.hero.dto.HeroExpItemResponse;
+import vn.nghichtien.chienky.hero.dto.HeroProgressionOptionResponse;
+import vn.nghichtien.chienky.hero.dto.HeroResourceCostResponse;
+import vn.nghichtien.chienky.hero.dto.HeroSkillUpgradeOptionResponse;
 import vn.nghichtien.chienky.hero.dto.HeroSkillResponse;
 import vn.nghichtien.chienky.hero.dto.HeroStatsResponse;
 import vn.nghichtien.chienky.hero.repository.*;
@@ -97,6 +100,196 @@ public class HeroService {
                         item.getExpPerItem()
                 ))
                 .toList();
+    }
+
+    /**
+     * Lấy điều kiện và chi phí nâng sao, đột phá kế tiếp của nhân vật.
+     *
+     * @param username Username tài khoản đăng nhập
+     * @param instanceId ID bản sao nhân vật
+     * @return Hai lựa chọn nâng cấp STAR và BREAKTHROUGH
+     */
+    @Transactional(readOnly = true)
+    public List<HeroProgressionOptionResponse> getProgressionOptions(
+            String username,
+            Long instanceId
+    ) {
+        if (instanceId == null || instanceId <= 0) {
+            throw new IllegalArgumentException("ID nhân vật không hợp lệ");
+        }
+
+        PlayerProfile player = getPlayer(username);
+        HeroInstance instance = heroInstanceRepository
+                .findByIdAndPlayerProfileId(instanceId, player.getId())
+                .orElseThrow(() -> new IllegalArgumentException(
+                        "Không tìm thấy nhân vật thuộc tài khoản hiện tại"
+                ));
+
+        HeroDefinition definition = instance.getHeroDefinition();
+        if (!Boolean.TRUE.equals(definition.getEnabled())) {
+            throw new IllegalStateException("Nhân vật đã bị vô hiệu hóa");
+        }
+
+        return List.of(
+                toProgressionOption(instance, "STAR"),
+                toProgressionOption(instance, "BREAKTHROUGH")
+        );
+    }
+
+    private HeroProgressionOptionResponse toProgressionOption(
+            HeroInstance instance,
+            String progressionType
+    ) {
+        int currentLevel = "STAR".equals(progressionType)
+                ? instance.getStarLevel()
+                : instance.getBreakthroughLevel();
+        int targetLevel = currentLevel + 1;
+
+        HeroProgressionConfig config = heroProgressionConfigRepository
+                .findByHeroCodeAndProgressionTypeAndTargetLevelAndEnabled(
+                        instance.getHeroDefinition().getHeroCode(),
+                        progressionType,
+                        targetLevel,
+                        true
+                )
+                .orElse(null);
+
+        if (config == null) {
+            return new HeroProgressionOptionResponse(
+                    progressionType, currentLevel, targetLevel,
+                    null, null, false, false,
+                    "Chưa có cấu hình cho cấp nâng tiếp theo",
+                    List.of()
+            );
+        }
+
+        List<HeroResourceCostResponse> costs = config.getCosts().stream()
+                .map(cost -> new HeroResourceCostResponse(
+                        cost.getResourceCode(),
+                        cost.getRequiredAmount()
+                ))
+                .toList();
+
+        String reason = null;
+        if (instance.getHeroLevel() < config.getRequiredHeroLevel()) {
+            reason = "Cần nhân vật đạt cấp " + config.getRequiredHeroLevel();
+        } else if (instance.getStarLevel() < config.getRequiredStarLevel()) {
+            reason = "Cần đạt cấp sao " + config.getRequiredStarLevel();
+        } else if (costs.isEmpty()) {
+            reason = "Chưa cấu hình chi phí nâng cấp";
+        }
+
+        return new HeroProgressionOptionResponse(
+                progressionType,
+                currentLevel,
+                targetLevel,
+                config.getRequiredHeroLevel(),
+                config.getRequiredStarLevel(),
+                true,
+                reason == null,
+                reason,
+                costs
+        );
+    }
+
+    /**
+     * Lấy điều kiện và chi phí nâng cấp kế tiếp của từng kỹ năng.
+     *
+     * @param username Username tài khoản đăng nhập
+     * @param instanceId ID bản sao nhân vật
+     * @return Danh sách lựa chọn nâng cấp kỹ năng
+     */
+    @Transactional(readOnly = true)
+    public List<HeroSkillUpgradeOptionResponse> getSkillUpgradeOptions(
+            String username,
+            Long instanceId
+    ) {
+        if (instanceId == null || instanceId <= 0) {
+            throw new IllegalArgumentException("ID nhân vật không hợp lệ");
+        }
+
+        PlayerProfile player = getPlayer(username);
+        HeroInstance instance = heroInstanceRepository
+                .findByIdAndPlayerProfileId(instanceId, player.getId())
+                .orElseThrow(() -> new IllegalArgumentException(
+                        "Không tìm thấy nhân vật thuộc tài khoản hiện tại"
+                ));
+
+        if (!Boolean.TRUE.equals(instance.getHeroDefinition().getEnabled())) {
+            throw new IllegalStateException("Nhân vật đã bị vô hiệu hóa");
+        }
+
+        List<HeroInstanceSkill> instanceSkills =
+                heroInstanceSkillRepository
+                        .findAllByHeroInstanceIdOrderBySkillDefinitionSkillOrderAsc(
+                                instanceId
+                        );
+
+        return instanceSkills.stream()
+                .filter(skill -> Boolean.TRUE.equals(
+                        skill.getSkillDefinition().getEnabled()
+                ))
+                .map(skill -> toSkillUpgradeOption(instance, skill))
+                .toList();
+    }
+
+    private HeroSkillUpgradeOptionResponse toSkillUpgradeOption(
+            HeroInstance instance,
+            HeroInstanceSkill instanceSkill
+    ) {
+        HeroSkillDefinition skill = instanceSkill.getSkillDefinition();
+        int currentLevel = instanceSkill.getSkillLevel();
+        int targetLevel = currentLevel + 1;
+
+        HeroSkillUpgradeConfig config = heroSkillUpgradeConfigRepository
+                .findBySkillDefinitionIdAndTargetSkillLevelAndEnabled(
+                        skill.getId(),
+                        targetLevel,
+                        true
+                )
+                .orElse(null);
+
+        if (config == null) {
+            return new HeroSkillUpgradeOptionResponse(
+                    skill.getId(),
+                    skill.getSkillCode(),
+                    skill.getSkillName(),
+                    currentLevel,
+                    targetLevel,
+                    null,
+                    false,
+                    false,
+                    "Chưa có cấu hình cho cấp kỹ năng tiếp theo",
+                    List.of()
+            );
+        }
+
+        List<HeroResourceCostResponse> costs = config.getCosts().stream()
+                .map(cost -> new HeroResourceCostResponse(
+                        cost.getResourceCode(),
+                        cost.getRequiredAmount()
+                ))
+                .toList();
+
+        String reason = null;
+        if (instance.getHeroLevel() < config.getRequiredHeroLevel()) {
+            reason = "Cần nhân vật đạt cấp " + config.getRequiredHeroLevel();
+        } else if (costs.isEmpty()) {
+            reason = "Chưa cấu hình chi phí nâng kỹ năng";
+        }
+
+        return new HeroSkillUpgradeOptionResponse(
+                skill.getId(),
+                skill.getSkillCode(),
+                skill.getSkillName(),
+                currentLevel,
+                targetLevel,
+                config.getRequiredHeroLevel(),
+                true,
+                reason == null,
+                reason,
+                costs
+        );
     }
 
     /**
