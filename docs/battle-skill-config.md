@@ -30,26 +30,37 @@ Trigger được khai báo trong `config_json` của từng effect. Nếu không
 | `BEFORE_ACTION` | Trước khi nhân vật sở hữu nội tại thực hiện hành động |
 | `AFTER_ACTION` | Sau khi nhân vật sở hữu nội tại thực hiện hành động |
 | `ON_ATTACK` | Khi nhân vật sở hữu nội tại bắt đầu một đòn đánh/kỹ năng |
-| `ON_DAMAGED` | Khi nhân vật sở hữu nội tại nhận sát thương HP thực tế |
+| `ON_DAMAGED` | Khi nhân vật sở hữu nội tại nhận sát thương HP thực tế và còn sống |
 | `ON_KILL` | Khi nhân vật sở hữu nội tại hạ gục mục tiêu |
 
 Các trigger đều do Java tự kiểm tra; client không gửi yêu cầu kích hoạt. Event phát sinh từ một passive hiện không tự kích hoạt dây chuyền passive khác trong cùng lần dispatch, nhằm tránh vòng lặp phản ứng vô hạn. Nếu cần chuỗi phản kích/counter, nên triển khai bằng cơ chế reaction có giới hạn riêng.
 
-### Ví dụ: nội tại tăng 20% ATK vĩnh viễn khi vào trận
+## Target type
+
+- `SELF`: chỉ chính nhân vật kích hoạt.
+- `RANDOM`: một mục tiêu ngẫu nhiên.
+- `FRONT`: hàng trước.
+- `LOWEST_HP`: mục tiêu có HP hiện tại thấp nhất.
+- `HIGHEST_ATK`: mục tiêu có ATK cao nhất.
+- `ALL_ENEMIES`: toàn bộ đối thủ (với BUFF/HEAL/SHIELD, engine áp dụng cho toàn bộ đồng minh).
+
+Với BUFF/HEAL/SHIELD/IMMUNITY/DISPEL, engine chọn mục tiêu cùng đội. Với DAMAGE/DEBUFF/CC, engine chọn mục tiêu đối phương. `SELF` luôn chọn chính nhân vật sở hữu nội tại.
+
+## Ví dụ: nội tại tăng 20% ATK vĩnh viễn khi vào trận
 
 - `skill_type = PASSIVE`
 - `effect_type = BUFF`
-- `target_type = RANDOM` (với BUFF, target selector chọn đồng minh; RANDOM là chính nhân vật nếu chỉ có một người)
+- `target_type = SELF`
 - `multiplier = 0.20`
 - `chance = 1`
 - `duration = 0`
 - `config_json = {"trigger":"BATTLE_START","statType":"ATK","permanent":true}`
 
-### Ví dụ: nội tại có 30% cơ hội tăng 15% ATK trong 2 round sau mỗi lần đánh
+## Ví dụ: nội tại có 30% cơ hội tăng 15% ATK trong 2 round sau mỗi lần đánh
 
 - `skill_type = PASSIVE`
 - `effect_type = BUFF`
-- `target_type = RANDOM`
+- `target_type = SELF`
 - `multiplier = 0.15`
 - `chance = 0.30`
 - `duration = 2`
@@ -72,18 +83,6 @@ Các trigger đều do Java tự kiểm tra; client không gửi yêu cầu kíc
 | DISPEL | Giải hiệu ứng | `dispelType` bắt buộc |
 
 Các enum hợp lệ được định nghĩa trong `BattleEffectType`, `BattleTargetMode`, `BattleStatType`, `BattleStatusType`, `BattleImmunityType` và `BattleDispelType`.
-
-## Target type
-
-Các giá trị hiện có:
-
-- `RANDOM`
-- `FRONT`
-- `LOWEST_HP`
-- `HIGHEST_ATK`
-- `ALL_ENEMIES`
-
-Với BUFF/HEAL/SHIELD/IMMUNITY/DISPEL, engine chọn mục tiêu cùng đội dựa trên target mode. Với DAMAGE/DEBUFF/CC, engine chọn mục tiêu đối phương.
 
 ## Ý nghĩa tham số
 
