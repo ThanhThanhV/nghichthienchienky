@@ -1,4 +1,3 @@
-
 package vn.nghichtien.chienky.battle.engine;
 
 import org.springframework.stereotype.Component;
@@ -14,6 +13,12 @@ import java.util.List;
  */
 @Component
 public class BattleTurnProcessor {
+
+    private final DatabaseSkillExecutor skillExecutor;
+
+    public BattleTurnProcessor(DatabaseSkillExecutor skillExecutor) {
+        this.skillExecutor = skillExecutor;
+    }
 
     /**
      * Xác định hành động tiếp theo theo chu kỳ Active, Ultimate, Basic.
@@ -39,7 +44,6 @@ public class BattleTurnProcessor {
         }
 
         int round = battle.nextRound();
-
         var collector = battle.getEventCollector();
 
         // Giảm thời hạn hiệu ứng trước khi bắt đầu round mới.
@@ -60,7 +64,6 @@ public class BattleTurnProcessor {
         List<BattleUnitState> actionOrder = battle.getActionOrder();
 
         for (BattleUnitState unit : actionOrder) {
-
             if (battle.checkFinished()) {
                 break;
             }
@@ -105,18 +108,8 @@ public class BattleTurnProcessor {
                 actionType = BattleActionType.BASIC_ATTACK;
             }
 
-            collector.record(
-                    toEventType(actionType),
-                    unit.getTeam().name(),
-                    unit.getInstanceId(),
-                    null, null, null, null,
-                    null, null, null, null, null, null, null,
-                    actionType.name()
-            );
-
-            /*
-             * SkillProcessor sẽ thực thi kỹ năng tại vị trí này.
-             */
+            // DatabaseSkillExecutor là nơi duy nhất ghi event kích hoạt skill.
+            skillExecutor.execute(battle, unit, actionType);
 
             collector.record(
                     BattleEventType.ACTION_END,
@@ -136,16 +129,5 @@ public class BattleTurnProcessor {
                 null, null, null, null, null, null, null,
                 "Round " + round + " finished"
         );
-    }
-
-    /**
-     * Chuyển loại hành động thành loại sự kiện.
-     */
-    private BattleEventType toEventType(BattleActionType actionType) {
-        return switch (actionType) {
-            case ACTIVE_SKILL -> BattleEventType.ACTIVE_SKILL;
-            case ULTIMATE_SKILL -> BattleEventType.ULTIMATE_SKILL;
-            case BASIC_ATTACK -> BattleEventType.BASIC_ATTACK;
-        };
     }
 }
