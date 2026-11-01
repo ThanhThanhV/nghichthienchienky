@@ -157,6 +157,8 @@ class SpineCharacter {
     dispose() {
         this.loaded = false;
 
+        this.animationController?.dispose();
+        this.animationController = null;
         this.animationState = null;
         this.skeleton = null;
         this.skeletonData = null;

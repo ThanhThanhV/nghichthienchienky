@@ -6,6 +6,31 @@ class SpineAnimationController {
         this.paused = false;
         this.loop = true;
         this.speed = 1;
+        this.returnToIdleAfterCompletion = false;
+
+        // Spine 3.5 reports completion for non-looping tracks through this listener.
+        // Only return to idle when the completed track is still the active track.
+        this.stateListener = {
+            complete: entry => {
+                if (
+                    !this.returnToIdleAfterCompletion ||
+                    !this.character?.loaded ||
+                    entry.animation?.name !== this.currentAnimation ||
+                    this.character.animationState.getCurrent(0) !== entry
+                ) {
+                    return;
+                }
+
+                const idleAnimation = this.resolveIdleAnimation();
+                this.returnToIdleAfterCompletion = false;
+
+                if (idleAnimation && idleAnimation !== this.currentAnimation) {
+                    this.play(idleAnimation, true, false);
+                }
+            }
+        };
+
+        this.character?.animationState?.addListener(this.stateListener);
     }
 
     /**
@@ -13,8 +38,9 @@ class SpineAnimationController {
      *
      * @param {string} name tên animation
      * @param {boolean} loop có lặp lại hay không
+     * @param {boolean} returnToIdle tự trở về idle khi animation kết thúc
      */
-    play(name, loop = this.loop) {
+    play(name, loop = this.loop, returnToIdle = !loop && !/(death|dead|die)/i.test(name)) {
         const character = this.character;
 
         if (!character || !character.loaded) {
@@ -32,8 +58,35 @@ class SpineAnimationController {
         this.currentAnimation = name;
         this.loop = loop;
         this.paused = false;
+        this.returnToIdleAfterCompletion = Boolean(returnToIdle);
 
         character.animationState.setAnimation(0, name, loop);
+    }
+
+    /**
+     * Tìm animation chờ của skeleton theo cấu hình hoặc tên phổ biến.
+     * Không chọn animation tấn công, nhận sát thương, di chuyển hoặc chết làm idle.
+     */
+    resolveIdleAnimation() {
+        const character = this.character;
+        if (!character?.skeletonData) return null;
+
+        const names = character.skeletonData.animations.map(animation => animation.name);
+        const preferred = [
+            character.config?.idleAnimation,
+            "holdon",
+            "idle",
+            "stand",
+            "wait",
+            "waiting"
+        ].filter(Boolean);
+
+        for (const name of preferred) {
+            if (names.includes(name)) return name;
+        }
+
+        const excluded = /(attack|^att$|skill|ultimate|behit|hit|death|dead|die|move|run|hurt)/i;
+        return names.find(name => !excluded.test(name)) || null;
     }
 
     /**
@@ -58,7 +111,11 @@ class SpineAnimationController {
             return;
         }
 
-        this.play(this.currentAnimation, this.loop);
+        this.play(
+            this.currentAnimation,
+            this.loop,
+            this.returnToIdleAfterCompletion
+        );
     }
 
     /**
@@ -76,6 +133,7 @@ class SpineAnimationController {
         character.skeleton.updateWorldTransform();
 
         this.currentAnimation = null;
+        this.returnToIdleAfterCompletion = false;
         this.paused = false;
     }
 
@@ -99,5 +157,17 @@ class SpineAnimationController {
         }
 
         this.character.animationState.update(delta * this.speed);
+    }
+
+    /**
+     * Gỡ listener trước khi SpineCharacter giải phóng AnimationState.
+     */
+    dispose() {
+        if (this.character?.animationState && this.stateListener) {
+            this.character.animationState.removeListener(this.stateListener);
+        }
+
+        this.stateListener = null;
+        this.character = null;
     }
 }
