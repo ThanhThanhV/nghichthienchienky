@@ -25,15 +25,15 @@ class FormationSpinePreview {
         this.manager.initialize();
         this.manager.start();
         this.formation.setLayout({
-            playerX: -105, enemyX: 105, columnSpacing: 105,
-            rowSpacing: 82, verticalOffset: 0, playerYOffset: 0
+            playerX: -145, enemyX: 145, columnSpacing: 145,
+            rowSpacing: 92, verticalOffset: 0, playerYOffset: 0
         });
 
         this.resizeHandler = () => {
             this.manager.resize();
             this.formation.setLayout({
-                playerX: -105, columnSpacing: 105,
-                rowSpacing: 82, verticalOffset: 0, playerYOffset: 0
+                playerX: -145, columnSpacing: 145,
+                rowSpacing: 92, verticalOffset: 0, playerYOffset: 0
             });
         };
         window.addEventListener("resize", this.resizeHandler);
@@ -78,7 +78,7 @@ class FormationSpinePreview {
                     return;
                 }
 
-                character.setScale(Number(config.displayScale ?? 0.85));
+                character.setScale(Math.min(Number(config.displayScale ?? 0.45), 0.45));
                 this.formation.addCharacter(
                     "PLAYER",
                     String(hero.instanceId),
