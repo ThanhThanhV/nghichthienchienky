@@ -63,3 +63,15 @@ Use the old game in Chrome DevTools:
 6. Repeat for the remaining skills.
 
 That runtime observation directly connects a skill activation to its effect asset. Until then, the catalog above should be treated as an asset-family inventory and event-signature index, not a final skill mapping.
+
+## Interactive preview tool
+
+A browser-based Spine Effect Lab is available at `/spine-effects` for authenticated users.
+
+- The catalog is generated from the repository tree and currently contains all 361 effect JSON assets.
+- The seven known hero-ID families are grouped separately; the remaining 326 assets are grouped under `Khác / chưa phân loại`.
+- Selecting an effect loads its original JSON and atlas, reads the texture page names from the atlas, and renders the Spine skeleton on the preview canvas.
+- Each animation can be played independently. The page also displays event marker names/timestamps and provides loop, pause, resume, restart, speed, scale, center, and debug controls.
+- The dashboard has a shortcut named **SPINE EFFECT LAB**.
+
+The lab is a visual inspection tool. Its hero grouping still uses ID-prefix evidence only and does not turn candidates into confirmed skill mappings.
