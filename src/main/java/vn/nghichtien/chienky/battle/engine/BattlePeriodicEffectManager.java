@@ -35,6 +35,17 @@ public class BattlePeriodicEffectManager {
         effects.remove(effect);
     }
 
+    /**
+     * Xóa DOT hoặc HOT khi bị giải trừ.
+     *
+     * @return số hiệu ứng đã bị xóa.
+     */
+    public int dispel(vn.nghichtien.chienky.battle.domain.BattleEffectType type) {
+        int before = effects.size();
+        effects.removeIf(effect -> effect.getEffectType() == type);
+        return before - effects.size();
+    }
+
     public void clear() {
         effects.clear();
     }
