@@ -402,6 +402,7 @@ public class HeroService {
                 definition.getSpineSkeleton(),
                 definition.getSpineAtlas(),
                 definition.getSpineTextures(),
+                definition.getSpineSkillAnimations(),
                 instance.getHeroLevel(),
                 instance.getStarLevel(),
                 instance.getBreakthroughLevel(),
