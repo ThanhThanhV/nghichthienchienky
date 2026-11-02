@@ -21,7 +21,7 @@ window.SPINE_EFFECT_CONFIG = {
             .trim()
             .toUpperCase();
 
-        const basePath = "/assets/spine/seffects/tohka_dark/";
+        const basePath = "/assets/spine/seffects/";
         const definitions = {
             TOHKA_DARK_BASIC_1: {
                 cast: {
@@ -49,7 +49,7 @@ window.SPINE_EFFECT_CONFIG = {
                 },
                 impact: {
                     code: "tohka_dark_skill_2_impact",
-                    file: "seffect_41514121013",
+                    file: "seffect_41514121012",
                     animation: "animation_0",
                     impactRatio: 0.5,
                     anchor: "enemy_formation"
@@ -89,14 +89,20 @@ window.SPINE_EFFECT_CONFIG = {
             return [];
         }
 
-        const textures = selected.file === "seffect_41514121014"
-            ? [
+        const texturePages = {
+            seffect_41514121012: [
+                "seffect_41514121012.png",
+                "seffect_415141210122.png",
+                "seffect_415141210123.png"
+            ],
+            seffect_41514121014: [
                 "seffect_41514121014.png",
                 "seffect_415141210142.png",
                 "seffect_415141210143.png",
                 "seffect_415141210144.png"
             ]
-            : [selected.file + ".png"];
+        };
+        const textures = texturePages[selected.file] || [selected.file + ".png"];
 
         return [{
             ...selected,
