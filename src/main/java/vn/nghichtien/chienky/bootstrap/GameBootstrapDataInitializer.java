@@ -22,16 +22,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Khởi tạo dữ liệu nhân vật khởi đầu cho database mới.
- *
- * Dữ liệu được tạo theo kiểu idempotent: không ghi đè cấu hình đã tồn tại.
- */
 @Component
 public class GameBootstrapDataInitializer implements ApplicationRunner {
-
-    private static final String STARTER_HERO_CODE = "tohka_dark";
-
     private final HeroDefinitionRepository heroDefinitionRepository;
     private final HeroBaseStatsRepository heroBaseStatsRepository;
     private final HeroGrowthConfigRepository heroGrowthConfigRepository;
@@ -52,160 +44,171 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
     @Override
     @Transactional
     public void run(ApplicationArguments args) {
-        HeroDefinition definition = heroDefinitionRepository
-                .findById(STARTER_HERO_CODE)
-                .orElseGet(this::createStarterDefinition);
+        List<HeroSeed> seeds = heroSeeds();
+        for (int i = 0; i < seeds.size(); i++) {
+            seedHero(seeds.get(i), i + 1);
+        }
+    }
 
-        // Chỉ bổ sung asset khi chưa được cấu hình, không ghi đè chỉnh sửa quản trị.
+    private void seedHero(HeroSeed seed, int sortOrder) {
+        HeroDefinition definition = heroDefinitionRepository.findById(seed.code())
+                .orElseGet(() -> createDefinition(seed, sortOrder));
+
         String avatarCode = definition.getAvatarCode();
         String spineSkeleton = definition.getSpineSkeleton();
         definition.updateAssets(
-                avatarCode == null || avatarCode.isBlank()
-                        ? STARTER_HERO_CODE : avatarCode,
-                spineSkeleton == null || spineSkeleton.isBlank()
-                        ? STARTER_HERO_CODE : spineSkeleton
+                avatarCode == null || avatarCode.isBlank() ? seed.code() : avatarCode,
+                spineSkeleton == null || spineSkeleton.isBlank() ? seed.code() : spineSkeleton
         );
+        if (definition.getSortOrder() == null || definition.getSortOrder() == 0) {
+            definition.changeSortOrder(sortOrder);
+        }
         heroDefinitionRepository.save(definition);
 
         seedBaseStats(definition);
         seedGrowthConfig(definition);
-        seedStarterSkills(definition);
+        seedSkills(definition, seed);
     }
 
-    private HeroDefinition createStarterDefinition() {
+    private HeroDefinition createDefinition(HeroSeed seed, int sortOrder) {
         HeroDefinition definition = new HeroDefinition(
-                STARTER_HERO_CODE,
-                "Tohka Hắc Ám",
-                "SSR",
-                "WARRIOR",
-                STARTER_HERO_CODE
+                seed.code(), seed.name(), seed.rarity(), seed.role(), seed.code()
         );
-        definition.updateDescription("Nhân vật khởi đầu.");
-        definition.changeSortOrder(1);
+        definition.updateDescription("Nhân vật được khởi tạo từ Spine asset: " + seed.code() + ".");
+        definition.changeSortOrder(sortOrder);
         return heroDefinitionRepository.save(definition);
     }
 
     private void seedBaseStats(HeroDefinition definition) {
-        if (heroBaseStatsRepository.existsById(STARTER_HERO_CODE)) {
-            return;
-        }
-
+        if (heroBaseStatsRepository.existsById(definition.getHeroCode())) return;
+        StatSeed stats = statsForRole(definition.getRole());
         heroBaseStatsRepository.save(new HeroBaseStats(
-                definition,
-                new BigDecimal("1000"),
-                new BigDecimal("100"),
-                new BigDecimal("50"),
-                new BigDecimal("100")
+                definition, stats.hp(), stats.atk(), stats.def(), stats.speed()
         ));
     }
 
     private void seedGrowthConfig(HeroDefinition definition) {
-        if (heroGrowthConfigRepository.existsById(STARTER_HERO_CODE)) {
-            return;
-        }
-
+        if (heroGrowthConfigRepository.existsById(definition.getHeroCode())) return;
+        StatSeed stats = statsForRole(definition.getRole());
         HeroGrowthConfig growth = new HeroGrowthConfig(definition);
         growth.updateGrowth(
-                new BigDecimal("100"),
-                new BigDecimal("10"),
-                new BigDecimal("5"),
-                BigDecimal.ZERO,
-                BigDecimal.ZERO,
-                BigDecimal.ZERO,
-                BigDecimal.ZERO,
-                BigDecimal.ZERO,
-                BigDecimal.ZERO,
-                BigDecimal.ZERO,
-                BigDecimal.ZERO
+                stats.hpGrowth(), stats.atkGrowth(), stats.defGrowth(),
+                BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO,
+                BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO,
+                BigDecimal.ZERO, BigDecimal.ZERO
         );
         heroGrowthConfigRepository.save(growth);
     }
 
-    private void seedStarterSkills(HeroDefinition definition) {
-        List<HeroSkillDefinition> existingSkills = heroSkillDefinitionRepository
-                .findAll()
+    private StatSeed statsForRole(String role) {
+        return switch (role) {
+            case "ASSASSIN" -> new StatSeed("950", "145", "45", "120", "90", "14", "5");
+            case "MAGE" -> new StatSeed("1000", "135", "50", "110", "95", "13", "5");
+            case "TANK" -> new StatSeed("1600", "90", "100", "90", "150", "8", "10");
+            case "SUPPORT" -> new StatSeed("1150", "100", "70", "105", "110", "9", "7");
+            default -> new StatSeed("1200", "120", "60", "105", "110", "11", "6");
+        };
+    }
+
+    private void seedSkills(HeroDefinition definition, HeroSeed seed) {
+        List<HeroSkillDefinition> existingSkills = heroSkillDefinitionRepository.findAll()
                 .stream()
-                .filter(skill -> STARTER_HERO_CODE.equals(
+                .filter(skill -> definition.getHeroCode().equals(
                         skill.getHeroDefinition().getHeroCode()
                 ))
                 .toList();
 
         Map<Integer, HeroSkillDefinition> skillsByOrder = new HashMap<>();
-        existingSkills.forEach(skill ->
-                skillsByOrder.put(skill.getSkillOrder(), skill)
-        );
+        existingSkills.forEach(skill -> skillsByOrder.put(skill.getSkillOrder(), skill));
 
         List<HeroSkillDefinition> skillsToSave = new ArrayList<>();
-        List<StarterSkill> starterSkills = List.of(
-                new StarterSkill("TOHKA_BASIC", "Kiếm chém", "BASIC", 1),
-                new StarterSkill("TOHKA_ACTIVE", "Kiếm khí", "ACTIVE", 2),
-                new StarterSkill("TOHKA_ULTIMATE", "Thiên thần giáng thế", "ULTIMATE", 3),
-                new StarterSkill("TOHKA_PASSIVE_1", "Ý chí chiến đấu", "PASSIVE", 4),
-                new StarterSkill("TOHKA_PASSIVE_2", "Linh lực hộ thể", "PASSIVE", 5)
-        );
-
-        for (StarterSkill starterSkill : starterSkills) {
-            HeroSkillDefinition skill = skillsByOrder.get(starterSkill.order());
+        for (int i = 0; i < seed.skills().size(); i++) {
+            int order = i + 1;
+            SkillSeed skillSeed = seed.skills().get(i);
+            HeroSkillDefinition skill = skillsByOrder.get(order);
 
             if (skill == null) {
-                skill = createSkill(definition, starterSkill);
+                skill = new HeroSkillDefinition(
+                        definition,
+                        seed.code().toUpperCase() + "_" + skillSeed.type() + "_" + order,
+                        skillSeed.name(),
+                        skillSeed.type(),
+                        order
+                );
+                skill.updateInformation(skillSeed.name(),
+                        "Kỹ năng khởi tạo của " + seed.name() + ".", null);
                 skillsToSave.add(skill);
             } else {
                 skill.changeEnabled(true);
             }
 
-            if (starterSkill.order() == 1 && skill.getEffects().isEmpty()) {
+            if (order == 1 && skill.getEffects().isEmpty()) {
                 addDamageEffect(skill, "FRONT", "1.0");
-            } else if (starterSkill.order() == 2 && skill.getEffects().isEmpty()) {
+            } else if (order == 2 && skill.getEffects().isEmpty()) {
                 addDamageEffect(skill, "ALL_ENEMIES", "1.5");
-            } else if (starterSkill.order() == 3 && skill.getEffects().isEmpty()) {
+            } else if (order == 3 && skill.getEffects().isEmpty()) {
                 addDamageEffect(skill, "ALL_ENEMIES", "2.5");
             }
         }
 
-        if (!skillsToSave.isEmpty()) {
-            heroSkillDefinitionRepository.saveAll(skillsToSave);
-        }
+        if (!skillsToSave.isEmpty()) heroSkillDefinitionRepository.saveAll(skillsToSave);
     }
 
-    private HeroSkillDefinition createSkill(
-            HeroDefinition definition,
-            StarterSkill starterSkill
-    ) {
-        HeroSkillDefinition skill = new HeroSkillDefinition(
-                definition,
-                starterSkill.code(),
-                starterSkill.name(),
-                starterSkill.type(),
-                starterSkill.order()
-        );
-        skill.updateInformation(starterSkill.name(), null, null);
-        return skill;
-    }
-
-    private void addDamageEffect(
-            HeroSkillDefinition skill,
-            String targetType,
-            String multiplier
-    ) {
+    private void addDamageEffect(HeroSkillDefinition skill, String targetType, String multiplier) {
         HeroSkillEffect effect = new HeroSkillEffect(
-                1,
-                BattleEffectType.DAMAGE.name(),
-                BattleTargetMode.valueOf(targetType).name()
+                1, BattleEffectType.DAMAGE.name(), BattleTargetMode.valueOf(targetType).name()
         );
-        effect.updateParameters(
-                new BigDecimal(multiplier),
-                BigDecimal.ONE,
-                null
-        );
+        effect.updateParameters(new BigDecimal(multiplier), BigDecimal.ONE, null);
         skill.addEffect(effect);
     }
 
-    private record StarterSkill(
-            String code,
-            String name,
-            String type,
-            int order
-    ) {
+    private List<HeroSeed> heroSeeds() {
+        return List.of(
+                new HeroSeed("tohka_dark", "Tohka Hắc Ám", "LEGENDARY", "WARRIOR",
+                        skills("Kiếm chém", "Kiếm khí", "Thiên thần giáng thế", "Ý chí chiến đấu", "Linh lực hộ thể")),
+                new HeroSeed("asuna_dark", "Asuna Hắc Ám", "LEGENDARY", "ASSASSIN",
+                        skills("Kiếm tốc ảnh", "Liên kích", "Tuyệt kỹ kiếm vũ", "Tốc độ phản xạ", "Kiếm ý")),
+                new HeroSeed("gojo", "Gojo Satoru", "MYTHIC", "MAGE",
+                        skills("Vô hạn", "Lam", "Hư thức: Tử", "Lục nhãn", "Vô hạ hạn")),
+                new HeroSeed("iori", "Iori", "LEGENDARY", "ASSASSIN",
+                        skills("Hỏa quyền", "Bạo liệt", "Quỷ thiêu", "Cuồng chiến", "Huyết thống")),
+                new HeroSeed("iori_dark", "Iori Hắc Ám", "MYTHIC", "ASSASSIN",
+                        skills("Hắc hỏa", "Quỷ vương", "Hỏa diệm tận diệt", "Ám khí", "Ma lực")),
+                new HeroSeed("kirito", "Kirito", "LEGENDARY", "WARRIOR",
+                        skills("Song kiếm", "Nhật quang trảm", "Starburst Stream", "Phản xạ", "Kiếm sĩ")),
+                new HeroSeed("leloud", "Lelouch", "LEGENDARY", "SUPPORT",
+                        skills("Mệnh lệnh tuyệt đối", "Chiến thuật", "Zero", "Geass", "Trí tuệ")),
+                new HeroSeed("leloud_dark", "Lelouch Hắc Ám", "MYTHIC", "MAGE",
+                        skills("Mệnh lệnh hắc ám", "Hắc chiến thuật", "Geass hủy diệt", "Đế vương", "Hắc trí")),
+                new HeroSeed("thor", "Thor", "LEGENDARY", "TANK",
+                        skills("Lôi thần chùy", "Sấm sét", "Ragnarok", "Thần lực", "Lôi giáp")),
+                new HeroSeed("thor_rak", "Thor Thức Tỉnh", "MYTHIC", "WARRIOR",
+                        skills("Lôi thần thức tỉnh", "Bão sấm", "Lôi đình Ragnarok", "Bất diệt", "Lôi huyết"))
+        );
     }
+
+    private List<SkillSeed> skills(String basic, String active, String ultimate,
+                                   String passiveOne, String passiveTwo) {
+        return List.of(
+                new SkillSeed(basic, "BASIC"),
+                new SkillSeed(active, "ACTIVE"),
+                new SkillSeed(ultimate, "ULTIMATE"),
+                new SkillSeed(passiveOne, "PASSIVE"),
+                new SkillSeed(passiveTwo, "PASSIVE")
+        );
+    }
+
+    private record StatSeed(BigDecimal hp, BigDecimal atk, BigDecimal def, BigDecimal speed,
+                            BigDecimal hpGrowth, BigDecimal atkGrowth, BigDecimal defGrowth) {
+        private StatSeed(String hp, String atk, String def, String speed,
+                         String hpGrowth, String atkGrowth, String defGrowth) {
+            this(new BigDecimal(hp), new BigDecimal(atk), new BigDecimal(def),
+                    new BigDecimal(speed), new BigDecimal(hpGrowth),
+                    new BigDecimal(atkGrowth), new BigDecimal(defGrowth));
+        }
+    }
+
+    private record SkillSeed(String name, String type) {}
+    private record HeroSeed(String code, String name, String rarity, String role,
+                            List<SkillSeed> skills) {}
 }
