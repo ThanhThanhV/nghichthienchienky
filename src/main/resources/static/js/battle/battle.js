@@ -249,6 +249,9 @@
                     this.addLog(this.unitName(event.sourceTeam, event.sourceInstanceId) + " chuẩn bị hành động.");
                     await this.delay(180);
                     break;
+                case "ACTION_END":
+                    // Spine integration đã chờ effect kết thúc và khoảng nghỉ chuyển lượt.
+                    break;
                 case "BASIC_ATTACK":
                 case "ACTIVE_SKILL":
                 case "ULTIMATE_SKILL":
@@ -265,7 +268,9 @@
                         " kích hoạt " + (event.skillCode || "kỹ năng") + ".",
                         "skill"
                     );
-                    await this.delay(event.type === "ULTIMATE_SKILL" ? 420 : 260);
+                    if (!this.spineView?.renderer) {
+                        await this.delay(event.type === "ULTIMATE_SKILL" ? 420 : 260);
+                    }
                     break;
                 }
                 case "DAMAGE":
@@ -279,7 +284,9 @@
                         (event.critical ? " (CHÍ MẠNG)" : "") + ".",
                         "damage"
                     );
-                    await this.delay(300);
+                    if (!this.spineView?.renderer) {
+                        await this.delay(300);
+                    }
                     break;
                 case "HEAL":
                     this.applyEventHp(event, "heal");
