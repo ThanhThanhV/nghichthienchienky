@@ -53,6 +53,8 @@ class BattleSpineIntegration {
             statusContainer: null,
             battleUIContainer: null
         });
+        this.renderer.setSpeed(this.speed);
+        this.effectManager.setSpeed(this.speed);
 
         this.manager.initialize();
         this.manager.start();
@@ -325,6 +327,8 @@ class BattleSpineIntegration {
         }
 
         const supportedTypes = new Set([
+            "ACTION_START",
+            "ACTION_END",
             "BASIC_ATTACK",
             "ACTIVE_SKILL",
             "ULTIMATE_SKILL",
@@ -372,6 +376,7 @@ class BattleSpineIntegration {
         }
 
         this.effectManager?.setSpeed(this.speed);
+        this.renderer?.setSpeed(this.speed);
     }
 
     /**
