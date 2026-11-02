@@ -17,6 +17,7 @@ public class BattleUnitState {
     private final Long instanceId;
     private final BattleTeam team;
     private final String heroCode;
+    private final String role;
 
     private final BigDecimal maxHp;
     private BigDecimal currentHp;
@@ -62,9 +63,31 @@ public class BattleUnitState {
             int row,
             int column
     ) {
+        this(
+                instanceId, team, heroCode, maxHp, attack, defense, speed,
+                row, column, null
+        );
+    }
+
+    /**
+     * Khởi tạo nhân vật có vị trí và vai trò chiến đấu.
+     */
+    public BattleUnitState(
+            Long instanceId,
+            BattleTeam team,
+            String heroCode,
+            BigDecimal maxHp,
+            BigDecimal attack,
+            BigDecimal defense,
+            BigDecimal speed,
+            int row,
+            int column,
+            String role
+    ) {
         this.instanceId = Objects.requireNonNull(instanceId);
         this.team = Objects.requireNonNull(team);
         this.heroCode = Objects.requireNonNull(heroCode);
+        this.role = role;
 
         this.maxHp = Objects.requireNonNull(maxHp);
         this.attack = Objects.requireNonNull(attack);
@@ -188,6 +211,10 @@ public class BattleUnitState {
 
     public String getHeroCode() {
         return heroCode;
+    }
+
+    public String getRole() {
+        return role;
     }
 
     public BigDecimal getMaxHp() {
