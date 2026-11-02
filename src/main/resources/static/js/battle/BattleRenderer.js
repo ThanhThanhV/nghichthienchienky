@@ -29,6 +29,16 @@ class BattleRenderer {
 
         this.eventDelay = options.eventDelay ?? 150;
         this.animationDelay = options.animationDelay ?? 350;
+        this.transitionDelay = options.transitionDelay ?? 450;
+        this.speed = 1;
+        this.actionContext = null;
+        this.fallbackTimings = {
+            BASIC_ATTACK: { impactMs: 380, durationMs: 720 },
+            ACTIVE_SKILL: { impactMs: 550, durationMs: 1000 },
+            ULTIMATE_SKILL: { impactMs: 850, durationMs: 1450 },
+            PASSIVE: { impactMs: 320, durationMs: 650 },
+            ATTACK: { impactMs: 380, durationMs: 720 }
+        };
         this.currentEventIndex = 0;
 
         this.animationMap = {
@@ -194,6 +204,14 @@ class BattleRenderer {
         this.emit("BEFORE_RENDER_EVENT", event);
 
         switch (event.type) {
+            case "ACTION_START":
+                this.beginAction(event);
+                break;
+
+            case "ACTION_END":
+                await this.finishAction();
+                break;
+
             case "ATTACK":
             case "BASIC_ATTACK":
             case "ACTIVE_SKILL":
@@ -238,6 +256,49 @@ class BattleRenderer {
         this.emit("AFTER_RENDER_EVENT", event);
     }
 
+    beginAction(event) {
+        this.actionContext = {
+            sourceTeam: event.sourceTeam,
+            sourceInstanceId: event.sourceInstanceId,
+            completionPromises: []
+        };
+    }
+
+    registerActionCompletions(promises) {
+        if (!this.actionContext) {
+            this.actionContext = { completionPromises: [] };
+        }
+
+        promises.filter(Boolean).forEach(promise => {
+            this.actionContext.completionPromises.push(
+                Promise.resolve(promise).catch(error => {
+                    console.warn("[BattleRenderer] Effect completion failed:", error);
+                })
+            );
+        });
+    }
+
+    async finishAction() {
+        const action = this.actionContext;
+        this.actionContext = null;
+
+        if (action?.completionPromises?.length) {
+            await Promise.all(action.completionPromises);
+        }
+
+        // Khoảng nghỉ độc lập giữa hai tướng, sau khi toàn bộ effect đã kết thúc.
+        await this.delayScaled(this.transitionDelay);
+    }
+
+    delayScaled(milliseconds) {
+        const speed = Math.max(1, Number(this.speed) || 1);
+        return this.delay(Math.max(0, Number(milliseconds) || 0) / speed);
+    }
+
+    setSpeed(speed) {
+        this.speed = Math.max(1, Math.min(4, Number(speed) || 1));
+    }
+
     /**
      * Phát animation tấn công của nhân vật.
      *
@@ -247,18 +308,32 @@ class BattleRenderer {
     async renderAttack(event) {
         const character = this.getCharacter(event);
 
-        if (!character) {
+        if (character) {
+            const animationName = this.getAnimation(event.type);
+
+            if (animationName) {
+                this.playCharacterAnimation(character, animationName, false);
+            }
+        }
+
+        const effects = await this.effectManager?.playForEvent(event, "cast") || [];
+
+        if (effects.length > 0) {
+            this.registerActionCompletions(
+                effects.map(effect => effect.completionPromise)
+            );
+            await Promise.all(effects.map(effect => effect.impactPromise));
             return;
         }
 
-        const animationName = this.getAnimation(event.type);
-
-        if (animationName) {
-            this.playCharacterAnimation(character, animationName, false);
-        }
-
-        await this.effectManager?.playForEvent(event, "cast");
-        await this.delay(this.animationDelay);
+        // Chưa có effect asset: dùng timing dự phòng theo từng loại kỹ năng.
+        // Khi có Spine effect thật, impact và completion sẽ lấy từ animation của asset.
+        const timing = this.fallbackTimings[event.type] ||
+            this.fallbackTimings.BASIC_ATTACK;
+        this.registerActionCompletions([
+            this.delayScaled(timing.durationMs)
+        ]);
+        await this.delayScaled(timing.impactMs);
     }
 
     /**
@@ -308,7 +383,6 @@ class BattleRenderer {
             }
         }
 
-        await this.delay(this.animationDelay);
     }
 
     /**
@@ -563,6 +637,7 @@ class BattleRenderer {
     stop() {
         this.playing = false;
         this.paused = false;
+        this.actionContext = null;
 
         this.emit("BATTLE_STOPPED", {});
     }
