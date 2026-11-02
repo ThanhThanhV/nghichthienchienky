@@ -150,6 +150,11 @@ window.SPINE_EFFECT_CONFIG = {
         }
 
         const texturePages = {
+            // Gojo ultimate atlas sử dụng hai texture pages.
+            seffect_52517111014: [
+                "seffect_52517111014.png",
+                "seffect_525171110142.png"
+            ],
             seffect_41514121012: [
                 "seffect_41514121012.png",
                 "seffect_415141210122.png",
