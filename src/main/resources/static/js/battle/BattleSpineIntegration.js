@@ -150,9 +150,12 @@ class BattleSpineIntegration {
 
                 const rect = slot.getBoundingClientRect();
                 const x = rect.left + rect.width / 2 - canvasCenterX;
-                const slotGroundY = rect.top + rect.height * 0.39;
-                // Spine renderer uses a centered world origin. Convert the
-                // DOM slot anchor to that same coordinate system.
+                const hpBar = slot.querySelector(".hp-bar");
+                const slotGroundY = hpBar
+                    ? hpBar.getBoundingClientRect().top
+                    : rect.top + rect.height * 0.72;
+                // Anchor the character's feet directly above its own HP bar.
+                // Spine renderer uses a centered world origin, unlike DOM pixels.
                 const y = canvasCenterY - slotGroundY;
                 entry.character.setPosition(x, y);
             }
