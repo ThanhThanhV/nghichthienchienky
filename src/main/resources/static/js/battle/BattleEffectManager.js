@@ -214,7 +214,6 @@ class BattleEffectManager {
         effect.setScale(Number(config.displayScale ?? config.scale ?? 1));
 
         const mirrorForEnemy = config.mirrorForEnemy !== false;
-        const sourceTeam = event.sourceTeam || event.team;
         effect.setFacingLeft(
             mirrorForEnemy && sourceTeam === "ENEMY"
         );
