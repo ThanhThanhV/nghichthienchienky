@@ -106,14 +106,6 @@
                 unit?.heroCode
             ];
 
-            for (const value of values) {
-                for (const key of candidateKeys(value)) {
-                    if (characters[key]) {
-                        return characters[key];
-                    }
-                }
-            }
-
             // Tướng được tạo từ giao diện quản lý dùng asset mapping trong database.
             if (unit?.spineSkeleton && unit?.spineAtlas && unit?.spineTextures) {
                 let textures = unit.spineTextures;
@@ -152,6 +144,16 @@
                     };
                 }
             }
+
+            for (const value of values) {
+                for (const key of candidateKeys(value)) {
+                    if (characters[key]) {
+                        return characters[key];
+                    }
+                }
+            }
+
+
 
             return null;
         },
