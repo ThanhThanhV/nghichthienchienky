@@ -43,6 +43,8 @@ public class BattleUnitState {
             new BattleShieldManager();
     private final BattleDefenseEffectManager defenseEffectManager =
             new BattleDefenseEffectManager();
+    private final BattlePeriodicEffectManager periodicEffectManager =
+            new BattlePeriodicEffectManager();
 
     private int actionCount;
     private boolean alive;
@@ -290,6 +292,10 @@ public class BattleUnitState {
 
     public BattleDefenseEffectManager getDefenseEffectManager() {
         return defenseEffectManager;
+    }
+
+    public BattlePeriodicEffectManager getPeriodicEffectManager() {
+        return periodicEffectManager;
     }
 
     /**
