@@ -46,6 +46,9 @@ public class HeroDefinition {
     @Column(name = "spine_textures", columnDefinition = "LONGTEXT")
     private String spineTextures;
 
+    @Column(name = "spine_skill_animations", columnDefinition = "LONGTEXT")
+    private String spineSkillAnimations;
+
     @Column(name = "enabled", nullable = false)
     private Boolean enabled = true;
 
@@ -195,6 +198,14 @@ public class HeroDefinition {
      */
     public String getSpineTextures() {
         return spineTextures;
+    }
+
+    public String getSpineSkillAnimations() {
+        return spineSkillAnimations;
+    }
+
+    public void updateSpineSkillAnimations(String skillAnimationsJson) {
+        this.spineSkillAnimations = skillAnimationsJson;
     }
 
     /**
