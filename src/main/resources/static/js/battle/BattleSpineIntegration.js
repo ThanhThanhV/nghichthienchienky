@@ -87,10 +87,10 @@ class BattleSpineIntegration {
 
         if (mobile) {
             return {
-                playerX: -(width * 0.32),
-                enemyX: width * 0.32,
-                columnSpacing: width * 0.10,
-                rowSpacing: 62,
+                playerX: -(width * 0.23),
+                enemyX: width * 0.23,
+                columnSpacing: width * 0.07,
+                rowSpacing: 68,
                 verticalOffset: 0,
                 playerYOffset: 155,
                 enemyYOffset: -155
@@ -98,14 +98,14 @@ class BattleSpineIntegration {
         }
 
         const halfWidth = width / 2;
-        const baseX = Math.min(300, halfWidth * 0.58);
-        const columnSpacing = Math.min(82, halfWidth * 0.16);
+        const baseX = Math.min(210, halfWidth * 0.40);
+        const columnSpacing = Math.min(58, halfWidth * 0.11);
 
         return {
             playerX: -baseX,
             enemyX: baseX,
             columnSpacing,
-            rowSpacing: 105,
+            rowSpacing: 84,
             verticalOffset: 0,
             playerYOffset: 0,
             enemyYOffset: 0
@@ -150,13 +150,12 @@ class BattleSpineIntegration {
 
                 const rect = slot.getBoundingClientRect();
                 const x = rect.left + rect.width / 2 - canvasCenterX;
-                const hpBar = slot.querySelector(".hp-bar");
-                const slotGroundY = hpBar
-                    ? hpBar.getBoundingClientRect().top
-                    : rect.top + rect.height * 0.72;
-                // Anchor the character's feet directly above its own HP bar.
-                // Spine renderer uses a centered world origin, unlike DOM pixels.
-                const y = canvasCenterY - slotGroundY;
+
+                // Character placement is anchored to the bottom of its slot.
+                // HP UI is an independent overlay above the character and must
+                // never move the skeleton when HP text/bar dimensions change.
+                const groundY = rect.bottom - Math.max(8, rect.height * 0.06);
+                const y = canvasCenterY - groundY;
                 entry.character.setPosition(x, y);
             }
         }
