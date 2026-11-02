@@ -213,6 +213,11 @@ class SpineCharacter {
 
         this.skeleton.flipX = Boolean(facingLeft);
         this.skeleton.updateWorldTransform();
+
+        // flipX mirrors the skeleton around its origin. Recalculate the
+        // horizontal bounds after mirroring; otherwise an asymmetric rig
+        // (wide wings, weapons, effects) shifts away from the slot center.
+        this.center();
     }
 
     /**
