@@ -61,8 +61,7 @@ public class HeroBattleUnitFactory {
                 requiredStat(stats, "DEF"),
                 requiredStat(stats, "SPEED"),
                 row,
-                column,
-                instance.getHeroDefinition().getRole()
+                column
         );
 
         unit.setCombatStats(
