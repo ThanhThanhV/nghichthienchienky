@@ -114,6 +114,32 @@
                 }
             }
 
+            // Tướng được tạo từ giao diện quản lý dùng asset mapping trong database.
+            if (unit?.spineSkeleton && unit?.spineAtlas && unit?.spineTextures) {
+                let textures = unit.spineTextures;
+                if (typeof textures === "string") {
+                    try {
+                        textures = JSON.parse(textures);
+                    } catch (error) {
+                        console.error("Spine texture mapping không phải JSON hợp lệ:", error);
+                        return null;
+                    }
+                }
+
+                if (Array.isArray(textures) && textures.length > 0) {
+                    return {
+                        code: unit.heroCode,
+                        skeleton: unit.spineSkeleton,
+                        atlas: unit.spineAtlas,
+                        textures,
+                        scale: 0.2,
+                        displayScale: 0.45,
+                        offsetX: 0,
+                        offsetY: 0
+                    };
+                }
+            }
+
             return null;
         },
         render: {
