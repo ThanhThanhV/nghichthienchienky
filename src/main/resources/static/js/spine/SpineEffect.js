@@ -17,6 +17,11 @@ class SpineEffect extends SpineCharacter {
         this.elapsedSeconds = 0;
         this.impactResolved = false;
         this.impactAtSeconds = null;
+        this.impactEvents = Array.isArray(config.impactEvents)
+            ? config.impactEvents.map(name => String(name)).filter(Boolean)
+            : [];
+        this.occurredImpactEvents = new Set();
+        this.impactEventResolvers = new Map();
 
         this.impactPromise = new Promise(resolve => {
             this.resolveImpact = resolve;
@@ -45,14 +50,28 @@ class SpineEffect extends SpineCharacter {
         const impactRatio = Math.max(0, Math.min(1,
             Number(this.config.impactRatio ?? 0.55)
         ));
-        const impactEventName = String(this.config.impactEvent || "").trim();
+        const impactEventName = String(
+            this.config.impactEvent || this.impactEvents[0] || ""
+        ).trim();
         const animationEvents = (animationData?.timelines || [])
             .filter(timeline => Array.isArray(timeline.events))
             .flatMap(timeline => timeline.events);
-        const hasImpactEvent = Boolean(
-            impactEventName &&
-            animationEvents.some(event => event?.data?.name === impactEventName)
+        const availableEventNames = new Set(
+            animationEvents.map(event => event?.data?.name).filter(Boolean)
         );
+        const hasImpactEvent = Boolean(
+            impactEventName && availableEventNames.has(impactEventName)
+        );
+        this.impactEvents = this.impactEvents.filter(name => {
+            const exists = availableEventNames.has(name);
+            if (!exists) {
+                console.warn(
+                    "[SpineEffect] Không tìm thấy impact event '" + name +
+                    "' trong animation '" + animation + "'."
+                );
+            }
+            return exists;
+        });
 
         if (impactEventName && !hasImpactEvent) {
             console.warn(
@@ -73,9 +92,21 @@ class SpineEffect extends SpineCharacter {
 
         this.completionListener = {
             event: (entry, event) => {
+                const eventName = event?.data?.name;
+                if (!eventName) {
+                    return;
+                }
+
+                if (this.impactEvents.includes(eventName)) {
+                    this.occurredImpactEvents.add(eventName);
+                    const resolvers = this.impactEventResolvers.get(eventName) || [];
+                    this.impactEventResolvers.delete(eventName);
+                    resolvers.forEach(resolve => resolve());
+                }
+
                 if (
-                    this.config.impactEvent &&
-                    event?.data?.name === this.config.impactEvent
+                    eventName === this.config.impactEvent ||
+                    eventName === this.impactEvents[0]
                 ) {
                     this.finishImpact();
                 }
@@ -91,6 +122,7 @@ class SpineEffect extends SpineCharacter {
 
                 this.completed = true;
                 this.finishImpact();
+                this.resolvePendingImpactEvents();
                 this.resolveCompletion();
                 this.manager.removeEffect(this);
             }
@@ -117,6 +149,31 @@ class SpineEffect extends SpineCharacter {
         this.resolveImpact();
     }
 
+    hasImpactEvent(index) {
+        return Number.isInteger(index) && index >= 0 &&
+            index < this.impactEvents.length;
+    }
+
+    waitForImpactEvent(index) {
+        const eventName = this.impactEvents[index];
+        if (!eventName || this.occurredImpactEvents.has(eventName) || this.completed) {
+            return Promise.resolve();
+        }
+
+        return new Promise(resolve => {
+            const resolvers = this.impactEventResolvers.get(eventName) || [];
+            resolvers.push(resolve);
+            this.impactEventResolvers.set(eventName, resolvers);
+        });
+    }
+
+    resolvePendingImpactEvents() {
+        this.impactEventResolvers.forEach(resolvers => {
+            resolvers.forEach(resolve => resolve());
+        });
+        this.impactEventResolvers.clear();
+    }
+
     update(delta) {
         super.update(delta);
 
@@ -136,6 +193,7 @@ class SpineEffect extends SpineCharacter {
 
     dispose() {
         this.finishImpact();
+        this.resolvePendingImpactEvents();
         this.resolveCompletion();
 
         if (this.animationState && this.completionListener) {
