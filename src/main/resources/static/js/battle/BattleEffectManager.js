@@ -85,12 +85,14 @@ class BattleEffectManager {
 
         const configs = this.resolveEffectConfigs(event, phase);
         if (!configs.length) {
-            return;
+            return [];
         }
 
+        const effects = [];
         for (const config of configs) {
             try {
-                await this.playEffect(config, event);
+                const effect = await this.playEffect(config, event);
+                if (effect) effects.push(effect);
             } catch (error) {
                 console.warn(
                     "[BattleEffectManager] Không phát được hiệu ứng:",
@@ -99,6 +101,8 @@ class BattleEffectManager {
                 );
             }
         }
+
+        return effects;
     }
 
     async playEffect(config, event) {
@@ -157,8 +161,10 @@ class BattleEffectManager {
             mirrorForEnemy && sourceTeam === "ENEMY"
         );
         effect.animationController.setSpeed(
-            Number(config.speed) || Number(window.BattleScreen?.speed) || 1
+            Number(window.BattleScreen?.speed) || Number(config.speed) || 1
         );
+
+        return effect;
     }
 
     setSpeed(speed) {
