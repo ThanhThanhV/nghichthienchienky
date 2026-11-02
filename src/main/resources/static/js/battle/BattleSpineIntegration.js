@@ -8,6 +8,7 @@ class BattleSpineIntegration {
     constructor(screen) {
         this.screen = screen;
         this.canvas = document.getElementById("battle-spine-canvas");
+        this.statusElement = document.getElementById("battle-spine-status");
         this.manager = null;
         this.formation = null;
         this.renderer = null;
@@ -70,30 +71,11 @@ class BattleSpineIntegration {
     }
 
     /**
-     * Chọn cấu hình asset theo spineSkeleton, avatarCode hoặc heroCode.
-     * Khi chưa có mapping riêng, sử dụng fallback trong SPINE_CONFIG.
+     * Chỉ trả về asset khi tìm được mapping rõ ràng cho chính nhân vật đó.
+     * Không dùng fallback chung vì sẽ hiển thị sai tướng khi dữ liệu mapping thiếu.
      */
     resolveCharacterConfig(unit) {
-        const spineConfig = window.SPINE_CONFIG || {};
-
-        if (typeof spineConfig.resolveCharacterConfig === "function") {
-            return spineConfig.resolveCharacterConfig(unit);
-        }
-
-        const characterConfigs = spineConfig.characters || {};
-        const keys = [
-            unit.spineSkeleton,
-            unit.avatarCode,
-            unit.heroCode
-        ].filter(Boolean);
-
-        for (const key of keys) {
-            if (characterConfigs[key]) {
-                return characterConfigs[key];
-            }
-        }
-
-        return spineConfig.character || null;
+        return window.SPINE_CONFIG?.resolveCharacterConfig?.(unit) || null;
     }
 
     /**
@@ -210,6 +192,7 @@ class BattleSpineIntegration {
         try {
             await this.initialize();
         } catch (error) {
+            this.setStatus("SPINE CHƯA SẴN SÀNG", [error.message]);
             console.warn("[BattleSpineIntegration] Spine chưa sẵn sàng:", error);
             return;
         }
@@ -241,24 +224,46 @@ class BattleSpineIntegration {
         this.clearCharacters();
         this.updateLayout();
 
+        if (units.length === 0) {
+            this.unitsSignature = signature;
+            this.setStatus("TRẬN ĐẤU KHÔNG CÓ NHÂN VẬT");
+            return;
+        }
+
+        const errors = [];
+        const occupiedPositions = new Set();
+
         for (const unit of units) {
             const instanceId = unit.instanceId;
             const row = Number(unit.row);
             const column = Number(unit.column);
+            const positionKey = unit.team + ":" + row + ":" + column;
 
             if (
                 instanceId == null ||
                 !Number.isInteger(row) || row < 0 || row > 2 ||
                 !Number.isInteger(column) || column < 0 || column > 2
             ) {
+                errors.push((unit.heroName || unit.heroCode || instanceId) +
+                    ": vị trí đội hình không hợp lệ");
                 continue;
             }
 
+            if (occupiedPositions.has(positionKey)) {
+                errors.push((unit.heroName || unit.heroCode || instanceId) +
+                    ": trùng vị trí " + (row + 1) + "-" + (column + 1));
+                continue;
+            }
+            occupiedPositions.add(positionKey);
+
             const config = this.resolveCharacterConfig(unit);
             if (!config) {
+                const name = unit.heroName || unit.heroCode || instanceId;
+                errors.push(name + ": chưa có mapping Spine");
                 console.warn(
                     "[BattleSpineIntegration] Chưa cấu hình asset cho:",
-                    unit.heroCode
+                    unit.heroCode,
+                    { spineSkeleton: unit.spineSkeleton, avatarCode: unit.avatarCode }
                 );
                 continue;
             }
@@ -301,6 +306,8 @@ class BattleSpineIntegration {
                     character.dispose();
                 }
 
+                errors.push((unit.heroName || unit.heroCode || instanceId) +
+                    ": " + error.message);
                 console.warn(
                     "[BattleSpineIntegration] Không tải được nhân vật " +
                     unit.heroCode + " (" + instanceId + "):",
@@ -309,13 +316,32 @@ class BattleSpineIntegration {
             }
         }
 
-        this.unitsSignature = signature;
-
-        if (this.visibleCharacterCount > 0) {
-            document.querySelector(".battle-page")
-                ?.classList.add("battle-spine-active");
-            this.positionCharactersFromSlots();
+        // Chỉ ẩn UI dự phòng khi toàn bộ nhân vật đã tải đúng asset.
+        // Nếu thiếu dù chỉ một mapping, giữ nguyên đội hình HTML để không che mất tướng.
+        if (errors.length > 0 || this.visibleCharacterCount !== units.length) {
+            const loaded = this.visibleCharacterCount;
+            this.clearCharacters();
+            this.unitsSignature = signature;
+            this.setStatus(
+                "SPINE CHƯA ĐỒNG BỘ · " + loaded + "/" + units.length +
+                " · XEM CHI TIẾT LỖI",
+                errors
+            );
+            console.warn("[BattleSpineIntegration] Đội hình Spine chưa đồng bộ:", errors);
+            return;
         }
+
+        this.unitsSignature = signature;
+        document.querySelector(".battle-page")
+            ?.classList.add("battle-spine-active");
+        this.positionCharactersFromSlots();
+        this.setStatus("SPINE · ĐÃ TẢI " + this.visibleCharacterCount + "/" + units.length);
+    }
+
+    setStatus(message, details = []) {
+        if (!this.statusElement) return;
+        this.statusElement.textContent = message;
+        this.statusElement.title = details.join("\n");
     }
 
     /**

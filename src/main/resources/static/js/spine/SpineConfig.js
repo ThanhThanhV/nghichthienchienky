@@ -72,9 +72,6 @@
         characters[definition.base.toLowerCase()] = character;
     });
 
-    // Use the real Tohka Dark asset as the fallback character.
-    const fallbackCharacter = characters.tohka_dark;
-
     function candidateKeys(value) {
         if (!value) {
             return [];
@@ -99,7 +96,8 @@
 
     window.SPINE_CONFIG = {
         runtimeUrl: "/lib/spine/spine-runtime-3.5/spine-ts/build/spine-webgl.js",
-        character: fallbackCharacter,
+        // No global fallback: every hero must resolve to its own configured asset.
+        character: null,
         characters,
         resolveCharacterConfig(unit) {
             const values = [
@@ -116,7 +114,7 @@
                 }
             }
 
-            return fallbackCharacter;
+            return null;
         },
         render: {
             backgroundAlpha: false,

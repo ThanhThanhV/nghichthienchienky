@@ -42,34 +42,54 @@ class FormationSpinePreview {
 
     async sync(heroes, slots) {
         const version = ++this.syncVersion;
+        const selectedSlots = Array.isArray(slots) ? slots : [];
 
         try {
             await this.initialize();
         } catch (error) {
-            this.setStatus("SPINE PREVIEW CHƯA SẴN SÀNG");
+            this.setStatus("SPINE PREVIEW CHƯA SẴN SÀNG", [error.message]);
             console.warn("[FormationSpinePreview]", error);
             return;
         }
 
         this.clearCharacters();
-        const byId = new Map((heroes || []).map(hero => [Number(hero.instanceId), hero]));
 
-        for (const slot of slots || []) {
+        if (selectedSlots.length === 0) {
+            this.setStatus("CHƯA XẾP NHÂN VẬT");
+            return;
+        }
+
+        const byId = new Map((heroes || []).map(hero => [Number(hero.instanceId), hero]));
+        const errors = [];
+
+        for (const slot of selectedSlots) {
             if (version !== this.syncVersion) return;
 
             const hero = byId.get(Number(slot.instanceId));
-            if (!hero) continue;
+            if (!hero) {
+                errors.push("Không tìm thấy nhân vật instanceId=" + slot.instanceId);
+                continue;
+            }
 
-            const config = window.SPINE_CONFIG?.resolveCharacterConfig
-                ? window.SPINE_CONFIG.resolveCharacterConfig(hero)
-                : window.SPINE_CONFIG?.character;
-            if (!config) continue;
+            const config = window.SPINE_CONFIG?.resolveCharacterConfig?.(hero);
+            if (!config) {
+                const name = hero.heroName || hero.heroCode || hero.instanceId;
+                errors.push(name + ": chưa có mapping Spine");
+                console.warn(
+                    "[FormationSpinePreview] Chưa cấu hình asset cho:",
+                    hero.heroCode,
+                    { spineSkeleton: hero.spineSkeleton, avatarCode: hero.avatarCode }
+                );
+                continue;
+            }
 
             let character = null;
             try {
                 character = await this.manager.createCharacter({
                     ...config,
-                    code: String(config.code || hero.heroCode) + "-preview-" + hero.instanceId
+                    heroCode: hero.heroCode,
+                    code: String(config.code || hero.heroCode || "hero") +
+                        "-preview-" + hero.instanceId
                 });
 
                 if (version !== this.syncVersion) {
@@ -96,15 +116,24 @@ class FormationSpinePreview {
                     this.manager.removeCharacter(character);
                     character.dispose();
                 }
-                console.warn("[FormationSpinePreview] Không tải được Spine của " + hero.heroCode + ":", error);
+                errors.push((hero.heroName || hero.heroCode) + ": " + error.message);
+                console.warn(
+                    "[FormationSpinePreview] Không tải được Spine của " + hero.heroCode + ":",
+                    error
+                );
             }
         }
 
-        this.setStatus(
-            this.formation.getTeamCharacters("PLAYER").length > 0
-                ? "SPINE · ĐÃ TẢI NHÂN VẬT"
-                : "CHƯA CÓ SPINE ĐỂ HIỂN THỊ"
-        );
+        const loaded = this.formation.getTeamCharacters("PLAYER").length;
+        if (errors.length === 0 && loaded === selectedSlots.length) {
+            this.setStatus("SPINE · ĐÃ TẢI " + loaded + "/" + selectedSlots.length + " NHÂN VẬT");
+        } else {
+            this.setStatus(
+                "SPINE · ĐÃ TẢI " + loaded + "/" + selectedSlots.length +
+                " · LỖI " + errors.length,
+                errors
+            );
+        }
     }
 
     clearCharacters() {
@@ -117,8 +146,10 @@ class FormationSpinePreview {
         this.formation.clear();
     }
 
-    setStatus(message) {
-        if (this.statusElement) this.statusElement.textContent = message;
+    setStatus(message, details = []) {
+        if (!this.statusElement) return;
+        this.statusElement.textContent = message;
+        this.statusElement.title = details.join("\n");
     }
 
     dispose() {

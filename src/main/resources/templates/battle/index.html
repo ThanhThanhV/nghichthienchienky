@@ -19,6 +19,8 @@
         .campaign-stage.selected { border-color: #e1bd72; background: #2a2a2a; box-shadow: inset 0 0 0 1px rgba(225,189,114,.2); }
         .campaign-stage.cleared small { color: #86efac; }
         .campaign-stage:disabled { opacity: .48; cursor: not-allowed; }
+        .battle-spine-status { min-height: 18px; margin: 8px 0 0; color: #a9b7ca; font-size: 11px; text-align: center; letter-spacing: .04em; }
+        .battle-spine-status:empty { display: none; }
         @media (max-width: 600px) { .campaign-stage-list { grid-template-columns: repeat(2,minmax(0,1fr)); } }
     </style>
 </head>
@@ -78,7 +80,7 @@
         <section class="battle-team player-team" aria-label="Đội hình người chơi">
             <div class="team-heading">
                 <h2>TIÊN MINH CỦA BẠN</h2>
-                <span class="team-side">PLAYER · 5/5</span>
+                <span class="team-side">PLAYER · 0/5</span>
             </div>
             <div id="player-formation" class="team-formation"></div>
         </section>
@@ -88,11 +90,12 @@
         <section class="battle-team enemy-team" aria-label="Đội hình đối thủ">
             <div class="team-heading">
                 <h2>MA TÔN ĐỐI ĐỊCH</h2>
-                <span class="team-side">ENEMY · 5/5</span>
+                <span class="team-side">ENEMY · 0/5</span>
             </div>
             <div id="enemy-formation" class="team-formation"></div>
         </section>
     </main>
+    <p id="battle-spine-status" class="battle-spine-status" role="status" aria-live="polite"></p>
 
     <div class="battle-bottom">
         <section class="battle-log-section">
