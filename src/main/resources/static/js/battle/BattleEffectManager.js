@@ -120,24 +120,41 @@ class BattleEffectManager {
     }
 
     /**
-     * Lấy tọa độ world của ô số 5 trong đội hình.
+     * Lấy tọa độ world của slot số 5 (ô giữa) theo đúng vị trí đang hiển thị.
      *
-     * Dùng cùng nguồn tọa độ với SpineFormation.updatePositions(), không
-     * chuyển đổi DOMRect sang canvas vì canvas có thể có transform/zoom riêng.
-     * Slot index 4 là ô giữa của lưới 3x3, kể cả khi ô đó đang trống.
+     * Nhân vật được căn theo DOM slot trong BattleSpineIntegration, vì vậy
+     * không dùng calculatePosition() ở đây: hệ tọa độ layout trừu tượng đó
+     * không trùng với vị trí DOM của hai vùng đội hình trên battle-field.
      */
     getFormationCenter(team) {
-        if (!team || !this.formation ||
-            typeof this.formation.calculatePosition !== "function") {
+        const normalizedTeam = String(team || "").toUpperCase();
+        if (!["PLAYER", "ENEMY"].includes(normalizedTeam) || !this.canvas) {
             return null;
         }
 
-        const normalizedTeam = String(team).toUpperCase();
-        if (!["PLAYER", "ENEMY"].includes(normalizedTeam)) {
+        const container = document.getElementById(
+            normalizedTeam === "PLAYER" ? "player-formation" : "enemy-formation"
+        );
+        const slot = container?.children?.[4];
+        if (!slot) {
             return null;
         }
 
-        return this.formation.calculatePosition(normalizedTeam, 4);
+        const canvasRect = this.canvas.getBoundingClientRect();
+        const slotRect = slot.getBoundingClientRect();
+        if (!canvasRect.width || !canvasRect.height ||
+            !slotRect.width || !slotRect.height) {
+            return null;
+        }
+
+        const canvasCenterX = canvasRect.left + canvasRect.width / 2;
+        const canvasCenterY = canvasRect.top + canvasRect.height / 2;
+        const groundY = slotRect.bottom - Math.max(8, slotRect.height * 0.06);
+
+        return {
+            x: slotRect.left + slotRect.width / 2 - canvasCenterX,
+            y: canvasCenterY - groundY
+        };
     }
 
     async playEffect(config, event) {
