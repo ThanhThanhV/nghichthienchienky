@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const message = document.getElementById("page-message");
     const animationSelect = document.getElementById("animation-select");
     const skillEditor = document.getElementById("skill-editor");
+    const saveButton = document.getElementById("save-hero");
     const skillTypes = [
         ["BASIC", "Đánh thường"],
         ["ACTIVE", "Kỹ năng chủ động"],
@@ -14,25 +15,52 @@ document.addEventListener("DOMContentLoaded", () => {
         ["PASSIVE", "Nội tại 1"],
         ["PASSIVE", "Nội tại 2"]
     ];
+    const effectOptions = ["DAMAGE", "HEAL", "DOT", "HOT"];
+    const targetOptions = ["SELF", "RANDOM", "FRONT", "LOWEST_HP", "HIGHEST_ATK", "ALL_ENEMIES"];
 
     let manager = null;
     let character = null;
     let selectedAnimation = "";
     let objectUrls = [];
+    let previewReady = false;
 
-    skillEditor.innerHTML = skillTypes.map(([type, label], index) => `
-        <article class="skill-card">
-            <h3>${String(index + 1).padStart(2, "0")} · ${label} (${type})</h3>
-            <div class="skill-fields">
-                <label>Tên kỹ năng *<input name="skillName${index + 1}" required maxlength="100" placeholder="Tên kỹ năng"></label>
-                <label>Animation Spine *<select name="skillAnimation${index + 1}" required disabled><option value="">Tải assets trước</option></select></label>
-                <label class="wide">Mô tả *<textarea name="skillDescription${index + 1}" rows="2" required maxlength="1000" placeholder="Mô tả kỹ năng"></textarea></label>
-            </div>
-        </article>`).join("");
+    skillEditor.innerHTML = skillTypes.map(([type, label], index) => {
+        const number = index + 1;
+        return `
+            <article class="skill-card">
+                <h3>${String(number).padStart(2, "0")} · ${label} (${type})</h3>
+                <div class="skill-fields">
+                    <label>Tên kỹ năng *<input name="skillName${number}" required maxlength="100" placeholder="Tên kỹ năng"></label>
+                    <label>Animation Spine *<select name="skillAnimation${number}" required disabled><option value="">Tải assets trước</option></select></label>
+                    <label>Loại hiệu ứng *<select name="skillEffectType${number}" required>${effectOptions.map(value => `<option value="${value}">${value}</option>`).join("")}</select></label>
+                    <label>Mục tiêu *<select name="skillTargetType${number}" required>${targetOptions.map(value => `<option value="${value}">${value}</option>`).join("")}</select></label>
+                    <label>Hệ số tác động *<input name="skillMultiplier${number}" type="number" min="0.000001" step="any" value="1" required></label>
+                    <label>Xác suất (0–1) *<input name="skillChance${number}" type="number" min="0" max="1" step="0.01" value="1" required></label>
+                    <label>Duration hiệu ứng *<input name="skillDuration${number}" type="number" min="0" step="1" value="0" required></label>
+                    <label>Thời lượng animation (ms) *<input name="skillAnimationDuration${number}" type="number" min="1" step="1" value="1000" required></label>
+                    <label>Thời điểm tác động (ms) *<input name="skillImpactTime${number}" type="number" min="0" step="1" value="500" required></label>
+                    <label class="wide">Mô tả *<textarea name="skillDescription${number}" rows="2" required maxlength="1000" placeholder="Mô tả kỹ năng"></textarea></label>
+                </div>
+                <p class="skill-note">Với DOT/HOT, Duration phải lớn hơn 0. Thời điểm tác động không được vượt quá thời lượng animation.</p>
+            </article>`;
+    }).join("");
 
-    function showMessage(text) {
+    function field(name) {
+        return form.querySelector(`[name="${name}"]`);
+    }
+
+    function value(name) {
+        return field(name).value.trim();
+    }
+
+    function number(name) {
+        return Number(value(name));
+    }
+
+    function showMessage(text, success = false) {
         message.hidden = false;
         message.textContent = text;
+        message.classList.toggle("success", success);
     }
 
     function setCheck(id, text, ok) {
@@ -41,7 +69,14 @@ document.addEventListener("DOMContentLoaded", () => {
         element.classList.toggle("ok", Boolean(ok));
     }
 
+    function setSaveEnabled(enabled) {
+        saveButton.disabled = !enabled;
+        saveButton.title = enabled ? "" : "Tải và preview bộ Spine trước khi lưu";
+    }
+
     function clearPreview() {
+        previewReady = false;
+        setSaveEnabled(false);
         if (manager) {
             manager.dispose();
             manager = null;
@@ -54,6 +89,11 @@ document.addEventListener("DOMContentLoaded", () => {
         animationSelect.disabled = true;
         ["play-animation", "pause-animation", "restart-animation", "preview-scale", "preview-speed"]
             .forEach(id => document.getElementById(id).disabled = true);
+        document.querySelectorAll('[name^="skillAnimation"]').forEach(select => {
+            select.disabled = true;
+            select.innerHTML = '<option value="">Tải assets trước</option>';
+        });
+        setCheck("check-animation", "Animation: chưa đọc", false);
     }
 
     [skeletonInput, atlasInput, textureInput].forEach(input => input.addEventListener("change", () => {
@@ -71,7 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function extractAtlasPages(atlasText) {
         return atlasText.split(/\r?\n/).map(line => line.trim())
             .filter(line => /\.png(?:\s|$)/i.test(line))
-            .map(line => line.split(/\s+/)[0]);
+            .map(line => line.split(/\s+/)[0].split("/").pop().split("\\\\").pop());
     }
 
     async function loadPreview() {
@@ -93,7 +133,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         try {
             const jsonData = JSON.parse(await jsonFile.text());
-            if (!jsonData.skeleton || !Array.isArray(jsonData.bones) || !jsonData.animations || typeof jsonData.animations !== "object" || Array.isArray(jsonData.animations)) {
+            if (!jsonData.skeleton || !Array.isArray(jsonData.bones)
+                    || !jsonData.animations || typeof jsonData.animations !== "object"
+                    || Array.isArray(jsonData.animations)) {
                 throw new Error("Skeleton JSON không có cấu trúc Spine JSON hợp lệ.");
             }
 
@@ -101,24 +143,23 @@ document.addEventListener("DOMContentLoaded", () => {
             const pages = extractAtlasPages(atlasText);
             const textureByName = new Map(textureFiles.map(file => [file.name.toLowerCase(), file]));
             const missingPages = pages.filter(page => !textureByName.has(page.toLowerCase()));
-            if (pages.length === 0) {
-                throw new Error("Không tìm thấy tên texture PNG trong file Atlas.");
-            }
-            if (missingPages.length) {
-                throw new Error("Thiếu texture được Atlas tham chiếu: " + missingPages.join(", "));
-            }
+            if (pages.length === 0) throw new Error("Không tìm thấy tên texture PNG trong file Atlas.");
+            if (missingPages.length) throw new Error("Thiếu texture được Atlas tham chiếu: " + missingPages.join(", "));
 
             const jsonUrl = URL.createObjectURL(jsonFile);
             const atlasUrl = URL.createObjectURL(atlasFile);
-            const textureUrls = textureFiles.map(file => URL.createObjectURL(file));
-            objectUrls.push(jsonUrl, atlasUrl, ...textureUrls);
+            const textureEntries = textureFiles.map(file => ({
+                name: file.name,
+                url: URL.createObjectURL(file)
+            }));
+            objectUrls.push(jsonUrl, atlasUrl, ...textureEntries.map(entry => entry.url));
 
             manager = new SpineManager(canvas);
             manager.initialize();
             character = await manager.createCharacter({
                 skeleton: jsonUrl,
                 atlas: atlasUrl,
-                textures: textureUrls,
+                textures: textureEntries,
                 scale: 0.2,
                 offsetX: 0,
                 offsetY: 0
@@ -149,6 +190,8 @@ document.addEventListener("DOMContentLoaded", () => {
             setCheck("check-atlas", "Atlas: đọc được " + pages.length + " page", true);
             setCheck("check-textures", "Texture: đủ " + textureFiles.length + " file", true);
             setCheck("check-animation", "Animation: tìm thấy " + names.length + " animation", true);
+            previewReady = true;
+            setSaveEnabled(true);
         } catch (error) {
             clearPreview();
             showMessage(error.message || "Không thể tải bộ Spine.");
@@ -159,8 +202,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    function escapeHtml(value) {
-        return String(value).replace(/[&<>"']/g, char => ({
+    function escapeHtml(input) {
+        return String(input).replace(/[&<>"']/g, char => ({
             "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
         })[char]);
     }
@@ -189,6 +232,120 @@ document.addEventListener("DOMContentLoaded", () => {
         updateActiveChip();
     }
 
+    function collectStats(prefix) {
+        return {
+            hp: number(prefix + "Hp"),
+            atk: number(prefix + "Atk"),
+            def: number(prefix + "Def"),
+            speed: number(prefix + "Speed"),
+            crit: number(prefix + "Crit"),
+            critDamage: number(prefix + "CritDamage"),
+            accuracy: number(prefix + "Accuracy"),
+            resistance: number(prefix + "Resistance"),
+            penFlat: number(prefix + "PenFlat"),
+            penPercent: number(prefix + "PenPercent"),
+            lifesteal: number(prefix + "Lifesteal")
+        };
+    }
+
+    function collectRequest() {
+        return {
+            heroCode: value("heroCode"),
+            heroName: value("heroName"),
+            rarity: value("rarity"),
+            role: value("role"),
+            faction: value("faction"),
+            avatarCode: value("avatarCode"),
+            description: value("description"),
+            baseStats: collectStats("base"),
+            growthStats: collectStats("growth"),
+            skills: skillTypes.map(([,], index) => {
+                const n = index + 1;
+                return {
+                    name: value("skillName" + n),
+                    description: value("skillDescription" + n),
+                    animation: value("skillAnimation" + n),
+                    effectType: value("skillEffectType" + n),
+                    targetType: value("skillTargetType" + n),
+                    multiplier: number("skillMultiplier" + n),
+                    chance: number("skillChance" + n),
+                    duration: number("skillDuration" + n),
+                    animationDurationMs: number("skillAnimationDuration" + n),
+                    impactTimeMs: number("skillImpactTime" + n)
+                };
+            })
+        };
+    }
+
+    async function saveHero() {
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
+        if (!previewReady || !character) {
+            showMessage("Hãy tải và preview bộ Spine trước khi lưu.");
+            return;
+        }
+
+        const request = collectRequest();
+        for (let index = 0; index < request.skills.length; index++) {
+            const skill = request.skills[index];
+            if (skill.impactTimeMs > skill.animationDurationMs) {
+                showMessage("Thời điểm tác động không được vượt thời lượng animation ở kỹ năng " + (index + 1));
+                field("skillImpactTime" + (index + 1)).focus();
+                return;
+            }
+            if ((skill.effectType === "DOT" || skill.effectType === "HOT") && skill.duration <= 0) {
+                showMessage("DOT/HOT cần Duration lớn hơn 0 ở kỹ năng " + (index + 1));
+                field("skillDuration" + (index + 1)).focus();
+                return;
+            }
+        }
+
+        const formData = new FormData();
+        formData.append("request", new Blob([JSON.stringify(request)], { type: "application/json" }));
+        formData.append("skeleton", skeletonInput.files[0]);
+        formData.append("atlas", atlasInput.files[0]);
+        [...textureInput.files].forEach(file => formData.append("textures", file));
+
+        const csrfToken = document.querySelector('meta[name="_csrf"]')?.content;
+        const csrfHeader = document.querySelector('meta[name="_csrf_header"]')?.content;
+        const headers = {};
+        if (csrfToken && csrfHeader) headers[csrfHeader] = csrfToken;
+
+        saveButton.disabled = true;
+        saveButton.textContent = "ĐANG LƯU...";
+        message.hidden = true;
+
+        try {
+            const response = await fetch("/api/hero-management", {
+                method: "POST",
+                credentials: "same-origin",
+                headers,
+                body: formData
+            });
+            const result = await response.json().catch(() => ({}));
+            if (!response.ok) {
+                throw new Error(result.detail || result.message || "Lưu tướng thất bại (HTTP " + response.status + ").");
+            }
+
+            showMessage(
+                "Đã tạo tướng " + result.heroName + " (" + result.heroCode + "). Assets đã lưu tại " +
+                result.spineSkeleton + " · " + result.animations.length + " animation.",
+                true
+            );
+            saveButton.textContent = "ĐÃ LƯU TƯỚNG";
+            saveButton.disabled = true;
+            form.querySelectorAll("input, select, textarea").forEach(input => input.disabled = true);
+            ["load-preview", "play-animation", "pause-animation", "restart-animation", "preview-scale", "preview-speed"]
+                .forEach(id => document.getElementById(id).disabled = true);
+        } catch (error) {
+            showMessage(error.message || "Không thể lưu tướng.");
+            saveButton.disabled = false;
+            saveButton.textContent = "LƯU TƯỚNG";
+        }
+    }
+
     document.getElementById("load-preview").addEventListener("click", loadPreview);
     animationSelect.addEventListener("change", () => playAnimation(animationSelect.value));
     document.getElementById("play-animation").addEventListener("click", () => character?.animationController.resume());
@@ -196,10 +353,9 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("restart-animation").addEventListener("click", () => character?.animationController.restart());
     document.getElementById("preview-scale").addEventListener("input", event => character?.setScale(Number(event.target.value)));
     document.getElementById("preview-speed").addEventListener("input", event => character?.animationController.setSpeed(Number(event.target.value)));
-
     form.addEventListener("submit", event => {
         event.preventDefault();
-        form.reportValidity();
+        saveHero();
     });
 
     window.addEventListener("beforeunload", clearPreview);
