@@ -56,6 +56,7 @@ public class BattleEffectProcessor {
         switch (effect.effectType()) {
             case DAMAGE -> executeDamage(battle, source, effect);
             case HEAL -> executeHeal(battle, source, effect);
+            case REVIVE -> executeRevive(battle, source, effect);
             case BUFF -> executeModifier(battle, source, effect, true);
             case DEBUFF -> executeModifier(battle, source, effect, false);
             case CC -> executeCrowdControl(battle, source, effect);
@@ -88,6 +89,105 @@ public class BattleEffectProcessor {
                     battle, source, target, effect.multiplier(), effect.effectCode()
             );
         }
+    }
+
+    /**
+     * Hồi sinh đồng đội đã tử vong theo lượng HP tính từ ATK của nguồn và flatValue.
+     */
+    private void executeRevive(
+            BattleState battle,
+            BattleUnitState source,
+            BattleEffectConfig effect
+    ) {
+        BigDecimal reviveAmount = source.getAttack()
+                .multiply(effect.multiplier())
+                .add(effect.flatValue());
+
+        if (reviveAmount.signum() <= 0) {
+            throw new IllegalArgumentException(
+                    "REVIVE amount must be positive: " + effect.effectCode()
+            );
+        }
+
+        List<BattleUnitState> targets = selectReviveTargets(
+                battle, source, effect.targetMode()
+        );
+
+        for (BattleUnitState target : targets) {
+            BigDecimal revivedHp = target.revive(reviveAmount);
+            if (revivedHp.signum() <= 0) {
+                continue;
+            }
+
+            battle.getEventCollector().record(
+                    BattleEventType.REVIVE,
+                    source.getTeam().name(),
+                    source.getInstanceId(),
+                    target.getTeam().name(),
+                    target.getInstanceId(),
+                    effect.effectCode(),
+                    revivedHp,
+                    false,
+                    target.getCurrentHp(),
+                    target.getMaxHp(),
+                    true,
+                    effect.effectCode(),
+                    "REVIVE",
+                    null,
+                    "Unit revived"
+            );
+        }
+    }
+
+    /**
+     * Chọn các đồng đội đã tử vong để hồi sinh.
+     */
+    private List<BattleUnitState> selectReviveTargets(
+            BattleState battle,
+            BattleUnitState source,
+            BattleTargetMode mode
+    ) {
+        List<BattleUnitState> deadAllies = battle.getUnits().stream()
+                .filter(unit -> unit.getTeam() == source.getTeam())
+                .filter(unit -> !unit.isAlive())
+                .toList();
+
+        if (deadAllies.isEmpty()) {
+            return List.of();
+        }
+
+        return switch (mode) {
+            case SELF -> List.of();
+            case RANDOM -> List.of(deadAllies.get(
+                    ThreadLocalRandom.current().nextInt(deadAllies.size())
+            ));
+            case FRONT -> {
+                int frontRow = deadAllies.stream()
+                        .mapToInt(BattleUnitState::getRow)
+                        .min()
+                        .orElseThrow();
+                yield deadAllies.stream()
+                        .filter(unit -> unit.getRow() == frontRow)
+                        .sorted(java.util.Comparator.comparingInt(
+                                BattleUnitState::getColumn
+                        ))
+                        .toList();
+            }
+            case LOWEST_HP -> deadAllies.stream()
+                    .min(java.util.Comparator
+                            .comparing(BattleUnitState::getCurrentHp)
+                            .thenComparingInt(BattleUnitState::getRow)
+                            .thenComparingInt(BattleUnitState::getColumn))
+                    .map(List::of)
+                    .orElse(List.of());
+            case HIGHEST_ATK -> deadAllies.stream()
+                    .max(java.util.Comparator.comparing(
+                            BattleUnitState::getAttack
+                    ))
+                    .map(List::of)
+                    .orElse(List.of());
+            case ALL_ENEMIES -> deadAllies;
+        };
     }
 
     private void executeHeal(
