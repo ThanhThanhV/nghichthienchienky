@@ -27,7 +27,6 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
@@ -209,7 +208,6 @@ public class HeroManagementService {
 
         for (int i = 0; i < request.skills().size(); i++) {
             CreateHeroRequest.SkillRequest skill = request.skills().get(i);
-            String expectedType = SKILL_TYPES.get(i);
             try {
                 BattleEffectType.valueOf(skill.effectType().trim().toUpperCase(Locale.ROOT));
                 BattleTargetMode.valueOf(skill.targetType().trim().toUpperCase(Locale.ROOT));
@@ -228,9 +226,6 @@ public class HeroManagementService {
             }
             if (skill.chance().compareTo(BigDecimal.ONE) > 0) {
                 throw badRequest("Chance không được lớn hơn 1 ở kỹ năng " + (i + 1));
-            }
-            if (expectedType.isBlank()) {
-                throw badRequest("Loại kỹ năng không hợp lệ");
             }
         }
     }
