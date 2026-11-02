@@ -128,13 +128,15 @@
         character: null,
         characters,
         resolveCharacterConfig(unit) {
-            const values = [
-                unit?.spineSkeleton,
-                unit?.avatarCode,
-                unit?.heroCode
-            ];
+            // Với các tướng đã có asset chuẩn trong repository, heroCode là khóa
+            // định danh đáng tin cậy nhất. Không để spineSkeleton/avatarCode cũ
+            // (có thể trùng mã asset giữa Iori và Iori Dark) ghi đè mapping chuẩn.
+            const heroCode = String(unit?.heroCode || "").trim().toLowerCase();
+            if (heroCode && characters[heroCode]) {
+                return characters[heroCode];
+            }
 
-            // Tướng được tạo từ giao diện quản lý dùng asset mapping trong database.
+            // Tướng mới cấu hình trực tiếp trong database vẫn được hỗ trợ.
             if (unit?.spineSkeleton && unit?.spineAtlas && unit?.spineTextures) {
                 let textures = unit.spineTextures;
                 if (typeof textures === "string") {
@@ -173,6 +175,11 @@
                 }
             }
 
+            // Chỉ dùng các alias asset khi heroCode chưa có mapping chuẩn.
+            const values = [
+                unit?.avatarCode,
+                unit?.spineSkeleton
+            ];
             for (const value of values) {
                 for (const key of candidateKeys(value)) {
                     if (characters[key]) {
