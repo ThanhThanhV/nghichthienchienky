@@ -429,19 +429,19 @@ window.SPINE_EFFECT_CONFIG = {
                 // basic hit asset riêng cho Iori Dark.
             },
             IORI_DARK_ACTIVE_2: {
-                // Active riêng của Iori Dark: ba nhịp qishou_11_3_*.
+                // Iori thường dùng qishou_21_1; bản Dark dùng qishou_21_2.
+                // Đây là animation_2 trong bộ asset riêng của Iori Dark.
                 cast: {
                     code: "iori_dark_active_cast",
                     file: "seffect_51515110111",
-                    animation: "animation_1",
+                    animation: "animation_2",
                     impactEvents: [
-                        "qishou_11_3_3",
-                        "qishou_11_3_2",
-                        "qishou_11_3_1"
+                        "qishou_21_2_2",
+                        "qishou_21_2_1"
                     ],
                     anchor: "source",
                     impactRatio: 0.65
-                },
+                }
                 // Không mượn impact của Iori thường: repo hiện không có
                 // active hit asset riêng cho Iori Dark.
             },
