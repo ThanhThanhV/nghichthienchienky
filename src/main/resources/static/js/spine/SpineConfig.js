@@ -83,7 +83,13 @@
             skeleton: directory + definition.base + ".json",
             atlas: directory + definition.base + ".atlas",
             textures: definition.textures.map(file => directory + file),
-            skillAnimations: createSkillAnimations(key),
+            skillAnimations: {
+                ...createSkillAnimations(key),
+                // superskill dài 4.233s, khớp với effect ultimate của Gojo.
+                ...(key === "gojo"
+                    ? { GOJO_ULTIMATE_3: { animation: "superskill" } }
+                    : {})
+            },
             scale: 0.2,
             displayScale: 0.45,
             offsetX: 0,
