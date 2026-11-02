@@ -193,7 +193,8 @@ public class BattleSessionService {
                     scaledStat(stats, "DEF", stageMultiplier),
                     requiredStat(stats, "SPEED"),
                     position[0],
-                    position[1]
+                    position[1],
+                    definition.getRole()
             );
             enemy.setCombatStats(
                     statOrZero(stats, "CRIT"),
