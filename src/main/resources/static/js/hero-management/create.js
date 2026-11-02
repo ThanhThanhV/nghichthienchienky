@@ -26,14 +26,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     skillEditor.innerHTML = skillTypes.map(([type, label], index) => {
         const number = index + 1;
+        const defaultEffect = index >= 3 ? "HEAL" : "DAMAGE";
+        const defaultTarget = index === 0 ? "FRONT" : index <= 2 ? "ALL_ENEMIES" : "SELF";
         return `
             <article class="skill-card">
                 <h3>${String(number).padStart(2, "0")} · ${label} (${type})</h3>
                 <div class="skill-fields">
                     <label>Tên kỹ năng *<input name="skillName${number}" required maxlength="100" placeholder="Tên kỹ năng"></label>
                     <label>Animation Spine *<select name="skillAnimation${number}" required disabled><option value="">Tải assets trước</option></select></label>
-                    <label>Loại hiệu ứng *<select name="skillEffectType${number}" required>${effectOptions.map(value => `<option value="${value}">${value}</option>`).join("")}</select></label>
-                    <label>Mục tiêu *<select name="skillTargetType${number}" required>${targetOptions.map(value => `<option value="${value}">${value}</option>`).join("")}</select></label>
+                    <label>Loại hiệu ứng *<select name="skillEffectType${number}" required>${effectOptions.map(value => `<option value="${value}" ${value === defaultEffect ? "selected" : ""}>${value}</option>`).join("")}</select></label>
+                    <label>Mục tiêu *<select name="skillTargetType${number}" required>${targetOptions.map(value => `<option value="${value}" ${value === defaultTarget ? "selected" : ""}>${value}</option>`).join("")}</select></label>
                     <label>Hệ số tác động *<input name="skillMultiplier${number}" type="number" min="0.000001" step="any" value="1" required></label>
                     <label>Xác suất (0–1) *<input name="skillChance${number}" type="number" min="0" max="1" step="0.01" value="1" required></label>
                     <label>Duration hiệu ứng *<input name="skillDuration${number}" type="number" min="0" step="1" value="0" required></label>
