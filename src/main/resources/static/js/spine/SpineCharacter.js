@@ -208,6 +208,20 @@ class SpineCharacter {
     }
 
     /**
+     * Đặt hướng nhìn của nhân vật trong chiến trường.
+     *
+     * @param {boolean} facingLeft true nếu nhân vật quay sang trái
+     */
+    setFacingLeft(facingLeft) {
+        if (!this.skeleton) {
+            return;
+        }
+
+        this.skeleton.flipX = Boolean(facingLeft);
+        this.skeleton.updateWorldTransform();
+    }
+
+    /**
      * Thay đổi kích thước hiển thị của nhân vật.
      *
      * @param {number} scale hệ số kích thước
