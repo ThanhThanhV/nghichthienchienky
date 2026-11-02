@@ -414,8 +414,7 @@ window.SPINE_EFFECT_CONFIG = {
                     anchor: "enemy_formation",
                     impactRatio: 0.25
                 }
-            }        };
-
+            },
             IORI_DARK_BASIC_1: {
                 // Iori Dark dùng bộ cast riêng (sanim_515151_1):
                 // qishou_1_1_1; impact hit tương ứng dùng asset hit riêng hiện có.
@@ -487,8 +486,13 @@ window.SPINE_EFFECT_CONFIG = {
                     anchor: "enemy_formation",
                     impactRatio: 0.8
                 }
-            },
+            }
+        };
 
+        // Lelouch Dark chưa có bộ effect riêng trong asset hiện tại.
+        definitions.LELOUD_DARK_BASIC_1 = definitions.LELOUD_BASIC_1;
+        definitions.LELOUD_DARK_ACTIVE_2 = definitions.LELOUD_ACTIVE_2;
+        definitions.LELOUD_DARK_ULTIMATE_3 = definitions.LELOUD_ULTIMATE_3;
 
         // Runtime hiện tại phát mã animation "tohka_active" ở event cast,
         // còn event DAMAGE dùng mã effect "skill_effect_2".
