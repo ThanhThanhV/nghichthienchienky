@@ -16,7 +16,11 @@ public record BattleScreenDTO(
         boolean finished,
         String winner,
         List<UnitDTO> playerUnits,
-        List<UnitDTO> enemyUnits
+        List<UnitDTO> enemyUnits,
+        Integer campaignStageNumber,
+        String campaignStageName,
+        boolean campaignFirstClear,
+        Map<String, BigDecimal> campaignRewards
 ) {
     public record UnitDTO(
             Long instanceId,
@@ -44,6 +48,18 @@ public record BattleScreenDTO(
             Map<String, HeroDefinition> definitions,
             Map<Long, Integer> levels
     ) {
+        return from(battle, definitions, levels, null, null, false, Map.of());
+    }
+
+    public static BattleScreenDTO from(
+            BattleState battle,
+            Map<String, HeroDefinition> definitions,
+            Map<Long, Integer> levels,
+            Integer campaignStageNumber,
+            String campaignStageName,
+            boolean campaignFirstClear,
+            Map<String, BigDecimal> campaignRewards
+    ) {
         List<BattleUnitState> units = battle.getUnits();
         List<UnitDTO> players = units.stream()
                 .filter(unit -> unit.getTeam() == BattleTeam.PLAYER)
@@ -60,7 +76,11 @@ public record BattleScreenDTO(
                 battle.isFinished(),
                 battle.getWinner() == null ? null : battle.getWinner().name(),
                 players,
-                enemies
+                enemies,
+                campaignStageNumber,
+                campaignStageName,
+                campaignFirstClear,
+                campaignRewards == null ? Map.of() : Map.copyOf(campaignRewards)
         );
     }
 
