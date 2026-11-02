@@ -224,7 +224,6 @@ public class BattleDamageProcessor {
                     );
                 }
 
-                battle.checkFinished();
             }
         }
 
