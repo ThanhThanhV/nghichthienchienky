@@ -8,6 +8,7 @@ import java.util.Objects;
 import vn.nghichtien.chienky.battle.engine.BattleImmunityManager;
 import vn.nghichtien.chienky.battle.engine.BattleShieldManager;
 import vn.nghichtien.chienky.battle.engine.BattleDefenseEffectManager;
+import vn.nghichtien.chienky.battle.engine.BattlePeriodicEffectManager;
 
 /**
  * Lưu trạng thái chiến đấu của một nhân vật trong trận đấu.
