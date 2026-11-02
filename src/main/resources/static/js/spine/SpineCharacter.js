@@ -85,13 +85,14 @@ class SpineCharacter {
 
         this.skeleton.getBounds(offset, size, []);
 
+        // Spine character placement is anchored at the feet, not at the
+        // visual bounding-box center. This keeps the character standing on
+        // the same baseline as its slot/HP bar in battle and preview screens.
         this.centerOffsetX = -(
             offset.x + size.x / 2
         ) + (this.config.offsetX || 0);
 
-        this.centerOffsetY = -(
-            offset.y + size.y / 2
-        ) + (this.config.offsetY || 0);
+        this.centerOffsetY = -offset.y + (this.config.offsetY || 0);
 
         this.applyPosition();
     }
