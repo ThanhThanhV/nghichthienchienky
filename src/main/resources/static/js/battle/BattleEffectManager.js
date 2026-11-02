@@ -105,6 +105,37 @@ class BattleEffectManager {
         return effects;
     }
 
+    /**
+     * Tính tâm bounding-box của các nhân vật đang có trong một đội hình.
+     * getTeamCharacters trả về entry { character, ... }, không phải SpineCharacter trực tiếp.
+     */
+    getFormationCenter(team) {
+        if (!team || !this.formation ||
+            typeof this.formation.getTeamCharacters !== "function") {
+            return null;
+        }
+
+        const characters = this.formation.getTeamCharacters(team)
+            .map(entry => entry?.character)
+            .filter(character =>
+                character &&
+                Number.isFinite(Number(character.positionX)) &&
+                Number.isFinite(Number(character.positionY))
+            );
+
+        if (characters.length === 0) {
+            return null;
+        }
+
+        const xs = characters.map(character => Number(character.positionX));
+        const ys = characters.map(character => Number(character.positionY));
+
+        return {
+            x: (Math.min(...xs) + Math.max(...xs)) / 2,
+            y: (Math.min(...ys) + Math.max(...ys)) / 2
+        };
+    }
+
     async playEffect(config, event) {
         const generation = this.generation;
 
@@ -123,9 +154,40 @@ class BattleEffectManager {
         );
 
         const anchor = String(config.anchor || "source").toLowerCase();
-        const anchorCharacter = anchor === "target" ? target : source;
+        const sourceTeam = event.sourceTeam || event.team;
+        const enemyTeam = event.targetTeam ||
+            (sourceTeam === "PLAYER" ? "ENEMY" : sourceTeam === "ENEMY" ? "PLAYER" : null);
 
-        if (anchor !== "center" && !anchorCharacter) {
+        let basePosition;
+
+        if (anchor === "enemy_formation" || anchor === "target_formation" || anchor === "formation") {
+            basePosition = this.getFormationCenter(
+                anchor === "formation" ? (config.team || enemyTeam) : enemyTeam
+            );
+
+            // Nếu đội hình không còn nhân vật, fallback về mục tiêu cụ thể.
+            if (!basePosition && target) {
+                basePosition = {
+                    x: target.positionX,
+                    y: target.positionY
+                };
+            }
+        } else if (anchor === "center") {
+            // Tọa độ world (0, 0) không phải tâm màn hình đáng tin cậy.
+            // Với anchor center, dùng tâm đội hình địch nếu xác định được.
+            basePosition = this.getFormationCenter(enemyTeam) || { x: 0, y: 0 };
+        } else {
+            const anchorCharacter = anchor === "target" ? target : source;
+            if (!anchorCharacter) {
+                return;
+            }
+            basePosition = {
+                x: anchorCharacter.positionX,
+                y: anchorCharacter.positionY
+            };
+        }
+
+        if (!basePosition) {
             return;
         }
 
@@ -142,12 +204,8 @@ class BattleEffectManager {
         effect.onRemoved = () => this.activeEffects.delete(effect);
         this.activeEffects.add(effect);
 
-        const baseX = anchor === "center"
-            ? 0
-            : anchorCharacter.positionX;
-        const baseY = anchor === "center"
-            ? 0
-            : anchorCharacter.positionY;
+        const baseX = basePosition.x;
+        const baseY = basePosition.y;
 
         effect.setPosition(
             baseX + (Number(config.offsetX) || 0),
