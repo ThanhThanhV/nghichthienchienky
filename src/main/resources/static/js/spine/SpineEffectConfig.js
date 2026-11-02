@@ -52,7 +52,7 @@ window.SPINE_EFFECT_CONFIG = {
                     file: "seffect_41514121013",
                     animation: "animation_0",
                     impactRatio: 0.5,
-                    anchor: "target"
+                    anchor: "enemy_formation"
                 }
             },
             TOHKA_DARK_ULTIMATE_3: {
@@ -73,9 +73,18 @@ window.SPINE_EFFECT_CONFIG = {
             }
         };
 
-        // Không map tohka_active / skill_effect_2 vào effect cũ.
-        // Chờ xác định đúng asset/animation riêng của Tohka Dark.
-        const selected = definitions[normalizedSkillCode]?.[phase];
+        // Runtime hiện tại phát mã animation "tohka_active" ở event cast,
+        // còn event DAMAGE dùng mã effect "skill_effect_2".
+        // Chỉ alias trong phạm vi heroCode tohka_dark.
+        const skillAliases = {
+            TOHKA_ACTIVE: "TOHKA_DARK_ACTIVE_2",
+            SKILL_EFFECT_2: "TOHKA_DARK_ACTIVE_2"
+        };
+        const definitionKey = definitions[normalizedSkillCode]
+            ? normalizedSkillCode
+            : skillAliases[normalizedSkillCode];
+
+        const selected = definitions[definitionKey]?.[phase];
         if (!selected) {
             return [];
         }
