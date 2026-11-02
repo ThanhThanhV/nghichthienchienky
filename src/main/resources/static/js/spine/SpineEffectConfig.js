@@ -46,6 +46,15 @@ window.SPINE_EFFECT_CONFIG = {
                     code: "tohka_dark_skill_2_impact",
                     file: "seffect_41514121012",
                     animation: "animation_0",
+                    // Đồng bộ từng DAMAGE theo thứ tự 5 hit được khai báo
+                    // trực tiếp trong animation_0 của asset Spine.
+                    impactEvents: [
+                        "qishou_11_5_5",
+                        "qishou_11_5_4",
+                        "qishou_11_5_3",
+                        "qishou_11_5_2",
+                        "qishou_11_5_1"
+                    ],
                     impactRatio: 0.5,
                     anchor: "enemy_formation"
                 }
