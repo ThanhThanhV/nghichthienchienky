@@ -77,7 +77,7 @@
                     <label class="upload-box">ATLAS *<input id="atlas-file" type="file" accept=".atlas,.txt,text/plain" required><span id="atlas-name">Chọn file .atlas</span></label>
                     <label class="upload-box wide">TEXTURE PNG *<input id="texture-files" type="file" accept=".png,image/png" multiple required><span id="texture-names">Chọn một hoặc nhiều file .png</span></label>
                 </div>
-                <div class="upload-hint">Preview sử dụng file ngay trên trình duyệt. Bản upload và lưu vĩnh viễn vào assets dự án sẽ được nối ở bước lưu dữ liệu.</div>
+                <div class="upload-hint">Preview chạy trực tiếp từ file đã chọn. Khi lưu, backend sẽ kiểm tra và ghi bộ Spine vào thư mục assets dùng chung.</div>
                 <button id="load-preview" class="secondary-button" type="button">TẢI ASSETS & ĐỌC ANIMATION</button>
             </section>
 
@@ -85,7 +85,7 @@
                 <div class="section-heading"><span>04</span><div><h2>Kỹ năng nhân vật</h2><p>5 kỹ năng theo thứ tự hệ thống hiện tại.</p></div></div>
                 <div id="skill-editor" class="skill-editor"></div>
             </section>
-            <button class="save-button" type="button" disabled title="Chờ hoàn thiện API lưu dữ liệu">LƯU TƯỚNG · SẼ MỞ Ở BƯỚC TIẾP THEO</button>
+            <button id="save-hero" class="save-button" type="submit" disabled>LƯU TƯỚNG</button>
         </form>
 
         <aside class="preview-column">
