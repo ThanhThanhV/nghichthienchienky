@@ -351,9 +351,8 @@
                 this.renderTeam("player-formation", this.state.playerUnits, "PLAYER");
                 this.renderTeam("enemy-formation", this.state.enemyUnits, "ENEMY");
             } else {
-                this.state.playerUnits.concat(this.state.enemyUnits).forEach(unit => {
-                    this.updateUnitCard(unit);
-                });
+                this.state.playerUnits.forEach(unit => this.updateUnitCard(unit, "PLAYER"));
+                this.state.enemyUnits.forEach(unit => this.updateUnitCard(unit, "ENEMY"));
             }
             this.renderTurnOrder();
             this.updateControls();
@@ -404,30 +403,12 @@
             slot.dataset.spineSkeleton = unit.spineSkeleton || "";
             if (unit.alive === false) slot.classList.add("unit-dead");
 
-            const level = document.createElement("span");
-            level.className = "unit-level";
-            level.textContent = "Lv." + (unit.level || 1);
-
-            const visual = document.createElement("div");
-            visual.className = "unit-visual";
-            visual.dataset.avatarCode = unit.avatarCode || "";
-            visual.dataset.spineSkeleton = unit.spineSkeleton || "";
-            visual.textContent = this.avatarText(unit.heroName || unit.heroCode);
-
             const effects = document.createElement("div");
             effects.className = "unit-effects";
             effects.setAttribute("aria-label", "Hiệu ứng đang có");
 
             const info = document.createElement("div");
             info.className = "unit-info";
-
-            const name = document.createElement("div");
-            name.className = "unit-name";
-            name.textContent = unit.heroName || unit.heroCode || "Unknown";
-
-            const role = document.createElement("div");
-            role.className = "unit-role";
-            role.textContent = unit.role || "TU SĨ";
 
             const hpBar = document.createElement("div");
             hpBar.className = "hp-bar";
@@ -437,24 +418,17 @@
             if (Number(unit.hpPercent) <= 25) hpFill.classList.add("hp-critical");
             hpBar.appendChild(hpFill);
 
-            const resourceBar = document.createElement("div");
-            resourceBar.className = "unit-resource-bar";
-            const resourceFill = document.createElement("div");
-            resourceFill.className = "unit-resource-fill";
-            resourceFill.style.width = "0%";
-            resourceBar.appendChild(resourceFill);
-
             const hpText = document.createElement("div");
             hpText.className = "hp-text";
             hpText.textContent = this.formatNumber(unit.currentHp) + " / " + this.formatNumber(unit.maxHp);
 
-            info.append(name, role, hpBar, resourceBar, hpText);
-            slot.append(level, visual, effects, info);
+            info.append(hpBar, hpText);
+            slot.append(effects, info);
             this.renderEffectBadges(team, unit.instanceId);
         },
 
-        updateUnitCard(unit) {
-            const team = unit.instanceId < 0 ? "ENEMY" : "PLAYER";
+        updateUnitCard(unit, team) {
+            if (!team) return;
             const container = document.getElementById(team === "PLAYER" ? "player-formation" : "enemy-formation");
             const card = container?.querySelector('[data-instance-id="' + unit.instanceId + '"]');
             if (!card) return;
@@ -582,7 +556,7 @@
             if (event.maxHp != null) unit.maxHp = Number(event.maxHp);
             unit.hpPercent = unit.maxHp > 0 ? unit.currentHp / unit.maxHp * 100 : 0;
             if (event.alive != null) unit.alive = event.alive;
-            this.updateUnitCard(unit);
+            this.updateUnitCard(unit, team);
             if (kind !== "neutral") this.renderTurnOrder();
         },
 
@@ -593,7 +567,7 @@
                 unit.alive = false;
                 unit.currentHp = 0;
                 unit.hpPercent = 0;
-                this.updateUnitCard(unit);
+                this.updateUnitCard(unit, team);
                 this.renderTurnOrder();
             }
         },

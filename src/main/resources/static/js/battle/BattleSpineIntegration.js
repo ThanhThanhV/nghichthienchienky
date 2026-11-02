@@ -131,6 +131,39 @@ class BattleSpineIntegration {
         }
 
         this.formation.setLayout(this.getLayout());
+        this.positionCharactersFromSlots();
+    }
+
+    /**
+     * Căn tâm từng skeleton theo đúng ô 3x3 đang hiển thị trên giao diện.
+     * Nhờ vậy Spine, thanh máu và số sát thương dùng chung một vị trí nhân vật.
+     */
+    positionCharactersFromSlots() {
+        if (!this.canvas || !this.formation) {
+            return;
+        }
+
+        const canvasRect = this.canvas.getBoundingClientRect();
+        const canvasCenterX = canvasRect.left + canvasRect.width / 2;
+        const canvasBottom = canvasRect.bottom;
+
+        for (const team of ["PLAYER", "ENEMY"]) {
+            const container = document.getElementById(
+                team === "PLAYER" ? "player-formation" : "enemy-formation"
+            );
+            if (!container) continue;
+
+            for (const entry of this.formation.getTeamCharacters(team)) {
+                const slot = [...container.querySelectorAll(".unit-slot")]
+                    .find(element => element.dataset.instanceId === String(entry.instanceId));
+                if (!slot) continue;
+
+                const rect = slot.getBoundingClientRect();
+                const x = rect.left + rect.width / 2 - canvasCenterX;
+                const y = canvasBottom - (rect.top + rect.height * 0.39);
+                entry.character.setPosition(x, y);
+            }
+        }
     }
 
     /**
@@ -229,7 +262,8 @@ class BattleSpineIntegration {
                         "-" + unit.team + "-" + instanceId
                 });
 
-                character.setScale(Number(config.displayScale ?? 1));
+                character.setScale(Number(config.displayScale ?? 0.45));
+                character.setFacingLeft(unit.team === "ENEMY");
 
                 this.formation.addCharacter(
                     unit.team,
@@ -238,6 +272,7 @@ class BattleSpineIntegration {
                     row * 3 + column
                 );
 
+                const animations = character.getAnimationNames();
                 const idleAnimation =
                     character.animationController.resolveIdleAnimation();
 
@@ -268,6 +303,7 @@ class BattleSpineIntegration {
         if (this.visibleCharacterCount > 0) {
             document.querySelector(".battle-page")
                 ?.classList.add("battle-spine-active");
+            this.positionCharactersFromSlots();
         }
     }
 

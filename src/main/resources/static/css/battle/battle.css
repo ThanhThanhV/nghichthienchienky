@@ -425,3 +425,43 @@ button { font: inherit; cursor: pointer; }
     position: relative;
     z-index: 4;
 }
+
+
+/* Battle view: keep the battlefield clean; show only Spine units and per-unit HP. */
+.battle-spine-active .unit-slot {
+    overflow: visible;
+    padding: 4px;
+}
+
+.battle-spine-active .unit-info {
+    padding: 4px 5px 3px;
+    border: 0;
+    background: linear-gradient(180deg, rgba(4, 8, 16, .12), rgba(4, 8, 16, .88));
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .28);
+}
+
+.battle-spine-active .hp-bar {
+    height: 7px;
+    margin-top: 0;
+    border: 1px solid rgba(220, 231, 245, .22);
+}
+
+.battle-spine-active .hp-text {
+    margin-top: 3px;
+    color: #e3eaf5;
+    font-size: 9px;
+    font-weight: 700;
+    text-shadow: 0 1px 3px #000;
+}
+
+.battle-spine-active .unit-effects {
+    top: 3px;
+    right: 3px;
+}
+
+.battle-spine-active .damage-number {
+    top: 28%;
+    left: 50%;
+    z-index: 12;
+    font-size: clamp(16px, 1.5vw, 22px);
+}

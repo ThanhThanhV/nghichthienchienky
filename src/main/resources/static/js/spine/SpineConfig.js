@@ -63,9 +63,9 @@
             atlas: directory + definition.base + ".atlas",
             textures: definition.textures.map(file => directory + file),
             scale: 0.2,
-            displayScale: 0.85,
+            displayScale: 0.45,
             offsetX: 0,
-            offsetY: -180
+            offsetY: 0
         };
 
         characters[key] = character;
