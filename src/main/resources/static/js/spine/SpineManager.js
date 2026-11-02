@@ -120,19 +120,41 @@ class SpineManager {
     async loadTextures(paths) {
         this.initialize();
 
-        const newPaths = paths.filter(path => !this.textureUrls.has(this.normalizePath(path)));
+        const entries = paths.map(entry => {
+            if (typeof entry === "string") {
+                const normalizedUrl = entry.replace(/\\\\/g, "/");
+                return {
+                    name: normalizedUrl.split("/").pop(),
+                    url: entry
+                };
+            }
 
-        if (newPaths.length === 0) {
+            return {
+                name: entry.name,
+                url: entry.url
+            };
+        });
+
+        const newEntries = entries.filter(entry =>
+            entry.name &&
+            entry.url &&
+            !this.textureUrls.has(this.normalizePath(entry.url))
+        );
+
+        if (newEntries.length === 0) {
             return;
         }
 
-        for (const path of newPaths) {
+        for (const entry of newEntries) {
             this.textureUrls.set(
-                this.normalizePath(path),
-                path
+                this.normalizePath(entry.name),
+                entry.url
             );
-
-            this.assetManager.loadTexture(path);
+            this.textureUrls.set(
+                this.normalizePath(entry.url),
+                entry.url
+            );
+            this.assetManager.loadTexture(entry.url);
         }
 
         await this.waitForAssets();
@@ -348,6 +370,8 @@ class SpineManager {
         this.effects = [];
         this.characters = [];
         this.spineAssetCache.clear();
+        this.textureUrls.clear();
+        this.loadingTextures.clear();
         this.renderer?.dispose();
         this.renderer = null;
         this.assetManager = null;
