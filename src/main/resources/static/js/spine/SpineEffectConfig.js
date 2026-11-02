@@ -1,101 +1,79 @@
 /**
- * Mapping hiệu ứng Spine theo heroCode.skillCode hoặc effectCode.
+ * Mapping effect Spine riêng cho Tohka Hắc Ám.
  *
- * Tohka Dark dùng các bộ seffect được export riêng:
- * - 41514111011 / 11012 / 11013: hiệu ứng lúc bắt đầu đánh, tung kỹ năng, đại chiêu.
- * - 41514121011 / 21013 / 21014: hiệu ứng va chạm tương ứng.
+ * Skill code được tạo từ GameBootstrapDataInitializer:
+ * TOHKA_DARK_BASIC_1     - Kiếm chém
+ * TOHKA_DARK_ACTIVE_2    - Kiếm khí
+ * TOHKA_DARK_ULTIMATE_3  - Thiên thần giáng thế
  *
- * Các asset này đều dùng animation_0 (riêng 21014 có thêm animation_1).
- * Các event Spine trong file export là marker nội bộ của asset; runtime hiện tại
- * không cần phụ thuộc vào tên event vì SpineEffect hỗ trợ impactRatio fallback.
+ * Không dùng mapping theo event type chung để tránh lấy nhầm cấu hình
+ * của Tohka thường hoặc gán nhầm effect khi có nhiều kỹ năng cùng loại.
  */
 window.SPINE_EFFECT_CONFIG = {
     effects: {},
 
-    resolveEffects({ event, phase, heroCode }) {
+    resolveEffects({ event, phase, heroCode, skillCode }) {
         if (String(heroCode || "").toLowerCase() !== "tohka_dark") {
             return [];
         }
 
-        const type = String(event?.type || "").toUpperCase();
-        const basePath = "/assets/spine/seffects/tohka_dark/";
+        const normalizedSkillCode = String(skillCode || event?.skillCode || "")
+            .trim()
+            .toUpperCase();
 
+        const basePath = "/assets/spine/seffects/tohka_dark/";
         const definitions = {
-            BASIC_ATTACK: {
+            TOHKA_DARK_BASIC_1: {
                 cast: {
-                    code: "tohka_dark_basic_cast",
+                    code: "tohka_dark_skill_1_cast",
                     file: "seffect_41514111011",
                     animation: "animation_0",
                     impactRatio: 0.48,
-                    anchor: "source",
-                    layer: "FRONT"
+                    anchor: "source"
                 },
                 impact: {
-                    code: "tohka_dark_basic_impact",
+                    code: "tohka_dark_skill_1_impact",
                     file: "seffect_41514121011",
                     animation: "animation_0",
                     impactRatio: 0.45,
-                    anchor: "target",
-                    layer: "FRONT"
+                    anchor: "target"
                 }
             },
-            ATTACK: {
+            TOHKA_DARK_ACTIVE_2: {
                 cast: {
-                    code: "tohka_dark_basic_cast",
-                    file: "seffect_41514111011",
-                    animation: "animation_0",
-                    impactRatio: 0.48,
-                    anchor: "source",
-                    layer: "FRONT"
-                },
-                impact: {
-                    code: "tohka_dark_basic_impact",
-                    file: "seffect_41514121011",
-                    animation: "animation_0",
-                    impactRatio: 0.45,
-                    anchor: "target",
-                    layer: "FRONT"
-                }
-            },
-            ACTIVE_SKILL: {
-                cast: {
-                    code: "tohka_dark_active_cast",
+                    code: "tohka_dark_skill_2_cast",
                     file: "seffect_41514111012",
                     animation: "animation_0",
                     impactRatio: 0.55,
-                    anchor: "source",
-                    layer: "FRONT"
+                    anchor: "source"
                 },
                 impact: {
-                    code: "tohka_dark_active_impact",
+                    code: "tohka_dark_skill_2_impact",
                     file: "seffect_41514121013",
                     animation: "animation_0",
                     impactRatio: 0.5,
-                    anchor: "target",
-                    layer: "FRONT"
+                    anchor: "target"
                 }
             },
-            ULTIMATE_SKILL: {
+            TOHKA_DARK_ULTIMATE_3: {
                 cast: {
-                    code: "tohka_dark_ultimate_cast",
+                    code: "tohka_dark_skill_3_cast",
                     file: "seffect_41514111013",
                     animation: "animation_0",
                     impactRatio: 0.62,
-                    anchor: "source",
-                    layer: "FRONT"
+                    anchor: "source"
                 },
                 impact: {
-                    code: "tohka_dark_ultimate_impact",
+                    code: "tohka_dark_skill_3_impact",
                     file: "seffect_41514121014",
                     animation: "animation_0",
                     impactRatio: 0.62,
-                    anchor: "target",
-                    layer: "FRONT"
+                    anchor: "target"
                 }
             }
         };
 
-        const selected = definitions[type]?.[phase];
+        const selected = definitions[normalizedSkillCode]?.[phase];
         if (!selected) {
             return [];
         }
@@ -114,7 +92,11 @@ window.SPINE_EFFECT_CONFIG = {
             skeleton: basePath + selected.file + ".json",
             atlas: basePath + selected.file + ".atlas",
             textures: textures.map(file => basePath + file),
-            displayScale: 1,
+            // Effect được export ở world scale lớn hơn nhân vật.
+            // Giảm riêng effect để tương quan với displayScale 0.45 của hero.
+            scale: 0.2,
+            displayScale: 0.2,
+            layer: "FRONT",
             phase
         }];
     }
