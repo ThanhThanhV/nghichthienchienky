@@ -40,6 +40,12 @@ public class HeroDefinition {
     @Column(name = "spine_skeleton", length = 255)
     private String spineSkeleton;
 
+    @Column(name = "spine_atlas", length = 255)
+    private String spineAtlas;
+
+    @Column(name = "spine_textures", columnDefinition = "LONGTEXT")
+    private String spineTextures;
+
     @Column(name = "enabled", nullable = false)
     private Boolean enabled = true;
 
@@ -171,6 +177,41 @@ public class HeroDefinition {
      */
     public String getSpineSkeleton() {
         return spineSkeleton;
+    }
+
+    /**
+     * Lấy đường dẫn atlas Spine.
+     *
+     * @return URL atlas
+     */
+    public String getSpineAtlas() {
+        return spineAtlas;
+    }
+
+    /**
+     * Lấy danh sách URL texture Spine dưới dạng JSON.
+     *
+     * @return JSON texture URLs
+     */
+    public String getSpineTextures() {
+        return spineTextures;
+    }
+
+    /**
+     * Cập nhật đầy đủ bộ tài nguyên Spine của nhân vật.
+     *
+     * @param skeletonUrl URL skeleton JSON
+     * @param atlasUrl URL atlas
+     * @param texturesJson Danh sách texture URL dạng JSON
+     */
+    public void updateSpineAssets(
+            String skeletonUrl,
+            String atlasUrl,
+            String texturesJson
+    ) {
+        this.spineSkeleton = skeletonUrl;
+        this.spineAtlas = atlasUrl;
+        this.spineTextures = texturesJson;
     }
 
     /**
