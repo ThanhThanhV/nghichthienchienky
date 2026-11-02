@@ -153,7 +153,7 @@ public class BattleEffectProcessor {
 
         List<BattleUnitState> targets = buff
                 ? selectAllies(battle, source, effect.targetMode())
-                : selectEnemyTargets(battle, source, effect.targetMode());
+                : targetSelector.selectTargets(battle, source, effect.targetMode());
 
         BigDecimal value = effect.multiplier()
                 .multiply(new BigDecimal("100"))
@@ -206,7 +206,7 @@ public class BattleEffectProcessor {
             throw new IllegalArgumentException("CC duration must be positive");
         }
 
-        List<BattleUnitState> targets = selectEnemyTargets(battle, source, effect.targetMode());
+        List<BattleUnitState> targets = targetSelector.selectTargets(battle, source, effect.targetMode());
 
         for (BattleUnitState target : targets) {
             boolean immune = target.getImmunityManager()
