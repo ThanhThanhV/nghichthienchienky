@@ -11,6 +11,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Quyết định hành động cho đội ENEMY trong các trận PvE.
@@ -51,7 +52,7 @@ public class PveBattleAi {
         }
 
         BattleTargetMode tacticalMode = switch (
-                actor.getRole() == null ? "" : actor.getRole().trim().toUpperCase()
+                actor.getRole() == null ? "" : actor.getRole().trim().toUpperCase(Locale.ROOT)
         ) {
             case "ASSASSIN" -> BattleTargetMode.LOWEST_HP;
             case "MAGE", "SUPPORT" -> BattleTargetMode.HIGHEST_ATK;
