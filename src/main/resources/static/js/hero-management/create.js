@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function extractAtlasPages(atlasText) {
         return atlasText.split(/\r?\n/).map(line => line.trim())
             .filter(line => /\.png(?:\s|$)/i.test(line))
-            .map(line => line.split(/\s+/)[0].split("/").pop().split("\\\\").pop());
+            .map(line => line.split(/\\s+/)[0].split(/[\\\\/]/).pop());
     }
 
     async function loadPreview() {
@@ -259,7 +259,7 @@ document.addEventListener("DOMContentLoaded", () => {
             description: value("description"),
             baseStats: collectStats("base"),
             growthStats: collectStats("growth"),
-            skills: skillTypes.map(([,], index) => {
+            skills: skillTypes.map((skillType, index) => {
                 const n = index + 1;
                 return {
                     name: value("skillName" + n),
