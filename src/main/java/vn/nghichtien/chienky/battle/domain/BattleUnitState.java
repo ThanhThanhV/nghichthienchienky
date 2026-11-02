@@ -145,6 +145,7 @@ public class BattleUnitState {
         if (currentHp.compareTo(BigDecimal.ZERO) <= 0) {
             currentHp = BigDecimal.ZERO;
             alive = false;
+            periodicEffectManager.clear();
         }
 
         return actualDamage;
