@@ -122,7 +122,7 @@ class SpineManager {
 
         const entries = paths.map(entry => {
             if (typeof entry === "string") {
-                const normalizedUrl = entry.replace(/\\\\/g, "/");
+                const normalizedUrl = entry.replace(/\\/g, "/");
                 return {
                     name: normalizedUrl.split("/").pop(),
                     url: entry
