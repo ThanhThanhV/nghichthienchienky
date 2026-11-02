@@ -41,14 +41,13 @@ window.SPINE_EFFECT_CONFIG = {
                 }
             },
             TOHKA_DARK_ACTIVE_2: {
-                // Không phát cast effect của chiêu cũ (ngai vàng rơi xuống).
-                // Chiêu active chỉ giữ effect mới ở phase impact.
-                impact: {
-                    code: "tohka_dark_skill_2_impact",
+                // Các mốc qishou_* là event khởi chiêu, vì vậy effect phải
+                // xuất hiện tại vị trí của Tohka (source), không neo lên góc
+                // đội hình địch như cấu hình cũ.
+                cast: {
+                    code: "tohka_dark_skill_2_cast",
                     file: "seffect_41514121012",
                     animation: "animation_0",
-                    // Đồng bộ từng DAMAGE theo thứ tự 5 hit được khai báo
-                    // trực tiếp trong animation_0 của asset Spine.
                     impactEvents: [
                         "qishou_11_5_5",
                         "qishou_11_5_4",
@@ -57,7 +56,7 @@ window.SPINE_EFFECT_CONFIG = {
                         "qishou_11_5_1"
                     ],
                     impactRatio: 0.5,
-                    anchor: "enemy_formation"
+                    anchor: "source"
                 }
             },
             TOHKA_DARK_ULTIMATE_3: {
