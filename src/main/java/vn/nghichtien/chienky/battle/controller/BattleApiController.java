@@ -12,7 +12,7 @@ import vn.nghichtien.chienky.battle.dto.BattlePlaybackDTO;
 import vn.nghichtien.chienky.battle.service.BattleSessionService;
 
 /**
- * API phục vụ giao diện phát lại trận chiến.
+ * API phục vụ khởi tạo và phát lại trận chiến.
  */
 @RestController
 @RequestMapping("/api/battle")
@@ -25,12 +25,39 @@ public class BattleApiController {
     }
 
     /**
-     * Tạo trận PvE từ đội hình hiện tại của người chơi.
+     * Tạo trận PvE tự do từ đội hình hiện tại của người chơi.
      */
     @PostMapping("/start")
     public BattlePlaybackDTO start(Authentication authentication) {
         try {
             return battleSessionService.startBattle(authentication.getName());
+        } catch (IllegalStateException exception) {
+            throw new ResponseStatusException(
+                    HttpStatus.CONFLICT,
+                    exception.getMessage(),
+                    exception
+            );
+        }
+    }
+
+    /**
+     * Tạo trận Campaign tại ải đã được mở khóa.
+     */
+    @PostMapping("/campaign/{stageNumber}/start")
+    public BattlePlaybackDTO startCampaign(
+            Authentication authentication,
+            @PathVariable int stageNumber
+    ) {
+        try {
+            return battleSessionService.startCampaignBattle(
+                    authentication.getName(), stageNumber
+            );
+        } catch (IllegalArgumentException exception) {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND,
+                    exception.getMessage(),
+                    exception
+            );
         } catch (IllegalStateException exception) {
             throw new ResponseStatusException(
                     HttpStatus.CONFLICT,

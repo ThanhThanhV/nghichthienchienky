@@ -9,13 +9,16 @@
         busy: false,
         autoTimer: null,
         activeEffects: new Map(),
+        campaignStages: [],
+        selectedStageNumber: 1,
 
         init() {
             this.bindControls();
+            this.loadCampaign();
             this.updateControls();
             this.renderEmptyTeams();
             this.setStatus("CHƯA VÀO TRẬN");
-            this.setSummary("Đội hình sẽ được tải từ dữ liệu tài khoản của bạn. Nhấn Bắt đầu chiến đấu để tạo một trận PvE.");
+            this.setSummary("Chọn ải Campaign đã mở khóa, sau đó khiêu chiến để nhận thưởng và mở hành trình tiếp theo.");
             this.addLog("Sẵn sàng tiến vào chiến trường.", "skill");
         },
 
@@ -45,6 +48,59 @@
 
             document.getElementById("clear-log-button")?.addEventListener("click", () => {
                 this.clearLog();
+            });
+
+            document.getElementById("campaign-stage-list")?.addEventListener("click", event => {
+                const button = event.target.closest("[data-stage-number]");
+                if (!button || button.disabled || this.busy || this.battleId && !this.state?.finished) return;
+                this.selectedStageNumber = Number(button.dataset.stageNumber);
+                this.renderCampaignStages();
+                this.updateControls();
+            });
+        },
+
+        async loadCampaign() {
+            try {
+                const response = await fetch("/api/pve/campaign", {
+                    credentials: "same-origin",
+                    headers: { "Accept": "application/json" }
+                });
+                if (!response.ok) throw new Error("Không thể tải danh sách ải Campaign.");
+                const data = await response.json();
+                this.campaignStages = Array.isArray(data.stages) ? data.stages : [];
+                if (!this.campaignStages.some(stage => stage.stageNumber === this.selectedStageNumber && stage.unlocked)) {
+                    this.selectedStageNumber = data.highestUnlockedStage || 1;
+                }
+                this.renderCampaignStages();
+                this.updateControls();
+            } catch (error) {
+                this.setSummary(error.message || "Không thể tải Campaign.");
+            }
+        },
+
+        renderCampaignStages() {
+            const container = document.getElementById("campaign-stage-list");
+            if (!container) return;
+            container.replaceChildren();
+
+            this.campaignStages.forEach(stage => {
+                const button = document.createElement("button");
+                button.type = "button";
+                button.className = "campaign-stage" +
+                    (stage.stageNumber === this.selectedStageNumber ? " selected" : "") +
+                    (stage.cleared ? " cleared" : "");
+                button.dataset.stageNumber = String(stage.stageNumber);
+                button.disabled = !stage.unlocked || this.busy ||
+                    Boolean(this.battleId && !this.state?.finished);
+                const title = document.createElement("strong");
+                title.textContent = "ẢI " + String(stage.stageNumber).padStart(2, "0") + " · " + stage.stageName;
+                const reward = document.createElement("span");
+                reward.textContent = "Thưởng: " + this.formatNumber(stage.goldReward) + " vàng · " +
+                    this.formatNumber(stage.playerExpReward) + " EXP";
+                const status = document.createElement("small");
+                status.textContent = stage.cleared ? "ĐÃ VƯỢT" : stage.unlocked ? "CÓ THỂ KHIÊU CHIẾN" : "CHƯA MỞ KHÓA";
+                button.append(title, reward, status);
+                container.appendChild(button);
             });
         },
 
@@ -107,6 +163,7 @@
                 this.auto = false;
             } finally {
                 this.busy = false;
+                this.renderCampaignStages();
                 this.updateControls();
                 if (this.auto && !this.state?.finished) {
                     this.scheduleAuto();
@@ -117,8 +174,10 @@
         async startBattle() {
             this.clearLog();
             this.setStatus("ĐANG TẠO TRẬN");
-            this.setSummary("Đang tải đội hình của bạn và chuẩn bị đối thủ PvE từ danh mục nhân vật...");
-            const payload = await this.postJson("/api/battle/start");
+            this.setSummary("Đang tải đội hình và chuẩn bị đội địch của ải đã chọn...");
+            const payload = await this.postJson(
+                "/api/battle/campaign/" + encodeURIComponent(this.selectedStageNumber) + "/start"
+            );
             if (!payload?.screen) {
                 throw new Error("Dữ liệu khởi tạo trận đấu không hợp lệ.");
             }
@@ -127,8 +186,9 @@
             this.activeEffects.clear();
             this.applyScreen(payload.screen, true);
             this.setStatus("SẴN SÀNG");
-            this.addLog("Đã tạo trận PvE từ đội hình và dữ liệu nhân vật trong database.", "skill");
-            this.setSummary("Hai đội đã vào vị trí. Nhấn Đánh tiếp hoặc bật AUTO để xử lý từng round bằng battle engine.");
+            this.addLog("Bắt đầu Ải " + this.selectedStageNumber + ": " +
+                (payload.screen.campaignStageName || "Campaign") + ".", "skill");
+            this.setSummary("Hai đội đã vào vị trí. Đánh bại toàn bộ địch để nhận thưởng lần đầu và mở khóa ải kế tiếp.");
         },
 
         async advanceRound() {
@@ -152,9 +212,17 @@
                 this.auto = false;
                 this.stopAuto();
                 this.setStatus(payload.screen.winner === "PLAYER" ? "CHIẾN THẮNG" : "THẤT BẠI");
-                this.setSummary(payload.screen.winner === "PLAYER"
-                    ? "Tiên Minh đã chiến thắng trận chiến PvE!"
-                    : "Đội hình của bạn đã thất thủ. Hãy điều chỉnh đội hình và thử lại.");
+                if (payload.screen.winner === "PLAYER") {
+                    const rewards = payload.screen.campaignRewards || {};
+                    this.setSummary(payload.screen.campaignFirstClear
+                        ? "Vượt ải thành công! Nhận " + this.formatNumber(rewards.GOLD) +
+                          " vàng và " + this.formatNumber(rewards.PLAYER_EXP) +
+                          " EXP. Ải kế tiếp đã được mở khóa."
+                        : "Đã vượt qua ải này trước đó. Lần chơi lại không nhận thêm thưởng lần đầu.");
+                    this.loadCampaign();
+                } else {
+                    this.setSummary("Đội hình của bạn đã thất thủ. Hãy điều chỉnh đội hình và thử lại.");
+                }
                 this.addLog(payload.screen.winner === "PLAYER"
                     ? "CHIẾN THẮNG! Địch quân đã bị đánh bại."
                     : "THẤT BẠI! Toàn đội đã bị áp đảo.", "skill");
@@ -267,6 +335,10 @@
                 round: screen.round,
                 finished: screen.finished,
                 winner: screen.winner,
+                campaignStageNumber: screen.campaignStageNumber,
+                campaignStageName: screen.campaignStageName,
+                campaignFirstClear: screen.campaignFirstClear,
+                campaignRewards: screen.campaignRewards || {},
                 playerUnits: (screen.playerUnits || []).map(unit => ({ ...unit })),
                 enemyUnits: (screen.enemyUnits || []).map(unit => ({ ...unit }))
             };
@@ -608,7 +680,7 @@
                 startButton.disabled = this.busy;
                 startButton.textContent = this.busy
                     ? "ĐANG XỬ LÝ..."
-                    : (this.battleId ? (this.state?.finished ? "↻ CHƠI LẠI" : "⚔ ĐÁNH TIẾP") : "⚔ BẮT ĐẦU CHIẾN ĐẤU");
+                    : (this.battleId ? (this.state?.finished ? "↻ CHƠI LẠI ẢI " + this.selectedStageNumber : "⚔ ĐÁNH TIẾP") : "⚔ KHIÊU CHIẾN ẢI " + this.selectedStageNumber);
             }
         },
 
@@ -650,8 +722,9 @@
             this.clearLog();
             this.setRound(0);
             this.setStatus("CHƯA VÀO TRẬN");
-            this.setSummary("Đội hình sẽ được tải từ dữ liệu tài khoản của bạn. Nhấn Bắt đầu chiến đấu để tạo một trận PvE mới.");
+            this.setSummary("Chọn ải Campaign đã mở khóa để bắt đầu một trận chiến mới.");
             this.addLog("Đã đặt lại màn hình chiến đấu.", "skill");
+            this.renderCampaignStages();
             this.updateControls();
         },
 
