@@ -163,6 +163,7 @@
                 this.auto = false;
             } finally {
                 this.busy = false;
+                this.renderCampaignStages();
                 this.updateControls();
                 if (this.auto && !this.state?.finished) {
                     this.scheduleAuto();
