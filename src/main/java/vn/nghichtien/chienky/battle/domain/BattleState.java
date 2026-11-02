@@ -2,6 +2,7 @@ package vn.nghichtien.chienky.battle.domain;
 
 import vn.nghichtien.chienky.battle.engine.BattleEventCollector;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -99,7 +100,16 @@ public class BattleState {
                 .orElse(null);
     }
 
+    /**
+     * Kiểm tra điều kiện kết thúc trận và chỉ phát BATTLE_END một lần.
+     *
+     * @return true nếu trận đấu đã kết thúc.
+     */
     public boolean checkFinished() {
+        if (finished) {
+            return true;
+        }
+
         boolean playerAlive = units.stream().anyMatch(
                 unit -> unit.getTeam() == BattleTeam.PLAYER && unit.isAlive()
         );
@@ -107,16 +117,41 @@ public class BattleState {
                 unit -> unit.getTeam() == BattleTeam.ENEMY && unit.isAlive()
         );
 
-        if (!playerAlive || !enemyAlive) {
-            finished = true;
-            if (playerAlive) {
-                winner = BattleTeam.PLAYER;
-            } else if (enemyAlive) {
-                winner = BattleTeam.ENEMY;
-            }
-            return true;
+        if (playerAlive && enemyAlive) {
+            return false;
         }
-        return false;
+
+        finished = true;
+        if (playerAlive) {
+            winner = BattleTeam.PLAYER;
+        } else if (enemyAlive) {
+            winner = BattleTeam.ENEMY;
+        }
+
+        String result = winner == null ? "DRAW" : winner.name();
+        String message = winner == null
+                ? "Battle ended in a draw"
+                : winner.name() + " team wins";
+
+        eventCollector.record(
+                BattleEventType.BATTLE_END,
+                null,
+                null,
+                result,
+                null,
+                null,
+                BigDecimal.ZERO,
+                false,
+                null,
+                null,
+                null,
+                result,
+                "RESULT",
+                null,
+                message
+        );
+
+        return true;
     }
 
     public String getBattleId() {
