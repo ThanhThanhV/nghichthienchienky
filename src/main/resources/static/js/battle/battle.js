@@ -610,6 +610,17 @@
                 unit.alive = false;
                 unit.currentHp = 0;
                 unit.hpPercent = 0;
+
+                const effectKey = this.effectUnitKey(team, instanceId);
+                const effects = this.activeEffects.get(effectKey);
+                if (effects) {
+                    for (const [key, effect] of effects) {
+                        if (["DOT", "HOT"].includes(effect.category)) effects.delete(key);
+                    }
+                    if (effects.size === 0) this.activeEffects.delete(effectKey);
+                    this.renderEffectBadges(team, instanceId);
+                }
+
                 this.updateUnitCard(unit, team);
                 this.renderTurnOrder();
             }
