@@ -25,6 +25,7 @@ import vn.nghichtien.chienky.hero.repository.HeroSkillDefinitionRepository;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -186,6 +187,13 @@ public class HeroManagementService {
             }
             if (exception instanceof ResponseStatusException responseStatusException) {
                 throw responseStatusException;
+            }
+            if (exception instanceof FileAlreadyExistsException) {
+                throw new ResponseStatusException(
+                        HttpStatus.CONFLICT,
+                        "Thư mục assets của mã tướng đã tồn tại",
+                        exception
+                );
             }
             throw new ResponseStatusException(
                     HttpStatus.INTERNAL_SERVER_ERROR,
