@@ -39,7 +39,7 @@ public class BattleDamageProcessor {
      * 7. Áp dụng SHIELD.
      * 8. Trừ HP và ghi nhận DAMAGE.
      * 9. Áp dụng LIFESTEAL.
-     * 10. Ghi nhận DEATH và kiểm tra kết thúc trận.
+     * 10. Ghi nhận DEATH. BattleTurnProcessor kiểm tra kết thúc sau khi dispatch nội tại.
      *
      * @param battle trận đấu.
      * @param source nhân vật tấn công.
@@ -301,8 +301,6 @@ public class BattleDamageProcessor {
             );
         }
 
-        // 10. Kiểm tra kết thúc trận.
-        battle.checkFinished();
     }
 
     /**
