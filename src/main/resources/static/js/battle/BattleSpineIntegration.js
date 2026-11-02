@@ -238,13 +238,8 @@ class BattleSpineIntegration {
                     row * 3 + column
                 );
 
-                const animations = character.getAnimationNames();
-                const idleAnimation = config.idleAnimation &&
-                    animations.includes(config.idleAnimation)
-                    ? config.idleAnimation
-                    : animations.includes("holdon")
-                        ? "holdon"
-                        : animations[0];
+                const idleAnimation =
+                    character.animationController.resolveIdleAnimation();
 
                 if (unit.alive === false && animations.includes("death")) {
                     character.animationController.play("death", false);
