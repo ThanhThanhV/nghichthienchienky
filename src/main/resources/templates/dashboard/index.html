@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#080d19">
+    <meta name="_csrf" th:content="${_csrf.token}">
+    <meta name="_csrf_header" th:content="${_csrf.headerName}">
     <title>Dashboard - Nghịch Thiên Chiến Ký</title>
     <style>
         * { box-sizing: border-box; }
@@ -33,6 +35,32 @@
             text-decoration: none; font-size: 12px; font-weight: 800; letter-spacing: .08em;
         }
         .button.secondary { color: #e7dfd0; border-color: #48536a; background: #202a3d; }
+        .gift-code-panel {
+            margin: 0 0 26px; padding: 20px; text-align: left;
+            border: 1px solid rgba(212,181,119,.24); border-radius: 12px;
+            background: rgba(8,13,25,.58);
+        }
+        .gift-code-panel h2 { margin: 0 0 8px; color: #f4d58f; font: 700 20px Georgia,serif; }
+        .gift-code-panel p { margin: 0 0 14px; color: #aeb8c9; font-size: 13px; line-height: 1.6; }
+        .gift-code-row { display: flex; gap: 10px; }
+        .gift-code-row input {
+            flex: 1; min-width: 0; padding: 12px; color: #f8fafc;
+            border: 1px solid #465168; border-radius: 8px; background: #0b1220;
+            font: 700 13px Arial,sans-serif; letter-spacing: .08em;
+        }
+        .gift-code-row button {
+            padding: 12px 16px; color: #20190d; border: 1px solid #d9b76e;
+            border-radius: 8px; background: linear-gradient(135deg,#f4dfa9,#bd914e);
+            font-size: 12px; font-weight: 800; cursor: pointer;
+        }
+        .gift-code-row button:disabled { opacity: .55; cursor: wait; }
+        .gift-code-message { margin-top: 12px; color: #cbd5e1; font-size: 13px; line-height: 1.5; }
+        .gift-code-message.success { color: #86efac; }
+        .gift-code-message.error { color: #fca5a5; }
+        @media (max-width: 480px) {
+            .gift-code-row { flex-direction: column; }
+            .gift-code-row button { width: 100%; }
+        }
         .logout-button {
             padding: 10px 18px; color: #aeb8c9; border: 1px solid #465168;
             border-radius: 7px; background: transparent; cursor: pointer;
@@ -52,9 +80,70 @@
         <a class="button secondary" th:href="@{/formation}">⚔ XẾP ĐỘI HÌNH</a>
         <a class="button secondary" th:href="@{/battle}">VÀO CHIẾN ĐẤU</a>
     </nav>
+    <section class="gift-code-panel" aria-labelledby="gift-code-title">
+        <h2 id="gift-code-title">Đổi GIFTCODE</h2>
+        <p>Nhập mã <strong>NTCK-ALL-HEROES</strong> để nhận mỗi tướng trong bộ Spine asset một bản sao. Tướng đã sở hữu sẽ không bị nhân đôi.</p>
+        <form id="gift-code-form">
+            <div class="gift-code-row">
+                <input id="gift-code-input" name="code" type="text" maxlength="80"
+                       placeholder="Nhập GIFTCODE..." autocomplete="off" required>
+                <button id="gift-code-submit" type="submit">ĐỔI MÃ</button>
+            </div>
+            <div id="gift-code-message" class="gift-code-message" role="status" aria-live="polite"></div>
+        </form>
+    </section>
     <form th:action="@{/logout}" method="post">
         <button class="logout-button" type="submit">ĐĂNG XUẤT</button>
     </form>
 </main>
+<script>
+    (() => {
+        const form = document.getElementById("gift-code-form");
+        const input = document.getElementById("gift-code-input");
+        const button = document.getElementById("gift-code-submit");
+        const message = document.getElementById("gift-code-message");
+        const csrfToken = document.querySelector('meta[name="_csrf"]')?.content;
+        const csrfHeader = document.querySelector('meta[name="_csrf_header"]')?.content || "X-CSRF-TOKEN";
+
+        form.addEventListener("submit", async event => {
+            event.preventDefault();
+            const code = input.value.trim();
+            if (!code) return;
+
+            button.disabled = true;
+            button.textContent = "ĐANG ĐỔI...";
+            message.className = "gift-code-message";
+            message.textContent = "";
+
+            try {
+                const headers = { "Accept": "application/json", "Content-Type": "application/json" };
+                if (csrfToken) headers[csrfHeader] = csrfToken;
+                const response = await fetch("/api/player/gift-code/redeem", {
+                    method: "POST",
+                    credentials: "same-origin",
+                    headers,
+                    body: JSON.stringify({ code })
+                });
+                const result = await response.json().catch(() => ({}));
+                if (!response.ok) {
+                    throw new Error(result.message || result.detail || result.error ||
+                        "Không thể đổi GIFTCODE (HTTP " + response.status + ").");
+                }
+
+                message.className = "gift-code-message success";
+                message.textContent = result.message || "Đổi GIFTCODE thành công.";
+                if (Array.isArray(result.grantedHeroNames) && result.grantedHeroNames.length) {
+                    message.textContent += " Đã nhận: " + result.grantedHeroNames.join(", ") + ".";
+                }
+            } catch (error) {
+                message.className = "gift-code-message error";
+                message.textContent = error.message || "Đổi GIFTCODE thất bại.";
+            } finally {
+                button.disabled = false;
+                button.textContent = "ĐỔI MÃ";
+            }
+        });
+    })();
+</script>
 </body>
 </html>
