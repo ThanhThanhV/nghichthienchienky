@@ -9,6 +9,7 @@ class SpineEffect extends SpineCharacter {
         this.layer = String(config.layer || "BACK").toUpperCase();
         this.completionListener = null;
         this.completed = false;
+        this.onRemoved = null;
     }
 
     async load() {
