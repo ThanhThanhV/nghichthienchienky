@@ -171,6 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
         setStatus("Đang tải " + id + "...");
         await disposeCurrent();
 
+        let loadingManager = null;
         try {
             const [jsonResponse, atlasResponse] = await Promise.all([
                 fetch(ROOT + id + ".json"),
@@ -189,11 +190,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (currentGeneration !== generation) return;
 
-            manager = new SpineManager(canvas);
-            manager.initialize();
+            loadingManager = new SpineManager(canvas);
+            loadingManager.initialize();
 
             const textures = pageNames.map(name => ROOT + name);
-            character = await manager.createCharacter({
+            const loadingCharacter = await loadingManager.createCharacter({
                 code: id,
                 skeleton: ROOT + id + ".json",
                 atlas: ROOT + id + ".atlas",
@@ -204,9 +205,13 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
             if (currentGeneration !== generation) {
-                await disposeCurrent();
+                loadingManager.dispose();
                 return;
             }
+
+            manager = loadingManager;
+            character = loadingCharacter;
+            loadingManager = null;
 
             character.setScale(Number(scaleInput.value) || 0.2);
             character.animationController.setSpeed(Number(speedInput.value) || 1);
@@ -226,9 +231,12 @@ document.addEventListener("DOMContentLoaded", () => {
             );
         } catch (error) {
             console.error("[SpineEffectLab]", error);
-            await disposeCurrent();
-            setControls(false);
-            setStatus(error.message || "Không thể tải effect.", true);
+            loadingManager?.dispose();
+            if (currentGeneration === generation) {
+                await disposeCurrent();
+                setControls(false);
+                setStatus(error.message || "Không thể tải effect.", true);
+            }
         }
     }
 
