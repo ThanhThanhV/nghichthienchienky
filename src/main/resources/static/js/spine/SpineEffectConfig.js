@@ -14,7 +14,7 @@ window.SPINE_EFFECT_CONFIG = {
 
     resolveEffects({ event, phase, heroCode, skillCode }) {
         const normalizedHeroCode = String(heroCode || "").trim().toLowerCase();
-        if (!["tohka_dark", "asuna_dark", "gojo"].includes(normalizedHeroCode)) {
+        if (!["tohka_dark", "asuna_dark", "gojo", "iori"].includes(normalizedHeroCode)) {
             return [];
         }
 
@@ -90,6 +90,79 @@ window.SPINE_EFFECT_CONFIG = {
                 }
             }
 ,
+            IORI_BASIC_1: {
+                // qishou_1_1_1 là mốc tung đòn; hit_11_1_1 là mốc trúng.
+                cast: {
+                    code: "iori_basic_cast",
+                    file: "seffect_51515121011",
+                    animation: "animation_0",
+                    impactEvent: "qishou_1_1_1",
+                    anchor: "source",
+                    impactRatio: 0.45
+                },
+                impact: {
+                    code: "iori_basic_impact",
+                    file: "seffect_51515121013",
+                    animation: "animation_0",
+                    impactEvent: "hit_11_1_1",
+                    impactEvents: ["hit_11_1_1"],
+                    anchor: "target",
+                    impactRatio: 0.5
+                }
+            },
+            IORI_ACTIVE_2: {
+                // Active: cast qishou_21_1_1, ba nhịp sát thương hit_21_3_3..1.
+                cast: {
+                    code: "iori_active_cast",
+                    file: "seffect_51515121014",
+                    animation: "animation_0",
+                    impactEvent: "qishou_21_1_1",
+                    anchor: "source",
+                    impactRatio: 0.65
+                },
+                impact: {
+                    code: "iori_active_impact",
+                    file: "seffect_51515121015",
+                    animation: "animation_0",
+                    impactEvents: [
+                        "hit_21_3_3",
+                        "hit_21_3_2",
+                        "hit_21_3_1"
+                    ],
+                    anchor: "enemy_formation",
+                    impactRatio: 0.25
+                }
+            },
+            IORI_ULTIMATE_3: {
+                // Ultimate: bốn mốc khởi chiêu và năm nhịp sát thương.
+                cast: {
+                    code: "iori_ultimate_cast",
+                    file: "seffect_51515121016",
+                    animation: "animation_0",
+                    impactEvents: [
+                        "qishou_31_4_4",
+                        "qishou_31_4_3",
+                        "qishou_31_4_2",
+                        "qishou_31_4_1"
+                    ],
+                    anchor: "source",
+                    impactRatio: 0.7
+                },
+                impact: {
+                    code: "iori_ultimate_impact",
+                    file: "seffect_51515110211",
+                    animation: "animation_0",
+                    impactEvents: [
+                        "hit_31_5_5",
+                        "hit_31_5_4",
+                        "hit_31_5_3",
+                        "hit_31_5_2",
+                        "hit_31_5_1"
+                    ],
+                    anchor: "enemy_formation",
+                    impactRatio: 0.8
+                }
+            },
             GOJO_BASIC_1: {
                 // animation_1 chứa hit_11_1_1 tại 0.1s.
                 impact: {
