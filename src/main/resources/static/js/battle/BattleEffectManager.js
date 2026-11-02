@@ -138,11 +138,19 @@ class BattleEffectManager {
 
         if (formationElement && canvasRect) {
             const formationRect = formationElement.getBoundingClientRect();
+            // SpineManager.setZoom() scale riêng canvas bằng CSS transform.
+            // DOMRect của canvas lúc này đã bị scale, trong khi world unit của
+            // Spine vẫn là CSS pixel trước transform. Chia delta cho zoom để
+            // đưa tọa độ DOM về đúng hệ world mà SceneRenderer đang sử dụng.
+            const zoom = Math.max(0.01, Number(this.manager?.zoom) || 1);
+            const canvasCenterX = canvasRect.left + canvasRect.width / 2;
+            const canvasCenterY = canvasRect.top + canvasRect.height / 2;
+            const formationCenterX = formationRect.left + formationRect.width / 2;
+            const formationCenterY = formationRect.top + formationRect.height / 2;
+
             return {
-                x: formationRect.left + formationRect.width / 2 -
-                    (canvasRect.left + canvasRect.width / 2),
-                y: canvasRect.top + canvasRect.height / 2 -
-                    (formationRect.top + formationRect.height / 2)
+                x: (formationCenterX - canvasCenterX) / zoom,
+                y: (canvasCenterY - formationCenterY) / zoom
             };
         }
 
