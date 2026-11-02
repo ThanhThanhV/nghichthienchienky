@@ -524,9 +524,12 @@
             const effects = this.activeEffects.get(key);
             if (!effects) return;
             for (const [effectKey, effect] of effects) {
-                if (category === "CC" ? effect.category === "CC" : effect.category === category) {
-                    effects.delete(effectKey);
-                }
+                const matches = category === "CC"
+                    ? effect.category === "CC"
+                    : category === "DEBUFF"
+                        ? ["DEBUFF", "DOT"].includes(effect.category)
+                        : ["BUFF", "HOT"].includes(effect.category);
+                if (matches) effects.delete(effectKey);
             }
             if (effects.size === 0) this.activeEffects.delete(key);
             this.renderEffectBadges(event.targetTeam, event.targetInstanceId);
