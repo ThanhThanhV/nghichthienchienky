@@ -19,9 +19,14 @@ import java.util.List;
 public class BattleTurnProcessor {
 
     private final DatabaseSkillExecutor skillExecutor;
+    private final BattleEffectProcessor effectProcessor;
 
-    public BattleTurnProcessor(DatabaseSkillExecutor skillExecutor) {
+    public BattleTurnProcessor(
+            DatabaseSkillExecutor skillExecutor,
+            BattleEffectProcessor effectProcessor
+    ) {
         this.skillExecutor = skillExecutor;
+        this.effectProcessor = effectProcessor;
     }
 
     public BattleActionType getNextActionType(int actionCount) {
@@ -59,6 +64,23 @@ public class BattleTurnProcessor {
                 null, null, null, null, null, null, null,
                 "Round " + round + " started"
         );
+
+        // DOT/HOT tick một lần sau ROUND_START và trước hành động của round.
+        int periodicEventStartIndex = collector.getEvents().size();
+        effectProcessor.tickPeriodicEffects(battle);
+        List<BattleEventDTO> periodicEvents = collector.getEvents()
+                .subList(periodicEventStartIndex, collector.getEvents().size());
+        dispatchActionEventPassives(battle, periodicEvents);
+
+        if (battle.checkFinished()) {
+            collector.record(
+                    BattleEventType.ROUND_END,
+                    null, null, null, null, null, null,
+                    null, null, null, null, null, null, null,
+                    "Round " + round + " finished"
+            );
+            return;
+        }
 
         executePassivesForAllAlive(battle, BattlePassiveTrigger.ROUND_START);
 
