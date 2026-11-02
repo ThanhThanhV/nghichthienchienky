@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080d18">
+    <title>Spine Effect Lab - Nghịch Thiên Chiến Ký</title>
+    <link rel="stylesheet" th:href="@{/css/spine/spine-effect-lab.css}">
+    <script th:src="@{/lib/spine/spine-runtime-3.5/spine-ts/build/spine-webgl.js}"></script>
+    <script th:src="@{/js/spine/SpineAnimationController.js}"></script>
+    <script th:src="@{/js/spine/SpineCharacter.js}"></script>
+    <script th:src="@{/js/spine/SpineManager.js}"></script>
+    <script th:src="@{/js/spine/SpineEffectCatalog.js}"></script>
+    <script th:src="@{/js/spine/SpineEffectLab.js}" defer></script>
+</head>
+<body>
+<main class="effect-lab">
+    <h1>Spine Effect Lab</h1>
+    <p class="effect-intro">
+        Danh mục toàn bộ effect Spine trong thư mục seffects. Chọn nhóm tướng hoặc tìm theo mã,
+        sau đó phát từng animation để quan sát hiệu ứng và event marker. Tên asset gốc được giữ nguyên.
+    </p>
+    <div class="effect-layout">
+        <aside class="effect-sidebar">
+            <div class="effect-filter">
+                <input id="effectSearch" type="search" placeholder="Tìm mã effect / tướng...">
+                <select id="effectGroup" aria-label="Lọc nhóm effect"></select>
+                <span id="effectCount" class="effect-count"></span>
+            </div>
+            <div id="effectList" class="effect-list"></div>
+        </aside>
+        <section class="effect-main">
+            <div class="effect-viewer">
+                <div class="effect-stage"><canvas id="effectCanvas"></canvas></div>
+                <div id="effectStatus" class="effect-status" role="status">Đang khởi tạo...</div>
+                <div class="effect-toolbar">
+                    <button id="effectPause" type="button">Pause</button>
+                    <button id="effectResume" type="button">Resume</button>
+                    <button id="effectRestart" type="button">Restart</button>
+                    <button id="effectCenter" type="button">Center</button>
+                </div>
+                <div class="effect-settings">
+                    <label><input id="effectLoop" type="checkbox" checked> Loop</label>
+                    <label>Speed <input id="effectSpeed" type="range" min="0.1" max="3" step="0.1" value="1"><span id="effectSpeedValue">1.0x</span></label>
+                    <label>Scale <input id="effectScale" type="range" min="0.05" max="1" step="0.05" value="0.2"><span id="effectScaleValue">0.20</span></label>
+                    <label><input id="effectDebug" type="checkbox"> Debug</label>
+                </div>
+            </div>
+            <section class="effect-metadata">
+                <h2>Animations & event markers</h2>
+                <div id="effectAnimations" class="effect-animations">Chọn effect để xem metadata.</div>
+                <p class="effect-note">
+                    Nhóm tướng được suy ra từ tiền tố ID asset, không phải mapping kỹ năng đã xác nhận.
+                    Các nhóm có nhiều biến thể được đánh dấu để tránh gán nhầm tướng.
+                </p>
+            </section>
+        </section>
+    </div>
+</main>
+</body>
+</html>
