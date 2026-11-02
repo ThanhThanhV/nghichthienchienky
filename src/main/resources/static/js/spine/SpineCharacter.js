@@ -11,6 +11,12 @@ class SpineCharacter {
 
         this.loaded = false;
         this.animationController = null;
+
+        this.centerOffsetX = 0;
+        this.centerOffsetY = 0;
+        this.positionX = 0;
+        this.positionY = 0;
+        this.hasPosition = false;
     }
 
     /**
@@ -92,14 +98,32 @@ class SpineCharacter {
 
         this.skeleton.getBounds(offset, size, []);
 
-        this.skeleton.x = -(
+        this.centerOffsetX = -(
             offset.x + size.x / 2
         ) + (this.config.offsetX || 0);
 
-        this.skeleton.y = -(
+        this.centerOffsetY = -(
             offset.y + size.y / 2
         ) + (this.config.offsetY || 0);
 
+        this.applyPosition();
+    }
+
+    /**
+     * Áp dụng tọa độ slot cộng độ lệch căn giữa, có tính đến display scale.
+     */
+    applyPosition() {
+        if (!this.skeleton) {
+            return;
+        }
+
+        const scaleX = Number(this.skeleton.scaleX) || 1;
+        const scaleY = Number(this.skeleton.scaleY) || 1;
+        const baseX = this.hasPosition ? this.positionX : 0;
+        const baseY = this.hasPosition ? this.positionY : 0;
+
+        this.skeleton.x = baseX + this.centerOffsetX * scaleX;
+        this.skeleton.y = baseY + this.centerOffsetY * scaleY;
         this.skeleton.updateWorldTransform();
     }
 
@@ -176,10 +200,11 @@ class SpineCharacter {
             return;
         }
 
-        this.skeleton.x = x;
-        this.skeleton.y = y;
+        this.positionX = Number(x) || 0;
+        this.positionY = Number(y) || 0;
+        this.hasPosition = true;
 
-        this.skeleton.updateWorldTransform();
+        this.applyPosition();
     }
 
     /**
@@ -192,10 +217,11 @@ class SpineCharacter {
             return;
         }
 
-        this.skeleton.scaleX = scale;
-        this.skeleton.scaleY = scale;
+        const normalizedScale = Math.max(0.01, Number(scale) || 1);
+        this.skeleton.scaleX = normalizedScale;
+        this.skeleton.scaleY = normalizedScale;
 
-        this.skeleton.updateWorldTransform();
+        this.applyPosition();
     }
 }
 
