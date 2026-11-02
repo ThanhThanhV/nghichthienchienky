@@ -13,7 +13,8 @@ window.SPINE_EFFECT_CONFIG = {
     effects: {},
 
     resolveEffects({ event, phase, heroCode, skillCode }) {
-        if (String(heroCode || "").toLowerCase() !== "tohka_dark") {
+        const normalizedHeroCode = String(heroCode || "").trim().toLowerCase();
+        if (!["tohka_dark", "asuna_dark"].includes(normalizedHeroCode)) {
             return [];
         }
 
@@ -92,14 +93,16 @@ window.SPINE_EFFECT_CONFIG = {
 
         // Runtime hiện tại phát mã animation "tohka_active" ở event cast,
         // còn event DAMAGE dùng mã effect "skill_effect_2".
-        // Chỉ alias trong phạm vi heroCode tohka_dark.
+        // Alias Tohka chỉ áp dụng riêng cho hero tohka_dark.
         const skillAliases = {
             TOHKA_ACTIVE: "TOHKA_DARK_ACTIVE_2",
             SKILL_EFFECT_2: "TOHKA_DARK_ACTIVE_2"
         };
         const definitionKey = definitions[normalizedSkillCode]
             ? normalizedSkillCode
-            : skillAliases[normalizedSkillCode];
+            : normalizedHeroCode === "tohka_dark"
+                ? skillAliases[normalizedSkillCode]
+                : null;
 
         const selected = definitions[definitionKey]?.[phase];
         if (!selected) {
