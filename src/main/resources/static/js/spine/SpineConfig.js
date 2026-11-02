@@ -126,12 +126,25 @@
                     }
                 }
 
+                let skillAnimations = unit.spineSkillAnimations || {};
+                if (typeof skillAnimations === "string") {
+                    try {
+                        skillAnimations = JSON.parse(skillAnimations);
+                    } catch (error) {
+                        console.error("Spine skill animation mapping không phải JSON hợp lệ:", error);
+                        skillAnimations = {};
+                    }
+                }
+
                 if (Array.isArray(textures) && textures.length > 0) {
                     return {
                         code: unit.heroCode,
                         skeleton: unit.spineSkeleton,
                         atlas: unit.spineAtlas,
                         textures,
+                        skillAnimations: skillAnimations && typeof skillAnimations === "object"
+                            ? skillAnimations
+                            : {},
                         scale: 0.2,
                         displayScale: 0.45,
                         offsetX: 0,
