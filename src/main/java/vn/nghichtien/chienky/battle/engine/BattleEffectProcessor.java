@@ -615,15 +615,19 @@ public class BattleEffectProcessor {
                     int before = target.getStatusEffectManager()
                             .getModifiers().size();
                     target.getStatusEffectManager().dispelModifiers(true);
+                    int removedPeriodic = target.getPeriodicEffectManager()
+                            .dispel(BattleEffectType.HOT);
                     yield before != target.getStatusEffectManager()
-                            .getModifiers().size();
+                            .getModifiers().size() || removedPeriodic > 0;
                 }
                 case DEBUFF -> {
                     int before = target.getStatusEffectManager()
                             .getModifiers().size();
                     target.getStatusEffectManager().dispelModifiers(false);
+                    int removedPeriodic = target.getPeriodicEffectManager()
+                            .dispel(BattleEffectType.DOT);
                     yield before != target.getStatusEffectManager()
-                            .getModifiers().size();
+                            .getModifiers().size() || removedPeriodic > 0;
                 }
                 case CC -> target.getStatusEffectManager()
                         .dispelCrowdControl();
