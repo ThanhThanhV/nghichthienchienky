@@ -148,6 +148,28 @@ public class BattleUnitState {
     }
 
     /**
+     * Hồi sinh nhân vật đã tử vong với lượng HP được chỉ định.
+     *
+     * @param amount lượng HP khi hồi sinh, phải lớn hơn 0
+     * @return lượng HP thực tế sau khi hồi sinh; trả về 0 nếu nhân vật còn sống
+     */
+    public BigDecimal revive(BigDecimal amount) {
+        Objects.requireNonNull(amount, "Revive amount must not be null");
+
+        if (amount.signum() <= 0) {
+            throw new IllegalArgumentException("Revive amount must be positive");
+        }
+
+        if (alive) {
+            return BigDecimal.ZERO;
+        }
+
+        currentHp = amount.min(maxHp);
+        alive = true;
+        return currentHp;
+    }
+
+    /**
      * Hồi HP, không vượt quá HP tối đa.
      */
     public BigDecimal heal(BigDecimal amount) {
