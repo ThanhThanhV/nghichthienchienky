@@ -1,0 +1,151 @@
+
+seffect_51519111011.png
+size: 2029,2042
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bs_zm_chibang02
+  rotate: false
+  xy: 1600, 394
+  size: 292, 287
+  orig: 294, 292
+  offset: 1, 3
+  index: -1
+bs_zm_chibang03
+  rotate: false
+  xy: 1797, 1748
+  size: 229, 292
+  orig: 232, 295
+  offset: 1, 2
+  index: -1
+dizuo
+  rotate: false
+  xy: 1797, 1692
+  size: 169, 54
+  orig: 175, 60
+  offset: 3, 3
+  index: -1
+fangkuai
+  rotate: false
+  xy: 1506, 579
+  size: 81, 81
+  orig: 81, 81
+  offset: 0, 0
+  index: -1
+tx/skill1/longjuanfeng/ljf_0000
+  rotate: true
+  xy: 1600, 683
+  size: 699, 427
+  orig: 932, 828
+  offset: 63, 78
+  index: -1
+tx/skill1/longjuanfeng/ljf_0002
+  rotate: false
+  xy: 912, 1384
+  size: 883, 656
+  orig: 932, 828
+  offset: 0, 86
+  index: -1
+tx/skill1/longjuanfeng/ljf_0006
+  rotate: false
+  xy: 2, 1404
+  size: 908, 636
+  orig: 932, 828
+  offset: 22, 70
+  index: -1
+tx/skill1/longjuanfeng/ljf_0010
+  rotate: false
+  xy: 2, 662
+  size: 869, 740
+  orig: 932, 828
+  offset: 56, 9
+  index: -1
+tx/skill1/longjuanfeng/ljf_0018
+  rotate: true
+  xy: 873, 662
+  size: 720, 725
+  orig: 932, 828
+  offset: 70, 25
+  index: -1
+tx/skill1/longjuanfeng/ljf_0022
+  rotate: true
+  xy: 811, 22
+  size: 638, 693
+  orig: 932, 828
+  offset: 102, 27
+  index: -1
+tx/skill1/longjuanfeng/ljf_0024
+  rotate: false
+  xy: 2, 2
+  size: 807, 658
+  orig: 932, 828
+  offset: 125, 88
+  index: -1
+
+seffect_515191110112.png
+size: 1698,2043
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+tx/skill1/longjuanfeng/ljf_0004
+  rotate: false
+  xy: 867, 1365
+  size: 829, 676
+  orig: 932, 828
+  offset: 1, 73
+  index: -1
+tx/skill1/longjuanfeng/ljf_0008
+  rotate: false
+  xy: 867, 636
+  size: 783, 727
+  orig: 932, 828
+  offset: 90, 0
+  index: -1
+tx/skill1/longjuanfeng/ljf_0014
+  rotate: false
+  xy: 2, 629
+  size: 815, 704
+  orig: 932, 828
+  offset: 117, 10
+  index: -1
+tx/skill1/longjuanfeng/ljf_0016
+  rotate: false
+  xy: 2, 1335
+  size: 863, 706
+  orig: 932, 828
+  offset: 69, 32
+  index: -1
+tx/skill1/longjuanfeng/ljf_0020
+  rotate: false
+  xy: 819, 2
+  size: 716, 632
+  orig: 932, 828
+  offset: 126, 84
+  index: -1
+tx/skill1/longjuanfeng/ljf_0028
+  rotate: false
+  xy: 2, 67
+  size: 701, 560
+  orig: 932, 828
+  offset: 3, 139
+  index: -1
+
+seffect_515191110113.png
+size: 1499,682
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+tx/skill1/longjuanfeng/ljf_0012
+  rotate: false
+  xy: 768, 2
+  size: 729, 678
+  orig: 932, 828
+  offset: 79, 64
+  index: -1
+tx/skill1/longjuanfeng/ljf_0026
+  rotate: false
+  xy: 2, 14
+  size: 764, 666
+  orig: 932, 828
+  offset: 18, 76
+  index: -1

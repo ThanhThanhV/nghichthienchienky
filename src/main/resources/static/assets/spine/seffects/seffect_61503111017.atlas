@@ -1,0 +1,97 @@
+
+seffect_61503111017.png
+size: 1406,1406
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Buff/buff_0000
+  rotate: false
+  xy: 2, 1063
+  size: 357, 341
+  orig: 357, 341
+  offset: 0, 0
+  index: -1
+Buff/buff_0002
+  rotate: false
+  xy: 361, 1063
+  size: 357, 341
+  orig: 357, 341
+  offset: 0, 0
+  index: -1
+Buff/buff_0004
+  rotate: false
+  xy: 720, 1063
+  size: 357, 341
+  orig: 357, 341
+  offset: 0, 0
+  index: -1
+Buff/buff_0006
+  rotate: true
+  xy: 2, 704
+  size: 357, 341
+  orig: 357, 341
+  offset: 0, 0
+  index: -1
+Buff/buff_0008
+  rotate: true
+  xy: 2, 345
+  size: 357, 341
+  orig: 357, 341
+  offset: 0, 0
+  index: -1
+Buff/buff_0010
+  rotate: false
+  xy: 2, 2
+  size: 357, 341
+  orig: 357, 341
+  offset: 0, 0
+  index: -1
+Buff/buff_0012
+  rotate: true
+  xy: 345, 704
+  size: 357, 341
+  orig: 357, 341
+  offset: 0, 0
+  index: -1
+Buff/buff_0014
+  rotate: true
+  xy: 345, 345
+  size: 357, 341
+  orig: 357, 341
+  offset: 0, 0
+  index: -1
+Buff/buff_0016
+  rotate: false
+  xy: 361, 2
+  size: 357, 341
+  orig: 357, 341
+  offset: 0, 0
+  index: -1
+Buff/buff_0018
+  rotate: true
+  xy: 688, 704
+  size: 357, 341
+  orig: 357, 341
+  offset: 0, 0
+  index: -1
+Buff/buff_0020
+  rotate: true
+  xy: 688, 345
+  size: 357, 341
+  orig: 357, 341
+  offset: 0, 0
+  index: -1
+Buff/buff_0022
+  rotate: false
+  xy: 720, 2
+  size: 357, 341
+  orig: 357, 341
+  offset: 0, 0
+  index: -1
+Buff/buff_0024
+  rotate: false
+  xy: 1031, 720
+  size: 357, 341
+  orig: 357, 341
+  offset: 0, 0
+  index: -1

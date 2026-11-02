@@ -1,0 +1,62 @@
+
+seffect_1233161.png
+size: 1183,1183
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+image/txgongji/2/boom/boom_0017
+  rotate: false
+  xy: 836, 877
+  size: 300, 304
+  orig: 432, 447
+  offset: 82, 57
+  index: -1
+image/txgongji/2/boom/boom_0019
+  rotate: false
+  xy: 803, 10
+  size: 378, 384
+  orig: 432, 447
+  offset: 38, 29
+  index: -1
+image/txgongji/2/boom/boom_0021
+  rotate: true
+  xy: 413, 782
+  size: 399, 421
+  orig: 432, 447
+  offset: 30, 13
+  index: -1
+image/txgongji/2/boom/boom_0023
+  rotate: false
+  xy: 2, 758
+  size: 409, 423
+  orig: 432, 447
+  offset: 21, 13
+  index: -1
+image/txgongji/2/boom/boom_0025
+  rotate: true
+  xy: 2, 349
+  size: 407, 416
+  orig: 432, 447
+  offset: 18, 18
+  index: -1
+image/txgongji/2/boom/boom_0027
+  rotate: false
+  xy: 805, 404
+  size: 376, 376
+  orig: 432, 447
+  offset: 41, 35
+  index: -1
+image/txgongji/2/boom/boom_0029
+  rotate: false
+  xy: 420, 14
+  size: 381, 380
+  orig: 432, 447
+  offset: 38, 32
+  index: -1
+image/txgongji/2/boom/boom_0031
+  rotate: true
+  xy: 420, 396
+  size: 384, 383
+  orig: 432, 447
+  offset: 37, 31
+  index: -1

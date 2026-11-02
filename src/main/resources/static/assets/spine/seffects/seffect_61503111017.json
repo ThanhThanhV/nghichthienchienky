@@ -1,0 +1,83 @@
+{
+"skeleton": { "hash": "O4GxC45WJocaTn3IhRxuCMSxAjo", "spine": "3.5.35", "width": 0, "height": 0 },
+"bones": [
+	{ "name": "root" },
+	{ "name": "BG", "parent": "root", "y": 111.42, "scaleX": 3.33, "scaleY": 3.33 },
+	{ "name": "buff", "parent": "root" }
+],
+"slots": [
+	{ "name": "bg", "bone": "BG", "color": "9e9e9eff" },
+	{ "name": "buff", "bone": "buff" }
+],
+"skins": {
+	"default": {
+		"buff": {
+			"Buff/buff_0000": { "width": 357, "height": 341 },
+			"Buff/buff_0002": { "width": 357, "height": 341 },
+			"Buff/buff_0004": { "width": 357, "height": 341 },
+			"Buff/buff_0006": { "width": 357, "height": 341 },
+			"Buff/buff_0008": { "width": 357, "height": 341 },
+			"Buff/buff_0010": { "width": 357, "height": 341 },
+			"Buff/buff_0012": { "width": 357, "height": 341 },
+			"Buff/buff_0014": { "width": 357, "height": 341 },
+			"Buff/buff_0016": { "width": 357, "height": 341 },
+			"Buff/buff_0018": { "width": 357, "height": 341 },
+			"Buff/buff_0020": { "width": 357, "height": 341 },
+			"Buff/buff_0022": { "width": 357, "height": 341 },
+			"Buff/buff_0024": { "width": 357, "height": 341 }
+		}
+	}
+},
+"events": {
+	"hit_1_1_1": {}
+},
+"animations": {
+	"animation_0": {
+		"slots": {
+			"buff": {
+				"color": [
+					{ "time": 0.5333, "color": "fffffffb" },
+					{ "time": 0.8, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0, "name": "Buff/buff_0000" },
+					{ "time": 0.0667, "name": "Buff/buff_0002" },
+					{ "time": 0.1333, "name": "Buff/buff_0004" },
+					{ "time": 0.2, "name": "Buff/buff_0006" },
+					{ "time": 0.2667, "name": "Buff/buff_0008" },
+					{ "time": 0.3333, "name": "Buff/buff_0010" },
+					{ "time": 0.4, "name": "Buff/buff_0012" },
+					{ "time": 0.4667, "name": "Buff/buff_0014" },
+					{ "time": 0.5333, "name": "Buff/buff_0016" },
+					{ "time": 0.6, "name": "Buff/buff_0018" },
+					{ "time": 0.6667, "name": "Buff/buff_0020" },
+					{ "time": 0.7333, "name": "Buff/buff_0022" },
+					{ "time": 0.8, "name": "Buff/buff_0024" }
+				]
+			}
+		},
+		"bones": {
+			"root": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"buff": {
+				"translate": [
+					{ "time": 0, "x": 5.4, "y": 212.4 }
+				],
+				"scale": [
+					{ "time": 0, "x": 0.5, "y": 0.5 },
+					{ "time": 0.4, "x": 2.01, "y": 2.01 }
+				]
+			}
+		},
+		"events": [
+			{ "time": 0, "name": "hit_1_1_1" }
+		]
+	}
+}
+}

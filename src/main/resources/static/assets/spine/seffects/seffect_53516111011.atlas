@@ -1,0 +1,132 @@
+
+seffect_53516111011.png
+size: 1428,1428
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+attack/chuo/chuo_08
+  rotate: false
+  xy: 597, 800
+  size: 589, 117
+  orig: 800, 180
+  offset: 27, 27
+  index: -1
+attack/chuo/chuo_10
+  rotate: false
+  xy: 650, 1022
+  size: 632, 118
+  orig: 800, 180
+  offset: 85, 28
+  index: -1
+attack/chuo/chuo_12
+  rotate: false
+  xy: 2, 1029
+  size: 646, 111
+  orig: 800, 180
+  offset: 106, 31
+  index: -1
+attack/chuo/chuo_14
+  rotate: false
+  xy: 597, 919
+  size: 624, 101
+  orig: 800, 180
+  offset: 138, 36
+  index: -1
+attack/chuo/chuo_16
+  rotate: false
+  xy: 597, 709
+  size: 557, 89
+  orig: 800, 180
+  offset: 204, 42
+  index: -1
+attack/chuo/chuo_18
+  rotate: false
+  xy: 597, 630
+  size: 519, 77
+  orig: 800, 180
+  offset: 236, 49
+  index: -1
+attack/chuo/chuo_20
+  rotate: true
+  xy: 250, 94
+  size: 480, 39
+  orig: 800, 180
+  offset: 245, 68
+  index: -1
+attack/chuo/chuo_22
+  rotate: false
+  xy: 2, 13
+  size: 263, 77
+  orig: 800, 180
+  offset: 385, 52
+  index: -1
+attack/zha_shang/shang_24
+  rotate: false
+  xy: 2, 92
+  size: 246, 482
+  orig: 380, 550
+  offset: 68, 24
+  index: -1
+attack/zha_shang/shang_26
+  rotate: false
+  xy: 2, 576
+  size: 301, 451
+  orig: 380, 550
+  offset: 44, 34
+  index: -1
+attack/zha_shang/shang_28
+  rotate: false
+  xy: 305, 606
+  size: 290, 421
+  orig: 380, 550
+  offset: 47, 43
+  index: -1
+attack/zha_shang/shang_30
+  rotate: true
+  xy: 597, 368
+  size: 260, 382
+  orig: 380, 550
+  offset: 54, 50
+  index: -1
+attack/zha_shang/shang_32
+  rotate: false
+  xy: 981, 314
+  size: 255, 314
+  orig: 380, 550
+  offset: 59, 52
+  index: -1
+attack/zha_shang/shang_34
+  rotate: true
+  xy: 305, 360
+  size: 244, 279
+  orig: 380, 550
+  offset: 69, 54
+  index: -1
+attack/zha_shang/shang_36
+  rotate: true
+  xy: 291, 140
+  size: 218, 270
+  orig: 380, 550
+  offset: 72, 54
+  index: -1
+attack/zha_shang/shang_38
+  rotate: false
+  xy: 291, 10
+  size: 216, 128
+  orig: 380, 550
+  offset: 74, 61
+  index: -1
+attack/zha_shang/shang_40
+  rotate: true
+  xy: 1284, 949
+  size: 191, 109
+  orig: 380, 550
+  offset: 84, 80
+  index: -1
+txs_tx
+  rotate: false
+  xy: 2, 1142
+  size: 1424, 284
+  orig: 1432, 294
+  offset: 4, 5
+  index: -1

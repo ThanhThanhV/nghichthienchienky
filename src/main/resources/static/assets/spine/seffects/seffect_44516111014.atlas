@@ -1,0 +1,614 @@
+
+seffect_44516111014.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+tx/USK/xing_dian/xing_dian_00000
+  rotate: true
+  xy: 1296, 195
+  size: 49, 50
+  orig: 285, 250
+  offset: 99, 95
+  index: -1
+tx/USK/xing_dian/xing_dian_00002
+  rotate: true
+  xy: 1513, 1316
+  size: 82, 72
+  orig: 285, 250
+  offset: 82, 83
+  index: -1
+tx/USK/xing_dian/xing_dian_00004
+  rotate: false
+  xy: 1008, 1276
+  size: 144, 114
+  orig: 285, 250
+  offset: 56, 64
+  index: -1
+tx/USK/xing_dian/xing_dian_00022
+  rotate: true
+  xy: 1118, 246
+  size: 257, 247
+  orig: 285, 250
+  offset: 28, 2
+  index: -1
+tx/USK/xing_dian/xing_dian_00024
+  rotate: true
+  xy: 1118, 2
+  size: 242, 176
+  orig: 285, 250
+  offset: 43, 32
+  index: -1
+tx/USK/xing_dian/xing_dian_00028
+  rotate: true
+  xy: 1995, 64
+  size: 142, 47
+  orig: 285, 250
+  offset: 142, 110
+  index: -1
+tx/spUSK/spUSK_Niaoline/spUSK_Niaoline_00000
+  rotate: true
+  xy: 1733, 692
+  size: 43, 46
+  orig: 396, 234
+  offset: 286, 26
+  index: -1
+tx/spUSK/spUSK_Niaoline/spUSK_Niaoline_00002
+  rotate: true
+  xy: 1296, 21
+  size: 172, 49
+  orig: 396, 234
+  offset: 210, 24
+  index: -1
+tx/spUSK/spUSK_Niaoline/spUSK_Niaoline_00006
+  rotate: false
+  xy: 1199, 1295
+  size: 312, 95
+  orig: 396, 234
+  offset: 68, 7
+  index: -1
+tx/spUSK/spUSK_Niaoline/spUSK_Niaoline_00014
+  rotate: false
+  xy: 1919, 208
+  size: 127, 133
+  orig: 396, 234
+  offset: 213, 32
+  index: -1
+tx/spUSK/spUSK_Rotline/spUSK_Rotline_00000
+  rotate: true
+  xy: 804, 2
+  size: 19, 13
+  orig: 324, 318
+  offset: 186, 37
+  index: -1
+tx/spUSK/spUSK_Rotline/spUSK_Rotline_00002
+  rotate: true
+  xy: 1154, 1293
+  size: 97, 43
+  orig: 324, 318
+  offset: 114, 32
+  index: -1
+tx/spUSK/spUSK_Rotline/spUSK_Rotline_00004
+  rotate: false
+  xy: 1587, 1325
+  size: 214, 73
+  orig: 324, 318
+  offset: 49, 34
+  index: -1
+tx/spUSK/spUSK_Rotline/spUSK_Rotline_00018
+  rotate: true
+  xy: 1820, 1220
+  size: 268, 224
+  orig: 324, 318
+  offset: 47, 37
+  index: -1
+tx/spUSK/spUSK_Rotline/spUSK_Rotline_00022
+  rotate: true
+  xy: 1820, 1490
+  size: 197, 226
+  orig: 324, 318
+  offset: 87, 45
+  index: -1
+tx/spUSK/spUSK_quan_00000
+  rotate: true
+  xy: 320, 14
+  size: 464, 167
+  orig: 491, 198
+  offset: 14, 20
+  index: -1
+tx/spUSK/spUSK_quanzhu_00000
+  rotate: false
+  xy: 1733, 343
+  size: 310, 283
+  orig: 324, 439
+  offset: 7, 6
+  index: -1
+tx/spUSK/spUSK_ripple/spUSK_ripple_00000
+  rotate: true
+  xy: 1919, 43
+  size: 163, 74
+  orig: 589, 274
+  offset: 200, 105
+  index: -1
+tx/spUSK/spUSK_ripple/spUSK_ripple_00006
+  rotate: false
+  xy: 1367, 1084
+  size: 450, 209
+  orig: 589, 274
+  offset: 58, 33
+  index: -1
+tx/spUSK/spUSK_shexian/spUSK_shexian_00000
+  rotate: false
+  xy: 1819, 628
+  size: 221, 590
+  orig: 381, 635
+  offset: 67, 40
+  index: -1
+tx/spUSK/spUSK_zhuguang/spUSK_zhuguang_00000
+  rotate: true
+  xy: 1733, 9
+  size: 332, 184
+  orig: 436, 793
+  offset: 57, 65
+  index: -1
+tx/spUSK/spUSK_zhuguang/spUSK_zhuguang_00001
+  rotate: true
+  xy: 1367, 737
+  size: 345, 420
+  orig: 436, 793
+  offset: 53, 27
+  index: -1
+tx/spUSK/spUSK_zhuguang/spUSK_zhuguang_00002
+  rotate: true
+  xy: 1367, 1689
+  size: 357, 664
+  orig: 436, 793
+  offset: 47, 17
+  index: -1
+tx/spUSK/spUSK_zhuguang/spUSK_zhuguang_00003
+  rotate: false
+  xy: 1008, 1392
+  size: 356, 654
+  orig: 436, 793
+  offset: 50, 13
+  index: -1
+tx/spUSK/spUSK_zhuguang/spUSK_zhuguang_00005
+  rotate: false
+  xy: 1367, 17
+  size: 364, 718
+  orig: 436, 793
+  offset: 40, 7
+  index: -1
+tx/spUSK/spUSK_zhuguang/spUSK_zhuguang_00007
+  rotate: false
+  xy: 1000, 505
+  size: 365, 763
+  orig: 436, 793
+  offset: 32, 4
+  index: -1
+tx/spUSK/spUSK_zhuguang/spUSK_zhuguang_00008
+  rotate: false
+  xy: 633, 1270
+  size: 373, 776
+  orig: 436, 793
+  offset: 29, 4
+  index: -1
+tx/spUSK/spUSK_zhuguang/spUSK_zhuguang_00009
+  rotate: false
+  xy: 628, 484
+  size: 370, 779
+  orig: 436, 793
+  offset: 28, 4
+  index: -1
+tx/spUSK/spUSK_zhuguang/spUSK_zhuguang_00010
+  rotate: false
+  xy: 2, 478
+  size: 291, 783
+  orig: 436, 793
+  offset: 67, 4
+  index: -1
+tx/spUSK/spUSK_zhuguang/spUSK_zhuguang_00011
+  rotate: false
+  xy: 2, 1263
+  size: 308, 783
+  orig: 436, 793
+  offset: 58, 4
+  index: -1
+tx/spUSK/spUSK_zhuguang/spUSK_zhuguang_00012
+  rotate: false
+  xy: 312, 1265
+  size: 319, 781
+  orig: 436, 793
+  offset: 55, 5
+  index: -1
+tx/spUSK/spUSK_zhuguang/spUSK_zhuguang_00013
+  rotate: false
+  xy: 295, 480
+  size: 331, 781
+  orig: 436, 793
+  offset: 50, 6
+  index: -1
+tx/spUSK/spUSK_zhuguang/spUSK_zhuguang_00014
+  rotate: false
+  xy: 804, 23
+  size: 312, 459
+  orig: 436, 793
+  offset: 51, 93
+  index: -1
+tx/spUSK/spUSK_zhuguang/spUSK_zhuguang_00015
+  rotate: false
+  xy: 489, 15
+  size: 313, 463
+  orig: 436, 793
+  offset: 51, 93
+  index: -1
+tx/spUSK/spUSK_zhuguang/spUSK_zhuguang_00016
+  rotate: false
+  xy: 2, 4
+  size: 316, 472
+  orig: 436, 793
+  offset: 49, 92
+  index: -1
+tx/spUSK/spUSK_zhuguang/spUSK_zhuguang_00017
+  rotate: true
+  xy: 1366, 1400
+  size: 287, 452
+  orig: 436, 793
+  offset: 73, 115
+  index: -1
+
+seffect_445161110142.png
+size: 2004,2004
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+tx/USK/xing_dian/xing_dian_00006
+  rotate: true
+  xy: 1865, 676
+  size: 171, 137
+  orig: 285, 250
+  offset: 46, 56
+  index: -1
+tx/USK/xing_dian/xing_dian_00008
+  rotate: false
+  xy: 1328, 317
+  size: 215, 171
+  orig: 285, 250
+  offset: 32, 45
+  index: -1
+tx/USK/xing_dian/xing_dian_00010
+  rotate: false
+  xy: 1701, 1441
+  size: 238, 201
+  orig: 285, 250
+  offset: 22, 29
+  index: -1
+tx/USK/xing_dian/xing_dian_00012
+  rotate: true
+  xy: 1112, 1130
+  size: 246, 212
+  orig: 285, 250
+  offset: 18, 22
+  index: -1
+tx/USK/xing_dian/xing_dian_00014
+  rotate: false
+  xy: 1060, 643
+  size: 263, 230
+  orig: 285, 250
+  offset: 10, 11
+  index: -1
+tx/USK/xing_dian/xing_dian_00016
+  rotate: true
+  xy: 1091, 372
+  size: 269, 235
+  orig: 285, 250
+  offset: 7, 8
+  index: -1
+tx/USK/xing_dian/xing_dian_00018
+  rotate: false
+  xy: 1326, 1003
+  size: 277, 245
+  orig: 285, 250
+  offset: 5, 3
+  index: -1
+tx/USK/xing_dian/xing_dian_00020
+  rotate: false
+  xy: 1325, 752
+  size: 260, 249
+  orig: 285, 250
+  offset: 25, 1
+  index: -1
+tx/USK/xing_dian/xing_dian_00026
+  rotate: true
+  xy: 436, 5
+  size: 211, 169
+  orig: 285, 250
+  offset: 74, 35
+  index: -1
+tx/spUSK/gaoliang_00030_00000
+  rotate: false
+  xy: 1646, 1263
+  size: 302, 176
+  orig: 331, 187
+  offset: 16, 4
+  index: -1
+tx/spUSK/spUSK_Niaoline/spUSK_Niaoline_00004
+  rotate: true
+  xy: 1902, 1742
+  size: 260, 80
+  orig: 396, 234
+  offset: 121, 0
+  index: -1
+tx/spUSK/spUSK_Niaoline/spUSK_Niaoline_00008
+  rotate: false
+  xy: 745, 1233
+  size: 365, 143
+  orig: 396, 234
+  offset: 15, 8
+  index: -1
+tx/spUSK/spUSK_Niaoline/spUSK_Niaoline_00010
+  rotate: false
+  xy: 1327, 1250
+  size: 317, 191
+  orig: 396, 234
+  offset: 9, 8
+  index: -1
+tx/spUSK/spUSK_Niaoline/spUSK_Niaoline_00012
+  rotate: true
+  xy: 598, 262
+  size: 325, 217
+  orig: 396, 234
+  offset: 16, 8
+  index: -1
+tx/spUSK/spUSK_QIUshexian/spUSK_QIUshexian_00000
+  rotate: false
+  xy: 1545, 286
+  size: 205, 204
+  orig: 289, 266
+  offset: 28, 33
+  index: -1
+tx/spUSK/spUSK_QIUshexian/spUSK_QIUshexian_00002
+  rotate: false
+  xy: 1605, 844
+  size: 200, 194
+  orig: 289, 266
+  offset: 30, 37
+  index: -1
+tx/spUSK/spUSK_QIUshexian/spUSK_QIUshexian_00004
+  rotate: false
+  xy: 1793, 1056
+  size: 201, 205
+  orig: 289, 266
+  offset: 30, 33
+  index: -1
+tx/spUSK/spUSK_QIUshexian/spUSK_QIUshexian_00006
+  rotate: false
+  xy: 1091, 178
+  size: 220, 192
+  orig: 289, 266
+  offset: 27, 35
+  index: -1
+tx/spUSK/spUSK_QIUshexian/spUSK_QIUshexian_00008
+  rotate: true
+  xy: 1807, 849
+  size: 205, 177
+  orig: 289, 266
+  offset: 28, 49
+  index: -1
+tx/spUSK/spUSK_QIUshexian/spUSK_QIUshexian_00010
+  rotate: false
+  xy: 1663, 641
+  size: 200, 201
+  orig: 289, 266
+  offset: 36, 34
+  index: -1
+tx/spUSK/spUSK_QIUshexian/spUSK_QIUshexian_00012
+  rotate: false
+  xy: 817, 97
+  size: 215, 204
+  orig: 289, 266
+  offset: 29, 33
+  index: -1
+tx/spUSK/spUSK_QIUshexian/spUSK_QIUshexian_00014
+  rotate: false
+  xy: 1531, 91
+  size: 212, 193
+  orig: 289, 266
+  offset: 36, 38
+  index: -1
+tx/spUSK/spUSK_QIUshexian/spUSK_QIUshexian_00016
+  rotate: false
+  xy: 1313, 118
+  size: 216, 197
+  orig: 289, 266
+  offset: 27, 35
+  index: -1
+tx/spUSK/spUSK_QIUshexian/spUSK_QIUshexian_00018
+  rotate: true
+  xy: 1605, 1040
+  size: 208, 186
+  orig: 289, 266
+  offset: 34, 45
+  index: -1
+tx/spUSK/spUSK_QIUshexian/spUSK_QIUshexian_00020
+  rotate: false
+  xy: 1745, 83
+  size: 198, 201
+  orig: 289, 266
+  offset: 31, 31
+  index: -1
+tx/spUSK/spUSK_QIUshexian/spUSK_QIUshexian_00022
+  rotate: false
+  xy: 1752, 439
+  size: 182, 200
+  orig: 289, 266
+  offset: 36, 34
+  index: -1
+tx/spUSK/spUSK_Rotline/spUSK_Rotline_00006
+  rotate: false
+  xy: 785, 591
+  size: 256, 148
+  orig: 324, 318
+  offset: 10, 8
+  index: -1
+tx/spUSK/spUSK_Rotline/spUSK_Rotline_00008
+  rotate: true
+  xy: 1328, 490
+  size: 260, 203
+  orig: 324, 318
+  offset: 4, 10
+  index: -1
+tx/spUSK/spUSK_Rotline/spUSK_Rotline_00010
+  rotate: false
+  xy: 1060, 875
+  size: 260, 253
+  orig: 324, 318
+  offset: 4, 11
+  index: -1
+tx/spUSK/spUSK_Rotline/spUSK_Rotline_00012
+  rotate: false
+  xy: 785, 741
+  size: 273, 287
+  orig: 324, 318
+  offset: 5, 12
+  index: -1
+tx/spUSK/spUSK_Rotline/spUSK_Rotline_00014
+  rotate: false
+  xy: 368, 953
+  size: 299, 296
+  orig: 324, 318
+  offset: 11, 13
+  index: -1
+tx/spUSK/spUSK_Rotline/spUSK_Rotline_00016
+  rotate: false
+  xy: 817, 303
+  size: 272, 286
+  orig: 324, 318
+  offset: 43, 13
+  index: -1
+tx/spUSK/spUSK_Rotline/spUSK_Rotline_00020
+  rotate: true
+  xy: 607, 40
+  size: 220, 208
+  orig: 324, 318
+  offset: 87, 45
+  index: -1
+tx/spUSK/spUSK_Rotline/spUSK_Rotline_00024
+  rotate: true
+  xy: 241, 22
+  size: 147, 193
+  orig: 324, 318
+  offset: 136, 89
+  index: -1
+tx/spUSK/spUSK_Rotline/spUSK_Rotline_00026
+  rotate: true
+  xy: 1034, 28
+  size: 148, 151
+  orig: 324, 318
+  offset: 127, 127
+  index: -1
+tx/spUSK/spUSK_guang_00000
+  rotate: true
+  xy: 368, 585
+  size: 366, 217
+  orig: 382, 227
+  offset: 7, 6
+  index: -1
+tx/spUSK/spUSK_ripple/spUSK_ripple_00002
+  rotate: true
+  xy: 1533, 492
+  size: 258, 128
+  orig: 589, 274
+  offset: 171, 74
+  index: -1
+tx/spUSK/spUSK_ripple/spUSK_ripple_00004
+  rotate: true
+  xy: 241, 171
+  size: 383, 164
+  orig: 589, 274
+  offset: 96, 52
+  index: -1
+tx/spUSK/spUSK_ripple/spUSK_ripple_00008
+  rotate: true
+  xy: 2, 31
+  size: 523, 237
+  orig: 589, 274
+  offset: 28, 14
+  index: -1
+tx/spUSK/spUSK_shexian/spUSK_shexian_00003
+  rotate: true
+  xy: 753, 1378
+  size: 283, 572
+  orig: 381, 635
+  offset: 31, 40
+  index: -1
+tx/spUSK/spUSK_shexian/spUSK_shexian_00007
+  rotate: true
+  xy: 753, 1663
+  size: 339, 584
+  orig: 381, 635
+  offset: 0, 34
+  index: -1
+tx/spUSK/spUSK_shexian/spUSK_shexian_00010
+  rotate: true
+  xy: 1339, 1644
+  size: 358, 561
+  orig: 381, 635
+  offset: 10, 23
+  index: -1
+tx/spUSK/spUSK_shexian/spUSK_shexian_00012
+  rotate: false
+  xy: 371, 1455
+  size: 380, 547
+  orig: 381, 635
+  offset: 0, 15
+  index: -1
+tx/spUSK/spUSK_zhuguang/spUSK_zhuguang_00004
+  rotate: false
+  xy: 2, 556
+  size: 364, 694
+  orig: 436, 793
+  offset: 46, 10
+  index: -1
+tx/spUSK/spUSK_zhuguang/spUSK_zhuguang_00006
+  rotate: false
+  xy: 2, 1252
+  size: 367, 750
+  orig: 436, 793
+  offset: 35, 5
+  index: -1
+tx/spUSK/spUSK_zhuguang/spUSK_zhuguang_00018
+  rotate: false
+  xy: 407, 218
+  size: 189, 365
+  orig: 436, 793
+  offset: 126, 207
+  index: -1
+tx/spUSK/spUSK_zhuguang/spUSK_zhuguang_00020
+  rotate: true
+  xy: 371, 1251
+  size: 202, 372
+  orig: 436, 793
+  offset: 122, 212
+  index: -1
+tx/spUSK/spUSK_zhuguang/spUSK_zhuguang_00022
+  rotate: true
+  xy: 1327, 1443
+  size: 199, 372
+  orig: 436, 793
+  offset: 126, 226
+  index: -1
+tx/spUSK/spUSK_zhuguang/spUSK_zhuguang_00024
+  rotate: true
+  xy: 669, 1030
+  size: 201, 365
+  orig: 436, 793
+  offset: 125, 241
+  index: -1
+tx/spUSK/spUSK_zhuguang/spUSK_zhuguang_00026
+  rotate: false
+  xy: 587, 589
+  size: 196, 362
+  orig: 436, 793
+  offset: 128, 255
+  index: -1

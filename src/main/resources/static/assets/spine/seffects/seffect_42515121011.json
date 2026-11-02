@@ -1,0 +1,298 @@
+{
+"skeleton": { "hash": "bDmCdEkHk/jEVkPzk1SOMGuzYpg", "spine": "3.5.35", "width": 0, "height": 0, "images": "./images/" },
+"bones": [
+	{ "name": "root" },
+	{ "name": "TX", "parent": "root", "color": "9b1800ff" },
+	{ "name": "att", "parent": "TX", "color": "9b1800ff" },
+	{ "name": "att/light_fire", "parent": "att", "color": "9b1800ff" },
+	{ "name": "att/light_fire2", "parent": "att", "color": "9b1800ff" },
+	{ "name": "att_boom", "parent": "att", "color": "9b1800ff" },
+	{ "name": "att_kuos", "parent": "att", "color": "9b1800ff" },
+	{ "name": "att_kuos2", "parent": "att_kuos", "color": "9b1800ff" },
+	{ "name": "bg", "parent": "root", "scaleX": 3.33, "scaleY": 3.33 }
+],
+"slots": [
+	{ "name": "bg", "bone": "bg", "color": "969696ff" },
+	{ "name": "att/light_fire", "bone": "att/light_fire" },
+	{ "name": "att/light_fire2", "bone": "att/light_fire2" },
+	{ "name": "att_boom", "bone": "att_boom", "blend": "additive" },
+	{ "name": "att/att_kuos_12", "bone": "att_kuos2" }
+],
+"skins": {
+	"default": {
+		"att/att_kuos_12": {
+			"att/att_kuos_0012": { "width": 208, "height": 215 }
+		},
+		"att/light_fire": {
+			"att/att_dan_a/att_dan_a_0000": { "width": 262, "height": 238 },
+			"att/att_dan_a/att_dan_a_0002": { "width": 262, "height": 238 },
+			"att/att_dan_a/att_dan_a_0004": { "width": 262, "height": 238 }
+		},
+		"att/light_fire2": {
+			"att/att_dan_b/att_dan_b_0010": { "width": 412, "height": 62 },
+			"att/att_dan_b/att_dan_b_0011": { "width": 412, "height": 62 },
+			"att/att_dan_b/att_dan_b_0012": { "width": 412, "height": 62 },
+			"att/att_dan_b/att_dan_b_0013": { "width": 412, "height": 62 }
+		},
+		"att_boom": {
+			"att/att_boom/att_boom_0000": { "width": 236, "height": 282 },
+			"att/att_boom/att_boom_0002": { "width": 236, "height": 282 },
+			"att/att_boom/att_boom_0004": { "width": 236, "height": 282 },
+			"att/att_boom/att_boom_0006": { "width": 236, "height": 282 }
+		}
+	}
+},
+"events": {
+	"hit_1_1_1": {},
+	"qishou_1_1_1": {}
+},
+"animations": {
+	"att": {
+		"slots": {
+			"att/att_kuos_12": {
+				"attachment": [
+					{ "time": 0.5667, "name": "att/att_kuos_0012" },
+					{ "time": 0.6667, "name": null }
+				]
+			},
+			"att/light_fire": {
+				"attachment": [
+					{ "time": 0.5667, "name": "att/att_dan_a/att_dan_a_0000" },
+					{ "time": 0.6333, "name": "att/att_dan_a/att_dan_a_0002" },
+					{ "time": 0.7, "name": "att/att_dan_a/att_dan_a_0004" },
+					{ "time": 0.7667, "name": null }
+				]
+			},
+			"att/light_fire2": {
+				"attachment": [
+					{ "time": 0.5667, "name": "att/att_dan_b/att_dan_b_0010" },
+					{ "time": 0.6, "name": "att/att_dan_b/att_dan_b_0011" },
+					{ "time": 0.6333, "name": "att/att_dan_b/att_dan_b_0012" },
+					{ "time": 0.6667, "name": "att/att_dan_b/att_dan_b_0013" },
+					{ "time": 0.7, "name": null }
+				]
+			},
+			"att_boom": {
+				"attachment": [
+					{ "time": 0.5667, "name": "att/att_boom/att_boom_0000" },
+					{ "time": 0.6333, "name": "att/att_boom/att_boom_0002" },
+					{ "time": 0.7, "name": "att/att_boom/att_boom_0004" },
+					{ "time": 0.7667, "name": "att/att_boom/att_boom_0006" },
+					{ "time": 0.8333, "name": null }
+				]
+			}
+		},
+		"bones": {
+			"root": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 0.0333, "angle": 0, "curve": "stepped" },
+					{ "time": 0.3, "angle": 0, "curve": "stepped" },
+					{ "time": 0.4667, "angle": 0, "curve": "stepped" },
+					{ "time": 0.5333, "angle": 0, "curve": "stepped" },
+					{ "time": 0.9333, "angle": 0, "curve": "stepped" },
+					{ "time": 0.9667, "angle": 0, "curve": "stepped" },
+					{ "time": 1.2, "angle": 0, "curve": "stepped" },
+					{ "time": 1.2333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.0333, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.3, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4667, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.5333, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.9333, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.9667, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.2, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.2333, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.0333, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.3, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.9333, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.9667, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 1.2, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 1.2333, "x": 1, "y": 1 }
+				]
+			},
+			"bg": {
+				"translate": [
+					{ "time": 0, "x": 640.75, "y": 109.93 }
+				]
+			},
+			"att/light_fire": {
+				"translate": [
+					{ "time": 0.5667, "x": 442.12, "y": 317.92 }
+				],
+				"scale": [
+					{ "time": 0.5667, "x": 3.373, "y": 3.373 }
+				]
+			},
+			"att_boom": {
+				"translate": [
+					{ "time": 0.5667, "x": 1029.26, "y": 257.75 }
+				],
+				"scale": [
+					{ "time": 0.5667, "x": 3.361, "y": 2.875 }
+				]
+			},
+			"att/light_fire2": {
+				"translate": [
+					{ "time": 0.5667, "x": 462.73, "y": 297.2 }
+				],
+				"scale": [
+					{ "time": 0.5667, "x": 1, "y": 2.655 }
+				]
+			},
+			"att_kuos2": {
+				"translate": [
+					{ "time": 0.5667, "x": 795.6, "y": 294.42 }
+				],
+				"scale": [
+					{ "time": 0.5667, "x": 2.575, "y": 2.575 },
+					{ "time": 0.6333, "x": 5.252, "y": 5.252 }
+				]
+			},
+			"att_kuos": {
+				"scale": [
+					{ "time": 0.5667, "x": 0.377, "y": 1 }
+				]
+			}
+		},
+		"drawOrder": [
+			{ "time": 0 },
+			{ "time": 0.0333 },
+			{ "time": 1.1667 }
+		]
+	},
+	"animation_0": {
+		"slots": {
+			"att/att_kuos_12": {
+				"attachment": [
+					{ "time": 0.5667, "name": "att/att_kuos_0012" },
+					{ "time": 0.6667, "name": null }
+				]
+			},
+			"att/light_fire": {
+				"attachment": [
+					{ "time": 0.5667, "name": "att/att_dan_a/att_dan_a_0000" },
+					{ "time": 0.6333, "name": "att/att_dan_a/att_dan_a_0002" },
+					{ "time": 0.7, "name": "att/att_dan_a/att_dan_a_0004" },
+					{ "time": 0.7667, "name": null }
+				]
+			},
+			"att/light_fire2": {
+				"attachment": [
+					{ "time": 0.5667, "name": "att/att_dan_b/att_dan_b_0010" },
+					{ "time": 0.6, "name": "att/att_dan_b/att_dan_b_0011" },
+					{ "time": 0.6333, "name": "att/att_dan_b/att_dan_b_0012" },
+					{ "time": 0.6667, "name": "att/att_dan_b/att_dan_b_0013" },
+					{ "time": 0.7, "name": null }
+				]
+			}
+		},
+		"bones": {
+			"root": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 0.0333, "angle": 0, "curve": "stepped" },
+					{ "time": 0.3, "angle": 0, "curve": "stepped" },
+					{ "time": 0.4667, "angle": 0, "curve": "stepped" },
+					{ "time": 0.5333, "angle": 0, "curve": "stepped" },
+					{ "time": 0.9333, "angle": 0, "curve": "stepped" },
+					{ "time": 0.9667, "angle": 0, "curve": "stepped" },
+					{ "time": 1.2, "angle": 0, "curve": "stepped" },
+					{ "time": 1.2333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.0333, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.3, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4667, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.5333, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.9333, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.9667, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.2, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.2333, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.0333, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.3, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.9333, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.9667, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 1.2, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 1.2333, "x": 1, "y": 1 }
+				]
+			},
+			"bg": {
+				"translate": [
+					{ "time": 0, "x": 640.75, "y": 109.93 }
+				]
+			},
+			"att/light_fire": {
+				"translate": [
+					{ "time": 0.5667, "x": 442.12, "y": 317.92 }
+				],
+				"scale": [
+					{ "time": 0.5667, "x": 3.373, "y": 3.373 }
+				]
+			},
+			"att/light_fire2": {
+				"translate": [
+					{ "time": 0.5667, "x": 462.73, "y": 297.2 }
+				],
+				"scale": [
+					{ "time": 0.5667, "x": 1, "y": 2.655 }
+				]
+			},
+			"att_kuos2": {
+				"translate": [
+					{ "time": 0.5667, "x": 795.6, "y": 294.42 }
+				],
+				"scale": [
+					{ "time": 0.5667, "x": 2.575, "y": 2.575 },
+					{ "time": 0.6333, "x": 5.252, "y": 5.252 }
+				]
+			},
+			"att_kuos": {
+				"scale": [
+					{ "time": 0.5667, "x": 0.377, "y": 1 }
+				]
+			}
+		},
+		"drawOrder": [
+			{ "time": 0 },
+			{ "time": 0.0333 },
+			{ "time": 1.1667 }
+		],
+		"events": [
+			{ "time": 0.5667, "name": "qishou_1_1_1" }
+		]
+	},
+	"animation_1": {
+		"slots": {
+			"att_boom": {
+				"attachment": [
+					{ "time": 0, "name": "att/att_boom/att_boom_0000" },
+					{ "time": 0.0667, "name": "att/att_boom/att_boom_0002" },
+					{ "time": 0.1333, "name": "att/att_boom/att_boom_0004" },
+					{ "time": 0.2, "name": "att/att_boom/att_boom_0006" },
+					{ "time": 0.2667, "name": null }
+				]
+			}
+		},
+		"bones": {
+			"att_boom": {
+				"scale": [
+					{ "time": 0, "x": 3.361, "y": 2.875 }
+				]
+			}
+		},
+		"events": [
+			{ "time": 0, "name": "hit_1_1_1" }
+		]
+	}
+}
+}

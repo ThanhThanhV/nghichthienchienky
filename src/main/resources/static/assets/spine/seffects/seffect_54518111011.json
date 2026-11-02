@@ -1,0 +1,326 @@
+{
+"skeleton": { "hash": "S5sG9wfnjkqdWlpx2tbvNKk+7SY", "spine": "3.5.35", "width": 0, "height": 0 },
+"bones": [
+	{ "name": "root" },
+	{ "name": "Bayonetta_zx", "parent": "root" },
+	{ "name": "effect", "parent": "Bayonetta_zx" },
+	{ "name": "att", "parent": "effect" },
+	{ "name": "beiji", "parent": "att" },
+	{ "name": "beiji2", "parent": "att" },
+	{ "name": "beiji3", "parent": "att" },
+	{ "name": "beiji4", "parent": "att" }
+],
+"slots": [
+	{ "name": "beiji", "bone": "beiji" },
+	{ "name": "beiji2", "bone": "beiji2" },
+	{ "name": "beiji3", "bone": "beiji3" },
+	{ "name": "beiji4", "bone": "beiji4" }
+],
+"skins": {
+	"default": {
+		"beiji": {
+			"effect/att/shouji/shouji_0000": { "width": 200, "height": 200 },
+			"effect/att/shouji/shouji_0002": { "width": 200, "height": 200 },
+			"effect/att/shouji/shouji_0004": { "width": 200, "height": 200 }
+		},
+		"beiji2": {
+			"effect/att/shouji2/shouji2_0000": { "width": 200, "height": 200 },
+			"effect/att/shouji2/shouji2_0002": { "width": 200, "height": 200 },
+			"effect/att/shouji2/shouji2_0004": { "width": 200, "height": 200 },
+			"effect/att/shouji2/shouji2_0006": { "width": 200, "height": 200 }
+		},
+		"beiji3": {
+			"effect/att/shouji/shouji_0000": { "width": 200, "height": 200 },
+			"effect/att/shouji/shouji_0002": { "width": 200, "height": 200 },
+			"effect/att/shouji/shouji_0004": { "width": 200, "height": 200 }
+		},
+		"beiji4": {
+			"effect/att/shouji2/shouji2_0000": { "width": 200, "height": 200 },
+			"effect/att/shouji2/shouji2_0002": { "width": 200, "height": 200 },
+			"effect/att/shouji2/shouji2_0004": { "width": 200, "height": 200 },
+			"effect/att/shouji2/shouji2_0006": { "width": 200, "height": 200 }
+		}
+	}
+},
+"events": {
+	"qishou_1_4_1": {},
+	"qishou_1_4_2": {},
+	"qishou_1_4_3": {},
+	"qishou_1_4_4": {}
+},
+"animations": {
+	"animation_0": {
+		"slots": {
+			"beiji": {
+				"attachment": [
+					{ "time": 0, "name": "effect/att/shouji/shouji_0000" },
+					{ "time": 0.0667, "name": "effect/att/shouji/shouji_0002" },
+					{ "time": 0.1333, "name": "effect/att/shouji/shouji_0004" },
+					{ "time": 0.2, "name": null },
+					{ "time": 0.7333, "name": "effect/att/shouji/shouji_0000" },
+					{ "time": 0.8, "name": "effect/att/shouji/shouji_0002" },
+					{ "time": 0.8667, "name": "effect/att/shouji/shouji_0004" },
+					{ "time": 0.9333, "name": null }
+				]
+			},
+			"beiji2": {
+				"attachment": [
+					{ "time": 0.0667, "name": "effect/att/shouji2/shouji2_0000" },
+					{ "time": 0.1333, "name": "effect/att/shouji2/shouji2_0002" },
+					{ "time": 0.2, "name": "effect/att/shouji2/shouji2_0004" },
+					{ "time": 0.2667, "name": "effect/att/shouji2/shouji2_0006" },
+					{ "time": 0.3333, "name": null },
+					{ "time": 0.8, "name": "effect/att/shouji2/shouji2_0000" },
+					{ "time": 0.8667, "name": "effect/att/shouji2/shouji2_0002" },
+					{ "time": 0.9333, "name": "effect/att/shouji2/shouji2_0004" },
+					{ "time": 1, "name": null }
+				]
+			},
+			"beiji3": {
+				"attachment": [
+					{ "time": 0.8667, "name": "effect/att/shouji/shouji_0000" },
+					{ "time": 0.9333, "name": "effect/att/shouji/shouji_0002" },
+					{ "time": 1, "name": "effect/att/shouji/shouji_0004" },
+					{ "time": 1.0667, "name": null }
+				]
+			},
+			"beiji4": {
+				"attachment": [
+					{ "time": 0.9333, "name": "effect/att/shouji2/shouji2_0000" },
+					{ "time": 1, "name": "effect/att/shouji2/shouji2_0002" },
+					{ "time": 1.0667, "name": "effect/att/shouji2/shouji2_0004" },
+					{ "time": 1.1333, "name": null }
+				]
+			}
+		},
+		"bones": {
+			"Bayonetta_zx": {
+				"rotate": [
+					{ "time": 0.5333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.5333, "x": 0, "y": 0 }
+				]
+			},
+			"beiji": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 0.2, "angle": 0, "curve": "stepped" },
+					{ "time": 0.7333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": -29.37, "y": 31.19, "curve": "stepped" },
+					{ "time": 0.2, "x": -29.37, "y": 31.19 },
+					{ "time": 0.7333, "x": -29.37, "y": -13 }
+				],
+				"scale": [
+					{ "time": 0, "x": 2, "y": 2, "curve": "stepped" },
+					{ "time": 0.2, "x": 2, "y": 2, "curve": "stepped" },
+					{ "time": 0.7333, "x": 2, "y": 2 }
+				]
+			},
+			"beiji2": {
+				"rotate": [
+					{ "time": 0.0667, "angle": -68.15, "curve": "stepped" },
+					{ "time": 0.8, "angle": -68.15 }
+				],
+				"translate": [
+					{ "time": 0.0667, "x": 91.34, "y": -63.53, "curve": "stepped" },
+					{ "time": 0.3333, "x": 91.34, "y": -63.53 },
+					{ "time": 0.8, "x": 117.81, "y": -27.1 }
+				],
+				"scale": [
+					{ "time": 0.0667, "x": 2, "y": 2, "curve": "stepped" },
+					{ "time": 0.8, "x": 2, "y": 2 }
+				]
+			},
+			"beiji3": {
+				"rotate": [
+					{ "time": 0.8667, "angle": -126.96 }
+				],
+				"translate": [
+					{ "time": 0.8667, "x": 41.25, "y": -92.92 }
+				],
+				"scale": [
+					{ "time": 0.8667, "x": 2.5, "y": 2.5 }
+				]
+			},
+			"beiji4": {
+				"rotate": [
+					{ "time": 0.9333, "angle": 153.74 }
+				],
+				"translate": [
+					{ "time": 0.9333, "x": -36.08, "y": 52.38 }
+				],
+				"scale": [
+					{ "time": 0.9333, "x": 1.5, "y": 1.5 }
+				]
+			},
+			"root": {
+				"translate": [
+					{ "time": 0, "x": 2.08, "y": 170.31 }
+				]
+			}
+		},
+		"drawOrder": [
+			{ "time": 0.6 }
+		],
+		"events": [
+			{ "time": 0, "name": "qishou_1_4_4" },
+			{ "time": 0.1667, "name": "qishou_1_4_3" },
+			{ "time": 0.7333, "name": "qishou_1_4_2" },
+			{ "time": 0.9, "name": "qishou_1_4_1" }
+		]
+	},
+	"att2": {
+		"slots": {
+			"beiji": {
+				"attachment": [
+					{ "time": 0, "name": "effect/att/shouji/shouji_0000" },
+					{ "time": 0.0667, "name": "effect/att/shouji/shouji_0002" },
+					{ "time": 0.1333, "name": "effect/att/shouji/shouji_0004" },
+					{ "time": 0.2, "name": null }
+				]
+			},
+			"beiji2": {
+				"attachment": [
+					{ "time": 0.0667, "name": "effect/att/shouji2/shouji2_0000" },
+					{ "time": 0.1333, "name": "effect/att/shouji2/shouji2_0002" },
+					{ "time": 0.2, "name": "effect/att/shouji2/shouji2_0004" },
+					{ "time": 0.2667, "name": "effect/att/shouji2/shouji2_0006" },
+					{ "time": 0.3333, "name": null }
+				]
+			}
+		},
+		"bones": {
+			"Bayonetta_zx": {
+				"rotate": [
+					{ "time": 0.5333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.5333, "x": 0, "y": 0 }
+				]
+			},
+			"beiji": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 0.2, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": -29.37, "y": 31.19, "curve": "stepped" },
+					{ "time": 0.2, "x": -29.37, "y": 31.19 }
+				],
+				"scale": [
+					{ "time": 0, "x": 2, "y": 2, "curve": "stepped" },
+					{ "time": 0.2, "x": 2, "y": 2 }
+				]
+			},
+			"beiji2": {
+				"rotate": [
+					{ "time": 0.0667, "angle": -68.15 }
+				],
+				"translate": [
+					{ "time": 0.0667, "x": 91.34, "y": -63.53, "curve": "stepped" },
+					{ "time": 0.3333, "x": 91.34, "y": -63.53 }
+				],
+				"scale": [
+					{ "time": 0.0667, "x": 2, "y": 2 }
+				]
+			}
+		}
+	},
+	"att3": {
+		"slots": {
+			"beiji": {
+				"attachment": [
+					{ "time": 0, "name": "effect/att/shouji/shouji_0000" },
+					{ "time": 0.0667, "name": "effect/att/shouji/shouji_0002" },
+					{ "time": 0.1333, "name": "effect/att/shouji/shouji_0004" },
+					{ "time": 0.2, "name": null }
+				]
+			},
+			"beiji2": {
+				"attachment": [
+					{ "time": 0.0667, "name": "effect/att/shouji2/shouji2_0000" },
+					{ "time": 0.1333, "name": "effect/att/shouji2/shouji2_0002" },
+					{ "time": 0.2, "name": "effect/att/shouji2/shouji2_0004" },
+					{ "time": 0.2667, "name": null }
+				]
+			},
+			"beiji3": {
+				"attachment": [
+					{ "time": 0.1333, "name": "effect/att/shouji/shouji_0000" },
+					{ "time": 0.2, "name": "effect/att/shouji/shouji_0002" },
+					{ "time": 0.2667, "name": "effect/att/shouji/shouji_0004" },
+					{ "time": 0.3333, "name": null }
+				]
+			},
+			"beiji4": {
+				"attachment": [
+					{ "time": 0.2, "name": "effect/att/shouji2/shouji2_0000" },
+					{ "time": 0.2667, "name": "effect/att/shouji2/shouji2_0002" },
+					{ "time": 0.3333, "name": "effect/att/shouji2/shouji2_0004" },
+					{ "time": 0.4, "name": null }
+				]
+			}
+		},
+		"bones": {
+			"Bayonetta_zx": {
+				"rotate": [
+					{ "time": 0.5333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.5333, "x": 0, "y": 0 }
+				]
+			},
+			"beiji": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": -29.37, "y": -13 }
+				],
+				"scale": [
+					{ "time": 0, "x": 2, "y": 2 }
+				]
+			},
+			"beiji2": {
+				"rotate": [
+					{ "time": 0.0667, "angle": -68.15 }
+				],
+				"translate": [
+					{ "time": 0.0667, "x": 117.81, "y": -27.1 }
+				],
+				"scale": [
+					{ "time": 0.0667, "x": 2, "y": 2 }
+				]
+			},
+			"beiji3": {
+				"rotate": [
+					{ "time": 0.1333, "angle": -126.96 }
+				],
+				"translate": [
+					{ "time": 0.1333, "x": 41.25, "y": -92.92 }
+				],
+				"scale": [
+					{ "time": 0.1333, "x": 2.5, "y": 2.5 }
+				]
+			},
+			"beiji4": {
+				"rotate": [
+					{ "time": 0.2, "angle": 153.74 }
+				],
+				"translate": [
+					{ "time": 0.2, "x": -36.08, "y": 52.38 }
+				],
+				"scale": [
+					{ "time": 0.2, "x": 1.5, "y": 1.5 }
+				]
+			}
+		}
+	}
+}
+}

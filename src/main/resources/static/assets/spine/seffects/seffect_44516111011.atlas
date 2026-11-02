@@ -1,0 +1,216 @@
+
+seffect_44516111011.png
+size: 1391,1391
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+tx/ATT/Att_boom_point_A/Att_boom_point_A_00000
+  rotate: true
+  xy: 1195, 2
+  size: 66, 69
+  orig: 201, 200
+  offset: 56, 55
+  index: -1
+tx/ATT/Att_boom_point_A/Att_boom_point_A_00004
+  rotate: false
+  xy: 770, 358
+  size: 175, 169
+  orig: 201, 200
+  offset: 9, 16
+  index: -1
+tx/ATT/Att_boom_point_A/Att_boom_point_A_00008
+  rotate: false
+  xy: 1167, 330
+  size: 190, 188
+  orig: 201, 200
+  offset: 0, 8
+  index: -1
+tx/ATT/Att_boom_point_A/Att_boom_point_A_00013
+  rotate: false
+  xy: 816, 34
+  size: 155, 176
+  orig: 201, 200
+  offset: 32, 24
+  index: -1
+tx/ATT/Att_boom_point_B/Att_boom_point_B_00000
+  rotate: false
+  xy: 973, 25
+  size: 122, 107
+  orig: 164, 160
+  offset: 27, 24
+  index: -1
+tx/ATT/Att_boom_point_B/Att_boom_point_B_00002
+  rotate: false
+  xy: 1167, 177
+  size: 153, 151
+  orig: 164, 160
+  offset: 7, 8
+  index: -1
+tx/ATT/Att_boom_point_B/Att_boom_point_B_00004
+  rotate: false
+  xy: 973, 134
+  size: 153, 153
+  orig: 164, 160
+  offset: 6, 7
+  index: -1
+tx/ATT/Att_boom_point_B/Att_boom_point_B_00006
+  rotate: false
+  xy: 816, 212
+  size: 115, 144
+  orig: 164, 160
+  offset: 10, 10
+  index: -1
+tx/ATT/Att_boom_point_C/Att_boom_point_C_00000
+  rotate: true
+  xy: 1097, 25
+  size: 107, 96
+  orig: 472, 454
+  offset: 157, 313
+  index: -1
+tx/ATT/Att_boom_point_C/Att_boom_point_C_00002
+  rotate: false
+  xy: 1195, 70
+  size: 98, 105
+  orig: 472, 454
+  offset: 184, 302
+  index: -1
+tx/ATT/Att_boom_point_C/Att_boom_point_C_00004
+  rotate: true
+  xy: 947, 289
+  size: 238, 218
+  orig: 472, 454
+  offset: 123, 166
+  index: -1
+tx/ATT/Att_boom_point_C/Att_boom_point_C_00006
+  rotate: false
+  xy: 429, 964
+  size: 420, 425
+  orig: 472, 454
+  offset: 21, 18
+  index: -1
+tx/ATT/Att_boom_point_C/Att_boom_point_C_00008
+  rotate: false
+  xy: 2, 963
+  size: 425, 426
+  orig: 472, 454
+  offset: 19, 17
+  index: -1
+tx/ATT/Att_boom_point_C/Att_boom_point_C_00010
+  rotate: false
+  xy: 2, 537
+  size: 424, 424
+  orig: 472, 454
+  offset: 21, 16
+  index: -1
+tx/ATT/Att_boom_point_C/Att_boom_point_C_00012
+  rotate: false
+  xy: 2, 146
+  size: 371, 389
+  orig: 472, 454
+  offset: 72, 29
+  index: -1
+tx/ATT/Att_boom_point_C/Att_boom_point_C_00014
+  rotate: false
+  xy: 842, 529
+  size: 328, 316
+  orig: 472, 454
+  offset: 72, 88
+  index: -1
+tx/ATT/Att_boom_point_C/Att_boom_point_C_00016
+  rotate: true
+  xy: 573, 674
+  size: 288, 267
+  orig: 472, 454
+  offset: 98, 101
+  index: -1
+tx/ATT/Att_lujin/Att_lujin_00000
+  rotate: false
+  xy: 2, 2
+  size: 241, 142
+  orig: 922, 431
+  offset: 37, 109
+  index: -1
+tx/ATT/Att_lujin/Att_lujin_00005
+  rotate: false
+  xy: 851, 1104
+  size: 449, 285
+  orig: 922, 431
+  offset: 36, 142
+  index: -1
+tx/ATT/Att_lujin/Att_lujin_00008
+  rotate: false
+  xy: 851, 847
+  size: 453, 255
+  orig: 922, 431
+  offset: 37, 15
+  index: -1
+tx/ATT/Att_lujin/Att_lujin_00011
+  rotate: true
+  xy: 375, 61
+  size: 474, 200
+  orig: 922, 431
+  offset: 137, 67
+  index: -1
+tx/ATT/Att_lujin/Att_lujin_00017
+  rotate: true
+  xy: 577, 11
+  size: 342, 140
+  orig: 922, 431
+  offset: 558, 116
+  index: -1
+tx/spUSK/spUSK_Niaoline/spUSK_Niaoline_00000
+  rotate: false
+  xy: 428, 548
+  size: 43, 46
+  orig: 396, 234
+  offset: 286, 26
+  index: -1
+tx/spUSK/spUSK_Niaoline/spUSK_Niaoline_00002
+  rotate: false
+  xy: 374, 10
+  size: 172, 49
+  orig: 396, 234
+  offset: 210, 24
+  index: -1
+tx/spUSK/spUSK_Niaoline/spUSK_Niaoline_00004
+  rotate: true
+  xy: 1302, 1129
+  size: 260, 80
+  orig: 396, 234
+  offset: 121, 0
+  index: -1
+tx/spUSK/spUSK_Niaoline/spUSK_Niaoline_00006
+  rotate: true
+  xy: 719, 41
+  size: 312, 95
+  orig: 396, 234
+  offset: 68, 7
+  index: -1
+tx/spUSK/spUSK_Niaoline/spUSK_Niaoline_00008
+  rotate: true
+  xy: 428, 596
+  size: 365, 143
+  orig: 396, 234
+  offset: 15, 8
+  index: -1
+tx/spUSK/spUSK_Niaoline/spUSK_Niaoline_00010
+  rotate: true
+  xy: 577, 355
+  size: 317, 191
+  orig: 396, 234
+  offset: 9, 8
+  index: -1
+tx/spUSK/spUSK_Niaoline/spUSK_Niaoline_00012
+  rotate: true
+  xy: 1172, 520
+  size: 325, 217
+  orig: 396, 234
+  offset: 16, 8
+  index: -1
+tx/spUSK/spUSK_Niaoline/spUSK_Niaoline_00014
+  rotate: false
+  xy: 245, 11
+  size: 127, 133
+  orig: 396, 234
+  offset: 213, 32
+  index: -1

@@ -1,0 +1,396 @@
+
+seffect_51509131014.png
+size: 2048,2047
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+sd/lightning_a/lightning_a_0000
+  rotate: false
+  xy: 1891, 62
+  size: 108, 171
+  orig: 139, 420
+  offset: 20, 10
+  index: -1
+sd/lightning_a/lightning_a_0003
+  rotate: true
+  xy: 983, 24
+  size: 114, 402
+  orig: 139, 420
+  offset: 16, 10
+  index: -1
+sd/lightning_a/lightning_a_0007
+  rotate: true
+  xy: 2, 2
+  size: 110, 400
+  orig: 139, 420
+  offset: 18, 10
+  index: -1
+sd/lightning_point/lightning_point_0022
+  rotate: false
+  xy: 1387, 490
+  size: 659, 557
+  orig: 659, 635
+  offset: 0, 78
+  index: -1
+texiao/usk/bai
+  rotate: false
+  xy: 404, 62
+  size: 50, 50
+  orig: 50, 50
+  offset: 0, 0
+  index: -1
+texiao/usk/longchuxianshandian/lcxsd_0002
+  rotate: false
+  xy: 476, 69
+  size: 247, 1009
+  orig: 328, 1058
+  offset: 59, 34
+  index: -1
+texiao/usk/longchuxianshandian/lcxsd_0008
+  rotate: true
+  xy: 1387, 31
+  size: 202, 502
+  orig: 328, 1058
+  offset: 115, 35
+  index: -1
+texiao/usk/shoujishandian/sjsd_0000
+  rotate: false
+  xy: 2, 114
+  size: 472, 964
+  orig: 720, 992
+  offset: 134, 28
+  index: -1
+texiao/usk/shoujishandian/sjsd_0002
+  rotate: false
+  xy: 515, 1084
+  size: 449, 961
+  orig: 720, 992
+  offset: 150, 28
+  index: -1
+texiao/usk/shoujishandian/sjsd_0006
+  rotate: false
+  xy: 966, 1096
+  size: 432, 949
+  orig: 720, 992
+  offset: 189, 43
+  index: -1
+texiao/usk/shoujishandian/sjsd_0010
+  rotate: false
+  xy: 2, 1080
+  size: 511, 965
+  orig: 720, 992
+  offset: 118, 27
+  index: -1
+texiao/usk/shoujishandian/sjsd_0012
+  rotate: false
+  xy: 1400, 1087
+  size: 408, 958
+  orig: 720, 992
+  offset: 158, 27
+  index: -1
+texiao/usk/shoujishandian/sjsd_0014
+  rotate: false
+  xy: 983, 140
+  size: 402, 954
+  orig: 720, 992
+  offset: 141, 28
+  index: -1
+texiao/usk/xiexiangshandian/xiexiangshandian_0004
+  rotate: false
+  xy: 725, 69
+  size: 256, 1013
+  orig: 272, 1080
+  offset: 14, 37
+  index: -1
+texiao/usk/xiexiangshandian/xiexiangshandian_0006
+  rotate: false
+  xy: 1810, 1049
+  size: 222, 996
+  orig: 272, 1080
+  offset: 41, 38
+  index: -1
+texiao/usk/xiexiangshandian/xiexiangshandian_0012
+  rotate: false
+  xy: 515, 1081
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+texiao/usk/xiexiangshandian/xiexiangshandian_0014
+  rotate: true
+  xy: 1387, 235
+  size: 253, 625
+  orig: 272, 1080
+  offset: 9, 282
+  index: -1
+
+seffect_515091310142.png
+size: 2035,2039
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+sd/lightning_a/lightning_a_0001
+  rotate: false
+  xy: 504, 21
+  size: 114, 403
+  orig: 139, 420
+  offset: 16, 10
+  index: -1
+sd/lightning_a/lightning_a_0004
+  rotate: false
+  xy: 1878, 728
+  size: 112, 401
+  orig: 139, 420
+  offset: 24, 12
+  index: -1
+sd/lightning_a/lightning_a_0005
+  rotate: false
+  xy: 1878, 728
+  size: 112, 401
+  orig: 139, 420
+  offset: 24, 12
+  index: -1
+sd/lightning_a/lightning_a_0006
+  rotate: false
+  xy: 1878, 1131
+  size: 112, 404
+  orig: 139, 420
+  offset: 16, 10
+  index: -1
+sd/lightning_b/lightning_b_0000
+  rotate: false
+  xy: 1878, 598
+  size: 103, 128
+  orig: 110, 136
+  offset: 5, 4
+  index: -1
+sd/lightning_point/lightning_point_0004
+  rotate: true
+  xy: 647, 2
+  size: 450, 512
+  orig: 659, 635
+  offset: 54, 103
+  index: -1
+sd/lightning_point/lightning_point_0010
+  rotate: false
+  xy: 1161, 22
+  size: 308, 289
+  orig: 659, 635
+  offset: 274, 118
+  index: -1
+sd/lightning_point/lightning_point_0012
+  rotate: false
+  xy: 905, 1491
+  size: 574, 546
+  orig: 659, 635
+  offset: 17, 76
+  index: -1
+sd/lightning_point/lightning_point_0014
+  rotate: true
+  xy: 647, 454
+  size: 593, 518
+  orig: 659, 635
+  offset: 16, 108
+  index: -1
+sd/lightning_point/lightning_point_0016
+  rotate: false
+  xy: 304, 1479
+  size: 599, 558
+  orig: 659, 635
+  offset: 16, 68
+  index: -1
+sd/lightning_point/lightning_point_0026
+  rotate: false
+  xy: 2, 426
+  size: 643, 599
+  orig: 659, 635
+  offset: 16, 16
+  index: -1
+texiao/usk/longchuxianshandian/lcxsd_0000
+  rotate: true
+  xy: 1471, 51
+  size: 260, 552
+  orig: 328, 1058
+  offset: 50, 34
+  index: -1
+texiao/usk/longchuxianshandian/lcxsd_0010
+  rotate: false
+  xy: 2, 1027
+  size: 300, 1010
+  orig: 328, 1058
+  offset: 20, 33
+  index: -1
+texiao/usk/longxiaoshishandian/lxssd_0000
+  rotate: false
+  xy: 1481, 1537
+  size: 552, 500
+  orig: 670, 702
+  offset: 82, 86
+  index: -1
+texiao/usk/longxiaoshishandian/lxssd_0004
+  rotate: true
+  xy: 2, 6
+  size: 418, 500
+  orig: 670, 702
+  offset: 252, 86
+  index: -1
+texiao/usk/shoujishandian/sjsd_0008
+  rotate: false
+  xy: 1202, 554
+  size: 411, 935
+  orig: 720, 992
+  offset: 204, 41
+  index: -1
+texiao/usk/shoujishandian/sjsd_0015
+  rotate: true
+  xy: 304, 1049
+  size: 428, 896
+  orig: 720, 992
+  offset: 174, 28
+  index: -1
+texiao/usk/xiexiangshandian/xiexiangshandian_0002
+  rotate: false
+  xy: 1615, 556
+  size: 261, 979
+  orig: 272, 1080
+  offset: 10, 54
+  index: -1
+texiao/usk/xiexiangshandian/xiexiangshandian_0008
+  rotate: true
+  xy: 1167, 313
+  size: 239, 861
+  orig: 272, 1080
+  offset: 24, 130
+  index: -1
+
+seffect_515091310143.png
+size: 1970,1959
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+sd/lightning_b/lightning_b_0001
+  rotate: true
+  xy: 1792, 1656
+  size: 91, 115
+  orig: 110, 136
+  offset: 4, 12
+  index: -1
+sd/lightning_b/lightning_b_0002
+  rotate: false
+  xy: 1866, 1558
+  size: 97, 96
+  orig: 110, 136
+  offset: 9, 25
+  index: -1
+sd/lightning_b/lightning_b_0003
+  rotate: false
+  xy: 1792, 1542
+  size: 72, 112
+  orig: 110, 136
+  offset: 22, 20
+  index: -1
+sd/lightning_point/lightning_point_0006
+  rotate: false
+  xy: 1005, 71
+  size: 518, 530
+  orig: 659, 635
+  offset: 41, 94
+  index: -1
+sd/lightning_point/lightning_point_0008
+  rotate: false
+  xy: 1452, 651
+  size: 492, 519
+  orig: 659, 635
+  offset: 38, 104
+  index: -1
+sd/lightning_point/lightning_point_0018
+  rotate: true
+  xy: 2, 2
+  size: 551, 501
+  orig: 659, 635
+  offset: 76, 77
+  index: -1
+sd/lightning_point/lightning_point_0020
+  rotate: false
+  xy: 2, 555
+  size: 608, 509
+  orig: 659, 635
+  offset: 45, 115
+  index: -1
+sd/lightning_point/lightning_point_0024
+  rotate: true
+  xy: 505, 5
+  size: 548, 498
+  orig: 659, 635
+  offset: 111, 66
+  index: -1
+sd/lightning_point/lightning_point_0028
+  rotate: true
+  xy: 678, 809
+  size: 450, 272
+  orig: 659, 635
+  offset: 209, 21
+  index: -1
+texiao/superskill/languang
+  rotate: false
+  xy: 612, 605
+  size: 202, 202
+  orig: 300, 300
+  offset: 49, 49
+  index: -1
+texiao/usk/longchuxianshandian/lcxsd_0004
+  rotate: true
+  xy: 2, 1509
+  size: 200, 1006
+  orig: 328, 1058
+  offset: 82, 34
+  index: -1
+texiao/usk/longchuxianshandian/lcxsd_0006
+  rotate: true
+  xy: 1013, 1749
+  size: 208, 910
+  orig: 328, 1058
+  offset: 65, 36
+  index: -1
+texiao/usk/longchuxianshandian/lcxsd_0012
+  rotate: true
+  xy: 2, 1261
+  size: 246, 1000
+  orig: 328, 1058
+  offset: 40, 33
+  index: -1
+texiao/usk/longchuxianshandian/lcxsd_0014
+  rotate: true
+  xy: 2, 1711
+  size: 246, 1009
+  orig: 328, 1058
+  offset: 29, 34
+  index: -1
+texiao/usk/longxiaoshishandian/lxssd_0002
+  rotate: true
+  xy: 952, 603
+  size: 567, 498
+  orig: 670, 702
+  offset: 83, 88
+  index: -1
+texiao/usk/shoujishandian/sjsd_0004
+  rotate: true
+  xy: 1004, 1172
+  size: 320, 964
+  orig: 720, 992
+  offset: 230, 28
+  index: -1
+texiao/usk/xiexiangshandian/xiexiangshandian_0000
+  rotate: true
+  xy: 2, 1066
+  size: 193, 674
+  orig: 272, 1080
+  offset: 44, 274
+  index: -1
+texiao/usk/xiexiangshandian/xiexiangshandian_0010
+  rotate: true
+  xy: 1013, 1494
+  size: 253, 777
+  orig: 272, 1080
+  offset: 9, 130
+  index: -1

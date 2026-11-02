@@ -1,0 +1,48 @@
+
+seffect_51509131013.png
+size: 648,263
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+long1
+  rotate: false
+  xy: 2, 2
+  size: 371, 89
+  orig: 371, 89
+  offset: 0, 0
+  index: -1
+long1g
+  rotate: false
+  xy: 2, 236
+  size: 95, 25
+  orig: 95, 25
+  offset: 0, 0
+  index: -1
+long_tou
+  rotate: false
+  xy: 410, 74
+  size: 204, 106
+  orig: 204, 106
+  offset: 0, 0
+  index: -1
+long_weiba
+  rotate: false
+  xy: 99, 182
+  size: 547, 79
+  orig: 547, 79
+  offset: 0, 0
+  index: -1
+longxu1
+  rotate: false
+  xy: 2, 93
+  size: 202, 87
+  orig: 202, 87
+  offset: 0, 0
+  index: -1
+longxu2
+  rotate: false
+  xy: 206, 93
+  size: 202, 87
+  orig: 202, 87
+  offset: 0, 0
+  index: -1

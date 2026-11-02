@@ -1,0 +1,55 @@
+
+seffect_54518111011.png
+size: 790,137
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+effect/att/shouji/shouji_0000
+  rotate: false
+  xy: 614, 22
+  size: 102, 115
+  orig: 200, 200
+  offset: 61, 52
+  index: -1
+effect/att/shouji/shouji_0002
+  rotate: false
+  xy: 360, 9
+  size: 128, 128
+  orig: 200, 200
+  offset: 36, 36
+  index: -1
+effect/att/shouji/shouji_0004
+  rotate: false
+  xy: 490, 12
+  size: 122, 125
+  orig: 200, 200
+  offset: 55, 30
+  index: -1
+effect/att/shouji2/shouji2_0000
+  rotate: false
+  xy: 718, 65
+  size: 72, 72
+  orig: 200, 200
+  offset: 28, 59
+  index: -1
+effect/att/shouji2/shouji2_0002
+  rotate: false
+  xy: 0, 4
+  size: 178, 133
+  orig: 200, 200
+  offset: 1, 31
+  index: -1
+effect/att/shouji2/shouji2_0004
+  rotate: false
+  xy: 180, 11
+  size: 178, 126
+  orig: 200, 200
+  offset: 6, 33
+  index: -1
+effect/att/shouji2/shouji2_0006
+  rotate: true
+  xy: 718, 0
+  size: 63, 67
+  orig: 200, 200
+  offset: 125, 83
+  index: -1

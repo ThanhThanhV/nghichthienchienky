@@ -1,0 +1,55 @@
+
+seffect_51509131012.png
+size: 906,232
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+texiao/skill/baodian/bd1_0000
+  rotate: false
+  xy: 791, 91
+  size: 113, 139
+  orig: 256, 256
+  offset: 73, 65
+  index: -1
+texiao/skill/baodian/bd1_0002
+  rotate: false
+  xy: 453, 18
+  size: 192, 212
+  orig: 256, 256
+  offset: 31, 29
+  index: -1
+texiao/skill/baodian/bd1_0004
+  rotate: false
+  xy: 259, 5
+  size: 192, 225
+  orig: 256, 256
+  offset: 32, 22
+  index: -1
+texiao/skill/baodian/bd1_0006
+  rotate: true
+  xy: 2, 2
+  size: 228, 255
+  orig: 256, 256
+  offset: 16, 1
+  index: -1
+texiao/skill/baodian/bd1_0008
+  rotate: false
+  xy: 647, 89
+  size: 142, 141
+  orig: 256, 256
+  offset: 59, 60
+  index: -1
+texiao/skill/baodian/bd1_0010
+  rotate: false
+  xy: 647, 3
+  size: 84, 84
+  orig: 256, 256
+  offset: 89, 94
+  index: -1
+texiao/skill/baodian/bd1_0012
+  rotate: false
+  xy: 733, 58
+  size: 32, 29
+  orig: 256, 256
+  offset: 118, 108
+  index: -1

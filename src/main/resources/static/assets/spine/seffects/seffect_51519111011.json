@@ -1,0 +1,167 @@
+{
+"skeleton": { "hash": "1L1bCmJtdfbKyFd/bhOS+rVdrso", "spine": "3.5.35", "width": 262.5, "height": 90 },
+"bones": [
+	{ "name": "root" },
+	{ "name": "zx", "parent": "root", "x": 370.01, "y": -741.27 },
+	{ "name": "ct", "parent": "zx", "x": -20.72, "y": 692.85 },
+	{ "name": "ct_tx", "parent": "ct", "x": -349.29, "y": 48.42 },
+	{ "name": "ct_skill", "parent": "ct_tx" },
+	{ "name": "dizuo2", "parent": "ct", "x": -346.14, "y": 41.43, "scaleX": 1.5, "scaleY": 1.5 },
+	{ "name": "fkbg", "parent": "zx" },
+	{ "name": "fkbg2", "parent": "zx" },
+	{ "name": "tx/skill1/longjuanfeng", "parent": "ct_skill" }
+],
+"slots": [
+	{ "name": "fangkuai2", "bone": "fkbg2" },
+	{ "name": "bg", "bone": "root", "color": "757575ff" },
+	{ "name": "dizuo2", "bone": "dizuo2", "attachment": "dizuo" },
+	{ "name": "bs_zm_chibang03", "bone": "root" },
+	{ "name": "bs_zm_chibang02", "bone": "root" },
+	{ "name": "tx/skill1/longjuanfeng", "bone": "tx/skill1/longjuanfeng" },
+	{ "name": "tx/skill1/longjuanfeng2", "bone": "tx/skill1/longjuanfeng" },
+	{ "name": "fangkuai", "bone": "fkbg" }
+],
+"skins": {
+	"default": {
+		"bs_zm_chibang02": {
+			"bs_zm_chibang02": { "x": 420, "y": 179, "width": 294, "height": 292 }
+		},
+		"bs_zm_chibang03": {
+			"bs_zm_chibang03": { "x": 302.66, "y": 390.5, "width": 232, "height": 295 }
+		},
+		"dizuo2": {
+			"dizuo": {
+				"type": "mesh",
+				"uvs": [ 1, 1, 0, 1, 0, 0, 1, 0 ],
+				"triangles": [ 1, 2, 3, 1, 3, 0 ],
+				"vertices": [ 87.5, -30, -87.5, -30, -87.5, 30, 87.5, 30 ],
+				"hull": 4
+			}
+		},
+		"fangkuai": {
+			"fangkuai": { "width": 81, "height": 81 }
+		},
+		"fangkuai2": {
+			"fangkuai": { "width": 81, "height": 81 }
+		},
+		"tx/skill1/longjuanfeng": {
+			"tx/skill1/longjuanfeng/ljf_0000": { "width": 932, "height": 828 },
+			"tx/skill1/longjuanfeng/ljf_0002": { "width": 932, "height": 828 },
+			"tx/skill1/longjuanfeng/ljf_0004": { "width": 932, "height": 828 },
+			"tx/skill1/longjuanfeng/ljf_0006": { "width": 932, "height": 828 },
+			"tx/skill1/longjuanfeng/ljf_0008": { "width": 932, "height": 828 },
+			"tx/skill1/longjuanfeng/ljf_0010": { "width": 932, "height": 828 },
+			"tx/skill1/longjuanfeng/ljf_0012": { "width": 932, "height": 828 },
+			"tx/skill1/longjuanfeng/ljf_0014": { "width": 932, "height": 828 },
+			"tx/skill1/longjuanfeng/ljf_0016": { "width": 932, "height": 828 },
+			"tx/skill1/longjuanfeng/ljf_0018": { "width": 932, "height": 828 },
+			"tx/skill1/longjuanfeng/ljf_0020": { "width": 932, "height": 828 },
+			"tx/skill1/longjuanfeng/ljf_0022": { "width": 932, "height": 828 },
+			"tx/skill1/longjuanfeng/ljf_0024": { "width": 932, "height": 828 },
+			"tx/skill1/longjuanfeng/ljf_0026": { "width": 932, "height": 828 },
+			"tx/skill1/longjuanfeng/ljf_0028": { "width": 932, "height": 828 }
+		},
+		"tx/skill1/longjuanfeng2": {
+			"tx/skill1/longjuanfeng/ljf_0000": { "width": 932, "height": 828 },
+			"tx/skill1/longjuanfeng/ljf_0002": { "width": 932, "height": 828 },
+			"tx/skill1/longjuanfeng/ljf_0004": { "width": 932, "height": 828 },
+			"tx/skill1/longjuanfeng/ljf_0006": { "width": 932, "height": 828 },
+			"tx/skill1/longjuanfeng/ljf_0008": { "width": 932, "height": 828 },
+			"tx/skill1/longjuanfeng/ljf_0010": { "width": 932, "height": 828 },
+			"tx/skill1/longjuanfeng/ljf_0012": { "width": 932, "height": 828 },
+			"tx/skill1/longjuanfeng/ljf_0014": { "width": 932, "height": 828 },
+			"tx/skill1/longjuanfeng/ljf_0016": { "width": 932, "height": 828 },
+			"tx/skill1/longjuanfeng/ljf_0018": { "width": 932, "height": 828 },
+			"tx/skill1/longjuanfeng/ljf_0020": { "width": 932, "height": 828 },
+			"tx/skill1/longjuanfeng/ljf_0022": { "width": 932, "height": 828 },
+			"tx/skill1/longjuanfeng/ljf_0024": { "width": 932, "height": 828 },
+			"tx/skill1/longjuanfeng/ljf_0026": { "width": 932, "height": 828 },
+			"tx/skill1/longjuanfeng/ljf_0028": { "width": 932, "height": 828 }
+		}
+	}
+},
+"events": {
+	"qishou_11_5_1": {},
+	"qishou_11_5_2": {},
+	"qishou_11_5_3": {},
+	"qishou_11_5_4": {},
+	"qishou_11_5_5": {}
+},
+"animations": {
+	"animation_0": {
+		"slots": {
+			"dizuo2": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"tx/skill1/longjuanfeng": {
+				"attachment": [
+					{ "time": 0.8, "name": "tx/skill1/longjuanfeng/ljf_0000" },
+					{ "time": 0.8333, "name": "tx/skill1/longjuanfeng/ljf_0002" },
+					{ "time": 0.8667, "name": "tx/skill1/longjuanfeng/ljf_0004" },
+					{ "time": 0.9333, "name": "tx/skill1/longjuanfeng/ljf_0006" },
+					{ "time": 0.9667, "name": "tx/skill1/longjuanfeng/ljf_0008" },
+					{ "time": 1, "name": "tx/skill1/longjuanfeng/ljf_0010" },
+					{ "time": 1.0333, "name": "tx/skill1/longjuanfeng/ljf_0012" },
+					{ "time": 1.1, "name": "tx/skill1/longjuanfeng/ljf_0014" },
+					{ "time": 1.1333, "name": "tx/skill1/longjuanfeng/ljf_0016" },
+					{ "time": 1.1667, "name": "tx/skill1/longjuanfeng/ljf_0018" },
+					{ "time": 1.2, "name": "tx/skill1/longjuanfeng/ljf_0020" },
+					{ "time": 1.2667, "name": "tx/skill1/longjuanfeng/ljf_0022" },
+					{ "time": 1.3, "name": "tx/skill1/longjuanfeng/ljf_0024" },
+					{ "time": 1.3333, "name": "tx/skill1/longjuanfeng/ljf_0026" },
+					{ "time": 1.3667, "name": "tx/skill1/longjuanfeng/ljf_0028" },
+					{ "time": 1.4333, "name": null }
+				]
+			},
+			"tx/skill1/longjuanfeng2": {
+				"attachment": [
+					{ "time": 1.2, "name": "tx/skill1/longjuanfeng/ljf_0000" },
+					{ "time": 1.2667, "name": "tx/skill1/longjuanfeng/ljf_0002" },
+					{ "time": 1.3, "name": "tx/skill1/longjuanfeng/ljf_0004" },
+					{ "time": 1.3333, "name": "tx/skill1/longjuanfeng/ljf_0006" },
+					{ "time": 1.3667, "name": "tx/skill1/longjuanfeng/ljf_0008" },
+					{ "time": 1.4333, "name": "tx/skill1/longjuanfeng/ljf_0010" },
+					{ "time": 1.4667, "name": "tx/skill1/longjuanfeng/ljf_0012" },
+					{ "time": 1.5, "name": "tx/skill1/longjuanfeng/ljf_0014" },
+					{ "time": 1.5333, "name": "tx/skill1/longjuanfeng/ljf_0016" },
+					{ "time": 1.6, "name": "tx/skill1/longjuanfeng/ljf_0018" },
+					{ "time": 1.6333, "name": "tx/skill1/longjuanfeng/ljf_0020" },
+					{ "time": 1.6667, "name": "tx/skill1/longjuanfeng/ljf_0022" },
+					{ "time": 1.7, "name": "tx/skill1/longjuanfeng/ljf_0024" },
+					{ "time": 1.7667, "name": "tx/skill1/longjuanfeng/ljf_0026" },
+					{ "time": 1.8, "name": "tx/skill1/longjuanfeng/ljf_0028" },
+					{ "time": 1.8333, "name": null }
+				]
+			}
+		},
+		"bones": {
+			"tx/skill1/longjuanfeng": {
+				"translate": [
+					{ "time": 0.8, "x": 50.27, "y": 423.36 }
+				],
+				"scale": [
+					{ "time": 0.8, "x": 2, "y": 2 }
+				]
+			}
+		},
+		"deform": {
+			"default": {
+				"dizuo2": {
+					"dizuo": [
+						{ "time": 0 }
+					]
+				}
+			}
+		},
+		"events": [
+			{ "time": 0.8333, "name": "qishou_11_5_5" },
+			{ "time": 1.0333, "name": "qishou_11_5_4" },
+			{ "time": 1.2333, "name": "qishou_11_5_3" },
+			{ "time": 1.4333, "name": "qishou_11_5_2" },
+			{ "time": 1.6333, "name": "qishou_11_5_1" }
+		]
+	}
+}
+}

@@ -1,0 +1,72 @@
+{
+"skeleton": { "hash": "epyD65O/X/EjG4eODQGDSHB4rL4", "spine": "3.5.35", "width": 0, "height": 0 },
+"bones": [
+	{ "name": "root", "scaleX": 2, "scaleY": 2.5 },
+	{ "name": "txZH", "parent": "root" },
+	{ "name": "gjtx2", "parent": "txZH" },
+	{ "name": "boom14", "parent": "gjtx2", "scaleX": 1.42, "scaleY": 1.42 }
+],
+"slots": [
+	{ "name": "baodian14", "bone": "boom14" }
+],
+"skins": {
+	"default": {
+		"baodian14": {
+			"image/txgongji/2/boom/boom_0017": { "width": 432, "height": 447 },
+			"image/txgongji/2/boom/boom_0019": { "width": 432, "height": 447 },
+			"image/txgongji/2/boom/boom_0021": { "width": 432, "height": 447 },
+			"image/txgongji/2/boom/boom_0023": { "width": 432, "height": 447 },
+			"image/txgongji/2/boom/boom_0025": { "width": 432, "height": 447 },
+			"image/txgongji/2/boom/boom_0027": { "width": 432, "height": 447 },
+			"image/txgongji/2/boom/boom_0029": { "width": 432, "height": 447 },
+			"image/txgongji/2/boom/boom_0031": { "width": 432, "height": 447 }
+		}
+	}
+},
+"events": {
+	"hit_1_1_1": {}
+},
+"animations": {
+	"animation_0": {
+		"slots": {
+			"baodian14": {
+				"attachment": [
+					{ "time": 0, "name": "image/txgongji/2/boom/boom_0017" },
+					{ "time": 0.0667, "name": "image/txgongji/2/boom/boom_0019" },
+					{ "time": 0.1333, "name": "image/txgongji/2/boom/boom_0021" },
+					{ "time": 0.2, "name": "image/txgongji/2/boom/boom_0023" },
+					{ "time": 0.2667, "name": "image/txgongji/2/boom/boom_0025" },
+					{ "time": 0.3333, "name": "image/txgongji/2/boom/boom_0027" },
+					{ "time": 0.4, "name": "image/txgongji/2/boom/boom_0029" },
+					{ "time": 0.4667, "name": "image/txgongji/2/boom/boom_0031" },
+					{ "time": 0.5333, "name": null }
+				]
+			}
+		},
+		"bones": {
+			"boom14": {
+				"rotate": [
+					{ "time": 0, "angle": 34.15 }
+				],
+				"translate": [
+					{ "time": 0, "x": -7.7, "y": 6.2 }
+				],
+				"scale": [
+					{ "time": 0, "x": 0.726, "y": 0.616 }
+				],
+				"shear": [
+					{ "time": 0, "x": -8.62, "y": 3.3 }
+				]
+			},
+			"root": {
+				"translate": [
+					{ "time": 0, "x": -19.86, "y": -22.7 }
+				]
+			}
+		},
+		"events": [
+			{ "time": 0.0667, "name": "hit_1_1_1" }
+		]
+	}
+}
+}

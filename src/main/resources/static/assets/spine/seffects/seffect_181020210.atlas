@@ -1,0 +1,214 @@
+
+seffect_181020210.png
+size: 2047,2044
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+fs/fs_00
+  rotate: false
+  xy: 2, 3
+  size: 526, 194
+  orig: 650, 300
+  offset: 0, 40
+  index: -1
+fs/fs_02
+  rotate: false
+  xy: 530, 3
+  size: 526, 194
+  orig: 650, 300
+  offset: 0, 40
+  index: -1
+fs/fs_04
+  rotate: true
+  xy: 1851, 728
+  size: 528, 194
+  orig: 650, 300
+  offset: 0, 40
+  index: -1
+fs/fs_06
+  rotate: true
+  xy: 1655, 726
+  size: 530, 194
+  orig: 650, 300
+  offset: 0, 40
+  index: -1
+fs/fs_08
+  rotate: true
+  xy: 834, 708
+  size: 526, 194
+  orig: 650, 300
+  offset: 0, 40
+  index: -1
+fs/fs_10
+  rotate: false
+  xy: 2, 223
+  size: 526, 194
+  orig: 650, 300
+  offset: 0, 40
+  index: -1
+fs/fs_12
+  rotate: true
+  xy: 1851, 199
+  size: 527, 194
+  orig: 650, 300
+  offset: 0, 40
+  index: -1
+fs/fs_14
+  rotate: false
+  xy: 530, 223
+  size: 526, 194
+  orig: 650, 300
+  offset: 0, 40
+  index: -1
+fs/fs_16
+  rotate: false
+  xy: 1030, 844
+  size: 522, 194
+  orig: 650, 300
+  offset: 0, 40
+  index: -1
+fs/fs_18
+  rotate: false
+  xy: 1030, 1040
+  size: 526, 194
+  orig: 650, 300
+  offset: 0, 40
+  index: -1
+fsg
+  rotate: false
+  xy: 1777, 123
+  size: 232, 74
+  orig: 236, 89
+  offset: 0, 7
+  index: -1
+g_00
+  rotate: true
+  xy: 1655, 1258
+  size: 304, 366
+  orig: 328, 388
+  offset: 24, 20
+  index: -1
+zazhong/zazhong_00
+  rotate: false
+  xy: 1655, 1564
+  size: 370, 478
+  orig: 1000, 1000
+  offset: 352, 264
+  index: -1
+zazhong/zazhong_06
+  rotate: true
+  xy: 834, 1236
+  size: 806, 819
+  orig: 1000, 1000
+  offset: 134, 125
+  index: -1
+zazhong/zazhong_08
+  rotate: false
+  xy: 2, 419
+  size: 821, 801
+  orig: 1000, 1000
+  offset: 129, 110
+  index: -1
+zazhong/zazhong_20
+  rotate: true
+  xy: 1058, 2
+  size: 722, 717
+  orig: 1000, 1000
+  offset: 173, 180
+  index: -1
+zazhong/zazhong_24
+  rotate: false
+  xy: 2, 1222
+  size: 830, 820
+  orig: 1000, 1000
+  offset: 106, 109
+  index: -1
+
+seffect_1810202102.png
+size: 1922,1960
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+dilie_00
+  rotate: false
+  xy: 1658, 1710
+  size: 262, 248
+  orig: 289, 272
+  offset: 16, 17
+  index: -1
+zazhong/zazhong_02
+  rotate: true
+  xy: 2, 2
+  size: 418, 641
+  orig: 1000, 1000
+  offset: 317, 256
+  index: -1
+zazhong/zazhong_10
+  rotate: false
+  xy: 2, 1194
+  size: 798, 764
+  orig: 1000, 1000
+  offset: 129, 124
+  index: -1
+zazhong/zazhong_22
+  rotate: false
+  xy: 2, 422
+  size: 778, 770
+  orig: 1000, 1000
+  offset: 139, 144
+  index: -1
+zazhong/zazhong_26
+  rotate: false
+  xy: 802, 541
+  size: 820, 721
+  orig: 1000, 1000
+  offset: 74, 75
+  index: -1
+zazhong/zazhong_28
+  rotate: false
+  xy: 802, 1264
+  size: 854, 694
+  orig: 1000, 1000
+  offset: 44, 40
+  index: -1
+
+seffect_1810202103.png
+size: 1991,1400
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+zazhong/zazhong_04
+  rotate: true
+  xy: 725, 2
+  size: 731, 744
+  orig: 1000, 1000
+  offset: 185, 173
+  index: -1
+zazhong/zazhong_12
+  rotate: false
+  xy: 2, 62
+  size: 721, 687
+  orig: 1000, 1000
+  offset: 150, 167
+  index: -1
+zazhong/zazhong_14
+  rotate: false
+  xy: 670, 751
+  size: 654, 647
+  orig: 1000, 1000
+  offset: 180, 185
+  index: -1
+zazhong/zazhong_16
+  rotate: false
+  xy: 2, 758
+  size: 666, 640
+  orig: 1000, 1000
+  offset: 193, 217
+  index: -1
+zazhong/zazhong_18
+  rotate: false
+  xy: 1326, 735
+  size: 663, 663
+  orig: 1000, 1000
+  offset: 208, 215
+  index: -1

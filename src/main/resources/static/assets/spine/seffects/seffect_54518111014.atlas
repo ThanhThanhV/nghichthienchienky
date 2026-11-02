@@ -1,0 +1,327 @@
+
+seffect_54518111014.png
+size: 2046,2042
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+effect/usk/cjb
+  rotate: false
+  xy: 0, 1637
+  size: 404, 405
+  orig: 404, 405
+  offset: 0, 0
+  index: -1
+effect/usk/cjb2
+  rotate: false
+  xy: 0, 1230
+  size: 404, 405
+  orig: 404, 405
+  offset: 0, 0
+  index: -1
+effect/usk/cjb3
+  rotate: false
+  xy: 1790, 1286
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+effect/usk/cjbzx
+  rotate: false
+  xy: 1790, 1786
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+effect/usk/long/long_0018
+  rotate: false
+  xy: 406, 1776
+  size: 344, 266
+  orig: 344, 266
+  offset: 0, 0
+  index: -1
+effect/usk/long/long_0022
+  rotate: false
+  xy: 0, 962
+  size: 344, 266
+  orig: 344, 266
+  offset: 0, 0
+  index: -1
+effect/usk/long/long_0026
+  rotate: false
+  xy: 406, 1508
+  size: 344, 266
+  orig: 344, 266
+  offset: 0, 0
+  index: -1
+effect/usk/long/long_0034
+  rotate: false
+  xy: 752, 1776
+  size: 344, 266
+  orig: 344, 266
+  offset: 0, 0
+  index: -1
+effect/usk/long/long_0038
+  rotate: false
+  xy: 0, 694
+  size: 344, 266
+  orig: 344, 266
+  offset: 0, 0
+  index: -1
+effect/usk/long/long_0042
+  rotate: false
+  xy: 406, 1240
+  size: 344, 266
+  orig: 344, 266
+  offset: 0, 0
+  index: -1
+effect/usk/long/long_0046
+  rotate: false
+  xy: 752, 1508
+  size: 344, 266
+  orig: 344, 266
+  offset: 0, 0
+  index: -1
+effect/usk/long/long_0050
+  rotate: false
+  xy: 1098, 1776
+  size: 344, 266
+  orig: 344, 266
+  offset: 0, 0
+  index: -1
+effect/usk/long/long_0054
+  rotate: false
+  xy: 0, 426
+  size: 344, 266
+  orig: 344, 266
+  offset: 0, 0
+  index: -1
+effect/usk/long/long_0058
+  rotate: false
+  xy: 752, 1240
+  size: 344, 266
+  orig: 344, 266
+  offset: 0, 0
+  index: -1
+effect/usk/long/long_0062
+  rotate: false
+  xy: 1098, 1508
+  size: 344, 266
+  orig: 344, 266
+  offset: 0, 0
+  index: -1
+effect/usk/long/long_0066
+  rotate: false
+  xy: 1444, 1776
+  size: 344, 266
+  orig: 344, 266
+  offset: 0, 0
+  index: -1
+effect/usk/long/long_0068
+  rotate: false
+  xy: 0, 158
+  size: 344, 266
+  orig: 344, 266
+  offset: 0, 0
+  index: -1
+effect/usk/long/long_0070
+  rotate: false
+  xy: 1098, 1240
+  size: 344, 266
+  orig: 344, 266
+  offset: 0, 0
+  index: -1
+effect/usk/long/long_0072
+  rotate: false
+  xy: 1444, 1508
+  size: 344, 266
+  orig: 344, 266
+  offset: 0, 0
+  index: -1
+effect/usk/long/long_0074
+  rotate: false
+  xy: 1444, 1240
+  size: 344, 266
+  orig: 344, 266
+  offset: 0, 0
+  index: -1
+effect/usk/long/long_0076
+  rotate: true
+  xy: 346, 884
+  size: 344, 266
+  orig: 344, 266
+  offset: 0, 0
+  index: -1
+effect/usk/long/long_0078
+  rotate: true
+  xy: 346, 538
+  size: 344, 266
+  orig: 344, 266
+  offset: 0, 0
+  index: -1
+effect/usk/long/long_0080
+  rotate: true
+  xy: 346, 192
+  size: 344, 266
+  orig: 344, 266
+  offset: 0, 0
+  index: -1
+effect/usk/long/long_0082
+  rotate: false
+  xy: 614, 972
+  size: 344, 266
+  orig: 344, 266
+  offset: 0, 0
+  index: -1
+effect/usk/long/long_0084
+  rotate: false
+  xy: 614, 704
+  size: 344, 266
+  orig: 344, 266
+  offset: 0, 0
+  index: -1
+effect/usk/long/long_0086
+  rotate: false
+  xy: 960, 972
+  size: 344, 266
+  orig: 344, 266
+  offset: 0, 0
+  index: -1
+effect/usk/long/long_0088
+  rotate: false
+  xy: 614, 436
+  size: 344, 266
+  orig: 344, 266
+  offset: 0, 0
+  index: -1
+effect/usk/long/long_0090
+  rotate: false
+  xy: 960, 704
+  size: 344, 266
+  orig: 344, 266
+  offset: 0, 0
+  index: -1
+effect/usk/long/long_0094
+  rotate: false
+  xy: 1306, 972
+  size: 344, 266
+  orig: 344, 266
+  offset: 0, 0
+  index: -1
+effect/usk/long/long_0098
+  rotate: false
+  xy: 960, 436
+  size: 344, 266
+  orig: 344, 266
+  offset: 0, 0
+  index: -1
+effect/usk/long/long_0102
+  rotate: false
+  xy: 1306, 704
+  size: 344, 266
+  orig: 344, 266
+  offset: 0, 0
+  index: -1
+effect/usk/long/long_0106
+  rotate: false
+  xy: 1306, 436
+  size: 344, 266
+  orig: 344, 266
+  offset: 0, 0
+  index: -1
+effect/usk/long/long_0110
+  rotate: false
+  xy: 614, 168
+  size: 344, 266
+  orig: 344, 266
+  offset: 0, 0
+  index: -1
+effect/usk/long/long_0114
+  rotate: false
+  xy: 960, 168
+  size: 344, 266
+  orig: 344, 266
+  offset: 0, 0
+  index: -1
+effect/usk/long/long_0118
+  rotate: false
+  xy: 1306, 168
+  size: 344, 266
+  orig: 344, 266
+  offset: 0, 0
+  index: -1
+effect/usk/long/long_0122
+  rotate: true
+  xy: 1652, 894
+  size: 344, 266
+  orig: 344, 266
+  offset: 0, 0
+  index: -1
+effect/usk/long/long_0126
+  rotate: true
+  xy: 1652, 548
+  size: 344, 266
+  orig: 344, 266
+  offset: 0, 0
+  index: -1
+effect/usk/long/long_0130
+  rotate: true
+  xy: 1652, 202
+  size: 344, 266
+  orig: 344, 266
+  offset: 0, 0
+  index: -1
+gemola_bozi
+  rotate: false
+  xy: 1652, 12
+  size: 283, 188
+  orig: 283, 188
+  offset: 0, 0
+  index: -1
+gemola_shetou
+  rotate: false
+  xy: 1935, 1538
+  size: 68, 110
+  orig: 68, 110
+  offset: 0, 0
+  index: -1
+gemola_touding
+  rotate: true
+  xy: 1790, 1416
+  size: 368, 143
+  orig: 368, 143
+  offset: 0, 0
+  index: -1
+gemola_xiae
+  rotate: true
+  xy: 0, 0
+  size: 156, 197
+  orig: 156, 197
+  offset: 0, 0
+  index: -1
+gemola_youjiao
+  rotate: false
+  xy: 199, 63
+  size: 143, 93
+  orig: 143, 93
+  offset: 0, 0
+  index: -1
+gemola_zuojiao
+  rotate: true
+  xy: 1935, 1650
+  size: 134, 105
+  orig: 134, 105
+  offset: 0, 0
+  index: -1
+
+seffect_545181110142.png
+size: 300,300
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+effect/fazhen
+  rotate: false
+  xy: 0, 0
+  size: 300, 300
+  orig: 300, 300
+  offset: 0, 0
+  index: -1

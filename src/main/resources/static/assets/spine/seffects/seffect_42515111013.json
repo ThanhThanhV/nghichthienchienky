@@ -1,0 +1,1171 @@
+{
+"skeleton": { "hash": "+zImpdBpyWveYY/nJ5OK3tzCACo", "spine": "3.5.35", "width": 0, "height": 0 },
+"bones": [
+	{ "name": "root" },
+	{ "name": "zx", "parent": "root" },
+	{ "name": "TX", "parent": "zx" },
+	{ "name": "bg", "parent": "root", "y": 103.57, "scaleX": 3.33, "scaleY": 3.33 },
+	{ "name": "skill", "parent": "TX" },
+	{ "name": "di_wind", "parent": "skill" },
+	{ "name": "dianlu", "parent": "skill" },
+	{ "name": "dianlu2", "parent": "skill" },
+	{ "name": "dianlu3", "parent": "skill" },
+	{ "name": "dianlu4", "parent": "skill" },
+	{ "name": "hong_quan_0004", "parent": "skill", "scaleX": 2, "scaleY": 2 },
+	{ "name": "kuosan", "parent": "skill", "scaleX": 2, "scaleY": 2 },
+	{ "name": "light_h_0000", "parent": "skill", "scaleX": 2, "scaleY": 2 },
+	{ "name": "light_hh_0000_0012", "parent": "skill", "scaleX": 2, "scaleY": 2 },
+	{ "name": "line_0000", "parent": "skill" },
+	{ "name": "line_0", "parent": "skill" },
+	{ "name": "lxl", "parent": "skill", "scaleX": 1.42, "scaleY": 1.42 },
+	{ "name": "quan", "parent": "skill" },
+	{ "name": "quan_a", "parent": "skill" },
+	{ "name": "quan_bai_0000", "parent": "skill", "scaleX": 2, "scaleY": 2 },
+	{ "name": "quan_hong_0000_0000", "parent": "skill", "scaleX": 2, "scaleY": 2 },
+	{ "name": "quan_kuo_a_0012", "parent": "skill", "scaleX": 2, "scaleY": 2 }
+],
+"slots": [
+	{ "name": "bg", "bone": "bg", "color": "7a7a7aff" },
+	{ "name": "di_wind", "bone": "di_wind" },
+	{ "name": "quan", "bone": "quan", "blend": "additive" },
+	{ "name": "quan_a", "bone": "quan_a" },
+	{ "name": "lxl", "bone": "lxl", "blend": "additive" },
+	{ "name": "dianlu", "bone": "dianlu", "blend": "additive" },
+	{ "name": "dianlu3", "bone": "dianlu3", "blend": "additive" },
+	{ "name": "dianlu4", "bone": "dianlu4", "blend": "additive" },
+	{ "name": "dianlu2", "bone": "dianlu2", "blend": "additive" },
+	{ "name": "ks", "bone": "kuosan", "blend": "additive" },
+	{ "name": "tx/skill_bu/hong_quan_0004", "bone": "hong_quan_0004", "blend": "additive" },
+	{ "name": "light_h_0000", "bone": "light_h_0000", "blend": "additive" },
+	{ "name": "light_hh_0000_0012", "bone": "light_hh_0000_0012", "blend": "additive" },
+	{ "name": "line_0000", "bone": "line_0000", "blend": "additive" },
+	{ "name": "line_0", "bone": "line_0", "blend": "additive" },
+	{ "name": "quan_bai_0000", "bone": "quan_bai_0000", "blend": "additive" },
+	{ "name": "quan_hong_0000_0000", "bone": "quan_hong_0000_0000", "blend": "additive" },
+	{ "name": "quan_kuo_a_0012", "bone": "quan_kuo_a_0012", "blend": "additive" }
+],
+"skins": {
+	"default": {
+		"di_wind": {
+			"tx/skill/di_wind/di_wind_0000": { "width": 248, "height": 126 },
+			"tx/skill/di_wind/di_wind_0002": { "width": 248, "height": 126 },
+			"tx/skill/di_wind/di_wind_0004": { "width": 248, "height": 126 },
+			"tx/skill/di_wind/di_wind_0006": { "width": 248, "height": 126 },
+			"tx/skill/di_wind/di_wind_0008": { "width": 248, "height": 126 },
+			"tx/skill/di_wind/di_wind_0010": { "width": 248, "height": 126 },
+			"tx/skill/di_wind/di_wind_0012": { "width": 248, "height": 126 },
+			"tx/skill/di_wind/di_wind_0014": { "width": 248, "height": 126 },
+			"tx/skill/di_wind/di_wind_0016": { "width": 248, "height": 126 },
+			"tx/skill/di_wind/di_wind_0018": { "width": 248, "height": 126 },
+			"tx/skill/di_wind/di_wind_0020": { "width": 248, "height": 126 },
+			"tx/skill/di_wind/di_wind_0022": { "width": 248, "height": 126 },
+			"tx/skill/di_wind/di_wind_0024": { "width": 248, "height": 126 }
+		},
+		"dianlu": {
+			"tx/skill_bu/dianlu/dianlu_0000": { "width": 246, "height": 248 },
+			"tx/skill_bu/dianlu/dianlu_0002": { "width": 246, "height": 248 },
+			"tx/skill_bu/dianlu/dianlu_0004": { "width": 246, "height": 248 },
+			"tx/skill_bu/dianlu/dianlu_0006": { "width": 246, "height": 248 },
+			"tx/skill_bu/dianlu/dianlu_0008": { "width": 246, "height": 248 },
+			"tx/skill_bu/dianlu/dianlu_0010": { "width": 246, "height": 248 },
+			"tx/skill_bu/dianlu/dianlu_0012": { "width": 246, "height": 248 },
+			"tx/skill_bu/dianlu/dianlu_0014": { "width": 246, "height": 248 },
+			"tx/skill_bu/dianlu/dianlu_0016": { "width": 246, "height": 248 },
+			"tx/skill_bu/dianlu/dianlu_0018": { "width": 246, "height": 248 },
+			"tx/skill_bu/dianlu/dianlu_0020": { "width": 246, "height": 248 },
+			"tx/skill_bu/dianlu/dianlu_0022": { "width": 246, "height": 248 },
+			"tx/skill_bu/dianlu/dianlu_0024": { "width": 246, "height": 248 }
+		},
+		"dianlu2": {
+			"tx/skill_bu/dianlu/dianlu_0000": { "width": 246, "height": 248 },
+			"tx/skill_bu/dianlu/dianlu_0002": { "width": 246, "height": 248 },
+			"tx/skill_bu/dianlu/dianlu_0004": { "width": 246, "height": 248 },
+			"tx/skill_bu/dianlu/dianlu_0006": { "width": 246, "height": 248 },
+			"tx/skill_bu/dianlu/dianlu_0008": { "width": 246, "height": 248 },
+			"tx/skill_bu/dianlu/dianlu_0010": { "width": 246, "height": 248 },
+			"tx/skill_bu/dianlu/dianlu_0012": { "width": 246, "height": 248 },
+			"tx/skill_bu/dianlu/dianlu_0014": { "width": 246, "height": 248 },
+			"tx/skill_bu/dianlu/dianlu_0016": { "width": 246, "height": 248 },
+			"tx/skill_bu/dianlu/dianlu_0018": { "width": 246, "height": 248 },
+			"tx/skill_bu/dianlu/dianlu_0020": { "width": 246, "height": 248 },
+			"tx/skill_bu/dianlu/dianlu_0022": { "width": 246, "height": 248 },
+			"tx/skill_bu/dianlu/dianlu_0024": { "width": 246, "height": 248 }
+		},
+		"dianlu3": {
+			"tx/skill_bu/dianlu/dianlu_0000": { "width": 246, "height": 248 },
+			"tx/skill_bu/dianlu/dianlu_0002": { "width": 246, "height": 248 },
+			"tx/skill_bu/dianlu/dianlu_0004": { "width": 246, "height": 248 },
+			"tx/skill_bu/dianlu/dianlu_0006": { "width": 246, "height": 248 },
+			"tx/skill_bu/dianlu/dianlu_0008": { "width": 246, "height": 248 },
+			"tx/skill_bu/dianlu/dianlu_0010": { "width": 246, "height": 248 },
+			"tx/skill_bu/dianlu/dianlu_0012": { "width": 246, "height": 248 },
+			"tx/skill_bu/dianlu/dianlu_0014": { "width": 246, "height": 248 },
+			"tx/skill_bu/dianlu/dianlu_0016": { "width": 246, "height": 248 },
+			"tx/skill_bu/dianlu/dianlu_0018": { "width": 246, "height": 248 },
+			"tx/skill_bu/dianlu/dianlu_0020": { "width": 246, "height": 248 },
+			"tx/skill_bu/dianlu/dianlu_0022": { "width": 246, "height": 248 },
+			"tx/skill_bu/dianlu/dianlu_0024": { "width": 246, "height": 248 }
+		},
+		"dianlu4": {
+			"tx/skill_bu/dianlu/dianlu_0000": { "width": 246, "height": 248 },
+			"tx/skill_bu/dianlu/dianlu_0002": { "width": 246, "height": 248 },
+			"tx/skill_bu/dianlu/dianlu_0004": { "width": 246, "height": 248 },
+			"tx/skill_bu/dianlu/dianlu_0006": { "width": 246, "height": 248 },
+			"tx/skill_bu/dianlu/dianlu_0008": { "width": 246, "height": 248 },
+			"tx/skill_bu/dianlu/dianlu_0010": { "width": 246, "height": 248 },
+			"tx/skill_bu/dianlu/dianlu_0012": { "width": 246, "height": 248 },
+			"tx/skill_bu/dianlu/dianlu_0014": { "width": 246, "height": 248 },
+			"tx/skill_bu/dianlu/dianlu_0016": { "width": 246, "height": 248 },
+			"tx/skill_bu/dianlu/dianlu_0018": { "width": 246, "height": 248 },
+			"tx/skill_bu/dianlu/dianlu_0020": { "width": 246, "height": 248 },
+			"tx/skill_bu/dianlu/dianlu_0022": { "width": 246, "height": 248 },
+			"tx/skill_bu/dianlu/dianlu_0024": { "width": 246, "height": 248 }
+		},
+		"ks": {
+			"tx/skill_bu/kuoshan/kuoshan_0010": { "width": 429, "height": 399 },
+			"tx/skill_bu/kuoshan/kuoshan_0012": { "width": 429, "height": 399 },
+			"tx/skill_bu/kuoshan/kuoshan_0014": { "width": 429, "height": 399 },
+			"tx/skill_bu/kuoshan/kuoshan_0016": { "width": 429, "height": 399 },
+			"tx/skill_bu/kuoshan/kuoshan_0018": { "width": 429, "height": 399 },
+			"tx/skill_bu/kuoshan/kuoshan_0020": { "width": 429, "height": 399 },
+			"tx/skill_bu/kuoshan/kuoshan_0022": { "width": 429, "height": 399 },
+			"tx/skill_bu/kuoshan/kuoshan_0024": { "width": 429, "height": 399 },
+			"tx/skill_bu/kuoshan/kuoshan_0025": { "width": 429, "height": 399 }
+		},
+		"light_h_0000": {
+			"tx/skill_bu/light_h_0000": { "width": 264, "height": 308 }
+		},
+		"light_hh_0000_0012": {
+			"tx/skill_bu/light_hh_0000_0012": { "width": 378, "height": 457 }
+		},
+		"line_0": {
+			"tx/skill_bu/line_0000": { "width": 817, "height": 22 }
+		},
+		"line_0000": {
+			"tx/skill_bu/line_0000": { "width": 817, "height": 22 }
+		},
+		"lxl": {
+			"tx/skill_bu/lxl/1": { "width": 270, "height": 261 },
+			"tx/skill_bu/lxl/2": { "width": 270, "height": 261 },
+			"tx/skill_bu/lxl/3": { "width": 270, "height": 261 },
+			"tx/skill_bu/lxl/4": { "width": 270, "height": 261 },
+			"tx/skill_bu/lxl/5": { "width": 270, "height": 261 },
+			"tx/skill_bu/lxl/6": { "width": 270, "height": 261 },
+			"tx/skill_bu/lxl/7": { "width": 270, "height": 261 }
+		},
+		"quan": {
+			"tx/skill/quan/quan_0004": { "width": 384, "height": 172 },
+			"tx/skill/quan/quan_0006": { "width": 384, "height": 172 },
+			"tx/skill/quan/quan_0008": { "width": 384, "height": 172 },
+			"tx/skill/quan/quan_0010": { "width": 384, "height": 172 },
+			"tx/skill/quan/quan_0012": { "width": 384, "height": 172 },
+			"tx/skill/quan/quan_0014": { "width": 384, "height": 172 },
+			"tx/skill/quan/quan_0016": { "width": 384, "height": 172 },
+			"tx/skill/quan/quan_0018": { "width": 384, "height": 172 },
+			"tx/skill/quan/quan_0020": { "width": 384, "height": 172 },
+			"tx/skill/quan/quan_0022": { "width": 384, "height": 172 }
+		},
+		"quan_a": {
+			"tx/skill/quan_a/quan_a_0000": { "width": 420, "height": 201 },
+			"tx/skill/quan_a/quan_a_0002": { "width": 420, "height": 201 },
+			"tx/skill/quan_a/quan_a_0004": { "width": 420, "height": 201 },
+			"tx/skill/quan_a/quan_a_0006": { "width": 420, "height": 201 },
+			"tx/skill/quan_a/quan_a_0008": { "width": 420, "height": 201 },
+			"tx/skill/quan_a/quan_a_0010": { "width": 420, "height": 201 },
+			"tx/skill/quan_a/quan_a_0012": { "width": 420, "height": 201 },
+			"tx/skill/quan_a/quan_a_0014": { "width": 420, "height": 201 },
+			"tx/skill/quan_a/quan_a_0016": { "width": 420, "height": 201 },
+			"tx/skill/quan_a/quan_a_0018": { "width": 420, "height": 201 },
+			"tx/skill/quan_a/quan_a_0020": { "width": 420, "height": 201 }
+		},
+		"quan_bai_0000": {
+			"tx/skill_bu/quan_bai_0000": { "width": 212, "height": 214 }
+		},
+		"quan_hong_0000_0000": {
+			"tx/skill_bu/quan_hong_0000_0000": { "width": 307, "height": 298 }
+		},
+		"quan_kuo_a_0012": {
+			"tx/skill_bu/quan_kuo_a_0012": { "width": 282, "height": 285 }
+		},
+		"tx/skill_bu/hong_quan_0004": {
+			"tx/skill_bu/hong_quan_0004": { "width": 159, "height": 163 }
+		}
+	}
+},
+"events": {
+	"qishou_11_1_1": {}
+},
+"animations": {
+	"skill": {
+		"slots": {
+			"di_wind": {
+				"color": [
+					{
+						"time": 0,
+						"color": "ffffff00",
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{ "time": 0.3333, "color": "ffffffff", "curve": "stepped" },
+					{
+						"time": 1.3333,
+						"color": "ffffffff",
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{ "time": 1.6667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0, "name": "tx/skill/di_wind/di_wind_0000" },
+					{ "time": 0.0667, "name": "tx/skill/di_wind/di_wind_0002" },
+					{ "time": 0.1333, "name": "tx/skill/di_wind/di_wind_0004" },
+					{ "time": 0.2, "name": "tx/skill/di_wind/di_wind_0006" },
+					{ "time": 0.2667, "name": "tx/skill/di_wind/di_wind_0008" },
+					{ "time": 0.3333, "name": "tx/skill/di_wind/di_wind_0010" },
+					{ "time": 0.4, "name": "tx/skill/di_wind/di_wind_0012" },
+					{ "time": 0.4667, "name": "tx/skill/di_wind/di_wind_0014" },
+					{ "time": 0.5333, "name": "tx/skill/di_wind/di_wind_0016" },
+					{ "time": 0.6, "name": "tx/skill/di_wind/di_wind_0018" },
+					{ "time": 0.6667, "name": "tx/skill/di_wind/di_wind_0020" },
+					{ "time": 0.7333, "name": "tx/skill/di_wind/di_wind_0022" },
+					{ "time": 0.8, "name": "tx/skill/di_wind/di_wind_0024" },
+					{ "time": 0.8667, "name": "tx/skill/di_wind/di_wind_0000" },
+					{ "time": 0.9333, "name": "tx/skill/di_wind/di_wind_0002" },
+					{ "time": 1, "name": "tx/skill/di_wind/di_wind_0004" },
+					{ "time": 1.0667, "name": "tx/skill/di_wind/di_wind_0006" },
+					{ "time": 1.1333, "name": "tx/skill/di_wind/di_wind_0008" },
+					{ "time": 1.2, "name": "tx/skill/di_wind/di_wind_0010" },
+					{ "time": 1.2667, "name": "tx/skill/di_wind/di_wind_0012" },
+					{ "time": 1.3333, "name": "tx/skill/di_wind/di_wind_0014" },
+					{ "time": 1.4, "name": "tx/skill/di_wind/di_wind_0016" },
+					{ "time": 1.4667, "name": "tx/skill/di_wind/di_wind_0018" },
+					{ "time": 1.5333, "name": "tx/skill/di_wind/di_wind_0020" },
+					{ "time": 1.6, "name": "tx/skill/di_wind/di_wind_0022" },
+					{ "time": 1.6667, "name": "tx/skill/di_wind/di_wind_0024" }
+				]
+			},
+			"dianlu": {
+				"color": [
+					{ "time": 1.6667, "color": "ffffffff" },
+					{ "time": 1.8333, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 1, "name": "tx/skill_bu/dianlu/dianlu_0000" },
+					{ "time": 1.0667, "name": "tx/skill_bu/dianlu/dianlu_0002" },
+					{ "time": 1.1333, "name": "tx/skill_bu/dianlu/dianlu_0004" },
+					{ "time": 1.2, "name": "tx/skill_bu/dianlu/dianlu_0006" },
+					{ "time": 1.2667, "name": "tx/skill_bu/dianlu/dianlu_0008" },
+					{ "time": 1.3333, "name": "tx/skill_bu/dianlu/dianlu_0010" },
+					{ "time": 1.4, "name": "tx/skill_bu/dianlu/dianlu_0012" },
+					{ "time": 1.4667, "name": "tx/skill_bu/dianlu/dianlu_0014" },
+					{ "time": 1.5333, "name": "tx/skill_bu/dianlu/dianlu_0016" },
+					{ "time": 1.6, "name": "tx/skill_bu/dianlu/dianlu_0018" },
+					{ "time": 1.6667, "name": "tx/skill_bu/dianlu/dianlu_0020" },
+					{ "time": 1.7333, "name": "tx/skill_bu/dianlu/dianlu_0022" },
+					{ "time": 1.8, "name": "tx/skill_bu/dianlu/dianlu_0024" }
+				]
+			},
+			"ks": {
+				"color": [
+					{ "time": 1.4333, "color": "ffffffff" },
+					{ "time": 1.6667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 1, "name": "tx/skill_bu/kuoshan/kuoshan_0010" },
+					{ "time": 1.0667, "name": "tx/skill_bu/kuoshan/kuoshan_0012" },
+					{ "time": 1.1333, "name": "tx/skill_bu/kuoshan/kuoshan_0014" },
+					{ "time": 1.2, "name": "tx/skill_bu/kuoshan/kuoshan_0016" },
+					{ "time": 1.2667, "name": "tx/skill_bu/kuoshan/kuoshan_0018" },
+					{ "time": 1.3333, "name": "tx/skill_bu/kuoshan/kuoshan_0020" },
+					{ "time": 1.4, "name": "tx/skill_bu/kuoshan/kuoshan_0022" },
+					{ "time": 1.5, "name": "tx/skill_bu/kuoshan/kuoshan_0024" },
+					{ "time": 1.5667, "name": "tx/skill_bu/kuoshan/kuoshan_0025" },
+					{ "time": 1.6667, "name": null }
+				]
+			},
+			"light_h_0000": {
+				"color": [
+					{ "time": 1.1333, "color": "ffffffff" },
+					{ "time": 1.2, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 1, "name": "tx/skill_bu/light_h_0000" }
+				]
+			},
+			"light_hh_0000_0012": {
+				"color": [
+					{ "time": 0.3333, "color": "ffffffff" }
+				],
+				"attachment": [
+					{ "time": 0.3333, "name": "tx/skill_bu/light_hh_0000_0012" }
+				]
+			},
+			"line_0000": {
+				"attachment": [
+					{ "time": 1, "name": "tx/skill_bu/line_0000" }
+				]
+			},
+			"line_0": {
+				"attachment": [
+					{ "time": 1, "name": "tx/skill_bu/line_0000" }
+				]
+			},
+			"lxl": {
+				"color": [
+					{
+						"time": 1.4333,
+						"color": "ffffffff",
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{ "time": 1.6667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0.6667, "name": "tx/skill_bu/lxl/1" },
+					{ "time": 0.7, "name": "tx/skill_bu/lxl/2" },
+					{ "time": 0.7333, "name": "tx/skill_bu/lxl/3" },
+					{ "time": 0.8, "name": "tx/skill_bu/lxl/4" },
+					{ "time": 0.8333, "name": "tx/skill_bu/lxl/5" },
+					{ "time": 0.9, "name": "tx/skill_bu/lxl/6" },
+					{ "time": 0.9667, "name": "tx/skill_bu/lxl/7" }
+				]
+			},
+			"quan": {
+				"color": [
+					{ "time": 1.3333, "color": "ffffffff" },
+					{ "time": 1.4667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0.8333, "name": "tx/skill/quan/quan_0004" },
+					{ "time": 0.9, "name": "tx/skill/quan/quan_0006" },
+					{ "time": 0.9667, "name": "tx/skill/quan/quan_0008" },
+					{ "time": 1.0333, "name": "tx/skill/quan/quan_0010" },
+					{ "time": 1.1, "name": "tx/skill/quan/quan_0012" },
+					{ "time": 1.1667, "name": "tx/skill/quan/quan_0014" },
+					{ "time": 1.2333, "name": "tx/skill/quan/quan_0016" },
+					{ "time": 1.3, "name": "tx/skill/quan/quan_0018" },
+					{ "time": 1.3667, "name": "tx/skill/quan/quan_0020" },
+					{ "time": 1.4333, "name": "tx/skill/quan/quan_0022" }
+				]
+			},
+			"quan_a": {
+				"color": [
+					{ "time": 1.5, "color": "ffffffff" },
+					{ "time": 1.6333, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0.8333, "name": "tx/skill/quan_a/quan_a_0000" },
+					{ "time": 0.9, "name": "tx/skill/quan_a/quan_a_0002" },
+					{ "time": 0.9667, "name": "tx/skill/quan_a/quan_a_0004" },
+					{ "time": 1.0333, "name": "tx/skill/quan_a/quan_a_0006" },
+					{ "time": 1.1, "name": "tx/skill/quan_a/quan_a_0008" },
+					{ "time": 1.1667, "name": "tx/skill/quan_a/quan_a_0010" },
+					{ "time": 1.2333, "name": "tx/skill/quan_a/quan_a_0012" },
+					{ "time": 1.3, "name": "tx/skill/quan_a/quan_a_0014" },
+					{ "time": 1.3667, "name": "tx/skill/quan_a/quan_a_0016" },
+					{ "time": 1.4333, "name": "tx/skill/quan_a/quan_a_0018" },
+					{ "time": 1.5, "name": "tx/skill/quan_a/quan_a_0020" }
+				]
+			},
+			"quan_bai_0000": {
+				"color": [
+					{ "time": 1.1, "color": "ffffffff" },
+					{ "time": 1.2333, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 1, "name": "tx/skill_bu/quan_bai_0000" }
+				]
+			},
+			"quan_hong_0000_0000": {
+				"color": [
+					{ "time": 0.3333, "color": "ffffff00" },
+					{ "time": 0.5, "color": "ffffffff" }
+				],
+				"attachment": [
+					{ "time": 0.3333, "name": "tx/skill_bu/quan_hong_0000_0000" }
+				]
+			},
+			"quan_kuo_a_0012": {
+				"color": [
+					{ "time": 1, "color": "ffffffff" },
+					{ "time": 1.2, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 1, "name": "tx/skill_bu/quan_kuo_a_0012" }
+				]
+			},
+			"tx/skill_bu/hong_quan_0004": {
+				"color": [
+					{ "time": 0.3333, "color": "ffffff00" },
+					{ "time": 0.5, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 1, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 1.1, "color": "ffffffff" },
+					{ "time": 1.2, "color": "ffffff41", "curve": "stepped" },
+					{ "time": 1.4667, "color": "ffffff41" },
+					{ "time": 1.6667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0.3333, "name": "tx/skill_bu/hong_quan_0004" }
+				]
+			}
+		},
+		"bones": {
+			"root": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 0.1, "angle": 0, "curve": "stepped" },
+					{ "time": 0.6, "angle": 0, "curve": "stepped" },
+					{ "time": 0.7667, "angle": 0, "curve": "stepped" },
+					{ "time": 0.9, "angle": 0, "curve": "stepped" },
+					{ "time": 0.9333, "angle": 0, "curve": "stepped" },
+					{ "time": 1, "angle": 0, "curve": "stepped" },
+					{ "time": 1.3667, "angle": 0, "curve": "stepped" },
+					{ "time": 1.5667, "angle": 0, "curve": "stepped" },
+					{ "time": 1.6, "angle": 0, "curve": "stepped" },
+					{ "time": 1.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.6, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.7667, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.9, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.9333, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.3667, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.5667, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.6, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.6667, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.1, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 1, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 1.3667, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 1.5667, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 1.6, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 1.6667, "x": 1, "y": 1 }
+				]
+			},
+			"zx": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 0.1, "angle": 0, "curve": "stepped" },
+					{ "time": 0.6, "angle": 0, "curve": "stepped" },
+					{ "time": 0.7667, "angle": 0, "curve": "stepped" },
+					{ "time": 0.9, "angle": 0, "curve": "stepped" },
+					{ "time": 0.9333, "angle": 0, "curve": "stepped" },
+					{ "time": 1, "angle": 0, "curve": "stepped" },
+					{ "time": 1.3667, "angle": 0, "curve": "stepped" },
+					{ "time": 1.5667, "angle": 0, "curve": "stepped" },
+					{ "time": 1.6, "angle": 0, "curve": "stepped" },
+					{ "time": 1.6667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.6, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.7667, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.9, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.9333, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.3667, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.5667, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.6, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.6667, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.1, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 1, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 1.3667, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 1.5667, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 1.6, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 1.6667, "x": 1, "y": 1 }
+				]
+			},
+			"di_wind": {
+				"translate": [
+					{ "time": 0, "x": 0, "y": 6.45 }
+				],
+				"scale": [
+					{
+						"time": 0,
+						"x": 1.515,
+						"y": 1.515,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{ "time": 0.3333, "x": 2.015, "y": 2.015, "curve": "stepped" },
+					{
+						"time": 1.3333,
+						"x": 2.015,
+						"y": 2.015,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{ "time": 1.6667, "x": 1.515, "y": 1.515 }
+				]
+			},
+			"quan_a": {
+				"translate": [
+					{ "time": 0.8333, "x": -39.95, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0.8333, "x": 3, "y": 3 }
+				]
+			},
+			"quan": {
+				"translate": [
+					{ "time": 0.8333, "x": 1.25, "y": -42.09 }
+				],
+				"scale": [
+					{ "time": 0.8333, "x": 4.401, "y": 4.401 }
+				]
+			},
+			"hong_quan_0004": {
+				"translate": [
+					{ "time": 0.3333, "x": -8.72, "y": 716.77 }
+				],
+				"scale": [
+					{ "time": 0.3333, "x": 4.447, "y": 4.447 },
+					{ "time": 0.5, "x": 2.101, "y": 2.101, "curve": "stepped" },
+					{ "time": 1, "x": 2.101, "y": 2.101 },
+					{ "time": 1.1, "x": 3.924, "y": 3.924 },
+					{ "time": 1.2, "x": 2.047, "y": 2.047 }
+				]
+			},
+			"lxl": {
+				"translate": [
+					{ "time": 0.6667, "x": -9.21, "y": 770.48 }
+				],
+				"scale": [
+					{ "time": 0.6667, "x": 1.397, "y": 1.369, "curve": "stepped" },
+					{
+						"time": 1,
+						"x": 2.234,
+						"y": 2.19,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{ "time": 1.2667, "x": 1.397, "y": 1.369 }
+				]
+			},
+			"kuosan": {
+				"translate": [
+					{ "time": 1, "x": 3.37, "y": 657.28 }
+				],
+				"scale": [
+					{ "time": 1, "x": 2.367, "y": 2.367 }
+				]
+			},
+			"light_hh_0000_0012": {
+				"translate": [
+					{ "time": 0.3333, "x": 0, "y": 668.32 }
+				],
+				"scale": [
+					{ "time": 0.3333, "x": 1, "y": 1 },
+					{ "time": 0.5, "x": 0, "y": 0 }
+				]
+			},
+			"quan_hong_0000_0000": {
+				"translate": [
+					{ "time": 0.3333, "x": -18.22, "y": 663.39 }
+				],
+				"scale": [
+					{ "time": 0.3333, "x": 3.634, "y": 3.634 },
+					{ "time": 0.5, "x": 0, "y": 0 }
+				]
+			},
+			"quan_bai_0000": {
+				"translate": [
+					{ "time": 1, "x": 0, "y": 618.17 }
+				],
+				"scale": [
+					{ "time": 1, "x": 1, "y": 1 },
+					{ "time": 1.1, "x": 3.173, "y": 3.173 },
+					{ "time": 1.2333, "x": 5.513, "y": 5.513 }
+				]
+			},
+			"quan_kuo_a_0012": {
+				"translate": [
+					{ "time": 1, "x": 0, "y": 595.27 }
+				],
+				"scale": [
+					{ "time": 1, "x": 1, "y": 1 },
+					{ "time": 1.2, "x": 4.874, "y": 4.874 }
+				]
+			},
+			"light_h_0000": {
+				"translate": [
+					{ "time": 1, "x": -17.23, "y": 671.38 }
+				],
+				"scale": [
+					{ "time": 1, "x": 1, "y": 1 },
+					{ "time": 1.0667, "x": 1.921, "y": 1.921 },
+					{ "time": 1.1667, "x": 1.029, "y": 1.029 }
+				]
+			},
+			"dianlu": {
+				"translate": [
+					{ "time": 1, "x": 536.74, "y": 28.09 }
+				],
+				"scale": [
+					{ "time": 1, "x": 8.923, "y": 5.584 }
+				],
+				"shear": [
+					{ "time": 1, "x": 0.04, "y": -12.42 }
+				]
+			},
+			"line_0000": {
+				"rotate": [
+					{ "time": 1, "angle": 0 },
+					{ "time": 1.1, "angle": 11.25 }
+				],
+				"translate": [
+					{ "time": 1, "x": 0, "y": 600.48 },
+					{ "time": 1.0667, "x": -7.82, "y": 755.52 }
+				],
+				"scale": [
+					{ "time": 1, "x": 9.546, "y": 9.546 },
+					{ "time": 1.0667, "x": 11.629, "y": 78.373 },
+					{ "time": 1.1, "x": 0, "y": 0 }
+				]
+			},
+			"line_0": {
+				"rotate": [
+					{ "time": 1, "angle": -91.36 },
+					{ "time": 1.1, "angle": -85.25 }
+				],
+				"translate": [
+					{ "time": 1, "x": -9.87, "y": 541.83 },
+					{ "time": 1.0667, "x": -35.44, "y": 542.44 }
+				],
+				"scale": [
+					{ "time": 1, "x": -7.898, "y": -7.898 },
+					{ "time": 1.0667, "x": -7.898, "y": -20.831 },
+					{ "time": 1.1, "x": 0, "y": 0 }
+				]
+			}
+		},
+		"drawOrder": [
+			{ "time": 0 },
+			{ "time": 0.0333 },
+			{ "time": 0.1 },
+			{
+				"time": 0.2333,
+				"offsets": [
+					{ "slot": "tx/skill_bu/hong_quan_0004", "offset": -9 }
+				]
+			},
+			{ "time": 0.9333 },
+			{ "time": 1.2667 },
+			{ "time": 1.4667 },
+			{ "time": 1.5 },
+			{ "time": 1.5667 }
+		]
+	},
+	"animation_0": {
+		"slots": {
+			"di_wind": {
+				"color": [
+					{
+						"time": 0,
+						"color": "ffffff00",
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{ "time": 0.3333, "color": "ffffffff", "curve": "stepped" },
+					{
+						"time": 1.3333,
+						"color": "ffffffff",
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{ "time": 1.6667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0, "name": "tx/skill/di_wind/di_wind_0000" },
+					{ "time": 0.0667, "name": "tx/skill/di_wind/di_wind_0002" },
+					{ "time": 0.1333, "name": "tx/skill/di_wind/di_wind_0004" },
+					{ "time": 0.2, "name": "tx/skill/di_wind/di_wind_0006" },
+					{ "time": 0.2667, "name": "tx/skill/di_wind/di_wind_0008" },
+					{ "time": 0.3333, "name": "tx/skill/di_wind/di_wind_0010" },
+					{ "time": 0.4, "name": "tx/skill/di_wind/di_wind_0012" },
+					{ "time": 0.4667, "name": "tx/skill/di_wind/di_wind_0014" },
+					{ "time": 0.5333, "name": "tx/skill/di_wind/di_wind_0016" },
+					{ "time": 0.6, "name": "tx/skill/di_wind/di_wind_0018" },
+					{ "time": 0.6667, "name": "tx/skill/di_wind/di_wind_0020" },
+					{ "time": 0.7333, "name": "tx/skill/di_wind/di_wind_0022" },
+					{ "time": 0.8, "name": "tx/skill/di_wind/di_wind_0024" },
+					{ "time": 0.8667, "name": "tx/skill/di_wind/di_wind_0000" },
+					{ "time": 0.9333, "name": "tx/skill/di_wind/di_wind_0002" },
+					{ "time": 1, "name": "tx/skill/di_wind/di_wind_0004" },
+					{ "time": 1.0667, "name": "tx/skill/di_wind/di_wind_0006" },
+					{ "time": 1.1333, "name": "tx/skill/di_wind/di_wind_0008" },
+					{ "time": 1.2, "name": "tx/skill/di_wind/di_wind_0010" },
+					{ "time": 1.2667, "name": "tx/skill/di_wind/di_wind_0012" },
+					{ "time": 1.3333, "name": "tx/skill/di_wind/di_wind_0014" },
+					{ "time": 1.4, "name": "tx/skill/di_wind/di_wind_0016" },
+					{ "time": 1.4667, "name": "tx/skill/di_wind/di_wind_0018" },
+					{ "time": 1.5333, "name": "tx/skill/di_wind/di_wind_0020" },
+					{ "time": 1.6, "name": "tx/skill/di_wind/di_wind_0022" },
+					{ "time": 1.6667, "name": "tx/skill/di_wind/di_wind_0024" }
+				]
+			},
+			"ks": {
+				"color": [
+					{ "time": 1.4333, "color": "ffffffff" },
+					{ "time": 1.6667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 1, "name": "tx/skill_bu/kuoshan/kuoshan_0010" },
+					{ "time": 1.0667, "name": "tx/skill_bu/kuoshan/kuoshan_0012" },
+					{ "time": 1.1333, "name": "tx/skill_bu/kuoshan/kuoshan_0014" },
+					{ "time": 1.2, "name": "tx/skill_bu/kuoshan/kuoshan_0016" },
+					{ "time": 1.2667, "name": "tx/skill_bu/kuoshan/kuoshan_0018" },
+					{ "time": 1.3333, "name": "tx/skill_bu/kuoshan/kuoshan_0020" },
+					{ "time": 1.4, "name": "tx/skill_bu/kuoshan/kuoshan_0022" },
+					{ "time": 1.5, "name": "tx/skill_bu/kuoshan/kuoshan_0024" },
+					{ "time": 1.5667, "name": "tx/skill_bu/kuoshan/kuoshan_0025" },
+					{ "time": 1.6667, "name": null }
+				]
+			},
+			"light_h_0000": {
+				"color": [
+					{ "time": 1.1333, "color": "ffffffff" },
+					{ "time": 1.2, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 1, "name": "tx/skill_bu/light_h_0000" }
+				]
+			},
+			"light_hh_0000_0012": {
+				"color": [
+					{ "time": 0.3333, "color": "ffffffff" }
+				],
+				"attachment": [
+					{ "time": 0.3333, "name": "tx/skill_bu/light_hh_0000_0012" }
+				]
+			},
+			"line_0000": {
+				"attachment": [
+					{ "time": 1, "name": "tx/skill_bu/line_0000" }
+				]
+			},
+			"line_0": {
+				"attachment": [
+					{ "time": 1, "name": "tx/skill_bu/line_0000" }
+				]
+			},
+			"lxl": {
+				"color": [
+					{
+						"time": 1.4333,
+						"color": "ffffffff",
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{ "time": 1.6667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0.6667, "name": "tx/skill_bu/lxl/1" },
+					{ "time": 0.7, "name": "tx/skill_bu/lxl/2" },
+					{ "time": 0.7333, "name": "tx/skill_bu/lxl/3" },
+					{ "time": 0.8, "name": "tx/skill_bu/lxl/4" },
+					{ "time": 0.8333, "name": "tx/skill_bu/lxl/5" },
+					{ "time": 0.9, "name": "tx/skill_bu/lxl/6" },
+					{ "time": 0.9667, "name": "tx/skill_bu/lxl/7" }
+				]
+			},
+			"quan": {
+				"color": [
+					{ "time": 1.3333, "color": "ffffffff" },
+					{ "time": 1.4667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0.8333, "name": "tx/skill/quan/quan_0004" },
+					{ "time": 0.9, "name": "tx/skill/quan/quan_0006" },
+					{ "time": 0.9667, "name": "tx/skill/quan/quan_0008" },
+					{ "time": 1.0333, "name": "tx/skill/quan/quan_0010" },
+					{ "time": 1.1, "name": "tx/skill/quan/quan_0012" },
+					{ "time": 1.1667, "name": "tx/skill/quan/quan_0014" },
+					{ "time": 1.2333, "name": "tx/skill/quan/quan_0016" },
+					{ "time": 1.3, "name": "tx/skill/quan/quan_0018" },
+					{ "time": 1.3667, "name": "tx/skill/quan/quan_0020" },
+					{ "time": 1.4333, "name": "tx/skill/quan/quan_0022" }
+				]
+			},
+			"quan_a": {
+				"color": [
+					{ "time": 1.5, "color": "ffffffff" },
+					{ "time": 1.6333, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0.8333, "name": "tx/skill/quan_a/quan_a_0000" },
+					{ "time": 0.9, "name": "tx/skill/quan_a/quan_a_0002" },
+					{ "time": 0.9667, "name": "tx/skill/quan_a/quan_a_0004" },
+					{ "time": 1.0333, "name": "tx/skill/quan_a/quan_a_0006" },
+					{ "time": 1.1, "name": "tx/skill/quan_a/quan_a_0008" },
+					{ "time": 1.1667, "name": "tx/skill/quan_a/quan_a_0010" },
+					{ "time": 1.2333, "name": "tx/skill/quan_a/quan_a_0012" },
+					{ "time": 1.3, "name": "tx/skill/quan_a/quan_a_0014" },
+					{ "time": 1.3667, "name": "tx/skill/quan_a/quan_a_0016" },
+					{ "time": 1.4333, "name": "tx/skill/quan_a/quan_a_0018" },
+					{ "time": 1.5, "name": "tx/skill/quan_a/quan_a_0020" }
+				]
+			},
+			"quan_bai_0000": {
+				"color": [
+					{ "time": 1.1, "color": "ffffffff" },
+					{ "time": 1.2333, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 1, "name": "tx/skill_bu/quan_bai_0000" }
+				]
+			},
+			"quan_hong_0000_0000": {
+				"color": [
+					{ "time": 0.3333, "color": "ffffff00" },
+					{ "time": 0.5, "color": "ffffffff" }
+				],
+				"attachment": [
+					{ "time": 0.3333, "name": "tx/skill_bu/quan_hong_0000_0000" }
+				]
+			},
+			"quan_kuo_a_0012": {
+				"color": [
+					{ "time": 1, "color": "ffffffff" },
+					{ "time": 1.2, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 1, "name": "tx/skill_bu/quan_kuo_a_0012" }
+				]
+			},
+			"tx/skill_bu/hong_quan_0004": {
+				"color": [
+					{ "time": 0.3333, "color": "ffffff00" },
+					{ "time": 0.5, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 1, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 1.1, "color": "ffffffff" },
+					{ "time": 1.2, "color": "ffffff41", "curve": "stepped" },
+					{ "time": 1.4667, "color": "ffffff41" },
+					{ "time": 1.6667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0.3333, "name": "tx/skill_bu/hong_quan_0004" }
+				]
+			}
+		},
+		"bones": {
+			"root": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				]
+			},
+			"zx": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 }
+				]
+			},
+			"di_wind": {
+				"translate": [
+					{ "time": 0, "x": 0, "y": 6.45, "curve": "stepped" },
+					{ "time": 1.8333, "x": 0, "y": 6.45 }
+				],
+				"scale": [
+					{
+						"time": 0,
+						"x": 1.515,
+						"y": 1.515,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{ "time": 0.3333, "x": 2.015, "y": 2.015, "curve": "stepped" },
+					{
+						"time": 1.3333,
+						"x": 2.015,
+						"y": 2.015,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{ "time": 1.6667, "x": 1.515, "y": 1.515 }
+				]
+			},
+			"quan_a": {
+				"translate": [
+					{ "time": 0.8333, "x": -39.95, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0.8333, "x": 3, "y": 3 }
+				]
+			},
+			"quan": {
+				"translate": [
+					{ "time": 0.8333, "x": 1.25, "y": -42.09 }
+				],
+				"scale": [
+					{ "time": 0.8333, "x": 4.401, "y": 4.401 }
+				]
+			},
+			"hong_quan_0004": {
+				"translate": [
+					{ "time": 0.3333, "x": -8.72, "y": 716.77 }
+				],
+				"scale": [
+					{ "time": 0.3333, "x": 4.447, "y": 4.447 },
+					{ "time": 0.5, "x": 2.101, "y": 2.101, "curve": "stepped" },
+					{ "time": 1, "x": 2.101, "y": 2.101 },
+					{ "time": 1.1, "x": 3.924, "y": 3.924 },
+					{ "time": 1.2, "x": 2.047, "y": 2.047 }
+				]
+			},
+			"lxl": {
+				"translate": [
+					{ "time": 0.6667, "x": -9.21, "y": 770.48 }
+				],
+				"scale": [
+					{ "time": 0.6667, "x": 1.397, "y": 1.369, "curve": "stepped" },
+					{
+						"time": 1,
+						"x": 2.234,
+						"y": 2.19,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{ "time": 1.2667, "x": 1.397, "y": 1.369 }
+				]
+			},
+			"kuosan": {
+				"translate": [
+					{ "time": 1, "x": 3.37, "y": 657.28 }
+				],
+				"scale": [
+					{ "time": 1, "x": 2.367, "y": 2.367 }
+				]
+			},
+			"light_hh_0000_0012": {
+				"translate": [
+					{ "time": 0.3333, "x": 0, "y": 668.32 }
+				],
+				"scale": [
+					{ "time": 0.3333, "x": 1, "y": 1 },
+					{ "time": 0.5, "x": 0, "y": 0 }
+				]
+			},
+			"quan_hong_0000_0000": {
+				"translate": [
+					{ "time": 0.3333, "x": -18.22, "y": 663.39 }
+				],
+				"scale": [
+					{ "time": 0.3333, "x": 3.634, "y": 3.634 },
+					{ "time": 0.5, "x": 0, "y": 0 }
+				]
+			},
+			"quan_bai_0000": {
+				"translate": [
+					{ "time": 1, "x": 0, "y": 618.17 }
+				],
+				"scale": [
+					{ "time": 1, "x": 1, "y": 1 },
+					{ "time": 1.1, "x": 3.173, "y": 3.173 },
+					{ "time": 1.2333, "x": 5.513, "y": 5.513 }
+				]
+			},
+			"quan_kuo_a_0012": {
+				"translate": [
+					{ "time": 1, "x": 0, "y": 595.27 }
+				],
+				"scale": [
+					{ "time": 1, "x": 1, "y": 1 },
+					{ "time": 1.2, "x": 4.874, "y": 4.874 }
+				]
+			},
+			"light_h_0000": {
+				"translate": [
+					{ "time": 1, "x": -17.23, "y": 671.38 }
+				],
+				"scale": [
+					{ "time": 1, "x": 1, "y": 1 },
+					{ "time": 1.0667, "x": 1.921, "y": 1.921 },
+					{ "time": 1.1667, "x": 1.029, "y": 1.029 }
+				]
+			},
+			"line_0000": {
+				"rotate": [
+					{ "time": 1, "angle": 0 },
+					{ "time": 1.1, "angle": 11.25 }
+				],
+				"translate": [
+					{ "time": 1, "x": 0, "y": 600.48 },
+					{ "time": 1.0667, "x": -7.82, "y": 755.52 }
+				],
+				"scale": [
+					{ "time": 1, "x": 9.546, "y": 9.546 },
+					{ "time": 1.0667, "x": 11.629, "y": 78.373 },
+					{ "time": 1.1, "x": 0, "y": 0 }
+				]
+			},
+			"line_0": {
+				"rotate": [
+					{ "time": 1, "angle": -91.36 },
+					{ "time": 1.1, "angle": -85.25 }
+				],
+				"translate": [
+					{ "time": 1, "x": -9.87, "y": 541.83 },
+					{ "time": 1.0667, "x": -35.44, "y": 542.44 }
+				],
+				"scale": [
+					{ "time": 1, "x": -7.898, "y": -7.898 },
+					{ "time": 1.0667, "x": -7.898, "y": -20.831 },
+					{ "time": 1.1, "x": 0, "y": 0 }
+				]
+			}
+		},
+		"drawOrder": [
+			{ "time": 0 },
+			{ "time": 0.0333 },
+			{ "time": 0.1 },
+			{
+				"time": 0.2333,
+				"offsets": [
+					{ "slot": "tx/skill_bu/hong_quan_0004", "offset": -9 }
+				]
+			},
+			{ "time": 0.9333 },
+			{ "time": 1.2667 },
+			{ "time": 1.4667 },
+			{ "time": 1.5 },
+			{ "time": 1.5667 }
+		],
+		"events": [
+			{ "time": 1.1, "name": "qishou_11_1_1" }
+		]
+	},
+	"animation_1": {
+		"slots": {
+			"dianlu": {
+				"color": [
+					{ "time": 1.6667, "color": "ffffffff" },
+					{ "time": 1.8333, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 1, "name": "tx/skill_bu/dianlu/dianlu_0000" },
+					{ "time": 1.0667, "name": "tx/skill_bu/dianlu/dianlu_0002" },
+					{ "time": 1.1333, "name": "tx/skill_bu/dianlu/dianlu_0004" },
+					{ "time": 1.2, "name": "tx/skill_bu/dianlu/dianlu_0006" },
+					{ "time": 1.2667, "name": "tx/skill_bu/dianlu/dianlu_0008" },
+					{ "time": 1.3333, "name": "tx/skill_bu/dianlu/dianlu_0010" },
+					{ "time": 1.4, "name": "tx/skill_bu/dianlu/dianlu_0012" },
+					{ "time": 1.4667, "name": "tx/skill_bu/dianlu/dianlu_0014" },
+					{ "time": 1.5333, "name": "tx/skill_bu/dianlu/dianlu_0016" },
+					{ "time": 1.6, "name": "tx/skill_bu/dianlu/dianlu_0018" },
+					{ "time": 1.6667, "name": "tx/skill_bu/dianlu/dianlu_0020" },
+					{ "time": 1.7333, "name": "tx/skill_bu/dianlu/dianlu_0022" },
+					{ "time": 1.8, "name": "tx/skill_bu/dianlu/dianlu_0024" }
+				]
+			},
+			"dianlu2": {
+				"attachment": [
+					{ "time": 1, "name": "tx/skill_bu/dianlu/dianlu_0000" },
+					{ "time": 1.0667, "name": "tx/skill_bu/dianlu/dianlu_0002" },
+					{ "time": 1.1333, "name": "tx/skill_bu/dianlu/dianlu_0004" },
+					{ "time": 1.2, "name": "tx/skill_bu/dianlu/dianlu_0006" },
+					{ "time": 1.2667, "name": "tx/skill_bu/dianlu/dianlu_0008" },
+					{ "time": 1.3333, "name": "tx/skill_bu/dianlu/dianlu_0010" },
+					{ "time": 1.4, "name": "tx/skill_bu/dianlu/dianlu_0012" },
+					{ "time": 1.4667, "name": "tx/skill_bu/dianlu/dianlu_0014" },
+					{ "time": 1.5333, "name": "tx/skill_bu/dianlu/dianlu_0016" },
+					{ "time": 1.6, "name": "tx/skill_bu/dianlu/dianlu_0018" },
+					{ "time": 1.6667, "name": "tx/skill_bu/dianlu/dianlu_0020" },
+					{ "time": 1.7333, "name": "tx/skill_bu/dianlu/dianlu_0022" },
+					{ "time": 1.8, "name": "tx/skill_bu/dianlu/dianlu_0024" },
+					{ "time": 1.8333, "name": null }
+				]
+			},
+			"dianlu3": {
+				"attachment": [
+					{ "time": 1, "name": "tx/skill_bu/dianlu/dianlu_0000" },
+					{ "time": 1.0667, "name": "tx/skill_bu/dianlu/dianlu_0002" },
+					{ "time": 1.1333, "name": "tx/skill_bu/dianlu/dianlu_0004" },
+					{ "time": 1.2, "name": "tx/skill_bu/dianlu/dianlu_0006" },
+					{ "time": 1.2667, "name": "tx/skill_bu/dianlu/dianlu_0008" },
+					{ "time": 1.3333, "name": "tx/skill_bu/dianlu/dianlu_0010" },
+					{ "time": 1.4, "name": "tx/skill_bu/dianlu/dianlu_0012" },
+					{ "time": 1.4667, "name": "tx/skill_bu/dianlu/dianlu_0014" },
+					{ "time": 1.5333, "name": "tx/skill_bu/dianlu/dianlu_0016" },
+					{ "time": 1.6, "name": "tx/skill_bu/dianlu/dianlu_0018" },
+					{ "time": 1.6667, "name": "tx/skill_bu/dianlu/dianlu_0020" },
+					{ "time": 1.7333, "name": "tx/skill_bu/dianlu/dianlu_0022" },
+					{ "time": 1.8, "name": "tx/skill_bu/dianlu/dianlu_0024" },
+					{ "time": 1.8333, "name": null }
+				]
+			},
+			"dianlu4": {
+				"attachment": [
+					{ "time": 1, "name": "tx/skill_bu/dianlu/dianlu_0000" },
+					{ "time": 1.0667, "name": "tx/skill_bu/dianlu/dianlu_0002" },
+					{ "time": 1.1333, "name": "tx/skill_bu/dianlu/dianlu_0004" },
+					{ "time": 1.2, "name": "tx/skill_bu/dianlu/dianlu_0006" },
+					{ "time": 1.2667, "name": "tx/skill_bu/dianlu/dianlu_0008" },
+					{ "time": 1.3333, "name": "tx/skill_bu/dianlu/dianlu_0010" },
+					{ "time": 1.4, "name": "tx/skill_bu/dianlu/dianlu_0012" },
+					{ "time": 1.4667, "name": "tx/skill_bu/dianlu/dianlu_0014" },
+					{ "time": 1.5333, "name": "tx/skill_bu/dianlu/dianlu_0016" },
+					{ "time": 1.6, "name": "tx/skill_bu/dianlu/dianlu_0018" },
+					{ "time": 1.6667, "name": "tx/skill_bu/dianlu/dianlu_0020" },
+					{ "time": 1.7333, "name": "tx/skill_bu/dianlu/dianlu_0022" },
+					{ "time": 1.8, "name": "tx/skill_bu/dianlu/dianlu_0024" },
+					{ "time": 1.8333, "name": null }
+				]
+			}
+		},
+		"bones": {
+			"dianlu": {
+				"translate": [
+					{ "time": 1, "x": 536.74, "y": 28.09 }
+				],
+				"scale": [
+					{ "time": 1, "x": 8.923, "y": 5.584 }
+				],
+				"shear": [
+					{ "time": 1, "x": 0.04, "y": -12.42 }
+				]
+			},
+			"dianlu2": {
+				"translate": [
+					{ "time": 1, "x": -830.23, "y": 232.39 }
+				],
+				"scale": [
+					{ "time": 1, "x": -8.92, "y": -5.58 }
+				],
+				"shear": [
+					{ "time": 1, "x": 0.04, "y": -12.42 }
+				]
+			},
+			"dianlu3": {
+				"translate": [
+					{ "time": 1, "x": 536.74, "y": 28.09 }
+				],
+				"scale": [
+					{ "time": 1, "x": 8.923, "y": 5.584 }
+				],
+				"shear": [
+					{ "time": 1, "x": 0.04, "y": -12.42 }
+				]
+			},
+			"dianlu4": {
+				"translate": [
+					{ "time": 1, "x": -830.23, "y": 232.39 }
+				],
+				"scale": [
+					{ "time": 1, "x": -8.92, "y": -5.58 }
+				],
+				"shear": [
+					{ "time": 1, "x": 0.04, "y": -12.42 }
+				]
+			}
+		}
+	}
+}
+}

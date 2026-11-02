@@ -1,0 +1,118 @@
+
+seffect_43517111011.png
+size: 739,129
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+attack/dg/dg_44
+  rotate: false
+  xy: 644, 64
+  size: 32, 63
+  orig: 60, 75
+  offset: 17, 5
+  index: -1
+attack/dg/dg_46
+  rotate: false
+  xy: 678, 65
+  size: 31, 62
+  orig: 60, 75
+  offset: 18, 5
+  index: -1
+attack/dg/dg_48
+  rotate: false
+  xy: 648, 3
+  size: 29, 59
+  orig: 60, 75
+  offset: 20, 6
+  index: -1
+attack/dg/dg_50
+  rotate: false
+  xy: 711, 72
+  size: 26, 55
+  orig: 60, 75
+  offset: 23, 6
+  index: -1
+attack/dg/dg_52
+  rotate: false
+  xy: 578, 2
+  size: 24, 51
+  orig: 60, 75
+  offset: 25, 7
+  index: -1
+attack/dg/dg_54
+  rotate: true
+  xy: 486, 5
+  size: 18, 38
+  orig: 60, 75
+  offset: 30, 8
+  index: -1
+attack/dg/dg_56
+  rotate: true
+  xy: 122, 2
+  size: 7, 18
+  orig: 60, 75
+  offset: 37, 11
+  index: -1
+attack/zha/zha_44
+  rotate: true
+  xy: 122, 11
+  size: 116, 102
+  orig: 150, 140
+  offset: 18, 14
+  index: -1
+attack/zha/zha_46
+  rotate: true
+  xy: 486, 25
+  size: 102, 90
+  orig: 150, 140
+  offset: 26, 20
+  index: -1
+attack/zha/zha_48
+  rotate: true
+  xy: 226, 15
+  size: 112, 93
+  orig: 150, 140
+  offset: 22, 14
+  index: -1
+attack/zha/zha_50
+  rotate: true
+  xy: 321, 17
+  size: 110, 89
+  orig: 150, 140
+  offset: 25, 18
+  index: -1
+attack/zha/zha_52
+  rotate: true
+  xy: 412, 18
+  size: 109, 72
+  orig: 150, 140
+  offset: 25, 21
+  index: -1
+attack/zha/zha_54
+  rotate: true
+  xy: 578, 55
+  size: 72, 64
+  orig: 150, 140
+  offset: 45, 26
+  index: -1
+attack/zha/zha_56
+  rotate: true
+  xy: 679, 6
+  size: 57, 56
+  orig: 150, 140
+  offset: 58, 30
+  index: -1
+attack/zha/zha_58
+  rotate: false
+  xy: 604, 9
+  size: 42, 44
+  orig: 150, 140
+  offset: 64, 35
+  index: -1
+attack/zhuan/zhuan_10
+  rotate: false
+  xy: 2, 4
+  size: 118, 123
+  orig: 140, 140
+  offset: 13, 11
+  index: -1

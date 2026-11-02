@@ -1,0 +1,188 @@
+
+seffect_700009.png
+size: 1614,522
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+images/shuchu/gensui/gensui_00
+  rotate: false
+  xy: 1441, 260
+  size: 116, 116
+  orig: 300, 300
+  offset: 116, 104
+  index: -1
+images/shuchu/gensui/gensui_02
+  rotate: true
+  xy: 1315, 246
+  size: 130, 124
+  orig: 300, 300
+  offset: 102, 101
+  index: -1
+images/shuchu/gensui/gensui_04
+  rotate: true
+  xy: 1313, 378
+  size: 142, 129
+  orig: 300, 300
+  offset: 89, 100
+  index: -1
+images/shuchu/gensui/gensui_06
+  rotate: false
+  xy: 1203, 5
+  size: 156, 135
+  orig: 300, 300
+  offset: 75, 99
+  index: -1
+images/shuchu/gensui/gensui_08
+  rotate: true
+  xy: 1168, 350
+  size: 170, 143
+  orig: 300, 300
+  offset: 63, 95
+  index: -1
+images/shuchu/gensui/gensui_10
+  rotate: true
+  xy: 1166, 142
+  size: 181, 147
+  orig: 300, 300
+  offset: 51, 95
+  index: -1
+images/shuchu/gensui/gensui_12
+  rotate: true
+  xy: 1012, 325
+  size: 195, 154
+  orig: 300, 300
+  offset: 38, 92
+  index: -1
+images/shuchu/gensui/gensui_14
+  rotate: true
+  xy: 1006, 85
+  size: 206, 158
+  orig: 300, 300
+  offset: 26, 91
+  index: -1
+images/shuchu/gensui/gensui_16
+  rotate: true
+  xy: 839, 76
+  size: 215, 165
+  orig: 300, 300
+  offset: 16, 87
+  index: -1
+images/shuchu/gensui/gensui_18
+  rotate: true
+  xy: 839, 293
+  size: 227, 171
+  orig: 300, 300
+  offset: 3, 82
+  index: -1
+images/shuchu/x/x1_08
+  rotate: false
+  xy: 2, 9
+  size: 528, 511
+  orig: 1000, 1000
+  offset: 235, 343
+  index: -1
+images/shuchu/x/x_07
+  rotate: true
+  xy: 532, 56
+  size: 464, 305
+  orig: 1000, 1000
+  offset: 227, 362
+  index: -1
+images/shuchu/xg/xg_04
+  rotate: false
+  xy: 532, 2
+  size: 7, 11
+  orig: 175, 175
+  offset: 78, 40
+  index: -1
+images/shuchu/xg/xg_06
+  rotate: true
+  xy: 658, 4
+  size: 50, 54
+  orig: 175, 175
+  offset: 60, 38
+  index: -1
+images/shuchu/xg/xg_08
+  rotate: false
+  xy: 1448, 5
+  size: 86, 62
+  orig: 175, 175
+  offset: 41, 36
+  index: -1
+images/shuchu/xg/xg_10
+  rotate: false
+  xy: 953, 14
+  size: 107, 60
+  orig: 175, 175
+  offset: 27, 39
+  index: -1
+images/shuchu/xg/xg_12
+  rotate: false
+  xy: 839, 3
+  size: 112, 71
+  orig: 175, 175
+  offset: 27, 37
+  index: -1
+images/shuchu/xg/xg_14
+  rotate: true
+  xy: 1535, 404
+  size: 116, 77
+  orig: 175, 175
+  offset: 28, 38
+  index: -1
+images/shuchu/xg/xg_16
+  rotate: true
+  xy: 1361, 38
+  size: 115, 85
+  orig: 175, 175
+  offset: 30, 36
+  index: -1
+images/shuchu/xg/xg_18
+  rotate: true
+  xy: 1448, 69
+  size: 97, 94
+  orig: 175, 175
+  offset: 30, 33
+  index: -1
+images/shuchu/xg/xg_20
+  rotate: false
+  xy: 1447, 168
+  size: 108, 90
+  orig: 175, 175
+  offset: 23, 42
+  index: -1
+images/shuchu/xg/xg_22
+  rotate: true
+  xy: 1444, 401
+  size: 119, 89
+  orig: 175, 175
+  offset: 16, 46
+  index: -1
+images/shuchu/xg/xg_24
+  rotate: false
+  xy: 1315, 155
+  size: 130, 89
+  orig: 175, 175
+  offset: 10, 48
+  index: -1
+images/shuchu/xg/xg_26
+  rotate: false
+  xy: 1062, 7
+  size: 139, 76
+  orig: 175, 175
+  offset: 5, 60
+  index: -1
+images/shuchu/xg/xg_28
+  rotate: false
+  xy: 532, 15
+  size: 124, 39
+  orig: 175, 175
+  offset: 5, 81
+  index: -1
+images/shuchu/xg/xg_30
+  rotate: false
+  xy: 2, 4
+  size: 3, 3
+  orig: 175, 175
+  offset: 124, 115
+  index: -1

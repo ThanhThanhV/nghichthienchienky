@@ -1,0 +1,327 @@
+{
+"skeleton": { "hash": "XaRxKYPDDMiUNTqNFdZMS1auXnM", "spine": "3.5.35", "width": 0, "height": 0 },
+"bones": [
+	{ "name": "root" },
+	{ "name": "ZX", "parent": "root" },
+	{ "name": "tx", "parent": "ZX" },
+	{ "name": "att", "parent": "tx" },
+	{ "name": "att2", "parent": "att" },
+	{ "name": "att3", "parent": "att" },
+	{ "name": "att4", "parent": "att" },
+	{ "name": "bg", "parent": "root", "scaleX": 3.33, "scaleY": 3.33 },
+	{ "name": "skill", "parent": "tx" },
+	{ "name": "skill6", "parent": "skill" },
+	{ "name": "skill7", "parent": "skill" },
+	{ "name": "skill8", "parent": "skill" },
+	{ "name": "yanwu", "parent": "att" }
+],
+"slots": [
+	{ "name": "bg", "bone": "bg" },
+	{ "name": "yanwu", "bone": "yanwu" },
+	{ "name": "tx1/att/k_s_0016", "bone": "att2" },
+	{ "name": "att3", "bone": "att3" },
+	{ "name": "att4", "bone": "att4" },
+	{ "name": "skill5", "bone": "skill6" },
+	{ "name": "skill6", "bone": "skill7" },
+	{ "name": "skill7", "bone": "skill8" }
+],
+"skins": {
+	"default": {
+		"att3": {
+			"tx1/att/smoke/smoke_0009": { "width": 188, "height": 87 },
+			"tx1/att/smoke/smoke_0011": { "width": 188, "height": 87 },
+			"tx1/att/smoke/smoke_0013": { "width": 188, "height": 87 },
+			"tx1/att/smoke/smoke_0015": { "width": 188, "height": 87 },
+			"tx1/att/smoke/smoke_0017": { "width": 188, "height": 87 },
+			"tx1/att/smoke/smoke_0019": { "width": 188, "height": 87 },
+			"tx1/att/smoke/smoke_0021": { "width": 188, "height": 87 },
+			"tx1/att/smoke/smoke_0023": { "width": 188, "height": 87 },
+			"tx1/att/smoke/smoke_0025": { "width": 188, "height": 87 },
+			"tx1/att/smoke/smoke_0027": { "width": 188, "height": 87 },
+			"tx1/att/smoke/smoke_0029": { "width": 188, "height": 87 },
+			"tx1/att/smoke/smoke_0031": { "width": 188, "height": 87 },
+			"tx1/att/smoke/smoke_0033": { "width": 188, "height": 87 },
+			"tx1/att/smoke/smoke_0035": { "width": 188, "height": 87 }
+		},
+		"att4": {
+			"tx1/att/line_glow/line_glow_0013": { "width": 543, "height": 105 },
+			"tx1/att/line_glow/line_glow_0015": { "width": 543, "height": 105 },
+			"tx1/att/line_glow/line_glow_0017": { "width": 543, "height": 105 }
+		},
+		"skill5": {
+			"tx1/skill/skill_boom/skill_boom_0013": { "width": 311, "height": 325 },
+			"tx1/skill/skill_boom/skill_boom_0015": { "width": 311, "height": 325 },
+			"tx1/skill/skill_boom/skill_boom_0017": { "width": 311, "height": 325 },
+			"tx1/skill/skill_boom/skill_boom_0019": { "width": 311, "height": 325 },
+			"tx1/skill/skill_boom/skill_boom_0021": { "width": 311, "height": 325 },
+			"tx1/skill/skill_boom/skill_boom_0027": { "width": 311, "height": 325 },
+			"tx1/skill/skill_boom/skill_boom_0029": { "width": 311, "height": 325 },
+			"tx1/skill/skill_boom/skill_boom_0031": { "width": 311, "height": 325 },
+			"tx1/skill/skill_boom/skill_boom_0033": { "width": 311, "height": 325 },
+			"tx1/skill/skill_boom/skill_boom_0035": { "width": 311, "height": 325 },
+			"tx1/skill/skill_boom/skill_boom_0037": { "width": 311, "height": 325 }
+		},
+		"skill6": {
+			"tx1/skill/skill_boom/skill_boom_0035": { "width": 311, "height": 325 },
+			"tx1/skill/skill_boom/skill_boom_0037": { "width": 311, "height": 325 }
+		},
+		"skill7": {
+			"tx1/skill/skill_boom/skill_boom_0035": { "width": 311, "height": 325 },
+			"tx1/skill/skill_boom/skill_boom_0037": { "width": 311, "height": 325 }
+		},
+		"tx1/att/k_s_0016": {
+			"tx1/att/k_s_0016": { "width": 121, "height": 143 }
+		},
+		"yanwu": {
+			"tx/yanwu/air_quan_3": { "width": 101, "height": 92 },
+			"tx/yanwu/air_quan_13": { "width": 101, "height": 92 },
+			"tx/yanwu/air_quan_21": { "width": 101, "height": 92 },
+			"tx/yanwu/air_quan_29": { "width": 101, "height": 92 }
+		}
+	}
+},
+"events": {
+	"hit_11_1_1": {},
+	"qishou_1_1_1": {}
+},
+"animations": {
+	"animation_0": {
+		"slots": {
+			"att3": {
+				"attachment": [
+					{ "time": 0.2667, "name": "tx1/att/smoke/smoke_0009" },
+					{ "time": 0.3333, "name": "tx1/att/smoke/smoke_0011" },
+					{ "time": 0.4, "name": "tx1/att/smoke/smoke_0013" },
+					{ "time": 0.4667, "name": "tx1/att/smoke/smoke_0015" },
+					{ "time": 0.5333, "name": "tx1/att/smoke/smoke_0017" },
+					{ "time": 0.6, "name": "tx1/att/smoke/smoke_0019" },
+					{ "time": 0.6667, "name": "tx1/att/smoke/smoke_0021" },
+					{ "time": 0.7333, "name": "tx1/att/smoke/smoke_0023" },
+					{ "time": 0.8, "name": "tx1/att/smoke/smoke_0025" },
+					{ "time": 0.8667, "name": "tx1/att/smoke/smoke_0027" },
+					{ "time": 0.9333, "name": "tx1/att/smoke/smoke_0029" },
+					{ "time": 1, "name": "tx1/att/smoke/smoke_0031" },
+					{ "time": 1.0667, "name": "tx1/att/smoke/smoke_0033" },
+					{ "time": 1.1333, "name": "tx1/att/smoke/smoke_0035" },
+					{ "time": 1.2, "name": null }
+				]
+			},
+			"att4": {
+				"attachment": [
+					{ "time": 0.4333, "name": "tx1/att/line_glow/line_glow_0013" },
+					{ "time": 0.5, "name": "tx1/att/line_glow/line_glow_0015" },
+					{ "time": 0.5667, "name": "tx1/att/line_glow/line_glow_0017" },
+					{ "time": 0.6333, "name": null }
+				]
+			},
+			"tx1/att/k_s_0016": {
+				"color": [
+					{ "time": 0.5, "color": "ffffffff", "curve": "stepped" },
+					{
+						"time": 0.5667,
+						"color": "ffffffff",
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{ "time": 0.6333, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0.5, "name": "tx1/att/k_s_0016" }
+				]
+			},
+			"yanwu": {
+				"attachment": [
+					{ "time": 0.4, "name": "tx/yanwu/air_quan_3" },
+					{ "time": 0.4333, "name": "tx/yanwu/air_quan_13" },
+					{ "time": 0.5, "name": "tx/yanwu/air_quan_21" },
+					{ "time": 0.6333, "name": null }
+				]
+			}
+		},
+		"bones": {
+			"root": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 0.1333, "angle": 0, "curve": "stepped" },
+					{ "time": 0.1667, "angle": 0, "curve": "stepped" },
+					{ "time": 0.3, "angle": 0, "curve": "stepped" },
+					{ "time": 0.4, "angle": 0, "curve": "stepped" },
+					{ "time": 0.4667, "angle": 0, "curve": "stepped" },
+					{ "time": 0.6333, "angle": 0, "curve": "stepped" },
+					{ "time": 0.8333, "angle": 0, "curve": "stepped" },
+					{ "time": 0.8667, "angle": 0, "curve": "stepped" },
+					{ "time": 0.9667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": -4422.43, "y": -1620.76 },
+					{ "time": 0.1333, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.3, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4667, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.6333, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.8333, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.8667, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.9667, "x": 0, "y": 0 }
+				]
+			},
+			"ZX": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"yanwu": {
+				"rotate": [
+					{ "time": 0.4, "angle": 8.08 }
+				],
+				"translate": [
+					{ "time": 0.4, "x": -59.7, "y": 44.14 },
+					{ "time": 0.4667, "x": -41.08, "y": 46.78 }
+				],
+				"scale": [
+					{ "time": 0.4, "x": 1.646, "y": 1.646 }
+				]
+			},
+			"att2": {
+				"translate": [
+					{
+						"time": 0.5,
+						"x": 254.83,
+						"y": 172.02,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{ "time": 0.6333, "x": 307.83, "y": 172.02 }
+				],
+				"scale": [
+					{
+						"time": 0.5,
+						"x": 1,
+						"y": 1,
+						"curve": [ 0.25, 0, 0.75, 1 ]
+					},
+					{ "time": 0.6333, "x": 3, "y": 3 }
+				]
+			},
+			"att3": {
+				"translate": [
+					{ "time": 0.2667, "x": -141.87, "y": 51.45 }
+				],
+				"scale": [
+					{ "time": 0.2667, "x": 1.5, "y": 1.5 }
+				]
+			},
+			"att4": {
+				"translate": [
+					{ "time": 0.4333, "x": -108.48, "y": 181.37 }
+				],
+				"scale": [
+					{ "time": 0.4333, "x": 2, "y": 2 }
+				]
+			}
+		},
+		"events": [
+			{ "time": 0.4333, "name": "qishou_1_1_1" }
+		]
+	},
+	"animation_1": {
+		"slots": {
+			"skill5": {
+				"attachment": [
+					{ "time": 0, "name": "tx1/skill/skill_boom/skill_boom_0013" },
+					{ "time": 0.0333, "name": "tx1/skill/skill_boom/skill_boom_0015" },
+					{ "time": 0.0667, "name": "tx1/skill/skill_boom/skill_boom_0017" },
+					{ "time": 0.1333, "name": "tx1/skill/skill_boom/skill_boom_0021" },
+					{ "time": 0.1667, "name": "tx1/skill/skill_boom/skill_boom_0027" },
+					{ "time": 0.2, "name": "tx1/skill/skill_boom/skill_boom_0029" },
+					{ "time": 0.2333, "name": "tx1/skill/skill_boom/skill_boom_0031" },
+					{ "time": 0.3, "name": "tx1/skill/skill_boom/skill_boom_0033" },
+					{ "time": 0.3333, "name": "tx1/skill/skill_boom/skill_boom_0035" },
+					{ "time": 0.3667, "name": "tx1/skill/skill_boom/skill_boom_0037" },
+					{ "time": 0.4333, "name": null }
+				]
+			},
+			"skill6": {
+				"attachment": [
+					{ "time": 0.3333, "name": "tx1/skill/skill_boom/skill_boom_0035" },
+					{ "time": 0.4, "name": "tx1/skill/skill_boom/skill_boom_0037" },
+					{ "time": 0.4667, "name": null }
+				]
+			},
+			"skill7": {
+				"attachment": [
+					{ "time": 0.4, "name": "tx1/skill/skill_boom/skill_boom_0035" },
+					{ "time": 0.4667, "name": "tx1/skill/skill_boom/skill_boom_0037" },
+					{ "time": 0.5, "name": null }
+				]
+			}
+		},
+		"bones": {
+			"root": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 2, "y": 2 }
+				]
+			},
+			"ZX": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				]
+			},
+			"skill6": {
+				"rotate": [
+					{ "time": 0, "angle": 25.11 },
+					{ "time": 0.3667, "angle": 102.37 },
+					{ "time": 0.4333, "angle": 85.69 }
+				],
+				"translate": [
+					{ "time": 0, "x": -7.33, "y": 11 }
+				],
+				"scale": [
+					{ "time": 0.2333, "x": 2, "y": 2 },
+					{ "time": 0.3667, "x": 3.333, "y": 4.495 },
+					{ "time": 0.4333, "x": 3.097, "y": 6.118 }
+				]
+			},
+			"skill7": {
+				"rotate": [
+					{ "time": 0.3333, "angle": 94.99 }
+				],
+				"translate": [
+					{ "time": 0.3333, "x": 0, "y": 0 },
+					{ "time": 0.4667, "x": 39.14, "y": 3.42 }
+				],
+				"scale": [
+					{ "time": 0.3333, "x": 1.889, "y": 3.744 },
+					{ "time": 0.4667, "x": 3.744, "y": 5.888 }
+				]
+			},
+			"skill8": {
+				"rotate": [
+					{ "time": 0.4, "angle": 93.98 }
+				],
+				"translate": [
+					{ "time": 0.4, "x": 0, "y": 0 },
+					{ "time": 0.5, "x": 58.72, "y": 4.08 }
+				],
+				"scale": [
+					{ "time": 0.4, "x": 2.609, "y": 2.609 },
+					{ "time": 0.5, "x": 2.609, "y": 5.948 }
+				]
+			}
+		},
+		"events": [
+			{ "time": 0.1, "name": "hit_11_1_1" }
+		]
+	}
+}
+}

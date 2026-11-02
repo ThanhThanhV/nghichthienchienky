@@ -1,0 +1,62 @@
+
+seffect_1238160.png
+size: 871,871
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+image/txgongji/3/zhua_0003
+  rotate: true
+  xy: 532, 70
+  size: 199, 195
+  orig: 225, 217
+  offset: 12, 12
+  index: -1
+image/txgongji/3/zhuaheng/zhuaheng_0001
+  rotate: false
+  xy: 532, 271
+  size: 212, 201
+  orig: 247, 804
+  offset: 29, 596
+  index: -1
+image/txgongji/3/zhuaheng/zhuaheng_0003
+  rotate: true
+  xy: 199, 648
+  size: 221, 620
+  orig: 247, 804
+  offset: 13, 147
+  index: -1
+image/txgongji/3/zhuaheng/zhuaheng_0005
+  rotate: false
+  xy: 2, 109
+  size: 195, 760
+  orig: 247, 804
+  offset: 20, 8
+  index: -1
+image/txgongji/3/zhuaheng/zhuaheng_0007
+  rotate: true
+  xy: 2, 2
+  size: 105, 528
+  orig: 247, 804
+  offset: 39, 16
+  index: -1
+image/txgongji/3/zhuayin/zhuayin_0003
+  rotate: true
+  xy: 377, 273
+  size: 199, 153
+  orig: 550, 191
+  offset: 7, 21
+  index: -1
+image/txgongji/3/zhuayin/zhuayin_0006
+  rotate: false
+  xy: 377, 474
+  size: 412, 172
+  orig: 550, 191
+  offset: 0, 8
+  index: -1
+image/txgongji/3/zhuayin/zhuayin_0008
+  rotate: true
+  xy: 199, 109
+  size: 537, 176
+  orig: 550, 191
+  offset: 1, 4
+  index: -1

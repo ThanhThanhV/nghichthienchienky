@@ -1,0 +1,53 @@
+{
+"skeleton": { "hash": "VOkXsGmoUxpMynbkYc1xc0v2Ya0", "spine": "3.5.35", "width": 0, "height": 0 },
+"bones": [
+	{ "name": "root" },
+	{ "name": "ZX", "parent": "root", "x": 340.84, "y": -271.5 },
+	{ "name": "tx", "parent": "ZX", "x": -342.28, "y": 76 },
+	{ "name": "skill", "parent": "tx", "x": 1.44, "y": 195.5 },
+	{ "name": "tx/skill/shouji/sj_00", "parent": "skill" }
+],
+"slots": [
+	{ "name": "tx/skill/shouji/sj_00", "bone": "tx/skill/shouji/sj_00" }
+],
+"skins": {
+	"default": {
+		"tx/skill/shouji/sj_00": {
+			"tx/skill/shouji/sj_00": { "width": 240, "height": 240 },
+			"tx/skill/shouji/sj_02": { "width": 240, "height": 240 },
+			"tx/skill/shouji/sj_04": { "width": 240, "height": 240 },
+			"tx/skill/shouji/sj_06": { "width": 240, "height": 240 },
+			"tx/skill/shouji/sj_08": { "width": 240, "height": 240 }
+		}
+	}
+},
+"events": {
+	"hit_11_1_1": {}
+},
+"animations": {
+	"animation_0": {
+		"slots": {
+			"tx/skill/shouji/sj_00": {
+				"attachment": [
+					{ "time": 0, "name": "tx/skill/shouji/sj_00" },
+					{ "time": 0.0667, "name": "tx/skill/shouji/sj_02" },
+					{ "time": 0.1333, "name": "tx/skill/shouji/sj_04" },
+					{ "time": 0.2, "name": "tx/skill/shouji/sj_06" },
+					{ "time": 0.2667, "name": "tx/skill/shouji/sj_08" },
+					{ "time": 0.3333, "name": null }
+				]
+			}
+		},
+		"bones": {
+			"tx/skill/shouji/sj_00": {
+				"scale": [
+					{ "time": 0, "x": 3, "y": 3 }
+				]
+			}
+		},
+		"events": [
+			{ "time": 0, "name": "hit_11_1_1" }
+		]
+	}
+}
+}

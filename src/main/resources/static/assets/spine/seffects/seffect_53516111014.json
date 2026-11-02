@@ -1,0 +1,84 @@
+{
+"skeleton": { "hash": "4bJUdk7fNrZt+i4NuH0Msuc+2UY", "spine": "3.5.35", "width": 0, "height": 0, "images": "./images/" },
+"bones": [
+	{ "name": "root" },
+	{ "name": "bg", "parent": "root", "scaleX": 3.33, "scaleY": 3.33 },
+	{ "name": "zuozhuZX", "parent": "root", "y": -18.58, "scaleX": 0.95, "scaleY": 0.95 },
+	{ "name": "tx", "parent": "zuozhuZX" },
+	{ "name": "effect", "parent": "tx", "color": "760487ff" },
+	{ "name": "skill2", "parent": "effect", "color": "760487ff" },
+	{ "name": "skill2_baodian", "parent": "skill2", "color": "760487ff" }
+],
+"slots": [
+	{ "name": "skill2/baodian/bd_100", "bone": "skill2_baodian" }
+],
+"skins": {
+	"default": {
+		"skill2/baodian/bd_100": {
+			"skill2/baodian/bd_82": { "width": 500, "height": 500 },
+			"skill2/baodian/bd_84": { "width": 500, "height": 500 },
+			"skill2/baodian/bd_86": { "width": 500, "height": 500 },
+			"skill2/baodian/bd_88": { "width": 500, "height": 500 },
+			"skill2/baodian/bd_90": { "width": 500, "height": 500 },
+			"skill2/baodian/bd_92": { "width": 500, "height": 500 },
+			"skill2/baodian/bd_94": { "width": 500, "height": 500 },
+			"skill2/baodian/bd_96": { "width": 500, "height": 500 },
+			"skill2/baodian/bd_98": { "width": 500, "height": 500 },
+			"skill2/baodian/bd_100": { "width": 500, "height": 500 },
+			"skill2/baodian/bd_102": { "width": 500, "height": 500 },
+			"skill2/baodian/bd_104": { "width": 500, "height": 500 },
+			"skill2/baodian/bd_106": { "width": 500, "height": 500 },
+			"skill2/baodian/bd_108": { "width": 500, "height": 500 }
+		}
+	}
+},
+"events": {
+	"hit_21_1_1": {}
+},
+"animations": {
+	"animation_0": {
+		"slots": {
+			"skill2/baodian/bd_100": {
+				"attachment": [
+					{ "time": 0, "name": "skill2/baodian/bd_82" },
+					{ "time": 0.0333, "name": "skill2/baodian/bd_84" },
+					{ "time": 0.0667, "name": "skill2/baodian/bd_86" },
+					{ "time": 0.1, "name": "skill2/baodian/bd_88" },
+					{ "time": 0.1333, "name": "skill2/baodian/bd_90" },
+					{ "time": 0.1667, "name": "skill2/baodian/bd_92" },
+					{ "time": 0.2, "name": "skill2/baodian/bd_94" },
+					{ "time": 0.2333, "name": "skill2/baodian/bd_96" },
+					{ "time": 0.3, "name": "skill2/baodian/bd_98" },
+					{ "time": 0.3333, "name": "skill2/baodian/bd_100" },
+					{ "time": 0.3667, "name": "skill2/baodian/bd_102" },
+					{ "time": 0.4, "name": "skill2/baodian/bd_104" },
+					{ "time": 0.4333, "name": "skill2/baodian/bd_106" },
+					{ "time": 0.4667, "name": "skill2/baodian/bd_108" },
+					{ "time": 0.5, "name": null }
+				]
+			}
+		},
+		"bones": {
+			"skill2_baodian": {
+				"translate": [
+					{ "time": 0, "x": 7.63, "y": 14.35 }
+				],
+				"scale": [
+					{ "time": 0, "x": 3, "y": 3 }
+				]
+			},
+			"bg": {
+				"translate": [
+					{ "time": 0, "x": 633.02, "y": 0 }
+				]
+			}
+		},
+		"drawOrder": [
+			{ "time": 0 }
+		],
+		"events": [
+			{ "time": 0.0667, "name": "hit_21_1_1" }
+		]
+	}
+}
+}

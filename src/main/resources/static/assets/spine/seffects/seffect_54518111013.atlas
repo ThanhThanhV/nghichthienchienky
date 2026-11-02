@@ -1,0 +1,62 @@
+
+seffect_54518111013.png
+size: 294,557
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+effect/usk/mingzhong/jnmz_0000
+  rotate: true
+  xy: 0, 31
+  size: 64, 63
+  orig: 191, 158
+  offset: 63, 45
+  index: -1
+effect/usk/mingzhong/jnmz_0002
+  rotate: false
+  xy: 163, 320
+  size: 105, 94
+  orig: 191, 158
+  offset: 37, 30
+  index: -1
+effect/usk/mingzhong/jnmz_0004
+  rotate: true
+  xy: 163, 416
+  size: 141, 121
+  orig: 191, 158
+  offset: 21, 16
+  index: -1
+effect/usk/mingzhong/jnmz_0006
+  rotate: true
+  xy: 146, 0
+  size: 156, 134
+  orig: 191, 158
+  offset: 13, 10
+  index: -1
+effect/usk/mingzhong/jnmz_0008
+  rotate: true
+  xy: 155, 158
+  size: 160, 139
+  orig: 191, 158
+  offset: 10, 7
+  index: -1
+effect/usk/mingzhong/jnmz_0010
+  rotate: true
+  xy: 0, 97
+  size: 157, 144
+  orig: 191, 158
+  offset: 12, 4
+  index: -1
+effect/usk/mingzhong/jnmz_0012
+  rotate: false
+  xy: 0, 407
+  size: 161, 150
+  orig: 191, 158
+  offset: 13, 1
+  index: -1
+effect/usk/mingzhong/jnmz_0014
+  rotate: false
+  xy: 0, 256
+  size: 153, 149
+  orig: 191, 158
+  offset: 22, 0
+  index: -1

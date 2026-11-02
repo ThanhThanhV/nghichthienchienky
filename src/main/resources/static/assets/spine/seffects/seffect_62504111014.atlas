@@ -1,0 +1,146 @@
+
+seffect_62504111014.png
+size: 364,1032
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+tx/skill1/oula/hit01/shoujixiao_0000
+  rotate: true
+  xy: 2, 21
+  size: 56, 55
+  orig: 200, 200
+  offset: 71, 74
+  index: -1
+tx/skill1/oula/hit01/shoujixiao_0002
+  rotate: false
+  xy: 209, 610
+  size: 151, 131
+  orig: 200, 200
+  offset: 34, 40
+  index: -1
+tx/skill1/oula/hit01/shoujixiao_0004
+  rotate: true
+  xy: 274, 178
+  size: 91, 82
+  orig: 200, 200
+  offset: 63, 63
+  index: -1
+tx/skill1/oula/hit01/shoujixiao_0006
+  rotate: false
+  xy: 137, 63
+  size: 113, 110
+  orig: 200, 200
+  offset: 53, 49
+  index: -1
+tx/skill1/oula/hit01/shoujixiao_0008
+  rotate: true
+  xy: 310, 319
+  size: 119, 47
+  orig: 200, 200
+  offset: 45, 35
+  index: -1
+tx/skill1/oula/hit02/shoujida_0000
+  rotate: false
+  xy: 252, 2
+  size: 106, 106
+  orig: 300, 300
+  offset: 98, 98
+  index: -1
+tx/skill1/oula/hit02/shoujida_0002
+  rotate: false
+  xy: 237, 860
+  size: 123, 170
+  orig: 300, 300
+  offset: 83, 53
+  index: -1
+tx/skill1/oula/hit02/shoujida_0004
+  rotate: true
+  xy: 2, 844
+  size: 186, 233
+  orig: 300, 300
+  offset: 52, 9
+  index: -1
+tx/skill1/oula/hit02/shoujida_0006
+  rotate: true
+  xy: 2, 686
+  size: 156, 205
+  orig: 300, 300
+  offset: 106, 62
+  index: -1
+tx/skill1/oula/hit02/shoujida_0008
+  rotate: true
+  xy: 357, 848
+  size: 10, 5
+  orig: 300, 300
+  offset: 201, 129
+  index: -1
+tx/skill1/oula/light/chuxianguang_0000
+  rotate: true
+  xy: 274, 110
+  size: 66, 70
+  orig: 200, 200
+  offset: 72, 65
+  index: -1
+tx/skill1/oula/light/chuxianguang_0002
+  rotate: false
+  xy: 139, 175
+  size: 133, 130
+  orig: 200, 200
+  offset: 32, 35
+  index: -1
+tx/skill1/oula/light/chuxianguang_0004
+  rotate: false
+  xy: 2, 344
+  size: 167, 166
+  orig: 200, 200
+  offset: 14, 17
+  index: -1
+tx/skill1/oula/light/chuxianguang_0006
+  rotate: false
+  xy: 2, 512
+  size: 172, 172
+  orig: 200, 200
+  offset: 11, 14
+  index: -1
+tx/skill1/oula/light/chuxianguang_0008
+  rotate: false
+  xy: 176, 440
+  size: 174, 168
+  orig: 200, 200
+  offset: 9, 16
+  index: -1
+tx/skill1/oula/yanwu_xiaoshi/xianshiyan_0000
+  rotate: true
+  xy: 310, 271
+  size: 46, 50
+  orig: 200, 200
+  offset: 73, 78
+  index: -1
+tx/skill1/oula/yanwu_xiaoshi/xianshiyan_0002
+  rotate: true
+  xy: 237, 743
+  size: 115, 118
+  orig: 200, 200
+  offset: 39, 45
+  index: -1
+tx/skill1/oula/yanwu_xiaoshi/xianshiyan_0004
+  rotate: false
+  xy: 2, 79
+  size: 133, 130
+  orig: 200, 200
+  offset: 33, 40
+  index: -1
+tx/skill1/oula/yanwu_xiaoshi/xianshiyan_0006
+  rotate: false
+  xy: 171, 307
+  size: 137, 131
+  orig: 200, 200
+  offset: 31, 39
+  index: -1
+tx/skill1/oula/yanwu_xiaoshi/xianshiyan_0008
+  rotate: false
+  xy: 2, 211
+  size: 135, 131
+  orig: 200, 200
+  offset: 34, 38
+  index: -1

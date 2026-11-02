@@ -1,0 +1,99 @@
+{
+"skeleton": { "hash": "w2/nnR6q3VjiwJ/+5Az4wjySpzE", "spine": "3.5.35", "width": 0, "height": 0 },
+"bones": [
+	{ "name": "root" },
+	{ "name": "zx", "parent": "root" },
+	{ "name": "texiao", "parent": "zx" },
+	{ "name": "superskill", "parent": "texiao" },
+	{ "name": "baodian", "parent": "superskill" },
+	{ "name": "shandian", "parent": "superskill" }
+],
+"slots": [
+	{ "name": "shandian", "bone": "shandian" },
+	{ "name": "baodian", "bone": "baodian" }
+],
+"skins": {
+	"default": {
+		"baodian": {
+			"texiao/superskill/skillbaodian/sbd_0000": { "width": 300, "height": 300 },
+			"texiao/superskill/skillbaodian/sbd_0002": { "width": 300, "height": 300 },
+			"texiao/superskill/skillbaodian/sbd_0004": { "width": 300, "height": 300 },
+			"texiao/superskill/skillbaodian/sbd_0006": { "width": 300, "height": 300 },
+			"texiao/superskill/skillbaodian/sbd_0008": { "width": 300, "height": 300 },
+			"texiao/superskill/skillbaodian/sbd_0010": { "width": 300, "height": 300 },
+			"texiao/superskill/skillbaodian/sbd_0012": { "width": 300, "height": 300 }
+		},
+		"shandian": {
+			"texiao/usk/shoujishandian/sjsd_0000": { "width": 720, "height": 992 },
+			"texiao/usk/shoujishandian/sjsd_0002": { "width": 720, "height": 992 },
+			"texiao/usk/shoujishandian/sjsd_0004": { "width": 720, "height": 992 },
+			"texiao/usk/shoujishandian/sjsd_0010": { "width": 720, "height": 992 },
+			"texiao/usk/shoujishandian/sjsd_0012": { "width": 720, "height": 992 },
+			"texiao/usk/shoujishandian/sjsd_0014": { "width": 720, "height": 992 }
+		}
+	}
+},
+"events": {
+	"hit_31_1_1": {}
+},
+"animations": {
+	"animation_0": {
+		"slots": {
+			"baodian": {
+				"attachment": [
+					{ "time": 0, "name": "texiao/superskill/skillbaodian/sbd_0000" },
+					{ "time": 0.0667, "name": "texiao/superskill/skillbaodian/sbd_0002" },
+					{ "time": 0.1333, "name": "texiao/superskill/skillbaodian/sbd_0004" },
+					{ "time": 0.2, "name": "texiao/superskill/skillbaodian/sbd_0006" },
+					{ "time": 0.2667, "name": "texiao/superskill/skillbaodian/sbd_0008" },
+					{ "time": 0.3333, "name": "texiao/superskill/skillbaodian/sbd_0010" },
+					{ "time": 0.4, "name": "texiao/superskill/skillbaodian/sbd_0012" },
+					{ "time": 0.4667, "name": null }
+				]
+			},
+			"shandian": {
+				"attachment": [
+					{ "time": 0, "name": "texiao/usk/shoujishandian/sjsd_0000" },
+					{ "time": 0.0667, "name": "texiao/usk/shoujishandian/sjsd_0002" },
+					{ "time": 0.1333, "name": "texiao/usk/shoujishandian/sjsd_0004" },
+					{ "time": 0.2, "name": "texiao/usk/shoujishandian/sjsd_0010" },
+					{ "time": 0.2667, "name": "texiao/usk/shoujishandian/sjsd_0012" },
+					{ "time": 0.3333, "name": "texiao/usk/shoujishandian/sjsd_0014" },
+					{ "time": 0.4, "name": null }
+				]
+			}
+		},
+		"bones": {
+			"baodian": {
+				"translate": [
+					{ "time": 0, "x": 428.21, "y": 426.13 }
+				],
+				"scale": [
+					{ "time": 0, "x": 3, "y": 3 }
+				]
+			},
+			"texiao": {
+				"translate": [
+					{ "time": 0, "x": -428.38, "y": 0 }
+				]
+			},
+			"zx": {
+				"translate": [
+					{ "time": 0, "x": 0, "y": -189.47 }
+				]
+			},
+			"shandian": {
+				"translate": [
+					{ "time": 0, "x": 388.57, "y": 654.67 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1.5 }
+				]
+			}
+		},
+		"events": [
+			{ "time": 0, "name": "hit_31_1_1" }
+		]
+	}
+}
+}

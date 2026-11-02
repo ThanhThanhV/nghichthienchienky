@@ -1,0 +1,104 @@
+
+seffect_53516111014.png
+size: 1269,1269
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+skill2/baodian/bd_100
+  rotate: true
+  xy: 1092, 230
+  size: 206, 175
+  orig: 500, 500
+  offset: 138, 168
+  index: -1
+skill2/baodian/bd_102
+  rotate: false
+  xy: 832, 25
+  size: 193, 158
+  orig: 500, 500
+  offset: 154, 178
+  index: -1
+skill2/baodian/bd_104
+  rotate: true
+  xy: 1027, 20
+  size: 163, 145
+  orig: 500, 500
+  offset: 163, 190
+  index: -1
+skill2/baodian/bd_106
+  rotate: true
+  xy: 2, 12
+  size: 92, 114
+  orig: 500, 500
+  offset: 230, 212
+  index: -1
+skill2/baodian/bd_108
+  rotate: false
+  xy: 322, 351
+  size: 21, 21
+  orig: 500, 500
+  offset: 283, 220
+  index: -1
+skill2/baodian/bd_82
+  rotate: false
+  xy: 432, 830
+  size: 425, 437
+  orig: 500, 500
+  offset: 41, 35
+  index: -1
+skill2/baodian/bd_84
+  rotate: false
+  xy: 2, 817
+  size: 428, 450
+  orig: 500, 500
+  offset: 41, 22
+  index: -1
+skill2/baodian/bd_86
+  rotate: false
+  xy: 2, 374
+  size: 426, 441
+  orig: 500, 500
+  offset: 46, 19
+  index: -1
+skill2/baodian/bd_88
+  rotate: true
+  xy: 859, 832
+  size: 435, 392
+  orig: 500, 500
+  offset: 38, 46
+  index: -1
+skill2/baodian/bd_90
+  rotate: false
+  xy: 836, 438
+  size: 391, 390
+  orig: 500, 500
+  offset: 57, 47
+  index: -1
+skill2/baodian/bd_92
+  rotate: true
+  xy: 430, 64
+  size: 380, 400
+  orig: 500, 500
+  offset: 56, 40
+  index: -1
+skill2/baodian/bd_94
+  rotate: true
+  xy: 432, 446
+  size: 382, 402
+  orig: 500, 500
+  offset: 57, 38
+  index: -1
+skill2/baodian/bd_96
+  rotate: false
+  xy: 2, 106
+  size: 318, 266
+  orig: 500, 500
+  offset: 102, 130
+  index: -1
+skill2/baodian/bd_98
+  rotate: false
+  xy: 832, 185
+  size: 258, 251
+  orig: 500, 500
+  offset: 110, 144
+  index: -1

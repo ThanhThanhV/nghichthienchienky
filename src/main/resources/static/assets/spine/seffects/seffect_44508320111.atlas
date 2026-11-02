@@ -1,0 +1,468 @@
+
+seffect_44508320111.png
+size: 2025,719
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+quan1
+  rotate: true
+  xy: 921, 449
+  size: 120, 51
+  orig: 122, 53
+  offset: 1, 1
+  index: -1
+quan2
+  rotate: false
+  xy: 751, 449
+  size: 133, 118
+  orig: 136, 121
+  offset: 2, 1
+  index: -1
+utskill/Caihong/Caihong_0000
+  rotate: false
+  xy: 1268, 431
+  size: 141, 142
+  orig: 211, 200
+  offset: 31, 21
+  index: -1
+utskill/Caihong/Caihong_0001
+  rotate: true
+  xy: 1417, 572
+  size: 145, 142
+  orig: 211, 200
+  offset: 27, 19
+  index: -1
+utskill/Caihong/Caihong_0002
+  rotate: true
+  xy: 573, 120
+  size: 149, 134
+  orig: 211, 200
+  offset: 24, 19
+  index: -1
+utskill/Caihong/Caihong_0003
+  rotate: true
+  xy: 849, 136
+  size: 153, 131
+  orig: 211, 200
+  offset: 20, 20
+  index: -1
+utskill/Caihong/Caihong_0004
+  rotate: false
+  xy: 1561, 587
+  size: 152, 130
+  orig: 211, 200
+  offset: 20, 21
+  index: -1
+utskill/Caihong/Caihong_0005
+  rotate: false
+  xy: 404, 2
+  size: 151, 122
+  orig: 211, 200
+  offset: 20, 29
+  index: -1
+utskill/Caihong/Caihong_0006
+  rotate: false
+  xy: 557, 2
+  size: 149, 116
+  orig: 211, 200
+  offset: 20, 39
+  index: -1
+utskill/Caihong/Caihong_0007
+  rotate: true
+  xy: 1661, 3
+  size: 149, 112
+  orig: 211, 200
+  offset: 17, 47
+  index: -1
+utskill/Caihong/Caihong_0008
+  rotate: false
+  xy: 1388, 30
+  size: 144, 113
+  orig: 211, 200
+  offset: 16, 47
+  index: -1
+utskill/Caihong/Caihong_0009
+  rotate: false
+  xy: 1137, 305
+  size: 128, 121
+  orig: 211, 200
+  offset: 28, 40
+  index: -1
+utskill/Caihong/Caihong_0010
+  rotate: false
+  xy: 1787, 153
+  size: 122, 123
+  orig: 211, 200
+  offset: 33, 39
+  index: -1
+utskill/Caihong/Caihong_0011
+  rotate: true
+  xy: 1661, 154
+  size: 122, 124
+  orig: 211, 200
+  offset: 34, 39
+  index: -1
+utskill/Caihong/Caihong_0012
+  rotate: false
+  xy: 1136, 32
+  size: 136, 124
+  orig: 211, 200
+  offset: 28, 39
+  index: -1
+utskill/Caihong/Caihong_0013
+  rotate: true
+  xy: 1534, 139
+  size: 144, 125
+  orig: 211, 200
+  offset: 23, 39
+  index: -1
+utskill/Caihong/Caihong_0014
+  rotate: false
+  xy: 1851, 601
+  size: 148, 116
+  orig: 211, 200
+  offset: 20, 43
+  index: -1
+utskill/Caihong/Caihong_0015
+  rotate: false
+  xy: 1683, 471
+  size: 154, 114
+  orig: 211, 200
+  offset: 18, 45
+  index: -1
+utskill/Caihong/Caihong_0016
+  rotate: false
+  xy: 1805, 357
+  size: 158, 112
+  orig: 211, 200
+  offset: 18, 47
+  index: -1
+utskill/Caihong/Caihong_0017
+  rotate: true
+  xy: 1274, 3
+  size: 160, 112
+  orig: 211, 200
+  offset: 17, 47
+  index: -1
+utskill/Caihong/Caihong_0018
+  rotate: true
+  xy: 2, 7
+  size: 161, 112
+  orig: 211, 200
+  offset: 17, 52
+  index: -1
+utskill/Caihong/Caihong_0019
+  rotate: false
+  xy: 982, 35
+  size: 152, 112
+  orig: 211, 200
+  offset: 25, 51
+  index: -1
+utskill/Caihong/Caihong_0020
+  rotate: true
+  xy: 1401, 145
+  size: 136, 117
+  orig: 211, 200
+  offset: 41, 50
+  index: -1
+utskill/Caihong/Caihong_0021
+  rotate: false
+  xy: 1839, 471
+  size: 133, 121
+  orig: 211, 200
+  offset: 41, 49
+  index: -1
+utskill/Caihong/Caihong_0022
+  rotate: false
+  xy: 974, 450
+  size: 133, 119
+  orig: 211, 200
+  offset: 41, 51
+  index: -1
+utskill/Caihong/Caihong_0023
+  rotate: false
+  xy: 1268, 575
+  size: 147, 142
+  orig: 211, 200
+  offset: 29, 31
+  index: -1
+utskill/Caihong/Caihong_0024
+  rotate: true
+  xy: 595, 568
+  size: 149, 154
+  orig: 211, 200
+  offset: 27, 19
+  index: -1
+utskill/Caihong/Caihong_0025
+  rotate: false
+  xy: 433, 566
+  size: 160, 151
+  orig: 211, 200
+  offset: 20, 19
+  index: -1
+utskill/Caihong/Caihong_0026
+  rotate: false
+  xy: 751, 569
+  size: 168, 148
+  orig: 211, 200
+  offset: 17, 19
+  index: -1
+utskill/Caihong/Caihong_0027
+  rotate: false
+  xy: 921, 571
+  size: 171, 146
+  orig: 211, 200
+  offset: 16, 19
+  index: -1
+utskill/Caihong/Caihong_0028
+  rotate: false
+  xy: 1094, 572
+  size: 172, 145
+  orig: 211, 200
+  offset: 16, 22
+  index: -1
+utskill/Caihong/Caihong_0029
+  rotate: true
+  xy: 574, 417
+  size: 147, 139
+  orig: 211, 200
+  offset: 41, 29
+  index: -1
+utskill/Caihong/Caihong_0030
+  rotate: false
+  xy: 715, 309
+  size: 149, 138
+  orig: 211, 200
+  offset: 39, 37
+  index: -1
+utskill/Caihong/Caihong_0031
+  rotate: true
+  xy: 1267, 279
+  size: 150, 132
+  orig: 211, 200
+  offset: 38, 43
+  index: -1
+utskill/Caihong/Caihong_0032
+  rotate: false
+  xy: 116, 31
+  size: 152, 133
+  orig: 211, 200
+  offset: 36, 45
+  index: -1
+utskill/Caihong/Caihong_0033
+  rotate: true
+  xy: 713, 155
+  size: 152, 134
+  orig: 211, 200
+  offset: 36, 45
+  index: -1
+utskill/Caihong/Caihong_0034
+  rotate: true
+  xy: 1002, 149
+  size: 149, 132
+  orig: 211, 200
+  offset: 39, 43
+  index: -1
+utskill/Caihong/Caihong_0035
+  rotate: true
+  xy: 866, 291
+  size: 156, 134
+  orig: 211, 200
+  offset: 32, 41
+  index: -1
+utskill/Caihong/Caihong_0036
+  rotate: true
+  xy: 1401, 283
+  size: 146, 131
+  orig: 211, 200
+  offset: 40, 42
+  index: -1
+utskill/Caihong/Caihong_0037
+  rotate: true
+  xy: 1137, 428
+  size: 142, 128
+  orig: 211, 200
+  offset: 44, 43
+  index: -1
+utskill/Caihong/Caihong_0038
+  rotate: false
+  xy: 1715, 594
+  size: 134, 123
+  orig: 211, 200
+  offset: 52, 39
+  index: -1
+utskill/Caihong/Caihong_0039
+  rotate: true
+  xy: 1136, 158
+  size: 140, 128
+  orig: 211, 200
+  offset: 45, 40
+  index: -1
+utskill/Caihong/Caihong_0040
+  rotate: true
+  xy: 158, 166
+  size: 139, 135
+  orig: 211, 200
+  offset: 41, 40
+  index: -1
+utskill/Caihong/Caihong_0041
+  rotate: true
+  xy: 433, 269
+  size: 143, 138
+  orig: 211, 200
+  offset: 37, 40
+  index: -1
+utskill/Caihong/Caihong_0042
+  rotate: true
+  xy: 295, 166
+  size: 139, 135
+  orig: 211, 200
+  offset: 36, 42
+  index: -1
+utskill/Caihong/Caihong_0043
+  rotate: true
+  xy: 432, 126
+  size: 141, 134
+  orig: 211, 200
+  offset: 34, 44
+  index: -1
+utskill/Caihong/Caihong_0044
+  rotate: false
+  xy: 1534, 285
+  size: 141, 127
+  orig: 211, 200
+  offset: 34, 51
+  index: -1
+utskill/Caihong/Caihong_0045
+  rotate: true
+  xy: 1677, 278
+  size: 134, 126
+  orig: 211, 200
+  offset: 33, 53
+  index: -1
+utskill/Caihong/Caihong_0046
+  rotate: false
+  xy: 709, 4
+  size: 130, 149
+  orig: 211, 200
+  offset: 34, 30
+  index: -1
+utskill/Caihong/Caihong_0047
+  rotate: false
+  xy: 1266, 165
+  size: 123, 112
+  orig: 211, 200
+  offset: 35, 31
+  index: -1
+utskill/Caihong/Caihong_0048
+  rotate: true
+  xy: 1411, 437
+  size: 133, 136
+  orig: 211, 200
+  offset: 36, 19
+  index: -1
+utskill/Caihong/Caihong_0049
+  rotate: false
+  xy: 1002, 300
+  size: 133, 148
+  orig: 211, 200
+  offset: 41, 19
+  index: -1
+utskill/Caihong/Caihong_0050
+  rotate: false
+  xy: 1549, 414
+  size: 132, 156
+  orig: 211, 200
+  offset: 44, 19
+  index: -1
+utskill/Caihong/Caihong_0051
+  rotate: false
+  xy: 270, 4
+  size: 132, 160
+  orig: 211, 200
+  offset: 42, 19
+  index: -1
+utskill/Caihong/Caihong_0052
+  rotate: true
+  xy: 2, 170
+  size: 135, 154
+  orig: 211, 200
+  offset: 37, 25
+  index: -1
+utskill/Caihong/Caihong_0053
+  rotate: false
+  xy: 433, 414
+  size: 139, 150
+  orig: 211, 200
+  offset: 33, 33
+  index: -1
+utskill/Caihong/Caihong_0054
+  rotate: true
+  xy: 573, 271
+  size: 141, 138
+  orig: 211, 200
+  offset: 31, 43
+  index: -1
+utskill/Caihong/Caihong_0055
+  rotate: true
+  xy: 1917, 143
+  size: 142, 106
+  orig: 211, 200
+  offset: 30, 53
+  index: -1
+utskill/Caihong/Caihong_0056
+  rotate: false
+  xy: 1775, 42
+  size: 140, 109
+  orig: 211, 200
+  offset: 28, 47
+  index: -1
+utskill/Caihong/Caihong_0057
+  rotate: true
+  xy: 1917, 5
+  size: 136, 101
+  orig: 211, 200
+  offset: 28, 43
+  index: -1
+utskill/Caihong/Caihong_0058
+  rotate: false
+  xy: 841, 27
+  size: 138, 107
+  orig: 211, 200
+  offset: 26, 39
+  index: -1
+utskill/Caihong/Caihong_0059
+  rotate: true
+  xy: 1534, 3
+  size: 134, 106
+  orig: 211, 200
+  offset: 28, 41
+  index: -1
+utskill/haixing_0000
+  rotate: false
+  xy: 2, 307
+  size: 429, 410
+  orig: 560, 518
+  offset: 61, 55
+  index: -1
+utskill/paopao_a
+  rotate: true
+  xy: 1956, 288
+  size: 67, 64
+  orig: 80, 77
+  offset: 5, 5
+  index: -1
+utskill/paopao_b
+  rotate: false
+  xy: 1805, 283
+  size: 78, 72
+  orig: 130, 109
+  offset: 24, 14
+  index: -1
+utskill/paopao_c
+  rotate: false
+  xy: 1885, 287
+  size: 69, 68
+  orig: 102, 98
+  offset: 16, 14
+  index: -1

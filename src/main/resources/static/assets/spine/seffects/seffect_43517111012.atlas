@@ -1,0 +1,230 @@
+
+seffect_43517111012.png
+size: 1796,595
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+skill1/di/di_67
+  rotate: true
+  xy: 620, 2
+  size: 252, 117
+  orig: 400, 200
+  offset: 78, 29
+  index: -1
+skill1/di/di_69
+  rotate: true
+  xy: 739, 5
+  size: 279, 125
+  orig: 400, 200
+  offset: 64, 24
+  index: -1
+skill1/di/di_71
+  rotate: false
+  xy: 2, 8
+  size: 307, 133
+  orig: 400, 200
+  offset: 51, 20
+  index: -1
+skill1/di/di_73
+  rotate: false
+  xy: 311, 8
+  size: 307, 133
+  orig: 400, 200
+  offset: 51, 20
+  index: -1
+skill1/di/di_75
+  rotate: true
+  xy: 703, 286
+  size: 307, 133
+  orig: 400, 200
+  offset: 51, 20
+  index: -1
+skill1/di/di_77
+  rotate: true
+  xy: 838, 286
+  size: 307, 133
+  orig: 400, 200
+  offset: 51, 20
+  index: -1
+skill1/di/di_79
+  rotate: true
+  xy: 973, 286
+  size: 307, 133
+  orig: 400, 200
+  offset: 51, 20
+  index: -1
+skill1/di/di_81
+  rotate: true
+  xy: 1108, 286
+  size: 307, 133
+  orig: 400, 200
+  offset: 51, 20
+  index: -1
+skill1/di/di_83
+  rotate: true
+  xy: 1243, 286
+  size: 307, 133
+  orig: 400, 200
+  offset: 51, 20
+  index: -1
+skill1/di/di_85
+  rotate: true
+  xy: 1378, 291
+  size: 302, 128
+  orig: 400, 200
+  offset: 53, 23
+  index: -1
+skill1/di/di_87
+  rotate: false
+  xy: 1508, 476
+  size: 286, 117
+  orig: 400, 200
+  offset: 61, 29
+  index: -1
+waring/waring_00
+  rotate: true
+  xy: 1481, 6
+  size: 103, 157
+  orig: 107, 161
+  offset: 2, 2
+  index: -1
+waring/waring_01
+  rotate: false
+  xy: 1640, 37
+  size: 102, 165
+  orig: 106, 167
+  offset: 2, 1
+  index: -1
+waring/waring_02
+  rotate: false
+  xy: 426, 165
+  size: 184, 89
+  orig: 187, 91
+  offset: 1, 1
+  index: -1
+waring/waring_03
+  rotate: false
+  xy: 1441, 111
+  size: 131, 178
+  orig: 133, 180
+  offset: 1, 1
+  index: -1
+waring/waring_04
+  rotate: false
+  xy: 866, 4
+  size: 202, 46
+  orig: 205, 48
+  offset: 2, 1
+  index: -1
+waring/waring_05
+  rotate: false
+  xy: 1314, 104
+  size: 125, 180
+  orig: 127, 182
+  offset: 1, 1
+  index: -1
+waring/waring_06
+  rotate: true
+  xy: 1277, 8
+  size: 60, 93
+  orig: 63, 95
+  offset: 2, 1
+  index: -1
+waring/waring_07
+  rotate: true
+  xy: 397, 147
+  size: 107, 27
+  orig: 109, 29
+  offset: 1, 1
+  index: -1
+waring/waring_08
+  rotate: true
+  xy: 1182, 6
+  size: 62, 93
+  orig: 64, 95
+  offset: 1, 1
+  index: -1
+waring/waring_09
+  rotate: false
+  xy: 1104, 5
+  size: 76, 63
+  orig: 78, 65
+  offset: 1, 1
+  index: -1
+waring/waring_10
+  rotate: false
+  xy: 1070, 18
+  size: 32, 32
+  orig: 35, 36
+  offset: 2, 2
+  index: -1
+waring/waring_11
+  rotate: false
+  xy: 1314, 70
+  size: 32, 32
+  orig: 35, 36
+  offset: 2, 2
+  index: -1
+waring/waring_12
+  rotate: false
+  xy: 1348, 70
+  size: 32, 32
+  orig: 35, 36
+  offset: 2, 2
+  index: -1
+waring/waring_13
+  rotate: false
+  xy: 1382, 5
+  size: 97, 97
+  orig: 100, 99
+  offset: 2, 1
+  index: -1
+waring/waring_14
+  rotate: false
+  xy: 1640, 204
+  size: 116, 116
+  orig: 118, 118
+  offset: 1, 1
+  index: -1
+waring/waring_15
+  rotate: false
+  xy: 1508, 347
+  size: 127, 127
+  orig: 130, 130
+  offset: 2, 1
+  index: -1
+waring/waring_16
+  rotate: false
+  xy: 1640, 322
+  size: 152, 152
+  orig: 154, 154
+  offset: 1, 1
+  index: -1
+waring/waring_17
+  rotate: true
+  xy: 1100, 70
+  size: 214, 212
+  orig: 216, 214
+  offset: 1, 1
+  index: -1
+waring/waring_18
+  rotate: false
+  xy: 866, 52
+  size: 232, 232
+  orig: 234, 234
+  offset: 1, 1
+  index: -1
+waring/waring_19
+  rotate: true
+  xy: 397, 256
+  size: 337, 304
+  orig: 340, 306
+  offset: 1, 1
+  index: -1
+waring/waring_20
+  rotate: true
+  xy: 2, 143
+  size: 450, 393
+  orig: 452, 396
+  offset: 1, 1
+  index: -1

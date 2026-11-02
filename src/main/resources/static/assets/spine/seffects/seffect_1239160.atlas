@@ -1,0 +1,209 @@
+
+seffect_1239160.png
+size: 1539,1539
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+image/txgongji/4/clound/clound_0067
+  rotate: false
+  xy: 2, 1317
+  size: 720, 220
+  orig: 720, 220
+  offset: 0, 0
+  index: -1
+image/txgongji/4/lightning_a/lightning_a_0000
+  rotate: false
+  xy: 1204, 128
+  size: 108, 134
+  orig: 329, 429
+  offset: 92, 0
+  index: -1
+image/txgongji/4/lightning_a/lightning_a_0002
+  rotate: false
+  xy: 927, 5
+  size: 168, 388
+  orig: 329, 429
+  offset: 100, 41
+  index: -1
+image/txgongji/4/lightning_a/lightning_a_0004
+  rotate: false
+  xy: 308, 9
+  size: 221, 429
+  orig: 329, 429
+  offset: 37, 0
+  index: -1
+image/txgongji/4/lightning_a/lightning_a_0006
+  rotate: true
+  xy: 1159, 395
+  size: 227, 368
+  orig: 329, 429
+  offset: 85, 61
+  index: -1
+image/txgongji/4/lightning_a/lightning_a_0008
+  rotate: false
+  xy: 2, 9
+  size: 304, 429
+  orig: 329, 429
+  offset: 25, 0
+  index: -1
+image/txgongji/4/lightning_a/lightning_a_0010
+  rotate: false
+  xy: 1269, 1113
+  size: 268, 424
+  orig: 329, 429
+  offset: 6, 5
+  index: -1
+image/txgongji/4/lightning_a/lightning_a_0012
+  rotate: true
+  xy: 554, 7
+  size: 17, 27
+  orig: 329, 429
+  offset: 187, 366
+  index: -1
+image/txgongji/4/lightning_a/lightning_a_0014
+  rotate: false
+  xy: 531, 26
+  size: 194, 429
+  orig: 329, 429
+  offset: 56, 0
+  index: -1
+image/txgongji/4/lightning_a/lightning_a_0016
+  rotate: false
+  xy: 543, 886
+  size: 179, 429
+  orig: 329, 429
+  offset: 55, 0
+  index: -1
+image/txgongji/4/lightning_a/lightning_a_0018
+  rotate: false
+  xy: 540, 457
+  size: 175, 427
+  orig: 329, 429
+  offset: 57, 2
+  index: -1
+image/txgongji/4/lightning_a/lightning_a_0020
+  rotate: true
+  xy: 1204, 264
+  size: 129, 241
+  orig: 329, 429
+  offset: 98, 131
+  index: -1
+image/txgongji/4/lightning_b/lightning_b_0020
+  rotate: true
+  xy: 724, 624
+  size: 295, 532
+  orig: 326, 560
+  offset: 23, 24
+  index: -1
+image/txgongji/4/lightning_b/lightning_b_0022
+  rotate: true
+  xy: 724, 1223
+  size: 314, 543
+  orig: 326, 560
+  offset: 12, 14
+  index: -1
+image/txgongji/4/lightning_b/lightning_b_0024
+  rotate: true
+  xy: 2, 440
+  size: 264, 523
+  orig: 326, 560
+  offset: 38, 34
+  index: -1
+image/txgongji/4/lightning_b/lightning_b_0026
+  rotate: true
+  xy: 724, 921
+  size: 300, 535
+  orig: 326, 560
+  offset: 20, 22
+  index: -1
+image/txgongji/4/lightning_b/lightning_b_0028
+  rotate: true
+  xy: 2, 706
+  size: 301, 536
+  orig: 326, 560
+  offset: 19, 20
+  index: -1
+image/txgongji/4/lightning_b/lightning_b_0030
+  rotate: true
+  xy: 2, 1009
+  size: 306, 539
+  orig: 326, 560
+  offset: 17, 17
+  index: -1
+image/txgongji/4/lightning_b/lightning_b_0032
+  rotate: false
+  xy: 1261, 627
+  size: 267, 484
+  orig: 326, 560
+  offset: 37, 34
+  index: -1
+image/txgongji/4/lightning_b/lightning_b_0034
+  rotate: false
+  xy: 727, 39
+  size: 198, 423
+  orig: 326, 560
+  offset: 70, 55
+  index: -1
+image/txgongji/4/lightning_b/lightning_b_0036
+  rotate: false
+  xy: 927, 397
+  size: 144, 76
+  orig: 326, 560
+  offset: 64, 59
+  index: -1
+image/txgongji/4/lightning_c/lightning_c_0016
+  rotate: true
+  xy: 1073, 399
+  size: 74, 61
+  orig: 386, 147
+  offset: 132, 0
+  index: -1
+image/txgongji/4/lightning_c/lightning_c_0019
+  rotate: true
+  xy: 1204, 19
+  size: 107, 97
+  orig: 386, 147
+  offset: 129, 0
+  index: -1
+image/txgongji/4/lightning_c/lightning_c_0022
+  rotate: true
+  xy: 717, 464
+  size: 158, 129
+  orig: 386, 147
+  offset: 110, 0
+  index: -1
+image/txgongji/4/lightning_c/lightning_c_0025
+  rotate: false
+  xy: 848, 475
+  size: 309, 147
+  orig: 386, 147
+  offset: 52, 0
+  index: -1
+image/txgongji/4/lightning_c/lightning_c_0027
+  rotate: false
+  xy: 1097, 353
+  size: 44, 44
+  orig: 386, 147
+  offset: 26, 31
+  index: -1
+image/txgongji/4/lightning_c/lightning_c_0029
+  rotate: true
+  xy: 1097, 48
+  size: 303, 105
+  orig: 386, 147
+  offset: 49, 29
+  index: -1
+image/txgongji/4/lightning_c/lightning_c_0031
+  rotate: false
+  xy: 727, 5
+  size: 32, 32
+  orig: 386, 147
+  offset: 271, 97
+  index: -1
+image/txgongji/4/lightning_c/lightning_c_0033
+  rotate: false
+  xy: 531, 3
+  size: 21, 21
+  orig: 386, 147
+  offset: 282, 104
+  index: -1

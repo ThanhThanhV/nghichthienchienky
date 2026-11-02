@@ -1,0 +1,183 @@
+{
+"skeleton": { "hash": "rGbR8cikbmPok6Tc/KybHDyQCio", "spine": "3.5.35", "width": 0, "height": 0 },
+"bones": [
+	{ "name": "root" },
+	{ "name": "ZX", "parent": "root", "x": -346.27, "y": -442.86 },
+	{ "name": "TX", "parent": "ZX", "x": 346.27, "y": 442.86 },
+	{ "name": "skill1", "parent": "TX" },
+	{ "name": "skill1/oula/hit01", "parent": "skill1" },
+	{ "name": "skill1/oula/hit1", "parent": "skill1" },
+	{ "name": "skill1/oula/hit02/shoujida", "parent": "skill1" },
+	{ "name": "skill1/oula/light/chuxianguang", "parent": "skill1" },
+	{ "name": "skill1/oula/yanwu_xiaoshi", "parent": "skill1" }
+],
+"slots": [
+	{ "name": "skill1/oula/hit01", "bone": "skill1/oula/hit01", "blend": "additive" },
+	{ "name": "skill1/oula/hit1", "bone": "skill1/oula/hit1", "color": "ffac64ff", "blend": "additive" },
+	{ "name": "skill1/oula/hit02/shoujida", "bone": "skill1/oula/hit02/shoujida", "blend": "additive" },
+	{ "name": "skill1/oula/yanwu_xiaoshi", "bone": "skill1/oula/yanwu_xiaoshi" },
+	{ "name": "skill1/oula/light/chuxianguang", "bone": "skill1/oula/light/chuxianguang", "blend": "additive" }
+],
+"skins": {
+	"default": {
+		"skill1/oula/hit01": {
+			"tx/skill1/oula/hit01/shoujixiao_0000": { "width": 200, "height": 200 },
+			"tx/skill1/oula/hit01/shoujixiao_0002": { "width": 200, "height": 200 },
+			"tx/skill1/oula/hit01/shoujixiao_0004": { "width": 200, "height": 200 },
+			"tx/skill1/oula/hit01/shoujixiao_0006": { "width": 200, "height": 200 },
+			"tx/skill1/oula/hit01/shoujixiao_0008": { "width": 200, "height": 200 }
+		},
+		"skill1/oula/hit02/shoujida": {
+			"tx/skill1/oula/hit02/shoujida_0000": { "width": 300, "height": 300 },
+			"tx/skill1/oula/hit02/shoujida_0002": { "width": 300, "height": 300 },
+			"tx/skill1/oula/hit02/shoujida_0004": { "width": 300, "height": 300 },
+			"tx/skill1/oula/hit02/shoujida_0006": { "width": 300, "height": 300 },
+			"tx/skill1/oula/hit02/shoujida_0008": { "width": 300, "height": 300 }
+		},
+		"skill1/oula/hit1": {
+			"tx/skill1/oula/hit01/shoujixiao_0000": { "width": 200, "height": 200 },
+			"tx/skill1/oula/hit01/shoujixiao_0002": { "width": 200, "height": 200 },
+			"tx/skill1/oula/hit01/shoujixiao_0004": { "width": 200, "height": 200 },
+			"tx/skill1/oula/hit01/shoujixiao_0006": { "width": 200, "height": 200 },
+			"tx/skill1/oula/hit01/shoujixiao_0008": { "width": 200, "height": 200 }
+		},
+		"skill1/oula/light/chuxianguang": {
+			"tx/skill1/oula/light/chuxianguang_0000": { "width": 200, "height": 200 },
+			"tx/skill1/oula/light/chuxianguang_0002": { "width": 200, "height": 200 },
+			"tx/skill1/oula/light/chuxianguang_0004": { "width": 200, "height": 200 },
+			"tx/skill1/oula/light/chuxianguang_0006": { "width": 200, "height": 200 },
+			"tx/skill1/oula/light/chuxianguang_0008": { "width": 200, "height": 200 }
+		},
+		"skill1/oula/yanwu_xiaoshi": {
+			"tx/skill1/oula/yanwu_xiaoshi/xianshiyan_0000": { "width": 200, "height": 200 },
+			"tx/skill1/oula/yanwu_xiaoshi/xianshiyan_0002": { "width": 200, "height": 200 },
+			"tx/skill1/oula/yanwu_xiaoshi/xianshiyan_0004": { "width": 200, "height": 200 },
+			"tx/skill1/oula/yanwu_xiaoshi/xianshiyan_0006": { "width": 200, "height": 200 },
+			"tx/skill1/oula/yanwu_xiaoshi/xianshiyan_0008": { "width": 200, "height": 200 }
+		}
+	}
+},
+"events": {
+	"hit_21_1_1": {}
+},
+"animations": {
+	"animation_0": {
+		"slots": {
+			"skill1/oula/hit01": {
+				"attachment": [
+					{ "time": 0.3333, "name": "tx/skill1/oula/hit01/shoujixiao_0000" },
+					{ "time": 0.4, "name": "tx/skill1/oula/hit01/shoujixiao_0002" },
+					{ "time": 0.4667, "name": "tx/skill1/oula/hit01/shoujixiao_0004" },
+					{ "time": 0.5333, "name": "tx/skill1/oula/hit01/shoujixiao_0006" },
+					{ "time": 0.6, "name": null }
+				]
+			},
+			"skill1/oula/hit1": {
+				"attachment": [
+					{ "time": 0.2333, "name": "tx/skill1/oula/hit01/shoujixiao_0000" },
+					{ "time": 0.3, "name": "tx/skill1/oula/hit01/shoujixiao_0002" },
+					{ "time": 0.3333, "name": "tx/skill1/oula/hit01/shoujixiao_0004" },
+					{ "time": 0.4333, "name": "tx/skill1/oula/hit01/shoujixiao_0008" },
+					{ "time": 0.5, "name": null }
+				]
+			},
+			"skill1/oula/hit02/shoujida": {
+				"attachment": [
+					{ "time": 0, "name": "tx/skill1/oula/hit02/shoujida_0000" },
+					{ "time": 0.1, "name": "tx/skill1/oula/hit02/shoujida_0004" },
+					{ "time": 0.2, "name": "tx/skill1/oula/hit02/shoujida_0008" },
+					{ "time": 0.2333, "name": null }
+				]
+			},
+			"skill1/oula/light/chuxianguang": {
+				"attachment": [
+					{ "time": 0, "name": "tx/skill1/oula/light/chuxianguang_0000" },
+					{ "time": 0.0667, "name": "tx/skill1/oula/light/chuxianguang_0002" },
+					{ "time": 0.1333, "name": "tx/skill1/oula/light/chuxianguang_0004" },
+					{ "time": 0.2, "name": "tx/skill1/oula/light/chuxianguang_0006" },
+					{ "time": 0.2667, "name": "tx/skill1/oula/light/chuxianguang_0008" },
+					{ "time": 0.3333, "name": null }
+				]
+			},
+			"skill1/oula/yanwu_xiaoshi": {
+				"color": [
+					{ "time": 0.1333, "color": "ffffffff" },
+					{ "time": 0.3, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0, "name": "tx/skill1/oula/yanwu_xiaoshi/xianshiyan_0000" },
+					{ "time": 0.0667, "name": "tx/skill1/oula/yanwu_xiaoshi/xianshiyan_0002" },
+					{ "time": 0.1333, "name": "tx/skill1/oula/yanwu_xiaoshi/xianshiyan_0004" },
+					{ "time": 0.2, "name": "tx/skill1/oula/yanwu_xiaoshi/xianshiyan_0006" },
+					{ "time": 0.2667, "name": "tx/skill1/oula/yanwu_xiaoshi/xianshiyan_0008" },
+					{ "time": 0.3, "name": null }
+				]
+			}
+		},
+		"bones": {
+			"skill1/oula/hit02/shoujida": {
+				"rotate": [
+					{ "time": 0, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 377.58, "y": 245.87 }
+				],
+				"scale": [
+					{ "time": 0, "x": 3.844, "y": 3.844 }
+				]
+			},
+			"skill1/oula/hit01": {
+				"rotate": [
+					{ "time": 0.3333, "angle": 18.21 }
+				],
+				"translate": [
+					{ "time": 0.3333, "x": 340.77, "y": 349.66 }
+				],
+				"scale": [
+					{ "time": 0.3333, "x": 1.417, "y": 2.055 }
+				]
+			},
+			"skill1/oula/hit1": {
+				"rotate": [
+					{ "time": 0.2333, "angle": 49.8 }
+				],
+				"translate": [
+					{ "time": 0.2333, "x": 426.36, "y": 326.12 }
+				],
+				"scale": [
+					{ "time": 0.2333, "x": 1.401, "y": 1.401 }
+				]
+			},
+			"skill1/oula/yanwu_xiaoshi": {
+				"translate": [
+					{ "time": 0, "x": 389.95, "y": 245.72 }
+				],
+				"scale": [
+					{ "time": 0, "x": 3.654, "y": 3.654 }
+				]
+			},
+			"skill1/oula/light/chuxianguang": {
+				"translate": [
+					{ "time": 0, "x": 385.2, "y": 243.96 }
+				],
+				"scale": [
+					{ "time": 0, "x": 2.432, "y": 2.432 }
+				]
+			},
+			"ZX": {
+				"translate": [
+					{ "time": 0, "x": -367.82, "y": -222.31 }
+				]
+			},
+			"skill1": {
+				"translate": [
+					{ "time": 0, "x": -3.9, "y": -42.62 }
+				]
+			}
+		},
+		"events": [
+			{ "time": 0, "name": "hit_21_1_1" }
+		]
+	}
+}
+}

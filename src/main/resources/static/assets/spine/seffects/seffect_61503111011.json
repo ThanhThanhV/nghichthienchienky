@@ -1,0 +1,97 @@
+{
+"skeleton": { "hash": "8cztRaiDBDVAAy1t3Bj2VQdBzX8", "spine": "3.5.35", "width": 0, "height": 0, "images": "./Images/" },
+"bones": [
+	{ "name": "root" },
+	{ "name": "ZX", "parent": "root" },
+	{ "name": "TX", "parent": "ZX" },
+	{ "name": "ATT", "parent": "TX", "color": "0d009bff" },
+	{ "name": "BG", "parent": "root", "y": 111.42, "scaleX": 3.33, "scaleY": 3.33 },
+	{ "name": "dan_dao", "parent": "ATT", "color": "0d009bff" },
+	{ "name": "dan_dao2", "parent": "ATT", "color": "0d009bff" },
+	{ "name": "jian_line", "parent": "ATT", "color": "0d009bff" }
+],
+"slots": [
+	{ "name": "bg", "bone": "BG", "color": "9e9e9eff" },
+	{ "name": "dan_dao", "bone": "dan_dao" },
+	{ "name": "dan_dao2", "bone": "dan_dao2" },
+	{ "name": "jian_line", "bone": "jian_line", "blend": "additive" }
+],
+"skins": {
+	"default": {
+		"dan_dao": {
+			"TX/Att/dan_dao/dan_dao_0000": { "width": 405, "height": 171 },
+			"TX/Att/dan_dao/dan_dao_0002": { "width": 405, "height": 171 },
+			"TX/Att/dan_dao/dan_dao_0004": { "width": 405, "height": 171 },
+			"TX/Att/dan_dao/dan_dao_0006": { "width": 405, "height": 171 }
+		},
+		"dan_dao2": {
+			"TX/Att/dan_dao/dan_dao_0000": { "width": 405, "height": 171 },
+			"TX/Att/dan_dao/dan_dao_0002": { "width": 405, "height": 171 },
+			"TX/Att/dan_dao/dan_dao_0004": { "width": 405, "height": 171 },
+			"TX/Att/dan_dao/dan_dao_0006": { "width": 405, "height": 171 }
+		},
+		"jian_line": {
+			"TX/Att/jian_line/jian_line_0000": { "width": 491, "height": 62 }
+		}
+	}
+},
+"animations": {
+	"animation": {
+		"slots": {
+			"dan_dao": {
+				"attachment": [
+					{ "time": 0, "name": "TX/Att/dan_dao/dan_dao_0000" },
+					{ "time": 0.0667, "name": "TX/Att/dan_dao/dan_dao_0002" },
+					{ "time": 0.1333, "name": "TX/Att/dan_dao/dan_dao_0004" },
+					{ "time": 0.2, "name": "TX/Att/dan_dao/dan_dao_0006" }
+				]
+			},
+			"dan_dao2": {
+				"attachment": [
+					{ "time": 0, "name": "TX/Att/dan_dao/dan_dao_0000" },
+					{ "time": 0.0667, "name": "TX/Att/dan_dao/dan_dao_0002" },
+					{ "time": 0.1333, "name": "TX/Att/dan_dao/dan_dao_0004" },
+					{ "time": 0.2, "name": "TX/Att/dan_dao/dan_dao_0006" }
+				]
+			},
+			"jian_line": {
+				"attachment": [
+					{ "time": 0, "name": "TX/Att/jian_line/jian_line_0000" },
+					{ "time": 0.2, "name": "TX/Att/jian_line/jian_line_0000" }
+				]
+			}
+		},
+		"bones": {
+			"jian_line": {
+				"translate": [
+					{ "time": 0, "x": 836.19, "y": 255.4 }
+				],
+				"scale": [
+					{ "time": 0, "x": 2.749, "y": 2.749 }
+				]
+			},
+			"dan_dao": {
+				"translate": [
+					{ "time": 0, "x": 235.12, "y": 343.38 }
+				],
+				"scale": [
+					{ "time": 0, "x": 2, "y": 2 }
+				]
+			},
+			"dan_dao2": {
+				"translate": [
+					{ "time": 0, "x": 342.87, "y": 199.91 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1.753, "y": 1.753 }
+				]
+			},
+			"ATT": {
+				"translate": [
+					{ "time": 0, "x": -451.96, "y": -254.5 }
+				]
+			}
+		}
+	}
+}
+}

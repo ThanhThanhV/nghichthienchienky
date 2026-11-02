@@ -1,0 +1,83 @@
+{
+"skeleton": { "hash": "GnPKp+xhfs4daPGVtosuyNPMr7I", "spine": "3.5.35", "width": 0, "height": 0 },
+"bones": [
+	{ "name": "root" },
+	{ "name": "zx", "parent": "root" },
+	{ "name": "TX", "parent": "zx" },
+	{ "name": "att", "parent": "TX" },
+	{ "name": "bg", "parent": "root", "y": 103.57, "scaleX": 3.33, "scaleY": 3.33 }
+],
+"slots": [
+	{ "name": "bg", "bone": "bg", "color": "7a7a7aff" },
+	{ "name": "att", "bone": "att" }
+],
+"skins": {
+	"default": {
+		"att": {
+			"tx/att/light_fire/light_fire_0000": { "width": 301, "height": 193 },
+			"tx/att/light_fire/light_fire_0002": { "width": 301, "height": 193 },
+			"tx/att/light_fire/light_fire_0004": { "width": 301, "height": 193 },
+			"tx/att/light_fire/light_fire_0006": { "width": 301, "height": 193 }
+		}
+	}
+},
+"events": {
+	"qishou_1_1_1": {}
+},
+"animations": {
+	"animation_0": {
+		"slots": {
+			"att": {
+				"color": [
+					{ "time": 0.6333, "color": "ffffffff" },
+					{ "time": 0.7, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0.4, "name": "tx/att/light_fire/light_fire_0000" },
+					{ "time": 0.4667, "name": "tx/att/light_fire/light_fire_0002" },
+					{ "time": 0.5333, "name": "tx/att/light_fire/light_fire_0004" },
+					{ "time": 0.6, "name": "tx/att/light_fire/light_fire_0006" },
+					{ "time": 0.8333, "name": null }
+				]
+			}
+		},
+		"bones": {
+			"root": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 0.4, "angle": 0, "curve": "stepped" },
+					{ "time": 0.8333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.8333, "x": 0, "y": 0 }
+				]
+			},
+			"zx": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 0.4, "angle": 0, "curve": "stepped" },
+					{ "time": 0.8333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.4, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.8333, "x": 0, "y": 0 }
+				]
+			},
+			"att": {
+				"translate": [
+					{ "time": 0.4, "x": 403.91, "y": 301.04 }
+				],
+				"scale": [
+					{ "time": 0.4, "x": 1.703, "y": 1.883 }
+				]
+			}
+		},
+		"events": [
+			{ "time": 0.4667, "name": "qishou_1_1_1" }
+		]
+	}
+}
+}

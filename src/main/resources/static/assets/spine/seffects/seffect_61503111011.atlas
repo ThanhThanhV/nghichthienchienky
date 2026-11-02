@@ -1,0 +1,41 @@
+
+seffect_61503111011.png
+size: 494,494
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+TX/Att/dan_dao/dan_dao_0000
+  rotate: true
+  xy: 364, 155
+  size: 337, 128
+  orig: 405, 171
+  offset: 59, 7
+  index: -1
+TX/Att/dan_dao/dan_dao_0002
+  rotate: false
+  xy: 2, 48
+  size: 343, 146
+  orig: 405, 171
+  offset: 53, 10
+  index: -1
+TX/Att/dan_dao/dan_dao_0004
+  rotate: false
+  xy: 2, 196
+  size: 355, 144
+  orig: 405, 171
+  offset: 41, 16
+  index: -1
+TX/Att/dan_dao/dan_dao_0006
+  rotate: false
+  xy: 2, 342
+  size: 360, 150
+  orig: 405, 171
+  offset: 36, 8
+  index: -1
+TX/Att/jian_line/jian_line_0000
+  rotate: false
+  xy: 2, 21
+  size: 196, 25
+  orig: 491, 62
+  offset: 14, 22
+  index: -1

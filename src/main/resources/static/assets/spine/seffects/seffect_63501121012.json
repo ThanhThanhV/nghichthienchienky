@@ -1,0 +1,642 @@
+{
+"skeleton": { "hash": "jxCDu8Vs85WS15g9UCSlV+mqb0U", "spine": "3.5.35", "width": 0, "height": 0, "images": "./images/" },
+"bones": [
+	{ "name": "root" },
+	{ "name": "BG", "parent": "root" },
+	{ "name": "ZX", "parent": "root", "x": 512, "y": -179.23, "color": "ff0a00ff" },
+	{ "name": "TX", "parent": "ZX", "x": -512, "y": 179.23, "color": "ff0a00ff" },
+	{ "name": "SKILL", "parent": "TX", "color": "ff0a00ff" },
+	{ "name": "boom", "parent": "SKILL", "color": "ff0a00ff" },
+	{ "name": "di_lan", "parent": "SKILL", "scaleX": 1.42, "scaleY": 1.42, "color": "ff0a00ff" },
+	{ "name": "kuoshan", "parent": "SKILL", "color": "ff0a00ff" },
+	{ "name": "lightning_n", "parent": "SKILL", "color": "ff0a00ff" },
+	{ "name": "line_liu", "parent": "SKILL", "color": "ff0a00ff" },
+	{ "name": "particles", "parent": "SKILL", "color": "ff0a00ff" },
+	{ "name": "tx/Skill/banqiu_0008_0000", "parent": "SKILL", "scaleX": 2, "scaleY": 2, "color": "ff0a00ff" },
+	{ "name": "tx/Skill/banqiu_glow_0000", "parent": "SKILL", "scaleX": 2, "scaleY": 2, "color": "ff0a00ff" },
+	{ "name": "tx/Skill/qiu_0033_0000", "parent": "SKILL", "scaleX": 2, "scaleY": 2, "color": "ff0a00ff" },
+	{ "name": "tz", "parent": "tx/Skill/banqiu_glow_0000", "color": "ff0a00ff" },
+	{ "name": "xi_xian", "parent": "SKILL", "scaleX": 1.42, "scaleY": 1.42, "color": "ff0a00ff" },
+	{ "name": "zi_xian", "parent": "SKILL", "color": "ff0a00ff" }
+],
+"slots": [
+	{ "name": "bg", "bone": "BG" },
+	{ "name": "di_lan", "bone": "di_lan", "blend": "additive" },
+	{ "name": "kuoshan", "bone": "kuoshan" },
+	{ "name": "boom", "bone": "boom" },
+	{ "name": "lightning_n", "bone": "lightning_n", "blend": "additive" },
+	{ "name": "line_liu", "bone": "line_liu" },
+	{ "name": "particles", "bone": "particles", "blend": "additive" },
+	{ "name": "xi_xian", "bone": "xi_xian" },
+	{ "name": "zi_xian", "bone": "zi_xian" },
+	{ "name": "tx/Skill/banqiu_0008_0000", "bone": "tx/Skill/banqiu_0008_0000", "blend": "additive" },
+	{ "name": "tx/Skill/banqiu_glow_0000", "bone": "tz", "blend": "additive" },
+	{ "name": "tx/Skill/qiu_0033_0000", "bone": "tx/Skill/qiu_0033_0000", "blend": "additive" }
+],
+"skins": {
+	"default": {
+		"boom": {
+			"tx/Skill/kuoshan/kuoshan_0000": { "width": 468, "height": 459 },
+			"tx/Skill/kuoshan/kuoshan_0002": { "width": 468, "height": 459 },
+			"tx/Skill/kuoshan/kuoshan_0004": { "width": 468, "height": 459 },
+			"tx/Skill/kuoshan/kuoshan_0006": { "width": 468, "height": 459 },
+			"tx/Skill/kuoshan/kuoshan_0008": { "width": 468, "height": 459 },
+			"tx/Skill/kuoshan/kuoshan_0010": { "width": 468, "height": 459 },
+			"tx/Skill/kuoshan/kuoshan_0012": { "width": 468, "height": 459 },
+			"tx/Skill/kuoshan/kuoshan_0014": { "width": 468, "height": 459 },
+			"tx/Skill/kuoshan/kuoshan_0016": { "width": 468, "height": 459 },
+			"tx/Skill/kuoshan/kuoshan_0018": { "width": 468, "height": 459 },
+			"tx/Skill/kuoshan/kuoshan_0020": { "width": 468, "height": 459 }
+		},
+		"di_lan": {
+			"tx/Skill/di_lan/di_lan_0000": { "width": 427, "height": 366 },
+			"tx/Skill/di_lan/di_lan_0002": { "width": 427, "height": 366 },
+			"tx/Skill/di_lan/di_lan_0004": { "width": 427, "height": 366 },
+			"tx/Skill/di_lan/di_lan_0006": { "width": 427, "height": 366 },
+			"tx/Skill/di_lan/di_lan_0008": { "width": 427, "height": 366 },
+			"tx/Skill/di_lan/di_lan_0010": { "width": 427, "height": 366 },
+			"tx/Skill/di_lan/di_lan_0012": { "width": 427, "height": 366 },
+			"tx/Skill/di_lan/di_lan_0014": { "width": 427, "height": 366 },
+			"tx/Skill/di_lan/di_lan_0016": { "width": 427, "height": 366 },
+			"tx/Skill/di_lan/di_lan_0018": { "width": 427, "height": 366 },
+			"tx/Skill/di_lan/di_lan_0020": { "width": 427, "height": 366 },
+			"tx/Skill/di_lan/di_lan_0022": { "width": 427, "height": 366 },
+			"tx/Skill/di_lan/di_lan_0024": { "width": 427, "height": 366 },
+			"tx/Skill/di_lan/di_lan_0026": { "width": 427, "height": 366 },
+			"tx/Skill/di_lan/di_lan_0028": { "width": 427, "height": 366 }
+		},
+		"kuoshan": {
+			"tx/Skill/kuoshan/kuoshan_0000": { "width": 468, "height": 459 },
+			"tx/Skill/kuoshan/kuoshan_0002": { "width": 468, "height": 459 },
+			"tx/Skill/kuoshan/kuoshan_0004": { "width": 468, "height": 459 },
+			"tx/Skill/kuoshan/kuoshan_0006": { "width": 468, "height": 459 },
+			"tx/Skill/kuoshan/kuoshan_0008": { "width": 468, "height": 459 },
+			"tx/Skill/kuoshan/kuoshan_0010": { "width": 468, "height": 459 },
+			"tx/Skill/kuoshan/kuoshan_0012": { "width": 468, "height": 459 },
+			"tx/Skill/kuoshan/kuoshan_0014": { "width": 468, "height": 459 },
+			"tx/Skill/kuoshan/kuoshan_0016": { "width": 468, "height": 459 },
+			"tx/Skill/kuoshan/kuoshan_0018": { "width": 468, "height": 459 },
+			"tx/Skill/kuoshan/kuoshan_0020": { "width": 468, "height": 459 }
+		},
+		"lightning_n": {
+			"tx/Skill/lightning_n/lightning_n_0000": { "width": 234, "height": 484 },
+			"tx/Skill/lightning_n/lightning_n_0002": { "width": 234, "height": 484 },
+			"tx/Skill/lightning_n/lightning_n_0004": { "width": 234, "height": 484 },
+			"tx/Skill/lightning_n/lightning_n_0006": { "width": 234, "height": 484 },
+			"tx/Skill/lightning_n/lightning_n_0008": { "width": 234, "height": 484 },
+			"tx/Skill/lightning_n/lightning_n_0010": { "width": 234, "height": 484 }
+		},
+		"line_liu": {
+			"tx/Skill/line_liu/line_liu_0000": { "width": 462, "height": 67 },
+			"tx/Skill/line_liu/line_liu_0002": { "width": 462, "height": 67 },
+			"tx/Skill/line_liu/line_liu_0004": { "width": 462, "height": 67 },
+			"tx/Skill/line_liu/line_liu_0006": { "width": 462, "height": 67 }
+		},
+		"particles": {
+			"tx/Skill/particles/particles_0000": { "width": 338, "height": 99 },
+			"tx/Skill/particles/particles_0002": { "width": 338, "height": 99 },
+			"tx/Skill/particles/particles_0004": { "width": 338, "height": 99 },
+			"tx/Skill/particles/particles_0006": { "width": 338, "height": 99 },
+			"tx/Skill/particles/particles_0008": { "width": 338, "height": 99 },
+			"tx/Skill/particles/particles_0010": { "width": 338, "height": 99 },
+			"tx/Skill/particles/particles_0012": { "width": 338, "height": 99 },
+			"tx/Skill/particles/particles_0014": { "width": 338, "height": 99 },
+			"tx/Skill/particles/particles_0016": { "width": 338, "height": 99 },
+			"tx/Skill/particles/particles_0018": { "width": 338, "height": 99 },
+			"tx/Skill/particles/particles_0020": { "width": 338, "height": 99 }
+		},
+		"tx/Skill/banqiu_0008_0000": {
+			"tx/Skill/banqiu_0008_0000": { "width": 705, "height": 546 }
+		},
+		"tx/Skill/banqiu_glow_0000": {
+			"tx/Skill/banqiu_glow_0000": { "width": 305, "height": 246 }
+		},
+		"tx/Skill/qiu_0033_0000": {
+			"tx/Skill/qiu_0033_0000": { "width": 48, "height": 48 }
+		},
+		"xi_xian": {
+			"tx/Skill/xi_xian/xi_xian_0000": { "width": 439, "height": 336 },
+			"tx/Skill/xi_xian/xi_xian_0002": { "width": 439, "height": 336 },
+			"tx/Skill/xi_xian/xi_xian_0004": { "width": 439, "height": 336 },
+			"tx/Skill/xi_xian/xi_xian_0006": { "width": 439, "height": 336 },
+			"tx/Skill/xi_xian/xi_xian_0008": { "width": 439, "height": 336 },
+			"tx/Skill/xi_xian/xi_xian_0010": { "width": 439, "height": 336 },
+			"tx/Skill/xi_xian/xi_xian_0012": { "width": 439, "height": 336 },
+			"tx/Skill/xi_xian/xi_xian_0014": { "width": 439, "height": 336 },
+			"tx/Skill/xi_xian/xi_xian_0016": { "width": 439, "height": 336 },
+			"tx/Skill/xi_xian/xi_xian_0018": { "width": 439, "height": 336 },
+			"tx/Skill/xi_xian/xi_xian_0020": { "width": 439, "height": 336 },
+			"tx/Skill/xi_xian/xi_xian_0022": { "width": 439, "height": 336 },
+			"tx/Skill/xi_xian/xi_xian_0024": { "width": 439, "height": 336 },
+			"tx/Skill/xi_xian/xi_xian_0026": { "width": 439, "height": 336 },
+			"tx/Skill/xi_xian/xi_xian_0028": { "width": 439, "height": 336 },
+			"tx/Skill/xi_xian/xi_xian_0030": { "width": 439, "height": 336 },
+			"tx/Skill/xi_xian/xi_xian_0032": { "width": 439, "height": 336 },
+			"tx/Skill/xi_xian/xi_xian_0034": { "width": 439, "height": 336 }
+		},
+		"zi_xian": {
+			"tx/Skill/zi_xian/zi_xian_0000": { "width": 246, "height": 409 },
+			"tx/Skill/zi_xian/zi_xian_0002": { "width": 246, "height": 409 },
+			"tx/Skill/zi_xian/zi_xian_0004": { "width": 246, "height": 409 },
+			"tx/Skill/zi_xian/zi_xian_0006": { "width": 246, "height": 409 },
+			"tx/Skill/zi_xian/zi_xian_0008": { "width": 246, "height": 409 },
+			"tx/Skill/zi_xian/zi_xian_0010": { "width": 246, "height": 409 },
+			"tx/Skill/zi_xian/zi_xian_0012": { "width": 246, "height": 409 },
+			"tx/Skill/zi_xian/zi_xian_0014": { "width": 246, "height": 409 },
+			"tx/Skill/zi_xian/zi_xian_0016": { "width": 246, "height": 409 },
+			"tx/Skill/zi_xian/zi_xian_0018": { "width": 246, "height": 409 },
+			"tx/Skill/zi_xian/zi_xian_0020": { "width": 246, "height": 409 },
+			"tx/Skill/zi_xian/zi_xian_0022": { "width": 246, "height": 409 },
+			"tx/Skill/zi_xian/zi_xian_0024": { "width": 246, "height": 409 },
+			"tx/Skill/zi_xian/zi_xian_0026": { "width": 246, "height": 409 },
+			"tx/Skill/zi_xian/zi_xian_0028": { "width": 246, "height": 409 }
+		}
+	}
+},
+"events": {
+	"hit_11_5_1": {},
+	"hit_11_5_2": {},
+	"hit_11_5_3": {},
+	"hit_11_5_4": {},
+	"hit_11_5_5": {},
+	"qishou_11_1_1": {}
+},
+"animations": {
+	"animation_0": {
+		"slots": {
+			"di_lan": {
+				"attachment": [
+					{ "time": 0.6667, "name": "tx/Skill/di_lan/di_lan_0000" },
+					{ "time": 0.7333, "name": "tx/Skill/di_lan/di_lan_0002" },
+					{ "time": 0.8, "name": "tx/Skill/di_lan/di_lan_0004" },
+					{ "time": 0.8667, "name": "tx/Skill/di_lan/di_lan_0006" },
+					{ "time": 0.9333, "name": "tx/Skill/di_lan/di_lan_0008" },
+					{ "time": 1, "name": "tx/Skill/di_lan/di_lan_0010" },
+					{ "time": 1.0667, "name": "tx/Skill/di_lan/di_lan_0012" },
+					{ "time": 1.1333, "name": "tx/Skill/di_lan/di_lan_0014" },
+					{ "time": 1.2, "name": "tx/Skill/di_lan/di_lan_0016" },
+					{ "time": 1.2667, "name": "tx/Skill/di_lan/di_lan_0018" },
+					{ "time": 1.3333, "name": "tx/Skill/di_lan/di_lan_0020" },
+					{ "time": 1.4, "name": "tx/Skill/di_lan/di_lan_0022" },
+					{ "time": 1.4667, "name": "tx/Skill/di_lan/di_lan_0024" },
+					{ "time": 1.5333, "name": "tx/Skill/di_lan/di_lan_0026" },
+					{ "time": 1.6, "name": "tx/Skill/di_lan/di_lan_0028" },
+					{ "time": 1.6667, "name": "tx/Skill/di_lan/di_lan_0000" },
+					{ "time": 1.7333, "name": "tx/Skill/di_lan/di_lan_0002" },
+					{ "time": 1.8, "name": "tx/Skill/di_lan/di_lan_0004" },
+					{ "time": 1.8667, "name": "tx/Skill/di_lan/di_lan_0006" },
+					{ "time": 1.9333, "name": "tx/Skill/di_lan/di_lan_0008" },
+					{ "time": 2, "name": "tx/Skill/di_lan/di_lan_0010" },
+					{ "time": 2.0667, "name": "tx/Skill/di_lan/di_lan_0012" },
+					{ "time": 2.1333, "name": "tx/Skill/di_lan/di_lan_0014" },
+					{ "time": 2.2, "name": "tx/Skill/di_lan/di_lan_0016" },
+					{ "time": 2.2667, "name": "tx/Skill/di_lan/di_lan_0018" },
+					{ "time": 2.3333, "name": "tx/Skill/di_lan/di_lan_0020" },
+					{ "time": 2.4, "name": "tx/Skill/di_lan/di_lan_0022" },
+					{ "time": 2.4667, "name": "tx/Skill/di_lan/di_lan_0024" },
+					{ "time": 2.5333, "name": "tx/Skill/di_lan/di_lan_0026" },
+					{ "time": 2.6, "name": "tx/Skill/di_lan/di_lan_0028" },
+					{ "time": 2.6667, "name": null }
+				]
+			},
+			"kuoshan": {
+				"attachment": [
+					{ "time": 2.2667, "name": "tx/Skill/kuoshan/kuoshan_0000" },
+					{ "time": 2.3333, "name": "tx/Skill/kuoshan/kuoshan_0002" },
+					{ "time": 2.4, "name": "tx/Skill/kuoshan/kuoshan_0004" },
+					{ "time": 2.4667, "name": "tx/Skill/kuoshan/kuoshan_0006" },
+					{ "time": 2.5333, "name": "tx/Skill/kuoshan/kuoshan_0008" },
+					{ "time": 2.6, "name": "tx/Skill/kuoshan/kuoshan_0010" },
+					{ "time": 2.6667, "name": "tx/Skill/kuoshan/kuoshan_0012" },
+					{ "time": 2.7333, "name": "tx/Skill/kuoshan/kuoshan_0014" },
+					{ "time": 2.8, "name": "tx/Skill/kuoshan/kuoshan_0016" },
+					{ "time": 2.8667, "name": "tx/Skill/kuoshan/kuoshan_0018" },
+					{ "time": 2.9333, "name": "tx/Skill/kuoshan/kuoshan_0020" }
+				]
+			},
+			"lightning_n": {
+				"color": [
+					{ "time": 2.0667, "color": "ffffffff" },
+					{ "time": 2.2333, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0.6667, "name": "tx/Skill/lightning_n/lightning_n_0000" },
+					{ "time": 0.7333, "name": "tx/Skill/lightning_n/lightning_n_0002" },
+					{ "time": 0.8, "name": "tx/Skill/lightning_n/lightning_n_0004" },
+					{ "time": 0.8667, "name": "tx/Skill/lightning_n/lightning_n_0006" },
+					{ "time": 0.9333, "name": "tx/Skill/lightning_n/lightning_n_0008" },
+					{ "time": 1, "name": "tx/Skill/lightning_n/lightning_n_0010" },
+					{ "time": 1.0667, "name": null },
+					{ "time": 1.1, "name": "tx/Skill/lightning_n/lightning_n_0000" },
+					{ "time": 1.1667, "name": "tx/Skill/lightning_n/lightning_n_0002" },
+					{ "time": 1.2333, "name": "tx/Skill/lightning_n/lightning_n_0004" },
+					{ "time": 1.3, "name": "tx/Skill/lightning_n/lightning_n_0006" },
+					{ "time": 1.3667, "name": "tx/Skill/lightning_n/lightning_n_0008" },
+					{ "time": 1.4333, "name": "tx/Skill/lightning_n/lightning_n_0010" },
+					{ "time": 1.5, "name": null },
+					{ "time": 1.5333, "name": "tx/Skill/lightning_n/lightning_n_0000" },
+					{ "time": 1.6, "name": "tx/Skill/lightning_n/lightning_n_0002" },
+					{ "time": 1.6667, "name": "tx/Skill/lightning_n/lightning_n_0004" },
+					{ "time": 1.7333, "name": "tx/Skill/lightning_n/lightning_n_0006" },
+					{ "time": 1.8, "name": "tx/Skill/lightning_n/lightning_n_0008" },
+					{ "time": 1.8667, "name": "tx/Skill/lightning_n/lightning_n_0010" },
+					{ "time": 1.9333, "name": null },
+					{ "time": 1.9667, "name": "tx/Skill/lightning_n/lightning_n_0000" },
+					{ "time": 2.0333, "name": "tx/Skill/lightning_n/lightning_n_0002" },
+					{ "time": 2.1, "name": "tx/Skill/lightning_n/lightning_n_0004" },
+					{ "time": 2.1667, "name": "tx/Skill/lightning_n/lightning_n_0006" },
+					{ "time": 2.2333, "name": "tx/Skill/lightning_n/lightning_n_0008" }
+				]
+			},
+			"line_liu": {
+				"attachment": [
+					{ "time": 2, "name": "tx/Skill/line_liu/line_liu_0000" },
+					{ "time": 2.0667, "name": "tx/Skill/line_liu/line_liu_0002" },
+					{ "time": 2.1333, "name": "tx/Skill/line_liu/line_liu_0004" },
+					{ "time": 2.2, "name": "tx/Skill/line_liu/line_liu_0006" },
+					{ "time": 2.2333, "name": null }
+				]
+			},
+			"particles": {
+				"attachment": [
+					{ "time": 0.6667, "name": "tx/Skill/particles/particles_0000" },
+					{ "time": 0.7333, "name": "tx/Skill/particles/particles_0002" },
+					{ "time": 0.8, "name": "tx/Skill/particles/particles_0004" },
+					{ "time": 0.8667, "name": "tx/Skill/particles/particles_0006" },
+					{ "time": 0.9333, "name": "tx/Skill/particles/particles_0008" },
+					{ "time": 1, "name": "tx/Skill/particles/particles_0010" },
+					{ "time": 1.0667, "name": "tx/Skill/particles/particles_0012" },
+					{ "time": 1.1333, "name": "tx/Skill/particles/particles_0014" },
+					{ "time": 1.2, "name": "tx/Skill/particles/particles_0016" },
+					{ "time": 1.2667, "name": "tx/Skill/particles/particles_0018" },
+					{ "time": 1.3333, "name": "tx/Skill/particles/particles_0020" },
+					{ "time": 1.3667, "name": null },
+					{ "time": 1.4, "name": "tx/Skill/particles/particles_0000" },
+					{ "time": 1.4667, "name": "tx/Skill/particles/particles_0002" },
+					{ "time": 1.5333, "name": "tx/Skill/particles/particles_0004" },
+					{ "time": 1.6, "name": "tx/Skill/particles/particles_0006" },
+					{ "time": 1.6667, "name": "tx/Skill/particles/particles_0008" },
+					{ "time": 1.7333, "name": "tx/Skill/particles/particles_0010" },
+					{ "time": 1.8, "name": "tx/Skill/particles/particles_0012" },
+					{ "time": 1.8667, "name": "tx/Skill/particles/particles_0014" },
+					{ "time": 1.9333, "name": "tx/Skill/particles/particles_0016" },
+					{ "time": 2, "name": "tx/Skill/particles/particles_0018" },
+					{ "time": 2.0667, "name": "tx/Skill/particles/particles_0020" },
+					{ "time": 2.1, "name": null }
+				]
+			},
+			"tx/Skill/banqiu_0008_0000": {
+				"attachment": [
+					{ "time": 0.6667, "name": "tx/Skill/banqiu_0008_0000" },
+					{ "time": 2.0333, "name": null }
+				]
+			},
+			"tx/Skill/banqiu_glow_0000": {
+				"attachment": [
+					{ "time": 0.6667, "name": "tx/Skill/banqiu_glow_0000" },
+					{ "time": 2.0333, "name": null }
+				]
+			},
+			"tx/Skill/qiu_0033_0000": {
+				"attachment": [
+					{ "time": 0.6667, "name": "tx/Skill/qiu_0033_0000" },
+					{ "time": 2.3333, "name": null }
+				]
+			},
+			"xi_xian": {
+				"attachment": [
+					{ "time": 0.6667, "name": "tx/Skill/xi_xian/xi_xian_0000" },
+					{ "time": 0.7333, "name": "tx/Skill/xi_xian/xi_xian_0002" },
+					{ "time": 0.8, "name": "tx/Skill/xi_xian/xi_xian_0004" },
+					{ "time": 0.8667, "name": "tx/Skill/xi_xian/xi_xian_0006" },
+					{ "time": 0.9333, "name": "tx/Skill/xi_xian/xi_xian_0008" },
+					{ "time": 1, "name": "tx/Skill/xi_xian/xi_xian_0010" },
+					{ "time": 1.0667, "name": "tx/Skill/xi_xian/xi_xian_0012" },
+					{ "time": 1.1333, "name": "tx/Skill/xi_xian/xi_xian_0014" },
+					{ "time": 1.2, "name": "tx/Skill/xi_xian/xi_xian_0016" },
+					{ "time": 1.2667, "name": "tx/Skill/xi_xian/xi_xian_0018" },
+					{ "time": 1.3333, "name": "tx/Skill/xi_xian/xi_xian_0020" },
+					{ "time": 1.4, "name": "tx/Skill/xi_xian/xi_xian_0022" },
+					{ "time": 1.4667, "name": "tx/Skill/xi_xian/xi_xian_0024" },
+					{ "time": 1.5333, "name": "tx/Skill/xi_xian/xi_xian_0026" },
+					{ "time": 1.6, "name": "tx/Skill/xi_xian/xi_xian_0028" },
+					{ "time": 1.6667, "name": "tx/Skill/xi_xian/xi_xian_0030" },
+					{ "time": 1.7333, "name": "tx/Skill/xi_xian/xi_xian_0032" },
+					{ "time": 1.8, "name": "tx/Skill/xi_xian/xi_xian_0034" },
+					{ "time": 1.8333, "name": "tx/Skill/xi_xian/xi_xian_0000" },
+					{ "time": 1.9, "name": "tx/Skill/xi_xian/xi_xian_0002" },
+					{ "time": 1.9667, "name": "tx/Skill/xi_xian/xi_xian_0004" },
+					{ "time": 2.0333, "name": "tx/Skill/xi_xian/xi_xian_0006" },
+					{ "time": 2.1, "name": "tx/Skill/xi_xian/xi_xian_0008" },
+					{ "time": 2.1667, "name": "tx/Skill/xi_xian/xi_xian_0010" },
+					{ "time": 2.2333, "name": "tx/Skill/xi_xian/xi_xian_0012" },
+					{ "time": 2.3, "name": "tx/Skill/xi_xian/xi_xian_0014" },
+					{ "time": 2.3667, "name": "tx/Skill/xi_xian/xi_xian_0016" },
+					{ "time": 2.4333, "name": "tx/Skill/xi_xian/xi_xian_0018" },
+					{ "time": 2.5, "name": "tx/Skill/xi_xian/xi_xian_0020" },
+					{ "time": 2.5667, "name": "tx/Skill/xi_xian/xi_xian_0022" },
+					{ "time": 2.6333, "name": "tx/Skill/xi_xian/xi_xian_0024" },
+					{ "time": 2.7, "name": "tx/Skill/xi_xian/xi_xian_0026" },
+					{ "time": 2.7667, "name": "tx/Skill/xi_xian/xi_xian_0028" },
+					{ "time": 2.8333, "name": "tx/Skill/xi_xian/xi_xian_0030" },
+					{ "time": 2.9, "name": "tx/Skill/xi_xian/xi_xian_0032" },
+					{ "time": 2.9667, "name": "tx/Skill/xi_xian/xi_xian_0034" }
+				]
+			}
+		},
+		"bones": {
+			"root": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 0.5667, "angle": 0, "curve": "stepped" },
+					{ "time": 0.6667, "angle": 0, "curve": "stepped" },
+					{ "time": 2, "angle": 0, "curve": "stepped" },
+					{ "time": 2.3667, "angle": 0, "curve": "stepped" },
+					{ "time": 2.6667, "angle": 0, "curve": "stepped" },
+					{ "time": 3.1667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.5667, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.6667, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 2, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 2.3667, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 2.6667, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 2.7667, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0.6667, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 2, "x": 1, "y": 1 }
+				]
+			},
+			"xi_xian": {
+				"translate": [
+					{ "time": 0.6667, "x": 723.44, "y": 348.04, "curve": "stepped" },
+					{ "time": 2, "x": 818.69, "y": 348.04, "curve": "stepped" },
+					{ "time": 2.0333, "x": 444.76, "y": 266.85, "curve": "stepped" },
+					{ "time": 2.0667, "x": 154.11, "y": 231.88, "curve": "stepped" },
+					{ "time": 2.1, "x": 118.28, "y": 204.13 }
+				],
+				"scale": [
+					{ "time": 0.6667, "x": -2.542, "y": 2.541, "curve": "stepped" },
+					{ "time": 2, "x": 2.541, "y": 2.541, "curve": "stepped" },
+					{ "time": 2.0333, "x": 1.515, "y": 2.169, "curve": "stepped" },
+					{ "time": 2.0667, "x": 0.494, "y": 0.594, "curve": "stepped" },
+					{ "time": 2.1, "x": 0, "y": 0 }
+				]
+			},
+			"tx/Skill/banqiu_0008_0000": {
+				"translate": [
+					{ "time": 0.6667, "x": 1343.53, "y": 195.66 }
+				],
+				"scale": [
+					{ "time": 0.6667, "x": 1.525, "y": 1.525 },
+					{ "time": 2, "x": 0.615, "y": 0.615 }
+				]
+			},
+			"tx/Skill/banqiu_glow_0000": {
+				"translate": [
+					{ "time": 0.6667, "x": 1343.53, "y": 218.28 },
+					{ "time": 0.7, "x": 1343.53, "y": 221.52 },
+					{ "time": 0.7333, "x": 1343.53, "y": 218.28, "curve": "stepped" },
+					{ "time": 0.7667, "x": 1343.53, "y": 218.28 },
+					{ "time": 0.8, "x": 1343.53, "y": 221.52 },
+					{ "time": 0.8333, "x": 1343.53, "y": 218.28, "curve": "stepped" },
+					{ "time": 0.8667, "x": 1343.53, "y": 218.28 },
+					{ "time": 0.9, "x": 1343.53, "y": 221.52 },
+					{ "time": 0.9333, "x": 1343.53, "y": 218.28, "curve": "stepped" },
+					{ "time": 0.9667, "x": 1343.53, "y": 218.28 },
+					{ "time": 1, "x": 1343.53, "y": 221.52 },
+					{ "time": 1.0333, "x": 1343.53, "y": 218.28, "curve": "stepped" },
+					{ "time": 1.0667, "x": 1343.53, "y": 218.28 },
+					{ "time": 1.1, "x": 1343.53, "y": 221.52 },
+					{ "time": 1.1333, "x": 1343.53, "y": 218.28, "curve": "stepped" },
+					{ "time": 1.1667, "x": 1343.53, "y": 218.28 },
+					{ "time": 1.2, "x": 1343.53, "y": 221.52 },
+					{ "time": 1.2333, "x": 1343.53, "y": 218.28, "curve": "stepped" },
+					{ "time": 1.2667, "x": 1343.53, "y": 218.28 },
+					{ "time": 1.3, "x": 1343.53, "y": 221.52 },
+					{ "time": 1.3333, "x": 1343.53, "y": 218.28, "curve": "stepped" },
+					{ "time": 1.3667, "x": 1343.53, "y": 218.28 },
+					{ "time": 1.4, "x": 1343.53, "y": 221.52 },
+					{ "time": 1.4333, "x": 1343.53, "y": 218.28, "curve": "stepped" },
+					{ "time": 1.4667, "x": 1343.53, "y": 218.28 },
+					{ "time": 1.5, "x": 1343.53, "y": 221.52 },
+					{ "time": 1.5333, "x": 1343.53, "y": 218.28, "curve": "stepped" },
+					{ "time": 1.5667, "x": 1343.53, "y": 218.28 },
+					{ "time": 1.6, "x": 1343.53, "y": 221.52 },
+					{ "time": 1.6333, "x": 1343.53, "y": 218.28, "curve": "stepped" },
+					{ "time": 1.6667, "x": 1343.53, "y": 218.28 },
+					{ "time": 1.7, "x": 1343.53, "y": 221.52 },
+					{ "time": 1.7333, "x": 1343.53, "y": 218.28, "curve": "stepped" },
+					{ "time": 1.7667, "x": 1343.53, "y": 218.28 },
+					{ "time": 1.8, "x": 1343.53, "y": 221.52 },
+					{ "time": 1.8333, "x": 1343.53, "y": 218.28, "curve": "stepped" },
+					{ "time": 1.8667, "x": 1343.53, "y": 218.28 },
+					{ "time": 1.9, "x": 1343.53, "y": 221.52 },
+					{ "time": 1.9333, "x": 1343.53, "y": 218.28, "curve": "stepped" },
+					{ "time": 1.9667, "x": 1343.53, "y": 218.28 },
+					{ "time": 2, "x": 1343.53, "y": 221.52 },
+					{ "time": 2.0333, "x": 1343.53, "y": 218.28 }
+				],
+				"scale": [
+					{ "time": 0.6667, "x": 0.823, "y": 0.831 },
+					{ "time": 0.7, "x": 1.698, "y": 1.606 },
+					{ "time": 0.7333, "x": 1.522, "y": 1.53, "curve": "stepped" },
+					{ "time": 0.7667, "x": 1.522, "y": 1.53 },
+					{ "time": 0.8, "x": 1.698, "y": 1.606 },
+					{ "time": 0.8333, "x": 1.522, "y": 1.53, "curve": "stepped" },
+					{ "time": 0.8667, "x": 1.522, "y": 1.53 },
+					{ "time": 0.9, "x": 1.698, "y": 1.606 },
+					{ "time": 0.9333, "x": 1.522, "y": 1.53, "curve": "stepped" },
+					{ "time": 0.9667, "x": 1.522, "y": 1.53 },
+					{ "time": 1, "x": 1.698, "y": 1.606 },
+					{ "time": 1.0333, "x": 1.522, "y": 1.53, "curve": "stepped" },
+					{ "time": 1.0667, "x": 1.522, "y": 1.53 },
+					{ "time": 1.1, "x": 1.698, "y": 1.606 },
+					{ "time": 1.1333, "x": 1.522, "y": 1.53, "curve": "stepped" },
+					{ "time": 1.1667, "x": 1.522, "y": 1.53 },
+					{ "time": 1.2, "x": 1.698, "y": 1.606 },
+					{ "time": 1.2333, "x": 1.522, "y": 1.53, "curve": "stepped" },
+					{ "time": 1.2667, "x": 1.522, "y": 1.53 },
+					{ "time": 1.3, "x": 1.698, "y": 1.606 },
+					{ "time": 1.3333, "x": 1.522, "y": 1.53, "curve": "stepped" },
+					{ "time": 1.3667, "x": 1.522, "y": 1.53 },
+					{ "time": 1.4, "x": 1.698, "y": 1.606 },
+					{ "time": 1.4333, "x": 1.522, "y": 1.53, "curve": "stepped" },
+					{ "time": 1.4667, "x": 1.522, "y": 1.53 },
+					{ "time": 1.5, "x": 1.698, "y": 1.606 },
+					{ "time": 1.5333, "x": 1.522, "y": 1.53, "curve": "stepped" },
+					{ "time": 1.5667, "x": 1.522, "y": 1.53 },
+					{ "time": 1.6, "x": 1.698, "y": 1.606 },
+					{ "time": 1.6333, "x": 1.522, "y": 1.53, "curve": "stepped" },
+					{ "time": 1.6667, "x": 1.522, "y": 1.53 },
+					{ "time": 1.7, "x": 1.698, "y": 1.606 },
+					{ "time": 1.7333, "x": 1.522, "y": 1.53, "curve": "stepped" },
+					{ "time": 1.7667, "x": 1.522, "y": 1.53 },
+					{ "time": 1.8, "x": 1.698, "y": 1.606 },
+					{ "time": 1.8333, "x": 1.522, "y": 1.53, "curve": "stepped" },
+					{ "time": 1.8667, "x": 1.522, "y": 1.53 },
+					{ "time": 1.9, "x": 1.698, "y": 1.606 },
+					{ "time": 1.9333, "x": 1.522, "y": 1.53, "curve": "stepped" },
+					{ "time": 1.9667, "x": 1.522, "y": 1.53 },
+					{ "time": 2, "x": 1.698, "y": 1.606 },
+					{ "time": 2.0333, "x": 1.522, "y": 1.53 }
+				]
+			},
+			"tx/Skill/qiu_0033_0000": {
+				"translate": [
+					{ "time": 0.6667, "x": 1367.33, "y": 195.66, "curve": "stepped" },
+					{ "time": 2, "x": 1367.33, "y": 195.66 },
+					{ "time": 2.0333, "x": 868.29, "y": 195.66 },
+					{ "time": 2.0667, "x": 258.6, "y": 195.66 },
+					{ "time": 2.1, "x": -1.5, "y": 195.66 },
+					{ "time": 2.3, "x": 52.94, "y": 271.62 },
+					{ "time": 2.3333, "x": 95.98, "y": 289.34 }
+				],
+				"scale": [
+					{ "time": 0.6667, "x": 1.235, "y": 1.235 },
+					{ "time": 2.1, "x": 1.8, "y": 1.8 },
+					{ "time": 2.1667, "x": 1.738, "y": 1.307 },
+					{ "time": 2.2, "x": 1.296, "y": 1.444 },
+					{ "time": 2.2667, "x": 0.99, "y": 0.934 },
+					{ "time": 2.3, "x": 2.008, "y": 1.871 }
+				]
+			},
+			"kuoshan": {
+				"translate": [
+					{ "time": 2.2667, "x": 103.81, "y": 301.07 }
+				],
+				"scale": [
+					{ "time": 2.2667, "x": 1.52, "y": 1.52 }
+				]
+			},
+			"line_liu": {
+				"translate": [
+					{ "time": 2, "x": 1540.7, "y": 188.15 },
+					{ "time": 2.0333, "x": 1384.5, "y": 216.55, "curve": "stepped" },
+					{ "time": 2.0667, "x": 1089.85, "y": 202.35, "curve": "stepped" },
+					{ "time": 2.1, "x": 796.52, "y": 208.13 },
+					{ "time": 2.1333, "x": 829.43, "y": 226.08 }
+				],
+				"scale": [
+					{ "time": 2, "x": 1, "y": 1 },
+					{ "time": 2.0667, "x": 3.746, "y": 3.746 }
+				]
+			},
+			"di_lan": {
+				"translate": [
+					{ "time": 0.6667, "x": 32.97, "y": 140.86 }
+				],
+				"scale": [
+					{ "time": 0.6667, "x": 1.108, "y": 1.108 }
+				]
+			},
+			"particles": {
+				"rotate": [
+					{ "time": 0.6667, "angle": 0, "curve": "stepped" },
+					{ "time": 1.4, "angle": -149.63 }
+				],
+				"translate": [
+					{ "time": 0.6667, "x": 271.67, "y": 271.89, "curve": "stepped" },
+					{ "time": 1.4, "x": 974.5, "y": 420.57 }
+				],
+				"scale": [
+					{ "time": 0.6667, "x": 4.907, "y": 4.907 }
+				]
+			},
+			"lightning_n": {
+				"rotate": [
+					{ "time": 0.6667, "angle": 0, "curve": "stepped" },
+					{ "time": 1.1, "angle": -55, "curve": "stepped" },
+					{ "time": 1.5333, "angle": 127.3, "curve": "stepped" },
+					{ "time": 1.9667, "angle": -95.82 }
+				],
+				"translate": [
+					{ "time": 0.6667, "x": 589.96, "y": 548.77, "curve": "stepped" },
+					{ "time": 1.1, "x": 878.34, "y": 313.46, "curve": "stepped" },
+					{ "time": 1.5333, "x": 569.33, "y": 467.55, "curve": "stepped" },
+					{ "time": 1.9667, "x": 758.48, "y": 380.22 }
+				],
+				"scale": [
+					{ "time": 0.6667, "x": 3.397, "y": 3.397, "curve": "stepped" },
+					{ "time": 1.1, "x": 6.502, "y": 2.202, "curve": "stepped" },
+					{ "time": 1.5333, "x": 6.433, "y": 2.279, "curve": "stepped" },
+					{ "time": 1.9667, "x": 3.777, "y": 2.579 }
+				]
+			},
+			"BG": {
+				"translate": [
+					{ "time": 0, "x": 643.17, "y": 0 }
+				]
+			},
+			"tz": {
+				"scale": [
+					{ "time": 0.6667, "x": 1, "y": 1 },
+					{ "time": 2, "x": 0.407, "y": 0.407 }
+				]
+			}
+		},
+		"drawOrder": [
+			{ "time": 0 },
+			{ "time": 0.0333 },
+			{ "time": 0.1 },
+			{ "time": 3.1667 }
+		],
+		"events": [
+			{ "time": 0, "name": "qishou_11_1_1" }
+		]
+	},
+	"animation_1": {
+		"slots": {
+			"boom": {
+				"attachment": [
+					{ "time": 2.3333, "name": "tx/Skill/kuoshan/kuoshan_0000" },
+					{ "time": 2.4, "name": "tx/Skill/kuoshan/kuoshan_0002" },
+					{ "time": 2.4667, "name": "tx/Skill/kuoshan/kuoshan_0004" },
+					{ "time": 2.5333, "name": "tx/Skill/kuoshan/kuoshan_0006" },
+					{ "time": 2.6, "name": "tx/Skill/kuoshan/kuoshan_0008" },
+					{ "time": 2.6667, "name": "tx/Skill/kuoshan/kuoshan_0010" },
+					{ "time": 2.7333, "name": "tx/Skill/kuoshan/kuoshan_0012" },
+					{ "time": 2.8, "name": "tx/Skill/kuoshan/kuoshan_0014" },
+					{ "time": 2.8667, "name": "tx/Skill/kuoshan/kuoshan_0016" },
+					{ "time": 2.9333, "name": "tx/Skill/kuoshan/kuoshan_0018" },
+					{ "time": 3, "name": "tx/Skill/kuoshan/kuoshan_0020" },
+					{ "time": 3.0667, "name": null }
+				]
+			}
+		},
+		"bones": {
+			"root": {
+				"rotate": [
+					{ "time": 2.3333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 2.3333, "x": 0, "y": 0 }
+				]
+			},
+			"BG": {
+				"translate": [
+					{ "time": 2.3333, "x": 643.17, "y": 0 }
+				]
+			},
+			"boom": {
+				"scale": [
+					{ "time": 2.3333, "x": 1, "y": 1 },
+					{ "time": 3.0667, "x": 2, "y": 2 }
+				]
+			}
+		},
+		"drawOrder": [
+			{ "time": 2.3333 }
+		],
+		"events": [
+			{ "time": 0.6667, "name": "hit_11_5_5" },
+			{ "time": 1.0667, "name": "hit_11_5_4" },
+			{ "time": 1.5, "name": "hit_11_5_3" },
+			{ "time": 1.9333, "name": "hit_11_5_2" },
+			{ "time": 2.3333, "name": "hit_11_5_1" }
+		]
+	}
+}
+}

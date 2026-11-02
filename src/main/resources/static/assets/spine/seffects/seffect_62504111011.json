@@ -1,0 +1,1036 @@
+{
+"skeleton": { "hash": "MLx+3ZakKFE44adZWmV5pVQJaLo", "spine": "3.5.35", "width": 0, "height": 0 },
+"bones": [
+	{ "name": "root" },
+	{ "name": "ZX", "parent": "root", "x": -346.27, "y": -442.86 },
+	{ "name": "DZ", "parent": "ZX", "x": 346.27, "y": 442.86 },
+	{ "name": "TX", "parent": "ZX", "x": 346.27, "y": 442.86 },
+	{ "name": "bg", "parent": "root", "y": 108.4, "scaleX": 3.33, "scaleY": 3.33 },
+	{ "name": "bone3", "parent": "DZ", "x": 0.05, "y": -184.07 },
+	{ "name": "fd_fz", "parent": "bone3", "rotation": 4.38, "x": -75.7, "y": 675.42 },
+	{ "name": "fd_11", "parent": "fd_fz", "length": 101.7 },
+	{ "name": "fd_12", "parent": "fd_fz", "length": 101.7 },
+	{ "name": "fd_13", "parent": "fd_fz", "length": 101.7 },
+	{ "name": "fd_14", "parent": "fd_fz", "length": 101.7 },
+	{ "name": "fd_15", "parent": "fd_fz", "length": 101.7 },
+	{ "name": "fd_16", "parent": "fd_fz", "length": 101.7 },
+	{ "name": "fd_17", "parent": "fd_fz", "length": 101.7 },
+	{ "name": "fd_18", "parent": "fd_fz", "length": 101.7 },
+	{ "name": "fd_19", "parent": "fd_fz", "length": 101.7 },
+	{ "name": "fd_20", "parent": "fd_fz", "length": 101.7 },
+	{ "name": "skill4", "parent": "TX" },
+	{ "name": "skill4/faguang", "parent": "skill4" },
+	{ "name": "skill4/faguang2", "parent": "skill4" },
+	{ "name": "skill4/faguang3", "parent": "skill4" },
+	{
+		"name": "skill4/feidaoweiba_0000",
+		"parent": "fd_11",
+		"rotation": 176.85,
+		"x": 106.81,
+		"y": -0.6,
+		"scaleX": 1.922,
+		"scaleY": 0.976
+	},
+	{ "name": "skill4/feidaoweiba_0", "parent": "fd_12", "rotation": 176.85, "x": 106.81, "y": -0.6, "scaleX": 1.922, "scaleY": 0.976 },
+	{ "name": "skill4/feidaoweiba_1", "parent": "fd_13", "rotation": 176.85, "x": 106.81, "y": -0.6, "scaleX": 1.922, "scaleY": 0.976 },
+	{ "name": "skill4/feidaoweiba_2", "parent": "fd_14", "rotation": 176.85, "x": 106.81, "y": -0.6, "scaleX": 1.922, "scaleY": 0.976 },
+	{ "name": "skill4/feidaoweiba_3", "parent": "fd_15", "rotation": 176.85, "x": 106.81, "y": -0.6, "scaleX": 1.922, "scaleY": 0.976 },
+	{ "name": "skill4/feidaoweiba_4", "parent": "fd_16", "rotation": 176.85, "x": 106.81, "y": -0.6, "scaleX": 1.922, "scaleY": 0.976 },
+	{ "name": "skill4/feidaoweiba_5", "parent": "fd_17", "rotation": 176.85, "x": 106.81, "y": -0.6, "scaleX": 1.922, "scaleY": 0.976 },
+	{ "name": "skill4/feidaoweiba_6", "parent": "fd_18", "rotation": 176.85, "x": 106.81, "y": -0.6, "scaleX": 1.922, "scaleY": 0.976 },
+	{ "name": "skill4/feidaoweiba_7", "parent": "fd_19", "rotation": 176.85, "x": 106.81, "y": -0.6, "scaleX": 1.922, "scaleY": 0.976 },
+	{ "name": "skill4/feidaoweiba_8", "parent": "fd_20", "rotation": 176.85, "x": 106.81, "y": -0.6, "scaleX": 1.922, "scaleY": 0.976 },
+	{ "name": "skill4/huoxin/hx", "parent": "skill4" },
+	{ "name": "skill4/huoxin/hx2", "parent": "skill4" },
+	{ "name": "skill4/huoxin/hx3", "parent": "skill4" },
+	{ "name": "skill4/shouji1_0000", "parent": "skill4" },
+	{ "name": "skill4/shouji1_0", "parent": "skill4" },
+	{ "name": "skill4/shouji1_1", "parent": "skill4" },
+	{ "name": "skill4/shouji1_2", "parent": "skill4" },
+	{ "name": "skill4/shouji1_3", "parent": "skill4" }
+],
+"slots": [
+	{ "name": "bg", "bone": "bg" },
+	{ "name": "wq_feidao11", "bone": "fd_11" },
+	{ "name": "wq_feidao12", "bone": "fd_12" },
+	{ "name": "wq_feidao13", "bone": "fd_13" },
+	{ "name": "wq_feidao14", "bone": "fd_14" },
+	{ "name": "wq_feidao15", "bone": "fd_15" },
+	{ "name": "wq_feidao16", "bone": "fd_16", "attachment": "tx/skill4/feidao_7" },
+	{ "name": "wq_feidao17", "bone": "fd_17" },
+	{ "name": "wq_feidao18", "bone": "fd_18" },
+	{ "name": "wq_feidao19", "bone": "fd_19" },
+	{ "name": "wq_feidao20", "bone": "fd_20" },
+	{ "name": "skill4/shouji1_0000", "bone": "skill4/shouji1_0000" },
+	{ "name": "skill4/shouji1_0", "bone": "skill4/shouji1_0" },
+	{ "name": "skill4/shouji1_1", "bone": "skill4/shouji1_1" },
+	{ "name": "skill4/shouji1_2", "bone": "skill4/shouji1_2" },
+	{ "name": "skill4/shouji1_3", "bone": "skill4/shouji1_3" },
+	{ "name": "skill4/faguang", "bone": "skill4/faguang", "blend": "additive" },
+	{ "name": "skill4/faguang2", "bone": "skill4/faguang2", "blend": "additive" },
+	{ "name": "skill4/faguang3", "bone": "skill4/faguang3", "blend": "additive" },
+	{ "name": "skill4/feidaoweiba_0000", "bone": "skill4/feidaoweiba_0000", "blend": "additive" },
+	{ "name": "skill4/feidaoweiba_0", "bone": "skill4/feidaoweiba_0", "blend": "additive" },
+	{ "name": "skill4/feidaoweiba_1", "bone": "skill4/feidaoweiba_1", "blend": "additive" },
+	{ "name": "skill4/feidaoweiba_2", "bone": "skill4/feidaoweiba_2", "blend": "additive" },
+	{ "name": "skill4/feidaoweiba_3", "bone": "skill4/feidaoweiba_3", "blend": "additive" },
+	{ "name": "skill4/feidaoweiba_4", "bone": "skill4/feidaoweiba_4", "blend": "additive" },
+	{ "name": "skill4/feidaoweiba_5", "bone": "skill4/feidaoweiba_5", "blend": "additive" },
+	{ "name": "skill4/feidaoweiba_6", "bone": "skill4/feidaoweiba_6", "blend": "additive" },
+	{ "name": "skill4/feidaoweiba_7", "bone": "skill4/feidaoweiba_7", "blend": "additive" },
+	{ "name": "skill4/feidaoweiba_8", "bone": "skill4/feidaoweiba_8", "blend": "additive" },
+	{ "name": "skill4/huoxin/hx", "bone": "skill4/huoxin/hx", "blend": "additive" },
+	{ "name": "skill4/huoxin/hx2", "bone": "skill4/huoxin/hx2", "blend": "additive" },
+	{ "name": "skill4/huoxin/hx3", "bone": "skill4/huoxin/hx3", "blend": "additive" }
+],
+"skins": {
+	"default": {
+		"skill4/faguang": {
+			"tx/skill4/faguang_0000": { "width": 200, "height": 200 }
+		},
+		"skill4/faguang2": {
+			"tx/skill4/faguang_0000": { "width": 200, "height": 200 }
+		},
+		"skill4/faguang3": {
+			"tx/skill4/faguang_0000": { "width": 200, "height": 200 }
+		},
+		"skill4/feidaoweiba_0": {
+			"tx/skill4/feidaoweiba_0000": {
+				"type": "mesh",
+				"uvs": [ 1, 1, 0, 1, 0, 0, 1, 0 ],
+				"triangles": [ 1, 2, 3, 1, 3, 0 ],
+				"vertices": [ 63, -15, -63, -15, -63, 15, 63, 15 ],
+				"hull": 4
+			}
+		},
+		"skill4/feidaoweiba_0000": {
+			"tx/skill4/feidaoweiba_0000": {
+				"type": "mesh",
+				"uvs": [ 1, 1, 0, 1, 0, 0, 1, 0 ],
+				"triangles": [ 1, 2, 3, 1, 3, 0 ],
+				"vertices": [ 63, -15, -63, -15, -63, 15, 63, 15 ],
+				"hull": 4
+			}
+		},
+		"skill4/feidaoweiba_1": {
+			"tx/skill4/feidaoweiba_0000": {
+				"type": "mesh",
+				"uvs": [ 1, 1, 0, 1, 0, 0, 1, 0 ],
+				"triangles": [ 1, 2, 3, 1, 3, 0 ],
+				"vertices": [ 63, -15, -63, -15, -63, 15, 63, 15 ],
+				"hull": 4
+			}
+		},
+		"skill4/feidaoweiba_2": {
+			"tx/skill4/feidaoweiba_0000": {
+				"type": "mesh",
+				"uvs": [ 1, 1, 0, 1, 0, 0, 1, 0 ],
+				"triangles": [ 1, 2, 3, 1, 3, 0 ],
+				"vertices": [ 63, -15, -63, -15, -63, 15, 63, 15 ],
+				"hull": 4
+			}
+		},
+		"skill4/feidaoweiba_3": {
+			"tx/skill4/feidaoweiba_0000": {
+				"type": "mesh",
+				"uvs": [ 1, 1, 0, 1, 0, 0, 1, 0 ],
+				"triangles": [ 1, 2, 3, 1, 3, 0 ],
+				"vertices": [ 63, -15, -63, -15, -63, 15, 63, 15 ],
+				"hull": 4
+			}
+		},
+		"skill4/feidaoweiba_4": {
+			"tx/skill4/feidaoweiba_0000": {
+				"type": "mesh",
+				"uvs": [ 1, 1, 0, 1, 0, 0, 1, 0 ],
+				"triangles": [ 1, 2, 3, 1, 3, 0 ],
+				"vertices": [ 63, -15, -63, -15, -63, 15, 63, 15 ],
+				"hull": 4
+			}
+		},
+		"skill4/feidaoweiba_5": {
+			"tx/skill4/feidaoweiba_0000": {
+				"type": "mesh",
+				"uvs": [ 1, 1, 0, 1, 0, 0, 1, 0 ],
+				"triangles": [ 1, 2, 3, 1, 3, 0 ],
+				"vertices": [ 63, -15, -63, -15, -63, 15, 63, 15 ],
+				"hull": 4
+			}
+		},
+		"skill4/feidaoweiba_6": {
+			"tx/skill4/feidaoweiba_0000": {
+				"type": "mesh",
+				"uvs": [ 1, 1, 0, 1, 0, 0, 1, 0 ],
+				"triangles": [ 1, 2, 3, 1, 3, 0 ],
+				"vertices": [ 63, -15, -63, -15, -63, 15, 63, 15 ],
+				"hull": 4
+			}
+		},
+		"skill4/feidaoweiba_7": {
+			"tx/skill4/feidaoweiba_0000": {
+				"type": "mesh",
+				"uvs": [ 1, 1, 0, 1, 0, 0, 1, 0 ],
+				"triangles": [ 1, 2, 3, 1, 3, 0 ],
+				"vertices": [ 63, -15, -63, -15, -63, 15, 63, 15 ],
+				"hull": 4
+			}
+		},
+		"skill4/feidaoweiba_8": {
+			"tx/skill4/feidaoweiba_0000": {
+				"type": "mesh",
+				"uvs": [ 1, 1, 0, 1, 0, 0, 1, 0 ],
+				"triangles": [ 1, 2, 3, 1, 3, 0 ],
+				"vertices": [ 63, -15, -63, -15, -63, 15, 63, 15 ],
+				"hull": 4
+			}
+		},
+		"skill4/huoxin/hx": {
+			"tx/skill4/huoxin/hx_0000": { "width": 395, "height": 229 },
+			"tx/skill4/huoxin/hx_0001": { "width": 395, "height": 229 },
+			"tx/skill4/huoxin/hx_0004": { "width": 395, "height": 229 },
+			"tx/skill4/huoxin/hx_0006": { "width": 395, "height": 229 },
+			"tx/skill4/huoxin/hx_0008": { "width": 395, "height": 229 },
+			"tx/skill4/huoxin/hx_0011": { "width": 395, "height": 229 },
+			"tx/skill4/huoxin/hx_0014": { "width": 395, "height": 229 }
+		},
+		"skill4/huoxin/hx2": {
+			"tx/skill4/huoxin/hx_0000": { "width": 395, "height": 229 },
+			"tx/skill4/huoxin/hx_0001": { "width": 395, "height": 229 },
+			"tx/skill4/huoxin/hx_0004": { "width": 395, "height": 229 },
+			"tx/skill4/huoxin/hx_0006": { "width": 395, "height": 229 },
+			"tx/skill4/huoxin/hx_0008": { "width": 395, "height": 229 },
+			"tx/skill4/huoxin/hx_0011": { "width": 395, "height": 229 },
+			"tx/skill4/huoxin/hx_0014": { "width": 395, "height": 229 }
+		},
+		"skill4/huoxin/hx3": {
+			"tx/skill4/huoxin/hx_0000": { "width": 395, "height": 229 },
+			"tx/skill4/huoxin/hx_0001": { "width": 395, "height": 229 },
+			"tx/skill4/huoxin/hx_0004": { "width": 395, "height": 229 },
+			"tx/skill4/huoxin/hx_0006": { "width": 395, "height": 229 },
+			"tx/skill4/huoxin/hx_0008": { "width": 395, "height": 229 },
+			"tx/skill4/huoxin/hx_0011": { "width": 395, "height": 229 },
+			"tx/skill4/huoxin/hx_0014": { "width": 395, "height": 229 }
+		},
+		"skill4/shouji1_0": {
+			"tx/skill4/shouji1_0000": { "width": 110, "height": 644 }
+		},
+		"skill4/shouji1_0000": {
+			"tx/skill4/shouji1_0000": { "width": 110, "height": 644 }
+		},
+		"skill4/shouji1_1": {
+			"tx/skill4/shouji1_0000": { "width": 110, "height": 644 }
+		},
+		"skill4/shouji1_2": {
+			"tx/skill4/shouji1_0000": { "width": 110, "height": 644 }
+		},
+		"skill4/shouji1_3": {
+			"tx/skill4/shouji1_0000": { "width": 110, "height": 644 }
+		},
+		"wq_feidao11": {
+			"tx/skill4/feidao_0000": {
+				"type": "mesh",
+				"uvs": [ 1, 1, 0, 1, 0, 0, 1, 0 ],
+				"triangles": [ 1, 2, 3, 1, 3, 0 ],
+				"vertices": [ -27.8, -24.12, 143.97, -32.99, 147.07, 26.93, -24.7, 35.8 ],
+				"hull": 4
+			},
+			"wq_feidao": {
+				"type": "mesh",
+				"uvs": [ 1, 1, 0, 1, 0, 0, 1, 0 ],
+				"triangles": [ 1, 2, 3, 1, 3, 0 ],
+				"vertices": [ 123.64, -11.92, -6.29, -7.73, -5.58, 14.26, 124.35, 10.07 ],
+				"hull": 4
+			}
+		},
+		"wq_feidao12": {
+			"tx/skill4/feidao_0": {
+				"type": "mesh",
+				"path": "tx/skill4/feidao_0000",
+				"uvs": [ 1, 1, 0, 1, 0, 0, 1, 0 ],
+				"triangles": [ 1, 2, 3, 1, 3, 0 ],
+				"vertices": [ -27.8, -24.12, 143.97, -32.99, 147.07, 26.93, -24.7, 35.8 ],
+				"hull": 4
+			},
+			"wq_feidao": {
+				"type": "mesh",
+				"uvs": [ 1, 1, 0, 1, 0, 0, 1, 0 ],
+				"triangles": [ 1, 2, 3, 1, 3, 0 ],
+				"vertices": [ 123.64, -11.92, -6.29, -7.73, -5.58, 14.26, 124.35, 10.07 ],
+				"hull": 4
+			}
+		},
+		"wq_feidao13": {
+			"tx/skill4/feidao_1": {
+				"type": "mesh",
+				"path": "tx/skill4/feidao_0000",
+				"uvs": [ 1, 1, 0, 1, 0, 0, 1, 0 ],
+				"triangles": [ 1, 2, 3, 1, 3, 0 ],
+				"vertices": [ -27.8, -24.12, 143.97, -32.99, 147.07, 26.93, -24.7, 35.8 ],
+				"hull": 4
+			},
+			"wq_feidao": {
+				"type": "mesh",
+				"uvs": [ 1, 1, 0, 1, 0, 0, 1, 0 ],
+				"triangles": [ 1, 2, 3, 1, 3, 0 ],
+				"vertices": [ 123.64, -11.92, -6.29, -7.73, -5.58, 14.26, 124.35, 10.07 ],
+				"hull": 4
+			}
+		},
+		"wq_feidao14": {
+			"tx/skill4/feidao_4": {
+				"type": "mesh",
+				"path": "tx/skill4/feidao_0000",
+				"uvs": [ 1, 1, 0, 1, 0, 0, 1, 0 ],
+				"triangles": [ 1, 2, 3, 1, 3, 0 ],
+				"vertices": [ -27.8, -24.12, 143.97, -32.99, 147.07, 26.93, -24.7, 35.8 ],
+				"hull": 4
+			},
+			"wq_feidao": {
+				"type": "mesh",
+				"uvs": [ 1, 1, 0, 1, 0, 0, 1, 0 ],
+				"triangles": [ 1, 2, 3, 1, 3, 0 ],
+				"vertices": [ 123.64, -11.92, -6.29, -7.73, -5.58, 14.26, 124.35, 10.07 ],
+				"hull": 4
+			}
+		},
+		"wq_feidao15": {
+			"tx/skill4/feidao_2": {
+				"type": "mesh",
+				"path": "tx/skill4/feidao_0000",
+				"uvs": [ 1, 1, 0, 1, 0, 0, 1, 0 ],
+				"triangles": [ 1, 2, 3, 1, 3, 0 ],
+				"vertices": [ -27.8, -24.12, 143.97, -32.99, 147.07, 26.93, -24.7, 35.8 ],
+				"hull": 4
+			},
+			"wq_feidao": {
+				"type": "mesh",
+				"uvs": [ 1, 1, 0, 1, 0, 0, 1, 0 ],
+				"triangles": [ 1, 2, 3, 1, 3, 0 ],
+				"vertices": [ 123.64, -11.92, -6.29, -7.73, -5.58, 14.26, 124.35, 10.07 ],
+				"hull": 4
+			}
+		},
+		"wq_feidao16": {
+			"tx/skill4/feidao_3": {
+				"type": "mesh",
+				"path": "tx/skill4/feidao_0000",
+				"uvs": [ 1, 1, 0, 1, 0, 0, 1, 0 ],
+				"triangles": [ 1, 2, 3, 1, 3, 0 ],
+				"vertices": [ -27.8, -24.12, 143.97, -32.99, 147.07, 26.93, -24.7, 35.8 ],
+				"hull": 4
+			},
+			"wq_feidao": {
+				"type": "mesh",
+				"uvs": [ 1, 1, 0, 1, 0, 0, 1, 0 ],
+				"triangles": [ 1, 2, 3, 1, 3, 0 ],
+				"vertices": [ 123.64, -11.92, -6.29, -7.73, -5.58, 14.26, 124.35, 10.07 ],
+				"hull": 4
+			}
+		},
+		"wq_feidao17": {
+			"tx/skill4/feidao_4": {
+				"type": "mesh",
+				"path": "tx/skill4/feidao_0000",
+				"uvs": [ 1, 1, 0, 1, 0, 0, 1, 0 ],
+				"triangles": [ 1, 2, 3, 1, 3, 0 ],
+				"vertices": [ -27.8, -24.12, 143.97, -32.99, 147.07, 26.93, -24.7, 35.8 ],
+				"hull": 4
+			},
+			"wq_feidao": {
+				"type": "mesh",
+				"uvs": [ 1, 1, 0, 1, 0, 0, 1, 0 ],
+				"triangles": [ 1, 2, 3, 1, 3, 0 ],
+				"vertices": [ 123.64, -11.92, -6.29, -7.73, -5.58, 14.26, 124.35, 10.07 ],
+				"hull": 4
+			}
+		},
+		"wq_feidao18": {
+			"tx/skill4/feidao_5": {
+				"type": "mesh",
+				"path": "tx/skill4/feidao_0000",
+				"uvs": [ 1, 1, 0, 1, 0, 0, 1, 0 ],
+				"triangles": [ 1, 2, 3, 1, 3, 0 ],
+				"vertices": [ -27.8, -24.12, 143.97, -32.99, 147.07, 26.93, -24.7, 35.8 ],
+				"hull": 4
+			},
+			"wq_feidao": {
+				"type": "mesh",
+				"uvs": [ 1, 1, 0, 1, 0, 0, 1, 0 ],
+				"triangles": [ 1, 2, 3, 1, 3, 0 ],
+				"vertices": [ 123.64, -11.92, -6.29, -7.73, -5.58, 14.26, 124.35, 10.07 ],
+				"hull": 4
+			}
+		},
+		"wq_feidao19": {
+			"tx/skill4/feidao_6": {
+				"type": "mesh",
+				"path": "tx/skill4/feidao_0000",
+				"uvs": [ 1, 1, 0, 1, 0, 0, 1, 0 ],
+				"triangles": [ 1, 2, 3, 1, 3, 0 ],
+				"vertices": [ -27.8, -24.12, 143.97, -32.99, 147.07, 26.93, -24.7, 35.8 ],
+				"hull": 4
+			},
+			"wq_feidao": {
+				"type": "mesh",
+				"uvs": [ 1, 1, 0, 1, 0, 0, 1, 0 ],
+				"triangles": [ 1, 2, 3, 1, 3, 0 ],
+				"vertices": [ 123.64, -11.92, -6.29, -7.73, -5.58, 14.26, 124.35, 10.07 ],
+				"hull": 4
+			}
+		},
+		"wq_feidao20": {
+			"tx/skill4/feidao_7": {
+				"type": "mesh",
+				"path": "tx/skill4/feidao_0000",
+				"uvs": [ 1, 1, 0, 1, 0, 0, 1, 0 ],
+				"triangles": [ 1, 2, 3, 1, 3, 0 ],
+				"vertices": [ -27.8, -24.12, 143.97, -32.99, 147.07, 26.93, -24.7, 35.8 ],
+				"hull": 4
+			},
+			"wq_feidao": {
+				"type": "mesh",
+				"uvs": [ 1, 1, 0, 1, 0, 0, 1, 0 ],
+				"triangles": [ 1, 2, 3, 1, 3, 0 ],
+				"vertices": [ 123.64, -11.92, -6.29, -7.73, -5.58, 14.26, 124.35, 10.07 ],
+				"hull": 4
+			}
+		}
+	}
+},
+"events": {
+	"hit_11_1_1": {}
+},
+"animations": {
+	"animation_0": {
+		"slots": {
+			"skill4/faguang": {
+				"attachment": [
+					{ "time": 0.9, "name": "tx/skill4/faguang_0000" },
+					{ "time": 1, "name": null },
+					{ "time": 1.0333, "name": "tx/skill4/faguang_0000" },
+					{ "time": 1.2333, "name": null }
+				]
+			},
+			"skill4/faguang2": {
+				"attachment": [
+					{ "time": 0.9, "name": "tx/skill4/faguang_0000" },
+					{ "time": 0.9667, "name": null },
+					{ "time": 1.0333, "name": "tx/skill4/faguang_0000" },
+					{ "time": 1.1333, "name": null }
+				]
+			},
+			"skill4/faguang3": {
+				"attachment": [
+					{ "time": 0.9667, "name": "tx/skill4/faguang_0000" },
+					{ "time": 1, "name": null },
+					{ "time": 1.0333, "name": "tx/skill4/faguang_0000" },
+					{ "time": 1.1, "name": null }
+				]
+			},
+			"skill4/feidaoweiba_0000": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0, "name": "tx/skill4/feidaoweiba_0000" }
+				]
+			},
+			"skill4/feidaoweiba_0": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0, "name": "tx/skill4/feidaoweiba_0000" }
+				]
+			},
+			"skill4/feidaoweiba_1": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0, "name": "tx/skill4/feidaoweiba_0000" }
+				]
+			},
+			"skill4/feidaoweiba_2": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0, "name": "tx/skill4/feidaoweiba_0000" }
+				]
+			},
+			"skill4/feidaoweiba_3": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0, "name": "tx/skill4/feidaoweiba_0000" }
+				]
+			},
+			"skill4/feidaoweiba_4": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0, "name": "tx/skill4/feidaoweiba_0000" }
+				]
+			},
+			"skill4/feidaoweiba_5": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0, "name": "tx/skill4/feidaoweiba_0000" }
+				]
+			},
+			"skill4/feidaoweiba_6": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0, "name": "tx/skill4/feidaoweiba_0000" }
+				]
+			},
+			"skill4/feidaoweiba_7": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0, "name": "tx/skill4/feidaoweiba_0000" }
+				]
+			},
+			"skill4/feidaoweiba_8": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0, "name": "tx/skill4/feidaoweiba_0000" }
+				]
+			},
+			"skill4/huoxin/hx": {
+				"color": [
+					{ "time": 1.1333, "color": "ffffffff" },
+					{ "time": 1.2, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0.9, "name": "tx/skill4/huoxin/hx_0000" },
+					{ "time": 0.9667, "name": "tx/skill4/huoxin/hx_0001" },
+					{ "time": 1, "name": "tx/skill4/huoxin/hx_0006" },
+					{ "time": 1.0333, "name": "tx/skill4/huoxin/hx_0008" },
+					{ "time": 1.0667, "name": "tx/skill4/huoxin/hx_0011" },
+					{ "time": 1.1, "name": "tx/skill4/huoxin/hx_0014" },
+					{ "time": 1.2, "name": null }
+				]
+			},
+			"skill4/huoxin/hx2": {
+				"attachment": [
+					{ "time": 0.9667, "name": "tx/skill4/huoxin/hx_0000" },
+					{ "time": 1, "name": "tx/skill4/huoxin/hx_0004" },
+					{ "time": 1.0333, "name": "tx/skill4/huoxin/hx_0006" },
+					{ "time": 1.0667, "name": "tx/skill4/huoxin/hx_0008" },
+					{ "time": 1.1, "name": "tx/skill4/huoxin/hx_0011" },
+					{ "time": 1.1333, "name": null }
+				]
+			},
+			"skill4/huoxin/hx3": {
+				"attachment": [
+					{ "time": 0.9667, "name": "tx/skill4/huoxin/hx_0000" },
+					{ "time": 1, "name": "tx/skill4/huoxin/hx_0004" },
+					{ "time": 1.0333, "name": "tx/skill4/huoxin/hx_0006" },
+					{ "time": 1.0667, "name": "tx/skill4/huoxin/hx_0008" },
+					{ "time": 1.1, "name": "tx/skill4/huoxin/hx_0011" },
+					{ "time": 1.1333, "name": "tx/skill4/huoxin/hx_0014" },
+					{ "time": 1.1667, "name": null }
+				]
+			},
+			"skill4/shouji1_0000": {
+				"attachment": [
+					{ "time": 0.9, "name": "tx/skill4/shouji1_0000" },
+					{ "time": 1.0667, "name": null },
+					{ "time": 1.1, "name": "tx/skill4/shouji1_0000" },
+					{ "time": 1.2333, "name": null }
+				]
+			},
+			"skill4/shouji1_0": {
+				"attachment": [
+					{ "time": 0.9, "name": "tx/skill4/shouji1_0000" },
+					{ "time": 1, "name": null },
+					{ "time": 1.0667, "name": "tx/skill4/shouji1_0000" },
+					{ "time": 1.1667, "name": null }
+				]
+			},
+			"skill4/shouji1_1": {
+				"attachment": [
+					{ "time": 0.9667, "name": "tx/skill4/shouji1_0000" },
+					{ "time": 1.0333, "name": null },
+					{ "time": 1.0667, "name": "tx/skill4/shouji1_0000" },
+					{ "time": 1.1667, "name": null }
+				]
+			},
+			"skill4/shouji1_2": {
+				"attachment": [
+					{ "time": 0.9667, "name": "tx/skill4/shouji1_0000" }
+				]
+			},
+			"skill4/shouji1_3": {
+				"attachment": [
+					{ "time": 0.9667, "name": "tx/skill4/shouji1_0000" },
+					{ "time": 1.0667, "name": null },
+					{ "time": 1.1, "name": "tx/skill4/shouji1_0000" },
+					{ "time": 1.1667, "name": null }
+				]
+			},
+			"wq_feidao11": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" },
+					{ "time": 0.8333, "color": "ffffffff" },
+					{ "time": 0.9333, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0, "name": "tx/skill4/feidao_0000" },
+					{ "time": 0.8333, "name": "wq_feidao" },
+					{ "time": 0.9333, "name": null }
+				]
+			},
+			"wq_feidao12": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" },
+					{ "time": 0.8333, "color": "ffffffff" },
+					{ "time": 0.9333, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0, "name": "tx/skill4/feidao_0" },
+					{ "time": 0.8, "name": "wq_feidao" },
+					{ "time": 0.9333, "name": null }
+				]
+			},
+			"wq_feidao13": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" },
+					{ "time": 0.8333, "color": "ffffffff" },
+					{ "time": 0.9333, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0, "name": "tx/skill4/feidao_1" },
+					{ "time": 0.8333, "name": "wq_feidao" },
+					{ "time": 0.9333, "name": null }
+				]
+			},
+			"wq_feidao14": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" },
+					{ "time": 0.8333, "color": "ffffffff" },
+					{ "time": 0.9333, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0, "name": "tx/skill4/feidao_4" },
+					{ "time": 0.8333, "name": "wq_feidao" },
+					{ "time": 0.9333, "name": null }
+				]
+			},
+			"wq_feidao15": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" },
+					{ "time": 0.8333, "color": "ffffffff" },
+					{ "time": 0.9333, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0, "name": "tx/skill4/feidao_2" },
+					{ "time": 0.8333, "name": "wq_feidao" },
+					{ "time": 0.9333, "name": null }
+				]
+			},
+			"wq_feidao16": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" },
+					{ "time": 0.8333, "color": "ffffffff" },
+					{ "time": 0.9333, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0, "name": "tx/skill4/feidao_3" },
+					{ "time": 0.7667, "name": "wq_feidao" },
+					{ "time": 0.9333, "name": null }
+				]
+			},
+			"wq_feidao17": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" },
+					{ "time": 0.8333, "color": "ffffffff" },
+					{ "time": 0.9333, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0, "name": "tx/skill4/feidao_4" },
+					{ "time": 0.8, "name": "wq_feidao" },
+					{ "time": 0.9333, "name": null }
+				]
+			},
+			"wq_feidao18": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" },
+					{ "time": 0.8333, "color": "ffffffff" },
+					{ "time": 0.9333, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0, "name": "tx/skill4/feidao_5" },
+					{ "time": 0.8333, "name": "wq_feidao" },
+					{ "time": 0.9333, "name": null }
+				]
+			},
+			"wq_feidao19": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" },
+					{ "time": 0.8333, "color": "ffffffff" },
+					{ "time": 0.9333, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0, "name": "tx/skill4/feidao_6" },
+					{ "time": 0.8333, "name": "wq_feidao" },
+					{ "time": 0.9333, "name": null }
+				]
+			},
+			"wq_feidao20": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" },
+					{ "time": 0.8333, "color": "ffffffff" },
+					{ "time": 0.9333, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0, "name": "tx/skill4/feidao_7" },
+					{ "time": 0.8, "name": "wq_feidao" },
+					{ "time": 0.9333, "name": null }
+				]
+			}
+		},
+		"bones": {
+			"fd_fz": {
+				"rotate": [
+					{ "time": 0, "angle": 3.9 }
+				],
+				"translate": [
+					{ "time": 0, "x": 899.59, "y": -161.4 },
+					{ "time": 0.8333, "x": 645.05, "y": -220.53 },
+					{ "time": 0.9, "x": -56.01, "y": -397.62 }
+				],
+				"scale": [
+					{ "time": 0, "x": -1.507, "y": 1.862 }
+				]
+			},
+			"fd_11": {
+				"rotate": [
+					{ "time": 0, "angle": 3.22 }
+				],
+				"translate": [
+					{ "time": 0, "x": 423.77, "y": 20.66 },
+					{ "time": 0.8333, "x": 143.11, "y": 25.23 },
+					{ "time": 0.9, "x": -658.79, "y": 38.32 }
+				]
+			},
+			"fd_12": {
+				"rotate": [
+					{ "time": 0, "angle": 149.06 }
+				],
+				"translate": [
+					{ "time": 0, "x": -343.09, "y": 205.64 },
+					{ "time": 0.8333, "x": -427.96, "y": 162.72 },
+					{ "time": 0.9, "x": -670.45, "y": 40.09 }
+				],
+				"scale": [
+					{ "time": 0, "x": 0.871, "y": 1, "curve": "stepped" },
+					{ "time": 0.8333, "x": 0.871, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 6.16, "y": 0, "curve": "stepped" },
+					{ "time": 0.8333, "x": 6.16, "y": 0 }
+				]
+			},
+			"fd_13": {
+				"rotate": [
+					{ "time": 0, "angle": 113.84 }
+				],
+				"translate": [
+					{ "time": 0, "x": -139.36, "y": 315.32 },
+					{ "time": 0.8333, "x": -277.03, "y": 242.74 },
+					{ "time": 0.9, "x": -670.35, "y": 35.34 }
+				],
+				"scale": [
+					{ "time": 0, "x": 0.849, "y": 1, "curve": "stepped" },
+					{ "time": 0.8333, "x": 0.849, "y": 1 }
+				]
+			},
+			"fd_14": {
+				"rotate": [
+					{ "time": 0, "angle": 13.02 }
+				],
+				"translate": [
+					{ "time": 0, "x": 383.71, "y": 149.15 },
+					{ "time": 0.8333, "x": 111.1, "y": 119.3 },
+					{ "time": 0.9, "x": -667.79, "y": 34.02 }
+				],
+				"shear": [
+					{ "time": 0, "x": 8.22, "y": 40.61, "curve": "stepped" },
+					{ "time": 0.8333, "x": 8.22, "y": 40.61 }
+				]
+			},
+			"fd_15": {
+				"rotate": [
+					{ "time": 0, "angle": 72.62 }
+				],
+				"translate": [
+					{ "time": 0, "x": 96.83, "y": 309.42 },
+					{ "time": 0.8333, "x": -100.15, "y": 237.91 },
+					{ "time": 0.9, "x": -662.95, "y": 33.6 }
+				]
+			},
+			"fd_16": {
+				"rotate": [
+					{ "time": 0, "angle": 167.38 }
+				],
+				"translate": [
+					{ "time": 0, "x": -394.56, "y": 88.37 },
+					{ "time": 0.8333, "x": -464.98, "y": 73.84 },
+					{ "time": 0.9, "x": -666.17, "y": 32.34 }
+				]
+			},
+			"fd_17": {
+				"rotate": [
+					{ "time": 0, "angle": -160.92 }
+				],
+				"translate": [
+					{ "time": 0, "x": -448.94, "y": -63.58 },
+					{ "time": 0.8333, "x": -502, "y": -39.46 },
+					{ "time": 0.9, "x": -653.6, "y": 29.44 }
+				],
+				"scale": [
+					{ "time": 0, "x": 0.783, "y": 1.251 },
+					{ "time": 0.8333, "x": 0.691, "y": 1.251 }
+				],
+				"shear": [
+					{ "time": 0, "x": -11.02, "y": 26.7, "curve": "stepped" },
+					{ "time": 0.8333, "x": -11.02, "y": 26.7 }
+				]
+			},
+			"fd_18": {
+				"rotate": [
+					{ "time": 0, "angle": 42.3 }
+				],
+				"translate": [
+					{ "time": 0, "x": 280.46, "y": 255.22 },
+					{ "time": 0.8333, "x": 37.16, "y": 199.87 },
+					{ "time": 0.9, "x": -657.99, "y": 41.72 }
+				]
+			},
+			"fd_19": {
+				"rotate": [
+					{ "time": 0, "angle": -18.22 }
+				],
+				"translate": [
+					{ "time": 0, "x": 362.9, "y": -119.46 },
+					{ "time": 0.8333, "x": 99.89, "y": -77.39 },
+					{ "time": 0.9, "x": -651.57, "y": 42.81 }
+				],
+				"scale": [
+					{ "time": 0, "x": 0.953, "y": 1.156 },
+					{ "time": 0.8333, "x": 1.219, "y": 1.156 }
+				],
+				"shear": [
+					{ "time": 0, "x": 0, "y": 33.74 },
+					{ "time": 0.8333, "x": -8.16, "y": 33.74 }
+				]
+			},
+			"fd_20": {
+				"rotate": [
+					{ "time": 0, "angle": -158.3 }
+				],
+				"translate": [
+					{ "time": 0, "x": -346.66, "y": -196.19 },
+					{ "time": 0.8333, "x": -422.76, "y": -133.94 },
+					{ "time": 0.9, "x": -640.22, "y": 43.91 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1.196, "y": 1 }
+				],
+				"shear": [
+					{ "time": 0, "x": 7.8, "y": 0 }
+				]
+			},
+			"skill4/huoxin/hx": {
+				"translate": [
+					{ "time": 0.9, "x": 839.14, "y": 173.51 }
+				],
+				"scale": [
+					{ "time": 0.9, "x": 2.79, "y": 2.79 }
+				]
+			},
+			"skill4/shouji1_0000": {
+				"rotate": [
+					{ "time": 0.9, "angle": -60.65, "curve": "stepped" },
+					{ "time": 1.1, "angle": 25.01 }
+				],
+				"translate": [
+					{ "time": 0.9, "x": 805.76, "y": 164.06, "curve": "stepped" },
+					{ "time": 1.1, "x": 805.76, "y": 164.06 }
+				],
+				"scale": [
+					{ "time": 0.9, "x": 0.258, "y": 0.887 },
+					{ "time": 0.9333, "x": 0.258, "y": 1.47 },
+					{ "time": 1, "x": 1.203, "y": 1.621 },
+					{ "time": 1.0667, "x": 0.203, "y": 0.621, "curve": "stepped" },
+					{ "time": 1.1, "x": -0.118, "y": 0.775 },
+					{ "time": 1.1333, "x": -0.118, "y": 1.358 },
+					{ "time": 1.1667, "x": 0.828, "y": 1.509 },
+					{ "time": 1.2333, "x": -0.172, "y": 0.509 }
+				]
+			},
+			"skill4/faguang": {
+				"translate": [
+					{ "time": 0.9, "x": 806.64, "y": 155.9 },
+					{ "time": 0.9333, "x": 802.99, "y": 155.9, "curve": "stepped" },
+					{ "time": 1, "x": 802.99, "y": 155.9, "curve": "stepped" },
+					{ "time": 1.0333, "x": 806.64, "y": 155.9 },
+					{ "time": 1.1, "x": 802.99, "y": 155.9, "curve": "stepped" },
+					{ "time": 1.2333, "x": 802.99, "y": 155.9 }
+				],
+				"scale": [
+					{ "time": 0.9, "x": 0.354, "y": 0.354 },
+					{ "time": 0.9333, "x": 1.562, "y": 1.562 },
+					{ "time": 1, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.0333, "x": 0.354, "y": 0.354 },
+					{ "time": 1.1, "x": 2.022, "y": 2.022 },
+					{ "time": 1.2333, "x": 0, "y": 0 }
+				]
+			},
+			"skill4/faguang2": {
+				"translate": [
+					{ "time": 0.9, "x": 773.23, "y": 116.88, "curve": "stepped" },
+					{ "time": 1.0333, "x": 841.16, "y": 177.82 }
+				],
+				"scale": [
+					{ "time": 0.9, "x": 1, "y": 1 },
+					{ "time": 0.9333, "x": 1.842, "y": 1.842 },
+					{ "time": 0.9667, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.0333, "x": 0.851, "y": 0.851 },
+					{ "time": 1.0667, "x": 1.842, "y": 1.842 },
+					{ "time": 1.1, "x": 0, "y": 0 }
+				]
+			},
+			"skill4/shouji1_0": {
+				"rotate": [
+					{ "time": 0.9, "angle": 62.59, "curve": "stepped" },
+					{ "time": 1.0667, "angle": -55.07 }
+				],
+				"translate": [
+					{ "time": 0.9, "x": 794.08, "y": 160.14, "curve": "stepped" },
+					{ "time": 1.0667, "x": 814.64, "y": 165.55 }
+				],
+				"scale": [
+					{ "time": 0.9, "x": 0.2, "y": 0.423 },
+					{ "time": 0.9333, "x": 0.755, "y": 1.257 },
+					{ "time": 1, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.0667, "x": 0.184, "y": 0.637 },
+					{ "time": 1.1, "x": 0.739, "y": 1.471 },
+					{ "time": 1.1667, "x": -0.016, "y": 0.214 }
+				]
+			},
+			"skill4/shouji1_1": {
+				"rotate": [
+					{ "time": 0.9333, "angle": -21.62, "curve": "stepped" },
+					{ "time": 1.0667, "angle": 36.69 }
+				],
+				"translate": [
+					{ "time": 0.9333, "x": 768.48, "y": 151.51, "curve": "stepped" },
+					{ "time": 1.0667, "x": 734.36, "y": 182.56 }
+				],
+				"scale": [
+					{ "time": 0.9333, "x": 0.33, "y": 0.33 },
+					{ "time": 0.9667, "x": 0.487, "y": 1.146 },
+					{ "time": 1.0333, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.0667, "x": 0.044, "y": 0.591 },
+					{ "time": 1.1, "x": 0.409, "y": 1.58 },
+					{ "time": 1.1667, "x": 0, "y": 0 }
+				]
+			},
+			"skill4/shouji1_2": {
+				"rotate": [
+					{ "time": 0.9667, "angle": 17.24 }
+				],
+				"translate": [
+					{ "time": 0.9667, "x": 816.32, "y": 156.06 }
+				],
+				"scale": [
+					{ "time": 0.9667, "x": 0.127, "y": 0.263 },
+					{ "time": 1, "x": 0.127, "y": 1.614 },
+					{ "time": 1.0333, "x": 1.02, "y": 1.748 },
+					{ "time": 1.1, "x": 0, "y": 0 }
+				]
+			},
+			"skill4/shouji1_3": {
+				"rotate": [
+					{ "time": 0.9333, "angle": -28.78, "curve": "stepped" },
+					{ "time": 1.1, "angle": -28.78 }
+				],
+				"translate": [
+					{ "time": 0.9333, "x": 881.81, "y": 165.05, "curve": "stepped" },
+					{ "time": 1.1, "x": 813.36, "y": 165.05 }
+				],
+				"scale": [
+					{ "time": 0.9333, "x": 0.01, "y": 1.016 },
+					{ "time": 0.9667, "x": 0.348, "y": 1.538 },
+					{ "time": 1.0667, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.1, "x": 0.163, "y": 0.911 },
+					{ "time": 1.1333, "x": 0.502, "y": 1.433 },
+					{ "time": 1.1667, "x": 0.153, "y": -0.105 }
+				]
+			},
+			"skill4/faguang3": {
+				"translate": [
+					{ "time": 0.9333, "x": 834.76, "y": 147.61, "curve": "stepped" },
+					{ "time": 1.0333, "x": 763.5, "y": 198.51 }
+				],
+				"scale": [
+					{ "time": 0.9333, "x": 1, "y": 1 },
+					{ "time": 0.9667, "x": 2.406, "y": 2.406 },
+					{ "time": 1, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.0333, "x": 1.563, "y": 1.563 },
+					{ "time": 1.0667, "x": 2.969, "y": 2.969 },
+					{ "time": 1.1, "x": 0.563, "y": 0.563 }
+				]
+			},
+			"skill4/huoxin/hx2": {
+				"translate": [
+					{ "time": 0.9667, "x": 856.44, "y": 200.39 }
+				],
+				"scale": [
+					{ "time": 0.9667, "x": 0.89, "y": 3.538 }
+				],
+				"shear": [
+					{ "time": 0.9667, "x": 0, "y": -39.94 }
+				]
+			},
+			"skill4/huoxin/hx3": {
+				"rotate": [
+					{ "time": 0.9333, "angle": -120.57 }
+				],
+				"translate": [
+					{ "time": 0.9333, "x": 822.03, "y": 134.89 }
+				],
+				"scale": [
+					{ "time": 0.9333, "x": 2.18, "y": 2.18 }
+				]
+			},
+			"ZX": {
+				"translate": [
+					{ "time": 0, "x": -824.17, "y": -312.98 }
+				]
+			},
+			"TX": {
+				"translate": [
+					{ "time": 0, "x": -1.48, "y": 170.74 }
+				]
+			}
+		},
+		"events": [
+			{ "time": 0.9333, "name": "hit_11_1_1" }
+		]
+	}
+}
+}

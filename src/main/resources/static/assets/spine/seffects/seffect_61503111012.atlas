@@ -1,0 +1,76 @@
+
+seffect_61503111012.png
+size: 882,882
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+TX/Att/att_boom_point/att_boom_point_0000
+  rotate: false
+  xy: 273, 6
+  size: 141, 140
+  orig: 404, 369
+  offset: 135, 78
+  index: -1
+TX/Att/att_boom_point/att_boom_point_0002
+  rotate: false
+  xy: 586, 116
+  size: 204, 225
+  orig: 404, 369
+  offset: 81, 75
+  index: -1
+TX/Att/att_boom_point/att_boom_point_0004
+  rotate: false
+  xy: 2, 553
+  size: 339, 327
+  orig: 404, 369
+  offset: 27, 15
+  index: -1
+TX/Att/att_boom_point/att_boom_point_0006
+  rotate: false
+  xy: 2, 229
+  size: 334, 322
+  orig: 404, 369
+  offset: 28, 19
+  index: -1
+TX/Att/att_boom_point/att_boom_point_0008
+  rotate: false
+  xy: 343, 591
+  size: 343, 289
+  orig: 404, 369
+  offset: 16, 30
+  index: -1
+TX/Att/att_boom_point/att_boom_point_0010
+  rotate: false
+  xy: 343, 343
+  size: 317, 246
+  orig: 404, 369
+  offset: 37, 59
+  index: -1
+TX/Att/att_boom_point/att_boom_point_0012
+  rotate: false
+  xy: 2, 5
+  size: 269, 222
+  orig: 404, 369
+  offset: 41, 80
+  index: -1
+TX/Att/att_boom_point/att_boom_point_0014
+  rotate: true
+  xy: 688, 624
+  size: 256, 192
+  orig: 404, 369
+  offset: 47, 83
+  index: -1
+TX/Att/att_boom_point/att_boom_point_0016
+  rotate: false
+  xy: 338, 148
+  size: 246, 193
+  orig: 404, 369
+  offset: 51, 83
+  index: -1
+TX/Att/att_boom_point/att_boom_point_0018
+  rotate: true
+  xy: 688, 426
+  size: 196, 189
+  orig: 404, 369
+  offset: 97, 85
+  index: -1

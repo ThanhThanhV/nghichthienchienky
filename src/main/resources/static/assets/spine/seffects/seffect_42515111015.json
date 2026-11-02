@@ -1,0 +1,66 @@
+{
+"skeleton": { "hash": "5Tgf4BFcGK1lXcl28mJS0AguZ8E", "spine": "3.5.35", "width": 0, "height": 0 },
+"bones": [
+	{ "name": "root" },
+	{ "name": "zx", "parent": "root" },
+	{ "name": "TX", "parent": "zx" },
+	{ "name": "bg", "parent": "root", "y": 103.57, "scaleX": 3.33, "scaleY": 3.33 },
+	{ "name": "suskill", "parent": "TX" },
+	{ "name": "jianchuan", "parent": "suskill" }
+],
+"slots": [
+	{ "name": "bg", "bone": "bg", "color": "7a7a7aff" },
+	{ "name": "tx/skill_bu/jianchuan", "bone": "jianchuan", "color": "ffffff9d" }
+],
+"skins": {
+	"default": {
+		"tx/skill_bu/jianchuan": {
+			"tx/skill_bu/jianchuan": { "width": 865, "height": 542 }
+		}
+	}
+},
+"events": {
+	"qishou_31_1_1": {}
+},
+"animations": {
+	"animation_0": {
+		"slots": {
+			"tx/skill_bu/jianchuan": {
+				"color": [
+					{ "time": 0.3333, "color": "ffffff00" },
+					{ "time": 0.5, "color": "ffffff8a", "curve": "stepped" },
+					{ "time": 1, "color": "ffffff8a" },
+					{ "time": 1.3333, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0.3333, "name": "tx/skill_bu/jianchuan" }
+				]
+			}
+		},
+		"bones": {
+			"jianchuan": {
+				"translate": [
+					{ "time": 0.3333, "x": 227, "y": 0 },
+					{ "time": 1.3333, "x": 1006.06, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0.3333, "x": 4.934, "y": 4.166 }
+				]
+			}
+		},
+		"drawOrder": [
+			{ "time": 0 },
+			{ "time": 0.0333 },
+			{ "time": 0.1 },
+			{ "time": 0.9333 },
+			{ "time": 1.3667 },
+			{ "time": 1.5667 },
+			{ "time": 1.6 },
+			{ "time": 1.6667 }
+		],
+		"events": [
+			{ "time": 0.5, "name": "qishou_31_1_1" }
+		]
+	}
+}
+}

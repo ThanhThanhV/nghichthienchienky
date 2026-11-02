@@ -1,0 +1,90 @@
+
+seffect_62504111011.png
+size: 1839,465
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+tx/skill4/faguang_0000
+  rotate: false
+  xy: 399, 151
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+tx/skill4/feidao_0000
+  rotate: true
+  xy: 2, 2
+  size: 86, 30
+  orig: 86, 30
+  offset: 0, 0
+  index: -1
+tx/skill4/feidaoweiba_0000
+  rotate: false
+  xy: 2, 90
+  size: 126, 30
+  orig: 126, 30
+  offset: 0, 0
+  index: -1
+tx/skill4/huoxin/hx_0000
+  rotate: false
+  xy: 2, 122
+  size: 395, 229
+  orig: 395, 229
+  offset: 0, 0
+  index: -1
+tx/skill4/huoxin/hx_0001
+  rotate: false
+  xy: 648, 234
+  size: 395, 229
+  orig: 395, 229
+  offset: 0, 0
+  index: -1
+tx/skill4/huoxin/hx_0004
+  rotate: false
+  xy: 1045, 234
+  size: 395, 229
+  orig: 395, 229
+  offset: 0, 0
+  index: -1
+tx/skill4/huoxin/hx_0006
+  rotate: false
+  xy: 1442, 234
+  size: 395, 229
+  orig: 395, 229
+  offset: 0, 0
+  index: -1
+tx/skill4/huoxin/hx_0008
+  rotate: false
+  xy: 601, 3
+  size: 395, 229
+  orig: 395, 229
+  offset: 0, 0
+  index: -1
+tx/skill4/huoxin/hx_0011
+  rotate: false
+  xy: 998, 3
+  size: 395, 229
+  orig: 395, 229
+  offset: 0, 0
+  index: -1
+tx/skill4/huoxin/hx_0014
+  rotate: false
+  xy: 1395, 3
+  size: 395, 229
+  orig: 395, 229
+  offset: 0, 0
+  index: -1
+tx/skill4/shouji1_0000
+  rotate: true
+  xy: 2, 353
+  size: 110, 644
+  orig: 110, 644
+  offset: 0, 0
+  index: -1
+wq_feidao
+  rotate: false
+  xy: 399, 127
+  size: 130, 22
+  orig: 130, 22
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,410 @@
+
+seffect_53516121012.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Skill/Skill_shexian_0000
+  rotate: false
+  xy: 2, 3
+  size: 571, 522
+  orig: 606, 556
+  offset: 11, 14
+  index: -1
+Skill/dibaotianxing/dibaotianxing_0000
+  rotate: true
+  xy: 1026, 1613
+  size: 433, 752
+  orig: 475, 769
+  offset: 17, 0
+  index: -1
+Skill/dibaotianxing/dibaotianxing_0002
+  rotate: true
+  xy: 1026, 1179
+  size: 432, 752
+  orig: 475, 769
+  offset: 18, 0
+  index: -1
+Skill/lightning_QIU_big/lightning_QIU_big_0020
+  rotate: true
+  xy: 1679, 861
+  size: 316, 367
+  orig: 394, 397
+  offset: 55, 12
+  index: -1
+Skill/lightning_QIU_big/lightning_QIU_big_0028
+  rotate: false
+  xy: 1780, 1382
+  size: 220, 330
+  orig: 394, 397
+  offset: 111, 35
+  index: -1
+Skill/lightning_QIU_big/lightning_QIU_big_0030
+  rotate: false
+  xy: 1780, 1714
+  size: 262, 332
+  orig: 394, 397
+  offset: 98, 32
+  index: -1
+Skill/lightning_a/lightning_a_0003
+  rotate: false
+  xy: 1924, 457
+  size: 114, 402
+  orig: 139, 420
+  offset: 16, 10
+  index: -1
+Skill/lightning_a/lightning_a_0005
+  rotate: false
+  xy: 1924, 54
+  size: 112, 401
+  orig: 139, 420
+  offset: 24, 12
+  index: -1
+Skill/lightning_b/lightning_b_0000
+  rotate: false
+  xy: 1942, 1252
+  size: 103, 128
+  orig: 110, 136
+  offset: 5, 4
+  index: -1
+Skill/lightning_b/lightning_b_0001
+  rotate: false
+  xy: 1824, 744
+  size: 91, 115
+  orig: 110, 136
+  offset: 4, 12
+  index: -1
+Skill/po_shui/po_shui_0004
+  rotate: true
+  xy: 1012, 682
+  size: 495, 665
+  orig: 538, 808
+  offset: 20, 84
+  index: -1
+Skill/po_shui/po_shui_0006
+  rotate: false
+  xy: 510, 1306
+  size: 514, 740
+  orig: 538, 808
+  offset: 4, 49
+  index: -1
+Skill/po_shui/po_shui_0008
+  rotate: false
+  xy: 2, 1283
+  size: 506, 763
+  orig: 538, 808
+  offset: 9, 32
+  index: -1
+Skill/po_shui/po_shui_0010
+  rotate: false
+  xy: 2, 527
+  size: 504, 754
+  orig: 538, 808
+  offset: 13, 43
+  index: -1
+Skill/po_shui/po_shui_0012
+  rotate: false
+  xy: 508, 609
+  size: 502, 672
+  orig: 538, 808
+  offset: 22, 123
+  index: -1
+Skill/po_shui/po_shui_0016
+  rotate: false
+  xy: 575, 39
+  size: 484, 568
+  orig: 538, 808
+  offset: 6, 206
+  index: -1
+Skill/po_shui/po_shui_0020
+  rotate: false
+  xy: 1523, 37
+  size: 399, 643
+  orig: 538, 808
+  offset: 60, 135
+  index: -1
+Skill/shandian_qiu/shandian_qiu_0000
+  rotate: false
+  xy: 1942, 1180
+  size: 73, 70
+  orig: 175, 170
+  offset: 53, 50
+  index: -1
+Skill/shandian_qiu/shandian_qiu_0002
+  rotate: false
+  xy: 1780, 1219
+  size: 160, 161
+  orig: 175, 170
+  offset: 9, 4
+  index: -1
+Skill/shandian_qiu/shandian_qiu_0004
+  rotate: false
+  xy: 1679, 715
+  size: 143, 144
+  orig: 175, 170
+  offset: 16, 13
+  index: -1
+Skill/yun_0000
+  rotate: true
+  xy: 1061, 18
+  size: 662, 460
+  orig: 680, 474
+  offset: 12, 7
+  index: -1
+
+seffect_535161210122.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Skill/dibaotianxing/dibaotianxing_0004
+  rotate: false
+  xy: 2, 1412
+  size: 433, 634
+  orig: 475, 769
+  offset: 17, 118
+  index: -1
+Skill/dibaotianxing/dibaotianxing_0007
+  rotate: false
+  xy: 481, 36
+  size: 213, 213
+  orig: 213, 213
+  offset: 0, 0
+  index: -1
+Skill/lightning_QIU_big/lightning_QIU_big_0000
+  rotate: false
+  xy: 1632, 389
+  size: 345, 318
+  orig: 394, 397
+  offset: 38, 34
+  index: -1
+Skill/lightning_QIU_big/lightning_QIU_big_0002
+  rotate: false
+  xy: 1621, 1370
+  size: 366, 342
+  orig: 394, 397
+  offset: 25, 28
+  index: -1
+Skill/lightning_QIU_big/lightning_QIU_big_0004
+  rotate: false
+  xy: 832, 1119
+  size: 357, 376
+  orig: 394, 397
+  offset: 22, 16
+  index: -1
+Skill/lightning_QIU_big/lightning_QIU_big_0008
+  rotate: false
+  xy: 1191, 1296
+  size: 354, 374
+  orig: 394, 397
+  offset: 22, 14
+  index: -1
+Skill/lightning_QIU_big/lightning_QIU_big_0010
+  rotate: false
+  xy: 1281, 1672
+  size: 338, 374
+  orig: 394, 397
+  offset: 22, 17
+  index: -1
+Skill/lightning_QIU_big/lightning_QIU_big_0012
+  rotate: true
+  xy: 1621, 1714
+  size: 332, 370
+  orig: 394, 397
+  offset: 42, 16
+  index: -1
+Skill/lightning_QIU_big/lightning_QIU_big_0014
+  rotate: true
+  xy: 1632, 1016
+  size: 352, 356
+  orig: 394, 397
+  offset: 22, 25
+  index: -1
+Skill/lightning_QIU_big/lightning_QIU_big_0016
+  rotate: true
+  xy: 696, 2
+  size: 352, 365
+  orig: 394, 397
+  offset: 22, 18
+  index: -1
+Skill/lightning_QIU_big/lightning_QIU_big_0018
+  rotate: false
+  xy: 917, 1672
+  size: 362, 374
+  orig: 394, 397
+  offset: 27, 3
+  index: -1
+Skill/lightning_QIU_big/lightning_QIU_big_0022
+  rotate: false
+  xy: 1334, 602
+  size: 296, 327
+  orig: 394, 397
+  offset: 66, 43
+  index: -1
+Skill/lightning_QIU_big/lightning_QIU_big_0026
+  rotate: true
+  xy: 224, 29
+  size: 220, 255
+  orig: 394, 397
+  offset: 70, 84
+  index: -1
+Skill/lightning_QIU_big/lightning_QIU_big_0032
+  rotate: false
+  xy: 1409, 322
+  size: 208, 278
+  orig: 394, 397
+  offset: 124, 54
+  index: -1
+Skill/lightning_QIU_big/lightning_QIU_big_0034
+  rotate: false
+  xy: 978, 833
+  size: 320, 284
+  orig: 394, 397
+  offset: 57, 66
+  index: -1
+Skill/lightning_QIU_big/lightning_QIU_big_0036
+  rotate: false
+  xy: 1300, 931
+  size: 330, 363
+  orig: 394, 397
+  offset: 49, 13
+  index: -1
+Skill/lightning_a/lightning_a_0000
+  rotate: false
+  xy: 832, 946
+  size: 108, 171
+  orig: 139, 420
+  offset: 20, 10
+  index: -1
+Skill/lightning_a/lightning_a_0007
+  rotate: true
+  xy: 576, 830
+  size: 110, 400
+  orig: 139, 420
+  offset: 18, 10
+  index: -1
+Skill/lightning_b/lightning_b_0002
+  rotate: true
+  xy: 497, 257
+  size: 97, 96
+  orig: 110, 136
+  offset: 9, 25
+  index: -1
+Skill/lightning_b/lightning_b_0003
+  rotate: true
+  xy: 437, 1423
+  size: 72, 112
+  orig: 110, 136
+  offset: 22, 20
+  index: -1
+Skill/po_shui/po_shui_0000
+  rotate: false
+  xy: 2, 25
+  size: 220, 224
+  orig: 538, 808
+  offset: 157, 296
+  index: -1
+Skill/po_shui/po_shui_0002
+  rotate: false
+  xy: 926, 410
+  size: 406, 418
+  orig: 538, 808
+  offset: 75, 205
+  index: -1
+Skill/po_shui/po_shui_0014
+  rotate: false
+  xy: 437, 1497
+  size: 478, 549
+  orig: 538, 808
+  offset: 26, 237
+  index: -1
+Skill/po_shui/po_shui_0018
+  rotate: false
+  xy: 2, 789
+  size: 455, 621
+  orig: 538, 808
+  offset: 20, 177
+  index: -1
+Skill/po_shui/po_shui_0022
+  rotate: true
+  xy: 1063, 25
+  size: 383, 344
+  orig: 538, 808
+  offset: 83, 414
+  index: -1
+Skill/po_shui/po_shui_0024
+  rotate: true
+  xy: 459, 942
+  size: 479, 371
+  orig: 538, 808
+  offset: 22, 378
+  index: -1
+Skill/po_shui/po_shui_0026
+  rotate: true
+  xy: 497, 356
+  size: 465, 427
+  orig: 538, 808
+  offset: 44, 314
+  index: -1
+Skill/po_shui/po_shui_0028
+  rotate: false
+  xy: 2, 251
+  size: 493, 536
+  orig: 538, 808
+  offset: 29, 240
+  index: -1
+Skill/shandian_qiu/shandian_qiu_0006
+  rotate: false
+  xy: 459, 823
+  size: 115, 117
+  orig: 175, 170
+  offset: 33, 29
+  index: -1
+Skill/zhang_qiliu/zhang_qiliu_0000
+  rotate: false
+  xy: 1632, 709
+  size: 354, 305
+  orig: 387, 339
+  offset: 22, 9
+  index: -1
+Skill/zhang_qiliu/zhang_qiliu_0002
+  rotate: true
+  xy: 1409, 12
+  size: 308, 330
+  orig: 387, 339
+  offset: 67, 2
+  index: -1
+Skill/zhang_qiliu/zhang_qiliu_0004
+  rotate: true
+  xy: 1741, 43
+  size: 344, 305
+  orig: 387, 339
+  offset: 30, 9
+  index: -1
+
+seffect_535161210123.png
+size: 602,602
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Skill/dibaotianxing/dibaotianxing_0006
+  rotate: true
+  xy: 2, 2
+  size: 269, 264
+  orig: 475, 769
+  offset: 94, 285
+  index: -1
+Skill/lightning_QIU_big/lightning_QIU_big_0006
+  rotate: false
+  xy: 2, 273
+  size: 322, 327
+  orig: 394, 397
+  offset: 62, 47
+  index: -1
+Skill/lightning_QIU_big/lightning_QIU_big_0024
+  rotate: false
+  xy: 326, 299
+  size: 268, 301
+  orig: 394, 397
+  offset: 69, 48
+  index: -1

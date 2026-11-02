@@ -1,0 +1,34 @@
+
+seffect_51519121013.png
+size: 296,524
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+dao02
+  rotate: false
+  xy: 2, 2
+  size: 90, 520
+  orig: 153, 525
+  offset: 47, 4
+  index: -1
+fangkuai
+  rotate: false
+  xy: 94, 19
+  size: 81, 81
+  orig: 81, 81
+  offset: 0, 0
+  index: -1
+tx/usk2/sdx/0_00000
+  rotate: false
+  xy: 94, 313
+  size: 200, 209
+  orig: 200, 400
+  offset: 0, 93
+  index: -1
+tx/usk2/sdx/0_00002
+  rotate: false
+  xy: 94, 102
+  size: 200, 209
+  orig: 200, 400
+  offset: 0, 93
+  index: -1

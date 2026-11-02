@@ -1,0 +1,133 @@
+{
+"skeleton": { "hash": "Y5Jdtt1qK5fYm6UmgjDVnCAO8j8", "spine": "3.5.35", "width": 0, "height": 0 },
+"bones": [
+	{ "name": "root" },
+	{ "name": "ZX", "parent": "root" },
+	{ "name": "TX", "parent": "ZX" },
+	{ "name": "ATT", "parent": "TX" },
+	{ "name": "bg", "parent": "root", "y": 114.44, "scaleX": 3.33, "scaleY": 3.33 },
+	{ "name": "kaihuo", "parent": "ATT" }
+],
+"slots": [
+	{ "name": "bg", "bone": "bg", "color": "949494ff" },
+	{ "name": "kaihuo", "bone": "kaihuo" }
+],
+"skins": {
+	"default": {
+		"kaihuo": {
+			"att/kaihuo/kaihuo_0018": { "width": 171, "height": 145 },
+			"att/kaihuo/kaihuo_0020": { "width": 171, "height": 145 },
+			"att/kaihuo/kaihuo_0022": { "width": 171, "height": 145 },
+			"att/kaihuo/kaihuo_0024": { "width": 171, "height": 145 },
+			"att/kaihuo/kaihuo_0027": { "width": 171, "height": 145 }
+		}
+	}
+},
+"events": {
+	"qishou_1_1_1": {}
+},
+"animations": {
+	"animation_0": {
+		"slots": {
+			"kaihuo": {
+				"attachment": [
+					{ "time": 0.6, "name": "att/kaihuo/kaihuo_0018" },
+					{ "time": 0.6667, "name": "att/kaihuo/kaihuo_0020" },
+					{ "time": 0.7333, "name": "att/kaihuo/kaihuo_0022" },
+					{ "time": 0.8, "name": "att/kaihuo/kaihuo_0024" },
+					{ "time": 0.8667, "name": "att/kaihuo/kaihuo_0027" },
+					{ "time": 0.9333, "name": null }
+				]
+			}
+		},
+		"bones": {
+			"root": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 0.1667, "angle": 0, "curve": "stepped" },
+					{ "time": 0.2, "angle": 0, "curve": "stepped" },
+					{ "time": 0.6333, "angle": 0, "curve": "stepped" },
+					{ "time": 0.7333, "angle": 0, "curve": "stepped" },
+					{ "time": 1, "angle": 0, "curve": "stepped" },
+					{ "time": 1.1333, "angle": 0, "curve": "stepped" },
+					{ "time": 1.1667, "angle": 0, "curve": "stepped" },
+					{ "time": 1.3333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.2, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.6333, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.7333, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.1333, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.1667, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.3333, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0.1667, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.2, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 1.1333, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 1.1667, "x": 1, "y": 1 }
+				]
+			},
+			"ZX": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 0.1667, "angle": 0, "curve": "stepped" },
+					{ "time": 0.2, "angle": 0, "curve": "stepped" },
+					{ "time": 0.6333, "angle": 0, "curve": "stepped" },
+					{ "time": 0.7333, "angle": 0, "curve": "stepped" },
+					{ "time": 1, "angle": 0, "curve": "stepped" },
+					{ "time": 1.1333, "angle": 0, "curve": "stepped" },
+					{ "time": 1.1667, "angle": 0, "curve": "stepped" },
+					{ "time": 1.3333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.2, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.6333, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.7333, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.1333, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.1667, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.3333, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0.1667, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 0.2, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 1.1333, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 1.1667, "x": 1, "y": 1 }
+				]
+			},
+			"bg": {
+				"rotate": [
+					{ "time": 0.6333, "angle": 0, "curve": "stepped" },
+					{ "time": 0.7333, "angle": 0, "curve": "stepped" },
+					{ "time": 1, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0.6333, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.7333, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0 }
+				]
+			},
+			"kaihuo": {
+				"translate": [
+					{ "time": 0.6, "x": 292.11, "y": 231.87 }
+				],
+				"scale": [
+					{ "time": 0.6, "x": 3, "y": 3 }
+				]
+			}
+		},
+		"drawOrder": [
+			{ "time": 0.2 }
+		],
+		"events": [
+			{ "time": 0.6667, "name": "qishou_1_1_1" }
+		]
+	}
+}
+}

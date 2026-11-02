@@ -1,0 +1,41 @@
+
+seffect_54514131011.png
+size: 287,287
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+att/kaihuo/kaihuo_0018
+  rotate: false
+  xy: 154, 129
+  size: 122, 45
+  orig: 171, 145
+  offset: 0, 50
+  index: -1
+att/kaihuo/kaihuo_0020
+  rotate: false
+  xy: 154, 176
+  size: 131, 109
+  orig: 171, 145
+  offset: 20, 15
+  index: -1
+att/kaihuo/kaihuo_0022
+  rotate: false
+  xy: 2, 2
+  size: 145, 139
+  orig: 171, 145
+  offset: 17, 3
+  index: -1
+att/kaihuo/kaihuo_0024
+  rotate: false
+  xy: 2, 143
+  size: 150, 142
+  orig: 171, 145
+  offset: 16, 2
+  index: -1
+att/kaihuo/kaihuo_0027
+  rotate: false
+  xy: 149, 15
+  size: 121, 112
+  orig: 171, 145
+  offset: 17, 2
+  index: -1

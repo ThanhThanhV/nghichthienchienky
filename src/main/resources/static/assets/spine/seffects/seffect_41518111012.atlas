@@ -1,0 +1,41 @@
+
+seffect_41518111012.png
+size: 926,202
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+tx/skill/shouji/sj_00
+  rotate: false
+  xy: 766, 42
+  size: 158, 158
+  orig: 240, 240
+  offset: 41, 41
+  index: -1
+tx/skill/shouji/sj_02
+  rotate: false
+  xy: 586, 22
+  size: 178, 178
+  orig: 240, 240
+  offset: 31, 31
+  index: -1
+tx/skill/shouji/sj_04
+  rotate: false
+  xy: 202, 4
+  size: 196, 196
+  orig: 240, 240
+  offset: 22, 22
+  index: -1
+tx/skill/shouji/sj_06
+  rotate: false
+  xy: 2, 2
+  size: 198, 198
+  orig: 240, 240
+  offset: 21, 21
+  index: -1
+tx/skill/shouji/sj_08
+  rotate: false
+  xy: 400, 16
+  size: 184, 184
+  orig: 240, 240
+  offset: 28, 28
+  index: -1

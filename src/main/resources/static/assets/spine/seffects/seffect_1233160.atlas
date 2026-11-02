@@ -1,0 +1,167 @@
+
+seffect_1233160.png
+size: 1911,1911
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+image/txgongji/2/boom/boom_0000
+  rotate: false
+  xy: 1410, 87
+  size: 137, 146
+  orig: 432, 447
+  offset: 154, 150
+  index: -1
+image/txgongji/2/boom/boom_0002
+  rotate: false
+  xy: 1549, 111
+  size: 114, 119
+  orig: 432, 447
+  offset: 172, 164
+  index: -1
+image/txgongji/2/boom/boom_0004
+  rotate: true
+  xy: 213, 85
+  size: 114, 124
+  orig: 432, 447
+  offset: 172, 164
+  index: -1
+image/txgongji/2/boom/boom_0006
+  rotate: false
+  xy: 845, 200
+  size: 162, 139
+  orig: 432, 447
+  offset: 141, 152
+  index: -1
+image/txgongji/2/boom/boom_0008
+  rotate: false
+  xy: 845, 61
+  size: 162, 137
+  orig: 432, 447
+  offset: 142, 151
+  index: -1
+image/txgongji/2/boom/boom_0010
+  rotate: false
+  xy: 1410, 235
+  size: 154, 130
+  orig: 432, 447
+  offset: 150, 153
+  index: -1
+image/txgongji/2/boom/boom_0012
+  rotate: false
+  xy: 1710, 250
+  size: 115, 115
+  orig: 432, 447
+  offset: 171, 164
+  index: -1
+image/txgongji/2/boom/boom_0014
+  rotate: true
+  xy: 1566, 232
+  size: 133, 142
+  orig: 432, 447
+  offset: 158, 153
+  index: -1
+image/txgongji/2/boom/boom_0016
+  rotate: false
+  xy: 339, 84
+  size: 124, 115
+  orig: 432, 447
+  offset: 166, 164
+  index: -1
+image/txgongji/2/boom/boom_0018
+  rotate: false
+  xy: 507, 5
+  size: 336, 334
+  orig: 432, 447
+  offset: 58, 46
+  index: -1
+image/txgongji/2/boom/boom_0020
+  rotate: true
+  xy: 1012, 84
+  size: 380, 396
+  orig: 432, 447
+  offset: 37, 22
+  index: -1
+image/txgongji/2/boom/boom_0022
+  rotate: false
+  xy: 1012, 891
+  size: 405, 427
+  orig: 432, 447
+  offset: 27, 11
+  index: -1
+image/txgongji/2/boom/boom_0024
+  rotate: false
+  xy: 1012, 466
+  size: 408, 423
+  orig: 432, 447
+  offset: 20, 15
+  index: -1
+image/txgongji/2/boom/boom_0026
+  rotate: false
+  xy: 1517, 1520
+  size: 392, 389
+  orig: 432, 447
+  offset: 25, 33
+  index: -1
+image/txgongji/2/boom/boom_0028
+  rotate: true
+  xy: 1422, 367
+  size: 379, 380
+  orig: 432, 447
+  offset: 40, 32
+  index: -1
+image/txgongji/2/boom/boom_0030
+  rotate: false
+  xy: 1422, 748
+  size: 384, 383
+  orig: 432, 447
+  offset: 37, 31
+  index: -1
+image/txgongji/2/boom/boom_0032
+  rotate: false
+  xy: 1517, 1133
+  size: 385, 385
+  orig: 432, 447
+  offset: 37, 31
+  index: -1
+image/txgongji/2/guang_line/guang_line_0018
+  rotate: false
+  xy: 1012, 1320
+  size: 503, 589
+  orig: 503, 853
+  offset: 0, 5
+  index: -1
+image/txgongji/2/guang_line/guang_line_0020
+  rotate: false
+  xy: 507, 341
+  size: 503, 715
+  orig: 503, 853
+  offset: 0, 0
+  index: -1
+image/txgongji/2/guang_line/guang_line_0022
+  rotate: false
+  xy: 507, 1058
+  size: 503, 851
+  orig: 503, 853
+  offset: 0, 0
+  index: -1
+image/txgongji/2/guang_line/guang_line_0024
+  rotate: false
+  xy: 2, 1056
+  size: 503, 853
+  orig: 503, 853
+  offset: 0, 0
+  index: -1
+image/txgongji/2/guang_line/guang_line_0026
+  rotate: false
+  xy: 2, 201
+  size: 503, 853
+  orig: 503, 853
+  offset: 0, 0
+  index: -1
+image/txgongji/2/guang_line/guang_line_0028
+  rotate: true
+  xy: 2, 94
+  size: 105, 209
+  orig: 503, 853
+  offset: 398, 339
+  index: -1

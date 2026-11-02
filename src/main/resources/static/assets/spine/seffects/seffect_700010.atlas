@@ -1,0 +1,69 @@
+
+seffect_700010.png
+size: 1848,254
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+jieyin/jieyin_01
+  rotate: true
+  xy: 1620, 8
+  size: 94, 194
+  orig: 500, 500
+  offset: 227, 179
+  index: -1
+jieyin/jieyin_02
+  rotate: true
+  xy: 1620, 104
+  size: 148, 226
+  orig: 500, 500
+  offset: 183, 147
+  index: -1
+jieyin/jieyin_03
+  rotate: false
+  xy: 1421, 26
+  size: 197, 226
+  orig: 500, 500
+  offset: 134, 147
+  index: -1
+jieyin/jieyin_04
+  rotate: true
+  xy: 1193, 18
+  size: 234, 226
+  orig: 500, 500
+  offset: 134, 147
+  index: -1
+jieyin/jieyin_05
+  rotate: true
+  xy: 729, 18
+  size: 234, 230
+  orig: 500, 500
+  offset: 134, 143
+  index: -1
+jieyin/jieyin_06
+  rotate: true
+  xy: 961, 18
+  size: 234, 230
+  orig: 500, 500
+  offset: 134, 143
+  index: -1
+jieyin/jieyin_07
+  rotate: true
+  xy: 496, 12
+  size: 240, 231
+  orig: 500, 500
+  offset: 134, 143
+  index: -1
+jieyin/jieyin_08
+  rotate: false
+  xy: 254, 2
+  size: 240, 250
+  orig: 500, 500
+  offset: 134, 124
+  index: -1
+jieyin/jieyin_09
+  rotate: false
+  xy: 2, 2
+  size: 250, 250
+  orig: 500, 500
+  offset: 124, 124
+  index: -1

@@ -1,0 +1,97 @@
+
+seffect_51509131016.png
+size: 1924,1593
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+texiao/superskill/skillbaodian/sbd_0000
+  rotate: true
+  xy: 528, 103
+  size: 117, 225
+  orig: 300, 300
+  offset: 91, 38
+  index: -1
+texiao/superskill/skillbaodian/sbd_0002
+  rotate: false
+  xy: 2, 20
+  size: 294, 200
+  orig: 300, 300
+  offset: 3, 50
+  index: -1
+texiao/superskill/skillbaodian/sbd_0004
+  rotate: true
+  xy: 298, 2
+  size: 218, 228
+  orig: 300, 300
+  offset: 41, 43
+  index: -1
+texiao/superskill/skillbaodian/sbd_0006
+  rotate: true
+  xy: 1482, 69
+  size: 234, 246
+  orig: 300, 300
+  offset: 33, 22
+  index: -1
+texiao/superskill/skillbaodian/sbd_0008
+  rotate: true
+  xy: 958, 65
+  size: 238, 260
+  orig: 300, 300
+  offset: 31, 15
+  index: -1
+texiao/superskill/skillbaodian/sbd_0010
+  rotate: true
+  xy: 1220, 71
+  size: 232, 260
+  orig: 300, 300
+  offset: 34, 12
+  index: -1
+texiao/superskill/skillbaodian/sbd_0012
+  rotate: false
+  xy: 1850, 1477
+  size: 48, 114
+  orig: 300, 300
+  offset: 106, 16
+  index: -1
+texiao/usk/shoujishandian/sjsd_0000
+  rotate: false
+  xy: 515, 627
+  size: 472, 964
+  orig: 720, 992
+  offset: 134, 28
+  index: -1
+texiao/usk/shoujishandian/sjsd_0002
+  rotate: false
+  xy: 989, 630
+  size: 449, 961
+  orig: 720, 992
+  offset: 150, 28
+  index: -1
+texiao/usk/shoujishandian/sjsd_0004
+  rotate: true
+  xy: 958, 305
+  size: 320, 964
+  orig: 720, 992
+  offset: 230, 28
+  index: -1
+texiao/usk/shoujishandian/sjsd_0010
+  rotate: false
+  xy: 2, 626
+  size: 511, 965
+  orig: 720, 992
+  offset: 118, 27
+  index: -1
+texiao/usk/shoujishandian/sjsd_0012
+  rotate: false
+  xy: 1440, 633
+  size: 408, 958
+  orig: 720, 992
+  offset: 158, 27
+  index: -1
+texiao/usk/shoujishandian/sjsd_0014
+  rotate: true
+  xy: 2, 222
+  size: 402, 954
+  orig: 720, 992
+  offset: 141, 28
+  index: -1

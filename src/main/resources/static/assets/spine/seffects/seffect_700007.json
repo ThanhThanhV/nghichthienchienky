@@ -1,0 +1,164 @@
+{
+"skeleton": { "hash": "cng5ho5H3KnV4hbXR5e2exS9yJE", "spine": "3.5.35", "width": 0, "height": 0 },
+"bones": [
+	{ "name": "root" },
+	{ "name": "zx", "parent": "root" },
+	{ "name": "TX", "parent": "zx" },
+	{ "name": "skill", "parent": "TX" },
+	{ "name": "baodian", "parent": "skill" },
+	{ "name": "baodian2", "parent": "skill" },
+	{ "name": "fn", "parent": "skill" }
+],
+"slots": [
+	{ "name": "baodian", "bone": "baodian", "blend": "additive" },
+	{ "name": "baodian2", "bone": "baodian2", "blend": "additive" },
+	{ "name": "tx/skill/fn", "bone": "fn", "blend": "additive" }
+],
+"skins": {
+	"default": {
+		"baodian": {
+			"tx/skill/niao_boom/niao_boom_0000": { "width": 190, "height": 178 },
+			"tx/skill/niao_boom/niao_boom_0002": { "width": 190, "height": 178 },
+			"tx/skill/niao_boom/niao_boom_0004": { "width": 190, "height": 178 },
+			"tx/skill/niao_boom/niao_boom_0006": { "width": 190, "height": 178 },
+			"tx/skill/niao_boom/niao_boom_0008": { "width": 190, "height": 178 },
+			"tx/skill/niao_boom/niao_boom_0010": { "width": 190, "height": 178 },
+			"tx/skill/niao_boom/niao_boom_0012": { "width": 190, "height": 178 },
+			"tx/skill/niao_boom/niao_boom_0014": { "width": 190, "height": 178 },
+			"tx/skill/niao_boom/niao_boom_0016": { "width": 190, "height": 178 },
+			"tx/skill/niao_boom/niao_boom_0018": { "width": 190, "height": 178 }
+		},
+		"baodian2": {
+			"tx/skill/niao_boom/niao_boom_0000": { "width": 190, "height": 178 },
+			"tx/skill/niao_boom/niao_boom_0002": { "width": 190, "height": 178 },
+			"tx/skill/niao_boom/niao_boom_0004": { "width": 190, "height": 178 },
+			"tx/skill/niao_boom/niao_boom_0006": { "width": 190, "height": 178 },
+			"tx/skill/niao_boom/niao_boom_0008": { "width": 190, "height": 178 },
+			"tx/skill/niao_boom/niao_boom_0010": { "width": 190, "height": 178 },
+			"tx/skill/niao_boom/niao_boom_0012": { "width": 190, "height": 178 },
+			"tx/skill/niao_boom/niao_boom_0014": { "width": 190, "height": 178 },
+			"tx/skill/niao_boom/niao_boom_0016": { "width": 190, "height": 178 },
+			"tx/skill/niao_boom/niao_boom_0018": { "width": 190, "height": 178 }
+		},
+		"tx/skill/fn": {
+			"tx/skill/fn": { "width": 1169, "height": 839 }
+		}
+	}
+},
+"events": {
+	"hit_1_1_1": {}
+},
+"animations": {
+	"animation_0": {
+		"slots": {
+			"baodian": {
+				"color": [
+					{ "time": 0.4333, "color": "ffffffff" },
+					{ "time": 0.6, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0, "name": "tx/skill/niao_boom/niao_boom_0000" },
+					{ "time": 0.0667, "name": "tx/skill/niao_boom/niao_boom_0002" },
+					{ "time": 0.1333, "name": "tx/skill/niao_boom/niao_boom_0004" },
+					{ "time": 0.2, "name": "tx/skill/niao_boom/niao_boom_0006" },
+					{ "time": 0.2667, "name": "tx/skill/niao_boom/niao_boom_0008" },
+					{ "time": 0.3333, "name": "tx/skill/niao_boom/niao_boom_0010" },
+					{ "time": 0.4, "name": "tx/skill/niao_boom/niao_boom_0012" },
+					{ "time": 0.4667, "name": "tx/skill/niao_boom/niao_boom_0014" },
+					{ "time": 0.5333, "name": "tx/skill/niao_boom/niao_boom_0016" },
+					{ "time": 0.6, "name": "tx/skill/niao_boom/niao_boom_0018" }
+				]
+			},
+			"baodian2": {
+				"color": [
+					{ "time": 0, "color": "ffffff67" },
+					{ "time": 0.1333, "color": "ffffffff" },
+					{ "time": 0.2667, "color": "ffffff67" },
+					{ "time": 0.4, "color": "ffffffff" },
+					{ "time": 0.6, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0, "name": "tx/skill/niao_boom/niao_boom_0000" },
+					{ "time": 0.0667, "name": "tx/skill/niao_boom/niao_boom_0002" },
+					{ "time": 0.1333, "name": "tx/skill/niao_boom/niao_boom_0004" },
+					{ "time": 0.2, "name": "tx/skill/niao_boom/niao_boom_0006" },
+					{ "time": 0.2667, "name": "tx/skill/niao_boom/niao_boom_0008" },
+					{ "time": 0.3333, "name": "tx/skill/niao_boom/niao_boom_0010" },
+					{ "time": 0.4, "name": "tx/skill/niao_boom/niao_boom_0012" },
+					{ "time": 0.4667, "name": "tx/skill/niao_boom/niao_boom_0014" },
+					{ "time": 0.5333, "name": "tx/skill/niao_boom/niao_boom_0016" },
+					{ "time": 0.6, "name": "tx/skill/niao_boom/niao_boom_0018" }
+				]
+			},
+			"tx/skill/fn": {
+				"color": [
+					{ "time": 0.3333, "color": "ffffffff" },
+					{ "time": 0.5, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0, "name": "tx/skill/fn" }
+				]
+			}
+		},
+		"bones": {
+			"baodian": {
+				"rotate": [
+					{ "time": 0, "angle": -1.2 }
+				],
+				"translate": [
+					{ "time": 0, "x": -6.1, "y": -1.69 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1.204, "y": 1.204 },
+					{ "time": 0.0667, "x": 3.477, "y": 3.477 }
+				]
+			},
+			"fn": {
+				"translate": [
+					{ "time": 0, "x": -2.12, "y": 403.69 }
+				],
+				"scale": [
+					{ "time": 0, "x": 0.086, "y": 0.086 },
+					{ "time": 0.0667, "x": 0.432, "y": 0.432 }
+				]
+			},
+			"baodian2": {
+				"rotate": [
+					{ "time": 0, "angle": 209.25 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0.66, "y": 368.8 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1.601, "y": 1.229 }
+				],
+				"shear": [
+					{ "time": 0, "x": -17.41, "y": 0 }
+				]
+			},
+			"root": {
+				"translate": [
+					{ "time": 0, "x": 0, "y": 220.93 }
+				]
+			},
+			"zx": {
+				"translate": [
+					{ "time": 0, "x": 0, "y": -158.93 }
+				],
+				"scale": [
+					{ "time": 0, "x": 0.5, "y": 0.5 }
+				]
+			}
+		},
+		"drawOrder": [
+			{ "time": 0 },
+			{ "time": 0.0333 },
+			{ "time": 0.1 },
+			{ "time": 0.2333 }
+		],
+		"events": [
+			{ "time": 0.3333, "name": "hit_1_1_1" }
+		]
+	}
+}
+}

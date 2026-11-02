@@ -1,0 +1,216 @@
+
+seffect_64502111013.png
+size: 1800,1800
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+fuhuo/boom/boom_0035
+  rotate: false
+  xy: 1247, 616
+  size: 202, 322
+  orig: 393, 427
+  offset: 57, 33
+  index: -1
+fuhuo/boom/boom_0037
+  rotate: true
+  xy: 1076, 940
+  size: 273, 386
+  orig: 393, 427
+  offset: 39, 27
+  index: -1
+fuhuo/boom/boom_0039
+  rotate: false
+  xy: 1464, 817
+  size: 334, 396
+  orig: 393, 427
+  offset: 38, 14
+  index: -1
+fuhuo/boom/boom_0041
+  rotate: false
+  xy: 2, 58
+  size: 325, 398
+  orig: 393, 427
+  offset: 35, 15
+  index: -1
+fuhuo/boom/boom_0043
+  rotate: false
+  xy: 329, 2
+  size: 337, 341
+  orig: 393, 427
+  offset: 49, 46
+  index: -1
+fuhuo/boom/boom_0045
+  rotate: true
+  xy: 888, 612
+  size: 326, 357
+  orig: 393, 427
+  offset: 38, 33
+  index: -1
+fuhuo/boom/boom_0047
+  rotate: true
+  xy: 888, 345
+  size: 265, 357
+  orig: 393, 427
+  offset: 49, 40
+  index: -1
+fuhuo/boom/boom_0049
+  rotate: true
+  xy: 668, 53
+  size: 290, 369
+  orig: 393, 427
+  offset: 39, 23
+  index: -1
+fuhuo/boom/boom_0051
+  rotate: true
+  xy: 1039, 53
+  size: 290, 344
+  orig: 393, 427
+  offset: 45, 48
+  index: -1
+fuhuo/boom/boom_0053
+  rotate: true
+  xy: 1451, 579
+  size: 236, 346
+  orig: 393, 427
+  offset: 101, 29
+  index: -1
+fuhuo/boom/boom_0055
+  rotate: true
+  xy: 1247, 349
+  size: 228, 319
+  orig: 393, 427
+  offset: 106, 62
+  index: -1
+fuhuo/boom/boom_0057
+  rotate: true
+  xy: 352, 345
+  size: 214, 299
+  orig: 393, 427
+  offset: 99, 74
+  index: -1
+fuhuo/tong_xi/tong_xi_0000
+  rotate: false
+  xy: 1624, 1215
+  size: 170, 583
+  orig: 203, 690
+  offset: 14, 14
+  index: -1
+fuhuo/tong_xi/tong_xi_0002
+  rotate: false
+  xy: 2, 1127
+  size: 173, 671
+  orig: 203, 690
+  offset: 11, 12
+  index: -1
+fuhuo/tong_xi/tong_xi_0004
+  rotate: false
+  xy: 2, 458
+  size: 169, 667
+  orig: 203, 690
+  offset: 15, 11
+  index: -1
+fuhuo/tong_xi/tong_xi_0006
+  rotate: false
+  xy: 177, 1138
+  size: 174, 660
+  orig: 203, 690
+  offset: 9, 10
+  index: -1
+fuhuo/tong_xi/tong_xi_0008
+  rotate: false
+  xy: 353, 1148
+  size: 175, 650
+  orig: 203, 690
+  offset: 8, 12
+  index: -1
+fuhuo/tong_xi/tong_xi_0010
+  rotate: false
+  xy: 530, 1154
+  size: 179, 644
+  orig: 203, 690
+  offset: 9, 11
+  index: -1
+fuhuo/tong_xi/tong_xi_0012
+  rotate: false
+  xy: 711, 1162
+  size: 180, 636
+  orig: 203, 690
+  offset: 9, 11
+  index: -1
+fuhuo/tong_xi/tong_xi_0014
+  rotate: false
+  xy: 893, 1169
+  size: 181, 629
+  orig: 203, 690
+  offset: 9, 11
+  index: -1
+fuhuo/tong_xi/tong_xi_0016
+  rotate: false
+  xy: 173, 538
+  size: 177, 587
+  orig: 203, 690
+  offset: 15, 10
+  index: -1
+fuhuo/tong_xi/tong_xi_0018
+  rotate: false
+  xy: 1260, 1215
+  size: 180, 583
+  orig: 203, 690
+  offset: 14, 14
+  index: -1
+fuhuo/tong_xi/tong_xi_0020
+  rotate: false
+  xy: 1076, 1215
+  size: 182, 583
+  orig: 203, 690
+  offset: 10, 13
+  index: -1
+fuhuo/tong_xi/tong_xi_0022
+  rotate: false
+  xy: 1442, 1217
+  size: 180, 581
+  orig: 203, 690
+  offset: 10, 14
+  index: -1
+fuhuo/tong_xi/tong_xi_0024
+  rotate: false
+  xy: 352, 561
+  size: 179, 575
+  orig: 203, 690
+  offset: 11, 17
+  index: -1
+fuhuo/tong_xi/tong_xi_0026
+  rotate: false
+  xy: 533, 577
+  size: 184, 575
+  orig: 203, 690
+  offset: 5, 14
+  index: -1
+fuhuo/tong_xi/tong_xi_0028
+  rotate: false
+  xy: 719, 597
+  size: 167, 563
+  orig: 203, 690
+  offset: 17, 18
+  index: -1
+fuhuo/tong_xi/tong_xi_0030
+  rotate: false
+  xy: 1385, 168
+  size: 135, 179
+  orig: 203, 690
+  offset: 44, 43
+  index: -1
+fuhuo/tong_xi/tong_xi_0032
+  rotate: false
+  xy: 1568, 398
+  size: 146, 179
+  orig: 203, 690
+  offset: 40, 43
+  index: -1
+fuhuo/tong_xi/tong_xi_0034
+  rotate: false
+  xy: 1716, 398
+  size: 79, 179
+  orig: 203, 690
+  offset: 61, 43
+  index: -1

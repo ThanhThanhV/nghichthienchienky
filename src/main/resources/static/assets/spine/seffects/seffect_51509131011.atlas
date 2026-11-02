@@ -1,0 +1,153 @@
+
+seffect_51509131011.png
+size: 804,1029
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+texiao/skill/quan
+  rotate: false
+  xy: 2, 138
+  size: 294, 285
+  orig: 300, 300
+  offset: 0, 0
+  index: -1
+texiao/skill/shitou/st_0000
+  rotate: true
+  xy: 755, 136
+  size: 59, 45
+  orig: 128, 128
+  offset: 35, 41
+  index: -1
+texiao/skill/shitou/st_0001
+  rotate: false
+  xy: 658, 73
+  size: 58, 56
+  orig: 128, 128
+  offset: 35, 36
+  index: -1
+texiao/skill/shitou/st_0002
+  rotate: false
+  xy: 564, 39
+  size: 73, 62
+  orig: 128, 128
+  offset: 28, 33
+  index: -1
+texiao/skill/shitou/st_0003
+  rotate: false
+  xy: 658, 131
+  size: 95, 64
+  orig: 128, 128
+  offset: 17, 32
+  index: -1
+texiao/skill/xian/xian_0000
+  rotate: true
+  xy: 495, 27
+  size: 164, 28
+  orig: 194, 88
+  offset: 18, 34
+  index: -1
+texiao/skill/xian/xian_0001
+  rotate: true
+  xy: 454, 26
+  size: 165, 39
+  orig: 194, 88
+  offset: 18, 43
+  index: -1
+texiao/skill/xian/xian_0002
+  rotate: true
+  xy: 525, 43
+  size: 148, 37
+  orig: 194, 88
+  offset: 18, 25
+  index: -1
+texiao/skill/xinkong/xinkong_0000
+  rotate: false
+  xy: 564, 103
+  size: 92, 92
+  orig: 300, 300
+  offset: 104, 104
+  index: -1
+texiao/skill/xinkong/xinkong_0002
+  rotate: false
+  xy: 138, 24
+  size: 112, 112
+  orig: 300, 300
+  offset: 94, 94
+  index: -1
+texiao/skill/xinkong/xinkong_0004
+  rotate: false
+  xy: 2, 2
+  size: 134, 134
+  orig: 300, 300
+  offset: 83, 83
+  index: -1
+texiao/skill/xinkong/xinkong_0006
+  rotate: false
+  xy: 298, 37
+  size: 154, 154
+  orig: 300, 300
+  offset: 73, 73
+  index: -1
+texiao/skill/xinkong/xinkong_0008
+  rotate: false
+  xy: 600, 655
+  size: 174, 174
+  orig: 300, 300
+  offset: 63, 63
+  index: -1
+texiao/skill/xinkong/xinkong_0010
+  rotate: false
+  xy: 600, 831
+  size: 196, 196
+  orig: 300, 300
+  offset: 52, 52
+  index: -1
+texiao/skill/xinkong/xinkong_0012
+  rotate: false
+  xy: 584, 437
+  size: 216, 216
+  orig: 300, 300
+  offset: 42, 42
+  index: -1
+texiao/skill/xinkong/xinkong_0014
+  rotate: false
+  xy: 564, 197
+  size: 238, 238
+  orig: 300, 300
+  offset: 31, 31
+  index: -1
+texiao/skill/xinkong/xinkong_0016
+  rotate: false
+  xy: 304, 193
+  size: 258, 258
+  orig: 300, 300
+  offset: 21, 21
+  index: -1
+texiao/skill/xinkong/xinkong_0018
+  rotate: false
+  xy: 304, 453
+  size: 278, 278
+  orig: 300, 300
+  offset: 11, 11
+  index: -1
+texiao/skill/xinkong/xinkong_0020
+  rotate: false
+  xy: 2, 727
+  size: 300, 300
+  orig: 300, 300
+  offset: 0, 0
+  index: -1
+texiao/skill/xinxin
+  rotate: false
+  xy: 304, 733
+  size: 294, 294
+  orig: 300, 300
+  offset: 3, 3
+  index: -1
+texiao/skill/ziguang
+  rotate: false
+  xy: 2, 425
+  size: 300, 300
+  orig: 500, 500
+  offset: 100, 100
+  index: -1

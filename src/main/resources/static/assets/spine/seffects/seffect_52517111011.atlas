@@ -1,0 +1,237 @@
+
+seffect_52517111011.png
+size: 957,957
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+tx/yanwu/air_quan_13
+  rotate: false
+  xy: 853, 45
+  size: 48, 74
+  orig: 101, 92
+  offset: 33, 4
+  index: -1
+tx/yanwu/air_quan_21
+  rotate: false
+  xy: 542, 157
+  size: 50, 81
+  orig: 101, 92
+  offset: 23, 4
+  index: -1
+tx/yanwu/air_quan_29
+  rotate: false
+  xy: 903, 44
+  size: 42, 75
+  orig: 101, 92
+  offset: 15, 9
+  index: -1
+tx/yanwu/air_quan_3
+  rotate: false
+  xy: 315, 318
+  size: 24, 35
+  orig: 101, 92
+  offset: 66, 5
+  index: -1
+tx1/att/k_s_0016
+  rotate: false
+  xy: 680, 506
+  size: 113, 139
+  orig: 121, 143
+  offset: 5, 1
+  index: -1
+tx1/att/line_glow/line_glow_0013
+  rotate: true
+  xy: 305, 2
+  size: 299, 43
+  orig: 543, 105
+  offset: 181, 27
+  index: -1
+tx1/att/line_glow/line_glow_0015
+  rotate: true
+  xy: 862, 558
+  size: 397, 83
+  orig: 543, 105
+  offset: 124, 10
+  index: -1
+tx1/att/line_glow/line_glow_0017
+  rotate: true
+  xy: 597, 119
+  size: 512, 81
+  orig: 543, 105
+  offset: 22, 14
+  index: -1
+tx1/att/smoke/smoke_0009
+  rotate: false
+  xy: 527, 8
+  size: 85, 25
+  orig: 188, 87
+  offset: 103, 11
+  index: -1
+tx1/att/smoke/smoke_0011
+  rotate: true
+  xy: 542, 240
+  size: 113, 36
+  orig: 188, 87
+  offset: 75, 11
+  index: -1
+tx1/att/smoke/smoke_0013
+  rotate: true
+  xy: 757, 177
+  size: 152, 64
+  orig: 188, 87
+  offset: 36, 4
+  index: -1
+tx1/att/smoke/smoke_0015
+  rotate: true
+  xy: 760, 345
+  size: 159, 68
+  orig: 188, 87
+  offset: 25, 4
+  index: -1
+tx1/att/smoke/smoke_0017
+  rotate: true
+  xy: 680, 159
+  size: 170, 75
+  orig: 188, 87
+  offset: 15, 5
+  index: -1
+tx1/att/smoke/smoke_0019
+  rotate: true
+  xy: 680, 331
+  size: 173, 78
+  orig: 188, 87
+  offset: 13, 4
+  index: -1
+tx1/att/smoke/smoke_0021
+  rotate: false
+  xy: 628, 647
+  size: 174, 78
+  orig: 188, 87
+  offset: 12, 4
+  index: -1
+tx1/att/smoke/smoke_0023
+  rotate: false
+  xy: 527, 35
+  size: 154, 82
+  orig: 188, 87
+  offset: 10, 2
+  index: -1
+tx1/att/smoke/smoke_0025
+  rotate: true
+  xy: 683, 30
+  size: 127, 84
+  orig: 188, 87
+  offset: 9, 1
+  index: -1
+tx1/att/smoke/smoke_0027
+  rotate: false
+  xy: 830, 471
+  size: 107, 85
+  orig: 188, 87
+  offset: 8, 1
+  index: -1
+tx1/att/smoke/smoke_0029
+  rotate: false
+  xy: 830, 383
+  size: 98, 86
+  orig: 188, 87
+  offset: 5, 0
+  index: -1
+tx1/att/smoke/smoke_0031
+  rotate: false
+  xy: 830, 295
+  size: 98, 86
+  orig: 188, 87
+  offset: 4, 0
+  index: -1
+tx1/att/smoke/smoke_0033
+  rotate: false
+  xy: 823, 219
+  size: 97, 74
+  orig: 188, 87
+  offset: 3, 1
+  index: -1
+tx1/att/smoke/smoke_0035
+  rotate: true
+  xy: 853, 121
+  size: 96, 73
+  orig: 188, 87
+  offset: 3, 1
+  index: -1
+tx1/skill/skill_boom/skill_boom_0013
+  rotate: false
+  xy: 795, 579
+  size: 51, 66
+  orig: 311, 325
+  offset: 137, 117
+  index: -1
+tx1/skill/skill_boom/skill_boom_0015
+  rotate: false
+  xy: 804, 659
+  size: 56, 66
+  orig: 311, 325
+  offset: 135, 114
+  index: -1
+tx1/skill/skill_boom/skill_boom_0017
+  rotate: false
+  xy: 315, 633
+  size: 311, 322
+  orig: 311, 325
+  offset: 0, 0
+  index: -1
+tx1/skill/skill_boom/skill_boom_0019
+  rotate: false
+  xy: 2, 630
+  size: 311, 325
+  orig: 311, 325
+  offset: 0, 0
+  index: -1
+tx1/skill/skill_boom/skill_boom_0021
+  rotate: false
+  xy: 2, 303
+  size: 311, 325
+  orig: 311, 325
+  offset: 0, 0
+  index: -1
+tx1/skill/skill_boom/skill_boom_0027
+  rotate: false
+  xy: 2, 4
+  size: 301, 297
+  orig: 311, 325
+  offset: 7, 0
+  index: -1
+tx1/skill/skill_boom/skill_boom_0029
+  rotate: false
+  xy: 315, 355
+  size: 280, 276
+  orig: 311, 325
+  offset: 22, 6
+  index: -1
+tx1/skill/skill_boom/skill_boom_0031
+  rotate: false
+  xy: 628, 727
+  size: 232, 228
+  orig: 311, 325
+  offset: 42, 12
+  index: -1
+tx1/skill/skill_boom/skill_boom_0033
+  rotate: false
+  xy: 350, 149
+  size: 190, 204
+  orig: 311, 325
+  offset: 66, 26
+  index: -1
+tx1/skill/skill_boom/skill_boom_0035
+  rotate: false
+  xy: 350, 6
+  size: 175, 141
+  orig: 311, 325
+  offset: 67, 55
+  index: -1
+tx1/skill/skill_boom/skill_boom_0037
+  rotate: true
+  xy: 769, 37
+  size: 138, 82
+  orig: 311, 325
+  offset: 98, 63
+  index: -1

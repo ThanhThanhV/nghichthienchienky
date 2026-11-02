@@ -1,0 +1,141 @@
+{
+"skeleton": { "hash": "vH91/e7BXiic0FF2I2Lw5DB7Ed4", "spine": "3.5.35", "width": 0, "height": 0 },
+"bones": [
+	{ "name": "root" },
+	{ "name": "mingrixiang_zx", "parent": "root", "scaleX": 3.33, "scaleY": 3.33 },
+	{ "name": "texiao", "parent": "mingrixiang_zx" },
+	{ "name": "attack", "parent": "texiao" },
+	{ "name": "atk_dg", "parent": "attack", "scaleX": 4, "scaleY": 4 },
+	{ "name": "atk_zha", "parent": "attack", "scaleX": 2, "scaleY": 2 },
+	{ "name": "atk_zhuan", "parent": "attack", "scaleX": 2, "scaleY": 2 }
+],
+"slots": [
+	{ "name": "attack/dg/dg_44", "bone": "atk_dg" },
+	{ "name": "attack/zha/zha_44", "bone": "atk_zha" },
+	{ "name": "attack/zhuan/zhuan_10", "bone": "atk_zhuan" }
+],
+"skins": {
+	"default": {
+		"attack/dg/dg_44": {
+			"attack/dg/dg_44": { "width": 60, "height": 75 },
+			"attack/dg/dg_46": { "width": 60, "height": 75 },
+			"attack/dg/dg_48": { "width": 60, "height": 75 },
+			"attack/dg/dg_50": { "width": 60, "height": 75 },
+			"attack/dg/dg_52": { "width": 60, "height": 75 },
+			"attack/dg/dg_54": { "width": 60, "height": 75 },
+			"attack/dg/dg_56": { "width": 60, "height": 75 }
+		},
+		"attack/zha/zha_44": {
+			"attack/zha/zha_44": { "width": 150, "height": 140 },
+			"attack/zha/zha_46": { "width": 150, "height": 140 },
+			"attack/zha/zha_48": { "width": 150, "height": 140 },
+			"attack/zha/zha_50": { "width": 150, "height": 140 },
+			"attack/zha/zha_52": { "width": 150, "height": 140 },
+			"attack/zha/zha_54": { "width": 150, "height": 140 },
+			"attack/zha/zha_56": { "width": 150, "height": 140 },
+			"attack/zha/zha_58": { "width": 150, "height": 140 }
+		},
+		"attack/zhuan/zhuan_10": {
+			"attack/zhuan/zhuan_10": { "x": -2.96, "y": -4.81, "width": 140, "height": 140 }
+		}
+	}
+},
+"events": {
+	"qishou_1_3_1": {},
+	"qishou_1_3_2": {},
+	"qishou_1_3_3": {}
+},
+"animations": {
+	"animation_0": {
+		"slots": {
+			"attack/dg/dg_44": {
+				"attachment": [
+					{ "time": 1.4667, "name": "attack/dg/dg_44" },
+					{ "time": 1.5333, "name": "attack/dg/dg_46" },
+					{ "time": 1.6, "name": "attack/dg/dg_48" },
+					{ "time": 1.6667, "name": "attack/dg/dg_50" },
+					{ "time": 1.7333, "name": "attack/dg/dg_52" },
+					{ "time": 1.8, "name": "attack/dg/dg_54" },
+					{ "time": 1.8667, "name": "attack/dg/dg_56" },
+					{ "time": 1.9333, "name": null }
+				]
+			},
+			"attack/zha/zha_44": {
+				"attachment": [
+					{ "time": 1.4667, "name": "attack/zha/zha_44" },
+					{ "time": 1.5333, "name": "attack/zha/zha_46" },
+					{ "time": 1.6, "name": "attack/zha/zha_48" },
+					{ "time": 1.6667, "name": "attack/zha/zha_50" },
+					{ "time": 1.7333, "name": "attack/zha/zha_52" },
+					{ "time": 1.8, "name": "attack/zha/zha_54" },
+					{ "time": 1.8667, "name": "attack/zha/zha_56" },
+					{ "time": 1.9333, "name": "attack/zha/zha_58" },
+					{ "time": 2, "name": null }
+				]
+			},
+			"attack/zhuan/zhuan_10": {
+				"color": [
+					{ "time": 0.3, "color": "ffffff55" },
+					{ "time": 0.4, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.7667, "color": "ffffffff" },
+					{ "time": 0.9333, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0.3, "name": "attack/zhuan/zhuan_10" },
+					{ "time": 0.9333, "name": null }
+				]
+			}
+		},
+		"bones": {
+			"atk_dg": {
+				"translate": [
+					{ "time": 1.4667, "x": 116.8, "y": 96.36 }
+				]
+			},
+			"atk_zha": {
+				"translate": [
+					{ "time": 1.4667, "x": 153.01, "y": 72.42 }
+				],
+				"scale": [
+					{ "time": 1.4667, "x": 1.2, "y": 1.2 }
+				]
+			},
+			"atk_zhuan": {
+				"rotate": [
+					{ "time": 0.3, "angle": 70 },
+					{ "time": 0.4, "angle": -100 },
+					{ "time": 0.5, "angle": 110 },
+					{ "time": 0.6, "angle": 0 },
+					{ "time": 0.7, "angle": -150 },
+					{ "time": 0.8, "angle": 30 },
+					{ "time": 0.9, "angle": -170 }
+				],
+				"translate": [
+					{ "time": 0.3, "x": 117.49, "y": 59.79 },
+					{ "time": 0.4, "x": 158.28, "y": 59.79 },
+					{ "time": 0.6, "x": 266.45, "y": 59.79 },
+					{ "time": 0.7, "x": 283.91, "y": 59.79 },
+					{ "time": 0.8, "x": 201.46, "y": 59.79 },
+					{ "time": 0.9, "x": 46.74, "y": 59.79 }
+				]
+			}
+		},
+		"drawOrder": [
+			{ "time": 0.0333 },
+			{ "time": 0.2333 },
+			{ "time": 0.2667 },
+			{ "time": 0.9333 },
+			{ "time": 0.9667 },
+			{ "time": 1.1 },
+			{ "time": 1.1667 },
+			{ "time": 1.4667 },
+			{ "time": 1.8667 }
+		],
+		"events": [
+			{ "time": 0.3333, "name": "qishou_1_3_3" },
+			{ "time": 0.7333, "name": "qishou_1_3_2" },
+			{ "time": 1.4667, "name": "qishou_1_3_1" }
+		]
+	}
+}
+}

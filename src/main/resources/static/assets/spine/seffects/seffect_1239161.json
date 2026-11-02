@@ -1,0 +1,63 @@
+{
+"skeleton": { "hash": "/vOaOKY6D5UWV2jC3UQTpyYAxL0", "spine": "3.5.35", "width": 0, "height": 0 },
+"bones": [
+	{ "name": "root" },
+	{ "name": "txZH", "parent": "root" },
+	{ "name": "gjtx4", "parent": "txZH" },
+	{ "name": "boom12", "parent": "gjtx4", "scaleX": 1.42, "scaleY": 1.42 }
+],
+"slots": [
+	{ "name": "baodian12", "bone": "boom12" }
+],
+"skins": {
+	"default": {
+		"baodian12": {
+			"image/txgongji/4/lightning_b/lightning_b_0020": { "width": 326, "height": 560 },
+			"image/txgongji/4/lightning_b/lightning_b_0022": { "width": 326, "height": 560 },
+			"image/txgongji/4/lightning_b/lightning_b_0024": { "width": 326, "height": 560 },
+			"image/txgongji/4/lightning_b/lightning_b_0026": { "width": 326, "height": 560 },
+			"image/txgongji/4/lightning_b/lightning_b_0028": { "width": 326, "height": 560 },
+			"image/txgongji/4/lightning_b/lightning_b_0030": { "width": 326, "height": 560 },
+			"image/txgongji/4/lightning_b/lightning_b_0032": { "width": 326, "height": 560 },
+			"image/txgongji/4/lightning_b/lightning_b_0034": { "width": 326, "height": 560 },
+			"image/txgongji/4/lightning_b/lightning_b_0036": { "width": 326, "height": 560 }
+		}
+	}
+},
+"events": {
+	"hit_1_1_1": {}
+},
+"animations": {
+	"animation_0": {
+		"slots": {
+			"baodian12": {
+				"attachment": [
+					{ "time": 0, "name": "image/txgongji/4/lightning_b/lightning_b_0020" },
+					{ "time": 0.0667, "name": "image/txgongji/4/lightning_b/lightning_b_0022" },
+					{ "time": 0.1333, "name": "image/txgongji/4/lightning_b/lightning_b_0024" },
+					{ "time": 0.2, "name": "image/txgongji/4/lightning_b/lightning_b_0026" },
+					{ "time": 0.2667, "name": "image/txgongji/4/lightning_b/lightning_b_0028" },
+					{ "time": 0.3333, "name": "image/txgongji/4/lightning_b/lightning_b_0030" },
+					{ "time": 0.4, "name": "image/txgongji/4/lightning_b/lightning_b_0032" },
+					{ "time": 0.4667, "name": "image/txgongji/4/lightning_b/lightning_b_0034" },
+					{ "time": 0.5333, "name": "image/txgongji/4/lightning_b/lightning_b_0036" },
+					{ "time": 0.6, "name": null }
+				]
+			}
+		},
+		"bones": {
+			"boom12": {
+				"translate": [
+					{ "time": 0, "x": -19.46, "y": 407.56 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1.702, "y": 1.702 }
+				]
+			}
+		},
+		"events": [
+			{ "time": 0.0667, "name": "hit_1_1_1" }
+		]
+	}
+}
+}

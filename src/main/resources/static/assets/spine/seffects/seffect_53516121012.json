@@ -1,0 +1,478 @@
+{
+"skeleton": { "hash": "UKRatJHQPLsBE2nN/H6uDpBdAG4", "spine": "3.5.35", "width": 0, "height": 0, "images": "./images/" },
+"bones": [
+	{ "name": "root" },
+	{ "name": "ZX", "parent": "root" },
+	{ "name": "TX", "parent": "ZX", "color": "ff1500ff" },
+	{ "name": "SKILL", "parent": "TX", "color": "ff1500ff" },
+	{ "name": "Skill/Skill_shexian_0000", "parent": "SKILL", "color": "ff1500ff" },
+	{ "name": "Skill/yun_0000", "parent": "SKILL", "color": "ff1500ff" },
+	{ "name": "bg", "parent": "ZX", "y": 110.97, "scaleX": 3.33, "scaleY": 3.33 },
+	{ "name": "dibaotianxing", "parent": "SKILL", "scaleX": 2.5, "scaleY": 2.5, "color": "ff1500ff" },
+	{ "name": "lightning_QIU_big", "parent": "SKILL", "scaleX": 2, "scaleY": 2, "color": "ff1500ff" },
+	{ "name": "lightning_a_", "parent": "SKILL", "color": "ff1500ff" },
+	{ "name": "lightning_a_2", "parent": "SKILL", "color": "ff1500ff" },
+	{ "name": "lightning_a_3", "parent": "SKILL", "color": "ff1500ff" },
+	{ "name": "lightning_a_4", "parent": "SKILL", "color": "ff1500ff" },
+	{ "name": "lightning_b_", "parent": "SKILL", "color": "ff1500ff" },
+	{ "name": "po_shui_", "parent": "SKILL", "scaleX": 2, "scaleY": 2, "color": "ff1500ff" },
+	{ "name": "shandian_qiu_", "parent": "SKILL", "color": "ff1500ff" },
+	{ "name": "zhang_qiliu", "parent": "SKILL", "color": "ff1500ff" }
+],
+"slots": [
+	{ "name": "bg", "bone": "bg", "color": "a8a8a8ff" },
+	{ "name": "dibaotianxing", "bone": "dibaotianxing" },
+	{ "name": "lightning_QIU_big", "bone": "lightning_QIU_big" },
+	{ "name": "po_shui_", "bone": "po_shui_" },
+	{ "name": "lightning_a_", "bone": "lightning_a_" },
+	{ "name": "lightning_a_2", "bone": "lightning_a_2" },
+	{ "name": "lightning_a_3", "bone": "lightning_a_3" },
+	{ "name": "lightning_a_4", "bone": "lightning_a_4" },
+	{ "name": "lightning_b_", "bone": "lightning_b_" },
+	{ "name": "shandian_qiu_", "bone": "shandian_qiu_", "blend": "additive" },
+	{ "name": "zhang_qiliu", "bone": "zhang_qiliu" },
+	{ "name": "Skill/Skill_shexian_0000", "bone": "Skill/Skill_shexian_0000" },
+	{ "name": "Skill/yun_0000", "bone": "Skill/yun_0000" }
+],
+"skins": {
+	"default": {
+		"Skill/Skill_shexian_0000": {
+			"Skill/Skill_shexian_0000": { "width": 606, "height": 556 }
+		},
+		"Skill/yun_0000": {
+			"Skill/yun_0000": { "width": 680, "height": 474 }
+		},
+		"dibaotianxing": {
+			"Skill/dibaotianxing/dibaotianxing_0000": { "width": 475, "height": 769 },
+			"Skill/dibaotianxing/dibaotianxing_0002": { "width": 475, "height": 769 },
+			"Skill/dibaotianxing/dibaotianxing_0004": { "width": 475, "height": 769 },
+			"Skill/dibaotianxing/dibaotianxing_0006": { "width": 475, "height": 769 },
+			"Skill/dibaotianxing/dibaotianxing_0007": { "width": 213, "height": 213 }
+		},
+		"lightning_QIU_big": {
+			"Skill/lightning_QIU_big/lightning_QIU_big_0000": { "width": 394, "height": 397 },
+			"Skill/lightning_QIU_big/lightning_QIU_big_0002": { "width": 394, "height": 397 },
+			"Skill/lightning_QIU_big/lightning_QIU_big_0004": { "width": 394, "height": 397 },
+			"Skill/lightning_QIU_big/lightning_QIU_big_0006": { "width": 394, "height": 397 },
+			"Skill/lightning_QIU_big/lightning_QIU_big_0008": { "width": 394, "height": 397 },
+			"Skill/lightning_QIU_big/lightning_QIU_big_0010": { "width": 394, "height": 397 },
+			"Skill/lightning_QIU_big/lightning_QIU_big_0012": { "width": 394, "height": 397 },
+			"Skill/lightning_QIU_big/lightning_QIU_big_0014": { "width": 394, "height": 397 },
+			"Skill/lightning_QIU_big/lightning_QIU_big_0016": { "width": 394, "height": 397 },
+			"Skill/lightning_QIU_big/lightning_QIU_big_0018": { "width": 394, "height": 397 },
+			"Skill/lightning_QIU_big/lightning_QIU_big_0020": { "width": 394, "height": 397 },
+			"Skill/lightning_QIU_big/lightning_QIU_big_0022": { "width": 394, "height": 397 },
+			"Skill/lightning_QIU_big/lightning_QIU_big_0024": { "width": 394, "height": 397 },
+			"Skill/lightning_QIU_big/lightning_QIU_big_0026": { "width": 394, "height": 397 },
+			"Skill/lightning_QIU_big/lightning_QIU_big_0028": { "width": 394, "height": 397 },
+			"Skill/lightning_QIU_big/lightning_QIU_big_0030": { "width": 394, "height": 397 },
+			"Skill/lightning_QIU_big/lightning_QIU_big_0032": { "width": 394, "height": 397 },
+			"Skill/lightning_QIU_big/lightning_QIU_big_0034": { "width": 394, "height": 397 },
+			"Skill/lightning_QIU_big/lightning_QIU_big_0036": { "width": 394, "height": 397 }
+		},
+		"lightning_a_": {
+			"Skill/lightning_a/lightning_a_0000": { "width": 139, "height": 420 },
+			"Skill/lightning_a/lightning_a_0003": { "width": 139, "height": 420 },
+			"Skill/lightning_a/lightning_a_0005": { "width": 139, "height": 420 },
+			"Skill/lightning_a/lightning_a_0007": { "width": 139, "height": 420 }
+		},
+		"lightning_a_2": {
+			"Skill/lightning_a/lightning_a_0000": { "width": 139, "height": 420 },
+			"Skill/lightning_a/lightning_a_0003": { "width": 139, "height": 420 },
+			"Skill/lightning_a/lightning_a_0005": { "width": 139, "height": 420 },
+			"Skill/lightning_a/lightning_a_0007": { "width": 139, "height": 420 }
+		},
+		"lightning_a_3": {
+			"Skill/lightning_a/lightning_a_0000": { "width": 139, "height": 420 },
+			"Skill/lightning_a/lightning_a_0003": { "width": 139, "height": 420 },
+			"Skill/lightning_a/lightning_a_0005": { "width": 139, "height": 420 },
+			"Skill/lightning_a/lightning_a_0007": { "width": 139, "height": 420 }
+		},
+		"lightning_a_4": {
+			"Skill/lightning_a/lightning_a_0000": { "width": 139, "height": 420 },
+			"Skill/lightning_a/lightning_a_0003": { "width": 139, "height": 420 },
+			"Skill/lightning_a/lightning_a_0005": { "width": 139, "height": 420 },
+			"Skill/lightning_a/lightning_a_0007": { "width": 139, "height": 420 }
+		},
+		"lightning_b_": {
+			"Skill/lightning_b/lightning_b_0000": { "width": 110, "height": 136 },
+			"Skill/lightning_b/lightning_b_0001": { "width": 110, "height": 136 },
+			"Skill/lightning_b/lightning_b_0002": { "width": 110, "height": 136 },
+			"Skill/lightning_b/lightning_b_0003": { "width": 110, "height": 136 }
+		},
+		"po_shui_": {
+			"Skill/po_shui/po_shui_0000": { "width": 538, "height": 808 },
+			"Skill/po_shui/po_shui_0002": { "width": 538, "height": 808 },
+			"Skill/po_shui/po_shui_0004": { "width": 538, "height": 808 },
+			"Skill/po_shui/po_shui_0006": { "width": 538, "height": 808 },
+			"Skill/po_shui/po_shui_0008": { "width": 538, "height": 808 },
+			"Skill/po_shui/po_shui_0010": { "width": 538, "height": 808 },
+			"Skill/po_shui/po_shui_0012": { "width": 538, "height": 808 },
+			"Skill/po_shui/po_shui_0014": { "width": 538, "height": 808 },
+			"Skill/po_shui/po_shui_0016": { "width": 538, "height": 808 },
+			"Skill/po_shui/po_shui_0018": { "width": 538, "height": 808 },
+			"Skill/po_shui/po_shui_0020": { "width": 538, "height": 808 },
+			"Skill/po_shui/po_shui_0022": { "width": 538, "height": 808 },
+			"Skill/po_shui/po_shui_0024": { "width": 538, "height": 808 },
+			"Skill/po_shui/po_shui_0026": { "width": 538, "height": 808 },
+			"Skill/po_shui/po_shui_0028": { "width": 538, "height": 808 }
+		},
+		"shandian_qiu_": {
+			"Skill/shandian_qiu/shandian_qiu_0000": { "width": 175, "height": 170 },
+			"Skill/shandian_qiu/shandian_qiu_0002": { "width": 175, "height": 170 },
+			"Skill/shandian_qiu/shandian_qiu_0004": { "width": 175, "height": 170 },
+			"Skill/shandian_qiu/shandian_qiu_0006": { "width": 175, "height": 170 }
+		},
+		"zhang_qiliu": {
+			"Skill/zhang_qiliu/zhang_qiliu_0000": { "width": 387, "height": 339 },
+			"Skill/zhang_qiliu/zhang_qiliu_0002": { "width": 387, "height": 339 },
+			"Skill/zhang_qiliu/zhang_qiliu_0004": { "width": 387, "height": 339 }
+		}
+	}
+},
+"events": {
+	"qishou_11_2_1": {},
+	"qishou_11_2_2": {}
+},
+"animations": {
+	"animation_0": {
+		"slots": {
+			"Skill/Skill_shexian_0000": {
+				"color": [
+					{ "time": 2.1667, "color": "ffffffff" },
+					{ "time": 2.2333, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 2.1667, "name": "Skill/Skill_shexian_0000" }
+				]
+			},
+			"Skill/yun_0000": {
+				"color": [
+					{ "time": 0.5667, "color": "ffffffff" },
+					{ "time": 0.8333, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0.5667, "name": "Skill/yun_0000" }
+				]
+			},
+			"dibaotianxing": {
+				"attachment": [
+					{ "time": 0.3333, "name": "Skill/dibaotianxing/dibaotianxing_0000" },
+					{ "time": 0.4, "name": "Skill/dibaotianxing/dibaotianxing_0002" },
+					{ "time": 0.4667, "name": "Skill/dibaotianxing/dibaotianxing_0004" },
+					{ "time": 0.5333, "name": "Skill/dibaotianxing/dibaotianxing_0006" },
+					{ "time": 0.5667, "name": "Skill/dibaotianxing/dibaotianxing_0007" },
+					{ "time": 2.1667, "name": null }
+				]
+			},
+			"lightning_QIU_big": {
+				"attachment": [
+					{ "time": 0.9667, "name": "Skill/lightning_QIU_big/lightning_QIU_big_0000" },
+					{ "time": 1.0333, "name": "Skill/lightning_QIU_big/lightning_QIU_big_0002" },
+					{ "time": 1.1, "name": "Skill/lightning_QIU_big/lightning_QIU_big_0004" },
+					{ "time": 1.1667, "name": "Skill/lightning_QIU_big/lightning_QIU_big_0006" },
+					{ "time": 1.2333, "name": "Skill/lightning_QIU_big/lightning_QIU_big_0008" },
+					{ "time": 1.3, "name": "Skill/lightning_QIU_big/lightning_QIU_big_0010" },
+					{ "time": 1.3667, "name": "Skill/lightning_QIU_big/lightning_QIU_big_0012" },
+					{ "time": 1.4333, "name": "Skill/lightning_QIU_big/lightning_QIU_big_0014" },
+					{ "time": 1.5, "name": "Skill/lightning_QIU_big/lightning_QIU_big_0016" },
+					{ "time": 1.5667, "name": "Skill/lightning_QIU_big/lightning_QIU_big_0018" },
+					{ "time": 1.6333, "name": "Skill/lightning_QIU_big/lightning_QIU_big_0020" },
+					{ "time": 1.7, "name": "Skill/lightning_QIU_big/lightning_QIU_big_0022" },
+					{ "time": 1.7667, "name": "Skill/lightning_QIU_big/lightning_QIU_big_0024" },
+					{ "time": 1.8333, "name": "Skill/lightning_QIU_big/lightning_QIU_big_0026" },
+					{ "time": 1.9, "name": "Skill/lightning_QIU_big/lightning_QIU_big_0028" },
+					{ "time": 1.9667, "name": "Skill/lightning_QIU_big/lightning_QIU_big_0030" },
+					{ "time": 2.0333, "name": "Skill/lightning_QIU_big/lightning_QIU_big_0032" },
+					{ "time": 2.1, "name": "Skill/lightning_QIU_big/lightning_QIU_big_0034" },
+					{ "time": 2.1667, "name": "Skill/lightning_QIU_big/lightning_QIU_big_0036" },
+					{ "time": 2.2, "name": null }
+				]
+			},
+			"lightning_a_": {
+				"attachment": [
+					{ "time": 2.1, "name": "Skill/lightning_a/lightning_a_0000" },
+					{ "time": 2.1667, "name": "Skill/lightning_a/lightning_a_0003" },
+					{ "time": 2.2333, "name": "Skill/lightning_a/lightning_a_0005" },
+					{ "time": 2.3, "name": "Skill/lightning_a/lightning_a_0007" },
+					{ "time": 2.3333, "name": null }
+				]
+			},
+			"lightning_a_2": {
+				"attachment": [
+					{ "time": 2.1333, "name": "Skill/lightning_a/lightning_a_0000" },
+					{ "time": 2.2, "name": "Skill/lightning_a/lightning_a_0003" },
+					{ "time": 2.2667, "name": "Skill/lightning_a/lightning_a_0005" },
+					{ "time": 2.3333, "name": "Skill/lightning_a/lightning_a_0007" },
+					{ "time": 2.3667, "name": null }
+				]
+			},
+			"lightning_a_3": {
+				"attachment": [
+					{ "time": 2.1667, "name": "Skill/lightning_a/lightning_a_0000" },
+					{ "time": 2.2333, "name": "Skill/lightning_a/lightning_a_0003" },
+					{ "time": 2.3, "name": "Skill/lightning_a/lightning_a_0005" },
+					{ "time": 2.3667, "name": "Skill/lightning_a/lightning_a_0007" },
+					{ "time": 2.4, "name": null }
+				]
+			},
+			"lightning_a_4": {
+				"attachment": [
+					{ "time": 2.1333, "name": "Skill/lightning_a/lightning_a_0000" },
+					{ "time": 2.2, "name": "Skill/lightning_a/lightning_a_0003" },
+					{ "time": 2.2667, "name": "Skill/lightning_a/lightning_a_0005" },
+					{ "time": 2.3333, "name": "Skill/lightning_a/lightning_a_0007" },
+					{ "time": 2.3667, "name": null }
+				]
+			},
+			"lightning_b_": {
+				"attachment": [
+					{ "time": 1.3667, "name": "Skill/lightning_b/lightning_b_0000" },
+					{ "time": 1.4, "name": "Skill/lightning_b/lightning_b_0001" },
+					{ "time": 1.4333, "name": "Skill/lightning_b/lightning_b_0002" },
+					{ "time": 1.4667, "name": "Skill/lightning_b/lightning_b_0003" },
+					{ "time": 1.5, "name": null },
+					{ "time": 1.5667, "name": "Skill/lightning_b/lightning_b_0000" },
+					{ "time": 1.6, "name": "Skill/lightning_b/lightning_b_0001" },
+					{ "time": 1.6333, "name": "Skill/lightning_b/lightning_b_0002" },
+					{ "time": 1.6667, "name": "Skill/lightning_b/lightning_b_0003" },
+					{ "time": 1.7, "name": null },
+					{ "time": 1.7667, "name": "Skill/lightning_b/lightning_b_0000" },
+					{ "time": 1.8, "name": "Skill/lightning_b/lightning_b_0001" },
+					{ "time": 1.8333, "name": "Skill/lightning_b/lightning_b_0002" },
+					{ "time": 1.8667, "name": "Skill/lightning_b/lightning_b_0003" },
+					{ "time": 1.9, "name": null },
+					{ "time": 1.9667, "name": "Skill/lightning_b/lightning_b_0000" },
+					{ "time": 2, "name": "Skill/lightning_b/lightning_b_0001" },
+					{ "time": 2.0333, "name": "Skill/lightning_b/lightning_b_0002" },
+					{ "time": 2.0667, "name": "Skill/lightning_b/lightning_b_0003" },
+					{ "time": 2.1, "name": null }
+				]
+			},
+			"po_shui_": {
+				"attachment": [
+					{ "time": 2.2, "name": "Skill/po_shui/po_shui_0000" },
+					{ "time": 2.2667, "name": "Skill/po_shui/po_shui_0002" },
+					{ "time": 2.3333, "name": "Skill/po_shui/po_shui_0004" },
+					{ "time": 2.4, "name": "Skill/po_shui/po_shui_0006" },
+					{ "time": 2.4667, "name": "Skill/po_shui/po_shui_0008" },
+					{ "time": 2.5333, "name": "Skill/po_shui/po_shui_0010" },
+					{ "time": 2.6, "name": "Skill/po_shui/po_shui_0012" },
+					{ "time": 2.6667, "name": "Skill/po_shui/po_shui_0014" },
+					{ "time": 2.7, "name": "Skill/po_shui/po_shui_0016" },
+					{ "time": 2.8, "name": "Skill/po_shui/po_shui_0018" },
+					{ "time": 2.8333, "name": "Skill/po_shui/po_shui_0020" },
+					{ "time": 2.8667, "name": "Skill/po_shui/po_shui_0022" },
+					{ "time": 2.9333, "name": "Skill/po_shui/po_shui_0024" },
+					{ "time": 3, "name": "Skill/po_shui/po_shui_0026" },
+					{ "time": 3.0333, "name": "Skill/po_shui/po_shui_0028" },
+					{ "time": 3.1, "name": null }
+				]
+			},
+			"shandian_qiu_": {
+				"attachment": [
+					{ "time": 2.1667, "name": "Skill/shandian_qiu/shandian_qiu_0000" },
+					{ "time": 2.2333, "name": "Skill/shandian_qiu/shandian_qiu_0002" },
+					{ "time": 2.3, "name": "Skill/shandian_qiu/shandian_qiu_0004" },
+					{ "time": 2.3667, "name": "Skill/shandian_qiu/shandian_qiu_0006" },
+					{ "time": 2.4333, "name": null }
+				]
+			},
+			"zhang_qiliu": {
+				"attachment": [
+					{ "time": 2.1, "name": "Skill/zhang_qiliu/zhang_qiliu_0000" },
+					{ "time": 2.1667, "name": "Skill/zhang_qiliu/zhang_qiliu_0002" },
+					{ "time": 2.2333, "name": "Skill/zhang_qiliu/zhang_qiliu_0004" },
+					{ "time": 2.2667, "name": null }
+				]
+			}
+		},
+		"bones": {
+			"root": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 0.1667, "angle": 0, "curve": "stepped" },
+					{ "time": 0.2, "angle": 0, "curve": "stepped" },
+					{ "time": 0.3, "angle": 0, "curve": "stepped" },
+					{ "time": 0.3333, "angle": 0, "curve": "stepped" },
+					{ "time": 1, "angle": 0, "curve": "stepped" },
+					{ "time": 1.3333, "angle": 0, "curve": "stepped" },
+					{ "time": 1.5, "angle": 0, "curve": "stepped" },
+					{ "time": 1.6667, "angle": 0, "curve": "stepped" },
+					{ "time": 2, "angle": 0, "curve": "stepped" },
+					{ "time": 2.1, "angle": 0, "curve": "stepped" },
+					{ "time": 2.7, "angle": 0, "curve": "stepped" },
+					{ "time": 3.1333, "angle": 0, "curve": "stepped" },
+					{ "time": 3.1667, "angle": 0, "curve": "stepped" },
+					{ "time": 3.2667, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.1667, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.2, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.3, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.3333, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.3333, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.5, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.6667, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 2, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 2.1, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 2.7, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 3.1333, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 3.1667, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 3.2667, "x": 0, "y": 0 }
+				]
+			},
+			"dibaotianxing": {
+				"translate": [
+					{ "time": 0.3333, "x": 682.58, "y": 178.68, "curve": "stepped" },
+					{ "time": 0.5333, "x": 682.58, "y": 178.68 },
+					{ "time": 0.5667, "x": 682.58, "y": 284.41 }
+				],
+				"scale": [
+					{ "time": 0.3333, "x": 1.532, "y": 1.532, "curve": "stepped" },
+					{ "time": 0.5333, "x": 1.532, "y": 1.532 },
+					{ "time": 0.5667, "x": 1.4, "y": 1.4 }
+				]
+			},
+			"lightning_QIU_big": {
+				"translate": [
+					{ "time": 0, "x": 3387.45, "y": 1330.87 },
+					{ "time": 0.9667, "x": 609.21, "y": 303.15 }
+				],
+				"scale": [
+					{ "time": 0.9667, "x": 1.827, "y": 1.827, "curve": "stepped" },
+					{ "time": 2.1667, "x": 1.827, "y": 1.656 }
+				]
+			},
+			"po_shui_": {
+				"translate": [
+					{ "time": 2.2, "x": 662.86, "y": 289.42 }
+				],
+				"scale": [
+					{ "time": 2.2, "x": 1.642, "y": 1.642 }
+				]
+			},
+			"Skill/yun_0000": {
+				"rotate": [
+					{ "time": 0.5667, "angle": -4.17 }
+				],
+				"translate": [
+					{ "time": 0.5667, "x": 618.06, "y": 204.45 }
+				],
+				"scale": [
+					{ "time": 0.5667, "x": 1.75, "y": 1.75 },
+					{ "time": 0.8333, "x": 2.115, "y": 1.961 }
+				]
+			},
+			"zhang_qiliu": {
+				"translate": [
+					{ "time": 2.1, "x": 104.32, "y": 190.99 }
+				],
+				"scale": [
+					{ "time": 2.1, "x": 2.112, "y": 1.265 }
+				]
+			},
+			"lightning_a_": {
+				"rotate": [
+					{ "time": 2.1, "angle": 99.75 }
+				],
+				"translate": [
+					{ "time": 2.1, "x": -51.93, "y": 89.23 }
+				],
+				"scale": [
+					{ "time": 2.1, "x": 3.102, "y": 3.102 }
+				]
+			},
+			"lightning_b_": {
+				"rotate": [
+					{ "time": 1.3667, "angle": 357.6, "curve": "stepped" },
+					{ "time": 1.5667, "angle": -165.13, "curve": "stepped" },
+					{ "time": 1.7667, "angle": 109.99, "curve": "stepped" },
+					{ "time": 1.9667, "angle": 58.64 }
+				],
+				"translate": [
+					{ "time": 1.3667, "x": 132.7, "y": 190.7, "curve": "stepped" },
+					{ "time": 1.5667, "x": 154.68, "y": 162.12, "curve": "stepped" },
+					{ "time": 1.7667, "x": 108.52, "y": 136.85, "curve": "stepped" },
+					{ "time": 1.9667, "x": 107.42, "y": 129.15 }
+				],
+				"scale": [
+					{ "time": 1.3667, "x": 3.414, "y": 3.414, "curve": "stepped" },
+					{ "time": 1.5667, "x": 2.352, "y": 2.352, "curve": "stepped" },
+					{ "time": 1.7667, "x": -2.055, "y": -2.055, "curve": "stepped" },
+					{ "time": 1.9667, "x": 2.291, "y": 3.668 }
+				]
+			},
+			"shandian_qiu_": {
+				"translate": [
+					{ "time": 2.1667, "x": 617.44, "y": 245.47 }
+				],
+				"scale": [
+					{ "time": 2.1667, "x": 15.984, "y": 15.984 }
+				]
+			},
+			"Skill/Skill_shexian_0000": {
+				"translate": [
+					{ "time": 2.1667, "x": 617.36, "y": 243.2 }
+				],
+				"scale": [
+					{ "time": 2.1667, "x": 3.751, "y": 3.751 },
+					{ "time": 2.2333, "x": 2.253, "y": 2.253 }
+				]
+			},
+			"lightning_a_2": {
+				"rotate": [
+					{ "time": 2.1333, "angle": -83.97 }
+				],
+				"translate": [
+					{ "time": 2.1333, "x": 1254.84, "y": 281.13 }
+				],
+				"scale": [
+					{ "time": 2.1333, "x": 4.818, "y": 4.818 }
+				]
+			},
+			"lightning_a_3": {
+				"rotate": [
+					{ "time": 2.1667, "angle": -86.03 }
+				],
+				"translate": [
+					{ "time": 2.1667, "x": 1578.48, "y": 201.63 }
+				],
+				"scale": [
+					{ "time": 2.1667, "x": 4.966, "y": 4.966 }
+				]
+			},
+			"lightning_a_4": {
+				"rotate": [
+					{ "time": 2.1333, "angle": -86.03 }
+				],
+				"translate": [
+					{ "time": 2.1333, "x": 1470.2, "y": 266.6 }
+				],
+				"scale": [
+					{ "time": 2.1333, "x": 12.843, "y": 6.674 }
+				]
+			},
+			"TX": {
+				"translate": [
+					{ "time": 0, "x": -2.94, "y": 37.32 }
+				]
+			}
+		},
+		"drawOrder": [
+			{ "time": 0.2 },
+			{ "time": 0.3 },
+			{ "time": 0.3333 },
+			{ "time": 1.5333 },
+			{ "time": 3.0333 },
+			{ "time": 3.1333 }
+		],
+		"events": [
+			{ "time": 0.5667, "name": "qishou_11_2_2" },
+			{ "time": 2.1667, "name": "qishou_11_2_1" }
+		]
+	}
+}
+}

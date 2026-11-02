@@ -1,0 +1,62 @@
+
+seffect_54514131012.png
+size: 1064,1064
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+att/boom/boom_0021
+  rotate: false
+  xy: 878, 891
+  size: 111, 171
+  orig: 455, 410
+  offset: 191, 135
+  index: -1
+att/boom/boom_0023
+  rotate: false
+  xy: 325, 44
+  size: 213, 234
+  orig: 455, 410
+  offset: 132, 110
+  index: -1
+att/boom/boom_0026
+  rotate: false
+  xy: 448, 304
+  size: 418, 375
+  orig: 455, 410
+  offset: 21, 16
+  index: -1
+att/boom/boom_0028
+  rotate: false
+  xy: 448, 681
+  size: 428, 381
+  orig: 455, 410
+  offset: 16, 13
+  index: -1
+att/boom/boom_0031
+  rotate: false
+  xy: 2, 666
+  size: 444, 396
+  orig: 455, 410
+  offset: 8, 4
+  index: -1
+att/boom/boom_0034
+  rotate: false
+  xy: 2, 280
+  size: 435, 384
+  orig: 455, 410
+  offset: 13, 18
+  index: -1
+att/boom/boom_0037
+  rotate: true
+  xy: 540, 2
+  size: 300, 318
+  orig: 455, 410
+  offset: 110, 87
+  index: -1
+att/boom/boom_0039
+  rotate: true
+  xy: 2, 46
+  size: 232, 321
+  orig: 455, 410
+  offset: 180, 86
+  index: -1

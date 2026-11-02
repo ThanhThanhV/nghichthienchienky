@@ -1,0 +1,59 @@
+{
+"skeleton": { "hash": "/qtSN42Tn41vuZ2u6Msf4GdCFGw", "spine": "3.5.35", "width": 0, "height": 0 },
+"bones": [
+	{ "name": "root" },
+	{ "name": "Bayonetta_zx", "parent": "root" },
+	{ "name": "effect", "parent": "Bayonetta_zx" },
+	{ "name": "skill", "parent": "effect" },
+	{ "name": "mingzhong", "parent": "skill" }
+],
+"slots": [
+	{ "name": "mingzhong", "bone": "mingzhong" }
+],
+"skins": {
+	"default": {
+		"mingzhong": {
+			"effect/usk/mingzhong/jnmz_0000": { "width": 191, "height": 158 },
+			"effect/usk/mingzhong/jnmz_0002": { "width": 191, "height": 158 },
+			"effect/usk/mingzhong/jnmz_0004": { "width": 191, "height": 158 },
+			"effect/usk/mingzhong/jnmz_0006": { "width": 191, "height": 158 },
+			"effect/usk/mingzhong/jnmz_0008": { "width": 191, "height": 158 },
+			"effect/usk/mingzhong/jnmz_0010": { "width": 191, "height": 158 },
+			"effect/usk/mingzhong/jnmz_0012": { "width": 191, "height": 158 },
+			"effect/usk/mingzhong/jnmz_0014": { "width": 191, "height": 158 }
+		}
+	}
+},
+"events": {
+	"hit_11_1_1": {}
+},
+"animations": {
+	"animation_0": {
+		"slots": {
+			"mingzhong": {
+				"attachment": [
+					{ "time": 0, "name": "effect/usk/mingzhong/jnmz_0000" },
+					{ "time": 0.0667, "name": "effect/usk/mingzhong/jnmz_0002" },
+					{ "time": 0.1333, "name": "effect/usk/mingzhong/jnmz_0004" },
+					{ "time": 0.2, "name": "effect/usk/mingzhong/jnmz_0006" },
+					{ "time": 0.2667, "name": "effect/usk/mingzhong/jnmz_0008" },
+					{ "time": 0.3333, "name": "effect/usk/mingzhong/jnmz_0010" },
+					{ "time": 0.4, "name": "effect/usk/mingzhong/jnmz_0012" },
+					{ "time": 0.4667, "name": "effect/usk/mingzhong/jnmz_0014" },
+					{ "time": 0.5333, "name": null }
+				]
+			}
+		},
+		"bones": {
+			"mingzhong": {
+				"scale": [
+					{ "time": 0, "x": 4, "y": 4 }
+				]
+			}
+		},
+		"events": [
+			{ "time": 0, "name": "hit_11_1_1" }
+		]
+	}
+}
+}

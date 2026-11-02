@@ -1,0 +1,61 @@
+{
+"skeleton": { "hash": "z+wNrD/eHzjsKumXroa+xbcBRJo", "spine": "3.5.35", "width": 0, "height": 0 },
+"bones": [
+	{ "name": "root" },
+	{ "name": "skill_hit", "parent": "root" }
+],
+"slots": [
+	{ "name": "skill_hit", "bone": "skill_hit" }
+],
+"skins": {
+	"default": {
+		"skill_hit": {
+			"texiao/skill/baodian/bd1_0000": { "width": 256, "height": 256 },
+			"texiao/skill/baodian/bd1_0002": { "width": 256, "height": 256 },
+			"texiao/skill/baodian/bd1_0004": { "width": 256, "height": 256 },
+			"texiao/skill/baodian/bd1_0006": { "width": 256, "height": 256 },
+			"texiao/skill/baodian/bd1_0008": { "width": 256, "height": 256 },
+			"texiao/skill/baodian/bd1_0010": { "width": 256, "height": 256 },
+			"texiao/skill/baodian/bd1_0012": { "width": 256, "height": 256 }
+		}
+	}
+},
+"events": {
+	"hit_11_3_1": {},
+	"hit_11_3_2": {},
+	"hit_11_3_3": {}
+},
+"animations": {
+	"animation_0": {
+		"slots": {
+			"skill_hit": {
+				"attachment": [
+					{ "time": 0, "name": "texiao/skill/baodian/bd1_0000" },
+					{ "time": 0.0667, "name": "texiao/skill/baodian/bd1_0002" },
+					{ "time": 0.1333, "name": "texiao/skill/baodian/bd1_0004" },
+					{ "time": 0.2, "name": "texiao/skill/baodian/bd1_0006" },
+					{ "time": 0.2667, "name": "texiao/skill/baodian/bd1_0008" },
+					{ "time": 0.3333, "name": "texiao/skill/baodian/bd1_0010" },
+					{ "time": 0.4, "name": "texiao/skill/baodian/bd1_0012" },
+					{ "time": 0.4667, "name": null }
+				]
+			}
+		},
+		"bones": {
+			"skill_hit": {
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 2, "y": 2 }
+				]
+			}
+		},
+		"events": [
+			{ "time": 0, "name": "hit_11_3_3" },
+			{ "time": 0.1667, "name": "hit_11_3_2" },
+			{ "time": 0.3333, "name": "hit_11_3_1" }
+		]
+	}
+}
+}

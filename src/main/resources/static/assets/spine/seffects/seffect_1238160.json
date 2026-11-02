@@ -1,0 +1,142 @@
+{
+"skeleton": { "hash": "SLq6drWW7UeJtLerHsYLOb2mQVI", "spine": "3.5.35", "width": 0, "height": 0 },
+"bones": [
+	{ "name": "root" },
+	{ "name": "txZH", "parent": "root" },
+	{ "name": "gjtx3", "parent": "txZH" },
+	{ "name": "boom7", "parent": "gjtx3", "scaleX": -1 },
+	{ "name": "jiguang7", "parent": "gjtx3", "scaleX": -1 },
+	{ "name": "juqi7", "parent": "gjtx3", "scaleX": -1 }
+],
+"slots": [
+	{ "name": "juqi7", "bone": "juqi7" },
+	{ "name": "tuxi7", "bone": "jiguang7" },
+	{ "name": "baodian7", "bone": "boom7" }
+],
+"skins": {
+	"default": {
+		"baodian7": {
+			"image/txgongji/3/zhuaheng/zhuaheng_0001": { "width": 247, "height": 804 },
+			"image/txgongji/3/zhuaheng/zhuaheng_0003": { "width": 247, "height": 804 },
+			"image/txgongji/3/zhuaheng/zhuaheng_0005": { "width": 247, "height": 804 },
+			"image/txgongji/3/zhuaheng/zhuaheng_0007": { "width": 247, "height": 804 }
+		},
+		"juqi7": {
+			"image/txgongji/3/zhuayin/zhuayin_0003": { "width": 550, "height": 191 },
+			"image/txgongji/3/zhuayin/zhuayin_0006": { "width": 550, "height": 191 },
+			"image/txgongji/3/zhuayin/zhuayin_0008": { "width": 550, "height": 191 }
+		},
+		"tuxi7": {
+			"image/txgongji/3/zhua_0003": { "width": 225, "height": 217 }
+		}
+	}
+},
+"events": {
+	"back": {},
+	"faqi_1": {},
+	"shakestart_10": {}
+},
+"animations": {
+	"animation_0": {
+		"slots": {
+			"baodian7": {
+				"attachment": [
+					{ "time": 0.8333, "name": "image/txgongji/3/zhuaheng/zhuaheng_0001" },
+					{ "time": 0.9, "name": "image/txgongji/3/zhuaheng/zhuaheng_0003" },
+					{ "time": 0.9667, "name": "image/txgongji/3/zhuaheng/zhuaheng_0005" },
+					{ "time": 1.0333, "name": "image/txgongji/3/zhuaheng/zhuaheng_0007" },
+					{ "time": 1.0667, "name": null }
+				]
+			},
+			"juqi7": {
+				"color": [
+					{ "time": 1.0333, "color": "ffffffff" },
+					{ "time": 1.3667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0.9, "name": "image/txgongji/3/zhuayin/zhuayin_0003" },
+					{ "time": 0.9333, "name": "image/txgongji/3/zhuayin/zhuayin_0006" },
+					{ "time": 1, "name": "image/txgongji/3/zhuayin/zhuayin_0008" }
+				]
+			},
+			"tuxi7": {
+				"color": [
+					{ "time": 0.6333, "color": "ffffff00" },
+					{ "time": 0.8333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 1, "color": "ffffffff" },
+					{ "time": 1.1, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0.6333, "name": "image/txgongji/3/zhua_0003" }
+				]
+			}
+		},
+		"bones": {
+			"boom7": {
+				"rotate": [
+					{ "time": 0.8333, "angle": 3.23 },
+					{ "time": 0.9333, "angle": -37.15 },
+					{ "time": 1, "angle": -64.14 }
+				],
+				"translate": [
+					{ "time": 0.8333, "x": 164.57, "y": 644.82 },
+					{ "time": 0.9333, "x": 257.31, "y": 687 },
+					{ "time": 1, "x": -146.59, "y": 421.31 },
+					{ "time": 1.0667, "x": -397.39, "y": 355.31 }
+				],
+				"scale": [
+					{ "time": 0.8333, "x": 3.183, "y": 1.5 },
+					{ "time": 0.9333, "x": 4.68, "y": 1.5 }
+				]
+			},
+			"jiguang7": {
+				"rotate": [
+					{ "time": 0.6333, "angle": 62.12, "curve": "stepped" },
+					{ "time": 0.8333, "angle": 62.12 },
+					{ "time": 0.9333, "angle": -10.17 },
+					{ "time": 1.1, "angle": -95.33 }
+				],
+				"translate": [
+					{
+						"time": 0.6333,
+						"x": 116.23,
+						"y": 808.26,
+						"curve": [ 0.243, 0, 0.649, 0.6 ]
+					},
+					{
+						"time": 0.8333,
+						"x": 87.18,
+						"y": 840.71,
+						"curve": [ 0.243, 0, 0.649, 0.6 ]
+					},
+					{ "time": 0.9333, "x": 21.76, "y": 332.42 },
+					{ "time": 1.0333, "x": -772.17, "y": 243.61 },
+					{ "time": 1.1, "x": -2141.85, "y": 184.41 }
+				],
+				"scale": [
+					{ "time": 0.6333, "x": 2, "y": 2, "curve": "stepped" },
+					{ "time": 0.8333, "x": 2, "y": 2 },
+					{ "time": 1.1, "x": 3, "y": 3 }
+				]
+			},
+			"juqi7": {
+				"rotate": [
+					{ "time": 0.9, "angle": -9.3 }
+				],
+				"translate": [
+					{ "time": 0.9, "x": -410, "y": -30.62, "curve": "stepped" },
+					{ "time": 0.9667, "x": -410, "y": -30.62 }
+				],
+				"scale": [
+					{ "time": 0.9, "x": 2.363, "y": 6.975 }
+				]
+			}
+		},
+		"events": [
+			{ "time": 0.9333, "name": "shakestart_10" },
+			{ "time": 1.0667, "name": "faqi_1" },
+			{ "time": 3.0333, "name": "back" }
+		]
+	}
+}
+}

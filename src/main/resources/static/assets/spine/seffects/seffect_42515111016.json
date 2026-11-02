@@ -1,0 +1,367 @@
+{
+"skeleton": { "hash": "I5/Mcc88cTlZfju6wsNsq0ZDvaY", "spine": "3.5.35", "width": 0, "height": 0 },
+"bones": [
+	{ "name": "root" },
+	{ "name": "zx", "parent": "root" },
+	{ "name": "TX", "parent": "zx" },
+	{ "name": "suskill", "parent": "TX" },
+	{ "name": "boom_sp", "parent": "suskill" },
+	{ "name": "kuan_a_0027", "parent": "suskill" },
+	{ "name": "kuan_b_0037", "parent": "suskill" },
+	{ "name": "line_shao_0000", "parent": "suskill" },
+	{ "name": "zidan", "parent": "suskill" }
+],
+"slots": [
+	{ "name": "SKILL_SB1", "bone": "root", "attachment": "SKILL_SB1" },
+	{ "name": "SKILL_SB2", "bone": "root", "attachment": "SKILL_SB2" },
+	{ "name": "SKILL_SHENGSHOU", "bone": "root", "attachment": "SKILL_SHENGSHOU" },
+	{ "name": "SKILL_SHOU", "bone": "root", "attachment": "SKILL_SHOU" },
+	{ "name": "zidan", "bone": "zidan" },
+	{ "name": "boom_sp", "bone": "boom_sp" },
+	{ "name": "kuan_a_0027", "bone": "kuan_a_0027", "blend": "additive" },
+	{ "name": "kuan_b_0037", "bone": "kuan_b_0037", "blend": "additive" },
+	{ "name": "line_shao_0000", "bone": "line_shao_0000", "blend": "additive" }
+],
+"skins": {
+	"default": {
+		"boom_sp": {
+			"tx/superski/boom/boom_0000": { "width": 506, "height": 425 },
+			"tx/superski/boom/boom_0002": { "width": 506, "height": 425 },
+			"tx/superski/boom/boom_0004": { "width": 506, "height": 425 },
+			"tx/superski/boom/boom_0006": { "width": 506, "height": 425 },
+			"tx/superski/boom/boom_0008": { "width": 506, "height": 425 },
+			"tx/superski/boom/boom_0010": { "width": 506, "height": 425 },
+			"tx/superski/boom/boom_0012": { "width": 506, "height": 425 },
+			"tx/superski/boom/boom_0014": { "width": 506, "height": 425 },
+			"tx/superski/boom/boom_0016": { "width": 506, "height": 425 }
+		},
+		"kuan_a_0027": {
+			"tx/superski/kuan_a_0027": { "width": 158, "height": 151 }
+		},
+		"kuan_b_0037": {
+			"tx/superski/kuan_b_0037": { "width": 218, "height": 218 }
+		},
+		"line_shao_0000": {
+			"tx/superski/line_shao_0000": { "width": 16, "height": 700 }
+		},
+		"zidan": {
+			"tx/superski/zi_dan/zi_dan_0000": { "width": 56, "height": 994 }
+		}
+	}
+},
+"events": {
+	"hit_31_1_1": {}
+},
+"animations": {
+	"superskill": {
+		"slots": {
+			"SKILL_SB1": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"SKILL_SB2": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"SKILL_SHENGSHOU": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"SKILL_SHOU": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"boom_sp": {
+				"color": [
+					{ "time": 0.9, "color": "ffffffff" },
+					{ "time": 1.0667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0.4333, "name": "tx/superski/boom/boom_0000" },
+					{ "time": 0.5, "name": "tx/superski/boom/boom_0002" },
+					{ "time": 0.5667, "name": "tx/superski/boom/boom_0004" },
+					{ "time": 0.6333, "name": "tx/superski/boom/boom_0006" },
+					{ "time": 0.7, "name": "tx/superski/boom/boom_0008" },
+					{ "time": 0.7667, "name": "tx/superski/boom/boom_0010" },
+					{ "time": 0.8333, "name": "tx/superski/boom/boom_0012" },
+					{ "time": 0.9, "name": "tx/superski/boom/boom_0014" },
+					{ "time": 0.9667, "name": "tx/superski/boom/boom_0016" }
+				]
+			},
+			"kuan_a_0027": {
+				"color": [
+					{ "time": 0.0333, "color": "ffffff85" },
+					{ "time": 0.0667, "color": "ffffffff" },
+					{ "time": 0.1, "color": "ffffff00" },
+					{ "time": 0.1667, "color": "ffffffff" },
+					{ "time": 0.2, "color": "ffffff5c" },
+					{ "time": 0.2667, "color": "ffffffff" }
+				],
+				"attachment": [
+					{ "time": 0, "name": null },
+					{ "time": 0.0333, "name": "tx/superski/kuan_a_0027" },
+					{ "time": 0.5, "name": null }
+				]
+			},
+			"kuan_b_0037": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 0.0667, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 0.1, "color": "ffffff00" },
+					{ "time": 0.1333, "color": "ffffffff" },
+					{ "time": 0.2, "color": "ffffff79" },
+					{ "time": 0.2667, "color": "ffffffff" }
+				],
+				"attachment": [
+					{ "time": 0, "name": "tx/superski/kuan_b_0037" },
+					{ "time": 0.5, "name": null }
+				]
+			},
+			"line_shao_0000": {
+				"attachment": [
+					{ "time": 0, "name": "tx/superski/line_shao_0000" },
+					{ "time": 0.0667, "name": null },
+					{ "time": 0.1, "name": "tx/superski/line_shao_0000" },
+					{ "time": 0.1667, "name": null },
+					{ "time": 0.2, "name": "tx/superski/line_shao_0000" },
+					{ "time": 0.2667, "name": null }
+				]
+			},
+			"zidan": {
+				"attachment": [
+					{ "time": 0.3, "name": "tx/superski/zi_dan/zi_dan_0000" },
+					{ "time": 0.4667, "name": null }
+				]
+			}
+		},
+		"bones": {
+			"kuan_a_0027": {
+				"translate": [
+					{ "time": 0, "x": 392.86, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 2.467, "y": 1.01 },
+					{ "time": 0.0667, "x": 3.149, "y": 1.289 },
+					{ "time": 0.1333, "x": 3.013, "y": 1.233 },
+					{ "time": 0.2333, "x": 3.344, "y": 1.368 }
+				]
+			},
+			"kuan_b_0037": {
+				"translate": [
+					{ "time": 0, "x": 396.65, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 3.114, "y": 1.274 }
+				]
+			},
+			"line_shao_0000": {
+				"translate": [
+					{ "time": 0, "x": 398.37, "y": 1264.65 }
+				],
+				"scale": [
+					{ "time": 0, "x": 3.686, "y": 3.686 }
+				]
+			},
+			"boom_sp": {
+				"translate": [
+					{ "time": 0.4333, "x": 328.06, "y": 258.57 }
+				],
+				"scale": [
+					{ "time": 0.4333, "x": 2.765, "y": 2.765 }
+				]
+			},
+			"suskill": {
+				"translate": [
+					{ "time": 0, "x": -391.76, "y": 0 }
+				]
+			},
+			"zidan": {
+				"translate": [
+					{ "time": 0.3, "x": 396.26, "y": 5008.11 },
+					{ "time": 0.4667, "x": 396.26, "y": 1841.05 }
+				],
+				"scale": [
+					{ "time": 0.3, "x": 4, "y": 4 }
+				]
+			}
+		}
+	},
+	"animation_0": {
+		"slots": {
+			"SKILL_SB1": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"SKILL_SB2": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"SKILL_SHENGSHOU": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"SKILL_SHOU": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"boom_sp": {
+				"color": [
+					{ "time": 0.9, "color": "ffffffff" },
+					{ "time": 1.0667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0.4333, "name": "tx/superski/boom/boom_0000" },
+					{ "time": 0.5, "name": "tx/superski/boom/boom_0002" },
+					{ "time": 0.5667, "name": "tx/superski/boom/boom_0004" },
+					{ "time": 0.6333, "name": "tx/superski/boom/boom_0006" },
+					{ "time": 0.7, "name": "tx/superski/boom/boom_0008" },
+					{ "time": 0.7667, "name": "tx/superski/boom/boom_0010" },
+					{ "time": 0.8333, "name": "tx/superski/boom/boom_0012" },
+					{ "time": 0.9, "name": "tx/superski/boom/boom_0014" },
+					{ "time": 0.9667, "name": "tx/superski/boom/boom_0016" }
+				]
+			},
+			"line_shao_0000": {
+				"attachment": [
+					{ "time": 0, "name": "tx/superski/line_shao_0000" },
+					{ "time": 0.0667, "name": null },
+					{ "time": 0.1, "name": "tx/superski/line_shao_0000" },
+					{ "time": 0.1667, "name": null },
+					{ "time": 0.2, "name": "tx/superski/line_shao_0000" },
+					{ "time": 0.2667, "name": null }
+				]
+			},
+			"zidan": {
+				"attachment": [
+					{ "time": 0.3333, "name": "tx/superski/zi_dan/zi_dan_0000" },
+					{ "time": 0.5, "name": null }
+				]
+			}
+		},
+		"bones": {
+			"line_shao_0000": {
+				"translate": [
+					{ "time": 0, "x": 398.37, "y": 1264.65 }
+				],
+				"scale": [
+					{ "time": 0, "x": 3.686, "y": 3.686 }
+				]
+			},
+			"boom_sp": {
+				"translate": [
+					{ "time": 0.4333, "x": 328.06, "y": 258.57 }
+				],
+				"scale": [
+					{ "time": 0.4333, "x": 2.765, "y": 2.765 }
+				]
+			},
+			"suskill": {
+				"translate": [
+					{ "time": 0, "x": -391.76, "y": 0 }
+				]
+			},
+			"zidan": {
+				"translate": [
+					{ "time": 0.3333, "x": 396.26, "y": 5008.11 },
+					{ "time": 0.5, "x": 396.26, "y": 1841.05 }
+				],
+				"scale": [
+					{ "time": 0.3333, "x": 4, "y": 4 }
+				]
+			}
+		},
+		"events": [
+			{ "time": 0.5, "name": "hit_31_1_1" }
+		]
+	},
+	"animation_1": {
+		"slots": {
+			"SKILL_SB1": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"SKILL_SB2": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"SKILL_SHENGSHOU": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"SKILL_SHOU": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"kuan_a_0027": {
+				"color": [
+					{ "time": 0.0333, "color": "ffffff85" },
+					{ "time": 0.0667, "color": "ffffffff" },
+					{ "time": 0.1, "color": "ffffff00" },
+					{ "time": 0.1667, "color": "ffffffff" },
+					{ "time": 0.2, "color": "ffffff5c" },
+					{ "time": 0.2667, "color": "ffffffff" }
+				],
+				"attachment": [
+					{ "time": 0, "name": null },
+					{ "time": 0.0333, "name": "tx/superski/kuan_a_0027" },
+					{ "time": 0.5, "name": null }
+				]
+			},
+			"kuan_b_0037": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" },
+					{ "time": 0.0667, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 0.1, "color": "ffffff00" },
+					{ "time": 0.1333, "color": "ffffffff" },
+					{ "time": 0.2, "color": "ffffff79" },
+					{ "time": 0.2667, "color": "ffffffff" }
+				],
+				"attachment": [
+					{ "time": 0, "name": "tx/superski/kuan_b_0037" },
+					{ "time": 0.5, "name": null }
+				]
+			}
+		},
+		"bones": {
+			"kuan_a_0027": {
+				"translate": [
+					{ "time": 0, "x": 392.86, "y": 0, "curve": "stepped" },
+					{ "time": 1.0667, "x": 392.86, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 2.467, "y": 1.01 },
+					{ "time": 0.0667, "x": 3.149, "y": 1.289 },
+					{ "time": 0.1333, "x": 3.013, "y": 1.233 },
+					{ "time": 0.2333, "x": 3.344, "y": 1.368 }
+				]
+			},
+			"kuan_b_0037": {
+				"translate": [
+					{ "time": 0, "x": 396.65, "y": 0, "curve": "stepped" },
+					{ "time": 1.0667, "x": 396.65, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 3.114, "y": 1.274 }
+				]
+			},
+			"suskill": {
+				"translate": [
+					{ "time": 0, "x": -391.2, "y": 0 }
+				]
+			}
+		}
+	}
+}
+}

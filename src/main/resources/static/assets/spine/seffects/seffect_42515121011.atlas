@@ -1,0 +1,90 @@
+
+seffect_42515121011.png
+size: 629,629
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+att/att_boom/att_boom_0000
+  rotate: false
+  xy: 326, 29
+  size: 170, 123
+  orig: 236, 282
+  offset: 52, 75
+  index: -1
+att/att_boom/att_boom_0002
+  rotate: true
+  xy: 168, 77
+  size: 207, 156
+  orig: 236, 282
+  offset: 11, 69
+  index: -1
+att/att_boom/att_boom_0004
+  rotate: false
+  xy: 161, 286
+  size: 162, 244
+  orig: 236, 282
+  offset: 40, 13
+  index: -1
+att/att_boom/att_boom_0006
+  rotate: false
+  xy: 2, 278
+  size: 157, 252
+  orig: 236, 282
+  offset: 40, 13
+  index: -1
+att/att_dan_a/att_dan_a_0000
+  rotate: false
+  xy: 2, 63
+  size: 164, 213
+  orig: 262, 238
+  offset: 12, 12
+  index: -1
+att/att_dan_a/att_dan_a_0002
+  rotate: false
+  xy: 326, 154
+  size: 145, 167
+  orig: 262, 238
+  offset: 64, 36
+  index: -1
+att/att_dan_a/att_dan_a_0004
+  rotate: false
+  xy: 504, 164
+  size: 123, 184
+  orig: 262, 238
+  offset: 47, 24
+  index: -1
+att/att_dan_b/att_dan_b_0010
+  rotate: true
+  xy: 504, 350
+  size: 277, 42
+  orig: 412, 62
+  offset: 17, 9
+  index: -1
+att/att_dan_b/att_dan_b_0011
+  rotate: false
+  xy: 2, 578
+  size: 394, 49
+  orig: 412, 62
+  offset: 12, 7
+  index: -1
+att/att_dan_b/att_dan_b_0012
+  rotate: false
+  xy: 2, 532
+  size: 377, 44
+  orig: 412, 62
+  offset: 10, 8
+  index: -1
+att/att_dan_b/att_dan_b_0013
+  rotate: true
+  xy: 548, 376
+  size: 251, 29
+  orig: 412, 62
+  offset: 11, 16
+  index: -1
+att/att_kuos_0012
+  rotate: false
+  xy: 325, 323
+  size: 177, 207
+  orig: 208, 215
+  offset: 18, 6
+  index: -1

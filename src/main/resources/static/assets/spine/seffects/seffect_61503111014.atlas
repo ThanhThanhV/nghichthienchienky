@@ -1,0 +1,425 @@
+
+seffect_61503111014.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+TX/USKILL/BG/BG_0027
+  rotate: false
+  xy: 2, 1086
+  size: 540, 960
+  orig: 540, 960
+  offset: 0, 0
+  index: -1
+TX/USKILL/bao_smoke/bao_smoke_0054
+  rotate: false
+  xy: 1086, 134
+  size: 540, 203
+  orig: 540, 960
+  offset: 0, 227
+  index: -1
+TX/USKILL/bao_smoke/bao_smoke_0056
+  rotate: true
+  xy: 1628, 422
+  size: 540, 354
+  orig: 540, 960
+  offset: 0, 111
+  index: -1
+TX/USKILL/bao_smoke/bao_smoke_0064
+  rotate: false
+  xy: 1086, 339
+  size: 540, 623
+  orig: 540, 960
+  offset: 0, 0
+  index: -1
+TX/USKILL/bao_smoke/bao_smoke_0070
+  rotate: false
+  xy: 2, 124
+  size: 540, 960
+  orig: 540, 960
+  offset: 0, 0
+  index: -1
+TX/USKILL/bao_smoke/bao_smoke_0072
+  rotate: false
+  xy: 544, 1086
+  size: 540, 960
+  orig: 540, 960
+  offset: 0, 0
+  index: -1
+TX/USKILL/bao_smoke/bao_smoke_0076
+  rotate: true
+  xy: 1086, 1506
+  size: 540, 960
+  orig: 540, 960
+  offset: 0, 0
+  index: -1
+TX/USKILL/bao_smoke/bao_smoke_0079
+  rotate: true
+  xy: 1086, 964
+  size: 540, 960
+  orig: 540, 960
+  offset: 0, 0
+  index: -1
+TX/USKILL/bao_smoke/bao_smoke_0082
+  rotate: false
+  xy: 544, 124
+  size: 540, 960
+  orig: 540, 960
+  offset: 0, 0
+  index: -1
+TX/USKILL/smoke/smoke_0063
+  rotate: true
+  xy: 1628, 125
+  size: 295, 320
+  orig: 308, 328
+  offset: 2, 1
+  index: -1
+TX/USKILL/smoke/smoke_0064
+  rotate: true
+  xy: 1628, 125
+  size: 295, 320
+  orig: 308, 328
+  offset: 2, 1
+  index: -1
+TX/USKILL/white_0000
+  rotate: false
+  xy: 1984, 942
+  size: 20, 20
+  orig: 20, 20
+  offset: 0, 0
+  index: -1
+jian/jian_0041
+  rotate: true
+  xy: 2, 10
+  size: 112, 345
+  orig: 119, 353
+  offset: 2, 2
+  index: -1
+jian/jian_0042
+  rotate: true
+  xy: 349, 10
+  size: 112, 345
+  orig: 119, 353
+  offset: 2, 2
+  index: -1
+jian/jian_0043
+  rotate: true
+  xy: 696, 10
+  size: 112, 345
+  orig: 119, 353
+  offset: 2, 2
+  index: -1
+jian/jian_0044
+  rotate: true
+  xy: 1086, 20
+  size: 112, 345
+  orig: 119, 353
+  offset: 2, 2
+  index: -1
+jian/jian_0045
+  rotate: true
+  xy: 1433, 11
+  size: 112, 345
+  orig: 119, 353
+  offset: 2, 2
+  index: -1
+
+seffect_615031110142.png
+size: 1960,1960
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+TX/USKILL/bao_smoke/bao_smoke_0058
+  rotate: true
+  xy: 2, 258
+  size: 540, 506
+  orig: 540, 960
+  offset: 0, 0
+  index: -1
+TX/USKILL/bao_smoke/bao_smoke_0060
+  rotate: false
+  xy: 2, 800
+  size: 540, 554
+  orig: 540, 960
+  offset: 0, 0
+  index: -1
+TX/USKILL/bao_smoke/bao_smoke_0062
+  rotate: false
+  xy: 2, 1356
+  size: 540, 602
+  orig: 540, 960
+  offset: 0, 0
+  index: -1
+TX/USKILL/smoke/smoke_0054
+  rotate: true
+  xy: 544, 803
+  size: 161, 172
+  orig: 308, 328
+  offset: 61, 39
+  index: -1
+TX/USKILL/smoke/smoke_0055
+  rotate: true
+  xy: 544, 803
+  size: 161, 172
+  orig: 308, 328
+  offset: 61, 39
+  index: -1
+TX/USKILL/smoke/smoke_0056
+  rotate: true
+  xy: 1467, 369
+  size: 184, 195
+  orig: 308, 328
+  offset: 54, 26
+  index: -1
+TX/USKILL/smoke/smoke_0057
+  rotate: true
+  xy: 1467, 369
+  size: 184, 195
+  orig: 308, 328
+  offset: 54, 26
+  index: -1
+TX/USKILL/smoke/smoke_0058
+  rotate: false
+  xy: 1498, 119
+  size: 217, 220
+  orig: 308, 328
+  offset: 32, 24
+  index: -1
+TX/USKILL/smoke/smoke_0059
+  rotate: false
+  xy: 1498, 119
+  size: 217, 220
+  orig: 308, 328
+  offset: 32, 24
+  index: -1
+TX/USKILL/smoke/smoke_0060
+  rotate: true
+  xy: 497, 12
+  size: 244, 265
+  orig: 308, 328
+  offset: 41, 17
+  index: -1
+TX/USKILL/smoke/smoke_0061
+  rotate: true
+  xy: 497, 12
+  size: 244, 265
+  orig: 308, 328
+  offset: 41, 17
+  index: -1
+TX/USKILL/smoke/smoke_0062
+  rotate: false
+  xy: 1396, 979
+  size: 285, 291
+  orig: 308, 328
+  offset: 10, 11
+  index: -1
+TX/USKILL/smoke/smoke_0065
+  rotate: true
+  xy: 764, 9
+  size: 296, 284
+  orig: 308, 328
+  offset: 1, 22
+  index: -1
+TX/USKILL/smoke/smoke_0066
+  rotate: true
+  xy: 764, 9
+  size: 296, 284
+  orig: 308, 328
+  offset: 1, 22
+  index: -1
+TX/USKILL/smoke/smoke_0067
+  rotate: true
+  xy: 1278, 74
+  size: 287, 218
+  orig: 308, 328
+  offset: 9, 28
+  index: -1
+TX/USKILL/smoke/smoke_0068
+  rotate: true
+  xy: 1278, 74
+  size: 287, 218
+  orig: 308, 328
+  offset: 9, 28
+  index: -1
+TX/USKILL/smoke/smoke_0069
+  rotate: false
+  xy: 1664, 341
+  size: 281, 212
+  orig: 308, 328
+  offset: 12, 32
+  index: -1
+TX/USKILL/smoke/smoke_0070
+  rotate: false
+  xy: 1664, 341
+  size: 281, 212
+  orig: 308, 328
+  offset: 12, 32
+  index: -1
+TX/USKILL/smoke/smoke_0071
+  rotate: false
+  xy: 1683, 1070
+  size: 273, 200
+  orig: 308, 328
+  offset: 17, 45
+  index: -1
+TX/gong/gong_0000
+  rotate: true
+  xy: 1277, 363
+  size: 492, 188
+  orig: 521, 279
+  offset: 12, 0
+  index: -1
+TX/gong/gong_0001
+  rotate: true
+  xy: 890, 358
+  size: 492, 194
+  orig: 521, 279
+  offset: 12, 0
+  index: -1
+TX/gong/gong_0003
+  rotate: false
+  xy: 1440, 1272
+  size: 492, 206
+  orig: 521, 279
+  offset: 12, 0
+  index: -1
+TX/gong/gong_0005
+  rotate: false
+  xy: 1440, 1480
+  size: 492, 217
+  orig: 521, 279
+  offset: 12, 0
+  index: -1
+TX/gong/gong_0007
+  rotate: false
+  xy: 1467, 748
+  size: 491, 229
+  orig: 521, 279
+  offset: 13, 0
+  index: -1
+TX/gong/gong_0009
+  rotate: true
+  xy: 734, 1465
+  size: 493, 241
+  orig: 521, 279
+  offset: 13, 0
+  index: -1
+TX/gong/gong_0011
+  rotate: false
+  xy: 2, 5
+  size: 493, 251
+  orig: 521, 279
+  offset: 13, 0
+  index: -1
+TX/gong/gong_0013
+  rotate: false
+  xy: 1440, 1699
+  size: 492, 259
+  orig: 521, 279
+  offset: 14, 0
+  index: -1
+TX/gong/gong_0015
+  rotate: true
+  xy: 1167, 1466
+  size: 492, 271
+  orig: 521, 279
+  offset: 14, 0
+  index: -1
+TX/gong/gong_0019
+  rotate: true
+  xy: 733, 968
+  size: 493, 271
+  orig: 521, 279
+  offset: 14, 0
+  index: -1
+TX/gong/gong_0021
+  rotate: true
+  xy: 1006, 971
+  size: 492, 274
+  orig: 521, 279
+  offset: 14, 0
+  index: -1
+TX/gong/gong_0053
+  rotate: true
+  xy: 700, 307
+  size: 494, 188
+  orig: 521, 279
+  offset: 13, 0
+  index: -1
+TX/gong/gong_0057
+  rotate: true
+  xy: 544, 966
+  size: 495, 187
+  orig: 521, 279
+  offset: 12, 0
+  index: -1
+TX/gong/gong_0059
+  rotate: true
+  xy: 510, 302
+  size: 496, 188
+  orig: 521, 279
+  offset: 11, 0
+  index: -1
+TX/gong/gong_0061
+  rotate: true
+  xy: 544, 1463
+  size: 495, 188
+  orig: 521, 279
+  offset: 12, 0
+  index: -1
+TX/gong/gong_0063
+  rotate: true
+  xy: 977, 1465
+  size: 493, 188
+  orig: 521, 279
+  offset: 13, 0
+  index: -1
+TX/gong/gong_0065
+  rotate: true
+  xy: 1086, 363
+  size: 492, 189
+  orig: 521, 279
+  offset: 14, 0
+  index: -1
+TX/gong/gong_0069
+  rotate: false
+  xy: 1467, 555
+  size: 491, 191
+  orig: 521, 279
+  offset: 15, 0
+  index: -1
+jian/jian_0046
+  rotate: true
+  xy: 718, 852
+  size: 112, 345
+  orig: 119, 353
+  offset: 2, 2
+  index: -1
+jian/jian_0047
+  rotate: false
+  xy: 1282, 1119
+  size: 112, 345
+  orig: 119, 353
+  offset: 2, 2
+  index: -1
+jian/jian_0048
+  rotate: true
+  xy: 1065, 857
+  size: 112, 345
+  orig: 119, 353
+  offset: 2, 2
+  index: -1
+jian/jian_0049
+  rotate: false
+  xy: 1050, 11
+  size: 112, 345
+  orig: 119, 353
+  offset: 2, 2
+  index: -1
+jian/jian_0050
+  rotate: false
+  xy: 1164, 16
+  size: 112, 345
+  orig: 119, 353
+  offset: 2, 2
+  index: -1

@@ -1,0 +1,4163 @@
+{
+"skeleton": { "hash": "Y5MPQYKDlyx8Hl/3jAvrw7INwZM", "spine": "3.5.35", "width": 0, "height": 0 },
+"bones": [
+	{ "name": "root" },
+	{ "name": "DZ", "parent": "root" },
+	{ "name": "TX", "parent": "root" },
+	{ "name": "skill", "parent": "TX" },
+	{ "name": "Skill/glass_boom", "parent": "skill" },
+	{ "name": "bg", "parent": "root", "scaleX": 3.33, "scaleY": 3.33 },
+	{ "name": "skill/niao_boom", "parent": "skill" },
+	{ "name": "skill/quan", "parent": "skill" },
+	{ "name": "skill/quan_a", "parent": "skill" },
+	{ "name": "skill/wind", "parent": "skill", "scaleX": 2, "scaleY": 2 },
+	{ "name": "skill_bu/hong_quan", "parent": "skill" },
+	{ "name": "skill_line", "parent": "skill" },
+	{ "name": "skill_xiao_baodian_A_0", "parent": "skill_line" },
+	{ "name": "skill_bu/hong_quan2", "parent": "skill_xiao_baodian_A_0" },
+	{ "name": "skill_xiao_baodian_A_1", "parent": "skill_line" },
+	{ "name": "skill_bu/hong_quan_1", "parent": "skill_xiao_baodian_A_1", "scaleX": 2, "scaleY": 2 },
+	{ "name": "skill_xiao_baodian_A_2", "parent": "skill_line" },
+	{ "name": "skill_bu/hong_quan_2", "parent": "skill_xiao_baodian_A_2", "scaleX": 2, "scaleY": 2 },
+	{ "name": "skill_xiao_baodian_A_3", "parent": "skill_line" },
+	{ "name": "skill_bu/hong_quan_3", "parent": "skill_xiao_baodian_A_3" },
+	{ "name": "skill_xiao_baodian_A_4", "parent": "skill_line" },
+	{ "name": "skill_bu/hong_quan_4", "parent": "skill_xiao_baodian_A_4", "scaleX": 2, "scaleY": 2 },
+	{ "name": "skill_xiao_baodian_A_5", "parent": "skill_line" },
+	{ "name": "skill_bu/hong_quan_5", "parent": "skill_xiao_baodian_A_5", "scaleX": 2, "scaleY": 2 },
+	{ "name": "skill_xiao_baodian_A_6", "parent": "skill_line" },
+	{ "name": "skill_bu/hong_quan_6", "parent": "skill_xiao_baodian_A_6", "scaleX": 2, "scaleY": 2 },
+	{ "name": "skill_xiao_baodian_A_7", "parent": "skill_line" },
+	{ "name": "skill_bu/hong_quan_7", "parent": "skill_xiao_baodian_A_7", "scaleX": 2, "scaleY": 2 },
+	{ "name": "skill_xiao_baodian_A_8", "parent": "skill_line" },
+	{ "name": "skill_bu/hong_quan_8", "parent": "skill_xiao_baodian_A_8", "scaleX": 2, "scaleY": 2 },
+	{ "name": "skill_xiao_baodian_A_9", "parent": "skill_line" },
+	{ "name": "skill_bu/hong_quan_9", "parent": "skill_xiao_baodian_A_9", "scaleX": 2, "scaleY": 2 },
+	{ "name": "skill_xiao_baodian_A_10", "parent": "skill_line" },
+	{ "name": "skill_bu/hong_quan_10", "parent": "skill_xiao_baodian_A_10", "scaleX": 2, "scaleY": 2 },
+	{ "name": "skill_bu/kuoshan", "parent": "skill", "scaleX": 2, "scaleY": 2 },
+	{ "name": "skill_bu/light_h", "parent": "skill" },
+	{ "name": "skill_bu/lxl", "parent": "skill", "scaleX": 2, "scaleY": 2 },
+	{ "name": "skill_bu/quan_bai", "parent": "skill", "scaleX": 2, "scaleY": 2 },
+	{ "name": "skill_bu/quan_hong", "parent": "skill", "scaleX": 2, "scaleY": 2 },
+	{ "name": "skill_bu/quan_kuo_a", "parent": "skill", "scaleX": 2, "scaleY": 2 },
+	{ "name": "skill_difeng", "parent": "skill" },
+	{ "name": "skill_line_a", "parent": "skill_line" },
+	{ "name": "skill_line_a2", "parent": "skill_line" },
+	{ "name": "skill_line_a3", "parent": "skill_line" },
+	{ "name": "skill_line_a4", "parent": "skill_line" },
+	{ "name": "skill_line_a5", "parent": "skill_line" },
+	{ "name": "skill_line_a6", "parent": "skill_line" },
+	{ "name": "skill_line_a7", "parent": "skill_line" },
+	{ "name": "skill_line_a8", "parent": "skill_line" },
+	{ "name": "skill_line_a9", "parent": "skill_line" },
+	{ "name": "skill_line_a10", "parent": "skill_line" },
+	{ "name": "skill_line_a11", "parent": "skill_line" },
+	{ "name": "skill_line_a12", "parent": "skill_line" },
+	{ "name": "skill_ripple", "parent": "skill" },
+	{ "name": "skill_xiao_baodian_B_", "parent": "skill" },
+	{ "name": "skill_xiao_baodian_C", "parent": "skill" }
+],
+"slots": [
+	{ "name": "skill_difeng", "bone": "skill_difeng" },
+	{ "name": "skill_line_a", "bone": "skill_line_a" },
+	{ "name": "skill_line_a2", "bone": "skill_line_a2" },
+	{ "name": "skill_line_a3", "bone": "skill_line_a3" },
+	{ "name": "skill_line_a4", "bone": "skill_line_a4" },
+	{ "name": "skill_line_a5", "bone": "skill_line_a5" },
+	{ "name": "skill_line_a6", "bone": "skill_line_a6" },
+	{ "name": "skill_line_a12", "bone": "skill_line_a12" },
+	{ "name": "skill_line_a7", "bone": "skill_line_a7" },
+	{ "name": "skill_line_a8", "bone": "skill_line_a8" },
+	{ "name": "skill_line_a9", "bone": "skill_line_a9" },
+	{ "name": "skill_line_a10", "bone": "skill_line_a10" },
+	{ "name": "skill_line_a11", "bone": "skill_line_a11" },
+	{ "name": "skill_ripple", "bone": "skill_ripple" },
+	{ "name": "skill_xiao_baodian_A_0", "bone": "skill_xiao_baodian_A_0", "blend": "additive" },
+	{ "name": "skill_xiao_baodian_A_1", "bone": "skill_xiao_baodian_A_1", "blend": "additive" },
+	{ "name": "skill_xiao_baodian_A_2", "bone": "skill_xiao_baodian_A_2", "blend": "additive" },
+	{ "name": "skill_xiao_baodian_A_3", "bone": "skill_xiao_baodian_A_3", "blend": "additive" },
+	{ "name": "skill_xiao_baodian_A_4", "bone": "skill_xiao_baodian_A_4", "blend": "additive" },
+	{ "name": "skill_xiao_baodian_A_5", "bone": "skill_xiao_baodian_A_5", "blend": "additive" },
+	{ "name": "skill_xiao_baodian_A_6", "bone": "skill_xiao_baodian_A_6", "blend": "additive" },
+	{ "name": "skill_xiao_baodian_A_7", "bone": "skill_xiao_baodian_A_7", "blend": "additive" },
+	{ "name": "skill_xiao_baodian_A_8", "bone": "skill_xiao_baodian_A_8", "blend": "additive" },
+	{ "name": "skill_xiao_baodian_A_9", "bone": "skill_xiao_baodian_A_9", "blend": "additive" },
+	{ "name": "skill_xiao_baodian_A_10", "bone": "skill_xiao_baodian_A_10", "blend": "additive" },
+	{ "name": "skill_xiao_baodian_B_", "bone": "skill_xiao_baodian_B_", "blend": "additive" },
+	{ "name": "skill_bu/quan_kuo_a", "bone": "skill_bu/quan_kuo_a" },
+	{ "name": "skill_xiao_baodian_C", "bone": "skill_xiao_baodian_C" },
+	{ "name": "skill/niao_boom", "bone": "skill/niao_boom", "blend": "additive" },
+	{ "name": "skill/quan", "bone": "skill/quan" },
+	{ "name": "skill/quan_a", "bone": "skill/quan_a" },
+	{ "name": "skill/wind", "bone": "skill/wind" },
+	{ "name": "skill_bu/kuoshan", "bone": "skill_bu/kuoshan" },
+	{ "name": "skill_bu/hong_quan", "bone": "skill_bu/hong_quan", "blend": "additive" },
+	{ "name": "skill_bu/hong_quan2", "bone": "skill_bu/hong_quan2", "blend": "additive" },
+	{ "name": "skill_bu/hong_quan_1", "bone": "skill_bu/hong_quan_1", "blend": "additive" },
+	{ "name": "skill_bu/hong_quan_2", "bone": "skill_bu/hong_quan_2", "blend": "additive" },
+	{ "name": "skill_bu/hong_quan_3", "bone": "skill_bu/hong_quan_3", "blend": "additive" },
+	{ "name": "skill_bu/hong_quan_4", "bone": "skill_bu/hong_quan_4", "blend": "additive" },
+	{ "name": "skill_bu/hong_quan_5", "bone": "skill_bu/hong_quan_5", "blend": "additive" },
+	{ "name": "skill_bu/hong_quan_6", "bone": "skill_bu/hong_quan_6", "blend": "additive" },
+	{ "name": "skill_bu/hong_quan_7", "bone": "skill_bu/hong_quan_7", "blend": "additive" },
+	{ "name": "skill_bu/hong_quan_8", "bone": "skill_bu/hong_quan_8", "blend": "additive" },
+	{ "name": "skill_bu/hong_quan_9", "bone": "skill_bu/hong_quan_9", "blend": "additive" },
+	{ "name": "skill_bu/hong_quan_10", "bone": "skill_bu/hong_quan_10", "blend": "additive" },
+	{ "name": "skill_bu/light_h", "bone": "skill_bu/light_h" },
+	{ "name": "skill_bu/quan_bai", "bone": "skill_bu/quan_bai" },
+	{ "name": "skill_bu/quan_hong", "bone": "skill_bu/quan_hong" },
+	{ "name": "Skill/glass_boom", "bone": "Skill/glass_boom" },
+	{ "name": "skill_bu/lxl", "bone": "skill_bu/lxl" }
+],
+"skins": {
+	"default": {
+		"Skill/glass_boom": {
+			"Skill/glass/OUT_Glass_0000": { "width": 362, "height": 336 },
+			"Skill/glass/OUT_Glass_0004": { "width": 362, "height": 336 },
+			"Skill/glass/OUT_Glass_0006": { "width": 362, "height": 336 },
+			"Skill/glass/OUT_Glass_0008": { "width": 362, "height": 336 },
+			"Skill/glass/OUT_Glass_0010": { "width": 362, "height": 336 },
+			"Skill/glass/OUT_Glass_0012": { "width": 362, "height": 336 },
+			"Skill/glass/OUT_Glass_0014": { "width": 362, "height": 336 },
+			"Skill/glass/OUT_Glass_0016": { "width": 362, "height": 336 },
+			"Skill/glass/OUT_Glass_0018": { "width": 362, "height": 336 },
+			"Skill/glass/OUT_Glass_0020": { "width": 362, "height": 336 },
+			"Skill/glass/OUT_Glass_0022": { "width": 362, "height": 336 },
+			"Skill/glass/OUT_Glass_0026": { "width": 362, "height": 336 },
+			"Skill/glass/OUT_Glass_0028": { "width": 362, "height": 336 },
+			"Skill/glass/OUT_Glass_0030": { "width": 362, "height": 336 },
+			"Skill/glass/OUT_Glass_0032": { "width": 362, "height": 336 },
+			"Skill/glass/OUT_Glass_0034": { "width": 362, "height": 336 },
+			"Skill/glass/OUT_Glass_0036": { "width": 362, "height": 336 },
+			"Skill/glass/OUT_Glass_0038": { "width": 362, "height": 336 },
+			"Skill/glass/OUT_Glass_0040": { "width": 362, "height": 336 },
+			"Skill/glass/OUT_Glass_0042": { "width": 362, "height": 336 },
+			"Skill/glass/OUT_Glass_0044": { "width": 362, "height": 336 },
+			"Skill/glass/OUT_Glass_0046": { "width": 362, "height": 336 },
+			"Skill/glass/OUT_Glass_0048": { "width": 362, "height": 336 },
+			"Skill/glass/OUT_Glass_0050": { "width": 362, "height": 336 },
+			"Skill/glass/OUT_Glass_0052": { "width": 362, "height": 336 },
+			"Skill/glass/OUT_Glass_0054": { "width": 362, "height": 336 },
+			"Skill/glass/OUT_Glass_0058": { "width": 362, "height": 336 },
+			"Skill/glass/OUT_Glass_0060": { "width": 362, "height": 336 },
+			"Skill/glass/OUT_Glass_0062": { "width": 362, "height": 336 },
+			"Skill/glass/OUT_Glass_0064": { "width": 362, "height": 336 },
+			"Skill/glass/OUT_Glass_0066": { "width": 362, "height": 336 },
+			"Skill/glass/OUT_Glass_0068": { "width": 362, "height": 336 },
+			"Skill/glass/OUT_Glass_0070": { "width": 362, "height": 336 },
+			"Skill/glass/OUT_Glass_0072": { "width": 362, "height": 336 },
+			"Skill/glass/OUT_Glass_0074": { "width": 362, "height": 336 },
+			"Skill/glass/OUT_Glass_0076": { "width": 362, "height": 336 },
+			"Skill/glass/OUT_Glass_0078": { "width": 362, "height": 336 }
+		},
+		"skill/niao_boom": {
+			"Skill/skill/niao_boom/niao_boom_0000": { "width": 190, "height": 178 },
+			"Skill/skill/niao_boom/niao_boom_0002": { "width": 190, "height": 178 },
+			"Skill/skill/niao_boom/niao_boom_0004": { "width": 190, "height": 178 },
+			"Skill/skill/niao_boom/niao_boom_0006": { "width": 190, "height": 178 },
+			"Skill/skill/niao_boom/niao_boom_0008": { "width": 190, "height": 178 },
+			"Skill/skill/niao_boom/niao_boom_0010": { "width": 190, "height": 178 },
+			"Skill/skill/niao_boom/niao_boom_0012": { "width": 190, "height": 178 },
+			"Skill/skill/niao_boom/niao_boom_0014": { "width": 190, "height": 178 },
+			"Skill/skill/niao_boom/niao_boom_0018": { "width": 190, "height": 178 },
+			"Skill/skill/niao_boom/niao_boom_0020": { "width": 190, "height": 178 },
+			"Skill/skill/niao_boom/niao_boom_0022": { "width": 190, "height": 178 },
+			"Skill/skill/niao_boom/niao_boom_0024": { "width": 190, "height": 178 }
+		},
+		"skill/quan": {
+			"Skill/skill/quan/quan_0004": { "width": 384, "height": 172 },
+			"Skill/skill/quan/quan_0006": { "width": 384, "height": 172 },
+			"Skill/skill/quan/quan_0008": { "width": 384, "height": 172 },
+			"Skill/skill/quan/quan_0010": { "width": 384, "height": 172 },
+			"Skill/skill/quan/quan_0012": { "width": 384, "height": 172 },
+			"Skill/skill/quan/quan_0014": { "width": 384, "height": 172 },
+			"Skill/skill/quan/quan_0016": { "width": 384, "height": 172 },
+			"Skill/skill/quan/quan_0018": { "width": 384, "height": 172 },
+			"Skill/skill/quan/quan_0020": { "width": 384, "height": 172 },
+			"Skill/skill/quan/quan_0022": { "width": 384, "height": 172 }
+		},
+		"skill/quan_a": {
+			"Skill/skill/quan_a/quan_a_0000": { "width": 420, "height": 201 },
+			"Skill/skill/quan_a/quan_a_0002": { "width": 420, "height": 201 },
+			"Skill/skill/quan_a/quan_a_0004": { "width": 420, "height": 201 },
+			"Skill/skill/quan_a/quan_a_0006": { "width": 420, "height": 201 },
+			"Skill/skill/quan_a/quan_a_0008": { "width": 420, "height": 201 },
+			"Skill/skill/quan_a/quan_a_0010": { "width": 420, "height": 201 },
+			"Skill/skill/quan_a/quan_a_0012": { "width": 420, "height": 201 },
+			"Skill/skill/quan_a/quan_a_0014": { "width": 420, "height": 201 },
+			"Skill/skill/quan_a/quan_a_0016": { "width": 420, "height": 201 },
+			"Skill/skill/quan_a/quan_a_0018": { "width": 420, "height": 201 },
+			"Skill/skill/quan_a/quan_a_0020": { "width": 420, "height": 201 },
+			"Skill/skill/quan_a/quan_a_0022": { "width": 420, "height": 201 },
+			"Skill/skill/quan_a/quan_a_0024": { "width": 420, "height": 201 }
+		},
+		"skill/wind": {
+			"Skill/skill/wind/wind_0000": { "width": 321, "height": 145 },
+			"Skill/skill/wind/wind_0002": { "width": 321, "height": 145 },
+			"Skill/skill/wind/wind_0004": { "width": 321, "height": 145 },
+			"Skill/skill/wind/wind_0006": { "width": 321, "height": 145 },
+			"Skill/skill/wind/wind_0008": { "width": 321, "height": 145 },
+			"Skill/skill/wind/wind_0010": { "width": 321, "height": 145 },
+			"Skill/skill/wind/wind_0012": { "width": 321, "height": 145 },
+			"Skill/skill/wind/wind_0014": { "width": 321, "height": 145 },
+			"Skill/skill/wind/wind_0016": { "width": 321, "height": 145 },
+			"Skill/skill/wind/wind_0018": { "width": 321, "height": 145 },
+			"Skill/skill/wind/wind_0020": { "width": 321, "height": 145 },
+			"Skill/skill/wind/wind_0022": { "width": 321, "height": 145 },
+			"Skill/skill/wind/wind_0024": { "width": 321, "height": 145 }
+		},
+		"skill_bu/hong_quan": {
+			"Skill/skill_bu/hong_quan_0004": { "width": 163, "height": 167 }
+		},
+		"skill_bu/hong_quan2": {
+			"Skill/skill_bu/hong_quan_0004": { "width": 163, "height": 167 }
+		},
+		"skill_bu/hong_quan_1": {
+			"Skill/skill_bu/hong_quan_0004": { "width": 163, "height": 167 }
+		},
+		"skill_bu/hong_quan_10": {
+			"Skill/skill_bu/hong_quan_0004": { "width": 163, "height": 167 }
+		},
+		"skill_bu/hong_quan_2": {
+			"Skill/skill_bu/hong_quan_0004": { "width": 163, "height": 167 }
+		},
+		"skill_bu/hong_quan_3": {
+			"Skill/skill_bu/hong_quan_0004": { "width": 163, "height": 167 }
+		},
+		"skill_bu/hong_quan_4": {
+			"Skill/skill_bu/hong_quan_0004": { "width": 163, "height": 167 }
+		},
+		"skill_bu/hong_quan_5": {
+			"Skill/skill_bu/hong_quan_0004": { "width": 163, "height": 167 }
+		},
+		"skill_bu/hong_quan_6": {
+			"Skill/skill_bu/hong_quan_0004": { "width": 163, "height": 167 }
+		},
+		"skill_bu/hong_quan_7": {
+			"Skill/skill_bu/hong_quan_0004": { "width": 163, "height": 167 }
+		},
+		"skill_bu/hong_quan_8": {
+			"Skill/skill_bu/hong_quan_0004": { "width": 163, "height": 167 }
+		},
+		"skill_bu/hong_quan_9": {
+			"Skill/skill_bu/hong_quan_0004": { "width": 163, "height": 167 }
+		},
+		"skill_bu/kuoshan": {
+			"Skill/skill_bu/kuoshan/kuoshan_0010": { "width": 438, "height": 408 },
+			"Skill/skill_bu/kuoshan/kuoshan_0012": { "width": 438, "height": 408 },
+			"Skill/skill_bu/kuoshan/kuoshan_0014": { "width": 438, "height": 408 },
+			"Skill/skill_bu/kuoshan/kuoshan_0016": { "width": 438, "height": 408 },
+			"Skill/skill_bu/kuoshan/kuoshan_0018": { "width": 438, "height": 408 },
+			"Skill/skill_bu/kuoshan/kuoshan_0020": { "width": 438, "height": 408 },
+			"Skill/skill_bu/kuoshan/kuoshan_0022": { "width": 438, "height": 408 },
+			"Skill/skill_bu/kuoshan/kuoshan_0024": { "width": 438, "height": 408 }
+		},
+		"skill_bu/light_h": {
+			"Skill/skill_bu/light_h_0000": { "width": 270, "height": 315 }
+		},
+		"skill_bu/lxl": {
+			"Skill/skill_bu/lxl/1": { "width": 193, "height": 187 },
+			"Skill/skill_bu/lxl/2": { "width": 193, "height": 187 },
+			"Skill/skill_bu/lxl/3": { "width": 193, "height": 187 },
+			"Skill/skill_bu/lxl/4": { "width": 193, "height": 187 },
+			"Skill/skill_bu/lxl/5": { "width": 193, "height": 187 },
+			"Skill/skill_bu/lxl/6": { "width": 193, "height": 187 },
+			"Skill/skill_bu/lxl/7": { "width": 193, "height": 187 }
+		},
+		"skill_bu/quan_bai": {
+			"Skill/skill_bu/quan_bai_0000": { "width": 217, "height": 219 }
+		},
+		"skill_bu/quan_hong": {
+			"Skill/skill_bu/quan_hong_0000_0000": { "width": 314, "height": 305 }
+		},
+		"skill_bu/quan_kuo_a": {
+			"Skill/skill_bu/quan_kuo_a_0012": { "width": 289, "height": 291 }
+		},
+		"skill_difeng": {
+			"Skill/skill_difeng/skill_difeng_0000": { "width": 317, "height": 195 },
+			"Skill/skill_difeng/skill_difeng_0002": { "width": 317, "height": 195 },
+			"Skill/skill_difeng/skill_difeng_0004": { "width": 317, "height": 195 },
+			"Skill/skill_difeng/skill_difeng_0006": { "width": 317, "height": 195 },
+			"Skill/skill_difeng/skill_difeng_0008": { "width": 317, "height": 195 },
+			"Skill/skill_difeng/skill_difeng_0010": { "width": 317, "height": 195 },
+			"Skill/skill_difeng/skill_difeng_0012": { "width": 317, "height": 195 },
+			"Skill/skill_difeng/skill_difeng_0014": { "width": 317, "height": 195 },
+			"Skill/skill_difeng/skill_difeng_0016": { "width": 317, "height": 195 },
+			"Skill/skill_difeng/skill_difeng_0018": { "width": 317, "height": 195 },
+			"Skill/skill_difeng/skill_difeng_0020": { "width": 317, "height": 195 },
+			"Skill/skill_difeng/skill_difeng_0022": { "width": 317, "height": 195 },
+			"Skill/skill_difeng/skill_difeng_0024": { "width": 317, "height": 195 },
+			"Skill/skill_difeng/skill_difeng_0026": { "width": 317, "height": 195 },
+			"Skill/skill_difeng/skill_difeng_0028": { "width": 317, "height": 195 },
+			"Skill/skill_difeng/skill_difeng_0030": { "width": 317, "height": 195 },
+			"Skill/skill_difeng/skill_difeng_0032": { "width": 317, "height": 195 },
+			"Skill/skill_difeng/skill_difeng_0034": { "width": 317, "height": 195 },
+			"Skill/skill_difeng/skill_difeng_0036": { "width": 317, "height": 195 },
+			"Skill/skill_difeng/skill_difeng_0038": { "width": 317, "height": 195 }
+		},
+		"skill_line_a": {
+			"Skill/skill_line_a/skill_line_a_0004": { "width": 679, "height": 77 }
+		},
+		"skill_line_a10": {
+			"Skill/skill_line_a/skill_line_a_0004": { "width": 679, "height": 77 }
+		},
+		"skill_line_a11": {
+			"Skill/skill_line_a/skill_line_a_0004": { "width": 679, "height": 77 }
+		},
+		"skill_line_a12": {
+			"Skill/skill_line_a/skill_line_a_0004": { "width": 679, "height": 77 }
+		},
+		"skill_line_a2": {
+			"Skill/skill_line_a/skill_line_a_0004": { "width": 679, "height": 77 }
+		},
+		"skill_line_a3": {
+			"Skill/skill_line_a/skill_line_a_0004": { "width": 679, "height": 77 }
+		},
+		"skill_line_a4": {
+			"Skill/skill_line_a/skill_line_a_0004": { "width": 679, "height": 77 }
+		},
+		"skill_line_a5": {
+			"Skill/skill_line_a/skill_line_a_0004": { "width": 679, "height": 77 }
+		},
+		"skill_line_a6": {
+			"Skill/skill_line_a/skill_line_a_0004": { "width": 679, "height": 77 }
+		},
+		"skill_line_a7": {
+			"Skill/skill_line_a/skill_line_a_0004": { "width": 679, "height": 77 }
+		},
+		"skill_line_a8": {
+			"Skill/skill_line_a/skill_line_a_0004": { "width": 679, "height": 77 }
+		},
+		"skill_line_a9": {
+			"Skill/skill_line_a/skill_line_a_0004": { "width": 679, "height": 77 }
+		},
+		"skill_ripple": {
+			"Skill/skill_ripple/skill_ripple_0000": { "width": 387, "height": 171 },
+			"Skill/skill_ripple/skill_ripple_0002": { "width": 387, "height": 171 },
+			"Skill/skill_ripple/skill_ripple_0004": { "width": 387, "height": 171 },
+			"Skill/skill_ripple/skill_ripple_0006": { "width": 387, "height": 171 },
+			"Skill/skill_ripple/skill_ripple_0008": { "width": 387, "height": 171 },
+			"Skill/skill_ripple/skill_ripple_0010": { "width": 387, "height": 171 },
+			"Skill/skill_ripple/skill_ripple_0012": { "width": 387, "height": 171 },
+			"Skill/skill_ripple/skill_ripple_0014": { "width": 387, "height": 171 },
+			"Skill/skill_ripple/skill_ripple_0016": { "width": 387, "height": 171 },
+			"Skill/skill_ripple/skill_ripple_0018": { "width": 387, "height": 171 },
+			"Skill/skill_ripple/skill_ripple_0020": { "width": 387, "height": 171 },
+			"Skill/skill_ripple/skill_ripple_0022": { "width": 387, "height": 171 },
+			"Skill/skill_ripple/skill_ripple_0024": { "width": 387, "height": 171 },
+			"Skill/skill_ripple/skill_ripple_0026": { "width": 387, "height": 171 },
+			"Skill/skill_ripple/skill_ripple_0028": { "width": 387, "height": 171 },
+			"Skill/skill_ripple/skill_ripple_0030": { "width": 387, "height": 171 },
+			"Skill/skill_ripple/skill_ripple_0032": { "width": 387, "height": 171 },
+			"Skill/skill_ripple/skill_ripple_0034": { "width": 387, "height": 171 },
+			"Skill/skill_ripple/skill_ripple_0036": { "width": 387, "height": 171 },
+			"Skill/skill_ripple/skill_ripple_0038": { "width": 387, "height": 171 }
+		},
+		"skill_xiao_baodian_A_0": {
+			"Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0000": { "width": 117, "height": 123 },
+			"Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0003": { "width": 117, "height": 123 },
+			"Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0006": { "width": 117, "height": 123 }
+		},
+		"skill_xiao_baodian_A_1": {
+			"Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0000": { "width": 117, "height": 123 },
+			"Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0003": { "width": 117, "height": 123 },
+			"Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0006": { "width": 117, "height": 123 }
+		},
+		"skill_xiao_baodian_A_10": {
+			"Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0000": { "width": 117, "height": 123 },
+			"Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0003": { "width": 117, "height": 123 },
+			"Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0006": { "width": 117, "height": 123 }
+		},
+		"skill_xiao_baodian_A_2": {
+			"Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0000": { "width": 117, "height": 123 },
+			"Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0003": { "width": 117, "height": 123 },
+			"Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0006": { "width": 117, "height": 123 }
+		},
+		"skill_xiao_baodian_A_3": {
+			"Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0000": { "width": 117, "height": 123 },
+			"Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0003": { "width": 117, "height": 123 },
+			"Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0006": { "width": 117, "height": 123 }
+		},
+		"skill_xiao_baodian_A_4": {
+			"Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0000": { "width": 117, "height": 123 },
+			"Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0003": { "width": 117, "height": 123 },
+			"Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0006": { "width": 117, "height": 123 }
+		},
+		"skill_xiao_baodian_A_5": {
+			"Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0000": { "width": 117, "height": 123 },
+			"Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0003": { "width": 117, "height": 123 },
+			"Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0006": { "width": 117, "height": 123 }
+		},
+		"skill_xiao_baodian_A_6": {
+			"Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0000": { "width": 117, "height": 123 },
+			"Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0003": { "width": 117, "height": 123 },
+			"Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0006": { "width": 117, "height": 123 }
+		},
+		"skill_xiao_baodian_A_7": {
+			"Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0000": { "width": 117, "height": 123 },
+			"Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0003": { "width": 117, "height": 123 },
+			"Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0006": { "width": 117, "height": 123 }
+		},
+		"skill_xiao_baodian_A_8": {
+			"Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0000": { "width": 117, "height": 123 },
+			"Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0003": { "width": 117, "height": 123 },
+			"Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0006": { "width": 117, "height": 123 }
+		},
+		"skill_xiao_baodian_A_9": {
+			"Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0000": { "width": 117, "height": 123 },
+			"Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0003": { "width": 117, "height": 123 },
+			"Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0006": { "width": 117, "height": 123 }
+		},
+		"skill_xiao_baodian_B_": {
+			"Skill/skill_xiao_baodian_B/skill_xiao_baodian_B_0000": { "width": 301, "height": 258 },
+			"Skill/skill_xiao_baodian_B/skill_xiao_baodian_B_0002": { "width": 301, "height": 258 },
+			"Skill/skill_xiao_baodian_B/skill_xiao_baodian_B_0004": { "width": 301, "height": 258 },
+			"Skill/skill_xiao_baodian_B/skill_xiao_baodian_B_0006": { "width": 301, "height": 258 },
+			"Skill/skill_xiao_baodian_B/skill_xiao_baodian_B_0008": { "width": 301, "height": 258 }
+		},
+		"skill_xiao_baodian_C": {
+			"Skill/skill_xiao_baodian_C/skill_xiao_baodian_C_0000": { "width": 180, "height": 180 },
+			"Skill/skill_xiao_baodian_C/skill_xiao_baodian_C_0001": { "width": 180, "height": 180 },
+			"Skill/skill_xiao_baodian_C/skill_xiao_baodian_C_0002": { "width": 180, "height": 180 },
+			"Skill/skill_xiao_baodian_C/skill_xiao_baodian_C_0003": { "width": 180, "height": 180 },
+			"Skill/skill_xiao_baodian_C/skill_xiao_baodian_C_0004": { "width": 180, "height": 180 },
+			"Skill/skill_xiao_baodian_C/skill_xiao_baodian_C_0005": { "width": 180, "height": 180 },
+			"Skill/skill_xiao_baodian_C/skill_xiao_baodian_C_0006": { "width": 180, "height": 180 },
+			"Skill/skill_xiao_baodian_C/skill_xiao_baodian_C_0007": { "width": 180, "height": 180 }
+		}
+	}
+},
+"events": {
+	"hit_11_1_1": {},
+	"qishou_11_4_1": {},
+	"qishou_11_4_2": {},
+	"qishou_11_4_3": {},
+	"qishou_11_4_4": {}
+},
+"animations": {
+	"animation_0": {
+		"slots": {
+			"skill/quan": {
+				"attachment": [
+					{ "time": 1.5333, "name": "Skill/skill/quan/quan_0004" },
+					{ "time": 1.6, "name": "Skill/skill/quan/quan_0006" },
+					{ "time": 1.6667, "name": "Skill/skill/quan/quan_0008" },
+					{ "time": 1.7333, "name": "Skill/skill/quan/quan_0010" },
+					{ "time": 1.8, "name": "Skill/skill/quan/quan_0012" },
+					{ "time": 1.8333, "name": "Skill/skill/quan/quan_0014" },
+					{ "time": 1.9, "name": "Skill/skill/quan/quan_0016" },
+					{ "time": 1.9667, "name": "Skill/skill/quan/quan_0018" },
+					{ "time": 2.0333, "name": "Skill/skill/quan/quan_0020" },
+					{ "time": 2.1, "name": "Skill/skill/quan/quan_0022" },
+					{ "time": 2.1667, "name": null },
+					{ "time": 3.3333, "name": null }
+				]
+			},
+			"skill/quan_a": {
+				"attachment": [
+					{ "time": 1.5333, "name": "Skill/skill/quan_a/quan_a_0000" },
+					{ "time": 1.6, "name": "Skill/skill/quan_a/quan_a_0002" },
+					{ "time": 1.6667, "name": "Skill/skill/quan_a/quan_a_0004" },
+					{ "time": 1.7333, "name": "Skill/skill/quan_a/quan_a_0006" },
+					{ "time": 1.8, "name": "Skill/skill/quan_a/quan_a_0008" },
+					{ "time": 1.8333, "name": "Skill/skill/quan_a/quan_a_0010" },
+					{ "time": 1.9, "name": "Skill/skill/quan_a/quan_a_0012" },
+					{ "time": 1.9667, "name": "Skill/skill/quan_a/quan_a_0014" },
+					{ "time": 2.0333, "name": "Skill/skill/quan_a/quan_a_0016" },
+					{ "time": 2.1, "name": "Skill/skill/quan_a/quan_a_0018" },
+					{ "time": 2.2, "name": "Skill/skill/quan_a/quan_a_0022" },
+					{ "time": 2.2667, "name": "Skill/skill/quan_a/quan_a_0024" },
+					{ "time": 2.3333, "name": null }
+				]
+			},
+			"skill_difeng": {
+				"attachment": [
+					{ "time": 0, "name": "Skill/skill_difeng/skill_difeng_0000" },
+					{ "time": 0.0667, "name": "Skill/skill_difeng/skill_difeng_0002" },
+					{ "time": 0.1333, "name": "Skill/skill_difeng/skill_difeng_0004" },
+					{ "time": 0.1667, "name": "Skill/skill_difeng/skill_difeng_0006" },
+					{ "time": 0.2333, "name": "Skill/skill_difeng/skill_difeng_0008" },
+					{ "time": 0.3, "name": "Skill/skill_difeng/skill_difeng_0010" },
+					{ "time": 0.3667, "name": "Skill/skill_difeng/skill_difeng_0012" },
+					{ "time": 0.4333, "name": "Skill/skill_difeng/skill_difeng_0014" },
+					{ "time": 0.5333, "name": "Skill/skill_difeng/skill_difeng_0018" },
+					{ "time": 0.6, "name": "Skill/skill_difeng/skill_difeng_0020" },
+					{ "time": 0.6667, "name": "Skill/skill_difeng/skill_difeng_0022" },
+					{ "time": 0.7333, "name": "Skill/skill_difeng/skill_difeng_0024" },
+					{ "time": 0.8, "name": "Skill/skill_difeng/skill_difeng_0026" },
+					{ "time": 0.9, "name": "Skill/skill_difeng/skill_difeng_0030" },
+					{ "time": 0.9667, "name": "Skill/skill_difeng/skill_difeng_0032" },
+					{ "time": 1.0333, "name": "Skill/skill_difeng/skill_difeng_0034" },
+					{ "time": 1.1, "name": "Skill/skill_difeng/skill_difeng_0036" },
+					{ "time": 1.2, "name": null }
+				]
+			},
+			"skill_ripple": {
+				"attachment": [
+					{ "time": 0, "name": "Skill/skill_ripple/skill_ripple_0000" },
+					{ "time": 0.0667, "name": "Skill/skill_ripple/skill_ripple_0002" },
+					{ "time": 0.1333, "name": "Skill/skill_ripple/skill_ripple_0004" },
+					{ "time": 0.1667, "name": "Skill/skill_ripple/skill_ripple_0006" },
+					{ "time": 0.2333, "name": "Skill/skill_ripple/skill_ripple_0008" },
+					{ "time": 0.3, "name": "Skill/skill_ripple/skill_ripple_0010" },
+					{ "time": 0.3667, "name": "Skill/skill_ripple/skill_ripple_0012" },
+					{ "time": 0.4333, "name": "Skill/skill_ripple/skill_ripple_0014" },
+					{ "time": 0.5333, "name": "Skill/skill_ripple/skill_ripple_0018" },
+					{ "time": 0.6, "name": "Skill/skill_ripple/skill_ripple_0020" },
+					{ "time": 0.6667, "name": "Skill/skill_ripple/skill_ripple_0022" },
+					{ "time": 0.7333, "name": "Skill/skill_ripple/skill_ripple_0024" },
+					{ "time": 0.8, "name": "Skill/skill_ripple/skill_ripple_0026" },
+					{ "time": 0.8333, "name": "Skill/skill_ripple/skill_ripple_0028" },
+					{ "time": 0.9, "name": "Skill/skill_ripple/skill_ripple_0030" },
+					{ "time": 0.9667, "name": "Skill/skill_ripple/skill_ripple_0032" },
+					{ "time": 1.0333, "name": "Skill/skill_ripple/skill_ripple_0034" },
+					{ "time": 1.1, "name": "Skill/skill_ripple/skill_ripple_0036" },
+					{ "time": 1.2, "name": null }
+				]
+			}
+		},
+		"bones": {
+			"skill_ripple": {
+				"translate": [
+					{ "time": 0, "x": 0, "y": -0.52 }
+				],
+				"scale": [
+					{ "time": 0, "x": 0.197, "y": 0.197 },
+					{ "time": 0.1667, "x": 1.63, "y": 1.63 }
+				]
+			},
+			"skill_difeng": {
+				"translate": [
+					{ "time": 0, "x": 3.9, "y": 29.57, "curve": "stepped" },
+					{ "time": 0.1667, "x": 3.9, "y": 29.57 }
+				],
+				"scale": [
+					{ "time": 0, "x": 0.574, "y": 0.574 },
+					{ "time": 0.1667, "x": 1.846, "y": 1.846 }
+				]
+			},
+			"skill/quan_a": {
+				"translate": [
+					{ "time": 1.5333, "x": 28.63, "y": 0 }
+				],
+				"scale": [
+					{ "time": 1.5333, "x": 1, "y": 1 },
+					{ "time": 1.6667, "x": 2.12, "y": 2.12 }
+				]
+			},
+			"skill/quan": {
+				"translate": [
+					{ "time": 1.5333, "x": 50.02, "y": 16.22 }
+				],
+				"scale": [
+					{ "time": 1.5333, "x": 1, "y": 1 },
+					{ "time": 1.7667, "x": 1.626, "y": 1.626 }
+				]
+			}
+		}
+	},
+	"skill": {
+		"slots": {
+			"Skill/glass_boom": {
+				"attachment": [
+					{ "time": 0.8, "name": "Skill/glass/OUT_Glass_0000" },
+					{ "time": 0.9, "name": "Skill/glass/OUT_Glass_0004" },
+					{ "time": 0.9667, "name": "Skill/glass/OUT_Glass_0006" },
+					{ "time": 1.0333, "name": "Skill/glass/OUT_Glass_0008" },
+					{ "time": 1.1, "name": "Skill/glass/OUT_Glass_0010" },
+					{ "time": 1.1667, "name": "Skill/glass/OUT_Glass_0012" },
+					{ "time": 1.2333, "name": "Skill/glass/OUT_Glass_0014" },
+					{ "time": 1.3, "name": "Skill/glass/OUT_Glass_0016" },
+					{ "time": 1.3667, "name": "Skill/glass/OUT_Glass_0018" },
+					{ "time": 1.4333, "name": "Skill/glass/OUT_Glass_0020" },
+					{ "time": 1.5, "name": "Skill/glass/OUT_Glass_0022" },
+					{ "time": 1.5667, "name": "Skill/glass/OUT_Glass_0026" },
+					{ "time": 1.6333, "name": "Skill/glass/OUT_Glass_0028" },
+					{ "time": 1.7, "name": "Skill/glass/OUT_Glass_0030" },
+					{ "time": 1.7667, "name": "Skill/glass/OUT_Glass_0032" },
+					{ "time": 1.8333, "name": "Skill/glass/OUT_Glass_0034" },
+					{ "time": 1.8667, "name": "Skill/glass/OUT_Glass_0036" },
+					{ "time": 1.9333, "name": "Skill/glass/OUT_Glass_0038" },
+					{ "time": 2, "name": "Skill/glass/OUT_Glass_0040" },
+					{ "time": 2.0667, "name": "Skill/glass/OUT_Glass_0042" },
+					{ "time": 2.1333, "name": "Skill/glass/OUT_Glass_0044" },
+					{ "time": 2.1667, "name": "Skill/glass/OUT_Glass_0046" },
+					{ "time": 2.2333, "name": "Skill/glass/OUT_Glass_0048" },
+					{ "time": 2.3, "name": "Skill/glass/OUT_Glass_0050" },
+					{ "time": 2.3667, "name": "Skill/glass/OUT_Glass_0052" },
+					{ "time": 2.4333, "name": "Skill/glass/OUT_Glass_0054" },
+					{ "time": 2.5333, "name": "Skill/glass/OUT_Glass_0058" },
+					{ "time": 2.6, "name": "Skill/glass/OUT_Glass_0060" },
+					{ "time": 2.6667, "name": "Skill/glass/OUT_Glass_0062" },
+					{ "time": 2.7333, "name": "Skill/glass/OUT_Glass_0064" },
+					{ "time": 2.8, "name": "Skill/glass/OUT_Glass_0066" },
+					{ "time": 2.8333, "name": "Skill/glass/OUT_Glass_0068" },
+					{ "time": 2.9, "name": "Skill/glass/OUT_Glass_0070" },
+					{ "time": 2.9667, "name": "Skill/glass/OUT_Glass_0072" },
+					{ "time": 3.0333, "name": "Skill/glass/OUT_Glass_0074" },
+					{ "time": 3.1, "name": "Skill/glass/OUT_Glass_0076" },
+					{ "time": 3.1667, "name": "Skill/glass/OUT_Glass_0078" },
+					{ "time": 3.2, "name": null }
+				]
+			},
+			"skill/niao_boom": {
+				"color": [
+					{ "time": 1.8333, "color": "ffffffff" },
+					{ "time": 2.1333, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 1, "name": "Skill/skill/niao_boom/niao_boom_0000" },
+					{ "time": 1.0667, "name": "Skill/skill/niao_boom/niao_boom_0002" },
+					{ "time": 1.1333, "name": "Skill/skill/niao_boom/niao_boom_0004" },
+					{ "time": 1.1667, "name": "Skill/skill/niao_boom/niao_boom_0006" },
+					{ "time": 1.2333, "name": "Skill/skill/niao_boom/niao_boom_0008" },
+					{ "time": 1.3, "name": "Skill/skill/niao_boom/niao_boom_0010" },
+					{ "time": 1.3667, "name": "Skill/skill/niao_boom/niao_boom_0012" },
+					{ "time": 1.4333, "name": "Skill/skill/niao_boom/niao_boom_0014" },
+					{ "time": 1.5333, "name": "Skill/skill/niao_boom/niao_boom_0018" },
+					{ "time": 1.6, "name": "Skill/skill/niao_boom/niao_boom_0020" },
+					{ "time": 1.6667, "name": "Skill/skill/niao_boom/niao_boom_0022" },
+					{ "time": 1.7333, "name": "Skill/skill/niao_boom/niao_boom_0024" },
+					{ "time": 1.7667, "name": "Skill/skill/niao_boom/niao_boom_0000" },
+					{ "time": 1.8667, "name": "Skill/skill/niao_boom/niao_boom_0004" },
+					{ "time": 1.9333, "name": "Skill/skill/niao_boom/niao_boom_0006" },
+					{ "time": 2, "name": "Skill/skill/niao_boom/niao_boom_0008" },
+					{ "time": 2.0667, "name": "Skill/skill/niao_boom/niao_boom_0010" },
+					{ "time": 2.1333, "name": "Skill/skill/niao_boom/niao_boom_0012" }
+				]
+			},
+			"skill/quan": {
+				"attachment": [
+					{ "time": 1.5333, "name": "Skill/skill/quan/quan_0004" },
+					{ "time": 1.6, "name": "Skill/skill/quan/quan_0006" },
+					{ "time": 1.6667, "name": "Skill/skill/quan/quan_0008" },
+					{ "time": 1.7333, "name": "Skill/skill/quan/quan_0010" },
+					{ "time": 1.8, "name": "Skill/skill/quan/quan_0012" },
+					{ "time": 1.8333, "name": "Skill/skill/quan/quan_0014" },
+					{ "time": 1.9, "name": "Skill/skill/quan/quan_0016" },
+					{ "time": 1.9667, "name": "Skill/skill/quan/quan_0018" },
+					{ "time": 2.0333, "name": "Skill/skill/quan/quan_0020" },
+					{ "time": 2.1, "name": "Skill/skill/quan/quan_0022" },
+					{ "time": 2.1667, "name": null }
+				]
+			},
+			"skill/quan_a": {
+				"attachment": [
+					{ "time": 1.5333, "name": "Skill/skill/quan_a/quan_a_0000" },
+					{ "time": 1.6, "name": "Skill/skill/quan_a/quan_a_0002" },
+					{ "time": 1.6667, "name": "Skill/skill/quan_a/quan_a_0004" },
+					{ "time": 1.7333, "name": "Skill/skill/quan_a/quan_a_0006" },
+					{ "time": 1.8, "name": "Skill/skill/quan_a/quan_a_0008" },
+					{ "time": 1.8333, "name": "Skill/skill/quan_a/quan_a_0010" },
+					{ "time": 1.9, "name": "Skill/skill/quan_a/quan_a_0012" },
+					{ "time": 1.9667, "name": "Skill/skill/quan_a/quan_a_0014" },
+					{ "time": 2.0333, "name": "Skill/skill/quan_a/quan_a_0016" },
+					{ "time": 2.1, "name": "Skill/skill/quan_a/quan_a_0018" },
+					{ "time": 2.2, "name": "Skill/skill/quan_a/quan_a_0022" },
+					{ "time": 2.2667, "name": "Skill/skill/quan_a/quan_a_0024" },
+					{ "time": 2.3333, "name": null }
+				]
+			},
+			"skill/wind": {
+				"attachment": [
+					{ "time": 1.5333, "name": "Skill/skill/wind/wind_0000" },
+					{ "time": 1.6, "name": "Skill/skill/wind/wind_0002" },
+					{ "time": 1.6667, "name": "Skill/skill/wind/wind_0004" },
+					{ "time": 1.7333, "name": "Skill/skill/wind/wind_0006" },
+					{ "time": 1.8, "name": "Skill/skill/wind/wind_0008" },
+					{ "time": 1.8333, "name": "Skill/skill/wind/wind_0010" },
+					{ "time": 1.9, "name": "Skill/skill/wind/wind_0012" },
+					{ "time": 1.9667, "name": "Skill/skill/wind/wind_0014" },
+					{ "time": 2.0333, "name": "Skill/skill/wind/wind_0016" },
+					{ "time": 2.1, "name": "Skill/skill/wind/wind_0018" },
+					{ "time": 2.1667, "name": "Skill/skill/wind/wind_0020" },
+					{ "time": 2.2, "name": "Skill/skill/wind/wind_0022" },
+					{ "time": 2.2667, "name": "Skill/skill/wind/wind_0024" },
+					{ "time": 2.3333, "name": null }
+				]
+			},
+			"skill_bu/hong_quan": {
+				"color": [
+					{ "time": 1.8333, "color": "ffffffff" },
+					{ "time": 1.9667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0.8333, "name": "Skill/skill_bu/hong_quan_0004" }
+				]
+			},
+			"skill_bu/hong_quan2": {
+				"color": [
+					{ "time": 1.7, "color": "ffffffff" },
+					{ "time": 1.7667, "color": "ffffff72" },
+					{ "time": 1.8333, "color": "ffffff44" },
+					{ "time": 1.8667, "color": "ffffffe4" },
+					{ "time": 1.9333, "color": "ffffff89" },
+					{ "time": 1.9667, "color": "ffffff72" },
+					{ "time": 2.0333, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "ffffff44" },
+					{ "time": 2.1, "color": "ffffffe4" },
+					{ "time": 2.1667, "color": "ffffffff" },
+					{ "time": 2.2, "color": "ffffff72" },
+					{ "time": 2.2667, "color": "ffffffff" },
+					{ "time": 2.3, "color": "ffffff44" },
+					{ "time": 2.3333, "color": "ffffffe4" },
+					{ "time": 2.4, "color": "ffffff89" },
+					{ "time": 2.4667, "color": "ffffff72" },
+					{ "time": 2.5, "color": "ffffffff" },
+					{ "time": 2.5333, "color": "ffffff72" },
+					{ "time": 2.6, "color": "ffffffff" },
+					{ "time": 2.6333, "color": "ffffff44" },
+					{ "time": 2.6667, "color": "ffffffe4" },
+					{ "time": 2.7333, "color": "ffffffff" },
+					{ "time": 2.8667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 1.7, "name": "Skill/skill_bu/hong_quan_0004" }
+				]
+			},
+			"skill_bu/hong_quan_1": {
+				"color": [
+					{ "time": 1.7, "color": "ffffffff" },
+					{ "time": 1.7667, "color": "ffffff72" },
+					{ "time": 1.8333, "color": "ffffffff" },
+					{ "time": 1.8667, "color": "ffffffe4" },
+					{ "time": 1.9333, "color": "ffffff89" },
+					{ "time": 1.9667, "color": "ffffff72" },
+					{ "time": 2.0333, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "ffffff44" },
+					{ "time": 2.1, "color": "ffffffe4" },
+					{ "time": 2.1667, "color": "ffffffff" },
+					{ "time": 2.2, "color": "ffffff72" },
+					{ "time": 2.2667, "color": "ffffffff" },
+					{ "time": 2.3, "color": "ffffff44" },
+					{ "time": 2.3333, "color": "ffffffe4" },
+					{ "time": 2.4, "color": "ffffff89" },
+					{ "time": 2.4667, "color": "ffffff72" },
+					{ "time": 2.5, "color": "ffffffff" },
+					{ "time": 2.5333, "color": "ffffff72" },
+					{ "time": 2.6, "color": "ffffffff" },
+					{ "time": 2.6333, "color": "ffffff44" },
+					{ "time": 2.6667, "color": "ffffffe4" },
+					{ "time": 2.7333, "color": "ffffffff" },
+					{ "time": 2.8667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 1.7, "name": "Skill/skill_bu/hong_quan_0004" }
+				]
+			},
+			"skill_bu/hong_quan_2": {
+				"color": [
+					{ "time": 1.7, "color": "ffffffff" },
+					{ "time": 1.7667, "color": "ffffff72" },
+					{ "time": 1.8333, "color": "ffffffff" },
+					{ "time": 1.8667, "color": "ffffffe4" },
+					{ "time": 1.9333, "color": "ffffff89" },
+					{ "time": 1.9667, "color": "ffffff72" },
+					{ "time": 2.0333, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "ffffff44" },
+					{ "time": 2.1, "color": "ffffffe4" },
+					{ "time": 2.1667, "color": "ffffffff" },
+					{ "time": 2.2, "color": "ffffff72" },
+					{ "time": 2.2667, "color": "ffffffff" },
+					{ "time": 2.3, "color": "ffffff44" },
+					{ "time": 2.3333, "color": "ffffffe4" },
+					{ "time": 2.4, "color": "ffffff89" },
+					{ "time": 2.4667, "color": "ffffff72" },
+					{ "time": 2.5, "color": "ffffffff" },
+					{ "time": 2.5333, "color": "ffffff72" },
+					{ "time": 2.6, "color": "ffffffff" },
+					{ "time": 2.6333, "color": "ffffff44" },
+					{ "time": 2.6667, "color": "ffffffe4" },
+					{ "time": 2.7333, "color": "ffffffff" },
+					{ "time": 2.8667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 1.7667, "name": "Skill/skill_bu/hong_quan_0004" }
+				]
+			},
+			"skill_bu/hong_quan_3": {
+				"color": [
+					{ "time": 1.7, "color": "ffffffff" },
+					{ "time": 1.7667, "color": "ffffff72" },
+					{ "time": 1.8333, "color": "ffffff44" },
+					{ "time": 1.8667, "color": "ffffffe4" },
+					{ "time": 1.9333, "color": "ffffff89" },
+					{ "time": 1.9667, "color": "ffffff72" },
+					{ "time": 2.0333, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "ffffff44" },
+					{ "time": 2.1, "color": "ffffffe4" },
+					{ "time": 2.1667, "color": "ffffffff" },
+					{ "time": 2.2, "color": "ffffff72" },
+					{ "time": 2.2667, "color": "ffffffff" },
+					{ "time": 2.3, "color": "ffffff44" },
+					{ "time": 2.3333, "color": "ffffffe4" },
+					{ "time": 2.4, "color": "ffffff89" },
+					{ "time": 2.4667, "color": "ffffff72" },
+					{ "time": 2.5, "color": "ffffffff" },
+					{ "time": 2.5333, "color": "ffffff72" },
+					{ "time": 2.6, "color": "ffffffff" },
+					{ "time": 2.6333, "color": "ffffff44" },
+					{ "time": 2.6667, "color": "ffffffe4" },
+					{ "time": 2.7333, "color": "ffffffff" },
+					{ "time": 2.8667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 1.8333, "name": "Skill/skill_bu/hong_quan_0004" }
+				]
+			},
+			"skill_bu/hong_quan_4": {
+				"color": [
+					{ "time": 1.7, "color": "ffffffff" },
+					{ "time": 1.7667, "color": "ffffff72" },
+					{ "time": 1.8333, "color": "ffffffff" },
+					{ "time": 1.8667, "color": "ffffffe4" },
+					{ "time": 1.9333, "color": "ffffff89" },
+					{ "time": 1.9667, "color": "ffffff72" },
+					{ "time": 2.0333, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "ffffff44" },
+					{ "time": 2.1, "color": "ffffffe4" },
+					{ "time": 2.1667, "color": "ffffffff" },
+					{ "time": 2.2, "color": "ffffff72" },
+					{ "time": 2.2667, "color": "ffffffff" },
+					{ "time": 2.3, "color": "ffffff44" },
+					{ "time": 2.3333, "color": "ffffffe4" },
+					{ "time": 2.4, "color": "ffffff89" },
+					{ "time": 2.4667, "color": "ffffff72" },
+					{ "time": 2.5, "color": "ffffffff" },
+					{ "time": 2.5333, "color": "ffffff72" },
+					{ "time": 2.6, "color": "ffffffff" },
+					{ "time": 2.6333, "color": "ffffff44" },
+					{ "time": 2.6667, "color": "ffffffe4" },
+					{ "time": 2.7333, "color": "ffffffff" },
+					{ "time": 2.8667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 1.8667, "name": "Skill/skill_bu/hong_quan_0004" }
+				]
+			},
+			"skill_bu/hong_quan_5": {
+				"color": [
+					{ "time": 1.7, "color": "ffffffff" },
+					{ "time": 1.7667, "color": "ffffff72" },
+					{ "time": 1.8333, "color": "ffffff44" },
+					{ "time": 1.8667, "color": "ffffffe4" },
+					{ "time": 1.9333, "color": "ffffff89" },
+					{ "time": 1.9667, "color": "ffffff72" },
+					{ "time": 2.0333, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "ffffff44" },
+					{ "time": 2.1, "color": "ffffffe4" },
+					{ "time": 2.1667, "color": "ffffffff" },
+					{ "time": 2.2, "color": "ffffff72" },
+					{ "time": 2.2667, "color": "ffffffff" },
+					{ "time": 2.3, "color": "ffffff44" },
+					{ "time": 2.3333, "color": "ffffffe4" },
+					{ "time": 2.4, "color": "ffffff89" },
+					{ "time": 2.4667, "color": "ffffff72" },
+					{ "time": 2.5, "color": "ffffffff" },
+					{ "time": 2.5333, "color": "ffffff72" },
+					{ "time": 2.6, "color": "ffffffff" },
+					{ "time": 2.6333, "color": "ffffff44" },
+					{ "time": 2.6667, "color": "ffffffe4" },
+					{ "time": 2.7333, "color": "ffffffff" },
+					{ "time": 2.8667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 1.9333, "name": "Skill/skill_bu/hong_quan_0004" }
+				]
+			},
+			"skill_bu/hong_quan_6": {
+				"color": [
+					{ "time": 1.7, "color": "ffffffff" },
+					{ "time": 1.7667, "color": "ffffff72" },
+					{ "time": 1.8333, "color": "ffffffff" },
+					{ "time": 1.8667, "color": "ffffffe4" },
+					{ "time": 1.9333, "color": "ffffff89" },
+					{ "time": 1.9667, "color": "ffffff72" },
+					{ "time": 2.0333, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "ffffff44" },
+					{ "time": 2.1, "color": "ffffffe4" },
+					{ "time": 2.1667, "color": "ffffffff" },
+					{ "time": 2.2, "color": "ffffff72" },
+					{ "time": 2.2667, "color": "ffffffff" },
+					{ "time": 2.3, "color": "ffffff44" },
+					{ "time": 2.3333, "color": "ffffffe4" },
+					{ "time": 2.4, "color": "ffffff89" },
+					{ "time": 2.4667, "color": "ffffff72" },
+					{ "time": 2.5, "color": "ffffffff" },
+					{ "time": 2.5333, "color": "ffffff72" },
+					{ "time": 2.6, "color": "ffffffff" },
+					{ "time": 2.6333, "color": "ffffff44" },
+					{ "time": 2.6667, "color": "ffffffe4" },
+					{ "time": 2.7333, "color": "ffffffff" },
+					{ "time": 2.8667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 2, "name": "Skill/skill_bu/hong_quan_0004" }
+				]
+			},
+			"skill_bu/hong_quan_7": {
+				"color": [
+					{ "time": 1.7, "color": "ffffffff" },
+					{ "time": 1.7667, "color": "ffffff72" },
+					{ "time": 1.8333, "color": "ffffffff" },
+					{ "time": 1.8667, "color": "ffffffe4" },
+					{ "time": 1.9333, "color": "ffffff89" },
+					{ "time": 1.9667, "color": "ffffff72" },
+					{ "time": 2.0333, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "ffffff44" },
+					{ "time": 2.1, "color": "ffffffe4" },
+					{ "time": 2.1667, "color": "ffffffff" },
+					{ "time": 2.2, "color": "ffffff72" },
+					{ "time": 2.2667, "color": "ffffffff" },
+					{ "time": 2.3, "color": "ffffff44" },
+					{ "time": 2.3333, "color": "ffffffe4" },
+					{ "time": 2.4, "color": "ffffff89" },
+					{ "time": 2.4667, "color": "ffffff72" },
+					{ "time": 2.5, "color": "ffffffff" },
+					{ "time": 2.5333, "color": "ffffff72" },
+					{ "time": 2.6, "color": "ffffffff" },
+					{ "time": 2.6333, "color": "ffffff44" },
+					{ "time": 2.6667, "color": "ffffffe4" },
+					{ "time": 2.7333, "color": "ffffffff" },
+					{ "time": 2.8667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 2.0667, "name": "Skill/skill_bu/hong_quan_0004" }
+				]
+			},
+			"skill_bu/hong_quan_8": {
+				"color": [
+					{ "time": 1.7, "color": "ffffffff" },
+					{ "time": 1.7667, "color": "ffffff72" },
+					{ "time": 1.8333, "color": "ffffffff" },
+					{ "time": 1.8667, "color": "ffffffe4" },
+					{ "time": 1.9333, "color": "ffffff89" },
+					{ "time": 1.9667, "color": "ffffff72" },
+					{ "time": 2.0333, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "ffffff44" },
+					{ "time": 2.1, "color": "ffffffe4" },
+					{ "time": 2.1667, "color": "ffffffff" },
+					{ "time": 2.2, "color": "ffffff72" },
+					{ "time": 2.2667, "color": "ffffffff" },
+					{ "time": 2.3, "color": "ffffff44" },
+					{ "time": 2.3333, "color": "ffffffe4" },
+					{ "time": 2.4, "color": "ffffff89" },
+					{ "time": 2.4667, "color": "ffffff72" },
+					{ "time": 2.5, "color": "ffffffff" },
+					{ "time": 2.5333, "color": "ffffff72" },
+					{ "time": 2.6, "color": "ffffffff" },
+					{ "time": 2.6333, "color": "ffffff44" },
+					{ "time": 2.6667, "color": "ffffffe4" },
+					{ "time": 2.7333, "color": "ffffffff" },
+					{ "time": 2.8667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 2.1333, "name": "Skill/skill_bu/hong_quan_0004" }
+				]
+			},
+			"skill_bu/hong_quan_9": {
+				"color": [
+					{ "time": 1.7, "color": "ffffffff" },
+					{ "time": 1.7667, "color": "ffffff72" },
+					{ "time": 1.8333, "color": "ffffffff" },
+					{ "time": 1.8667, "color": "ffffffe4" },
+					{ "time": 1.9333, "color": "ffffff89" },
+					{ "time": 1.9667, "color": "ffffff72" },
+					{ "time": 2.0333, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "ffffff44" },
+					{ "time": 2.1, "color": "ffffffe4" },
+					{ "time": 2.1667, "color": "ffffffff" },
+					{ "time": 2.2, "color": "ffffff72" },
+					{ "time": 2.2667, "color": "ffffffff" },
+					{ "time": 2.3, "color": "ffffff44" },
+					{ "time": 2.3333, "color": "ffffffe4" },
+					{ "time": 2.4, "color": "ffffff89" },
+					{ "time": 2.4667, "color": "ffffff72" },
+					{ "time": 2.5, "color": "ffffffff" },
+					{ "time": 2.5333, "color": "ffffff72" },
+					{ "time": 2.6, "color": "ffffffff" },
+					{ "time": 2.6333, "color": "ffffff44" },
+					{ "time": 2.6667, "color": "ffffffe4" },
+					{ "time": 2.7333, "color": "ffffffff" },
+					{ "time": 2.8667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 2.1667, "name": "Skill/skill_bu/hong_quan_0004" }
+				]
+			},
+			"skill_bu/hong_quan_10": {
+				"color": [
+					{ "time": 1.7, "color": "ffffffff" },
+					{ "time": 1.7667, "color": "ffffff72" },
+					{ "time": 1.8333, "color": "ffffffff" },
+					{ "time": 1.8667, "color": "ffffffe4" },
+					{ "time": 1.9333, "color": "ffffff89" },
+					{ "time": 1.9667, "color": "ffffff72" },
+					{ "time": 2.0333, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "ffffff44" },
+					{ "time": 2.1, "color": "ffffffe4" },
+					{ "time": 2.1667, "color": "ffffffff" },
+					{ "time": 2.2, "color": "ffffff72" },
+					{ "time": 2.2667, "color": "ffffffff" },
+					{ "time": 2.3, "color": "ffffff44" },
+					{ "time": 2.3333, "color": "ffffffe4" },
+					{ "time": 2.4, "color": "ffffff89" },
+					{ "time": 2.4667, "color": "ffffff72" },
+					{ "time": 2.5, "color": "ffffffff" },
+					{ "time": 2.5333, "color": "ffffff72" },
+					{ "time": 2.6, "color": "ffffffff" },
+					{ "time": 2.6333, "color": "ffffff44" },
+					{ "time": 2.6667, "color": "ffffffe4" },
+					{ "time": 2.7333, "color": "ffffffff" },
+					{ "time": 2.8667, "color": "ffffff00" }
+				]
+			},
+			"skill_bu/kuoshan": {
+				"color": [
+					{ "time": 2.0333, "color": "ffffffff" },
+					{ "time": 2.2, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 1.5333, "name": "Skill/skill_bu/kuoshan/kuoshan_0010" },
+					{ "time": 1.6333, "name": "Skill/skill_bu/kuoshan/kuoshan_0012" },
+					{ "time": 1.7, "name": "Skill/skill_bu/kuoshan/kuoshan_0014" },
+					{ "time": 1.8, "name": "Skill/skill_bu/kuoshan/kuoshan_0016" },
+					{ "time": 1.8667, "name": "Skill/skill_bu/kuoshan/kuoshan_0018" },
+					{ "time": 1.9667, "name": "Skill/skill_bu/kuoshan/kuoshan_0020" },
+					{ "time": 2.0333, "name": "Skill/skill_bu/kuoshan/kuoshan_0022" },
+					{ "time": 2.1333, "name": "Skill/skill_bu/kuoshan/kuoshan_0024" },
+					{ "time": 2.2, "name": null }
+				]
+			},
+			"skill_bu/light_h": {
+				"color": [
+					{ "time": 1.9667, "color": "ff6e5fff", "curve": "stepped" },
+					{ "time": 2.0667, "color": "ff6e5fff" },
+					{ "time": 2.1667, "color": "ffb8b800" }
+				],
+				"attachment": [
+					{ "time": 0.8333, "name": "Skill/skill_bu/light_h_0000" },
+					{ "time": 1.9667, "name": "Skill/skill_bu/light_h_0000" }
+				]
+			},
+			"skill_bu/lxl": {
+				"color": [
+					{ "time": 1.9, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0.9667, "name": "Skill/skill_bu/lxl/1" },
+					{ "time": 1.0333, "name": "Skill/skill_bu/lxl/2" },
+					{ "time": 1.0667, "name": "Skill/skill_bu/lxl/3" },
+					{ "time": 1.1333, "name": "Skill/skill_bu/lxl/4" },
+					{ "time": 1.1667, "name": "Skill/skill_bu/lxl/5" },
+					{ "time": 1.2333, "name": "Skill/skill_bu/lxl/6" },
+					{ "time": 1.2667, "name": "Skill/skill_bu/lxl/7" }
+				]
+			},
+			"skill_bu/quan_bai": {
+				"attachment": [
+					{ "time": 0.8667, "name": "Skill/skill_bu/quan_bai_0000" }
+				]
+			},
+			"skill_bu/quan_hong": {
+				"attachment": [
+					{ "time": 0.8333, "name": "Skill/skill_bu/quan_hong_0000_0000" }
+				]
+			},
+			"skill_bu/quan_kuo_a": {
+				"color": [
+					{ "time": 1.6333, "color": "ffffffff" },
+					{ "time": 1.8, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 1.8667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 1.5667, "name": "Skill/skill_bu/quan_kuo_a_0012" }
+				]
+			},
+			"skill_difeng": {
+				"attachment": [
+					{ "time": 0, "name": "Skill/skill_difeng/skill_difeng_0000" },
+					{ "time": 0.0667, "name": "Skill/skill_difeng/skill_difeng_0002" },
+					{ "time": 0.1333, "name": "Skill/skill_difeng/skill_difeng_0004" },
+					{ "time": 0.1667, "name": "Skill/skill_difeng/skill_difeng_0006" },
+					{ "time": 0.2333, "name": "Skill/skill_difeng/skill_difeng_0008" },
+					{ "time": 0.3, "name": "Skill/skill_difeng/skill_difeng_0010" },
+					{ "time": 0.3667, "name": "Skill/skill_difeng/skill_difeng_0012" },
+					{ "time": 0.4333, "name": "Skill/skill_difeng/skill_difeng_0014" },
+					{ "time": 0.5333, "name": "Skill/skill_difeng/skill_difeng_0018" },
+					{ "time": 0.6, "name": "Skill/skill_difeng/skill_difeng_0020" },
+					{ "time": 0.6667, "name": "Skill/skill_difeng/skill_difeng_0022" },
+					{ "time": 0.7333, "name": "Skill/skill_difeng/skill_difeng_0024" },
+					{ "time": 0.8, "name": "Skill/skill_difeng/skill_difeng_0026" },
+					{ "time": 0.9, "name": "Skill/skill_difeng/skill_difeng_0030" },
+					{ "time": 0.9667, "name": "Skill/skill_difeng/skill_difeng_0032" },
+					{ "time": 1.0333, "name": "Skill/skill_difeng/skill_difeng_0034" },
+					{ "time": 1.1, "name": "Skill/skill_difeng/skill_difeng_0036" },
+					{ "time": 1.2, "name": null }
+				]
+			},
+			"skill_line_a": {
+				"color": [
+					{ "time": 1.6333, "color": "ffffffff" },
+					{ "time": 1.7, "color": "ffffffca" },
+					{ "time": 1.7333, "color": "ffffffff" },
+					{ "time": 1.7667, "color": "ffffffc3" },
+					{ "time": 1.8333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 1.8667, "color": "ffffffff" },
+					{ "time": 1.9, "color": "ffffffc3" },
+					{ "time": 1.9667, "color": "ffffffca" },
+					{ "time": 2, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "ffffffca" },
+					{ "time": 2.1, "color": "ffffffff" },
+					{ "time": 2.1333, "color": "ffffffca" },
+					{ "time": 2.1667, "color": "ffffffff" },
+					{ "time": 2.2, "color": "ffffffca" },
+					{ "time": 2.2333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.2667, "color": "ffffffff" },
+					{ "time": 2.3, "color": "ffffffc3" },
+					{ "time": 2.3667, "color": "ffffffca" },
+					{ "time": 2.4, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.4667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.5, "color": "ffffffff" },
+					{ "time": 2.5333, "color": "ffffffca" },
+					{ "time": 2.5667, "color": "ffffffff" },
+					{ "time": 2.6, "color": "ffffffca", "curve": "stepped" },
+					{ "time": 2.6333, "color": "ffffffca" },
+					{ "time": 2.6667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.7, "color": "ffffffff" },
+					{ "time": 2.7333, "color": "ffffffc3" },
+					{ "time": 2.8667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 1.6333, "name": "Skill/skill_line_a/skill_line_a_0004" }
+				]
+			},
+			"skill_line_a2": {
+				"color": [
+					{ "time": 1.6333, "color": "ffffffff" },
+					{ "time": 1.7, "color": "ffffffca" },
+					{ "time": 1.7333, "color": "ffffffff" },
+					{ "time": 1.7667, "color": "ffffffc3" },
+					{ "time": 1.8333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 1.8667, "color": "ffffffff" },
+					{ "time": 1.9, "color": "ffffffc3" },
+					{ "time": 1.9667, "color": "ffffffca" },
+					{ "time": 2, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "ffffffca" },
+					{ "time": 2.1, "color": "ffffffff" },
+					{ "time": 2.1333, "color": "ffffffca" },
+					{ "time": 2.1667, "color": "ffffffff" },
+					{ "time": 2.2, "color": "ffffffca" },
+					{ "time": 2.2333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.2667, "color": "ffffffff" },
+					{ "time": 2.3, "color": "ffffffc3" },
+					{ "time": 2.3667, "color": "ffffffca" },
+					{ "time": 2.4, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.4667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.5, "color": "ffffffff" },
+					{ "time": 2.5333, "color": "ffffffca" },
+					{ "time": 2.5667, "color": "ffffffff" },
+					{ "time": 2.6, "color": "ffffffca", "curve": "stepped" },
+					{ "time": 2.6333, "color": "ffffffca" },
+					{ "time": 2.6667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.7, "color": "ffffffff" },
+					{ "time": 2.7333, "color": "ffffffc3" },
+					{ "time": 2.8667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 1.7, "name": "Skill/skill_line_a/skill_line_a_0004" }
+				]
+			},
+			"skill_line_a3": {
+				"color": [
+					{ "time": 1.6333, "color": "ffffffff" },
+					{ "time": 1.7, "color": "ffffffca" },
+					{ "time": 1.7333, "color": "ffffffff" },
+					{ "time": 1.7667, "color": "ffffffc3" },
+					{ "time": 1.8333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 1.8667, "color": "ffffffff" },
+					{ "time": 1.9, "color": "ffffffc3" },
+					{ "time": 1.9667, "color": "ffffffca" },
+					{ "time": 2, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "ffffffca" },
+					{ "time": 2.1, "color": "ffffffff" },
+					{ "time": 2.1333, "color": "ffffffca" },
+					{ "time": 2.1667, "color": "ffffffff" },
+					{ "time": 2.2, "color": "ffffffca" },
+					{ "time": 2.2333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.2667, "color": "ffffffff" },
+					{ "time": 2.3, "color": "ffffffc3" },
+					{ "time": 2.3667, "color": "ffffffca" },
+					{ "time": 2.4, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.4667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.5, "color": "ffffffff" },
+					{ "time": 2.5333, "color": "ffffffca" },
+					{ "time": 2.5667, "color": "ffffffff" },
+					{ "time": 2.6, "color": "ffffffca", "curve": "stepped" },
+					{ "time": 2.6333, "color": "ffffffca" },
+					{ "time": 2.6667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.7, "color": "ffffffff" },
+					{ "time": 2.7333, "color": "ffffffc3" },
+					{ "time": 2.8667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 1.7667, "name": "Skill/skill_line_a/skill_line_a_0004" }
+				]
+			},
+			"skill_line_a4": {
+				"color": [
+					{ "time": 1.6333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 1.7, "color": "ffffffff" },
+					{ "time": 1.7667, "color": "ffffffc3" },
+					{ "time": 1.8333, "color": "ffffffff" },
+					{ "time": 1.9, "color": "ffffffc3" },
+					{ "time": 1.9667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.0667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.1333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.2, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.2333, "color": "ffffffff" },
+					{ "time": 2.2667, "color": "ffffffc3" },
+					{ "time": 2.3667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.4, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.4667, "color": "ffffffff" },
+					{ "time": 2.5, "color": "ffffffc3" },
+					{ "time": 2.5333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.6, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.6333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.6667, "color": "ffffffff" },
+					{ "time": 2.7, "color": "ffffffc3" },
+					{ "time": 2.7333, "color": "ffffffff" },
+					{ "time": 2.8667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 1.8333, "name": "Skill/skill_line_a/skill_line_a_0004" }
+				]
+			},
+			"skill_line_a5": {
+				"color": [
+					{ "time": 1.6333, "color": "ffffffff" },
+					{ "time": 1.7, "color": "ffffffca" },
+					{ "time": 1.7333, "color": "ffffffff" },
+					{ "time": 1.7667, "color": "ffffffc3" },
+					{ "time": 1.8333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 1.8667, "color": "ffffffff" },
+					{ "time": 1.9, "color": "ffffffc3" },
+					{ "time": 1.9667, "color": "ffffffca" },
+					{ "time": 2, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "ffffffca" },
+					{ "time": 2.1, "color": "ffffffff" },
+					{ "time": 2.1333, "color": "ffffffca" },
+					{ "time": 2.1667, "color": "ffffffff" },
+					{ "time": 2.2, "color": "ffffffca" },
+					{ "time": 2.2333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.2667, "color": "ffffffff" },
+					{ "time": 2.3, "color": "ffffffc3" },
+					{ "time": 2.3667, "color": "ffffffca" },
+					{ "time": 2.4, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.4667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.5, "color": "ffffffff" },
+					{ "time": 2.5333, "color": "ffffffca" },
+					{ "time": 2.5667, "color": "ffffffff" },
+					{ "time": 2.6, "color": "ffffffca", "curve": "stepped" },
+					{ "time": 2.6333, "color": "ffffffca" },
+					{ "time": 2.6667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.7, "color": "ffffffff" },
+					{ "time": 2.7333, "color": "ffffffc3" },
+					{ "time": 2.8667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 1.8667, "name": "Skill/skill_line_a/skill_line_a_0004" }
+				]
+			},
+			"skill_line_a6": {
+				"color": [
+					{ "time": 1.6333, "color": "ffffffff" },
+					{ "time": 1.7, "color": "ffffffca" },
+					{ "time": 1.7333, "color": "ffffffff" },
+					{ "time": 1.7667, "color": "ffffffc3" },
+					{ "time": 1.8333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 1.8667, "color": "ffffffff" },
+					{ "time": 1.9, "color": "ffffffc3" },
+					{ "time": 1.9667, "color": "ffffffca" },
+					{ "time": 2, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "ffffffca" },
+					{ "time": 2.1, "color": "ffffffff" },
+					{ "time": 2.1333, "color": "ffffffca" },
+					{ "time": 2.1667, "color": "ffffffff" },
+					{ "time": 2.2, "color": "ffffffca" },
+					{ "time": 2.2333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.2667, "color": "ffffffff" },
+					{ "time": 2.3, "color": "ffffffc3" },
+					{ "time": 2.3667, "color": "ffffffca" },
+					{ "time": 2.4, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.4667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.5, "color": "ffffffff" },
+					{ "time": 2.5333, "color": "ffffffca" },
+					{ "time": 2.5667, "color": "ffffffff" },
+					{ "time": 2.6, "color": "ffffffca", "curve": "stepped" },
+					{ "time": 2.6333, "color": "ffffffca" },
+					{ "time": 2.6667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.7, "color": "ffffffff" },
+					{ "time": 2.7333, "color": "ffffffc3" },
+					{ "time": 2.8667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 1.9333, "name": "Skill/skill_line_a/skill_line_a_0004" }
+				]
+			},
+			"skill_line_a7": {
+				"color": [
+					{ "time": 1.6333, "color": "ffffffff" },
+					{ "time": 1.7, "color": "ffffffca" },
+					{ "time": 1.7333, "color": "ffffffff" },
+					{ "time": 1.7667, "color": "ffffffc3" },
+					{ "time": 1.8333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 1.8667, "color": "ffffffff" },
+					{ "time": 1.9, "color": "ffffffc3" },
+					{ "time": 1.9667, "color": "ffffffca" },
+					{ "time": 2, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "ffffffca" },
+					{ "time": 2.1, "color": "ffffffff" },
+					{ "time": 2.1333, "color": "ffffffca" },
+					{ "time": 2.1667, "color": "ffffffff" },
+					{ "time": 2.2, "color": "ffffffca" },
+					{ "time": 2.2333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.2667, "color": "ffffffff" },
+					{ "time": 2.3, "color": "ffffffc3" },
+					{ "time": 2.3667, "color": "ffffffca" },
+					{ "time": 2.4, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.4667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.5, "color": "ffffffff" },
+					{ "time": 2.5333, "color": "ffffffca" },
+					{ "time": 2.5667, "color": "ffffffff" },
+					{ "time": 2.6, "color": "ffffffca", "curve": "stepped" },
+					{ "time": 2.6333, "color": "ffffffca" },
+					{ "time": 2.6667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.7, "color": "ffffffff" },
+					{ "time": 2.7333, "color": "ffffffc3" },
+					{ "time": 2.8667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 2, "name": "Skill/skill_line_a/skill_line_a_0004" }
+				]
+			},
+			"skill_line_a8": {
+				"color": [
+					{ "time": 1.6333, "color": "ffffffff" },
+					{ "time": 1.7, "color": "ffffffca" },
+					{ "time": 1.7333, "color": "ffffffff" },
+					{ "time": 1.7667, "color": "ffffffc3" },
+					{ "time": 1.8333, "color": "ffffffca" },
+					{ "time": 1.8667, "color": "ffffffff" },
+					{ "time": 1.9, "color": "ffffffc3" },
+					{ "time": 1.9667, "color": "ffffffca" },
+					{ "time": 2, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "ffffffca" },
+					{ "time": 2.1, "color": "ffffffff" },
+					{ "time": 2.1333, "color": "ffffffca" },
+					{ "time": 2.1667, "color": "ffffffff" },
+					{ "time": 2.2, "color": "ffffffca" },
+					{ "time": 2.2333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.2667, "color": "ffffffff" },
+					{ "time": 2.3, "color": "ffffffc3" },
+					{ "time": 2.3667, "color": "ffffffca" },
+					{ "time": 2.4, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.4667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.5, "color": "ffffffff" },
+					{ "time": 2.5333, "color": "ffffffca" },
+					{ "time": 2.5667, "color": "ffffffff" },
+					{ "time": 2.6, "color": "ffffffca", "curve": "stepped" },
+					{ "time": 2.6333, "color": "ffffffca" },
+					{ "time": 2.6667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.7, "color": "ffffffff" },
+					{ "time": 2.7333, "color": "ffffffc3" },
+					{ "time": 2.8667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 2.0667, "name": "Skill/skill_line_a/skill_line_a_0004" }
+				]
+			},
+			"skill_line_a9": {
+				"color": [
+					{ "time": 1.6333, "color": "ffffffff" },
+					{ "time": 1.7, "color": "ffffffca" },
+					{ "time": 1.7333, "color": "ffffffff" },
+					{ "time": 1.7667, "color": "ffffffc3" },
+					{ "time": 1.8333, "color": "ffffffca" },
+					{ "time": 1.8667, "color": "ffffffff" },
+					{ "time": 1.9, "color": "ffffffc3" },
+					{ "time": 1.9667, "color": "ffffffca" },
+					{ "time": 2, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "ffffffca" },
+					{ "time": 2.1, "color": "ffffffff" },
+					{ "time": 2.1333, "color": "ffffffca" },
+					{ "time": 2.1667, "color": "ffffffff" },
+					{ "time": 2.2, "color": "ffffffca" },
+					{ "time": 2.2333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.2667, "color": "ffffffff" },
+					{ "time": 2.3, "color": "ffffffc3" },
+					{ "time": 2.3667, "color": "ffffffca" },
+					{ "time": 2.4, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.4667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.5, "color": "ffffffff" },
+					{ "time": 2.5333, "color": "ffffffca" },
+					{ "time": 2.5667, "color": "ffffffff" },
+					{ "time": 2.6, "color": "ffffffca", "curve": "stepped" },
+					{ "time": 2.6333, "color": "ffffffca" },
+					{ "time": 2.6667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.7, "color": "ffffffff" },
+					{ "time": 2.7333, "color": "ffffffc3" },
+					{ "time": 2.8667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 2.1333, "name": "Skill/skill_line_a/skill_line_a_0004" }
+				]
+			},
+			"skill_line_a10": {
+				"color": [
+					{ "time": 1.6333, "color": "ffffffff" },
+					{ "time": 1.7, "color": "ffffffca" },
+					{ "time": 1.7333, "color": "ffffffff" },
+					{ "time": 1.7667, "color": "ffffffc3" },
+					{ "time": 1.8333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 1.8667, "color": "ffffffff" },
+					{ "time": 1.9, "color": "ffffffc3" },
+					{ "time": 1.9667, "color": "ffffffca" },
+					{ "time": 2, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "ffffffca" },
+					{ "time": 2.1, "color": "ffffffff" },
+					{ "time": 2.1333, "color": "ffffffca" },
+					{ "time": 2.1667, "color": "ffffffff" },
+					{ "time": 2.2, "color": "ffffffca" },
+					{ "time": 2.2333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.2667, "color": "ffffffff" },
+					{ "time": 2.3, "color": "ffffffc3" },
+					{ "time": 2.3667, "color": "ffffffca" },
+					{ "time": 2.4, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.4667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.5, "color": "ffffffff" },
+					{ "time": 2.5333, "color": "ffffffca" },
+					{ "time": 2.5667, "color": "ffffffff" },
+					{ "time": 2.6, "color": "ffffffca", "curve": "stepped" },
+					{ "time": 2.6333, "color": "ffffffca" },
+					{ "time": 2.6667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.7, "color": "ffffffff" },
+					{ "time": 2.7333, "color": "ffffffc3" },
+					{ "time": 2.8667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 2.1667, "name": "Skill/skill_line_a/skill_line_a_0004" }
+				]
+			},
+			"skill_line_a11": {
+				"color": [
+					{ "time": 1.6333, "color": "ffffffff" },
+					{ "time": 1.7, "color": "ffffffca" },
+					{ "time": 1.7333, "color": "ffffffff" },
+					{ "time": 1.7667, "color": "ffffffc3" },
+					{ "time": 1.8333, "color": "ffffffca" },
+					{ "time": 1.8667, "color": "ffffffff" },
+					{ "time": 1.9, "color": "ffffffc3" },
+					{ "time": 1.9667, "color": "ffffffca" },
+					{ "time": 2, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "ffffffca" },
+					{ "time": 2.1, "color": "ffffffff" },
+					{ "time": 2.1333, "color": "ffffffca" },
+					{ "time": 2.1667, "color": "ffffffff" },
+					{ "time": 2.2, "color": "ffffffca" },
+					{ "time": 2.2333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.2667, "color": "ffffffff" },
+					{ "time": 2.3, "color": "ffffffc3" },
+					{ "time": 2.3667, "color": "ffffffca" },
+					{ "time": 2.4, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.4667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.5, "color": "ffffffff" },
+					{ "time": 2.5333, "color": "ffffffca" },
+					{ "time": 2.5667, "color": "ffffffff" },
+					{ "time": 2.6, "color": "ffffffca", "curve": "stepped" },
+					{ "time": 2.6333, "color": "ffffffca" },
+					{ "time": 2.6667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.7, "color": "ffffffff" },
+					{ "time": 2.7333, "color": "ffffffc3" },
+					{ "time": 2.8667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 2.2333, "name": "Skill/skill_line_a/skill_line_a_0004" }
+				]
+			},
+			"skill_line_a12": {
+				"color": [
+					{ "time": 2, "color": "ffffffff" },
+					{ "time": 2.0333, "color": "ffffff99" },
+					{ "time": 2.0667, "color": "ffffffff" },
+					{ "time": 2.1, "color": "ffffff99" },
+					{ "time": 2.1333, "color": "ffffffff" },
+					{ "time": 2.1667, "color": "ffffff99", "curve": "stepped" },
+					{ "time": 2.2, "color": "ffffff99" },
+					{ "time": 2.2333, "color": "ffffffff" },
+					{ "time": 2.2667, "color": "ffffff99" },
+					{ "time": 2.3, "color": "ffffffff" },
+					{ "time": 2.3333, "color": "ffffff99" },
+					{ "time": 2.3667, "color": "ffffffff" },
+					{ "time": 2.4, "color": "ffffff99" },
+					{ "time": 2.4333, "color": "ffffffff" },
+					{ "time": 2.4667, "color": "ffffff99" },
+					{ "time": 2.5, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.5333, "color": "ffffffff" },
+					{ "time": 2.5667, "color": "ffffff99" },
+					{ "time": 2.6, "color": "ffffffff" },
+					{ "time": 2.6333, "color": "ffffff99" },
+					{ "time": 2.6667, "color": "ffffffff" },
+					{ "time": 2.7, "color": "ffffff99" },
+					{ "time": 2.7333, "color": "ffffffff" },
+					{ "time": 2.8667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 2, "name": "Skill/skill_line_a/skill_line_a_0004" }
+				]
+			},
+			"skill_ripple": {
+				"attachment": [
+					{ "time": 0, "name": "Skill/skill_ripple/skill_ripple_0000" },
+					{ "time": 0.0667, "name": "Skill/skill_ripple/skill_ripple_0002" },
+					{ "time": 0.1333, "name": "Skill/skill_ripple/skill_ripple_0004" },
+					{ "time": 0.1667, "name": "Skill/skill_ripple/skill_ripple_0006" },
+					{ "time": 0.2333, "name": "Skill/skill_ripple/skill_ripple_0008" },
+					{ "time": 0.3, "name": "Skill/skill_ripple/skill_ripple_0010" },
+					{ "time": 0.3667, "name": "Skill/skill_ripple/skill_ripple_0012" },
+					{ "time": 0.4333, "name": "Skill/skill_ripple/skill_ripple_0014" },
+					{ "time": 0.5333, "name": "Skill/skill_ripple/skill_ripple_0018" },
+					{ "time": 0.6, "name": "Skill/skill_ripple/skill_ripple_0020" },
+					{ "time": 0.6667, "name": "Skill/skill_ripple/skill_ripple_0022" },
+					{ "time": 0.7333, "name": "Skill/skill_ripple/skill_ripple_0024" },
+					{ "time": 0.8, "name": "Skill/skill_ripple/skill_ripple_0026" },
+					{ "time": 0.8333, "name": "Skill/skill_ripple/skill_ripple_0028" },
+					{ "time": 0.9, "name": "Skill/skill_ripple/skill_ripple_0030" },
+					{ "time": 0.9667, "name": "Skill/skill_ripple/skill_ripple_0032" },
+					{ "time": 1.0333, "name": "Skill/skill_ripple/skill_ripple_0034" },
+					{ "time": 1.1, "name": "Skill/skill_ripple/skill_ripple_0036" },
+					{ "time": 1.2, "name": null }
+				]
+			},
+			"skill_xiao_baodian_A_0": {
+				"attachment": [
+					{ "time": 1.7, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0000" },
+					{ "time": 1.7333, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0003" },
+					{ "time": 1.7667, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0006" },
+					{ "time": 1.8, "name": null }
+				]
+			},
+			"skill_xiao_baodian_A_1": {
+				"attachment": [
+					{ "time": 1.7, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0000" },
+					{ "time": 1.7333, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0003" },
+					{ "time": 1.7667, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0006" },
+					{ "time": 1.8, "name": null }
+				]
+			},
+			"skill_xiao_baodian_A_2": {
+				"attachment": [
+					{ "time": 1.7667, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0000" },
+					{ "time": 1.8, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0003" },
+					{ "time": 1.8333, "name": null }
+				]
+			},
+			"skill_xiao_baodian_A_3": {
+				"attachment": [
+					{ "time": 1.8333, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0000" },
+					{ "time": 1.8667, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0003" },
+					{ "time": 1.9, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0006" },
+					{ "time": 1.9333, "name": null }
+				]
+			},
+			"skill_xiao_baodian_A_4": {
+				"attachment": [
+					{ "time": 1.8667, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0000" },
+					{ "time": 1.9, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0003" },
+					{ "time": 1.9333, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0006" },
+					{ "time": 1.9667, "name": null }
+				]
+			},
+			"skill_xiao_baodian_A_5": {
+				"attachment": [
+					{ "time": 1.9333, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0000" },
+					{ "time": 1.9667, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0003" },
+					{ "time": 2, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0006" },
+					{ "time": 2.0333, "name": null }
+				]
+			},
+			"skill_xiao_baodian_A_6": {
+				"attachment": [
+					{ "time": 2, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0000" },
+					{ "time": 2.0333, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0003" },
+					{ "time": 2.0667, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0006" },
+					{ "time": 2.1, "name": null }
+				]
+			},
+			"skill_xiao_baodian_A_7": {
+				"attachment": [
+					{ "time": 2.0667, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0000" },
+					{ "time": 2.1, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0003" },
+					{ "time": 2.1333, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0006" },
+					{ "time": 2.1667, "name": null }
+				]
+			},
+			"skill_xiao_baodian_A_8": {
+				"attachment": [
+					{ "time": 2.1333, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0000" },
+					{ "time": 2.1667, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0006" },
+					{ "time": 2.2, "name": null }
+				]
+			},
+			"skill_xiao_baodian_A_9": {
+				"attachment": [
+					{ "time": 2.1667, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0000" },
+					{ "time": 2.2, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0003" },
+					{ "time": 2.2333, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0006" },
+					{ "time": 2.2667, "name": null }
+				]
+			},
+			"skill_xiao_baodian_B_": {
+				"attachment": [
+					{ "time": 0.8333, "name": "Skill/skill_xiao_baodian_B/skill_xiao_baodian_B_0000" },
+					{ "time": 0.8667, "name": "Skill/skill_xiao_baodian_B/skill_xiao_baodian_B_0002" },
+					{ "time": 0.9333, "name": "Skill/skill_xiao_baodian_B/skill_xiao_baodian_B_0004" },
+					{ "time": 1, "name": "Skill/skill_xiao_baodian_B/skill_xiao_baodian_B_0006" },
+					{ "time": 1.0667, "name": "Skill/skill_xiao_baodian_B/skill_xiao_baodian_B_0008" },
+					{ "time": 1.1, "name": null }
+				]
+			},
+			"skill_xiao_baodian_C": {
+				"color": [
+					{ "time": 1.6333, "color": "ffffffff" },
+					{ "time": 1.7667, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 1.9667, "color": "ffffffff" }
+				],
+				"attachment": [
+					{ "time": 1.5, "name": "Skill/skill_xiao_baodian_C/skill_xiao_baodian_C_0000" },
+					{ "time": 1.5333, "name": "Skill/skill_xiao_baodian_C/skill_xiao_baodian_C_0001" },
+					{ "time": 1.5667, "name": "Skill/skill_xiao_baodian_C/skill_xiao_baodian_C_0002" },
+					{ "time": 1.6, "name": "Skill/skill_xiao_baodian_C/skill_xiao_baodian_C_0003" },
+					{ "time": 1.6333, "name": "Skill/skill_xiao_baodian_C/skill_xiao_baodian_C_0004" },
+					{ "time": 1.6667, "name": "Skill/skill_xiao_baodian_C/skill_xiao_baodian_C_0005" },
+					{ "time": 1.7, "name": "Skill/skill_xiao_baodian_C/skill_xiao_baodian_C_0006" },
+					{ "time": 1.7333, "name": "Skill/skill_xiao_baodian_C/skill_xiao_baodian_C_0007" },
+					{ "time": 1.7667, "name": null },
+					{ "time": 1.9667, "name": "Skill/skill_xiao_baodian_C/skill_xiao_baodian_C_0000" },
+					{ "time": 2, "name": "Skill/skill_xiao_baodian_C/skill_xiao_baodian_C_0001" },
+					{ "time": 2.0333, "name": "Skill/skill_xiao_baodian_C/skill_xiao_baodian_C_0002" },
+					{ "time": 2.0667, "name": "Skill/skill_xiao_baodian_C/skill_xiao_baodian_C_0003" },
+					{ "time": 2.1, "name": "Skill/skill_xiao_baodian_C/skill_xiao_baodian_C_0004" },
+					{ "time": 2.1333, "name": "Skill/skill_xiao_baodian_C/skill_xiao_baodian_C_0005" },
+					{ "time": 2.1667, "name": "Skill/skill_xiao_baodian_C/skill_xiao_baodian_C_0006" },
+					{ "time": 2.2, "name": null }
+				]
+			}
+		},
+		"bones": {
+			"bg": {
+				"translate": [
+					{ "time": 0, "x": 640.75, "y": 109.93 }
+				]
+			},
+			"root": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 0.3333, "angle": 0, "curve": "stepped" },
+					{ "time": 0.6, "angle": 0, "curve": "stepped" },
+					{ "time": 0.7667, "angle": 0, "curve": "stepped" },
+					{ "time": 1.1667, "angle": 0, "curve": "stepped" },
+					{ "time": 1.3667, "angle": 0, "curve": "stepped" },
+					{ "time": 1.5, "angle": 0, "curve": "stepped" },
+					{ "time": 1.5667, "angle": 0, "curve": "stepped" },
+					{ "time": 1.6, "angle": 0, "curve": "stepped" },
+					{ "time": 2.1333, "angle": 0, "curve": "stepped" },
+					{ "time": 2.5667, "angle": 0, "curve": "stepped" },
+					{ "time": 3, "angle": 0, "curve": "stepped" },
+					{ "time": 3.1667, "angle": 0, "curve": "stepped" },
+					{ "time": 3.3333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.3333, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.6, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.7667, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.1667, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.3667, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.5, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.5667, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.6, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 2.1333, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 2.5667, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 3, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 3.1667, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 3.3333, "x": 0, "y": 0 }
+				]
+			},
+			"skill_difeng": {
+				"translate": [
+					{ "time": 0, "x": 3.9, "y": 29.57, "curve": "stepped" },
+					{ "time": 0.1667, "x": 3.9, "y": 29.57 }
+				],
+				"scale": [
+					{ "time": 0, "x": 0.574, "y": 0.574 },
+					{ "time": 0.1667, "x": 1.846, "y": 1.846 }
+				]
+			},
+			"skill_bu/quan_hong": {
+				"translate": [
+					{ "time": 0.8333, "x": 28.36, "y": 700.06 }
+				],
+				"scale": [
+					{ "time": 0.8333, "x": 2.629, "y": 2.629 },
+					{ "time": 0.9333, "x": 0, "y": 0 }
+				]
+			},
+			"skill_bu/quan_bai": {
+				"translate": [
+					{ "time": 0.8667, "x": 1.72, "y": 769.32 },
+					{ "time": 0.9667, "x": 28.34, "y": 727.97 }
+				],
+				"scale": [
+					{ "time": 0.8667, "x": 5.239, "y": 5.239 },
+					{ "time": 0.9667, "x": 0.013, "y": 0.013 }
+				]
+			},
+			"skill_bu/light_h": {
+				"translate": [
+					{ "time": 0.8333, "x": 19.51, "y": 758.38, "curve": "stepped" },
+					{ "time": 1.9667, "x": 1247.23, "y": -344.58 }
+				],
+				"scale": [
+					{ "time": 0.8333, "x": 1.418, "y": 1.418 },
+					{ "time": 0.9, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.9667, "x": 0.192, "y": 0.192 },
+					{ "time": 2.0667, "x": 1.418, "y": 1.418 },
+					{ "time": 2.1667, "x": 0.207, "y": 0.207 }
+				]
+			},
+			"skill_bu/hong_quan": {
+				"translate": [
+					{ "time": 0.8333, "x": 61.78, "y": 722.45 },
+					{ "time": 0.9333, "x": 14.19, "y": 693.14 }
+				],
+				"scale": [
+					{ "time": 0.8333, "x": 5.225, "y": 5.225 },
+					{ "time": 0.9333, "x": 0.5, "y": 0.5 },
+					{ "time": 1.5, "x": 1.943, "y": 1.943 },
+					{ "time": 1.5667, "x": 2.2, "y": 2.2 },
+					{ "time": 1.6667, "x": 7.176, "y": 7.176 },
+					{ "time": 1.7333, "x": 1.678, "y": 1.678 },
+					{ "time": 1.7667, "x": 2.2, "y": 2.2 }
+				]
+			},
+			"skill_bu/lxl": {
+				"translate": [
+					{ "time": 0.9667, "x": 26.78, "y": 716.16, "curve": "stepped" },
+					{ "time": 1.5, "x": 26.78, "y": 871.15 },
+					{ "time": 1.7, "x": 26.78, "y": 716.16 }
+				],
+				"scale": [
+					{ "time": 0.9667, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 1.5, "x": 2.136, "y": 2.136 },
+					{ "time": 1.7, "x": 1, "y": 1 }
+				]
+			},
+			"skill_bu/quan_kuo_a": {
+				"translate": [
+					{ "time": 1.5667, "x": 21.98, "y": 663.35 }
+				],
+				"scale": [
+					{ "time": 1.5667, "x": 0.473, "y": 0.473 },
+					{ "time": 1.7, "x": 2.64, "y": 2.64 },
+					{ "time": 1.8, "x": 0.473, "y": 0.473 }
+				]
+			},
+			"skill_bu/kuoshan": {
+				"translate": [
+					{ "time": 1.5333, "x": 53.6, "y": 633.36 }
+				],
+				"scale": [
+					{ "time": 1.5333, "x": 1.289, "y": 1.289 }
+				]
+			},
+			"skill_xiao_baodian_C": {
+				"translate": [
+					{ "time": 1.5, "x": 45.9, "y": 645.79, "curve": "stepped" },
+					{ "time": 1.9667, "x": 1247.62, "y": -335.49 }
+				],
+				"scale": [
+					{ "time": 1.5, "x": 1.222, "y": 1.222 },
+					{ "time": 1.7333, "x": 21.281, "y": 21.281, "curve": "stepped" },
+					{ "time": 1.9667, "x": 1.222, "y": 1.222 },
+					{ "time": 2.1, "x": 3.868, "y": 3.868 }
+				]
+			},
+			"skill/wind": {
+				"translate": [
+					{ "time": 1.5333, "x": 83.2, "y": 201.3 }
+				],
+				"scale": [
+					{ "time": 1.5333, "x": 1.368, "y": 2.233 }
+				]
+			},
+			"skill/quan_a": {
+				"translate": [
+					{ "time": 1.5333, "x": 28.63, "y": 0 }
+				],
+				"scale": [
+					{ "time": 1.5333, "x": 1, "y": 1 },
+					{ "time": 1.6667, "x": 2.12, "y": 2.12 }
+				]
+			},
+			"Skill/glass_boom": {
+				"rotate": [
+					{ "time": 0.8, "angle": -95.49 }
+				],
+				"translate": [
+					{ "time": 0.8, "x": 1393.7, "y": 507.62 }
+				],
+				"scale": [
+					{ "time": 0.8, "x": 5.863, "y": 5.863 }
+				]
+			},
+			"skill_line_a": {
+				"rotate": [
+					{ "time": 1.6333, "angle": -170.98 },
+					{ "time": 1.7, "angle": -170.73 }
+				],
+				"translate": [
+					{ "time": 1.6333, "x": 849.8, "y": 454.5 },
+					{ "time": 1.7, "x": 946, "y": 470.49 },
+					{ "time": 2.5667, "x": 864.22, "y": 460.47 }
+				],
+				"scale": [
+					{ "time": 1.6333, "x": 2.463, "y": 3.458 },
+					{ "time": 1.7, "x": 2.986, "y": 3.458 }
+				]
+			},
+			"skill/quan": {
+				"translate": [
+					{ "time": 1.5333, "x": 50.02, "y": 16.22 }
+				],
+				"scale": [
+					{ "time": 1.5333, "x": 1, "y": 1 },
+					{ "time": 1.7667, "x": 1.626, "y": 1.626 }
+				]
+			},
+			"skill/niao_boom": {
+				"translate": [
+					{ "time": 1, "x": 26.15, "y": 694.71 }
+				],
+				"scale": [
+					{ "time": 1, "x": 6.198, "y": 6.198 }
+				]
+			},
+			"skill_line_a2": {
+				"rotate": [
+					{ "time": 1.7, "angle": 23.56 }
+				],
+				"translate": [
+					{ "time": 1.7, "x": 1403.99, "y": 409.03 }
+				],
+				"scale": [
+					{ "time": 1.7, "x": 1.945, "y": 2.922 }
+				]
+			},
+			"skill_line_a3": {
+				"rotate": [
+					{ "time": 1.7667, "angle": -130.23 }
+				],
+				"translate": [
+					{ "time": 1.7667, "x": 1356.62, "y": 749.17 }
+				],
+				"scale": [
+					{ "time": 1.7667, "x": 2.371, "y": 3.596 }
+				]
+			},
+			"skill_line_a4": {
+				"rotate": [
+					{ "time": 1.8333, "angle": 85.69 }
+				],
+				"translate": [
+					{ "time": 1.8333, "x": 1802.9, "y": 606.91 }
+				],
+				"scale": [
+					{ "time": 1.8333, "x": 2.275, "y": 1.947 }
+				]
+			},
+			"skill_line_a5": {
+				"rotate": [
+					{ "time": 1.8667, "angle": -70.59 }
+				],
+				"translate": [
+					{ "time": 1.8667, "x": 1562.51, "y": 429.64 }
+				],
+				"scale": [
+					{ "time": 1.8667, "x": 1.801, "y": 2.526 }
+				]
+			},
+			"skill_line_a6": {
+				"rotate": [
+					{ "time": 1.9333, "angle": 68.48 }
+				],
+				"translate": [
+					{ "time": 1.9333, "x": 1107.89, "y": 311.22 }
+				],
+				"scale": [
+					{ "time": 1.9333, "x": 2.209, "y": 2.209 }
+				]
+			},
+			"skill_line_a7": {
+				"rotate": [
+					{ "time": 2, "angle": -71.22 }
+				],
+				"translate": [
+					{ "time": 2, "x": 679.78, "y": 173.8 }
+				],
+				"scale": [
+					{ "time": 2, "x": 1.711, "y": 2.143 }
+				]
+			},
+			"skill_line_a8": {
+				"rotate": [
+					{ "time": 2.0667, "angle": 139.17 }
+				],
+				"translate": [
+					{ "time": 2.0667, "x": 1142.24, "y": 131.76 }
+				],
+				"scale": [
+					{ "time": 2.0667, "x": 2.6, "y": 1.428 }
+				]
+			},
+			"skill_line_a9": {
+				"rotate": [
+					{ "time": 2.1333, "angle": -57.87 }
+				],
+				"translate": [
+					{ "time": 2.1333, "x": 1294.03, "y": 390.02 }
+				],
+				"scale": [
+					{ "time": 2.1333, "x": 2.94, "y": 6.871 }
+				]
+			},
+			"skill_line_a10": {
+				"rotate": [
+					{ "time": 2.1667, "angle": 82.82 }
+				],
+				"translate": [
+					{ "time": 2.1667, "x": 717.56, "y": 706.75 }
+				],
+				"scale": [
+					{ "time": 2.1667, "x": 1.53, "y": 4.197 }
+				]
+			},
+			"skill_line_a11": {
+				"rotate": [
+					{ "time": 2.2333, "angle": -179.52 }
+				],
+				"translate": [
+					{ "time": 2.2333, "x": 1570.86, "y": 211.74 }
+				],
+				"scale": [
+					{ "time": 2.2333, "x": 2.774, "y": 4.758 }
+				]
+			},
+			"skill_xiao_baodian_A_0": {
+				"translate": [
+					{ "time": 1.7, "x": 1974.66, "y": 664.23 }
+				],
+				"scale": [
+					{ "time": 1.7, "x": 2.265, "y": 2.265 }
+				]
+			},
+			"skill_xiao_baodian_B_": {
+				"translate": [
+					{ "time": 0.8333, "x": 1382.62, "y": 539.99 }
+				],
+				"scale": [
+					{ "time": 0.8333, "x": 3.366, "y": 3.366 }
+				]
+			},
+			"skill_xiao_baodian_A_1": {
+				"rotate": [
+					{ "time": 1.7, "angle": -56.6 }
+				],
+				"translate": [
+					{ "time": 1.7, "x": 858.08, "y": 168.95 }
+				],
+				"scale": [
+					{ "time": 1.7, "x": 2, "y": 2 }
+				]
+			},
+			"skill_xiao_baodian_A_2": {
+				"translate": [
+					{ "time": 1.7667, "x": 1827.54, "y": 1329.12 }
+				],
+				"scale": [
+					{ "time": 1.7667, "x": 4.221, "y": 4.221 }
+				]
+			},
+			"skill_xiao_baodian_A_3": {
+				"translate": [
+					{ "time": 1.8333, "x": 1750.86, "y": -106.5 }
+				],
+				"scale": [
+					{ "time": 1.8333, "x": 1.7, "y": 1.7 }
+				]
+			},
+			"skill_bu/hong_quan_2": {
+				"scale": [
+					{ "time": 1.7, "x": 0.201, "y": 0.201 },
+					{ "time": 1.7667, "x": 0.128, "y": 0.128 },
+					{ "time": 1.8333, "x": 0.183, "y": 0.183 },
+					{ "time": 1.8667, "x": 0.156, "y": 0.156 },
+					{ "time": 1.9, "x": 0.19, "y": 0.19 },
+					{ "time": 1.9667, "x": 0.091, "y": 0.091 },
+					{ "time": 2.0333, "x": 0.154, "y": 0.154 },
+					{ "time": 2.1333, "x": 0.128, "y": 0.128 },
+					{ "time": 2.1667, "x": 0.183, "y": 0.183 },
+					{ "time": 2.2333, "x": 0.091, "y": 0.091 },
+					{ "time": 2.2667, "x": 0.19, "y": 0.19 },
+					{ "time": 2.3, "x": 0.091, "y": 0.091 },
+					{ "time": 2.3667, "x": 0.154, "y": 0.154 },
+					{ "time": 2.4, "x": 0.091, "y": 0.091 },
+					{ "time": 2.4667, "x": 0.154, "y": 0.154 },
+					{ "time": 2.5333, "x": 0.128, "y": 0.128 },
+					{ "time": 2.6333, "x": 0.183, "y": 0.183 },
+					{ "time": 2.7, "x": 0.156, "y": 0.156 },
+					{ "time": 2.7333, "x": 0.19, "y": 0.19 },
+					{ "time": 2.8, "x": 0.091, "y": 0.091 },
+					{ "time": 2.8333, "x": 0.154, "y": 0.154 },
+					{ "time": 2.9333, "x": 0.091, "y": 0.091 },
+					{ "time": 3, "x": 0.154, "y": 0.154 },
+					{ "time": 3.1, "x": 0.128, "y": 0.128 }
+				]
+			},
+			"skill_bu/hong_quan2": {
+				"translate": [
+					{ "time": 1.7, "x": 2.94, "y": -1.47 }
+				],
+				"scale": [
+					{ "time": 1.7, "x": 0.255, "y": 0.255 },
+					{ "time": 1.7667, "x": 0.162, "y": 0.162 },
+					{ "time": 1.8333, "x": 0.232, "y": 0.232 },
+					{ "time": 1.8667, "x": 0.198, "y": 0.198 },
+					{ "time": 1.9, "x": 0.241, "y": 0.241 },
+					{ "time": 1.9667, "x": 0.116, "y": 0.116 },
+					{ "time": 2.0333, "x": 0.195, "y": 0.195 },
+					{ "time": 2.1333, "x": 0.162, "y": 0.162 },
+					{ "time": 2.1667, "x": 0.232, "y": 0.232 },
+					{ "time": 2.2333, "x": 0.116, "y": 0.116 },
+					{ "time": 2.2667, "x": 0.241, "y": 0.241 },
+					{ "time": 2.3, "x": 0.116, "y": 0.116 },
+					{ "time": 2.3667, "x": 0.195, "y": 0.195 },
+					{ "time": 2.4, "x": 0.116, "y": 0.116 },
+					{ "time": 2.4667, "x": 0.195, "y": 0.195 },
+					{ "time": 2.5333, "x": 0.162, "y": 0.162 },
+					{ "time": 2.6333, "x": 0.232, "y": 0.232 },
+					{ "time": 2.7, "x": 0.198, "y": 0.198 },
+					{ "time": 2.7333, "x": 0.241, "y": 0.241 },
+					{ "time": 2.8, "x": 0.116, "y": 0.116 },
+					{ "time": 2.8333, "x": 0.195, "y": 0.195 },
+					{ "time": 2.9333, "x": 0.116, "y": 0.116 },
+					{ "time": 3, "x": 0.195, "y": 0.195 },
+					{ "time": 3.1, "x": 0.162, "y": 0.162 }
+				]
+			},
+			"skill_bu/hong_quan_3": {
+				"scale": [
+					{ "time": 1.7, "x": 0.312, "y": 0.312 },
+					{ "time": 1.7667, "x": 0.198, "y": 0.198 },
+					{ "time": 1.8333, "x": 0.283, "y": 0.283 },
+					{ "time": 1.8667, "x": 0.242, "y": 0.242 },
+					{ "time": 1.9, "x": 0.294, "y": 0.294 },
+					{ "time": 1.9667, "x": 0.141, "y": 0.141 },
+					{ "time": 2.0333, "x": 0.239, "y": 0.239 },
+					{ "time": 2.1333, "x": 0.198, "y": 0.198 },
+					{ "time": 2.1667, "x": 0.283, "y": 0.283 },
+					{ "time": 2.2333, "x": 0.141, "y": 0.141 },
+					{ "time": 2.2667, "x": 0.294, "y": 0.294 },
+					{ "time": 2.3, "x": 0.141, "y": 0.141 },
+					{ "time": 2.3667, "x": 0.239, "y": 0.239 },
+					{ "time": 2.4, "x": 0.141, "y": 0.141 },
+					{ "time": 2.4667, "x": 0.239, "y": 0.239 },
+					{ "time": 2.5333, "x": 0.198, "y": 0.198 },
+					{ "time": 2.6333, "x": 0.283, "y": 0.283 },
+					{ "time": 2.7, "x": 0.242, "y": 0.242 },
+					{ "time": 2.7333, "x": 0.294, "y": 0.294 },
+					{ "time": 2.8, "x": 0.141, "y": 0.141 },
+					{ "time": 2.8333, "x": 0.239, "y": 0.239 },
+					{ "time": 2.9333, "x": 0.141, "y": 0.141 },
+					{ "time": 3, "x": 0.239, "y": 0.239 },
+					{ "time": 3.1, "x": 0.198, "y": 0.198 }
+				]
+			},
+			"skill_bu/hong_quan_1": {
+				"scale": [
+					{ "time": 1.7, "x": 0.224, "y": 0.224 },
+					{ "time": 1.7667, "x": 0.142, "y": 0.142 },
+					{ "time": 1.8333, "x": 0.203, "y": 0.203 },
+					{ "time": 1.8667, "x": 0.174, "y": 0.174 },
+					{ "time": 1.9, "x": 0.212, "y": 0.212 },
+					{ "time": 1.9667, "x": 0.102, "y": 0.102 },
+					{ "time": 2.0333, "x": 0.172, "y": 0.172 },
+					{ "time": 2.1333, "x": 0.142, "y": 0.142 },
+					{ "time": 2.1667, "x": 0.203, "y": 0.203 },
+					{ "time": 2.2333, "x": 0.102, "y": 0.102 },
+					{ "time": 2.2667, "x": 0.212, "y": 0.212 },
+					{ "time": 2.3, "x": 0.102, "y": 0.102 },
+					{ "time": 2.3667, "x": 0.172, "y": 0.172 },
+					{ "time": 2.4, "x": 0.102, "y": 0.102 },
+					{ "time": 2.4667, "x": 0.172, "y": 0.172 },
+					{ "time": 2.5333, "x": 0.142, "y": 0.142 },
+					{ "time": 2.6333, "x": 0.203, "y": 0.203 },
+					{ "time": 2.7, "x": 0.174, "y": 0.174 },
+					{ "time": 2.7333, "x": 0.212, "y": 0.212 },
+					{ "time": 2.8, "x": 0.102, "y": 0.102 },
+					{ "time": 2.8333, "x": 0.172, "y": 0.172 },
+					{ "time": 2.9333, "x": 0.102, "y": 0.102 },
+					{ "time": 3, "x": 0.172, "y": 0.172 },
+					{ "time": 3.1, "x": 0.142, "y": 0.142 }
+				]
+			},
+			"skill_bu/hong_quan_4": {
+				"scale": [
+					{ "time": 1.7, "x": 0.437, "y": 0.437 },
+					{ "time": 1.7667, "x": 0.277, "y": 0.277 },
+					{ "time": 1.8333, "x": 0.396, "y": 0.396 },
+					{ "time": 1.8667, "x": 0.339, "y": 0.339 },
+					{ "time": 1.9, "x": 0.412, "y": 0.412 },
+					{ "time": 1.9667, "x": 0.198, "y": 0.198 },
+					{ "time": 2.0333, "x": 0.334, "y": 0.334 },
+					{ "time": 2.1333, "x": 0.277, "y": 0.277 },
+					{ "time": 2.1667, "x": 0.396, "y": 0.396 },
+					{ "time": 2.2333, "x": 0.198, "y": 0.198 },
+					{ "time": 2.2667, "x": 0.412, "y": 0.412 },
+					{ "time": 2.3, "x": 0.198, "y": 0.198 },
+					{ "time": 2.3667, "x": 0.334, "y": 0.334 },
+					{ "time": 2.4, "x": 0.198, "y": 0.198 },
+					{ "time": 2.4667, "x": 0.334, "y": 0.334 },
+					{ "time": 2.5333, "x": 0.277, "y": 0.277 },
+					{ "time": 2.6333, "x": 0.396, "y": 0.396 },
+					{ "time": 2.7, "x": 0.339, "y": 0.339 },
+					{ "time": 2.7333, "x": 0.412, "y": 0.412 },
+					{ "time": 2.8, "x": 0.198, "y": 0.198 },
+					{ "time": 2.8333, "x": 0.334, "y": 0.334 },
+					{ "time": 2.9333, "x": 0.198, "y": 0.198 },
+					{ "time": 3, "x": 0.334, "y": 0.334 },
+					{ "time": 3.1, "x": 0.277, "y": 0.277 }
+				]
+			},
+			"skill_xiao_baodian_A_4": {
+				"translate": [
+					{ "time": 1.8667, "x": 1375.67, "y": 948.28 }
+				],
+				"scale": [
+					{ "time": 1.8667, "x": 1.657, "y": 1.657 }
+				]
+			},
+			"skill_xiao_baodian_A_5": {
+				"rotate": [
+					{ "time": 1.9333, "angle": 48.27 }
+				],
+				"translate": [
+					{ "time": 1.9333, "x": 850.33, "y": -347.26 }
+				],
+				"scale": [
+					{ "time": 1.9333, "x": 1.836, "y": 1.836 }
+				]
+			},
+			"skill_bu/hong_quan_5": {
+				"scale": [
+					{ "time": 1.7, "x": 0.296, "y": 0.296 },
+					{ "time": 1.7667, "x": 0.188, "y": 0.188 },
+					{ "time": 1.8333, "x": 0.268, "y": 0.268 },
+					{ "time": 1.8667, "x": 0.23, "y": 0.23 },
+					{ "time": 1.9, "x": 0.279, "y": 0.279 },
+					{ "time": 1.9667, "x": 0.134, "y": 0.134 },
+					{ "time": 2.0333, "x": 0.227, "y": 0.227 },
+					{ "time": 2.1333, "x": 0.188, "y": 0.188 },
+					{ "time": 2.1667, "x": 0.268, "y": 0.268 },
+					{ "time": 2.2333, "x": 0.134, "y": 0.134 },
+					{ "time": 2.2667, "x": 0.279, "y": 0.279 },
+					{ "time": 2.3, "x": 0.134, "y": 0.134 },
+					{ "time": 2.3667, "x": 0.227, "y": 0.227 },
+					{ "time": 2.4, "x": 0.134, "y": 0.134 },
+					{ "time": 2.4667, "x": 0.227, "y": 0.227 },
+					{ "time": 2.5333, "x": 0.188, "y": 0.188 },
+					{ "time": 2.6333, "x": 0.268, "y": 0.268 },
+					{ "time": 2.7, "x": 0.23, "y": 0.23 },
+					{ "time": 2.7333, "x": 0.279, "y": 0.279 },
+					{ "time": 2.8, "x": 0.134, "y": 0.134 },
+					{ "time": 2.8333, "x": 0.227, "y": 0.227 },
+					{ "time": 2.9333, "x": 0.134, "y": 0.134 },
+					{ "time": 3, "x": 0.227, "y": 0.227 },
+					{ "time": 3.1, "x": 0.188, "y": 0.188 }
+				]
+			},
+			"skill_xiao_baodian_A_6": {
+				"translate": [
+					{ "time": 2, "x": 504.03, "y": 689.73 }
+				],
+				"scale": [
+					{ "time": 2, "x": 1.943, "y": 1.943 }
+				]
+			},
+			"skill_bu/hong_quan_6": {
+				"scale": [
+					{ "time": 1.7, "x": 0.273, "y": 0.273 },
+					{ "time": 1.7667, "x": 0.173, "y": 0.173 },
+					{ "time": 1.8333, "x": 0.247, "y": 0.247 },
+					{ "time": 1.8667, "x": 0.212, "y": 0.212 },
+					{ "time": 1.9, "x": 0.257, "y": 0.257 },
+					{ "time": 1.9667, "x": 0.124, "y": 0.124 },
+					{ "time": 2.0333, "x": 0.209, "y": 0.209 },
+					{ "time": 2.1333, "x": 0.173, "y": 0.173 },
+					{ "time": 2.1667, "x": 0.247, "y": 0.247 },
+					{ "time": 2.2333, "x": 0.124, "y": 0.124 },
+					{ "time": 2.2667, "x": 0.257, "y": 0.257 },
+					{ "time": 2.3, "x": 0.124, "y": 0.124 },
+					{ "time": 2.3667, "x": 0.209, "y": 0.209 },
+					{ "time": 2.4, "x": 0.124, "y": 0.124 },
+					{ "time": 2.4667, "x": 0.209, "y": 0.209 },
+					{ "time": 2.5333, "x": 0.173, "y": 0.173 },
+					{ "time": 2.6333, "x": 0.247, "y": 0.247 },
+					{ "time": 2.7, "x": 0.212, "y": 0.212 },
+					{ "time": 2.7333, "x": 0.257, "y": 0.257 },
+					{ "time": 2.8, "x": 0.124, "y": 0.124 },
+					{ "time": 2.8333, "x": 0.209, "y": 0.209 },
+					{ "time": 2.9333, "x": 0.124, "y": 0.124 },
+					{ "time": 3, "x": 0.209, "y": 0.209 },
+					{ "time": 3.1, "x": 0.173, "y": 0.173 }
+				]
+			},
+			"skill_xiao_baodian_A_7": {
+				"translate": [
+					{ "time": 2.0667, "x": 1770.74, "y": -407.87 }
+				],
+				"scale": [
+					{ "time": 2.0667, "x": 1.516, "y": 1.516 }
+				]
+			},
+			"skill_bu/hong_quan_7": {
+				"scale": [
+					{ "time": 1.7, "x": 0.407, "y": 0.407 },
+					{ "time": 1.7667, "x": 0.258, "y": 0.258 },
+					{ "time": 1.8333, "x": 0.369, "y": 0.369 },
+					{ "time": 1.8667, "x": 0.316, "y": 0.316 },
+					{ "time": 1.9, "x": 0.383, "y": 0.383 },
+					{ "time": 1.9667, "x": 0.184, "y": 0.184 },
+					{ "time": 2.0333, "x": 0.311, "y": 0.311 },
+					{ "time": 2.1333, "x": 0.258, "y": 0.258 },
+					{ "time": 2.1667, "x": 0.369, "y": 0.369 },
+					{ "time": 2.2333, "x": 0.184, "y": 0.184 },
+					{ "time": 2.2667, "x": 0.383, "y": 0.383 },
+					{ "time": 2.3, "x": 0.184, "y": 0.184 },
+					{ "time": 2.3667, "x": 0.311, "y": 0.311 },
+					{ "time": 2.4, "x": 0.184, "y": 0.184 },
+					{ "time": 2.4667, "x": 0.311, "y": 0.311 },
+					{ "time": 2.5333, "x": 0.258, "y": 0.258 },
+					{ "time": 2.6333, "x": 0.369, "y": 0.369 },
+					{ "time": 2.7, "x": 0.316, "y": 0.316 },
+					{ "time": 2.7333, "x": 0.383, "y": 0.383 },
+					{ "time": 2.8, "x": 0.184, "y": 0.184 },
+					{ "time": 2.8333, "x": 0.311, "y": 0.311 },
+					{ "time": 2.9333, "x": 0.184, "y": 0.184 },
+					{ "time": 3, "x": 0.311, "y": 0.311 },
+					{ "time": 3.1, "x": 0.258, "y": 0.258 }
+				]
+			},
+			"skill_xiao_baodian_A_8": {
+				"translate": [
+					{ "time": 2.1333, "x": 802.19, "y": 1170.05 }
+				],
+				"scale": [
+					{ "time": 2.1333, "x": 1.847, "y": 1.847 }
+				]
+			},
+			"skill_bu/hong_quan_8": {
+				"scale": [
+					{ "time": 1.7, "x": 0.299, "y": 0.299 }
+				]
+			},
+			"skill_xiao_baodian_A_9": {
+				"translate": [
+					{ "time": 2.1667, "x": 651.5, "y": 239.33 }
+				],
+				"scale": [
+					{ "time": 2.1667, "x": 1.463, "y": 1.463 }
+				]
+			},
+			"skill_bu/hong_quan_9": {
+				"scale": [
+					{ "time": 1.7, "x": 0.445, "y": 0.445 },
+					{ "time": 1.7667, "x": 0.282, "y": 0.282 },
+					{ "time": 1.8333, "x": 0.403, "y": 0.403 },
+					{ "time": 1.8667, "x": 0.345, "y": 0.345 },
+					{ "time": 1.9, "x": 0.419, "y": 0.419 },
+					{ "time": 1.9667, "x": 0.201, "y": 0.201 },
+					{ "time": 2.0333, "x": 0.34, "y": 0.34 },
+					{ "time": 2.1333, "x": 0.282, "y": 0.282 },
+					{ "time": 2.1667, "x": 0.403, "y": 0.403 },
+					{ "time": 2.2333, "x": 0.201, "y": 0.201 },
+					{ "time": 2.2667, "x": 0.419, "y": 0.419 },
+					{ "time": 2.3, "x": 0.201, "y": 0.201 },
+					{ "time": 2.3667, "x": 0.34, "y": 0.34 },
+					{ "time": 2.4, "x": 0.201, "y": 0.201 },
+					{ "time": 2.4667, "x": 0.34, "y": 0.34 },
+					{ "time": 2.5333, "x": 0.282, "y": 0.282 },
+					{ "time": 2.6333, "x": 0.403, "y": 0.403 },
+					{ "time": 2.7, "x": 0.345, "y": 0.345 },
+					{ "time": 2.7333, "x": 0.419, "y": 0.419 },
+					{ "time": 2.8, "x": 0.201, "y": 0.201 },
+					{ "time": 2.8333, "x": 0.34, "y": 0.34 },
+					{ "time": 2.9333, "x": 0.201, "y": 0.201 },
+					{ "time": 3, "x": 0.34, "y": 0.34 },
+					{ "time": 3.1, "x": 0.282, "y": 0.282 }
+				]
+			},
+			"skill_bu/hong_quan_10": {
+				"scale": [
+					{ "time": 1.7667, "x": 0.634, "y": 0.634 },
+					{ "time": 1.8333, "x": 0.907, "y": 0.907 },
+					{ "time": 1.8667, "x": 0.776, "y": 0.776 },
+					{ "time": 1.9, "x": 0.943, "y": 0.943 },
+					{ "time": 1.9667, "x": 0.453, "y": 0.453 },
+					{ "time": 2.0333, "x": 0.765, "y": 0.765 },
+					{ "time": 2.1333, "x": 0.634, "y": 0.634 },
+					{ "time": 2.1667, "x": 0.907, "y": 0.907 },
+					{ "time": 2.2333, "x": 0.453, "y": 0.453 },
+					{ "time": 2.2667, "x": 0.943, "y": 0.943 },
+					{ "time": 2.3, "x": 0.453, "y": 0.453 },
+					{ "time": 2.3667, "x": 0.765, "y": 0.765 },
+					{ "time": 2.4, "x": 0.453, "y": 0.453 },
+					{ "time": 2.4667, "x": 0.765, "y": 0.765 },
+					{ "time": 2.5333, "x": 0.634, "y": 0.634 },
+					{ "time": 2.6333, "x": 0.907, "y": 0.907 },
+					{ "time": 2.7, "x": 0.776, "y": 0.776 },
+					{ "time": 2.7333, "x": 0.943, "y": 0.943 },
+					{ "time": 2.8, "x": 0.453, "y": 0.453 },
+					{ "time": 2.8333, "x": 0.765, "y": 0.765 },
+					{ "time": 2.9333, "x": 0.453, "y": 0.453 },
+					{ "time": 3, "x": 0.765, "y": 0.765 },
+					{ "time": 3.1, "x": 0.634, "y": 0.634 }
+				]
+			},
+			"skill_ripple": {
+				"translate": [
+					{ "time": 0, "x": 0, "y": -0.52 }
+				],
+				"scale": [
+					{ "time": 0, "x": 0.197, "y": 0.197 },
+					{ "time": 0.1667, "x": 1.63, "y": 1.63 }
+				]
+			},
+			"skill_line_a12": {
+				"rotate": [
+					{ "time": 2, "angle": -174.88 }
+				],
+				"translate": [
+					{ "time": 2, "x": 1559.67, "y": -296.72 }
+				],
+				"scale": [
+					{ "time": 2, "x": 2.198, "y": 2.198 }
+				]
+			}
+		},
+		"drawOrder": [
+			{ "time": 0 },
+			{ "time": 0.0333 },
+			{ "time": 0.3333 },
+			{ "time": 0.5 },
+			{ "time": 0.8 },
+			{ "time": 1.1 },
+			{
+				"time": 1.2,
+				"offsets": [
+					{ "slot": "skill_bu/quan_kuo_a", "offset": 6 },
+					{ "slot": "skill_xiao_baodian_C", "offset": 21 }
+				]
+			},
+			{ "time": 2.8 },
+			{ "time": 3.1667 },
+			{ "time": 3.3333 }
+		]
+	},
+	"animation_1": {
+		"slots": {
+			"Skill/glass_boom": {
+				"attachment": [
+					{ "time": 0.8, "name": "Skill/glass/OUT_Glass_0000" },
+					{ "time": 0.9, "name": "Skill/glass/OUT_Glass_0004" },
+					{ "time": 0.9667, "name": "Skill/glass/OUT_Glass_0006" },
+					{ "time": 1.0333, "name": "Skill/glass/OUT_Glass_0008" },
+					{ "time": 1.1, "name": "Skill/glass/OUT_Glass_0010" },
+					{ "time": 1.1667, "name": "Skill/glass/OUT_Glass_0012" },
+					{ "time": 1.2333, "name": "Skill/glass/OUT_Glass_0014" },
+					{ "time": 1.3, "name": "Skill/glass/OUT_Glass_0016" },
+					{ "time": 1.3667, "name": "Skill/glass/OUT_Glass_0018" },
+					{ "time": 1.4333, "name": "Skill/glass/OUT_Glass_0020" },
+					{ "time": 1.5, "name": "Skill/glass/OUT_Glass_0022" },
+					{ "time": 1.5667, "name": "Skill/glass/OUT_Glass_0026" },
+					{ "time": 1.6333, "name": "Skill/glass/OUT_Glass_0028" },
+					{ "time": 1.7, "name": "Skill/glass/OUT_Glass_0030" },
+					{ "time": 1.7667, "name": "Skill/glass/OUT_Glass_0032" },
+					{ "time": 1.8333, "name": "Skill/glass/OUT_Glass_0034" },
+					{ "time": 1.8667, "name": "Skill/glass/OUT_Glass_0036" },
+					{ "time": 1.9333, "name": "Skill/glass/OUT_Glass_0038" },
+					{ "time": 2, "name": "Skill/glass/OUT_Glass_0040" },
+					{ "time": 2.0667, "name": "Skill/glass/OUT_Glass_0042" },
+					{ "time": 2.1333, "name": "Skill/glass/OUT_Glass_0044" },
+					{ "time": 2.1667, "name": "Skill/glass/OUT_Glass_0046" },
+					{ "time": 2.2333, "name": "Skill/glass/OUT_Glass_0048" },
+					{ "time": 2.3, "name": "Skill/glass/OUT_Glass_0050" },
+					{ "time": 2.3667, "name": "Skill/glass/OUT_Glass_0052" },
+					{ "time": 2.4333, "name": "Skill/glass/OUT_Glass_0054" },
+					{ "time": 2.5333, "name": "Skill/glass/OUT_Glass_0058" },
+					{ "time": 2.6, "name": "Skill/glass/OUT_Glass_0060" },
+					{ "time": 2.6667, "name": "Skill/glass/OUT_Glass_0062" },
+					{ "time": 2.7333, "name": "Skill/glass/OUT_Glass_0064" },
+					{ "time": 2.8, "name": "Skill/glass/OUT_Glass_0066" },
+					{ "time": 2.8333, "name": "Skill/glass/OUT_Glass_0068" },
+					{ "time": 2.9, "name": "Skill/glass/OUT_Glass_0070" },
+					{ "time": 2.9667, "name": "Skill/glass/OUT_Glass_0072" },
+					{ "time": 3.0333, "name": "Skill/glass/OUT_Glass_0074" },
+					{ "time": 3.1, "name": "Skill/glass/OUT_Glass_0076" },
+					{ "time": 3.1667, "name": "Skill/glass/OUT_Glass_0078" },
+					{ "time": 3.2, "name": null }
+				]
+			},
+			"skill/niao_boom": {
+				"color": [
+					{ "time": 1.8333, "color": "ffffffff" },
+					{ "time": 2.1333, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 1, "name": "Skill/skill/niao_boom/niao_boom_0000" },
+					{ "time": 1.0667, "name": "Skill/skill/niao_boom/niao_boom_0002" },
+					{ "time": 1.1333, "name": "Skill/skill/niao_boom/niao_boom_0004" },
+					{ "time": 1.1667, "name": "Skill/skill/niao_boom/niao_boom_0006" },
+					{ "time": 1.2333, "name": "Skill/skill/niao_boom/niao_boom_0008" },
+					{ "time": 1.3, "name": "Skill/skill/niao_boom/niao_boom_0010" },
+					{ "time": 1.3667, "name": "Skill/skill/niao_boom/niao_boom_0012" },
+					{ "time": 1.4333, "name": "Skill/skill/niao_boom/niao_boom_0014" },
+					{ "time": 1.5333, "name": "Skill/skill/niao_boom/niao_boom_0018" },
+					{ "time": 1.6, "name": "Skill/skill/niao_boom/niao_boom_0020" },
+					{ "time": 1.6667, "name": "Skill/skill/niao_boom/niao_boom_0022" },
+					{ "time": 1.7333, "name": "Skill/skill/niao_boom/niao_boom_0024" },
+					{ "time": 1.7667, "name": "Skill/skill/niao_boom/niao_boom_0000" },
+					{ "time": 1.8667, "name": "Skill/skill/niao_boom/niao_boom_0004" },
+					{ "time": 1.9333, "name": "Skill/skill/niao_boom/niao_boom_0006" },
+					{ "time": 2, "name": "Skill/skill/niao_boom/niao_boom_0008" },
+					{ "time": 2.0667, "name": "Skill/skill/niao_boom/niao_boom_0010" },
+					{ "time": 2.1333, "name": "Skill/skill/niao_boom/niao_boom_0012" }
+				]
+			},
+			"skill/wind": {
+				"attachment": [
+					{ "time": 1.5333, "name": "Skill/skill/wind/wind_0000" },
+					{ "time": 1.6, "name": "Skill/skill/wind/wind_0002" },
+					{ "time": 1.6667, "name": "Skill/skill/wind/wind_0004" },
+					{ "time": 1.7333, "name": "Skill/skill/wind/wind_0006" },
+					{ "time": 1.8, "name": "Skill/skill/wind/wind_0008" },
+					{ "time": 1.8333, "name": "Skill/skill/wind/wind_0010" },
+					{ "time": 1.9, "name": "Skill/skill/wind/wind_0012" },
+					{ "time": 1.9667, "name": "Skill/skill/wind/wind_0014" },
+					{ "time": 2.0333, "name": "Skill/skill/wind/wind_0016" },
+					{ "time": 2.1, "name": "Skill/skill/wind/wind_0018" },
+					{ "time": 2.1667, "name": "Skill/skill/wind/wind_0020" },
+					{ "time": 2.2, "name": "Skill/skill/wind/wind_0022" },
+					{ "time": 2.2667, "name": "Skill/skill/wind/wind_0024" },
+					{ "time": 2.3333, "name": null }
+				]
+			},
+			"skill_bu/hong_quan": {
+				"color": [
+					{ "time": 1.8333, "color": "ffffffff" },
+					{ "time": 1.9667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0.8333, "name": "Skill/skill_bu/hong_quan_0004" }
+				]
+			},
+			"skill_bu/hong_quan2": {
+				"color": [
+					{ "time": 1.7, "color": "ffffffff" },
+					{ "time": 1.7667, "color": "ffffff72" },
+					{ "time": 1.8333, "color": "ffffff44" },
+					{ "time": 1.8667, "color": "ffffffe4" },
+					{ "time": 1.9333, "color": "ffffff89" },
+					{ "time": 1.9667, "color": "ffffff72" },
+					{ "time": 2.0333, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "ffffff44" },
+					{ "time": 2.1, "color": "ffffffe4" },
+					{ "time": 2.1667, "color": "ffffffff" },
+					{ "time": 2.2, "color": "ffffff72" },
+					{ "time": 2.2667, "color": "ffffffff" },
+					{ "time": 2.3, "color": "ffffff44" },
+					{ "time": 2.3333, "color": "ffffffe4" },
+					{ "time": 2.4, "color": "ffffff89" },
+					{ "time": 2.4667, "color": "ffffff72" },
+					{ "time": 2.5, "color": "ffffffff" },
+					{ "time": 2.5333, "color": "ffffff72" },
+					{ "time": 2.6, "color": "ffffffff" },
+					{ "time": 2.6333, "color": "ffffff44" },
+					{ "time": 2.6667, "color": "ffffffe4" },
+					{ "time": 2.7333, "color": "ffffffff" },
+					{ "time": 2.8667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 1.7, "name": "Skill/skill_bu/hong_quan_0004" }
+				]
+			},
+			"skill_bu/hong_quan_1": {
+				"color": [
+					{ "time": 1.7, "color": "ffffffff" },
+					{ "time": 1.7667, "color": "ffffff72" },
+					{ "time": 1.8333, "color": "ffffffff" },
+					{ "time": 1.8667, "color": "ffffffe4" },
+					{ "time": 1.9333, "color": "ffffff89" },
+					{ "time": 1.9667, "color": "ffffff72" },
+					{ "time": 2.0333, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "ffffff44" },
+					{ "time": 2.1, "color": "ffffffe4" },
+					{ "time": 2.1667, "color": "ffffffff" },
+					{ "time": 2.2, "color": "ffffff72" },
+					{ "time": 2.2667, "color": "ffffffff" },
+					{ "time": 2.3, "color": "ffffff44" },
+					{ "time": 2.3333, "color": "ffffffe4" },
+					{ "time": 2.4, "color": "ffffff89" },
+					{ "time": 2.4667, "color": "ffffff72" },
+					{ "time": 2.5, "color": "ffffffff" },
+					{ "time": 2.5333, "color": "ffffff72" },
+					{ "time": 2.6, "color": "ffffffff" },
+					{ "time": 2.6333, "color": "ffffff44" },
+					{ "time": 2.6667, "color": "ffffffe4" },
+					{ "time": 2.7333, "color": "ffffffff" },
+					{ "time": 2.8667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 1.7, "name": "Skill/skill_bu/hong_quan_0004" }
+				]
+			},
+			"skill_bu/hong_quan_2": {
+				"color": [
+					{ "time": 1.7, "color": "ffffffff" },
+					{ "time": 1.7667, "color": "ffffff72" },
+					{ "time": 1.8333, "color": "ffffffff" },
+					{ "time": 1.8667, "color": "ffffffe4" },
+					{ "time": 1.9333, "color": "ffffff89" },
+					{ "time": 1.9667, "color": "ffffff72" },
+					{ "time": 2.0333, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "ffffff44" },
+					{ "time": 2.1, "color": "ffffffe4" },
+					{ "time": 2.1667, "color": "ffffffff" },
+					{ "time": 2.2, "color": "ffffff72" },
+					{ "time": 2.2667, "color": "ffffffff" },
+					{ "time": 2.3, "color": "ffffff44" },
+					{ "time": 2.3333, "color": "ffffffe4" },
+					{ "time": 2.4, "color": "ffffff89" },
+					{ "time": 2.4667, "color": "ffffff72" },
+					{ "time": 2.5, "color": "ffffffff" },
+					{ "time": 2.5333, "color": "ffffff72" },
+					{ "time": 2.6, "color": "ffffffff" },
+					{ "time": 2.6333, "color": "ffffff44" },
+					{ "time": 2.6667, "color": "ffffffe4" },
+					{ "time": 2.7333, "color": "ffffffff" },
+					{ "time": 2.8667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 1.7667, "name": "Skill/skill_bu/hong_quan_0004" }
+				]
+			},
+			"skill_bu/hong_quan_3": {
+				"color": [
+					{ "time": 1.7, "color": "ffffffff" },
+					{ "time": 1.7667, "color": "ffffff72" },
+					{ "time": 1.8333, "color": "ffffff44" },
+					{ "time": 1.8667, "color": "ffffffe4" },
+					{ "time": 1.9333, "color": "ffffff89" },
+					{ "time": 1.9667, "color": "ffffff72" },
+					{ "time": 2.0333, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "ffffff44" },
+					{ "time": 2.1, "color": "ffffffe4" },
+					{ "time": 2.1667, "color": "ffffffff" },
+					{ "time": 2.2, "color": "ffffff72" },
+					{ "time": 2.2667, "color": "ffffffff" },
+					{ "time": 2.3, "color": "ffffff44" },
+					{ "time": 2.3333, "color": "ffffffe4" },
+					{ "time": 2.4, "color": "ffffff89" },
+					{ "time": 2.4667, "color": "ffffff72" },
+					{ "time": 2.5, "color": "ffffffff" },
+					{ "time": 2.5333, "color": "ffffff72" },
+					{ "time": 2.6, "color": "ffffffff" },
+					{ "time": 2.6333, "color": "ffffff44" },
+					{ "time": 2.6667, "color": "ffffffe4" },
+					{ "time": 2.7333, "color": "ffffffff" },
+					{ "time": 2.8667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 1.8333, "name": "Skill/skill_bu/hong_quan_0004" }
+				]
+			},
+			"skill_bu/hong_quan_4": {
+				"color": [
+					{ "time": 1.7, "color": "ffffffff" },
+					{ "time": 1.7667, "color": "ffffff72" },
+					{ "time": 1.8333, "color": "ffffffff" },
+					{ "time": 1.8667, "color": "ffffffe4" },
+					{ "time": 1.9333, "color": "ffffff89" },
+					{ "time": 1.9667, "color": "ffffff72" },
+					{ "time": 2.0333, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "ffffff44" },
+					{ "time": 2.1, "color": "ffffffe4" },
+					{ "time": 2.1667, "color": "ffffffff" },
+					{ "time": 2.2, "color": "ffffff72" },
+					{ "time": 2.2667, "color": "ffffffff" },
+					{ "time": 2.3, "color": "ffffff44" },
+					{ "time": 2.3333, "color": "ffffffe4" },
+					{ "time": 2.4, "color": "ffffff89" },
+					{ "time": 2.4667, "color": "ffffff72" },
+					{ "time": 2.5, "color": "ffffffff" },
+					{ "time": 2.5333, "color": "ffffff72" },
+					{ "time": 2.6, "color": "ffffffff" },
+					{ "time": 2.6333, "color": "ffffff44" },
+					{ "time": 2.6667, "color": "ffffffe4" },
+					{ "time": 2.7333, "color": "ffffffff" },
+					{ "time": 2.8667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 1.8667, "name": "Skill/skill_bu/hong_quan_0004" }
+				]
+			},
+			"skill_bu/hong_quan_5": {
+				"color": [
+					{ "time": 1.7, "color": "ffffffff" },
+					{ "time": 1.7667, "color": "ffffff72" },
+					{ "time": 1.8333, "color": "ffffff44" },
+					{ "time": 1.8667, "color": "ffffffe4" },
+					{ "time": 1.9333, "color": "ffffff89" },
+					{ "time": 1.9667, "color": "ffffff72" },
+					{ "time": 2.0333, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "ffffff44" },
+					{ "time": 2.1, "color": "ffffffe4" },
+					{ "time": 2.1667, "color": "ffffffff" },
+					{ "time": 2.2, "color": "ffffff72" },
+					{ "time": 2.2667, "color": "ffffffff" },
+					{ "time": 2.3, "color": "ffffff44" },
+					{ "time": 2.3333, "color": "ffffffe4" },
+					{ "time": 2.4, "color": "ffffff89" },
+					{ "time": 2.4667, "color": "ffffff72" },
+					{ "time": 2.5, "color": "ffffffff" },
+					{ "time": 2.5333, "color": "ffffff72" },
+					{ "time": 2.6, "color": "ffffffff" },
+					{ "time": 2.6333, "color": "ffffff44" },
+					{ "time": 2.6667, "color": "ffffffe4" },
+					{ "time": 2.7333, "color": "ffffffff" },
+					{ "time": 2.8667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 1.9333, "name": "Skill/skill_bu/hong_quan_0004" }
+				]
+			},
+			"skill_bu/hong_quan_6": {
+				"color": [
+					{ "time": 1.7, "color": "ffffffff" },
+					{ "time": 1.7667, "color": "ffffff72" },
+					{ "time": 1.8333, "color": "ffffffff" },
+					{ "time": 1.8667, "color": "ffffffe4" },
+					{ "time": 1.9333, "color": "ffffff89" },
+					{ "time": 1.9667, "color": "ffffff72" },
+					{ "time": 2.0333, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "ffffff44" },
+					{ "time": 2.1, "color": "ffffffe4" },
+					{ "time": 2.1667, "color": "ffffffff" },
+					{ "time": 2.2, "color": "ffffff72" },
+					{ "time": 2.2667, "color": "ffffffff" },
+					{ "time": 2.3, "color": "ffffff44" },
+					{ "time": 2.3333, "color": "ffffffe4" },
+					{ "time": 2.4, "color": "ffffff89" },
+					{ "time": 2.4667, "color": "ffffff72" },
+					{ "time": 2.5, "color": "ffffffff" },
+					{ "time": 2.5333, "color": "ffffff72" },
+					{ "time": 2.6, "color": "ffffffff" },
+					{ "time": 2.6333, "color": "ffffff44" },
+					{ "time": 2.6667, "color": "ffffffe4" },
+					{ "time": 2.7333, "color": "ffffffff" },
+					{ "time": 2.8667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 2, "name": "Skill/skill_bu/hong_quan_0004" }
+				]
+			},
+			"skill_bu/hong_quan_7": {
+				"color": [
+					{ "time": 1.7, "color": "ffffffff" },
+					{ "time": 1.7667, "color": "ffffff72" },
+					{ "time": 1.8333, "color": "ffffffff" },
+					{ "time": 1.8667, "color": "ffffffe4" },
+					{ "time": 1.9333, "color": "ffffff89" },
+					{ "time": 1.9667, "color": "ffffff72" },
+					{ "time": 2.0333, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "ffffff44" },
+					{ "time": 2.1, "color": "ffffffe4" },
+					{ "time": 2.1667, "color": "ffffffff" },
+					{ "time": 2.2, "color": "ffffff72" },
+					{ "time": 2.2667, "color": "ffffffff" },
+					{ "time": 2.3, "color": "ffffff44" },
+					{ "time": 2.3333, "color": "ffffffe4" },
+					{ "time": 2.4, "color": "ffffff89" },
+					{ "time": 2.4667, "color": "ffffff72" },
+					{ "time": 2.5, "color": "ffffffff" },
+					{ "time": 2.5333, "color": "ffffff72" },
+					{ "time": 2.6, "color": "ffffffff" },
+					{ "time": 2.6333, "color": "ffffff44" },
+					{ "time": 2.6667, "color": "ffffffe4" },
+					{ "time": 2.7333, "color": "ffffffff" },
+					{ "time": 2.8667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 2.0667, "name": "Skill/skill_bu/hong_quan_0004" }
+				]
+			},
+			"skill_bu/hong_quan_8": {
+				"color": [
+					{ "time": 1.7, "color": "ffffffff" },
+					{ "time": 1.7667, "color": "ffffff72" },
+					{ "time": 1.8333, "color": "ffffffff" },
+					{ "time": 1.8667, "color": "ffffffe4" },
+					{ "time": 1.9333, "color": "ffffff89" },
+					{ "time": 1.9667, "color": "ffffff72" },
+					{ "time": 2.0333, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "ffffff44" },
+					{ "time": 2.1, "color": "ffffffe4" },
+					{ "time": 2.1667, "color": "ffffffff" },
+					{ "time": 2.2, "color": "ffffff72" },
+					{ "time": 2.2667, "color": "ffffffff" },
+					{ "time": 2.3, "color": "ffffff44" },
+					{ "time": 2.3333, "color": "ffffffe4" },
+					{ "time": 2.4, "color": "ffffff89" },
+					{ "time": 2.4667, "color": "ffffff72" },
+					{ "time": 2.5, "color": "ffffffff" },
+					{ "time": 2.5333, "color": "ffffff72" },
+					{ "time": 2.6, "color": "ffffffff" },
+					{ "time": 2.6333, "color": "ffffff44" },
+					{ "time": 2.6667, "color": "ffffffe4" },
+					{ "time": 2.7333, "color": "ffffffff" },
+					{ "time": 2.8667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 2.1333, "name": "Skill/skill_bu/hong_quan_0004" }
+				]
+			},
+			"skill_bu/hong_quan_9": {
+				"color": [
+					{ "time": 1.7, "color": "ffffffff" },
+					{ "time": 1.7667, "color": "ffffff72" },
+					{ "time": 1.8333, "color": "ffffffff" },
+					{ "time": 1.8667, "color": "ffffffe4" },
+					{ "time": 1.9333, "color": "ffffff89" },
+					{ "time": 1.9667, "color": "ffffff72" },
+					{ "time": 2.0333, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "ffffff44" },
+					{ "time": 2.1, "color": "ffffffe4" },
+					{ "time": 2.1667, "color": "ffffffff" },
+					{ "time": 2.2, "color": "ffffff72" },
+					{ "time": 2.2667, "color": "ffffffff" },
+					{ "time": 2.3, "color": "ffffff44" },
+					{ "time": 2.3333, "color": "ffffffe4" },
+					{ "time": 2.4, "color": "ffffff89" },
+					{ "time": 2.4667, "color": "ffffff72" },
+					{ "time": 2.5, "color": "ffffffff" },
+					{ "time": 2.5333, "color": "ffffff72" },
+					{ "time": 2.6, "color": "ffffffff" },
+					{ "time": 2.6333, "color": "ffffff44" },
+					{ "time": 2.6667, "color": "ffffffe4" },
+					{ "time": 2.7333, "color": "ffffffff" },
+					{ "time": 2.8667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 2.1667, "name": "Skill/skill_bu/hong_quan_0004" }
+				]
+			},
+			"skill_bu/hong_quan_10": {
+				"color": [
+					{ "time": 1.7, "color": "ffffffff" },
+					{ "time": 1.7667, "color": "ffffff72" },
+					{ "time": 1.8333, "color": "ffffffff" },
+					{ "time": 1.8667, "color": "ffffffe4" },
+					{ "time": 1.9333, "color": "ffffff89" },
+					{ "time": 1.9667, "color": "ffffff72" },
+					{ "time": 2.0333, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "ffffff44" },
+					{ "time": 2.1, "color": "ffffffe4" },
+					{ "time": 2.1667, "color": "ffffffff" },
+					{ "time": 2.2, "color": "ffffff72" },
+					{ "time": 2.2667, "color": "ffffffff" },
+					{ "time": 2.3, "color": "ffffff44" },
+					{ "time": 2.3333, "color": "ffffffe4" },
+					{ "time": 2.4, "color": "ffffff89" },
+					{ "time": 2.4667, "color": "ffffff72" },
+					{ "time": 2.5, "color": "ffffffff" },
+					{ "time": 2.5333, "color": "ffffff72" },
+					{ "time": 2.6, "color": "ffffffff" },
+					{ "time": 2.6333, "color": "ffffff44" },
+					{ "time": 2.6667, "color": "ffffffe4" },
+					{ "time": 2.7333, "color": "ffffffff" },
+					{ "time": 2.8667, "color": "ffffff00" }
+				]
+			},
+			"skill_bu/kuoshan": {
+				"color": [
+					{ "time": 2.0333, "color": "ffffffff" },
+					{ "time": 2.2, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 1.5333, "name": "Skill/skill_bu/kuoshan/kuoshan_0010" },
+					{ "time": 1.6333, "name": "Skill/skill_bu/kuoshan/kuoshan_0012" },
+					{ "time": 1.7, "name": "Skill/skill_bu/kuoshan/kuoshan_0014" },
+					{ "time": 1.8, "name": "Skill/skill_bu/kuoshan/kuoshan_0016" },
+					{ "time": 1.8667, "name": "Skill/skill_bu/kuoshan/kuoshan_0018" },
+					{ "time": 1.9667, "name": "Skill/skill_bu/kuoshan/kuoshan_0020" },
+					{ "time": 2.0333, "name": "Skill/skill_bu/kuoshan/kuoshan_0022" },
+					{ "time": 2.1333, "name": "Skill/skill_bu/kuoshan/kuoshan_0024" },
+					{ "time": 2.2, "name": null }
+				]
+			},
+			"skill_bu/light_h": {
+				"color": [
+					{ "time": 1.9667, "color": "ff6e5fff", "curve": "stepped" },
+					{ "time": 2.0667, "color": "ff6e5fff" },
+					{ "time": 2.1667, "color": "ffb8b800" }
+				],
+				"attachment": [
+					{ "time": 0.8333, "name": "Skill/skill_bu/light_h_0000" },
+					{ "time": 1.9667, "name": "Skill/skill_bu/light_h_0000" }
+				]
+			},
+			"skill_bu/lxl": {
+				"color": [
+					{ "time": 1.9, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0.9667, "name": "Skill/skill_bu/lxl/1" },
+					{ "time": 1.0333, "name": "Skill/skill_bu/lxl/2" },
+					{ "time": 1.0667, "name": "Skill/skill_bu/lxl/3" },
+					{ "time": 1.1333, "name": "Skill/skill_bu/lxl/4" },
+					{ "time": 1.1667, "name": "Skill/skill_bu/lxl/5" },
+					{ "time": 1.2333, "name": "Skill/skill_bu/lxl/6" },
+					{ "time": 1.2667, "name": "Skill/skill_bu/lxl/7" }
+				]
+			},
+			"skill_bu/quan_bai": {
+				"attachment": [
+					{ "time": 0.8667, "name": "Skill/skill_bu/quan_bai_0000" }
+				]
+			},
+			"skill_bu/quan_hong": {
+				"attachment": [
+					{ "time": 0.8333, "name": "Skill/skill_bu/quan_hong_0000_0000" }
+				]
+			},
+			"skill_bu/quan_kuo_a": {
+				"color": [
+					{ "time": 1.6333, "color": "ffffffff" },
+					{ "time": 1.8, "color": "ffffff00", "curve": "stepped" },
+					{ "time": 1.8667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 1.5667, "name": "Skill/skill_bu/quan_kuo_a_0012" }
+				]
+			},
+			"skill_line_a": {
+				"color": [
+					{ "time": 1.6333, "color": "ffffffff" },
+					{ "time": 1.7, "color": "ffffffca" },
+					{ "time": 1.7333, "color": "ffffffff" },
+					{ "time": 1.7667, "color": "ffffffc3" },
+					{ "time": 1.8333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 1.8667, "color": "ffffffff" },
+					{ "time": 1.9, "color": "ffffffc3" },
+					{ "time": 1.9667, "color": "ffffffca" },
+					{ "time": 2, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "ffffffca" },
+					{ "time": 2.1, "color": "ffffffff" },
+					{ "time": 2.1333, "color": "ffffffca" },
+					{ "time": 2.1667, "color": "ffffffff" },
+					{ "time": 2.2, "color": "ffffffca" },
+					{ "time": 2.2333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.2667, "color": "ffffffff" },
+					{ "time": 2.3, "color": "ffffffc3" },
+					{ "time": 2.3667, "color": "ffffffca" },
+					{ "time": 2.4, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.4667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.5, "color": "ffffffff" },
+					{ "time": 2.5333, "color": "ffffffca" },
+					{ "time": 2.5667, "color": "ffffffff" },
+					{ "time": 2.6, "color": "ffffffca", "curve": "stepped" },
+					{ "time": 2.6333, "color": "ffffffca" },
+					{ "time": 2.6667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.7, "color": "ffffffff" },
+					{ "time": 2.7333, "color": "ffffffc3" },
+					{ "time": 2.8667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 1.6333, "name": "Skill/skill_line_a/skill_line_a_0004" }
+				]
+			},
+			"skill_line_a2": {
+				"color": [
+					{ "time": 1.6333, "color": "ffffffff" },
+					{ "time": 1.7, "color": "ffffffca" },
+					{ "time": 1.7333, "color": "ffffffff" },
+					{ "time": 1.7667, "color": "ffffffc3" },
+					{ "time": 1.8333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 1.8667, "color": "ffffffff" },
+					{ "time": 1.9, "color": "ffffffc3" },
+					{ "time": 1.9667, "color": "ffffffca" },
+					{ "time": 2, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "ffffffca" },
+					{ "time": 2.1, "color": "ffffffff" },
+					{ "time": 2.1333, "color": "ffffffca" },
+					{ "time": 2.1667, "color": "ffffffff" },
+					{ "time": 2.2, "color": "ffffffca" },
+					{ "time": 2.2333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.2667, "color": "ffffffff" },
+					{ "time": 2.3, "color": "ffffffc3" },
+					{ "time": 2.3667, "color": "ffffffca" },
+					{ "time": 2.4, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.4667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.5, "color": "ffffffff" },
+					{ "time": 2.5333, "color": "ffffffca" },
+					{ "time": 2.5667, "color": "ffffffff" },
+					{ "time": 2.6, "color": "ffffffca", "curve": "stepped" },
+					{ "time": 2.6333, "color": "ffffffca" },
+					{ "time": 2.6667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.7, "color": "ffffffff" },
+					{ "time": 2.7333, "color": "ffffffc3" },
+					{ "time": 2.8667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 1.7, "name": "Skill/skill_line_a/skill_line_a_0004" }
+				]
+			},
+			"skill_line_a3": {
+				"color": [
+					{ "time": 1.6333, "color": "ffffffff" },
+					{ "time": 1.7, "color": "ffffffca" },
+					{ "time": 1.7333, "color": "ffffffff" },
+					{ "time": 1.7667, "color": "ffffffc3" },
+					{ "time": 1.8333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 1.8667, "color": "ffffffff" },
+					{ "time": 1.9, "color": "ffffffc3" },
+					{ "time": 1.9667, "color": "ffffffca" },
+					{ "time": 2, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "ffffffca" },
+					{ "time": 2.1, "color": "ffffffff" },
+					{ "time": 2.1333, "color": "ffffffca" },
+					{ "time": 2.1667, "color": "ffffffff" },
+					{ "time": 2.2, "color": "ffffffca" },
+					{ "time": 2.2333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.2667, "color": "ffffffff" },
+					{ "time": 2.3, "color": "ffffffc3" },
+					{ "time": 2.3667, "color": "ffffffca" },
+					{ "time": 2.4, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.4667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.5, "color": "ffffffff" },
+					{ "time": 2.5333, "color": "ffffffca" },
+					{ "time": 2.5667, "color": "ffffffff" },
+					{ "time": 2.6, "color": "ffffffca", "curve": "stepped" },
+					{ "time": 2.6333, "color": "ffffffca" },
+					{ "time": 2.6667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.7, "color": "ffffffff" },
+					{ "time": 2.7333, "color": "ffffffc3" },
+					{ "time": 2.8667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 1.7667, "name": "Skill/skill_line_a/skill_line_a_0004" }
+				]
+			},
+			"skill_line_a4": {
+				"color": [
+					{ "time": 1.6333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 1.7, "color": "ffffffff" },
+					{ "time": 1.7667, "color": "ffffffc3" },
+					{ "time": 1.8333, "color": "ffffffff" },
+					{ "time": 1.9, "color": "ffffffc3" },
+					{ "time": 1.9667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.0667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.1333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.2, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.2333, "color": "ffffffff" },
+					{ "time": 2.2667, "color": "ffffffc3" },
+					{ "time": 2.3667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.4, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.4667, "color": "ffffffff" },
+					{ "time": 2.5, "color": "ffffffc3" },
+					{ "time": 2.5333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.6, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.6333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.6667, "color": "ffffffff" },
+					{ "time": 2.7, "color": "ffffffc3" },
+					{ "time": 2.7333, "color": "ffffffff" },
+					{ "time": 2.8667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 1.8333, "name": "Skill/skill_line_a/skill_line_a_0004" }
+				]
+			},
+			"skill_line_a5": {
+				"color": [
+					{ "time": 1.6333, "color": "ffffffff" },
+					{ "time": 1.7, "color": "ffffffca" },
+					{ "time": 1.7333, "color": "ffffffff" },
+					{ "time": 1.7667, "color": "ffffffc3" },
+					{ "time": 1.8333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 1.8667, "color": "ffffffff" },
+					{ "time": 1.9, "color": "ffffffc3" },
+					{ "time": 1.9667, "color": "ffffffca" },
+					{ "time": 2, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "ffffffca" },
+					{ "time": 2.1, "color": "ffffffff" },
+					{ "time": 2.1333, "color": "ffffffca" },
+					{ "time": 2.1667, "color": "ffffffff" },
+					{ "time": 2.2, "color": "ffffffca" },
+					{ "time": 2.2333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.2667, "color": "ffffffff" },
+					{ "time": 2.3, "color": "ffffffc3" },
+					{ "time": 2.3667, "color": "ffffffca" },
+					{ "time": 2.4, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.4667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.5, "color": "ffffffff" },
+					{ "time": 2.5333, "color": "ffffffca" },
+					{ "time": 2.5667, "color": "ffffffff" },
+					{ "time": 2.6, "color": "ffffffca", "curve": "stepped" },
+					{ "time": 2.6333, "color": "ffffffca" },
+					{ "time": 2.6667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.7, "color": "ffffffff" },
+					{ "time": 2.7333, "color": "ffffffc3" },
+					{ "time": 2.8667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 1.8667, "name": "Skill/skill_line_a/skill_line_a_0004" }
+				]
+			},
+			"skill_line_a6": {
+				"color": [
+					{ "time": 1.6333, "color": "ffffffff" },
+					{ "time": 1.7, "color": "ffffffca" },
+					{ "time": 1.7333, "color": "ffffffff" },
+					{ "time": 1.7667, "color": "ffffffc3" },
+					{ "time": 1.8333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 1.8667, "color": "ffffffff" },
+					{ "time": 1.9, "color": "ffffffc3" },
+					{ "time": 1.9667, "color": "ffffffca" },
+					{ "time": 2, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "ffffffca" },
+					{ "time": 2.1, "color": "ffffffff" },
+					{ "time": 2.1333, "color": "ffffffca" },
+					{ "time": 2.1667, "color": "ffffffff" },
+					{ "time": 2.2, "color": "ffffffca" },
+					{ "time": 2.2333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.2667, "color": "ffffffff" },
+					{ "time": 2.3, "color": "ffffffc3" },
+					{ "time": 2.3667, "color": "ffffffca" },
+					{ "time": 2.4, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.4667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.5, "color": "ffffffff" },
+					{ "time": 2.5333, "color": "ffffffca" },
+					{ "time": 2.5667, "color": "ffffffff" },
+					{ "time": 2.6, "color": "ffffffca", "curve": "stepped" },
+					{ "time": 2.6333, "color": "ffffffca" },
+					{ "time": 2.6667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.7, "color": "ffffffff" },
+					{ "time": 2.7333, "color": "ffffffc3" },
+					{ "time": 2.8667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 1.9333, "name": "Skill/skill_line_a/skill_line_a_0004" }
+				]
+			},
+			"skill_line_a7": {
+				"color": [
+					{ "time": 1.6333, "color": "ffffffff" },
+					{ "time": 1.7, "color": "ffffffca" },
+					{ "time": 1.7333, "color": "ffffffff" },
+					{ "time": 1.7667, "color": "ffffffc3" },
+					{ "time": 1.8333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 1.8667, "color": "ffffffff" },
+					{ "time": 1.9, "color": "ffffffc3" },
+					{ "time": 1.9667, "color": "ffffffca" },
+					{ "time": 2, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "ffffffca" },
+					{ "time": 2.1, "color": "ffffffff" },
+					{ "time": 2.1333, "color": "ffffffca" },
+					{ "time": 2.1667, "color": "ffffffff" },
+					{ "time": 2.2, "color": "ffffffca" },
+					{ "time": 2.2333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.2667, "color": "ffffffff" },
+					{ "time": 2.3, "color": "ffffffc3" },
+					{ "time": 2.3667, "color": "ffffffca" },
+					{ "time": 2.4, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.4667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.5, "color": "ffffffff" },
+					{ "time": 2.5333, "color": "ffffffca" },
+					{ "time": 2.5667, "color": "ffffffff" },
+					{ "time": 2.6, "color": "ffffffca", "curve": "stepped" },
+					{ "time": 2.6333, "color": "ffffffca" },
+					{ "time": 2.6667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.7, "color": "ffffffff" },
+					{ "time": 2.7333, "color": "ffffffc3" },
+					{ "time": 2.8667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 2, "name": "Skill/skill_line_a/skill_line_a_0004" }
+				]
+			},
+			"skill_line_a8": {
+				"color": [
+					{ "time": 1.6333, "color": "ffffffff" },
+					{ "time": 1.7, "color": "ffffffca" },
+					{ "time": 1.7333, "color": "ffffffff" },
+					{ "time": 1.7667, "color": "ffffffc3" },
+					{ "time": 1.8333, "color": "ffffffca" },
+					{ "time": 1.8667, "color": "ffffffff" },
+					{ "time": 1.9, "color": "ffffffc3" },
+					{ "time": 1.9667, "color": "ffffffca" },
+					{ "time": 2, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "ffffffca" },
+					{ "time": 2.1, "color": "ffffffff" },
+					{ "time": 2.1333, "color": "ffffffca" },
+					{ "time": 2.1667, "color": "ffffffff" },
+					{ "time": 2.2, "color": "ffffffca" },
+					{ "time": 2.2333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.2667, "color": "ffffffff" },
+					{ "time": 2.3, "color": "ffffffc3" },
+					{ "time": 2.3667, "color": "ffffffca" },
+					{ "time": 2.4, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.4667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.5, "color": "ffffffff" },
+					{ "time": 2.5333, "color": "ffffffca" },
+					{ "time": 2.5667, "color": "ffffffff" },
+					{ "time": 2.6, "color": "ffffffca", "curve": "stepped" },
+					{ "time": 2.6333, "color": "ffffffca" },
+					{ "time": 2.6667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.7, "color": "ffffffff" },
+					{ "time": 2.7333, "color": "ffffffc3" },
+					{ "time": 2.8667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 2.0667, "name": "Skill/skill_line_a/skill_line_a_0004" }
+				]
+			},
+			"skill_line_a9": {
+				"color": [
+					{ "time": 1.6333, "color": "ffffffff" },
+					{ "time": 1.7, "color": "ffffffca" },
+					{ "time": 1.7333, "color": "ffffffff" },
+					{ "time": 1.7667, "color": "ffffffc3" },
+					{ "time": 1.8333, "color": "ffffffca" },
+					{ "time": 1.8667, "color": "ffffffff" },
+					{ "time": 1.9, "color": "ffffffc3" },
+					{ "time": 1.9667, "color": "ffffffca" },
+					{ "time": 2, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "ffffffca" },
+					{ "time": 2.1, "color": "ffffffff" },
+					{ "time": 2.1333, "color": "ffffffca" },
+					{ "time": 2.1667, "color": "ffffffff" },
+					{ "time": 2.2, "color": "ffffffca" },
+					{ "time": 2.2333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.2667, "color": "ffffffff" },
+					{ "time": 2.3, "color": "ffffffc3" },
+					{ "time": 2.3667, "color": "ffffffca" },
+					{ "time": 2.4, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.4667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.5, "color": "ffffffff" },
+					{ "time": 2.5333, "color": "ffffffca" },
+					{ "time": 2.5667, "color": "ffffffff" },
+					{ "time": 2.6, "color": "ffffffca", "curve": "stepped" },
+					{ "time": 2.6333, "color": "ffffffca" },
+					{ "time": 2.6667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.7, "color": "ffffffff" },
+					{ "time": 2.7333, "color": "ffffffc3" },
+					{ "time": 2.8667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 2.1333, "name": "Skill/skill_line_a/skill_line_a_0004" }
+				]
+			},
+			"skill_line_a10": {
+				"color": [
+					{ "time": 1.6333, "color": "ffffffff" },
+					{ "time": 1.7, "color": "ffffffca" },
+					{ "time": 1.7333, "color": "ffffffff" },
+					{ "time": 1.7667, "color": "ffffffc3" },
+					{ "time": 1.8333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 1.8667, "color": "ffffffff" },
+					{ "time": 1.9, "color": "ffffffc3" },
+					{ "time": 1.9667, "color": "ffffffca" },
+					{ "time": 2, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "ffffffca" },
+					{ "time": 2.1, "color": "ffffffff" },
+					{ "time": 2.1333, "color": "ffffffca" },
+					{ "time": 2.1667, "color": "ffffffff" },
+					{ "time": 2.2, "color": "ffffffca" },
+					{ "time": 2.2333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.2667, "color": "ffffffff" },
+					{ "time": 2.3, "color": "ffffffc3" },
+					{ "time": 2.3667, "color": "ffffffca" },
+					{ "time": 2.4, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.4667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.5, "color": "ffffffff" },
+					{ "time": 2.5333, "color": "ffffffca" },
+					{ "time": 2.5667, "color": "ffffffff" },
+					{ "time": 2.6, "color": "ffffffca", "curve": "stepped" },
+					{ "time": 2.6333, "color": "ffffffca" },
+					{ "time": 2.6667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.7, "color": "ffffffff" },
+					{ "time": 2.7333, "color": "ffffffc3" },
+					{ "time": 2.8667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 2.1667, "name": "Skill/skill_line_a/skill_line_a_0004" }
+				]
+			},
+			"skill_line_a11": {
+				"color": [
+					{ "time": 1.6333, "color": "ffffffff" },
+					{ "time": 1.7, "color": "ffffffca" },
+					{ "time": 1.7333, "color": "ffffffff" },
+					{ "time": 1.7667, "color": "ffffffc3" },
+					{ "time": 1.8333, "color": "ffffffca" },
+					{ "time": 1.8667, "color": "ffffffff" },
+					{ "time": 1.9, "color": "ffffffc3" },
+					{ "time": 1.9667, "color": "ffffffca" },
+					{ "time": 2, "color": "ffffffff" },
+					{ "time": 2.0667, "color": "ffffffca" },
+					{ "time": 2.1, "color": "ffffffff" },
+					{ "time": 2.1333, "color": "ffffffca" },
+					{ "time": 2.1667, "color": "ffffffff" },
+					{ "time": 2.2, "color": "ffffffca" },
+					{ "time": 2.2333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.2667, "color": "ffffffff" },
+					{ "time": 2.3, "color": "ffffffc3" },
+					{ "time": 2.3667, "color": "ffffffca" },
+					{ "time": 2.4, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.4667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.5, "color": "ffffffff" },
+					{ "time": 2.5333, "color": "ffffffca" },
+					{ "time": 2.5667, "color": "ffffffff" },
+					{ "time": 2.6, "color": "ffffffca", "curve": "stepped" },
+					{ "time": 2.6333, "color": "ffffffca" },
+					{ "time": 2.6667, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.7, "color": "ffffffff" },
+					{ "time": 2.7333, "color": "ffffffc3" },
+					{ "time": 2.8667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 2.2333, "name": "Skill/skill_line_a/skill_line_a_0004" }
+				]
+			},
+			"skill_line_a12": {
+				"color": [
+					{ "time": 2, "color": "ffffffff" },
+					{ "time": 2.0333, "color": "ffffff99" },
+					{ "time": 2.0667, "color": "ffffffff" },
+					{ "time": 2.1, "color": "ffffff99" },
+					{ "time": 2.1333, "color": "ffffffff" },
+					{ "time": 2.1667, "color": "ffffff99", "curve": "stepped" },
+					{ "time": 2.2, "color": "ffffff99" },
+					{ "time": 2.2333, "color": "ffffffff" },
+					{ "time": 2.2667, "color": "ffffff99" },
+					{ "time": 2.3, "color": "ffffffff" },
+					{ "time": 2.3333, "color": "ffffff99" },
+					{ "time": 2.3667, "color": "ffffffff" },
+					{ "time": 2.4, "color": "ffffff99" },
+					{ "time": 2.4333, "color": "ffffffff" },
+					{ "time": 2.4667, "color": "ffffff99" },
+					{ "time": 2.5, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 2.5333, "color": "ffffffff" },
+					{ "time": 2.5667, "color": "ffffff99" },
+					{ "time": 2.6, "color": "ffffffff" },
+					{ "time": 2.6333, "color": "ffffff99" },
+					{ "time": 2.6667, "color": "ffffffff" },
+					{ "time": 2.7, "color": "ffffff99" },
+					{ "time": 2.7333, "color": "ffffffff" },
+					{ "time": 2.8667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 2, "name": "Skill/skill_line_a/skill_line_a_0004" }
+				]
+			},
+			"skill_xiao_baodian_A_0": {
+				"attachment": [
+					{ "time": 1.7, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0000" },
+					{ "time": 1.7333, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0003" },
+					{ "time": 1.7667, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0006" },
+					{ "time": 1.8, "name": null }
+				]
+			},
+			"skill_xiao_baodian_A_1": {
+				"attachment": [
+					{ "time": 1.7, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0000" },
+					{ "time": 1.7333, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0003" },
+					{ "time": 1.7667, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0006" },
+					{ "time": 1.8, "name": null }
+				]
+			},
+			"skill_xiao_baodian_A_2": {
+				"attachment": [
+					{ "time": 1.7667, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0000" },
+					{ "time": 1.8, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0003" },
+					{ "time": 1.8333, "name": null }
+				]
+			},
+			"skill_xiao_baodian_A_3": {
+				"attachment": [
+					{ "time": 1.8333, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0000" },
+					{ "time": 1.8667, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0003" },
+					{ "time": 1.9, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0006" },
+					{ "time": 1.9333, "name": null }
+				]
+			},
+			"skill_xiao_baodian_A_4": {
+				"attachment": [
+					{ "time": 1.8667, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0000" },
+					{ "time": 1.9, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0003" },
+					{ "time": 1.9333, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0006" },
+					{ "time": 1.9667, "name": null }
+				]
+			},
+			"skill_xiao_baodian_A_5": {
+				"attachment": [
+					{ "time": 1.9333, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0000" },
+					{ "time": 1.9667, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0003" },
+					{ "time": 2, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0006" },
+					{ "time": 2.0333, "name": null }
+				]
+			},
+			"skill_xiao_baodian_A_6": {
+				"attachment": [
+					{ "time": 2, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0000" },
+					{ "time": 2.0333, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0003" },
+					{ "time": 2.0667, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0006" },
+					{ "time": 2.1, "name": null }
+				]
+			},
+			"skill_xiao_baodian_A_7": {
+				"attachment": [
+					{ "time": 2.0667, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0000" },
+					{ "time": 2.1, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0003" },
+					{ "time": 2.1333, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0006" },
+					{ "time": 2.1667, "name": null }
+				]
+			},
+			"skill_xiao_baodian_A_8": {
+				"attachment": [
+					{ "time": 2.1333, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0000" },
+					{ "time": 2.1667, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0006" },
+					{ "time": 2.2, "name": null }
+				]
+			},
+			"skill_xiao_baodian_A_9": {
+				"attachment": [
+					{ "time": 2.1667, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0000" },
+					{ "time": 2.2, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0003" },
+					{ "time": 2.2333, "name": "Skill/skill_xiao_baodian_A/skill_xiao_baodian_A_0006" },
+					{ "time": 2.2667, "name": null }
+				]
+			},
+			"skill_xiao_baodian_B_": {
+				"attachment": [
+					{ "time": 0.8333, "name": "Skill/skill_xiao_baodian_B/skill_xiao_baodian_B_0000" },
+					{ "time": 0.8667, "name": "Skill/skill_xiao_baodian_B/skill_xiao_baodian_B_0002" },
+					{ "time": 0.9333, "name": "Skill/skill_xiao_baodian_B/skill_xiao_baodian_B_0004" },
+					{ "time": 1, "name": "Skill/skill_xiao_baodian_B/skill_xiao_baodian_B_0006" },
+					{ "time": 1.0667, "name": "Skill/skill_xiao_baodian_B/skill_xiao_baodian_B_0008" },
+					{ "time": 1.1, "name": null }
+				]
+			},
+			"skill_xiao_baodian_C": {
+				"color": [
+					{ "time": 1.6333, "color": "ffffffff" },
+					{ "time": 1.7667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 1.5, "name": "Skill/skill_xiao_baodian_C/skill_xiao_baodian_C_0000" },
+					{ "time": 1.5333, "name": "Skill/skill_xiao_baodian_C/skill_xiao_baodian_C_0001" },
+					{ "time": 1.5667, "name": "Skill/skill_xiao_baodian_C/skill_xiao_baodian_C_0002" },
+					{ "time": 1.6, "name": "Skill/skill_xiao_baodian_C/skill_xiao_baodian_C_0003" },
+					{ "time": 1.6333, "name": "Skill/skill_xiao_baodian_C/skill_xiao_baodian_C_0004" },
+					{ "time": 1.6667, "name": "Skill/skill_xiao_baodian_C/skill_xiao_baodian_C_0005" },
+					{ "time": 1.7, "name": "Skill/skill_xiao_baodian_C/skill_xiao_baodian_C_0006" },
+					{ "time": 1.7333, "name": "Skill/skill_xiao_baodian_C/skill_xiao_baodian_C_0007" },
+					{ "time": 1.7667, "name": null }
+				]
+			}
+		},
+		"bones": {
+			"bg": {
+				"translate": [
+					{ "time": 0, "x": 640.75, "y": 109.93 }
+				]
+			},
+			"root": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 0.3333, "angle": 0, "curve": "stepped" },
+					{ "time": 0.6, "angle": 0, "curve": "stepped" },
+					{ "time": 0.7667, "angle": 0, "curve": "stepped" },
+					{ "time": 1.1667, "angle": 0, "curve": "stepped" },
+					{ "time": 1.3667, "angle": 0, "curve": "stepped" },
+					{ "time": 1.5, "angle": 0, "curve": "stepped" },
+					{ "time": 1.5667, "angle": 0, "curve": "stepped" },
+					{ "time": 1.6, "angle": 0, "curve": "stepped" },
+					{ "time": 2.1333, "angle": 0, "curve": "stepped" },
+					{ "time": 2.5667, "angle": 0, "curve": "stepped" },
+					{ "time": 3, "angle": 0, "curve": "stepped" },
+					{ "time": 3.1667, "angle": 0, "curve": "stepped" },
+					{ "time": 3.3333, "angle": 0 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.3333, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.6, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 0.7667, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.1667, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.3667, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.5, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.5667, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.6, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 2.1333, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 2.5667, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 3, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 3.1667, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 3.3333, "x": 0, "y": 0 }
+				]
+			},
+			"skill_difeng": {
+				"translate": [
+					{ "time": 0, "x": 3.9, "y": 29.57, "curve": "stepped" },
+					{ "time": 0.1667, "x": 3.9, "y": 29.57 }
+				]
+			},
+			"skill_bu/quan_hong": {
+				"translate": [
+					{ "time": 0.8333, "x": 28.36, "y": 700.06 }
+				],
+				"scale": [
+					{ "time": 0.8333, "x": 2.629, "y": 2.629 },
+					{ "time": 0.9333, "x": 0, "y": 0 }
+				]
+			},
+			"skill_bu/quan_bai": {
+				"translate": [
+					{ "time": 0.8667, "x": 1.72, "y": 769.32 },
+					{ "time": 0.9667, "x": 28.34, "y": 727.97 }
+				],
+				"scale": [
+					{ "time": 0.8667, "x": 5.239, "y": 5.239 },
+					{ "time": 0.9667, "x": 0.013, "y": 0.013 }
+				]
+			},
+			"skill_bu/light_h": {
+				"translate": [
+					{ "time": 0.8333, "x": 19.51, "y": 758.38, "curve": "stepped" },
+					{ "time": 1.9667, "x": 1247.23, "y": -344.58 }
+				],
+				"scale": [
+					{ "time": 0.8333, "x": 1.418, "y": 1.418 },
+					{ "time": 0.9, "x": 0, "y": 0, "curve": "stepped" },
+					{ "time": 1.9667, "x": 0.192, "y": 0.192 },
+					{ "time": 2.0667, "x": 1.418, "y": 1.418 },
+					{ "time": 2.1667, "x": 0.207, "y": 0.207 }
+				]
+			},
+			"skill_bu/hong_quan": {
+				"translate": [
+					{ "time": 0.8333, "x": 61.78, "y": 722.45 },
+					{ "time": 0.9333, "x": 14.19, "y": 693.14 }
+				],
+				"scale": [
+					{ "time": 0.8333, "x": 5.225, "y": 5.225 },
+					{ "time": 0.9333, "x": 0.5, "y": 0.5 },
+					{ "time": 1.5, "x": 1.943, "y": 1.943 },
+					{ "time": 1.5667, "x": 2.2, "y": 2.2 },
+					{ "time": 1.6667, "x": 7.176, "y": 7.176 },
+					{ "time": 1.7333, "x": 1.678, "y": 1.678 },
+					{ "time": 1.7667, "x": 2.2, "y": 2.2 }
+				]
+			},
+			"skill_bu/lxl": {
+				"translate": [
+					{ "time": 0.9667, "x": 26.78, "y": 716.16, "curve": "stepped" },
+					{ "time": 1.5, "x": 26.78, "y": 871.15 },
+					{ "time": 1.7, "x": 26.78, "y": 716.16 }
+				],
+				"scale": [
+					{ "time": 0.9667, "x": 1, "y": 1, "curve": "stepped" },
+					{ "time": 1.5, "x": 2.136, "y": 2.136 },
+					{ "time": 1.7, "x": 1, "y": 1 }
+				]
+			},
+			"skill_bu/quan_kuo_a": {
+				"translate": [
+					{ "time": 1.5667, "x": 21.98, "y": 663.35 }
+				],
+				"scale": [
+					{ "time": 1.5667, "x": 0.473, "y": 0.473 },
+					{ "time": 1.7, "x": 2.64, "y": 2.64 },
+					{ "time": 1.8, "x": 0.473, "y": 0.473 }
+				]
+			},
+			"skill_bu/kuoshan": {
+				"translate": [
+					{ "time": 1.5333, "x": 53.6, "y": 633.36 }
+				],
+				"scale": [
+					{ "time": 1.5333, "x": 1.289, "y": 1.289 }
+				]
+			},
+			"skill_xiao_baodian_C": {
+				"translate": [
+					{ "time": 1.5, "x": 45.9, "y": 645.79 }
+				],
+				"scale": [
+					{ "time": 1.5, "x": 1.222, "y": 1.222 },
+					{ "time": 1.7333, "x": 21.281, "y": 21.281 }
+				]
+			},
+			"skill/wind": {
+				"translate": [
+					{ "time": 1.5333, "x": 83.2, "y": 201.3 }
+				],
+				"scale": [
+					{ "time": 1.5333, "x": 1.368, "y": 2.233 }
+				]
+			},
+			"Skill/glass_boom": {
+				"rotate": [
+					{ "time": 0.8, "angle": -95.49 }
+				],
+				"translate": [
+					{ "time": 0.8, "x": 1393.7, "y": 507.62 }
+				],
+				"scale": [
+					{ "time": 0.8, "x": 5.863, "y": 5.863 }
+				]
+			},
+			"skill_line_a": {
+				"rotate": [
+					{ "time": 1.6333, "angle": -170.98 },
+					{ "time": 1.7, "angle": -170.73 }
+				],
+				"translate": [
+					{ "time": 1.6333, "x": 849.8, "y": 454.5 },
+					{ "time": 1.7, "x": 1021.38, "y": 482.79 },
+					{ "time": 2.5667, "x": 1005.58, "y": 483.53 }
+				],
+				"scale": [
+					{ "time": 1.6333, "x": 2.463, "y": 3.458 },
+					{ "time": 1.7, "x": 2.986, "y": 3.458 }
+				]
+			},
+			"skill/niao_boom": {
+				"translate": [
+					{ "time": 1, "x": 26.15, "y": 694.71 }
+				],
+				"scale": [
+					{ "time": 1, "x": 6.198, "y": 6.198 }
+				]
+			},
+			"skill_line_a2": {
+				"rotate": [
+					{ "time": 1.7, "angle": 23.56 }
+				],
+				"translate": [
+					{ "time": 1.7, "x": 1403.99, "y": 409.03 }
+				],
+				"scale": [
+					{ "time": 1.7, "x": 1.945, "y": 2.922 }
+				]
+			},
+			"skill_line_a3": {
+				"rotate": [
+					{ "time": 1.7667, "angle": -130.23 }
+				],
+				"translate": [
+					{ "time": 1.7667, "x": 1356.62, "y": 749.17 }
+				],
+				"scale": [
+					{ "time": 1.7667, "x": 2.371, "y": 3.596 }
+				]
+			},
+			"skill_line_a4": {
+				"rotate": [
+					{ "time": 1.8333, "angle": 85.69 }
+				],
+				"translate": [
+					{ "time": 1.8333, "x": 1802.9, "y": 606.91 }
+				],
+				"scale": [
+					{ "time": 1.8333, "x": 2.275, "y": 1.947 }
+				]
+			},
+			"skill_line_a5": {
+				"rotate": [
+					{ "time": 1.8667, "angle": -70.59 }
+				],
+				"translate": [
+					{ "time": 1.8667, "x": 1562.51, "y": 429.64 }
+				],
+				"scale": [
+					{ "time": 1.8667, "x": 1.801, "y": 2.526 }
+				]
+			},
+			"skill_line_a6": {
+				"rotate": [
+					{ "time": 1.9333, "angle": 68.48 }
+				],
+				"translate": [
+					{ "time": 1.9333, "x": 1107.89, "y": 311.22 }
+				],
+				"scale": [
+					{ "time": 1.9333, "x": 2.209, "y": 2.209 }
+				]
+			},
+			"skill_line_a7": {
+				"rotate": [
+					{ "time": 2, "angle": -71.22 }
+				],
+				"translate": [
+					{ "time": 2, "x": 679.78, "y": 173.8 }
+				],
+				"scale": [
+					{ "time": 2, "x": 1.711, "y": 2.143 }
+				]
+			},
+			"skill_line_a8": {
+				"rotate": [
+					{ "time": 2.0667, "angle": 139.17 }
+				],
+				"translate": [
+					{ "time": 2.0667, "x": 1142.24, "y": 131.76 }
+				],
+				"scale": [
+					{ "time": 2.0667, "x": 2.6, "y": 1.428 }
+				]
+			},
+			"skill_line_a9": {
+				"rotate": [
+					{ "time": 2.1333, "angle": -57.87 }
+				],
+				"translate": [
+					{ "time": 2.1333, "x": 1294.03, "y": 390.02 }
+				],
+				"scale": [
+					{ "time": 2.1333, "x": 2.94, "y": 6.871 }
+				]
+			},
+			"skill_line_a10": {
+				"rotate": [
+					{ "time": 2.1667, "angle": 82.82 }
+				],
+				"translate": [
+					{ "time": 2.1667, "x": 717.56, "y": 706.75 }
+				],
+				"scale": [
+					{ "time": 2.1667, "x": 1.53, "y": 4.197 }
+				]
+			},
+			"skill_line_a11": {
+				"rotate": [
+					{ "time": 2.2333, "angle": -179.52 }
+				],
+				"translate": [
+					{ "time": 2.2333, "x": 1570.86, "y": 211.74 }
+				],
+				"scale": [
+					{ "time": 2.2333, "x": 2.774, "y": 4.758 }
+				]
+			},
+			"skill_xiao_baodian_A_0": {
+				"translate": [
+					{ "time": 1.7, "x": 1974.66, "y": 664.23 }
+				],
+				"scale": [
+					{ "time": 1.7, "x": 2.265, "y": 2.265 }
+				]
+			},
+			"skill_xiao_baodian_B_": {
+				"translate": [
+					{ "time": 0.8333, "x": 1382.62, "y": 539.99 }
+				],
+				"scale": [
+					{ "time": 0.8333, "x": 3.366, "y": 3.366 }
+				]
+			},
+			"skill_xiao_baodian_A_1": {
+				"rotate": [
+					{ "time": 1.7, "angle": -56.6 }
+				],
+				"translate": [
+					{ "time": 1.7, "x": 858.08, "y": 168.95 }
+				],
+				"scale": [
+					{ "time": 1.7, "x": 2, "y": 2 }
+				]
+			},
+			"skill_xiao_baodian_A_2": {
+				"translate": [
+					{ "time": 1.7667, "x": 1827.54, "y": 1329.12 }
+				],
+				"scale": [
+					{ "time": 1.7667, "x": 4.221, "y": 4.221 }
+				]
+			},
+			"skill_xiao_baodian_A_3": {
+				"translate": [
+					{ "time": 1.8333, "x": 1750.86, "y": -106.5 }
+				],
+				"scale": [
+					{ "time": 1.8333, "x": 1.7, "y": 1.7 }
+				]
+			},
+			"skill_bu/hong_quan_2": {
+				"scale": [
+					{ "time": 1.7, "x": 0.201, "y": 0.201 },
+					{ "time": 1.7667, "x": 0.128, "y": 0.128 },
+					{ "time": 1.8333, "x": 0.183, "y": 0.183 },
+					{ "time": 1.8667, "x": 0.156, "y": 0.156 },
+					{ "time": 1.9, "x": 0.19, "y": 0.19 },
+					{ "time": 1.9667, "x": 0.091, "y": 0.091 },
+					{ "time": 2.0333, "x": 0.154, "y": 0.154 },
+					{ "time": 2.1333, "x": 0.128, "y": 0.128 },
+					{ "time": 2.1667, "x": 0.183, "y": 0.183 },
+					{ "time": 2.2333, "x": 0.091, "y": 0.091 },
+					{ "time": 2.2667, "x": 0.19, "y": 0.19 },
+					{ "time": 2.3, "x": 0.091, "y": 0.091 },
+					{ "time": 2.3667, "x": 0.154, "y": 0.154 },
+					{ "time": 2.4, "x": 0.091, "y": 0.091 },
+					{ "time": 2.4667, "x": 0.154, "y": 0.154 },
+					{ "time": 2.5333, "x": 0.128, "y": 0.128 },
+					{ "time": 2.6333, "x": 0.183, "y": 0.183 },
+					{ "time": 2.7, "x": 0.156, "y": 0.156 },
+					{ "time": 2.7333, "x": 0.19, "y": 0.19 },
+					{ "time": 2.8, "x": 0.091, "y": 0.091 },
+					{ "time": 2.8333, "x": 0.154, "y": 0.154 },
+					{ "time": 2.9333, "x": 0.091, "y": 0.091 },
+					{ "time": 3, "x": 0.154, "y": 0.154 },
+					{ "time": 3.1, "x": 0.128, "y": 0.128 }
+				]
+			},
+			"skill_bu/hong_quan2": {
+				"translate": [
+					{ "time": 1.7, "x": 2.94, "y": -1.47 }
+				],
+				"scale": [
+					{ "time": 1.7, "x": 0.255, "y": 0.255 },
+					{ "time": 1.7667, "x": 0.162, "y": 0.162 },
+					{ "time": 1.8333, "x": 0.232, "y": 0.232 },
+					{ "time": 1.8667, "x": 0.198, "y": 0.198 },
+					{ "time": 1.9, "x": 0.241, "y": 0.241 },
+					{ "time": 1.9667, "x": 0.116, "y": 0.116 },
+					{ "time": 2.0333, "x": 0.195, "y": 0.195 },
+					{ "time": 2.1333, "x": 0.162, "y": 0.162 },
+					{ "time": 2.1667, "x": 0.232, "y": 0.232 },
+					{ "time": 2.2333, "x": 0.116, "y": 0.116 },
+					{ "time": 2.2667, "x": 0.241, "y": 0.241 },
+					{ "time": 2.3, "x": 0.116, "y": 0.116 },
+					{ "time": 2.3667, "x": 0.195, "y": 0.195 },
+					{ "time": 2.4, "x": 0.116, "y": 0.116 },
+					{ "time": 2.4667, "x": 0.195, "y": 0.195 },
+					{ "time": 2.5333, "x": 0.162, "y": 0.162 },
+					{ "time": 2.6333, "x": 0.232, "y": 0.232 },
+					{ "time": 2.7, "x": 0.198, "y": 0.198 },
+					{ "time": 2.7333, "x": 0.241, "y": 0.241 },
+					{ "time": 2.8, "x": 0.116, "y": 0.116 },
+					{ "time": 2.8333, "x": 0.195, "y": 0.195 },
+					{ "time": 2.9333, "x": 0.116, "y": 0.116 },
+					{ "time": 3, "x": 0.195, "y": 0.195 },
+					{ "time": 3.1, "x": 0.162, "y": 0.162 }
+				]
+			},
+			"skill_bu/hong_quan_3": {
+				"scale": [
+					{ "time": 1.7, "x": 0.312, "y": 0.312 },
+					{ "time": 1.7667, "x": 0.198, "y": 0.198 },
+					{ "time": 1.8333, "x": 0.283, "y": 0.283 },
+					{ "time": 1.8667, "x": 0.242, "y": 0.242 },
+					{ "time": 1.9, "x": 0.294, "y": 0.294 },
+					{ "time": 1.9667, "x": 0.141, "y": 0.141 },
+					{ "time": 2.0333, "x": 0.239, "y": 0.239 },
+					{ "time": 2.1333, "x": 0.198, "y": 0.198 },
+					{ "time": 2.1667, "x": 0.283, "y": 0.283 },
+					{ "time": 2.2333, "x": 0.141, "y": 0.141 },
+					{ "time": 2.2667, "x": 0.294, "y": 0.294 },
+					{ "time": 2.3, "x": 0.141, "y": 0.141 },
+					{ "time": 2.3667, "x": 0.239, "y": 0.239 },
+					{ "time": 2.4, "x": 0.141, "y": 0.141 },
+					{ "time": 2.4667, "x": 0.239, "y": 0.239 },
+					{ "time": 2.5333, "x": 0.198, "y": 0.198 },
+					{ "time": 2.6333, "x": 0.283, "y": 0.283 },
+					{ "time": 2.7, "x": 0.242, "y": 0.242 },
+					{ "time": 2.7333, "x": 0.294, "y": 0.294 },
+					{ "time": 2.8, "x": 0.141, "y": 0.141 },
+					{ "time": 2.8333, "x": 0.239, "y": 0.239 },
+					{ "time": 2.9333, "x": 0.141, "y": 0.141 },
+					{ "time": 3, "x": 0.239, "y": 0.239 },
+					{ "time": 3.1, "x": 0.198, "y": 0.198 }
+				]
+			},
+			"skill_bu/hong_quan_1": {
+				"scale": [
+					{ "time": 1.7, "x": 0.224, "y": 0.224 },
+					{ "time": 1.7667, "x": 0.142, "y": 0.142 },
+					{ "time": 1.8333, "x": 0.203, "y": 0.203 },
+					{ "time": 1.8667, "x": 0.174, "y": 0.174 },
+					{ "time": 1.9, "x": 0.212, "y": 0.212 },
+					{ "time": 1.9667, "x": 0.102, "y": 0.102 },
+					{ "time": 2.0333, "x": 0.172, "y": 0.172 },
+					{ "time": 2.1333, "x": 0.142, "y": 0.142 },
+					{ "time": 2.1667, "x": 0.203, "y": 0.203 },
+					{ "time": 2.2333, "x": 0.102, "y": 0.102 },
+					{ "time": 2.2667, "x": 0.212, "y": 0.212 },
+					{ "time": 2.3, "x": 0.102, "y": 0.102 },
+					{ "time": 2.3667, "x": 0.172, "y": 0.172 },
+					{ "time": 2.4, "x": 0.102, "y": 0.102 },
+					{ "time": 2.4667, "x": 0.172, "y": 0.172 },
+					{ "time": 2.5333, "x": 0.142, "y": 0.142 },
+					{ "time": 2.6333, "x": 0.203, "y": 0.203 },
+					{ "time": 2.7, "x": 0.174, "y": 0.174 },
+					{ "time": 2.7333, "x": 0.212, "y": 0.212 },
+					{ "time": 2.8, "x": 0.102, "y": 0.102 },
+					{ "time": 2.8333, "x": 0.172, "y": 0.172 },
+					{ "time": 2.9333, "x": 0.102, "y": 0.102 },
+					{ "time": 3, "x": 0.172, "y": 0.172 },
+					{ "time": 3.1, "x": 0.142, "y": 0.142 }
+				]
+			},
+			"skill_bu/hong_quan_4": {
+				"scale": [
+					{ "time": 1.7, "x": 0.437, "y": 0.437 },
+					{ "time": 1.7667, "x": 0.277, "y": 0.277 },
+					{ "time": 1.8333, "x": 0.396, "y": 0.396 },
+					{ "time": 1.8667, "x": 0.339, "y": 0.339 },
+					{ "time": 1.9, "x": 0.412, "y": 0.412 },
+					{ "time": 1.9667, "x": 0.198, "y": 0.198 },
+					{ "time": 2.0333, "x": 0.334, "y": 0.334 },
+					{ "time": 2.1333, "x": 0.277, "y": 0.277 },
+					{ "time": 2.1667, "x": 0.396, "y": 0.396 },
+					{ "time": 2.2333, "x": 0.198, "y": 0.198 },
+					{ "time": 2.2667, "x": 0.412, "y": 0.412 },
+					{ "time": 2.3, "x": 0.198, "y": 0.198 },
+					{ "time": 2.3667, "x": 0.334, "y": 0.334 },
+					{ "time": 2.4, "x": 0.198, "y": 0.198 },
+					{ "time": 2.4667, "x": 0.334, "y": 0.334 },
+					{ "time": 2.5333, "x": 0.277, "y": 0.277 },
+					{ "time": 2.6333, "x": 0.396, "y": 0.396 },
+					{ "time": 2.7, "x": 0.339, "y": 0.339 },
+					{ "time": 2.7333, "x": 0.412, "y": 0.412 },
+					{ "time": 2.8, "x": 0.198, "y": 0.198 },
+					{ "time": 2.8333, "x": 0.334, "y": 0.334 },
+					{ "time": 2.9333, "x": 0.198, "y": 0.198 },
+					{ "time": 3, "x": 0.334, "y": 0.334 },
+					{ "time": 3.1, "x": 0.277, "y": 0.277 }
+				]
+			},
+			"skill_xiao_baodian_A_4": {
+				"translate": [
+					{ "time": 1.8667, "x": 1375.67, "y": 948.28 }
+				],
+				"scale": [
+					{ "time": 1.8667, "x": 1.657, "y": 1.657 }
+				]
+			},
+			"skill_xiao_baodian_A_5": {
+				"rotate": [
+					{ "time": 1.9333, "angle": 48.27 }
+				],
+				"translate": [
+					{ "time": 1.9333, "x": 850.33, "y": -347.26 }
+				],
+				"scale": [
+					{ "time": 1.9333, "x": 1.836, "y": 1.836 }
+				]
+			},
+			"skill_bu/hong_quan_5": {
+				"scale": [
+					{ "time": 1.7, "x": 0.296, "y": 0.296 },
+					{ "time": 1.7667, "x": 0.188, "y": 0.188 },
+					{ "time": 1.8333, "x": 0.268, "y": 0.268 },
+					{ "time": 1.8667, "x": 0.23, "y": 0.23 },
+					{ "time": 1.9, "x": 0.279, "y": 0.279 },
+					{ "time": 1.9667, "x": 0.134, "y": 0.134 },
+					{ "time": 2.0333, "x": 0.227, "y": 0.227 },
+					{ "time": 2.1333, "x": 0.188, "y": 0.188 },
+					{ "time": 2.1667, "x": 0.268, "y": 0.268 },
+					{ "time": 2.2333, "x": 0.134, "y": 0.134 },
+					{ "time": 2.2667, "x": 0.279, "y": 0.279 },
+					{ "time": 2.3, "x": 0.134, "y": 0.134 },
+					{ "time": 2.3667, "x": 0.227, "y": 0.227 },
+					{ "time": 2.4, "x": 0.134, "y": 0.134 },
+					{ "time": 2.4667, "x": 0.227, "y": 0.227 },
+					{ "time": 2.5333, "x": 0.188, "y": 0.188 },
+					{ "time": 2.6333, "x": 0.268, "y": 0.268 },
+					{ "time": 2.7, "x": 0.23, "y": 0.23 },
+					{ "time": 2.7333, "x": 0.279, "y": 0.279 },
+					{ "time": 2.8, "x": 0.134, "y": 0.134 },
+					{ "time": 2.8333, "x": 0.227, "y": 0.227 },
+					{ "time": 2.9333, "x": 0.134, "y": 0.134 },
+					{ "time": 3, "x": 0.227, "y": 0.227 },
+					{ "time": 3.1, "x": 0.188, "y": 0.188 }
+				]
+			},
+			"skill_xiao_baodian_A_6": {
+				"translate": [
+					{ "time": 2, "x": 504.03, "y": 689.73 }
+				],
+				"scale": [
+					{ "time": 2, "x": 1.943, "y": 1.943 }
+				]
+			},
+			"skill_bu/hong_quan_6": {
+				"scale": [
+					{ "time": 1.7, "x": 0.273, "y": 0.273 },
+					{ "time": 1.7667, "x": 0.173, "y": 0.173 },
+					{ "time": 1.8333, "x": 0.247, "y": 0.247 },
+					{ "time": 1.8667, "x": 0.212, "y": 0.212 },
+					{ "time": 1.9, "x": 0.257, "y": 0.257 },
+					{ "time": 1.9667, "x": 0.124, "y": 0.124 },
+					{ "time": 2.0333, "x": 0.209, "y": 0.209 },
+					{ "time": 2.1333, "x": 0.173, "y": 0.173 },
+					{ "time": 2.1667, "x": 0.247, "y": 0.247 },
+					{ "time": 2.2333, "x": 0.124, "y": 0.124 },
+					{ "time": 2.2667, "x": 0.257, "y": 0.257 },
+					{ "time": 2.3, "x": 0.124, "y": 0.124 },
+					{ "time": 2.3667, "x": 0.209, "y": 0.209 },
+					{ "time": 2.4, "x": 0.124, "y": 0.124 },
+					{ "time": 2.4667, "x": 0.209, "y": 0.209 },
+					{ "time": 2.5333, "x": 0.173, "y": 0.173 },
+					{ "time": 2.6333, "x": 0.247, "y": 0.247 },
+					{ "time": 2.7, "x": 0.212, "y": 0.212 },
+					{ "time": 2.7333, "x": 0.257, "y": 0.257 },
+					{ "time": 2.8, "x": 0.124, "y": 0.124 },
+					{ "time": 2.8333, "x": 0.209, "y": 0.209 },
+					{ "time": 2.9333, "x": 0.124, "y": 0.124 },
+					{ "time": 3, "x": 0.209, "y": 0.209 },
+					{ "time": 3.1, "x": 0.173, "y": 0.173 }
+				]
+			},
+			"skill_xiao_baodian_A_7": {
+				"translate": [
+					{ "time": 2.0667, "x": 1770.74, "y": -407.87 }
+				],
+				"scale": [
+					{ "time": 2.0667, "x": 1.516, "y": 1.516 }
+				]
+			},
+			"skill_bu/hong_quan_7": {
+				"scale": [
+					{ "time": 1.7, "x": 0.407, "y": 0.407 },
+					{ "time": 1.7667, "x": 0.258, "y": 0.258 },
+					{ "time": 1.8333, "x": 0.369, "y": 0.369 },
+					{ "time": 1.8667, "x": 0.316, "y": 0.316 },
+					{ "time": 1.9, "x": 0.383, "y": 0.383 },
+					{ "time": 1.9667, "x": 0.184, "y": 0.184 },
+					{ "time": 2.0333, "x": 0.311, "y": 0.311 },
+					{ "time": 2.1333, "x": 0.258, "y": 0.258 },
+					{ "time": 2.1667, "x": 0.369, "y": 0.369 },
+					{ "time": 2.2333, "x": 0.184, "y": 0.184 },
+					{ "time": 2.2667, "x": 0.383, "y": 0.383 },
+					{ "time": 2.3, "x": 0.184, "y": 0.184 },
+					{ "time": 2.3667, "x": 0.311, "y": 0.311 },
+					{ "time": 2.4, "x": 0.184, "y": 0.184 },
+					{ "time": 2.4667, "x": 0.311, "y": 0.311 },
+					{ "time": 2.5333, "x": 0.258, "y": 0.258 },
+					{ "time": 2.6333, "x": 0.369, "y": 0.369 },
+					{ "time": 2.7, "x": 0.316, "y": 0.316 },
+					{ "time": 2.7333, "x": 0.383, "y": 0.383 },
+					{ "time": 2.8, "x": 0.184, "y": 0.184 },
+					{ "time": 2.8333, "x": 0.311, "y": 0.311 },
+					{ "time": 2.9333, "x": 0.184, "y": 0.184 },
+					{ "time": 3, "x": 0.311, "y": 0.311 },
+					{ "time": 3.1, "x": 0.258, "y": 0.258 }
+				]
+			},
+			"skill_xiao_baodian_A_8": {
+				"translate": [
+					{ "time": 2.1333, "x": 802.19, "y": 1170.05 }
+				],
+				"scale": [
+					{ "time": 2.1333, "x": 1.847, "y": 1.847 }
+				]
+			},
+			"skill_bu/hong_quan_8": {
+				"scale": [
+					{ "time": 1.7, "x": 0.299, "y": 0.299 }
+				]
+			},
+			"skill_xiao_baodian_A_9": {
+				"translate": [
+					{ "time": 2.1667, "x": 651.5, "y": 239.33 }
+				],
+				"scale": [
+					{ "time": 2.1667, "x": 1.463, "y": 1.463 }
+				]
+			},
+			"skill_bu/hong_quan_9": {
+				"scale": [
+					{ "time": 1.7, "x": 0.445, "y": 0.445 },
+					{ "time": 1.7667, "x": 0.282, "y": 0.282 },
+					{ "time": 1.8333, "x": 0.403, "y": 0.403 },
+					{ "time": 1.8667, "x": 0.345, "y": 0.345 },
+					{ "time": 1.9, "x": 0.419, "y": 0.419 },
+					{ "time": 1.9667, "x": 0.201, "y": 0.201 },
+					{ "time": 2.0333, "x": 0.34, "y": 0.34 },
+					{ "time": 2.1333, "x": 0.282, "y": 0.282 },
+					{ "time": 2.1667, "x": 0.403, "y": 0.403 },
+					{ "time": 2.2333, "x": 0.201, "y": 0.201 },
+					{ "time": 2.2667, "x": 0.419, "y": 0.419 },
+					{ "time": 2.3, "x": 0.201, "y": 0.201 },
+					{ "time": 2.3667, "x": 0.34, "y": 0.34 },
+					{ "time": 2.4, "x": 0.201, "y": 0.201 },
+					{ "time": 2.4667, "x": 0.34, "y": 0.34 },
+					{ "time": 2.5333, "x": 0.282, "y": 0.282 },
+					{ "time": 2.6333, "x": 0.403, "y": 0.403 },
+					{ "time": 2.7, "x": 0.345, "y": 0.345 },
+					{ "time": 2.7333, "x": 0.419, "y": 0.419 },
+					{ "time": 2.8, "x": 0.201, "y": 0.201 },
+					{ "time": 2.8333, "x": 0.34, "y": 0.34 },
+					{ "time": 2.9333, "x": 0.201, "y": 0.201 },
+					{ "time": 3, "x": 0.34, "y": 0.34 },
+					{ "time": 3.1, "x": 0.282, "y": 0.282 }
+				]
+			},
+			"skill_bu/hong_quan_10": {
+				"scale": [
+					{ "time": 1.7667, "x": 0.634, "y": 0.634 },
+					{ "time": 1.8333, "x": 0.907, "y": 0.907 },
+					{ "time": 1.8667, "x": 0.776, "y": 0.776 },
+					{ "time": 1.9, "x": 0.943, "y": 0.943 },
+					{ "time": 1.9667, "x": 0.453, "y": 0.453 },
+					{ "time": 2.0333, "x": 0.765, "y": 0.765 },
+					{ "time": 2.1333, "x": 0.634, "y": 0.634 },
+					{ "time": 2.1667, "x": 0.907, "y": 0.907 },
+					{ "time": 2.2333, "x": 0.453, "y": 0.453 },
+					{ "time": 2.2667, "x": 0.943, "y": 0.943 },
+					{ "time": 2.3, "x": 0.453, "y": 0.453 },
+					{ "time": 2.3667, "x": 0.765, "y": 0.765 },
+					{ "time": 2.4, "x": 0.453, "y": 0.453 },
+					{ "time": 2.4667, "x": 0.765, "y": 0.765 },
+					{ "time": 2.5333, "x": 0.634, "y": 0.634 },
+					{ "time": 2.6333, "x": 0.907, "y": 0.907 },
+					{ "time": 2.7, "x": 0.776, "y": 0.776 },
+					{ "time": 2.7333, "x": 0.943, "y": 0.943 },
+					{ "time": 2.8, "x": 0.453, "y": 0.453 },
+					{ "time": 2.8333, "x": 0.765, "y": 0.765 },
+					{ "time": 2.9333, "x": 0.453, "y": 0.453 },
+					{ "time": 3, "x": 0.765, "y": 0.765 },
+					{ "time": 3.1, "x": 0.634, "y": 0.634 }
+				]
+			},
+			"skill_line_a12": {
+				"rotate": [
+					{ "time": 2, "angle": -174.88 }
+				],
+				"translate": [
+					{ "time": 2, "x": 1559.67, "y": -296.72 }
+				],
+				"scale": [
+					{ "time": 2, "x": 2.198, "y": 2.198 }
+				]
+			}
+		},
+		"drawOrder": [
+			{ "time": 0 },
+			{ "time": 0.0333 },
+			{ "time": 0.3333 },
+			{ "time": 0.5 },
+			{ "time": 0.8 },
+			{ "time": 1.1 },
+			{
+				"time": 1.2,
+				"offsets": [
+					{ "slot": "skill_bu/quan_kuo_a", "offset": 6 },
+					{ "slot": "skill_xiao_baodian_C", "offset": 21 }
+				]
+			},
+			{ "time": 2.8 },
+			{ "time": 3.1667 },
+			{ "time": 3.3333 }
+		],
+		"events": [
+			{ "time": 1.7, "name": "qishou_11_4_4" },
+			{ "time": 1.9333, "name": "qishou_11_4_3" },
+			{ "time": 2.1667, "name": "qishou_11_4_2" },
+			{ "time": 2.4, "name": "qishou_11_4_1" }
+		]
+	},
+	"animation_2": {
+		"slots": {
+			"skill_bu/light_h": {
+				"color": [
+					{ "time": 0, "color": "ff6e5fff", "curve": "stepped" },
+					{ "time": 0.1, "color": "ff6e5fff" },
+					{ "time": 0.2, "color": "ffb8b800" }
+				],
+				"attachment": [
+					{ "time": 0, "name": "Skill/skill_bu/light_h_0000" }
+				]
+			},
+			"skill_xiao_baodian_C": {
+				"color": [
+					{ "time": 0, "color": "ffffffff" }
+				],
+				"attachment": [
+					{ "time": 0, "name": "Skill/skill_xiao_baodian_C/skill_xiao_baodian_C_0000" },
+					{ "time": 0.0333, "name": "Skill/skill_xiao_baodian_C/skill_xiao_baodian_C_0001" },
+					{ "time": 0.0667, "name": "Skill/skill_xiao_baodian_C/skill_xiao_baodian_C_0002" },
+					{ "time": 0.1, "name": "Skill/skill_xiao_baodian_C/skill_xiao_baodian_C_0003" },
+					{ "time": 0.1333, "name": "Skill/skill_xiao_baodian_C/skill_xiao_baodian_C_0004" },
+					{ "time": 0.1667, "name": "Skill/skill_xiao_baodian_C/skill_xiao_baodian_C_0005" },
+					{ "time": 0.2, "name": "Skill/skill_xiao_baodian_C/skill_xiao_baodian_C_0006" },
+					{ "time": 0.2333, "name": null }
+				]
+			}
+		},
+		"bones": {
+			"skill_xiao_baodian_C": {
+				"scale": [
+					{ "time": 0, "x": 1.222, "y": 1.222 },
+					{ "time": 0.1333, "x": 3.868, "y": 3.868 }
+				]
+			},
+			"skill_bu/light_h": {
+				"scale": [
+					{ "time": 0, "x": 0.192, "y": 0.192 },
+					{ "time": 0.1, "x": 1.418, "y": 1.418 },
+					{ "time": 0.2, "x": 0.207, "y": 0.207 }
+				]
+			}
+		},
+		"drawOrder": [
+			{
+				"time": 0,
+				"offsets": [
+					{ "slot": "skill_bu/quan_kuo_a", "offset": 6 },
+					{ "slot": "skill_xiao_baodian_C", "offset": 21 }
+				]
+			}
+		],
+		"events": [
+			{ "time": 0, "name": "hit_11_1_1" }
+		]
+	}
+}
+}
