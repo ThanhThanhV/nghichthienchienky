@@ -11,6 +11,7 @@ class BattleEffectManager {
         this.formation = options.formation;
         this.canvas = options.canvas;
         this.activeEffects = new Set();
+        this.generation = 0;
     }
 
     getCharacter(team, instanceId) {
@@ -101,6 +102,8 @@ class BattleEffectManager {
     }
 
     async playEffect(config, event) {
+        const generation = this.generation;
+
         if (!config?.skeleton || !config?.atlas || !Array.isArray(config.textures)) {
             console.warn("[BattleEffectManager] Cấu hình effect thiếu skeleton/atlas/textures.", config);
             return;
@@ -127,6 +130,12 @@ class BattleEffectManager {
             code: config.code || event.skillCode || event.effectCode || "battle-effect"
         });
 
+        if (generation !== this.generation) {
+            this.manager.removeEffect(effect);
+            return;
+        }
+
+        effect.onRemoved = () => this.activeEffects.delete(effect);
         this.activeEffects.add(effect);
 
         const baseX = anchor === "center"
@@ -160,6 +169,7 @@ class BattleEffectManager {
     }
 
     clear() {
+        this.generation++;
         [...this.activeEffects].forEach(effect => {
             this.manager?.removeEffect(effect);
         });
