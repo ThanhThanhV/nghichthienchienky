@@ -125,9 +125,11 @@ public class HeroManagementService {
         List<String> textureUrls = new ArrayList<>();
         String assetUrl = "/assets/spine/heroes/" + heroCode + "/";
 
+        boolean heroDirectoryCreated = false;
         try {
             Files.createDirectories(assetRoot);
             Files.createDirectory(heroDirectory);
+            heroDirectoryCreated = true;
 
             copyFile(spineUpload.skeletonBytes(), heroDirectory.resolve(spineUpload.skeletonName()));
             copyFile(spineUpload.atlasBytes(), heroDirectory.resolve(spineUpload.atlasName()));
@@ -179,7 +181,9 @@ public class HeroManagementService {
                     spineUpload.animations()
             );
         } catch (Exception exception) {
-            deleteDirectory(heroDirectory);
+            if (heroDirectoryCreated) {
+                deleteDirectory(heroDirectory);
+            }
             if (exception instanceof ResponseStatusException responseStatusException) {
                 throw responseStatusException;
             }
