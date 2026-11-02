@@ -17,6 +17,8 @@ public class HeroResponse {
     private final String role;
     private final String avatarCode;
     private final String spineSkeleton;
+    private final String spineAtlas;
+    private final String spineTextures;
 
     private final Integer heroLevel;
     private final Integer starLevel;
@@ -38,7 +40,9 @@ public class HeroResponse {
      * @param faction Phe phái
      * @param role Vai trò
      * @param avatarCode Mã ảnh đại diện
-     * @param spineSkeleton Mã tài nguyên Spine
+     * @param spineSkeleton URL skeleton JSON
+     * @param spineAtlas URL atlas
+     * @param spineTextures Danh sách URL texture dạng JSON
      * @param heroLevel Cấp độ
      * @param starLevel Cấp sao
      * @param breakthroughLevel Cấp đột phá
@@ -57,6 +61,8 @@ public class HeroResponse {
             String role,
             String avatarCode,
             String spineSkeleton,
+            String spineAtlas,
+            String spineTextures,
             Integer heroLevel,
             Integer starLevel,
             Integer breakthroughLevel,
@@ -74,6 +80,8 @@ public class HeroResponse {
         this.role = role;
         this.avatarCode = avatarCode;
         this.spineSkeleton = spineSkeleton;
+        this.spineAtlas = spineAtlas;
+        this.spineTextures = spineTextures;
         this.heroLevel = heroLevel;
         this.starLevel = starLevel;
         this.breakthroughLevel = breakthroughLevel;
@@ -162,6 +170,14 @@ public class HeroResponse {
      */
     public String getSpineSkeleton() {
         return spineSkeleton;
+    }
+
+    public String getSpineAtlas() {
+        return spineAtlas;
+    }
+
+    public String getSpineTextures() {
+        return spineTextures;
     }
 
     /**
