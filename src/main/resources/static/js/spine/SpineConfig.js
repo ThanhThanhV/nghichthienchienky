@@ -72,19 +72,8 @@
         characters[definition.base.toLowerCase()] = character;
     });
 
-    const fallbackCharacter = {
-        code: "test-hero",
-        skeleton: assetRoot + "test-hero/sanim_415141_1.json",
-        atlas: assetRoot + "test-hero/sanim_415141_1.atlas",
-        textures: [
-            assetRoot + "test-hero/sanim_415141_1.png",
-            assetRoot + "test-hero/sanim_415141_12.png"
-        ],
-        scale: 0.2,
-        displayScale: 0.85,
-        offsetX: 0,
-        offsetY: -180
-    };
+    // Use the real Tohka Dark asset as the fallback character.
+    const fallbackCharacter = characters.tohka_dark;
 
     function candidateKeys(value) {
         if (!value) {
