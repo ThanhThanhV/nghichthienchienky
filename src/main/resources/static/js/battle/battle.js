@@ -299,12 +299,14 @@
                 case "HEAL":
                     this.applyEventHp(event, "heal");
                     if (event.effectCategory === "HOT") this.updatePeriodicEffectDuration(event);
-                    this.showFloatingNumber(event.targetTeam, event.targetInstanceId, event.amount, "heal");
-                    this.addLog(
-                        this.unitName(event.targetTeam, event.targetInstanceId) +
-                        " hồi " + this.formatNumber(event.amount) + " HP.",
-                        "heal"
-                    );
+                    if (Number(event.amount || 0) > 0) {
+                        this.showFloatingNumber(event.targetTeam, event.targetInstanceId, event.amount, "heal");
+                        this.addLog(
+                            this.unitName(event.targetTeam, event.targetInstanceId) +
+                            " hồi " + this.formatNumber(event.amount) + " HP.",
+                            "heal"
+                        );
+                    }
                     await this.delay(240);
                     break;
                 case "DEATH":
@@ -330,7 +332,9 @@
                     }
                     if (event.type === "DISPEL") {
                         this.removeDispelledEffects(event);
-                    } else if (["SHIELD", "BUFF", "DEBUFF", "CC", "IMMUNITY", "EVASION", "BLOCK"].includes(event.type)) {
+                    } else if (["SHIELD", "BUFF", "DEBUFF", "CC", "IMMUNITY", "EVASION", "BLOCK"].includes(event.type)
+                            && (!["DOT", "HOT"].includes(event.effectCategory)
+                                || ["BUFF", "DEBUFF"].includes(event.type))) {
                         this.addActiveEffect(event);
                     }
                     this.addLog(event.message || (event.type + " · " + this.unitName(event.targetTeam, event.targetInstanceId)), "skill");
