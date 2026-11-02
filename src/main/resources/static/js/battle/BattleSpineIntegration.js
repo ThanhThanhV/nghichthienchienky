@@ -39,8 +39,14 @@ class BattleSpineIntegration {
 
         this.manager = new SpineManager(this.canvas);
         this.formation = new SpineFormation(this.manager);
+        this.effectManager = new BattleEffectManager({
+            manager: this.manager,
+            formation: this.formation,
+            canvas: this.canvas
+        });
         this.renderer = new BattleRenderer({
             formation: this.formation,
+            effectManager: this.effectManager,
             eventDelay: 0,
             animationDelay: 0,
             damageContainer: null,
@@ -170,6 +176,8 @@ class BattleSpineIntegration {
      * Xóa skeleton cũ khỏi manager và formation.
      */
     clearCharacters() {
+        this.effectManager?.clear();
+
         if (this.formation) {
             for (const team of ["PLAYER", "ENEMY"]) {
                 const entries = this.formation.getTeamCharacters(team);
@@ -258,6 +266,7 @@ class BattleSpineIntegration {
             try {
                 character = await this.manager.createCharacter({
                     ...config,
+                    heroCode: unit.heroCode || config.code,
                     code: String(config.code || unit.heroCode || "hero") +
                         "-" + unit.team + "-" + instanceId
                 });
@@ -331,8 +340,13 @@ class BattleSpineIntegration {
             return;
         }
 
+        const sourceCharacter = this.formation?.getCharacter(
+            event.sourceTeam,
+            event.sourceInstanceId
+        );
         const normalizedEvent = {
             ...event,
+            heroCode: event.heroCode || sourceCharacter?.config?.heroCode,
             team: event.sourceTeam,
             instanceId: event.sourceInstanceId,
             isCritical: event.critical
@@ -356,6 +370,8 @@ class BattleSpineIntegration {
                 entry.character.animationController.setSpeed(this.speed);
             }
         }
+
+        this.effectManager?.setSpeed(this.speed);
     }
 
     /**
@@ -369,9 +385,11 @@ class BattleSpineIntegration {
             this.resizeHandler = null;
         }
 
+        this.effectManager?.clear();
         this.manager?.dispose();
         this.manager = null;
         this.formation = null;
+        this.effectManager = null;
         this.renderer = null;
         this.initialized = false;
     }
