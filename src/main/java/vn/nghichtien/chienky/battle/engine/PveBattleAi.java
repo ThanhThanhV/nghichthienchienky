@@ -14,10 +14,10 @@ import java.util.List;
 import java.util.Locale;
 
 /**
- * Quyết định hành động cho đội ENEMY trong các trận PvE.
+ * Quyết định hành động và mục tiêu cho đội ENEMY trong các trận PvE.
  *
- * AI chỉ chọn loại kỹ năng; DatabaseSkillExecutor vẫn chịu trách nhiệm
- * tải kỹ năng, áp dụng hiệu ứng và tính toán kết quả trận đấu.
+ * AI chỉ chọn loại kỹ năng và mục tiêu chiến thuật; DatabaseSkillExecutor
+ * vẫn chịu trách nhiệm tải kỹ năng, còn engine xử lý hiệu ứng và kết quả.
  */
 @Component
 public class PveBattleAi {
