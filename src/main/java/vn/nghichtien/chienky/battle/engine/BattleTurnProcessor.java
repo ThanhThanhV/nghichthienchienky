@@ -5,6 +5,7 @@ import vn.nghichtien.chienky.battle.domain.BattleActionType;
 import vn.nghichtien.chienky.battle.domain.BattleEventType;
 import vn.nghichtien.chienky.battle.domain.BattlePassiveTrigger;
 import vn.nghichtien.chienky.battle.domain.BattleState;
+import vn.nghichtien.chienky.battle.domain.BattleTeam;
 import vn.nghichtien.chienky.battle.domain.BattleUnitState;
 import vn.nghichtien.chienky.battle.dto.BattleEventDTO;
 
@@ -18,9 +19,14 @@ import java.util.List;
 public class BattleTurnProcessor {
 
     private final DatabaseSkillExecutor skillExecutor;
+    private final PveBattleAi pveBattleAi;
 
-    public BattleTurnProcessor(DatabaseSkillExecutor skillExecutor) {
+    public BattleTurnProcessor(
+            DatabaseSkillExecutor skillExecutor,
+            PveBattleAi pveBattleAi
+    ) {
         this.skillExecutor = skillExecutor;
+        this.pveBattleAi = pveBattleAi;
     }
 
     public BattleActionType getNextActionType(int actionCount) {
@@ -71,8 +77,9 @@ public class BattleTurnProcessor {
                 continue;
             }
 
-            BattleActionType actionType =
-                    getNextActionType(unit.getActionCount());
+            BattleActionType actionType = unit.getTeam() == BattleTeam.ENEMY
+                    ? pveBattleAi.chooseAction(battle, unit)
+                    : getNextActionType(unit.getActionCount());
             unit.incrementActionCount();
 
             collector.record(
