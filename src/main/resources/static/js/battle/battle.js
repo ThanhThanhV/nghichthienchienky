@@ -18,7 +18,7 @@
             this.updateControls();
             this.renderEmptyTeams();
             this.setStatus("CHƯA VÀO TRẬN");
-            this.setSummary("Đội hình sẽ được tải từ dữ liệu tài khoản của bạn. Nhấn Bắt đầu chiến đấu để tạo một trận PvE.");
+            this.setSummary("Chọn ải Campaign đã mở khóa, sau đó khiêu chiến để nhận thưởng và mở hành trình tiếp theo.");
             this.addLog("Sẵn sàng tiến vào chiến trường.", "skill");
         },
 
@@ -174,7 +174,7 @@
         async startBattle() {
             this.clearLog();
             this.setStatus("ĐANG TẠO TRẬN");
-            this.setSummary("Đang tải đội hình của bạn và chuẩn bị đối thủ PvE từ danh mục nhân vật...");
+            this.setSummary("Đang tải đội hình và chuẩn bị đội địch của ải đã chọn...");
             const payload = await this.postJson(
                 "/api/battle/campaign/" + encodeURIComponent(this.selectedStageNumber) + "/start"
             );
@@ -722,7 +722,7 @@
             this.clearLog();
             this.setRound(0);
             this.setStatus("CHƯA VÀO TRẬN");
-            this.setSummary("Đội hình sẽ được tải từ dữ liệu tài khoản của bạn. Nhấn Bắt đầu chiến đấu để tạo một trận PvE mới.");
+            this.setSummary("Chọn ải Campaign đã mở khóa để bắt đầu một trận chiến mới.");
             this.addLog("Đã đặt lại màn hình chiến đấu.", "skill");
             this.renderCampaignStages();
             this.updateControls();
