@@ -26,6 +26,6 @@ public class SpineAssetResourceConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/assets/spine/heroes/**")
-                .addResourceLocations(resourceLocation);
+                .addResourceLocations(resourceLocation, "classpath:/static/assets/spine/heroes/");
     }
 }
