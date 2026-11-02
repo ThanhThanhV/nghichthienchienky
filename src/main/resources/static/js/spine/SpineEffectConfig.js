@@ -8,6 +8,8 @@
  *     atlas: "/assets/spine/effects/gojo/active_01/effect.atlas",
  *     textures: ["/assets/spine/effects/gojo/active_01/effect.png"],
  *     animation: "animation",
+ *     impactEvent: "impact",  // Optional Spine event at the exact hit frame
+ *     impactRatio: 0.55,      // Used when no impactEvent is configured
  *     anchor: "target",       // source | target | center
  *     layer: "FRONT",         // BACK | FRONT
  *     displayScale: 1,
