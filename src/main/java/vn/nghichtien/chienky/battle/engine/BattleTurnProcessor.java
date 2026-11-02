@@ -91,6 +91,9 @@ public class BattleTurnProcessor {
             var statusManager = unit.getStatusEffectManager();
 
             if (statusManager.shouldSkipAction()) {
+                skillExecutor.executePassives(
+                        battle, unit, BattlePassiveTrigger.AFTER_ACTION
+                );
                 collector.record(
                         BattleEventType.ACTION_END,
                         unit.getTeam().name(),
@@ -99,9 +102,6 @@ public class BattleTurnProcessor {
                         null, null, null, null, null, null, null,
                         "Action skipped: "
                                 + statusManager.getCrowdControl().getType()
-                );
-                skillExecutor.executePassives(
-                        battle, unit, BattlePassiveTrigger.AFTER_ACTION
                 );
                 continue;
             }
