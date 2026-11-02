@@ -19,14 +19,9 @@ import java.util.List;
 public class BattleTurnProcessor {
 
     private final DatabaseSkillExecutor skillExecutor;
-    private final PveBattleAi pveBattleAi;
 
-    public BattleTurnProcessor(
-            DatabaseSkillExecutor skillExecutor,
-            PveBattleAi pveBattleAi
-    ) {
+    public BattleTurnProcessor(DatabaseSkillExecutor skillExecutor) {
         this.skillExecutor = skillExecutor;
-        this.pveBattleAi = pveBattleAi;
     }
 
     public BattleActionType getNextActionType(int actionCount) {
@@ -77,9 +72,7 @@ public class BattleTurnProcessor {
                 continue;
             }
 
-            BattleActionType actionType = unit.getTeam() == BattleTeam.ENEMY
-                    ? pveBattleAi.chooseAction(battle, unit)
-                    : getNextActionType(unit.getActionCount());
+            BattleActionType actionType = getNextActionType(unit.getActionCount());
             unit.incrementActionCount();
 
             collector.record(
