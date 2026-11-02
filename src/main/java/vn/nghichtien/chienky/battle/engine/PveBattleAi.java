@@ -4,18 +4,20 @@ import org.springframework.stereotype.Component;
 import vn.nghichtien.chienky.battle.domain.BattleActionType;
 import vn.nghichtien.chienky.battle.domain.BattleState;
 import vn.nghichtien.chienky.battle.domain.BattleTeam;
+import vn.nghichtien.chienky.battle.domain.BattleTargetMode;
 import vn.nghichtien.chienky.battle.domain.BattleUnitState;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
 
 /**
- * Quyết định hành động cho đội ENEMY trong các trận PvE.
+ * Quyết định hành động và mục tiêu cho đội ENEMY trong các trận PvE.
  *
- * AI chỉ chọn loại kỹ năng; DatabaseSkillExecutor vẫn chịu trách nhiệm
- * tải kỹ năng, áp dụng hiệu ứng và tính toán kết quả trận đấu.
+ * AI chỉ chọn loại kỹ năng và mục tiêu chiến thuật; DatabaseSkillExecutor
+ * vẫn chịu trách nhiệm tải kỹ năng, còn engine xử lý hiệu ứng và kết quả.
  */
 @Component
 public class PveBattleAi {
@@ -26,6 +28,40 @@ public class PveBattleAi {
             new BigDecimal("0.50");
     private static final BigDecimal BASIC_FINISHER_HP =
             new BigDecimal("0.25");
+
+    private final BattleTargetSelector targetSelector;
+
+    public PveBattleAi(BattleTargetSelector targetSelector) {
+        this.targetSelector = targetSelector;
+    }
+
+    /**
+     * Chọn mục tiêu theo vai trò cho các đòn đánh PVE có cấu hình FRONT/RANDOM.
+     * Các target mode tường minh như SELF, ALL_ENEMIES, LOWEST_HP và
+     * HIGHEST_ATK vẫn được giữ nguyên theo cấu hình kỹ năng trong DB.
+     */
+    public List<BattleUnitState> selectTargets(
+            BattleState battle,
+            BattleUnitState actor,
+            BattleTargetMode configuredMode
+    ) {
+        if (actor.getTeam() != BattleTeam.ENEMY
+                || (configuredMode != BattleTargetMode.FRONT
+                && configuredMode != BattleTargetMode.RANDOM)) {
+            return targetSelector.selectTargets(battle, actor, configuredMode);
+        }
+
+        BattleTargetMode tacticalMode = switch (
+                actor.getRole() == null ? "" : actor.getRole().trim().toUpperCase(Locale.ROOT)
+        ) {
+            case "ASSASSIN" -> BattleTargetMode.LOWEST_HP;
+            case "MAGE", "SUPPORT" -> BattleTargetMode.HIGHEST_ATK;
+            case "TANK", "WARRIOR" -> BattleTargetMode.FRONT;
+            default -> configuredMode;
+        };
+
+        return targetSelector.selectTargets(battle, actor, tacticalMode);
+    }
 
     public BattleActionType chooseAction(
             BattleState battle,
