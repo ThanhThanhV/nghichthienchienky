@@ -477,7 +477,9 @@ class BattleRenderer {
             ...event,
             sourceTeam: event.sourceTeam || action.sourceTeam,
             sourceInstanceId: event.sourceInstanceId ?? action.sourceInstanceId,
-            skillCode: event.skillCode || action.skillCode,
+            // DAMAGE events có thể mang SKILL_EFFECT_<id> thay vì skillCode
+            // gốc. Ưu tiên mã kỹ năng của ACTION để resolve đúng effect theo hero.
+            skillCode: action.skillCode || event.skillCode,
             actionType: action.actionType
         };
 
