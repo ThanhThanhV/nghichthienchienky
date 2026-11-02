@@ -177,6 +177,7 @@ class BattleSpineIntegration {
 
         this.visibleCharacterCount = 0;
         this.unitsSignature = null;
+        this.setStatus("");
         document.querySelector(".battle-page")
             ?.classList.remove("battle-spine-active");
     }
@@ -211,6 +212,7 @@ class BattleSpineIntegration {
         const signature = units.map(unit => [
             unit.team,
             unit.instanceId,
+            unit.heroCode || "",
             unit.spineSkeleton || "",
             unit.avatarCode || "",
             unit.row,
