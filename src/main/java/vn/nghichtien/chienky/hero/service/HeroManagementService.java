@@ -155,6 +155,9 @@ public class HeroManagementService {
                     atlasUrl,
                     objectMapper.writeValueAsString(textureUrls)
             );
+            definition.updateSpineSkillAnimations(
+                    objectMapper.writeValueAsString(buildSkillAnimationMapping(heroCode, request.skills()))
+            );
             definition.changeSortOrder((int) heroDefinitionRepository.count() + 1);
             heroDefinitionRepository.save(definition);
 
@@ -400,6 +403,32 @@ public class HeroManagementService {
         heroGrowthConfigRepository.save(entity);
     }
 
+    private Map<String, Object> buildSkillAnimationMapping(
+            String heroCode,
+            List<CreateHeroRequest.SkillRequest> skillRequests
+    ) {
+        Map<String, Object> mapping = new LinkedHashMap<>();
+        for (int i = 0; i < skillRequests.size(); i++) {
+            int order = i + 1;
+            CreateHeroRequest.SkillRequest skill = skillRequests.get(i);
+            mapping.put(
+                    buildSkillCode(heroCode, order),
+                    Map.of(
+                            "animation", skill.animation().trim(),
+                            "animationDurationMs", skill.animationDurationMs(),
+                            "impactTimeMs", skill.impactTimeMs()
+                    )
+            );
+        }
+        return mapping;
+    }
+
+    private String buildSkillCode(String heroCode, int order) {
+        return heroCode.toUpperCase(Locale.ROOT)
+                .substring(0, Math.min(heroCode.length(), 30))
+                + "_SKILL_" + order;
+    }
+
     private void saveSkills(
             HeroDefinition definition,
             List<CreateHeroRequest.SkillRequest> skillRequests
@@ -410,9 +439,7 @@ public class HeroManagementService {
             String skillType = SKILL_TYPES.get(i);
             CreateHeroRequest.SkillRequest request = skillRequests.get(i);
 
-            String skillCode = definition.getHeroCode().toUpperCase(Locale.ROOT)
-                    .substring(0, Math.min(definition.getHeroCode().length(), 30))
-                    + "_SKILL_" + order;
+            String skillCode = buildSkillCode(definition.getHeroCode(), order);
 
             HeroSkillDefinition skill = new HeroSkillDefinition(
                     definition, skillCode, request.name().trim(), skillType, order
