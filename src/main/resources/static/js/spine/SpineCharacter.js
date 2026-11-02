@@ -126,6 +126,12 @@ class SpineCharacter {
 
         this.animationController.update(delta);
 
+        // A one-shot SpineEffect may dispose itself from an animation-complete
+        // listener during update; do not access its released state afterwards.
+        if (!this.loaded || !this.animationState || !this.skeleton) {
+            return;
+        }
+
         this.animationState.apply(this.skeleton);
         this.skeleton.updateWorldTransform();
     }
