@@ -77,22 +77,29 @@ class SpineCharacter {
             return;
         }
 
-        const offset = new spine.Vector2();
-        const size = new spine.Vector2();
-
+        // Measure the rig from a neutral skeleton origin. Reset the previous
+        // placement first, otherwise calling center() after a facing change
+        // would include the old world position in the next offset.
+        this.skeleton.x = 0;
+        this.skeleton.y = 0;
         this.skeleton.setToSetupPose();
         this.skeleton.updateWorldTransform();
 
-        this.skeleton.getBounds(offset, size, []);
+        // Do not center the visual bounds: wings, weapons and asymmetric
+        // attachments can move that center away from the actual character.
+        // The root bone is the stable authoring anchor shared by every rig.
+        const rootBone = this.skeleton.rootBone;
+        if (!rootBone) {
+            return;
+        }
 
-        // Spine character placement is anchored at the feet, not at the
-        // visual bounding-box center. This keeps the character standing on
-        // the same baseline as its slot/HP bar in battle and preview screens.
-        this.centerOffsetX = -(
-            offset.x + size.x / 2
-        ) + (this.config.offsetX || 0);
+        const scaleX = Number(this.skeleton.scaleX) || 1;
+        const scaleY = Number(this.skeleton.scaleY) || 1;
 
-        this.centerOffsetY = -offset.y + (this.config.offsetY || 0);
+        this.centerOffsetX = -(rootBone.worldX / scaleX)
+            + (Number(this.config.offsetX) || 0);
+        this.centerOffsetY = -(rootBone.worldY / scaleY)
+            + (Number(this.config.offsetY) || 0);
 
         this.applyPosition();
     }
