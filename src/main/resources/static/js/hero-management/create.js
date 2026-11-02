@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function extractAtlasPages(atlasText) {
         return atlasText.split(/\r?\n/).map(line => line.trim())
             .filter(line => /\.png(?:\s|$)/i.test(line))
-            .map(line => line.split(/\\s+/)[0].split(/[\\\\/]/).pop());
+            .map(line => line.split(/\s+/)[0].split(/[\\/]/).pop());
     }
 
     async function loadPreview() {
