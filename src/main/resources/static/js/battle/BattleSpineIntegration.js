@@ -135,7 +135,7 @@ class BattleSpineIntegration {
 
         const canvasRect = this.canvas.getBoundingClientRect();
         const canvasCenterX = canvasRect.left + canvasRect.width / 2;
-        const canvasBottom = canvasRect.bottom;
+        const canvasCenterY = canvasRect.top + canvasRect.height / 2;
 
         for (const team of ["PLAYER", "ENEMY"]) {
             const container = document.getElementById(
@@ -150,7 +150,10 @@ class BattleSpineIntegration {
 
                 const rect = slot.getBoundingClientRect();
                 const x = rect.left + rect.width / 2 - canvasCenterX;
-                const y = canvasBottom - (rect.top + rect.height * 0.39);
+                const slotGroundY = rect.top + rect.height * 0.39;
+                // Spine renderer uses a centered world origin. Convert the
+                // DOM slot anchor to that same coordinate system.
+                const y = canvasCenterY - slotGroundY;
                 entry.character.setPosition(x, y);
             }
         }
