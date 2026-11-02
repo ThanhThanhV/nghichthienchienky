@@ -5,6 +5,11 @@ spring:
   thymeleaf:
     cache: false
 
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 50MB
+
   datasource:
     url: ${DB_URL:jdbc:mysql://localhost:3306/nghich_thien_chien_ky?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Ho_Chi_Minh}
     username: ${DB_USERNAME:root}
@@ -20,6 +25,10 @@ spring:
         format_sql: true
 
 
+
+game:
+  assets:
+    spine-heroes-path: ${SPINE_HEROES_PATH:src/main/resources/static/assets/spine/heroes}
 
 server:
   port: ${SERVER_PORT:8080}
