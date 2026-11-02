@@ -15,16 +15,13 @@ import java.util.concurrent.ThreadLocalRandom;
 public class BattleEffectProcessor {
 
     private final BattleTargetSelector targetSelector;
-    private final PveBattleAi pveBattleAi;
     private final BattleDamageProcessor damageProcessor;
 
     public BattleEffectProcessor(
             BattleTargetSelector targetSelector,
-            PveBattleAi pveBattleAi,
             BattleDamageProcessor damageProcessor
     ) {
         this.targetSelector = targetSelector;
-        this.pveBattleAi = pveBattleAi;
         this.damageProcessor = damageProcessor;
     }
 
@@ -78,7 +75,7 @@ public class BattleEffectProcessor {
             BattleUnitState source,
             BattleEffectConfig effect
     ) {
-        List<BattleUnitState> targets = selectEnemyTargets(battle, source, effect.targetMode());
+        List<BattleUnitState> targets = targetSelector.selectTargets(battle, source, effect.targetMode());
 
         for (BattleUnitState target : targets) {
             if (battle.isFinished()) {
@@ -363,16 +360,6 @@ public class BattleEffectProcessor {
                 effect.permanent() ? 0 : effect.duration(),
                 message
         );
-    }
-
-    private List<BattleUnitState> selectEnemyTargets(
-            BattleState battle,
-            BattleUnitState source,
-            BattleTargetMode mode
-    ) {
-        return source.getTeam() == BattleTeam.ENEMY
-                ? pveBattleAi.selectTargets(battle, source, mode)
-                : targetSelector.selectTargets(battle, source, mode);
     }
 
     private List<BattleUnitState> selectAllies(
