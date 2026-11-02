@@ -14,8 +14,17 @@ public class BattlePeriodicEffectManager {
 
     private final List<BattlePeriodicEffect> effects = new ArrayList<>();
 
+    /**
+     * Thêm hiệu ứng mới; cùng effectCode và effectType sẽ được làm mới,
+     * không cộng dồn vô hạn cùng một hiệu ứng từ cùng cấu hình kỹ năng.
+     */
     public void add(BattlePeriodicEffect effect) {
-        effects.add(Objects.requireNonNull(effect));
+        Objects.requireNonNull(effect);
+        effects.removeIf(existing ->
+                existing.getEffectType() == effect.getEffectType()
+                        && existing.getEffectCode().equals(effect.getEffectCode())
+        );
+        effects.add(effect);
     }
 
     public List<BattlePeriodicEffect> getEffects() {
