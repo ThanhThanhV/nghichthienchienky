@@ -73,21 +73,9 @@ window.SPINE_EFFECT_CONFIG = {
             }
         };
 
-        // Runtime battle events đang dùng mã khác với mã seed mô tả:
-        // - ACTIVE_SKILL: tohka_active
-        // - DAMAGE: skill_effect_2
-        // Chỉ áp dụng alias trong phạm vi heroCode === tohka_dark ở trên,
-        // tránh ảnh hưởng các hero khác có thể dùng chung effect code.
-        const skillAliases = {
-            "TOHKA_ACTIVE": "TOHKA_DARK_ACTIVE_2",
-            "SKILL_EFFECT_2": "TOHKA_DARK_ACTIVE_2"
-        };
-
-        const definitionKey = definitions[normalizedSkillCode]
-            ? normalizedSkillCode
-            : skillAliases[normalizedSkillCode];
-
-        const selected = definitions[definitionKey]?.[phase];
+        // Không map tohka_active / skill_effect_2 vào effect cũ.
+        // Chờ xác định đúng asset/animation riêng của Tohka Dark.
+        const selected = definitions[normalizedSkillCode]?.[phase];
         if (!selected) {
             return [];
         }
