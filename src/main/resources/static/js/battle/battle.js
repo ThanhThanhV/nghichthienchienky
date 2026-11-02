@@ -211,7 +211,10 @@
                 this.state.winner = payload.screen.winner;
                 this.auto = false;
                 this.stopAuto();
-                this.setStatus(payload.screen.winner === "PLAYER" ? "CHIẾN THẮNG" : "THẤT BẠI");
+                const isDraw = payload.screen.winner == null;
+                this.setStatus(isDraw
+                    ? "HÒA"
+                    : (payload.screen.winner === "PLAYER" ? "CHIẾN THẮNG" : "THẤT BẠI"));
                 if (payload.screen.winner === "PLAYER") {
                     const rewards = payload.screen.campaignRewards || {};
                     this.setSummary(payload.screen.campaignFirstClear
@@ -220,12 +223,16 @@
                           " EXP. Ải kế tiếp đã được mở khóa."
                         : "Đã vượt qua ải này trước đó. Lần chơi lại không nhận thêm thưởng lần đầu.");
                     this.loadCampaign();
+                } else if (isDraw) {
+                    this.setSummary("Hai đội bị tiêu diệt cùng lúc. Trận đấu kết thúc hòa; không nhận thưởng và không thay đổi tiến độ Campaign.");
                 } else {
                     this.setSummary("Đội hình của bạn đã thất thủ. Hãy điều chỉnh đội hình và thử lại.");
                 }
-                this.addLog(payload.screen.winner === "PLAYER"
-                    ? "CHIẾN THẮNG! Địch quân đã bị đánh bại."
-                    : "THẤT BẠI! Toàn đội đã bị áp đảo.", "skill");
+                this.addLog(isDraw
+                    ? "HÒA! Hai đội đã bị tiêu diệt cùng lúc."
+                    : (payload.screen.winner === "PLAYER"
+                        ? "CHIẾN THẮNG! Địch quân đã bị đánh bại."
+                        : "THẤT BẠI! Toàn đội đã bị áp đảo."), "skill");
             } else {
                 this.setStatus("ĐANG CHỜ LƯỢT");
                 this.setSummary("Round " + payload.screen.round + " đã hoàn tất. Trạng thái HP và hiệu ứng được đồng bộ từ battle engine.");
