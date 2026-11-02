@@ -416,14 +416,79 @@ window.SPINE_EFFECT_CONFIG = {
                 }
             }        };
 
-        // Hai biến thể Hắc Ám dùng chung bộ effect theo cùng chuỗi faqi_1/11/21
-        // của skeleton gốc; skill code vẫn tách biệt theo hero.
-        definitions.IORI_DARK_BASIC_1 = definitions.IORI_BASIC_1;
-        definitions.IORI_DARK_ACTIVE_2 = definitions.IORI_ACTIVE_2;
-        definitions.IORI_DARK_ULTIMATE_3 = definitions.IORI_ULTIMATE_3;
-        definitions.LELOUD_DARK_BASIC_1 = definitions.LELOUD_BASIC_1;
-        definitions.LELOUD_DARK_ACTIVE_2 = definitions.LELOUD_ACTIVE_2;
-        definitions.LELOUD_DARK_ULTIMATE_3 = definitions.LELOUD_ULTIMATE_3;
+            IORI_DARK_BASIC_1: {
+                // Iori Dark dùng bộ cast riêng (sanim_515151_1):
+                // qishou_1_1_1; impact hit tương ứng dùng asset hit riêng hiện có.
+                cast: {
+                    code: "iori_dark_basic_cast",
+                    file: "seffect_51515110111",
+                    animation: "animation_0",
+                    impactEvent: "qishou_1_1_1",
+                    anchor: "source",
+                    impactRatio: 0.45
+                },
+                impact: {
+                    code: "iori_dark_basic_impact",
+                    file: "seffect_51515121013",
+                    animation: "animation_0",
+                    impactEvent: "hit_11_1_1",
+                    impactEvents: ["hit_11_1_1"],
+                    anchor: "target",
+                    impactRatio: 0.5
+                }
+            },
+            IORI_DARK_ACTIVE_2: {
+                // Active riêng của Iori Dark: ba nhịp qishou_11_3_*.
+                cast: {
+                    code: "iori_dark_active_cast",
+                    file: "seffect_51515110111",
+                    animation: "animation_1",
+                    impactEvents: [
+                        "qishou_11_3_3",
+                        "qishou_11_3_2",
+                        "qishou_11_3_1"
+                    ],
+                    anchor: "source",
+                    impactRatio: 0.65
+                },
+                impact: {
+                    code: "iori_dark_active_impact",
+                    file: "seffect_51515121015",
+                    animation: "animation_0",
+                    impactEvents: [
+                        "hit_21_3_3",
+                        "hit_21_3_2",
+                        "hit_21_3_1"
+                    ],
+                    anchor: "enemy_formation",
+                    impactRatio: 0.25
+                }
+            },
+            IORI_DARK_ULTIMATE_3: {
+                cast: {
+                    code: "iori_dark_ultimate_cast",
+                    file: "seffect_51515110111",
+                    animation: "animation_3",
+                    impactEvent: "qishou_31_1_1",
+                    anchor: "source",
+                    impactRatio: 0.7
+                },
+                impact: {
+                    code: "iori_dark_ultimate_impact",
+                    file: "seffect_51515110211",
+                    animation: "animation_0",
+                    impactEvents: [
+                        "hit_31_5_5",
+                        "hit_31_5_4",
+                        "hit_31_5_3",
+                        "hit_31_5_2",
+                        "hit_31_5_1"
+                    ],
+                    anchor: "enemy_formation",
+                    impactRatio: 0.8
+                }
+            },
+
 
         // Runtime hiện tại phát mã animation "tohka_active" ở event cast,
         // còn event DAMAGE dùng mã effect "skill_effect_2".
@@ -444,6 +509,10 @@ window.SPINE_EFFECT_CONFIG = {
         }
 
         const texturePages = {
+            seffect_51515110111: [
+                "seffect_51515110111.png",
+                "seffect_515151101112.png"
+            ],
             seffect_31517110111: [
                 "seffect_31517110111.png",
                 "seffect_315171101112.png"
