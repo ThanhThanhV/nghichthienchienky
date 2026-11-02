@@ -285,6 +285,14 @@ window.SPINE_EFFECT_CONFIG = {
                     animation: "animation_0",
                     impactEvents: ["qishou_1_2_2", "qishou_1_2_1"],
                     anchor: "source"
+                },
+                impact: {
+                    code: "thor_basic_impact",
+                    file: "seffect_43503010111",
+                    animation: "animation_5",
+                    impactEvent: "hit_1_1_1",
+                    impactEvents: ["hit_1_1_1"],
+                    anchor: "target"
                 }
             },
             THOR_ACTIVE_2: {
@@ -299,6 +307,18 @@ window.SPINE_EFFECT_CONFIG = {
                         "qishou_11_4_1"
                     ],
                     anchor: "source"
+                },
+                impact: {
+                    code: "thor_active_impact",
+                    file: "seffect_43513",
+                    animation: "animation_0",
+                    impactEvents: [
+                        "hit_111_4_4",
+                        "hit_111_4_3",
+                        "hit_111_4_2",
+                        "hit_111_4_1"
+                    ],
+                    anchor: "enemy_formation"
                 }
             },
             THOR_ULTIMATE_3: {
@@ -308,6 +328,14 @@ window.SPINE_EFFECT_CONFIG = {
                     animation: "animation_0",
                     impactEvent: "qishou_21_1_1",
                     anchor: "source"
+                },
+                impact: {
+                    code: "thor_ultimate_impact",
+                    file: "seffect_43503110111",
+                    animation: "animation_1",
+                    impactEvent: "hit_21_1_1",
+                    impactEvents: ["hit_21_1_1"],
+                    anchor: "enemy_formation"
                 }
             },
             THOR_RAK_BASIC_1: {
