@@ -43,6 +43,15 @@ public class GiftCodeService {
         this.heroAcquisitionService = heroAcquisitionService;
     }
 
+    private boolean hasManagedSpineAssets(HeroDefinition definition) {
+        return definition.getSpineSkeleton() != null
+                && !definition.getSpineSkeleton().isBlank()
+                && definition.getSpineAtlas() != null
+                && !definition.getSpineAtlas().isBlank()
+                && definition.getSpineTextures() != null
+                && !definition.getSpineTextures().isBlank();
+    }
+
     @Transactional
     public GiftCodeRedemptionResponse redeem(String username, String submittedCode) {
         if (username == null || username.isBlank()) {
@@ -76,7 +85,7 @@ public class GiftCodeService {
                 .stream()
                 .filter(definition -> SPINE_ASSET_HERO_CODES.contains(
                         definition.getHeroCode()
-                ))
+                ) || hasManagedSpineAssets(definition))
                 .toList();
 
         List<String> grantedNames = new ArrayList<>();
