@@ -283,6 +283,30 @@ class BattleRenderer {
 
     async finishAction() {
         const action = this.actionContext;
+
+        // Effect đánh diện rộng chỉ xuất hiện một lần sau khi toàn bộ DAMAGE
+        // của hành động đã được render, thay vì lặp lại trên từng mục tiêu.
+        if (action && this.effectManager?.shouldDeferImpact?.(action)) {
+            const effects = await this.effectManager.playForEvent({
+                ...action,
+                type: action.actionType,
+                sourceTeam: action.sourceTeam,
+                sourceInstanceId: action.sourceInstanceId,
+                team: action.sourceTeam,
+                instanceId: action.sourceInstanceId
+            }, "impact") || [];
+
+            const completionPromises = effects
+                .map(effect => effect.completionPromise)
+                .filter(Boolean);
+            if (completionPromises.length) {
+                action.completionPromises = [
+                    ...(action.completionPromises || []),
+                    ...completionPromises
+                ];
+            }
+        }
+
         this.actionContext = null;
 
         if (action?.completionPromises?.length) {
@@ -399,10 +423,14 @@ class BattleRenderer {
             actionType: action.actionType
         };
 
-        const impactEffectPromise = this.effectManager?.playForEvent(impactEvent, "impact");
-        impactEffectPromise?.catch(error => {
-            console.warn("[BattleRenderer] Không phát được impact effect:", error);
-        });
+        // Effect có anchor đội hình được dời tới ACTION_END để chỉ xuất hiện
+        // một lần sau chuỗi hit của kỹ năng nhiều mục tiêu.
+        if (!this.effectManager?.shouldDeferImpact?.(impactEvent)) {
+            const impactEffectPromise = this.effectManager?.playForEvent(impactEvent, "impact");
+            impactEffectPromise?.catch(error => {
+                console.warn("[BattleRenderer] Không phát được impact effect:", error);
+            });
+        }
 
         // Phát animation nhận sát thương.
         if (character) {
