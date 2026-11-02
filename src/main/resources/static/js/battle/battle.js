@@ -282,6 +282,7 @@
                 }
                 case "DAMAGE":
                     this.applyEventHp(event, "damage");
+                    if (event.effectCategory === "DOT") this.updatePeriodicEffectDuration(event);
                     this.animateUnit(event.targetTeam, event.targetInstanceId, "damaged");
                     this.showFloatingNumber(event.targetTeam, event.targetInstanceId, event.amount, "damage");
                     this.addLog(
@@ -297,6 +298,7 @@
                     break;
                 case "HEAL":
                     this.applyEventHp(event, "heal");
+                    if (event.effectCategory === "HOT") this.updatePeriodicEffectDuration(event);
                     this.showFloatingNumber(event.targetTeam, event.targetInstanceId, event.amount, "heal");
                     this.addLog(
                         this.unitName(event.targetTeam, event.targetInstanceId) +
@@ -323,6 +325,9 @@
                 case "COUNTER":
                 case "EXTRA_ACTION":
                     if (event.currentHp != null) this.applyEventHp(event, "neutral");
+                    if (event.effectCategory === "DOT" || event.effectCategory === "HOT") {
+                        this.updatePeriodicEffectDuration(event);
+                    }
                     if (event.type === "DISPEL") {
                         this.removeDispelledEffects(event);
                     } else if (["SHIELD", "BUFF", "DEBUFF", "CC", "IMMUNITY", "EVASION", "BLOCK"].includes(event.type)) {
@@ -523,9 +528,26 @@
             this.renderEffectBadges(event.targetTeam, event.targetInstanceId);
         },
 
+        updatePeriodicEffectDuration(event) {
+            if (!event.targetTeam || event.targetInstanceId == null) return;
+            const category = String(event.effectCategory || "").toUpperCase();
+            if (category !== "DOT" && category !== "HOT") return;
+            const key = this.effectUnitKey(event.targetTeam, event.targetInstanceId);
+            const effects = this.activeEffects.get(key);
+            if (!effects) return;
+            const effectKey = category + ":" + String(event.effectCode || event.skillCode || "");
+            const effect = effects.get(effectKey);
+            if (!effect) return;
+            effect.duration = Math.max(0, Number(event.duration || 0) - 1);
+            if (effect.duration <= 0) effects.delete(effectKey);
+            if (effects.size === 0) this.activeEffects.delete(key);
+            this.renderEffectBadges(event.targetTeam, event.targetInstanceId);
+        },
+
         decreaseActiveEffectDurations() {
             for (const [unitKey, effects] of this.activeEffects) {
                 for (const [effectKey, effect] of effects) {
+                    if (effect.category === "DOT" || effect.category === "HOT") continue;
                     if (effect.duration > 0) {
                         effect.duration -= 1;
                         if (effect.duration <= 0) effects.delete(effectKey);
