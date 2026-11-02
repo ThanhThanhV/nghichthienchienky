@@ -41,9 +41,10 @@ window.SPINE_EFFECT_CONFIG = {
                 }
             },
             TOHKA_DARK_ACTIVE_2: {
-                // Các mốc qishou_* là event khởi chiêu, vì vậy effect phải
-                // xuất hiện tại vị trí của Tohka (source), không neo lên góc
-                // đội hình địch như cấu hình cũ.
+                // Animation của nhân vật Tohka vẫn phát tại slot của cô ấy.
+                // Effect của đòn kiếm diện rộng được đặt tại tâm đội hình địch.
+                // qishou_* là mốc thời gian bên trong Spine effect, không phải
+                // vị trí đặt effect trên sân.
                 cast: {
                     code: "tohka_dark_skill_2_cast",
                     file: "seffect_41514121012",
@@ -56,7 +57,7 @@ window.SPINE_EFFECT_CONFIG = {
                         "qishou_11_5_1"
                     ],
                     impactRatio: 0.5,
-                    anchor: "source"
+                    anchor: "enemy_formation"
                 }
             },
             TOHKA_DARK_ULTIMATE_3: {
@@ -483,7 +484,11 @@ window.SPINE_EFFECT_CONFIG = {
             TOHKA_ACTIVE: "TOHKA_DARK_ACTIVE_2",
             SKILL_EFFECT_2: "TOHKA_DARK_ACTIVE_2"
         };
-        const definitionKey = definitions[normalizedSkillCode]
+        // Một skill chỉ được resolve từ chính hero đang thực hiện nó.
+        // Ngăn skill code IORI_* và IORI_DARK_* bị lấy nhầm mapping của nhau.
+        const heroPrefix = normalizedHeroCode.toUpperCase() + "_";
+        const definitionKey = normalizedSkillCode.startsWith(heroPrefix) &&
+                definitions[normalizedSkillCode]
             ? normalizedSkillCode
             : normalizedHeroCode === "tohka_dark"
                 ? skillAliases[normalizedSkillCode]
