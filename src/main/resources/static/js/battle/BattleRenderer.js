@@ -261,6 +261,8 @@ class BattleRenderer {
         this.actionContext = {
             sourceTeam: event.sourceTeam,
             sourceInstanceId: event.sourceInstanceId,
+            skillCode: event.skillCode || null,
+            actionType: event.type || null,
             completionPromises: []
         };
     }
@@ -307,6 +309,19 @@ class BattleRenderer {
      * @returns {Promise<void>}
      */
     async renderAttack(event) {
+        // Giữ metadata của chiêu để các event DAMAGE phía sau có thể dùng
+        // chung skillCode/source, vì backend có thể không lặp lại các field này.
+        if (!this.actionContext) {
+            this.actionContext = { completionPromises: [] };
+        }
+        this.actionContext.sourceTeam =
+            event.sourceTeam || this.actionContext.sourceTeam || event.team;
+        this.actionContext.sourceInstanceId =
+            event.sourceInstanceId ?? this.actionContext.sourceInstanceId ?? event.instanceId;
+        this.actionContext.skillCode =
+            event.skillCode || this.actionContext.skillCode || null;
+        this.actionContext.actionType = event.type || this.actionContext.actionType || null;
+
         const character = this.getCharacter(event);
 
         if (character) {
@@ -375,7 +390,16 @@ class BattleRenderer {
 
         // DAMAGE từ backend chính là mốc impact. Không chờ tải effect impact,
         // tránh làm số sát thương xuất hiện muộn hơn thời điểm va chạm.
-        const impactEffectPromise = this.effectManager?.playForEvent(event, "impact");
+        const action = this.actionContext || {};
+        const impactEvent = {
+            ...event,
+            sourceTeam: event.sourceTeam || action.sourceTeam,
+            sourceInstanceId: event.sourceInstanceId ?? action.sourceInstanceId,
+            skillCode: event.skillCode || action.skillCode,
+            actionType: action.actionType
+        };
+
+        const impactEffectPromise = this.effectManager?.playForEvent(impactEvent, "impact");
         impactEffectPromise?.catch(error => {
             console.warn("[BattleRenderer] Không phát được impact effect:", error);
         });
