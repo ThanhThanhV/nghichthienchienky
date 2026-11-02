@@ -310,7 +310,7 @@ class BattleRenderer {
         const character = this.getCharacter(event);
 
         if (character) {
-            const animationName = this.getAnimation(event.type);
+            const animationName = this.getAnimation(event);
 
             if (animationName) {
                 this.playCharacterAnimation(character, animationName, false);
@@ -332,7 +332,7 @@ class BattleRenderer {
         const timing = this.fallbackTimings[event.type] ||
             this.fallbackTimings.BASIC_ATTACK;
         const animationData = character?.skeletonData?.animations?.find(
-            animation => animation.name === this.getAnimation(event.type)
+            animation => animation.name === this.getAnimation(event)
         );
         const animationDurationMs = Math.max(
             0,
@@ -341,10 +341,17 @@ class BattleRenderer {
 
         // Ưu tiên thời lượng animation thực tế của skeleton nhân vật trong lúc
         // chưa có effect riêng. Khi có effect asset, nhánh phía trên luôn ưu tiên effect.
-        const durationMs = animationDurationMs > 0
-            ? animationDurationMs
-            : timing.durationMs;
-        const impactMs = durationMs * timing.impactRatio;
+        const skillAnimationConfig = this.getSkillAnimationConfig(character, event);
+        const configuredDurationMs = Number(skillAnimationConfig?.animationDurationMs);
+        const durationMs = configuredDurationMs > 0
+            ? configuredDurationMs
+            : animationDurationMs > 0
+                ? animationDurationMs
+                : timing.durationMs;
+        const configuredImpactMs = skillAnimationConfig?.impactTimeMs;
+        const impactMs = configuredImpactMs != null
+            ? Math.min(durationMs, Math.max(0, Number(configuredImpactMs) || 0))
+            : durationMs * timing.impactRatio;
 
         this.registerActionCompletions([
             this.delayScaled(durationMs)
@@ -578,7 +585,28 @@ class BattleRenderer {
      * @param {string} eventType loại sự kiện
      * @returns {string} tên animation
      */
-    getAnimation(eventType) {
+    getSkillAnimationConfig(character, event) {
+        if (!character || !event?.skillCode) {
+            return null;
+        }
+
+        return character.config?.skillAnimations?.[event.skillCode] || null;
+    }
+
+    getAnimation(eventOrType) {
+        const event = typeof eventOrType === "object" && eventOrType !== null
+            ? eventOrType
+            : null;
+        const eventType = event ? event.type : eventOrType;
+
+        if (event) {
+            const character = this.getCharacter(event);
+            const configuredAnimation = this.getSkillAnimationConfig(character, event)?.animation;
+            if (configuredAnimation && character.getAnimationNames().includes(configuredAnimation)) {
+                return configuredAnimation;
+            }
+        }
+
         const animationMap = {
             ...this.animationMap,
             DAMAGE: "behit",
