@@ -128,56 +128,40 @@ class BattleEffectManager {
             return null;
         }
 
-        // Lấy tâm hình học của đúng vùng đội hình trên DOM rồi đổi sang
-        // hệ tọa độ world có gốc tại tâm canvas. Không phụ thuộc số tướng
-        // còn sống hoặc các slot đang được lấp đầy.
+        // Đội hình là grid 3x3 và slot thứ 5 (index 4) chính là ô giữa.
+        // Không lấy tâm container vì container nằm theo layout của map,
+        // không phải tọa độ trung tâm đội hình mà skill cần neo vào.
         const formationElement = document.getElementById(
             team === "PLAYER" ? "player-formation" : "enemy-formation"
         );
         const canvasRect = this.canvas?.getBoundingClientRect();
 
         if (formationElement && canvasRect) {
-            const formationRect = formationElement.getBoundingClientRect();
-            // SpineManager.setZoom() scale riêng canvas bằng CSS transform.
-            // DOMRect của canvas lúc này đã bị scale, trong khi world unit của
-            // Spine vẫn là CSS pixel trước transform. Chia delta cho zoom để
-            // đưa tọa độ DOM về đúng hệ world mà SceneRenderer đang sử dụng.
-            const zoom = Math.max(0.01, Number(this.manager?.zoom) || 1);
-            const canvasCenterX = canvasRect.left + canvasRect.width / 2;
-            const canvasCenterY = canvasRect.top + canvasRect.height / 2;
-            const formationCenterX = formationRect.left + formationRect.width / 2;
-            const formationCenterY = formationRect.top + formationRect.height / 2;
+            const slots = formationElement.querySelectorAll(":scope > .unit-slot");
+            const centerSlot = slots[4];
 
-            return {
-                x: (formationCenterX - canvasCenterX) / zoom,
-                y: (canvasCenterY - formationCenterY) / zoom
-            };
+            if (centerSlot) {
+                const slotRect = centerSlot.getBoundingClientRect();
+                // Canvas có thể được scale bằng SpineManager.setZoom().
+                // Quy đổi tọa độ màn hình về world unit trước khi setPosition.
+                const zoom = Math.max(0.01, Number(this.manager?.zoom) || 1);
+                const canvasCenterX = canvasRect.left + canvasRect.width / 2;
+                const canvasCenterY = canvasRect.top + canvasRect.height / 2;
+
+                return {
+                    x: (slotRect.left + slotRect.width / 2 - canvasCenterX) / zoom,
+                    y: (canvasCenterY - slotRect.top - slotRect.height / 2) / zoom
+                };
+            }
         }
 
-        // Fallback khi gọi từ màn test không có DOM formation.
-        if (typeof this.formation.getTeamCharacters !== "function") {
-            return null;
+        // Fallback cho màn test không có DOM grid: dùng đúng slot index 4
+        // từ layout Spine, không lấy bounding-box của các nhân vật đang sống.
+        if (typeof this.formation.calculatePosition === "function") {
+            return this.formation.calculatePosition(team, 4);
         }
 
-        const characters = this.formation.getTeamCharacters(team)
-            .map(entry => entry?.character)
-            .filter(character =>
-                character &&
-                Number.isFinite(Number(character.positionX)) &&
-                Number.isFinite(Number(character.positionY))
-            );
-
-        if (characters.length === 0) {
-            return null;
-        }
-
-        const xs = characters.map(character => Number(character.positionX));
-        const ys = characters.map(character => Number(character.positionY));
-
-        return {
-            x: (Math.min(...xs) + Math.max(...xs)) / 2,
-            y: (Math.min(...ys) + Math.max(...ys)) / 2
-        };
+        return null;
     }
 
     async playEffect(config, event) {
