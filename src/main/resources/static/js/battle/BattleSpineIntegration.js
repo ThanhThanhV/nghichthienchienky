@@ -63,7 +63,7 @@ class BattleSpineIntegration {
 
     /**
      * Chọn cấu hình asset theo spineSkeleton, avatarCode hoặc heroCode.
-     * Khi chưa có mapping riêng, sử dụng asset test-hero hiện có.
+     * Khi chưa có mapping riêng, sử dụng fallback trong SPINE_CONFIG.
      */
     resolveCharacterConfig(unit) {
         const spineConfig = window.SPINE_CONFIG || {};
