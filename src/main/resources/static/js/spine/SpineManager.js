@@ -220,9 +220,15 @@ class SpineManager {
         this.initialize();
 
         const effect = new SpineEffect(config, this);
-        await effect.load();
-        this.addEffect(effect);
-        return effect;
+
+        try {
+            await effect.load();
+            this.addEffect(effect);
+            return effect;
+        } catch (error) {
+            effect.dispose();
+            throw error;
+        }
     }
 
     /**
