@@ -74,6 +74,19 @@ window.SPINE_EFFECT_CONFIG = {
                     impactRatio: 0.62,
                     anchor: "target"
                 }
+            },
+            ASUNA_DARK_ACTIVE_2: {
+                // Effect có event hit_21_1_1 tại 0.2s; dùng event Spine
+                // làm mốc đồng bộ DAMAGE, không ước lượng theo impactRatio.
+                impact: {
+                    code: "asuna_dark_active_impact",
+                    file: "seffect_31514130111",
+                    animation: "animation_2",
+                    impactEvent: "hit_21_1_1",
+                    impactEvents: ["hit_21_1_1"],
+                    anchor: "enemy_formation",
+                    impactRatio: 1
+                }
             }
         };
 
