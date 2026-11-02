@@ -120,48 +120,24 @@ class BattleEffectManager {
     }
 
     /**
-     * Tính tâm bounding-box của các nhân vật đang có trong một đội hình.
-     * getTeamCharacters trả về entry { character, ... }, không phải SpineCharacter trực tiếp.
+     * Lấy tọa độ world của ô số 5 trong đội hình.
+     *
+     * Dùng cùng nguồn tọa độ với SpineFormation.updatePositions(), không
+     * chuyển đổi DOMRect sang canvas vì canvas có thể có transform/zoom riêng.
+     * Slot index 4 là ô giữa của lưới 3x3, kể cả khi ô đó đang trống.
      */
     getFormationCenter(team) {
-        if (!team || !this.formation) {
+        if (!team || !this.formation ||
+            typeof this.formation.calculatePosition !== "function") {
             return null;
         }
 
-        // Đội hình là grid 3x3 và slot thứ 5 (index 4) chính là ô giữa.
-        // Không lấy tâm container vì container nằm theo layout của map,
-        // không phải tọa độ trung tâm đội hình mà skill cần neo vào.
-        const formationElement = document.getElementById(
-            team === "PLAYER" ? "player-formation" : "enemy-formation"
-        );
-        const canvasRect = this.canvas?.getBoundingClientRect();
-
-        if (formationElement && canvasRect) {
-            const slots = formationElement.querySelectorAll(":scope > .unit-slot");
-            const centerSlot = slots[4];
-
-            if (centerSlot) {
-                const slotRect = centerSlot.getBoundingClientRect();
-                // Canvas có thể được scale bằng SpineManager.setZoom().
-                // Quy đổi tọa độ màn hình về world unit trước khi setPosition.
-                const zoom = Math.max(0.01, Number(this.manager?.zoom) || 1);
-                const canvasCenterX = canvasRect.left + canvasRect.width / 2;
-                const canvasCenterY = canvasRect.top + canvasRect.height / 2;
-
-                return {
-                    x: (slotRect.left + slotRect.width / 2 - canvasCenterX) / zoom,
-                    y: (canvasCenterY - slotRect.top - slotRect.height / 2) / zoom
-                };
-            }
+        const normalizedTeam = String(team).toUpperCase();
+        if (!["PLAYER", "ENEMY"].includes(normalizedTeam)) {
+            return null;
         }
 
-        // Fallback cho màn test không có DOM grid: dùng đúng slot index 4
-        // từ layout Spine, không lấy bounding-box của các nhân vật đang sống.
-        if (typeof this.formation.calculatePosition === "function") {
-            return this.formation.calculatePosition(team, 4);
-        }
-
-        return null;
+        return this.formation.calculatePosition(normalizedTeam, 4);
     }
 
     async playEffect(config, event) {
@@ -235,15 +211,17 @@ class BattleEffectManager {
         const baseX = basePosition.x;
         const baseY = basePosition.y;
 
-        effect.setPosition(
-            baseX + (Number(config.offsetX) || 0),
-            baseY + (Number(config.offsetY) || 0)
-        );
-        effect.setScale(Number(config.displayScale ?? config.scale ?? 1));
-
         const mirrorForEnemy = config.mirrorForEnemy !== false;
         effect.setFacingLeft(
             mirrorForEnemy && sourceTeam === "ENEMY"
+        );
+
+        // Đặt scale/hướng trước, rồi mới gán vị trí cuối cùng để mọi thao tác
+        // căn skeleton không thể ghi đè tọa độ anchor của ô số 5.
+        effect.setScale(Number(config.displayScale ?? config.scale ?? 1));
+        effect.setPosition(
+            baseX + (Number(config.offsetX) || 0),
+            baseY + (Number(config.offsetY) || 0)
         );
         effect.animationController.setSpeed(
             Number(window.BattleScreen?.speed) || Number(config.speed) || 1
