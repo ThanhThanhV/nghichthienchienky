@@ -53,6 +53,8 @@ class BattleSpineIntegration {
             statusContainer: null,
             battleUIContainer: null
         });
+        this.renderer.setSpeed(this.speed);
+        this.effectManager.setSpeed(this.speed);
 
         this.manager.initialize();
         this.manager.start();
