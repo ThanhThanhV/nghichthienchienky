@@ -85,6 +85,16 @@
             textures: definition.textures.map(file => directory + file),
             skillAnimations: {
                 ...createSkillAnimations(key),
+                // Iori thường: att = basic, ultimateskill = active (faqi_21),
+                // superskill = ultimate (faqi_31). Không dùng mapping mặc định
+                // skill/ultimateskill vì sẽ lệch toàn bộ bộ chiêu của Iori.
+                ...(key === "iori"
+                    ? {
+                        IORI_BASIC_1: { animation: "att" },
+                        IORI_ACTIVE_2: { animation: "ultimateskill" },
+                        IORI_ULTIMATE_3: { animation: "superskill" }
+                    }
+                    : {}),
                 // superskill dài 4.233s, khớp với effect ultimate của Gojo.
                 ...(key === "gojo"
                     ? { GOJO_ULTIMATE_3: { animation: "superskill" } }
