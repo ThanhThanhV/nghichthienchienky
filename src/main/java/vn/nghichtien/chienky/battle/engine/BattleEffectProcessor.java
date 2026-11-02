@@ -399,10 +399,8 @@ public class BattleEffectProcessor {
             BattlePeriodicEffect effect
     ) {
         BigDecimal actualHeal = target.heal(effect.getAmountPerTick());
-        if (actualHeal.signum() <= 0) {
-            return;
-        }
 
+        // Vẫn phát HEAL với amount=0 để frontend cập nhật duration khi mục tiêu đã đầy HP.
         battle.getEventCollector().record(
                 BattleEventType.HEAL,
                 effect.getSourceTeam(),
