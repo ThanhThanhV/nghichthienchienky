@@ -286,7 +286,11 @@ class BattleRenderer {
 
         // Effect đánh diện rộng chỉ xuất hiện một lần sau khi toàn bộ DAMAGE
         // của hành động đã được render, thay vì lặp lại trên từng mục tiêu.
-        if (action && this.effectManager?.shouldDeferImpact?.(action)) {
+        if (
+            action &&
+            !action.impactEffects?.length &&
+            this.effectManager?.shouldDeferImpact?.(action)
+        ) {
             const effects = await this.effectManager.playForEvent({
                 ...action,
                 type: action.actionType,
@@ -307,11 +311,33 @@ class BattleRenderer {
             }
         }
 
-        this.actionContext = null;
-
         if (action?.completionPromises?.length) {
             await Promise.all(action.completionPromises);
         }
+
+        // Chỉ trả nhân vật tung chiêu về hold sau khi effect cuối cùng kết thúc.
+        const sourceCharacter = this.getCharacter({
+            team: action?.sourceTeam,
+            instanceId: action?.sourceInstanceId
+        });
+        if (sourceCharacter?.loaded) {
+            const currentAnimation =
+                sourceCharacter.animationController?.currentAnimation || "";
+            if (!/(death|dead|die)/i.test(currentAnimation)) {
+                const idleAnimation =
+                    sourceCharacter.animationController.resolveIdleAnimation();
+                if (idleAnimation) {
+                    this.playCharacterAnimation(
+                        sourceCharacter,
+                        idleAnimation,
+                        true,
+                        false
+                    );
+                }
+            }
+        }
+
+        this.actionContext = null;
 
         // Khoảng nghỉ độc lập giữa hai tướng, sau khi toàn bộ effect đã kết thúc.
         await this.delayScaled(this.transitionDelay);
@@ -352,7 +378,9 @@ class BattleRenderer {
             const animationName = this.getAnimation(event);
 
             if (animationName) {
-                this.playCharacterAnimation(character, animationName, false);
+                // Không tự chuyển về hold khi animation nhân vật vừa kết thúc.
+                // ACTION_END sẽ trả về hold sau khi toàn bộ Spine effect hoàn tất.
+                this.playCharacterAnimation(character, animationName, false, false);
             }
         }
 
@@ -364,6 +392,36 @@ class BattleRenderer {
             );
             await Promise.all(effects.map(effect => effect.impactPromise));
             return;
+        }
+
+        // Với effect đánh diện rộng, bắt đầu ngay ở event kỹ năng thay vì
+        // đợi ACTION_END. Các DAMAGE phía sau sẽ chờ từng mốc Spine event.
+        const impactConfigs =
+            this.effectManager?.resolveEffectConfigs(event, "impact") || [];
+        const hasFormationImpact = impactConfigs.some(config => {
+            const anchor = String(config.anchor || "").toLowerCase();
+            return anchor === "enemy_formation" ||
+                anchor === "target_formation" ||
+                anchor === "formation";
+        });
+
+        if (hasFormationImpact) {
+            const impactEffects =
+                await this.effectManager.playForEvent(event, "impact") || [];
+
+            if (impactEffects.length > 0) {
+                this.actionContext.impactEffects = impactEffects;
+                this.actionContext.damageImpactIndex = 0;
+                this.registerActionCompletions(
+                    impactEffects.map(effect => effect.completionPromise)
+                );
+
+                // Chờ hit đầu tiên của effect trước khi xử lý DAMAGE đầu tiên.
+                await Promise.all(
+                    impactEffects.map(effect => effect.impactPromise)
+                );
+                return;
+            }
         }
 
         // Chưa có effect asset: dùng timing dự phòng theo từng loại kỹ năng.
@@ -423,8 +481,27 @@ class BattleRenderer {
             actionType: action.actionType
         };
 
-        // Effect có anchor đội hình được dời tới ACTION_END để chỉ xuất hiện
-        // một lần sau chuỗi hit của kỹ năng nhiều mục tiêu.
+        // Nếu effect đã được khởi chạy ở ACTIVE_SKILL, đồng bộ từng DAMAGE
+        // với các mốc hit trong Spine timeline, không tạo lại effect.
+        const activeImpactEffects = action.impactEffects || [];
+        if (activeImpactEffects.length > 0) {
+            const impactIndex = Number(action.damageImpactIndex) || 0;
+            const matchingEffects = activeImpactEffects.filter(effect =>
+                effect.hasImpactEvent?.(impactIndex)
+            );
+
+            if (matchingEffects.length > 0) {
+                await Promise.all(
+                    matchingEffects.map(effect =>
+                        effect.waitForImpactEvent(impactIndex)
+                    )
+                );
+            }
+
+            action.damageImpactIndex = impactIndex + 1;
+        }
+
+        // Effect diện rộng đã chạy từ đầu chiêu; không lặp lại trên từng DAMAGE.
         if (!this.effectManager?.shouldDeferImpact?.(impactEvent)) {
             const impactEffectPromise = this.effectManager?.playForEvent(impactEvent, "impact");
             impactEffectPromise?.catch(error => {
@@ -676,7 +753,7 @@ class BattleRenderer {
      * @param {string} animation tên animation
      * @param {boolean} loop lặp animation
      */
-    playCharacterAnimation(character, animation, loop) {
+    playCharacterAnimation(character, animation, loop, returnToIdle) {
         const availableAnimations = character.getAnimationNames();
 
         if (!availableAnimations.includes(animation)) {
@@ -686,7 +763,7 @@ class BattleRenderer {
             return;
         }
 
-        character.animationController.play(animation, loop);
+        character.animationController.play(animation, loop, returnToIdle);
     }
 
     /**
