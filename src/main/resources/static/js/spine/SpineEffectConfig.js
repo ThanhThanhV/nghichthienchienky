@@ -1,5 +1,5 @@
 /**
- * Mapping effect Spine riêng cho Tohka Hắc Ám.
+ * Mapping effect Spine theo từng hero và skill code.
  *
  * Skill code được tạo từ GameBootstrapDataInitializer:
  * TOHKA_DARK_BASIC_1     - Kiếm chém
@@ -14,7 +14,7 @@ window.SPINE_EFFECT_CONFIG = {
 
     resolveEffects({ event, phase, heroCode, skillCode }) {
         const normalizedHeroCode = String(heroCode || "").trim().toLowerCase();
-        if (!["tohka_dark", "asuna_dark"].includes(normalizedHeroCode)) {
+        if (!["tohka_dark", "asuna_dark", "gojo"].includes(normalizedHeroCode)) {
             return [];
         }
 
@@ -89,7 +89,47 @@ window.SPINE_EFFECT_CONFIG = {
                     impactRatio: 1
                 }
             }
-        };
+,
+            GOJO_BASIC_1: {
+                // animation_1 chứa hit_11_1_1 tại 0.1s.
+                impact: {
+                    code: "gojo_basic_impact",
+                    file: "seffect_52517111011",
+                    animation: "animation_1",
+                    impactEvent: "hit_11_1_1",
+                    impactEvents: ["hit_11_1_1"],
+                    anchor: "target",
+                    impactRatio: 0.2
+                }
+            },
+            GOJO_ACTIVE_2: {
+                // animation_0 dài 2s, event qishou_21_1_1 tại 1.1667s.
+                impact: {
+                    code: "gojo_active_impact",
+                    file: "seffect_52517111012",
+                    animation: "animation_0",
+                    impactEvent: "qishou_21_1_1",
+                    impactEvents: ["qishou_21_1_1"],
+                    anchor: "enemy_formation",
+                    impactRatio: 0.58
+                }
+            },
+            GOJO_ULTIMATE_3: {
+                // Ba mốc hit được khai báo trực tiếp trong animation_1.
+                impact: {
+                    code: "gojo_ultimate_impact",
+                    file: "seffect_52517111014",
+                    animation: "animation_1",
+                    impactEvent: "hit_31_3_3",
+                    impactEvents: [
+                        "hit_31_3_3",
+                        "hit_31_3_2",
+                        "hit_31_3_1"
+                    ],
+                    anchor: "enemy_formation",
+                    impactRatio: 0.25
+                }
+            }        };
 
         // Runtime hiện tại phát mã animation "tohka_active" ở event cast,
         // còn event DAMAGE dùng mã effect "skill_effect_2".
