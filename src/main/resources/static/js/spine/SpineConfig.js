@@ -53,6 +53,27 @@
         }
     };
 
+    /**
+     * Skill code được tạo từ GameBootstrapDataInitializer:
+     * HERO_BASIC_1, HERO_ACTIVE_2, HERO_ULTIMATE_3,
+     * HERO_PASSIVE_4 và HERO_PASSIVE_5.
+     *
+     * Mỗi tướng khai báo animation riêng thay vì phụ thuộc vào animationMap
+     * chung của BattleRenderer. BattleRenderer vẫn kiểm tra animation tồn tại
+     * trước khi phát, nên skeleton thiếu animation sẽ tự dùng fallback an toàn.
+     */
+    function createSkillAnimations(heroCode) {
+        const prefix = heroCode.toUpperCase();
+
+        return {
+            [prefix + "_BASIC_1"]: { animation: "att" },
+            [prefix + "_ACTIVE_2"]: { animation: "skill" },
+            [prefix + "_ULTIMATE_3"]: { animation: "ultimateskill" },
+            [prefix + "_PASSIVE_4"]: { animation: "skill" },
+            [prefix + "_PASSIVE_5"]: { animation: "skill" }
+        };
+    }
+
     const characters = {};
 
     Object.entries(definitions).forEach(([key, definition]) => {
@@ -62,6 +83,7 @@
             skeleton: directory + definition.base + ".json",
             atlas: directory + definition.base + ".atlas",
             textures: definition.textures.map(file => directory + file),
+            skillAnimations: createSkillAnimations(key),
             scale: 0.2,
             displayScale: 0.45,
             offsetX: 0,
