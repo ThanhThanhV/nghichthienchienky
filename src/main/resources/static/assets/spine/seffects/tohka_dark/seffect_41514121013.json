@@ -1,0 +1,62 @@
+{
+"skeleton": { "hash": "QoOyxGqfsjHLQ+RjpIEy5bMshng", "spine": "3.5.35", "width": 0, "height": 0, "images": "./images/" },
+"bones": [
+	{ "name": "root" },
+	{ "name": "ZH", "parent": "root" },
+	{ "name": "TX", "parent": "ZH", "color": "ff0400ff" },
+	{ "name": "bg", "parent": "root", "y": 111.47, "scaleX": 3.33, "scaleY": 3.33, "color": "ff0400ff" },
+	{ "name": "boom", "parent": "TX", "color": "ff0400ff" }
+],
+"slots": [
+	{ "name": "bg", "bone": "bg", "color": "919191ff" },
+	{ "name": "boom", "bone": "boom" }
+],
+"skins": {
+	"default": {
+		"boom": {
+			"boom_point/boom_point_0000": { "width": 341, "height": 341 },
+			"boom_point/boom_point_0001": { "width": 341, "height": 341 },
+			"boom_point/boom_point_0002": { "width": 341, "height": 341 },
+			"boom_point/boom_point_0003": { "width": 341, "height": 341 },
+			"boom_point/boom_point_0004": { "width": 341, "height": 341 },
+			"boom_point/boom_point_0005": { "width": 341, "height": 341 },
+			"boom_point/boom_point_0006": { "width": 341, "height": 341 },
+			"boom_point/boom_point_0007": { "width": 341, "height": 341 },
+			"boom_point/boom_point_0008": { "width": 341, "height": 341 }
+		}
+	}
+},
+"events": {
+	"hit_11_1_1": {}
+},
+"animations": {
+	"animation_0": {
+		"slots": {
+			"boom": {
+				"attachment": [
+					{ "time": 0, "name": "boom_point/boom_point_0000" },
+					{ "time": 0.0333, "name": "boom_point/boom_point_0001" },
+					{ "time": 0.0667, "name": "boom_point/boom_point_0002" },
+					{ "time": 0.1, "name": "boom_point/boom_point_0003" },
+					{ "time": 0.1333, "name": "boom_point/boom_point_0004" },
+					{ "time": 0.1667, "name": "boom_point/boom_point_0005" },
+					{ "time": 0.2, "name": "boom_point/boom_point_0006" },
+					{ "time": 0.2333, "name": "boom_point/boom_point_0007" },
+					{ "time": 0.2667, "name": "boom_point/boom_point_0008" },
+					{ "time": 0.3, "name": null }
+				]
+			}
+		},
+		"bones": {
+			"boom": {
+				"scale": [
+					{ "time": 0, "x": 3, "y": 3 }
+				]
+			}
+		},
+		"events": [
+			{ "time": 0, "name": "hit_11_1_1" }
+		]
+	}
+}
+}

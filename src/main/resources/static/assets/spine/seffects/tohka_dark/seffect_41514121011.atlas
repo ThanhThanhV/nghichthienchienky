@@ -1,0 +1,153 @@
+
+seffect_41514121011.png
+size: 1357,1357
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+tex/Att/boom_b/boom_b_0000
+  rotate: false
+  xy: 934, 415
+  size: 70, 107
+  orig: 133, 142
+  offset: 59, 10
+  index: -1
+tex/Att/boom_b/boom_b_0002
+  rotate: false
+  xy: 828, 399
+  size: 104, 123
+  orig: 133, 142
+  offset: 20, 5
+  index: -1
+tex/Att/boom_b/boom_b_0004
+  rotate: true
+  xy: 731, 144
+  size: 112, 132
+  orig: 133, 142
+  offset: 8, 1
+  index: -1
+tex/Att/boom_b/boom_b_0006
+  rotate: true
+  xy: 588, 147
+  size: 109, 141
+  orig: 133, 142
+  offset: 5, 0
+  index: -1
+tex/Att/ci_0000
+  rotate: false
+  xy: 828, 524
+  size: 282, 276
+  orig: 318, 295
+  offset: 14, 0
+  index: -1
+tex/Att/hinglight_0000
+  rotate: true
+  xy: 888, 35
+  size: 346, 426
+  orig: 360, 452
+  offset: 11, 23
+  index: -1
+tex/Att/quan_0000
+  rotate: false
+  xy: 2, 932
+  size: 466, 136
+  orig: 527, 173
+  offset: 37, 18
+  index: -1
+tex/Att/quan_a_0000
+  rotate: false
+  xy: 179, 414
+  size: 336, 84
+  orig: 356, 103
+  offset: 6, 8
+  index: -1
+tex/Att/smoke/smoke_0000
+  rotate: true
+  xy: 179, 501
+  size: 321, 135
+  orig: 611, 296
+  offset: 139, 28
+  index: -1
+tex/Att/smoke/smoke_0002
+  rotate: true
+  xy: 2, 398
+  size: 402, 175
+  orig: 611, 296
+  offset: 96, 28
+  index: -1
+tex/Att/smoke/smoke_0004
+  rotate: true
+  xy: 1145, 903
+  size: 452, 210
+  orig: 611, 296
+  offset: 61, 13
+  index: -1
+tex/Att/smoke/smoke_0006
+  rotate: true
+  xy: 1119, 383
+  size: 518, 231
+  orig: 611, 296
+  offset: 25, 9
+  index: -1
+tex/Att/smoke/smoke_0008
+  rotate: true
+  xy: 588, 258
+  size: 542, 238
+  orig: 611, 296
+  offset: 15, 6
+  index: -1
+tex/Att/smoke/smoke_0010
+  rotate: false
+  xy: 2, 126
+  size: 584, 255
+  orig: 611, 296
+  offset: 0, 5
+  index: -1
+tex/Att/smoke/smoke_0012
+  rotate: false
+  xy: 561, 1084
+  size: 582, 271
+  orig: 611, 296
+  offset: 17, 4
+  index: -1
+tex/Att/smoke/smoke_0014
+  rotate: false
+  xy: 561, 802
+  size: 556, 280
+  orig: 611, 296
+  offset: 45, 2
+  index: -1
+tex/Att/smoke/smoke_0016
+  rotate: false
+  xy: 2, 1070
+  size: 557, 285
+  orig: 611, 296
+  offset: 44, 2
+  index: -1
+tex/Att/smoke/smoke_0018
+  rotate: false
+  xy: 2, 2
+  size: 445, 122
+  orig: 611, 296
+  offset: 40, 2
+  index: -1
+tex/Att/smoke/smoke_0020
+  rotate: false
+  xy: 449, 5
+  size: 437, 119
+  orig: 611, 296
+  offset: 38, 1
+  index: -1
+tex/Att/smoke/smoke_0022
+  rotate: false
+  xy: 2, 824
+  size: 439, 106
+  orig: 611, 296
+  offset: 38, 0
+  index: -1
+tex/Att/smoke/smoke_0024
+  rotate: true
+  xy: 443, 500
+  size: 430, 98
+  orig: 611, 296
+  offset: 49, 10
+  index: -1

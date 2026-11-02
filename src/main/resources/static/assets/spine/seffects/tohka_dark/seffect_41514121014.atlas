@@ -1,0 +1,724 @@
+
+seffect_41514121014.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+tex/Att/hinglight_0000
+  rotate: true
+  xy: 1592, 560
+  size: 360, 452
+  orig: 360, 452
+  offset: 0, 0
+  index: -1
+tex/USK/da_lightning_b/da_lightning_b_0000
+  rotate: true
+  xy: 818, 69
+  size: 271, 360
+  orig: 271, 360
+  offset: 0, 0
+  index: -1
+tex/USK/dilie/dilie_0000
+  rotate: true
+  xy: 1954, 1776
+  size: 270, 35
+  orig: 270, 35
+  offset: 0, 0
+  index: -1
+tex/USK/dilie/dilie_0002
+  rotate: true
+  xy: 1991, 1776
+  size: 270, 35
+  orig: 270, 35
+  offset: 0, 0
+  index: -1
+tex/USK/dimian_smoke/dimian_smoke_0001
+  rotate: true
+  xy: 590, 1482
+  size: 270, 217
+  orig: 270, 217
+  offset: 0, 0
+  index: -1
+tex/USK/dimian_smoke/dimian_smoke_0003
+  rotate: true
+  xy: 590, 1210
+  size: 270, 217
+  orig: 270, 217
+  offset: 0, 0
+  index: -1
+tex/USK/kuos_smoke/kuos_smoke_0000
+  rotate: false
+  xy: 2, 9
+  size: 270, 279
+  orig: 270, 279
+  offset: 0, 0
+  index: -1
+tex/USK/kuos_smoke/kuos_smoke_0002
+  rotate: false
+  xy: 274, 9
+  size: 270, 279
+  orig: 270, 279
+  offset: 0, 0
+  index: -1
+tex/USK/kuos_smoke/kuos_smoke_0004
+  rotate: false
+  xy: 546, 9
+  size: 270, 279
+  orig: 270, 279
+  offset: 0, 0
+  index: -1
+tex/USK/lightning_A/lightning_A_0000
+  rotate: true
+  xy: 1590, 427
+  size: 131, 107
+  orig: 131, 107
+  offset: 0, 0
+  index: -1
+tex/USK/lightning_A/lightning_A_0002
+  rotate: false
+  xy: 1592, 1115
+  size: 131, 107
+  orig: 131, 107
+  offset: 0, 0
+  index: -1
+tex/USK/lightning_b/lightning_b_0000
+  rotate: false
+  xy: 1484, 573
+  size: 104, 163
+  orig: 104, 163
+  offset: 0, 0
+  index: -1
+tex/USK/lightning_b/lightning_b_0002
+  rotate: false
+  xy: 1484, 408
+  size: 104, 163
+  orig: 104, 163
+  offset: 0, 0
+  index: -1
+tex/USK/lightning_n/lightning_n_0000
+  rotate: false
+  xy: 1794, 1268
+  size: 234, 484
+  orig: 234, 484
+  offset: 0, 0
+  index: -1
+tex/USK/lightning_n/lightning_n_0002
+  rotate: true
+  xy: 809, 1224
+  size: 234, 484
+  orig: 234, 484
+  offset: 0, 0
+  index: -1
+tex/USK/lightning_n/lightning_n_0004
+  rotate: true
+  xy: 1295, 1224
+  size: 234, 484
+  orig: 234, 484
+  offset: 0, 0
+  index: -1
+tex/USK/lightning_n/lightning_n_0006
+  rotate: false
+  xy: 884, 738
+  size: 234, 484
+  orig: 234, 484
+  offset: 0, 0
+  index: -1
+tex/USK/lightning_n/lightning_n_0008
+  rotate: false
+  xy: 1120, 738
+  size: 234, 484
+  orig: 234, 484
+  offset: 0, 0
+  index: -1
+tex/USK/lightning_n/lightning_n_0010
+  rotate: false
+  xy: 1356, 738
+  size: 234, 484
+  orig: 234, 484
+  offset: 0, 0
+  index: -1
+tex/USK/shizi_guang/shizi_guang_0000
+  rotate: false
+  xy: 1781, 922
+  size: 259, 344
+  orig: 259, 344
+  offset: 0, 0
+  index: -1
+tex/USK/shizi_guang/shizi_guang_0002
+  rotate: false
+  xy: 1180, 12
+  size: 259, 344
+  orig: 259, 344
+  offset: 0, 0
+  index: -1
+tex/USK/shizi_guang/shizi_guang_0004
+  rotate: false
+  xy: 1441, 12
+  size: 259, 344
+  orig: 259, 344
+  offset: 0, 0
+  index: -1
+tex/USK/shizi_guang/shizi_guang_0006
+  rotate: true
+  xy: 1702, 299
+  size: 259, 344
+  orig: 259, 344
+  offset: 0, 0
+  index: -1
+tex/USK/shizi_guang/shizi_guang_0008
+  rotate: true
+  xy: 1702, 38
+  size: 259, 344
+  orig: 259, 344
+  offset: 0, 0
+  index: -1
+tex/USK/smoke_boom/smoke_boom_0000
+  rotate: false
+  xy: 2, 1754
+  size: 486, 292
+  orig: 486, 292
+  offset: 0, 0
+  index: -1
+tex/USK/smoke_boom/smoke_boom_0002
+  rotate: false
+  xy: 490, 1754
+  size: 486, 292
+  orig: 486, 292
+  offset: 0, 0
+  index: -1
+tex/USK/smoke_boom/smoke_boom_0004
+  rotate: false
+  xy: 978, 1754
+  size: 486, 292
+  orig: 486, 292
+  offset: 0, 0
+  index: -1
+tex/USK/smoke_boom/smoke_boom_0006
+  rotate: false
+  xy: 1466, 1754
+  size: 486, 292
+  orig: 486, 292
+  offset: 0, 0
+  index: -1
+tex/USK/smoke_boom/smoke_boom_0008
+  rotate: true
+  xy: 2, 1266
+  size: 486, 292
+  orig: 486, 292
+  offset: 0, 0
+  index: -1
+tex/USK/smoke_boom/smoke_boom_0010
+  rotate: true
+  xy: 2, 778
+  size: 486, 292
+  orig: 486, 292
+  offset: 0, 0
+  index: -1
+tex/USK/smoke_boom/smoke_boom_0012
+  rotate: true
+  xy: 2, 290
+  size: 486, 292
+  orig: 486, 292
+  offset: 0, 0
+  index: -1
+tex/USK/smoke_boom/smoke_boom_0014
+  rotate: true
+  xy: 296, 1266
+  size: 486, 292
+  orig: 486, 292
+  offset: 0, 0
+  index: -1
+tex/USK/smoke_boom/smoke_boom_0016
+  rotate: true
+  xy: 296, 778
+  size: 486, 292
+  orig: 486, 292
+  offset: 0, 0
+  index: -1
+tex/USK/smoke_boom/smoke_boom_0018
+  rotate: true
+  xy: 296, 290
+  size: 486, 292
+  orig: 486, 292
+  offset: 0, 0
+  index: -1
+tex/USK/smoke_boom/smoke_boom_0020
+  rotate: false
+  xy: 818, 1460
+  size: 486, 292
+  orig: 486, 292
+  offset: 0, 0
+  index: -1
+tex/USK/smoke_boom/smoke_boom_0022
+  rotate: false
+  xy: 1306, 1460
+  size: 486, 292
+  orig: 486, 292
+  offset: 0, 0
+  index: -1
+tex/USK/smoke_boom/smoke_boom_0024
+  rotate: true
+  xy: 590, 722
+  size: 486, 292
+  orig: 486, 292
+  offset: 0, 0
+  index: -1
+tex/USK/sui_kuai/sui_kuai_0000
+  rotate: true
+  xy: 590, 342
+  size: 378, 445
+  orig: 378, 445
+  offset: 0, 0
+  index: -1
+tex/USK/sui_kuai/sui_kuai_0002
+  rotate: true
+  xy: 1037, 358
+  size: 378, 445
+  orig: 378, 445
+  offset: 0, 0
+  index: -1
+
+seffect_415141210142.png
+size: 2039,2039
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+tex/USK/da_lightning_a/da_lightning_a_0000
+  rotate: true
+  xy: 2, 2
+  size: 215, 468
+  orig: 215, 468
+  offset: 0, 0
+  index: -1
+tex/USK/da_lightning_a/da_lightning_a_0001
+  rotate: true
+  xy: 941, 32
+  size: 215, 468
+  orig: 215, 468
+  offset: 0, 0
+  index: -1
+tex/USK/da_lightning_a/da_lightning_a_0002
+  rotate: false
+  xy: 1791, 825
+  size: 215, 468
+  orig: 215, 468
+  offset: 0, 0
+  index: -1
+tex/USK/da_lightning_a/da_lightning_a_0003
+  rotate: false
+  xy: 1791, 9
+  size: 215, 468
+  orig: 215, 468
+  offset: 0, 0
+  index: -1
+tex/USK/dao_pi/dao_pi_0000
+  rotate: false
+  xy: 2, 1675
+  size: 479, 362
+  orig: 479, 362
+  offset: 0, 0
+  index: -1
+tex/USK/dao_pi/dao_pi_0002
+  rotate: false
+  xy: 2, 1311
+  size: 479, 362
+  orig: 479, 362
+  offset: 0, 0
+  index: -1
+tex/USK/dao_pi/dao_pi_0004
+  rotate: false
+  xy: 483, 1675
+  size: 479, 362
+  orig: 479, 362
+  offset: 0, 0
+  index: -1
+tex/USK/dao_pi/dao_pi_0006
+  rotate: false
+  xy: 2, 947
+  size: 479, 362
+  orig: 479, 362
+  offset: 0, 0
+  index: -1
+tex/USK/dao_pi/dao_pi_0008
+  rotate: false
+  xy: 483, 1311
+  size: 479, 362
+  orig: 479, 362
+  offset: 0, 0
+  index: -1
+tex/USK/dao_pi/dao_pi_0010
+  rotate: false
+  xy: 964, 1675
+  size: 479, 362
+  orig: 479, 362
+  offset: 0, 0
+  index: -1
+tex/USK/dao_pi/dao_pi_0012
+  rotate: false
+  xy: 2, 583
+  size: 479, 362
+  orig: 479, 362
+  offset: 0, 0
+  index: -1
+tex/USK/dao_pi/dao_pi_0014
+  rotate: false
+  xy: 483, 947
+  size: 479, 362
+  orig: 479, 362
+  offset: 0, 0
+  index: -1
+tex/USK/dao_pi/dao_pi_0016
+  rotate: false
+  xy: 964, 1311
+  size: 479, 362
+  orig: 479, 362
+  offset: 0, 0
+  index: -1
+tex/USK/dao_pi/dao_pi_0018
+  rotate: false
+  xy: 1445, 1675
+  size: 479, 362
+  orig: 479, 362
+  offset: 0, 0
+  index: -1
+tex/USK/dao_pi/dao_pi_0020
+  rotate: false
+  xy: 2, 219
+  size: 479, 362
+  orig: 479, 362
+  offset: 0, 0
+  index: -1
+tex/USK/dao_pi/dao_pi_0022
+  rotate: false
+  xy: 483, 583
+  size: 479, 362
+  orig: 479, 362
+  offset: 0, 0
+  index: -1
+tex/USK/lightning/lightning_0000
+  rotate: true
+  xy: 472, 35
+  size: 166, 467
+  orig: 166, 467
+  offset: 0, 0
+  index: -1
+tex/USK/lightning/lightning_0002
+  rotate: true
+  xy: 930, 249
+  size: 166, 467
+  orig: 166, 467
+  offset: 0, 0
+  index: -1
+tex/USK/shizi_guang/shizi_guang_0010
+  rotate: false
+  xy: 1724, 479
+  size: 259, 344
+  orig: 259, 344
+  offset: 0, 0
+  index: -1
+tex/USK/sui_kuai/sui_kuai_0004
+  rotate: false
+  xy: 964, 864
+  size: 378, 445
+  orig: 378, 445
+  offset: 0, 0
+  index: -1
+tex/USK/sui_kuai/sui_kuai_0006
+  rotate: true
+  xy: 1445, 1295
+  size: 378, 445
+  orig: 378, 445
+  offset: 0, 0
+  index: -1
+tex/USK/sui_kuai/sui_kuai_0008
+  rotate: true
+  xy: 483, 203
+  size: 378, 445
+  orig: 378, 445
+  offset: 0, 0
+  index: -1
+tex/USK/sui_kuai/sui_kuai_0010
+  rotate: true
+  xy: 1344, 915
+  size: 378, 445
+  orig: 378, 445
+  offset: 0, 0
+  index: -1
+tex/USK/sui_kuai/sui_kuai_0012
+  rotate: false
+  xy: 964, 417
+  size: 378, 445
+  orig: 378, 445
+  offset: 0, 0
+  index: -1
+tex/USK/sui_kuai/sui_kuai_0014
+  rotate: false
+  xy: 1344, 468
+  size: 378, 445
+  orig: 378, 445
+  offset: 0, 0
+  index: -1
+tex/USK/sui_kuai/sui_kuai_0016
+  rotate: false
+  xy: 1411, 21
+  size: 378, 445
+  orig: 378, 445
+  offset: 0, 0
+  index: -1
+
+seffect_415141210143.png
+size: 2038,2038
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+tex/USK/da_lightning_b/da_lightning_b_0002
+  rotate: false
+  xy: 382, 1676
+  size: 271, 360
+  orig: 271, 360
+  offset: 0, 0
+  index: -1
+tex/USK/da_lightning_b/da_lightning_b_0004
+  rotate: false
+  xy: 382, 1314
+  size: 271, 360
+  orig: 271, 360
+  offset: 0, 0
+  index: -1
+tex/USK/da_lightning_b/da_lightning_b_0006
+  rotate: true
+  xy: 655, 1385
+  size: 271, 360
+  orig: 271, 360
+  offset: 0, 0
+  index: -1
+tex/USK/da_lightning_b/da_lightning_b_0008
+  rotate: true
+  xy: 1017, 1385
+  size: 271, 360
+  orig: 271, 360
+  offset: 0, 0
+  index: -1
+tex/USK/da_lightning_b/da_lightning_b_0010
+  rotate: false
+  xy: 1628, 1676
+  size: 271, 360
+  orig: 271, 360
+  offset: 0, 0
+  index: -1
+tex/USK/dimian_smoke/dimian_smoke_0005
+  rotate: true
+  xy: 1310, 917
+  size: 270, 217
+  orig: 270, 217
+  offset: 0, 0
+  index: -1
+tex/USK/lightning/lightning_0004
+  rotate: true
+  xy: 382, 252
+  size: 166, 467
+  orig: 166, 467
+  offset: 0, 0
+  index: -1
+tex/USK/lightning/lightning_0006
+  rotate: true
+  xy: 1100, 93
+  size: 166, 467
+  orig: 166, 467
+  offset: 0, 0
+  index: -1
+tex/USK/lightning/lightning_0008
+  rotate: false
+  xy: 1379, 1189
+  size: 166, 467
+  orig: 166, 467
+  offset: 0, 0
+  index: -1
+tex/USK/lightning/lightning_0010
+  rotate: false
+  xy: 1142, 916
+  size: 166, 467
+  orig: 166, 467
+  offset: 0, 0
+  index: -1
+tex/USK/lightning/lightning_0012
+  rotate: true
+  xy: 1547, 1110
+  size: 166, 467
+  orig: 166, 467
+  offset: 0, 0
+  index: -1
+tex/USK/lightning/lightning_0014
+  rotate: true
+  xy: 1529, 942
+  size: 166, 467
+  orig: 166, 467
+  offset: 0, 0
+  index: -1
+tex/USK/lightning/lightning_0016
+  rotate: true
+  xy: 1217, 368
+  size: 166, 467
+  orig: 166, 467
+  offset: 0, 0
+  index: -1
+tex/USK/lightning/lightning_0018
+  rotate: true
+  xy: 1569, 200
+  size: 166, 467
+  orig: 166, 467
+  offset: 0, 0
+  index: -1
+tex/USK/lightning/lightning_0020
+  rotate: true
+  xy: 1569, 32
+  size: 166, 467
+  orig: 166, 467
+  offset: 0, 0
+  index: -1
+tex/USK/lightning/lightning_0022
+  rotate: false
+  xy: 1686, 473
+  size: 166, 467
+  orig: 166, 467
+  offset: 0, 0
+  index: -1
+tex/USK/lightning/lightning_0024
+  rotate: false
+  xy: 1854, 473
+  size: 166, 467
+  orig: 166, 467
+  offset: 0, 0
+  index: -1
+tex/USK/lightning_bet/lightning_bet_0000
+  rotate: true
+  xy: 2, 20
+  size: 228, 364
+  orig: 228, 364
+  offset: 0, 0
+  index: -1
+tex/USK/lightning_bet/lightning_bet_0002
+  rotate: true
+  xy: 368, 20
+  size: 228, 364
+  orig: 228, 364
+  offset: 0, 0
+  index: -1
+tex/USK/lightning_bet/lightning_bet_0003
+  rotate: true
+  xy: 734, 22
+  size: 228, 364
+  orig: 228, 364
+  offset: 0, 0
+  index: -1
+tex/USK/lightning_bet/lightning_bet_0008
+  rotate: true
+  xy: 851, 261
+  size: 228, 364
+  orig: 228, 364
+  offset: 0, 0
+  index: -1
+tex/USK/sui_kuai/sui_kuai_0018
+  rotate: false
+  xy: 2, 1591
+  size: 378, 445
+  orig: 378, 445
+  offset: 0, 0
+  index: -1
+tex/USK/sui_kuai/sui_kuai_0020
+  rotate: false
+  xy: 2, 1144
+  size: 378, 445
+  orig: 378, 445
+  offset: 0, 0
+  index: -1
+tex/USK/sui_kuai/sui_kuai_0022
+  rotate: false
+  xy: 2, 697
+  size: 378, 445
+  orig: 378, 445
+  offset: 0, 0
+  index: -1
+tex/USK/sui_kuai/sui_kuai_0024
+  rotate: false
+  xy: 2, 250
+  size: 378, 445
+  orig: 378, 445
+  offset: 0, 0
+  index: -1
+tex/USK/sui_kuai/sui_kuai_0026
+  rotate: true
+  xy: 734, 1658
+  size: 378, 445
+  orig: 378, 445
+  offset: 0, 0
+  index: -1
+tex/USK/sui_kuai/sui_kuai_0028
+  rotate: false
+  xy: 382, 867
+  size: 378, 445
+  orig: 378, 445
+  offset: 0, 0
+  index: -1
+tex/USK/sui_kuai/sui_kuai_0030
+  rotate: false
+  xy: 382, 420
+  size: 378, 445
+  orig: 378, 445
+  offset: 0, 0
+  index: -1
+tex/USK/sui_kuai/sui_kuai_0032
+  rotate: false
+  xy: 762, 938
+  size: 378, 445
+  orig: 378, 445
+  offset: 0, 0
+  index: -1
+tex/USK/sui_kuai/sui_kuai_0034
+  rotate: true
+  xy: 1181, 1658
+  size: 378, 445
+  orig: 378, 445
+  offset: 0, 0
+  index: -1
+tex/USK/sui_kuai/sui_kuai_0036
+  rotate: false
+  xy: 762, 491
+  size: 378, 445
+  orig: 378, 445
+  offset: 0, 0
+  index: -1
+tex/USK/sui_kuai/sui_kuai_0038
+  rotate: true
+  xy: 1569, 1278
+  size: 378, 445
+  orig: 378, 445
+  offset: 0, 0
+  index: -1
+tex/USK/sui_kuai/sui_kuai_0040
+  rotate: true
+  xy: 1142, 536
+  size: 378, 445
+  orig: 378, 445
+  offset: 0, 0
+  index: -1
+
+seffect_415141210144.png
+size: 471,471
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+tex/USK/lightning/lightning_0026
+  rotate: false
+  xy: 2, 2
+  size: 166, 467
+  orig: 166, 467
+  offset: 0, 0
+  index: -1
+tex/USK/lightning/lightning_0028
+  rotate: false
+  xy: 170, 2
+  size: 166, 467
+  orig: 166, 467
+  offset: 0, 0
+  index: -1
