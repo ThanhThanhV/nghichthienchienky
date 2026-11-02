@@ -78,6 +78,20 @@ class BattleEffectManager {
             .filter(config => !config.phase || config.phase === phase);
     }
 
+    /**
+     * Kiểm tra impact của event có phải effect neo vào đội hình hay không.
+     * Các effect này phải chờ ACTION_END để tránh lặp trên từng DAMAGE.
+     */
+    shouldDeferImpact(event) {
+        return this.resolveEffectConfigs(event, "impact")
+            .some(config => {
+                const anchor = String(config.anchor || "").toLowerCase();
+                return anchor === "enemy_formation" ||
+                    anchor === "target_formation" ||
+                    anchor === "formation";
+            });
+    }
+
     async playForEvent(event, phase = "cast") {
         if (!event || !this.manager) {
             return;
