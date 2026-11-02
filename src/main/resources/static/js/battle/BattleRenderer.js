@@ -353,6 +353,43 @@ class BattleRenderer {
     }
 
     /**
+     * Khởi chạy effect đánh diện rộng tại thời điểm cast đã chạm mốc impact.
+     * DAMAGE phía sau sẽ chờ lần lượt các event của Spine effect này.
+     */
+    async playFormationImpact(event) {
+        const impactConfigs =
+            this.effectManager?.resolveEffectConfigs(event, "impact") || [];
+        const hasFormationImpact = impactConfigs.some(config => {
+            const anchor = String(config.anchor || "").toLowerCase();
+            return anchor === "enemy_formation" ||
+                anchor === "target_formation" ||
+                anchor === "formation";
+        });
+
+        if (!hasFormationImpact) {
+            return false;
+        }
+
+        const impactEffects =
+            await this.effectManager.playForEvent(event, "impact") || [];
+        if (!impactEffects.length) {
+            return false;
+        }
+
+        this.actionContext.impactEffects = impactEffects;
+        this.actionContext.damageImpactIndex = 0;
+        this.registerActionCompletions(
+            impactEffects.map(effect => effect.completionPromise)
+        );
+
+        // Chờ hit đầu tiên của effect trước khi xử lý DAMAGE đầu tiên.
+        await Promise.all(
+            impactEffects.map(effect => effect.impactPromise)
+        );
+        return true;
+    }
+
+    /**
      * Phát animation tấn công của nhân vật.
      *
      * @param {Object} event Sự kiện tấn công, gồm team, instanceId và type.
@@ -390,38 +427,16 @@ class BattleRenderer {
             this.registerActionCompletions(
                 effects.map(effect => effect.completionPromise)
             );
+
+            // Chờ cast chạm mốc tung chiêu, sau đó mới khởi chạy impact diện rộng.
             await Promise.all(effects.map(effect => effect.impactPromise));
+            await this.playFormationImpact(event);
             return;
         }
 
-        // Với effect đánh diện rộng, bắt đầu ngay ở event kỹ năng thay vì
-        // đợi ACTION_END. Các DAMAGE phía sau sẽ chờ từng mốc Spine event.
-        const impactConfigs =
-            this.effectManager?.resolveEffectConfigs(event, "impact") || [];
-        const hasFormationImpact = impactConfigs.some(config => {
-            const anchor = String(config.anchor || "").toLowerCase();
-            return anchor === "enemy_formation" ||
-                anchor === "target_formation" ||
-                anchor === "formation";
-        });
-
-        if (hasFormationImpact) {
-            const impactEffects =
-                await this.effectManager.playForEvent(event, "impact") || [];
-
-            if (impactEffects.length > 0) {
-                this.actionContext.impactEffects = impactEffects;
-                this.actionContext.damageImpactIndex = 0;
-                this.registerActionCompletions(
-                    impactEffects.map(effect => effect.completionPromise)
-                );
-
-                // Chờ hit đầu tiên của effect trước khi xử lý DAMAGE đầu tiên.
-                await Promise.all(
-                    impactEffects.map(effect => effect.impactPromise)
-                );
-                return;
-            }
+        // Không có cast effect: effect diện rộng bắt đầu trực tiếp tại event kỹ năng.
+        if (await this.playFormationImpact(event)) {
+            return;
         }
 
         // Chưa có effect asset: dùng timing dự phòng theo từng loại kỹ năng.
