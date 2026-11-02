@@ -46,9 +46,12 @@ class SpineEffect extends SpineCharacter {
             Number(this.config.impactRatio ?? 0.55)
         ));
         const impactEventName = String(this.config.impactEvent || "").trim();
+        const animationEvents = (animationData?.timelines || [])
+            .filter(timeline => Array.isArray(timeline.events))
+            .flatMap(timeline => timeline.events);
         const hasImpactEvent = Boolean(
             impactEventName &&
-            (animationData?.events || []).some(event => event.name === impactEventName)
+            animationEvents.some(event => event?.data?.name === impactEventName)
         );
 
         if (impactEventName && !hasImpactEvent) {
