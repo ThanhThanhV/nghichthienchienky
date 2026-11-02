@@ -124,8 +124,30 @@ class BattleEffectManager {
      * getTeamCharacters trả về entry { character, ... }, không phải SpineCharacter trực tiếp.
      */
     getFormationCenter(team) {
-        if (!team || !this.formation ||
-            typeof this.formation.getTeamCharacters !== "function") {
+        if (!team || !this.formation) {
+            return null;
+        }
+
+        // Lấy tâm hình học của đúng vùng đội hình trên DOM rồi đổi sang
+        // hệ tọa độ world có gốc tại tâm canvas. Không phụ thuộc số tướng
+        // còn sống hoặc các slot đang được lấp đầy.
+        const formationElement = document.getElementById(
+            team === "PLAYER" ? "player-formation" : "enemy-formation"
+        );
+        const canvasRect = this.canvas?.getBoundingClientRect();
+
+        if (formationElement && canvasRect) {
+            const formationRect = formationElement.getBoundingClientRect();
+            return {
+                x: formationRect.left + formationRect.width / 2 -
+                    (canvasRect.left + canvasRect.width / 2),
+                y: canvasRect.top + canvasRect.height / 2 -
+                    (formationRect.top + formationRect.height / 2)
+            };
+        }
+
+        // Fallback khi gọi từ màn test không có DOM formation.
+        if (typeof this.formation.getTeamCharacters !== "function") {
             return null;
         }
 
