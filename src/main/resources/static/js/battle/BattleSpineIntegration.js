@@ -214,6 +214,9 @@ class BattleSpineIntegration {
             unit.instanceId,
             unit.heroCode || "",
             unit.spineSkeleton || "",
+            unit.spineAtlas || "",
+            unit.spineTextures || "",
+            unit.spineSkillAnimations || "",
             unit.avatarCode || "",
             unit.row,
             unit.column
