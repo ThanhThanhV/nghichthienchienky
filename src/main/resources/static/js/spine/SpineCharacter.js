@@ -25,21 +25,8 @@ class SpineCharacter {
      * @returns {Promise<SpineCharacter>} nhân vật đã tải
      */
     async load() {
-        const [jsonResponse, atlasResponse] = await Promise.all([
-            fetch(this.config.skeleton),
-            fetch(this.config.atlas)
-        ]);
-
-        if (!jsonResponse.ok) {
-            throw new Error("Không tải được skeleton JSON.");
-        }
-
-        if (!atlasResponse.ok) {
-            throw new Error("Không tải được atlas.");
-        }
-
-        const jsonData = await jsonResponse.json();
-        const atlasText = await atlasResponse.text();
+        const { jsonData, atlasText } =
+            await this.manager.loadSpineAssetData(this.config);
 
         if (!jsonData.skeleton || !jsonData.bones) {
             throw new Error("Skeleton JSON không hợp lệ.");

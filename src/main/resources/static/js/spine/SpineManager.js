@@ -9,6 +9,8 @@ class SpineManager {
         this.timeKeeper = null;
 
         this.characters = [];
+        this.effects = [];
+        this.spineAssetCache = new Map();
 
         this.textureUrls = new Map();
         this.loadingTextures = new Map();
@@ -69,6 +71,45 @@ class SpineManager {
             .replace(/\\/g, "/")
             .replace(/^\/+/, "")
             .toLowerCase();
+    }
+
+    /**
+     * Tải và cache dữ liệu skeleton/atlas. Mỗi lần cast vẫn tạo Skeleton riêng,
+     * nhưng không phải tải/parse lại cùng một bộ asset.
+     */
+    async loadSpineAssetData(config) {
+        const key = [
+            this.normalizePath(config.skeleton),
+            this.normalizePath(config.atlas)
+        ].join("|");
+
+        if (!this.spineAssetCache.has(key)) {
+            const loading = Promise.all([
+                fetch(config.skeleton),
+                fetch(config.atlas)
+            ]).then(async ([jsonResponse, atlasResponse]) => {
+                if (!jsonResponse.ok) {
+                    throw new Error("Không tải được skeleton JSON: " + config.skeleton);
+                }
+                if (!atlasResponse.ok) {
+                    throw new Error("Không tải được atlas: " + config.atlas);
+                }
+
+                return {
+                    jsonData: await jsonResponse.json(),
+                    atlasText: await atlasResponse.text()
+                };
+            });
+
+            this.spineAssetCache.set(key, loading);
+        }
+
+        try {
+            return await this.spineAssetCache.get(key);
+        } catch (error) {
+            this.spineAssetCache.delete(key);
+            throw error;
+        }
     }
 
     /**
@@ -173,6 +214,24 @@ class SpineManager {
     }
 
     /**
+     * Tạo một Spine effect độc lập, không đưa vào danh sách nhân vật.
+     */
+    async createEffect(config) {
+        this.initialize();
+
+        const effect = new SpineEffect(config, this);
+
+        try {
+            await effect.load();
+            this.addEffect(effect);
+            return effect;
+        } catch (error) {
+            effect.dispose();
+            throw error;
+        }
+    }
+
+    /**
      * Thay đổi kích thước canvas theo kích thước vùng hiển thị.
      */
     resize() {
@@ -239,12 +298,25 @@ class SpineManager {
             gl.clearColor(0, 0, 0, 0);
             gl.clear(gl.COLOR_BUFFER_BIT);
 
+            const effects = this.effects.slice();
+            effects.forEach(effect => effect.update(delta));
+
             this.renderer.begin();
+
+            // Hiệu ứng nền nằm dưới toàn bộ nhân vật.
+            effects
+                .filter(effect => effect.layer !== "FRONT")
+                .forEach(effect => effect.draw(this.debug));
 
             this.characters.forEach(character => {
                 character.update(delta);
                 character.draw(this.debug);
             });
+
+            // Hiệu ứng tiền cảnh nằm trên nhân vật.
+            effects
+                .filter(effect => effect.layer === "FRONT")
+                .forEach(effect => effect.draw(this.debug));
 
             this.renderer.end();
         };
@@ -270,9 +342,12 @@ class SpineManager {
     dispose() {
         this.stop();
 
+        this.effects.slice().forEach(effect => this.removeEffect(effect));
         this.characters.forEach(character => character.dispose());
 
+        this.effects = [];
         this.characters = [];
+        this.spineAssetCache.clear();
         this.renderer?.dispose();
         this.renderer = null;
         this.assetManager = null;
@@ -296,6 +371,34 @@ class SpineManager {
         }
 
         this.characters.push(character);
+    }
+
+    /**
+     * Đăng ký effect vào lớp render riêng, không ảnh hưởng giới hạn đội hình.
+     */
+    addEffect(effect) {
+        if (!effect || !effect.loaded) {
+            throw new Error("Spine effect chưa sẵn sàng.");
+        }
+        if (!this.effects.includes(effect)) {
+            this.effects.push(effect);
+        }
+    }
+
+    /**
+     * Xóa effect khỏi vòng render và giải phóng skeleton.
+     */
+    removeEffect(effect) {
+        const index = this.effects.indexOf(effect);
+        if (index >= 0) {
+            this.effects.splice(index, 1);
+        }
+
+        if (effect) {
+            effect.onRemoved?.();
+            effect.onRemoved = null;
+            effect.dispose();
+        }
     }
 
     /**

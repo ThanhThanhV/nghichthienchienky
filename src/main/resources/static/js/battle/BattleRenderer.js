@@ -8,6 +8,7 @@ class BattleRenderer {
 
     constructor(options = {}) {
         this.formation = options.formation;
+        this.effectManager = options.effectManager || null;
         this.damageRenderer = options.damageRenderer || new DamageRenderer({
             formation: this.formation,
             container: options.damageContainer || document.getElementById("damageOverlay")
@@ -256,6 +257,7 @@ class BattleRenderer {
             this.playCharacterAnimation(character, animationName, false);
         }
 
+        await this.effectManager?.playForEvent(event, "cast");
         await this.delay(this.animationDelay);
     }
 
@@ -272,6 +274,9 @@ class BattleRenderer {
      */
     async renderDamage(event) {
         const character = this.getTargetCharacter(event);
+
+        // Hiệu ứng impact được đặt tại mục tiêu; event backend vẫn quyết định sát thương.
+        await this.effectManager?.playForEvent(event, "impact");
 
         // Phát animation nhận sát thương.
         if (character) {
