@@ -34,11 +34,11 @@ class BattleRenderer {
         this.speed = 1;
         this.actionContext = null;
         this.fallbackTimings = {
-            BASIC_ATTACK: { impactMs: 380, durationMs: 720 },
-            ACTIVE_SKILL: { impactMs: 550, durationMs: 1000 },
-            ULTIMATE_SKILL: { impactMs: 850, durationMs: 1450 },
-            PASSIVE: { impactMs: 320, durationMs: 650 },
-            ATTACK: { impactMs: 380, durationMs: 720 }
+            BASIC_ATTACK: { impactRatio: 0.48, durationMs: 720 },
+            ACTIVE_SKILL: { impactRatio: 0.55, durationMs: 1000 },
+            ULTIMATE_SKILL: { impactRatio: 0.62, durationMs: 1450 },
+            PASSIVE: { impactRatio: 0.5, durationMs: 650 },
+            ATTACK: { impactRatio: 0.48, durationMs: 720 }
         };
         this.currentEventIndex = 0;
 
@@ -331,10 +331,25 @@ class BattleRenderer {
         // Khi có Spine effect thật, impact và completion sẽ lấy từ animation của asset.
         const timing = this.fallbackTimings[event.type] ||
             this.fallbackTimings.BASIC_ATTACK;
+        const animationData = character?.skeletonData?.animations?.find(
+            animation => animation.name === this.getAnimation(event.type)
+        );
+        const animationDurationMs = Math.max(
+            0,
+            Number(animationData?.duration) * 1000 || 0
+        );
+
+        // Ưu tiên thời lượng animation thực tế của skeleton nhân vật trong lúc
+        // chưa có effect riêng. Khi có effect asset, nhánh phía trên luôn ưu tiên effect.
+        const durationMs = animationDurationMs > 0
+            ? animationDurationMs
+            : timing.durationMs;
+        const impactMs = durationMs * timing.impactRatio;
+
         this.registerActionCompletions([
-            this.delayScaled(timing.durationMs)
+            this.delayScaled(durationMs)
         ]);
-        await this.delayScaled(timing.impactMs);
+        await this.delayScaled(impactMs);
     }
 
     /**

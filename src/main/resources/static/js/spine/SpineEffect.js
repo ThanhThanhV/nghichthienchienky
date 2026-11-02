@@ -40,13 +40,29 @@ class SpineEffect extends SpineCharacter {
             item => item.name === animation
         );
         const durationSeconds = Math.max(0, Number(animationData?.duration) || 0);
-        const hasImpactEvent = Boolean(this.config.impactEvent);
         const configuredImpact = Number(this.config.impactAtSeconds);
         const configuredFallback = Number(this.config.impactFallbackAtSeconds);
         const impactRatio = Math.max(0, Math.min(1,
             Number(this.config.impactRatio ?? 0.55)
         ));
+        const impactEventName = String(this.config.impactEvent || "").trim();
+        const animationEvents = (animationData?.timelines || [])
+            .filter(timeline => Array.isArray(timeline.events))
+            .flatMap(timeline => timeline.events);
+        const hasImpactEvent = Boolean(
+            impactEventName &&
+            animationEvents.some(event => event?.data?.name === impactEventName)
+        );
 
+        if (impactEventName && !hasImpactEvent) {
+            console.warn(
+                "[SpineEffect] Không tìm thấy impactEvent '" + impactEventName +
+                "' trong animation '" + animation + "'. Sử dụng impactRatio."
+            );
+        }
+
+        // Chỉ chờ Spine event nếu event thực sự tồn tại trong animation.
+        // Nếu config sai tên hoặc asset không khai báo event, tự fallback theo thời lượng.
         this.impactAtSeconds = Number.isFinite(configuredFallback)
             ? Math.max(0, configuredFallback)
             : hasImpactEvent
