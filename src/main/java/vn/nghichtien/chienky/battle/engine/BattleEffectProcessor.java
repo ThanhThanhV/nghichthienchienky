@@ -56,6 +56,7 @@ public class BattleEffectProcessor {
         switch (effect.effectType()) {
             case DAMAGE -> executeDamage(battle, source, effect);
             case HEAL -> executeHeal(battle, source, effect);
+            case DOT, HOT -> executePeriodicEffect(battle, source, effect);
             case REVIVE -> executeRevive(battle, source, effect);
             case BUFF -> executeModifier(battle, source, effect, true);
             case DEBUFF -> executeModifier(battle, source, effect, false);
@@ -188,6 +189,237 @@ public class BattleEffectProcessor {
                     .orElse(List.of());
             case ALL_ENEMIES -> deadAllies;
         };
+    }
+
+    /**
+     * Gắn DOT/HOT lên mục tiêu; lượng mỗi tick được chụp tại thời điểm áp dụng.
+     */
+    private void executePeriodicEffect(
+            BattleState battle,
+            BattleUnitState source,
+            BattleEffectConfig effect
+    ) {
+        if (effect.duration() <= 0) {
+            throw new IllegalArgumentException(
+                    "DOT/HOT duration must be positive: " + effect.effectCode()
+            );
+        }
+
+        BigDecimal amountPerTick = source.getAttack()
+                .multiply(effect.multiplier())
+                .add(effect.flatValue());
+
+        if (amountPerTick.signum() <= 0) {
+            throw new IllegalArgumentException(
+                    "DOT/HOT amount must be positive: " + effect.effectCode()
+            );
+        }
+
+        boolean damageOverTime = effect.effectType() == BattleEffectType.DOT;
+        List<BattleUnitState> targets = damageOverTime
+                ? targetSelector.selectTargets(battle, source, effect.targetMode())
+                : selectAllies(battle, source, effect.targetMode());
+
+        BattleImmunityType immunityType = damageOverTime
+                ? BattleImmunityType.DEBUFF
+                : BattleImmunityType.BUFF;
+
+        for (BattleUnitState target : targets) {
+            if (!target.isAlive()) {
+                continue;
+            }
+
+            if (target.getImmunityManager().isImmune(immunityType)) {
+                recordImmune(battle, source, target, effect);
+                continue;
+            }
+
+            target.getPeriodicEffectManager().add(
+                    new BattlePeriodicEffect(
+                            effect.effectCode(),
+                            effect.effectType(),
+                            source.getTeam().name(),
+                            source.getInstanceId(),
+                            amountPerTick,
+                            effect.duration()
+                    )
+            );
+
+            battle.getEventCollector().record(
+                    damageOverTime ? BattleEventType.DEBUFF : BattleEventType.BUFF,
+                    source.getTeam().name(),
+                    source.getInstanceId(),
+                    target.getTeam().name(),
+                    target.getInstanceId(),
+                    effect.effectCode(),
+                    amountPerTick,
+                    false,
+                    target.getCurrentHp(),
+                    target.getMaxHp(),
+                    target.isAlive(),
+                    effect.effectCode(),
+                    effect.effectType().name(),
+                    effect.duration(),
+                    damageOverTime ? "Damage over time applied"
+                            : "Heal over time applied"
+            );
+        }
+    }
+
+    /**
+     * Tick toàn bộ DOT/HOT một lần ở đầu round.
+     *
+     * DOT bỏ qua DEF, né tránh, chí mạng, phản sát thương và hút máu;
+     * vẫn chịu miễn nhiễm DAMAGE và được SHIELD hấp thụ.
+     */
+    public void tickPeriodicEffects(BattleState battle) {
+        Objects.requireNonNull(battle);
+
+        if (battle.isFinished()) {
+            return;
+        }
+
+        for (BattleUnitState target : battle.getUnits()) {
+            List<BattlePeriodicEffect> effects =
+                    target.getPeriodicEffectManager().getEffects();
+
+            for (BattlePeriodicEffect effect : effects) {
+                if (target.isAlive()) {
+                    if (effect.getEffectType() == BattleEffectType.DOT) {
+                        tickDamageOverTime(battle, target, effect);
+                    } else if (effect.getEffectType() == BattleEffectType.HOT) {
+                        tickHealOverTime(battle, target, effect);
+                    }
+                }
+            }
+
+            // Tick xong mới giảm duration để duration=1 vẫn có đúng một tick.
+            target.getPeriodicEffectManager().decreaseDurations();
+        }
+    }
+
+    private void tickDamageOverTime(
+            BattleState battle,
+            BattleUnitState target,
+            BattlePeriodicEffect effect
+    ) {
+        if (target.getImmunityManager().isImmune(BattleImmunityType.DAMAGE)) {
+            battle.getEventCollector().record(
+                    BattleEventType.IMMUNITY,
+                    effect.getSourceTeam(),
+                    effect.getSourceInstanceId(),
+                    target.getTeam().name(),
+                    target.getInstanceId(),
+                    effect.getEffectCode(),
+                    BigDecimal.ZERO,
+                    false,
+                    target.getCurrentHp(),
+                    target.getMaxHp(),
+                    target.isAlive(),
+                    effect.getEffectCode(),
+                    "DOT",
+                    effect.getRemainingDuration(),
+                    "Damage over time was immune"
+            );
+            return;
+        }
+
+        BigDecimal remainingDamage = target.getShieldManager()
+                .absorbDamage(effect.getAmountPerTick());
+        BigDecimal absorbedDamage = effect.getAmountPerTick()
+                .subtract(remainingDamage);
+
+        if (absorbedDamage.signum() > 0) {
+            battle.getEventCollector().record(
+                    BattleEventType.BLOCK,
+                    effect.getSourceTeam(),
+                    effect.getSourceInstanceId(),
+                    target.getTeam().name(),
+                    target.getInstanceId(),
+                    effect.getEffectCode(),
+                    absorbedDamage,
+                    false,
+                    target.getCurrentHp(),
+                    target.getMaxHp(),
+                    target.isAlive(),
+                    effect.getEffectCode(),
+                    "DOT",
+                    effect.getRemainingDuration(),
+                    "Shield absorbed damage over time"
+            );
+        }
+
+        BigDecimal actualDamage = target.takeDamage(remainingDamage);
+        if (actualDamage.signum() <= 0) {
+            return;
+        }
+
+        battle.getEventCollector().record(
+                BattleEventType.DAMAGE,
+                effect.getSourceTeam(),
+                effect.getSourceInstanceId(),
+                target.getTeam().name(),
+                target.getInstanceId(),
+                effect.getEffectCode(),
+                actualDamage,
+                false,
+                target.getCurrentHp(),
+                target.getMaxHp(),
+                target.isAlive(),
+                effect.getEffectCode(),
+                "DOT",
+                effect.getRemainingDuration(),
+                "Damage over time"
+        );
+
+        if (!target.isAlive()) {
+            battle.getEventCollector().record(
+                    BattleEventType.DEATH,
+                    effect.getSourceTeam(),
+                    effect.getSourceInstanceId(),
+                    target.getTeam().name(),
+                    target.getInstanceId(),
+                    effect.getEffectCode(),
+                    actualDamage,
+                    false,
+                    target.getCurrentHp(),
+                    target.getMaxHp(),
+                    false,
+                    effect.getEffectCode(),
+                    "DOT",
+                    effect.getRemainingDuration(),
+                    "Defeated by damage over time"
+            );
+        }
+    }
+
+    private void tickHealOverTime(
+            BattleState battle,
+            BattleUnitState target,
+            BattlePeriodicEffect effect
+    ) {
+        BigDecimal actualHeal = target.heal(effect.getAmountPerTick());
+        if (actualHeal.signum() <= 0) {
+            return;
+        }
+
+        battle.getEventCollector().record(
+                BattleEventType.HEAL,
+                effect.getSourceTeam(),
+                effect.getSourceInstanceId(),
+                target.getTeam().name(),
+                target.getInstanceId(),
+                effect.getEffectCode(),
+                actualHeal,
+                false,
+                target.getCurrentHp(),
+                target.getMaxHp(),
+                target.isAlive(),
+                effect.getEffectCode(),
+                "HOT",
+                effect.getRemainingDuration(),
+                "Heal over time"
+        );
     }
 
     private void executeHeal(
