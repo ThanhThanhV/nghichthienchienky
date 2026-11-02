@@ -40,13 +40,8 @@ window.SPINE_EFFECT_CONFIG = {
                 }
             },
             TOHKA_DARK_ACTIVE_2: {
-                cast: {
-                    code: "tohka_dark_skill_2_cast",
-                    file: "seffect_41514111012",
-                    animation: "animation_0",
-                    impactRatio: 0.55,
-                    anchor: "source"
-                },
+                // Không phát cast effect của chiêu cũ (ngai vàng rơi xuống).
+                // Chiêu active chỉ giữ effect mới ở phase impact.
                 impact: {
                     code: "tohka_dark_skill_2_impact",
                     file: "seffect_41514121012",
