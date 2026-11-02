@@ -223,6 +223,11 @@ window.SPINE_EFFECT_CONFIG = {
         }
 
         const texturePages = {
+            // Iori active cast atlas sử dụng hai texture pages.
+            seffect_51515121014: [
+                "seffect_51515121014.png",
+                "seffect_515151210142.png"
+            ],
             // Gojo ultimate atlas sử dụng hai texture pages.
             seffect_52517111014: [
                 "seffect_52517111014.png",
