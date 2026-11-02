@@ -400,6 +400,8 @@ public class HeroService {
                 definition.getRole(),
                 definition.getAvatarCode(),
                 definition.getSpineSkeleton(),
+                definition.getSpineAtlas(),
+                definition.getSpineTextures(),
                 instance.getHeroLevel(),
                 instance.getStarLevel(),
                 instance.getBreakthroughLevel(),
