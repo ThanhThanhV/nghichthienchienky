@@ -79,5 +79,20 @@ public record BattleEffectConfig(
         if (effectType == BattleEffectType.DISPEL && dispelType == null) {
             throw new IllegalArgumentException("DISPEL requires dispelType");
         }
+        if ((effectType == BattleEffectType.DOT
+                || effectType == BattleEffectType.HOT)
+                && duration <= 0) {
+            throw new IllegalArgumentException(
+                    "DOT/HOT requires a positive duration"
+            );
+        }
+        if ((effectType == BattleEffectType.DOT
+                || effectType == BattleEffectType.HOT)
+                && multiplier.signum() == 0
+                && flatValue.signum() == 0) {
+            throw new IllegalArgumentException(
+                    "DOT/HOT requires a positive periodic amount"
+            );
+        }
     }
 }
