@@ -320,6 +320,17 @@ class BattleRenderer {
             team: action?.sourceTeam,
             instanceId: action?.sourceInstanceId
         });
+
+        // Tohka Dark ACTIVE (chiêu 1 trên UI) phát animation ở tâm đội hình địch.
+        // Sau khi hành động kết thúc, khôi phục vị trí slot ban đầu của nhân vật.
+        if (sourceCharacter?.loaded && action?.sourceOriginalPosition) {
+            sourceCharacter.setPosition(
+                action.sourceOriginalPosition.x,
+                action.sourceOriginalPosition.y
+            );
+            action.sourceOriginalPosition = null;
+        }
+
         if (sourceCharacter?.loaded) {
             const currentAnimation =
                 sourceCharacter.animationController?.currentAnimation || "";
@@ -415,6 +426,43 @@ class BattleRenderer {
             const animationName = this.getAnimation(event);
 
             if (animationName) {
+                // Tohka Dark chiêu ACTIVE (chiêu 1): chuyển chính skeleton
+                // đang phát animation tới tâm đội hình địch, không chỉ đặt effect ở đó.
+                // Lưu tọa độ slot để finishAction khôi phục sau khi chiêu hoàn tất.
+                const heroCode = String(
+                    event.heroCode ||
+                    character.config?.heroCode ||
+                    ""
+                ).trim().toLowerCase();
+                const skillCode = String(
+                    event.skillCode ||
+                    this.actionContext.skillCode ||
+                    ""
+                ).trim().toUpperCase();
+                const isTohkaDarkFirstSkill =
+                    heroCode === "tohka_dark" &&
+                    event.type === "ACTIVE_SKILL" &&
+                    [
+                        "TOHKA_DARK_ACTIVE_2",
+                        "TOHKA_ACTIVE",
+                        "SKILL_EFFECT_2"
+                    ].includes(skillCode);
+
+                if (isTohkaDarkFirstSkill && !this.actionContext.sourceOriginalPosition) {
+                    const enemyTeam = this.actionContext.sourceTeam === "PLAYER"
+                        ? "ENEMY"
+                        : "PLAYER";
+                    const center = this.effectManager?.getFormationCenter?.(enemyTeam);
+
+                    if (center) {
+                        this.actionContext.sourceOriginalPosition = {
+                            x: character.positionX,
+                            y: character.positionY
+                        };
+                        character.setPosition(center.x, center.y);
+                    }
+                }
+
                 // Không tự chuyển về hold khi animation nhân vật vừa kết thúc.
                 // ACTION_END sẽ trả về hold sau khi toàn bộ Spine effect hoàn tất.
                 this.playCharacterAnimation(character, animationName, false, false);
