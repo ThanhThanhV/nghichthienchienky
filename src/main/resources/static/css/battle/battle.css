@@ -465,3 +465,99 @@ button { font: inherit; cursor: pointer; }
     z-index: 12;
     font-size: clamp(16px, 1.5vw, 22px);
 }
+
+
+/* Compact battle formation and overhead HP for Spine-rendered characters. */
+.battle-spine-active .team-formation {
+    width: clamp(270px, 34vw, 440px);
+    min-height: 390px;
+    margin-top: 0;
+    padding: 0;
+    gap: 0;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: repeat(3, minmax(116px, 1fr));
+}
+
+.battle-spine-active .player-team .team-formation {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.battle-spine-active .enemy-team .team-formation {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.battle-spine-active .unit-slot {
+    min-width: 0;
+    min-height: 116px;
+    padding: 0;
+}
+
+.battle-spine-active .unit-info {
+    position: absolute;
+    z-index: 10;
+    top: 2px;
+    right: auto;
+    bottom: auto;
+    left: 50%;
+    width: min(100%, 112px);
+    padding: 3px 5px 2px;
+    border: 1px solid rgba(220, 231, 245, .2);
+    border-radius: 5px;
+    background: rgba(4, 8, 16, .78);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .34);
+    transform: translateX(-50%);
+    pointer-events: none;
+}
+
+.battle-spine-active .hp-bar {
+    height: 7px;
+    margin-top: 0;
+}
+
+.battle-spine-active .hp-text {
+    margin-top: 2px;
+    font-size: 8px;
+}
+
+.battle-spine-active .unit-effects {
+    top: 30px;
+    right: 2px;
+}
+
+.battle-spine-active .damage-number {
+    top: 24%;
+}
+
+@media (max-width: 900px) {
+    .battle-spine-active .team-formation {
+        width: min(100%, 400px);
+        min-height: 340px;
+        grid-template-rows: repeat(3, minmax(100px, 1fr));
+    }
+
+    .battle-spine-active .unit-slot {
+        min-height: 100px;
+    }
+}
+
+@media (max-width: 600px) {
+    .battle-spine-active .team-formation {
+        width: min(100%, 440px);
+        min-height: 300px;
+        margin-left: auto;
+        margin-right: auto;
+        grid-template-rows: repeat(3, minmax(88px, 1fr));
+        gap: 0;
+    }
+
+    .battle-spine-active .unit-slot {
+        min-height: 88px;
+    }
+
+    .battle-spine-active .unit-info {
+        width: min(100%, 104px);
+        top: 1px;
+    }
+}
