@@ -108,6 +108,13 @@ public class HeroManagementService {
         SpineUpload spineUpload = validateSpineFiles(
                 skeletonFile, atlasFile, textureFiles
         );
+        Set<String> availableAnimations = Set.copyOf(spineUpload.animations());
+        for (int i = 0; i < request.skills().size(); i++) {
+            if (!availableAnimations.contains(request.skills().get(i).animation())) {
+                throw badRequest("Không tìm thấy animation đã chọn ở kỹ năng " + (i + 1)
+                        + ": " + request.skills().get(i).animation());
+            }
+        }
 
         Path heroDirectory = assetRoot.resolve(heroCode).normalize();
         if (!heroDirectory.startsWith(assetRoot) || Files.exists(heroDirectory)) {
@@ -240,6 +247,12 @@ public class HeroManagementService {
         }
 
         try {
+            long totalSize = skeletonFile.getSize() + atlasFile.getSize()
+                    + textureFiles.stream().mapToLong(MultipartFile::getSize).sum();
+            if (totalSize > MAX_TOTAL_SIZE) {
+                throw badRequest("Tổng dung lượng bộ Spine không được vượt quá 50 MB");
+            }
+
             String skeletonName = safeFileName(skeletonFile.getOriginalFilename(), ".json");
             String atlasName = safeFileName(atlasFile.getOriginalFilename(), ".atlas", ".txt");
             byte[] skeletonBytes = readFile(skeletonFile);
