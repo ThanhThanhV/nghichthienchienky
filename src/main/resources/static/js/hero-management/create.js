@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         try {
             const jsonData = JSON.parse(await jsonFile.text());
-            if (!jsonData.skeleton || !Array.isArray(jsonData.bones) || !Array.isArray(jsonData.animations)) {
+            if (!jsonData.skeleton || !Array.isArray(jsonData.bones) || !jsonData.animations || typeof jsonData.animations !== "object" || Array.isArray(jsonData.animations)) {
                 throw new Error("Skeleton JSON không có cấu trúc Spine JSON hợp lệ.");
             }
 
