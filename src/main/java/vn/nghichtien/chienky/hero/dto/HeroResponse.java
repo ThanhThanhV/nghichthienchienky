@@ -19,6 +19,7 @@ public class HeroResponse {
     private final String spineSkeleton;
     private final String spineAtlas;
     private final String spineTextures;
+    private final String spineSkillAnimations;
 
     private final Integer heroLevel;
     private final Integer starLevel;
@@ -43,6 +44,7 @@ public class HeroResponse {
      * @param spineSkeleton URL skeleton JSON
      * @param spineAtlas URL atlas
      * @param spineTextures Danh sách URL texture dạng JSON
+     * @param spineSkillAnimations Mapping animation kỹ năng dạng JSON
      * @param heroLevel Cấp độ
      * @param starLevel Cấp sao
      * @param breakthroughLevel Cấp đột phá
@@ -63,6 +65,7 @@ public class HeroResponse {
             String spineSkeleton,
             String spineAtlas,
             String spineTextures,
+            String spineSkillAnimations,
             Integer heroLevel,
             Integer starLevel,
             Integer breakthroughLevel,
@@ -82,6 +85,7 @@ public class HeroResponse {
         this.spineSkeleton = spineSkeleton;
         this.spineAtlas = spineAtlas;
         this.spineTextures = spineTextures;
+        this.spineSkillAnimations = spineSkillAnimations;
         this.heroLevel = heroLevel;
         this.starLevel = starLevel;
         this.breakthroughLevel = breakthroughLevel;
@@ -178,6 +182,10 @@ public class HeroResponse {
 
     public String getSpineTextures() {
         return spineTextures;
+    }
+
+    public String getSpineSkillAnimations() {
+        return spineSkillAnimations;
     }
 
     /**
