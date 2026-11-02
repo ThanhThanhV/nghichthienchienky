@@ -14,7 +14,7 @@ window.SPINE_EFFECT_CONFIG = {
 
     resolveEffects({ event, phase, heroCode, skillCode }) {
         const normalizedHeroCode = String(heroCode || "").trim().toLowerCase();
-        if (!["tohka_dark", "asuna_dark", "gojo", "iori"].includes(normalizedHeroCode)) {
+        if (!["tohka_dark", "asuna_dark", "gojo", "iori", "iori_dark", "kirito", "leloud", "leloud_dark", "thor", "thor_rak"].includes(normalizedHeroCode)) {
             return [];
         }
 
@@ -163,6 +163,190 @@ window.SPINE_EFFECT_CONFIG = {
                     impactRatio: 0.8
                 }
             },
+
+            KIRITO_BASIC_1: {
+                cast: {
+                    code: "kirito_basic_cast",
+                    file: "seffect_31517110111",
+                    animation: "animation_0",
+                    impactEvent: "qishou_11_1_1",
+                    anchor: "source"
+                },
+                impact: {
+                    code: "kirito_basic_impact",
+                    file: "seffect_31517110112",
+                    animation: "animation_1",
+                    impactEvents: ["hit_11_2_2", "hit_11_2_1"],
+                    anchor: "target"
+                }
+            },
+            KIRITO_ACTIVE_2: {
+                cast: {
+                    code: "kirito_active_cast",
+                    file: "seffect_31517110111",
+                    animation: "animation_1",
+                    impactEvent: "qishou_21_1_1",
+                    anchor: "source"
+                },
+                impact: {
+                    code: "kirito_active_impact",
+                    file: "seffect_31517110112",
+                    animation: "animation_2",
+                    impactEvents: [
+                        "hit_21_5_5",
+                        "hit_21_5_4",
+                        "hit_21_5_3",
+                        "hit_21_5_2",
+                        "hit_21_5_1"
+                    ],
+                    anchor: "enemy_formation"
+                }
+            },
+            KIRITO_ULTIMATE_3: {
+                cast: {
+                    code: "kirito_ultimate_cast",
+                    file: "seffect_31517110111",
+                    animation: "animation_2",
+                    impactEvent: "qishou_31_1_1",
+                    anchor: "source"
+                },
+                impact: {
+                    code: "kirito_ultimate_impact",
+                    file: "seffect_31517110112",
+                    animation: "animation_3",
+                    impactEvent: "hit_31_1_1",
+                    impactEvents: ["hit_31_1_1"],
+                    anchor: "enemy_formation"
+                }
+            },
+            LELOUD_BASIC_1: {
+                cast: {
+                    code: "leloud_basic_cast",
+                    file: "seffect_42515121011",
+                    animation: "animation_0",
+                    impactEvent: "qishou_1_1_1",
+                    anchor: "source"
+                },
+                impact: {
+                    code: "leloud_basic_impact",
+                    file: "seffect_42515121011",
+                    animation: "animation_1",
+                    impactEvent: "hit_1_1_1",
+                    impactEvents: ["hit_1_1_1"],
+                    anchor: "target"
+                }
+            },
+            LELOUD_ACTIVE_2: {
+                cast: {
+                    code: "leloud_active_cast",
+                    file: "seffect_42515121012",
+                    animation: "animation_1",
+                    impactEvents: [
+                        "qishou_11_4_4",
+                        "qishou_11_4_3",
+                        "qishou_11_4_2",
+                        "qishou_11_4_1"
+                    ],
+                    anchor: "source"
+                },
+                impact: {
+                    code: "leloud_active_impact",
+                    file: "seffect_42515121012",
+                    animation: "animation_2",
+                    impactEvent: "hit_11_1_1",
+                    impactEvents: ["hit_11_1_1"],
+                    anchor: "enemy_formation"
+                }
+            },
+            LELOUD_ULTIMATE_3: {
+                cast: {
+                    code: "leloud_ultimate_cast",
+                    file: "seffect_42515121013",
+                    animation: "animation_1",
+                    impactEvent: "qishou_21_1_1",
+                    anchor: "source"
+                },
+                impact: {
+                    code: "leloud_ultimate_impact",
+                    file: "seffect_42515121013",
+                    animation: "animation_2",
+                    impactEvents: [
+                        "hit_21_3_3",
+                        "hit_21_3_2",
+                        "hit_21_3_1"
+                    ],
+                    anchor: "enemy_formation"
+                }
+            },
+            THOR_BASIC_1: {
+                cast: {
+                    code: "thor_basic_cast",
+                    file: "seffect_43513121011",
+                    animation: "animation_0",
+                    impactEvents: ["qishou_1_2_2", "qishou_1_2_1"],
+                    anchor: "source"
+                }
+            },
+            THOR_ACTIVE_2: {
+                cast: {
+                    code: "thor_active_cast",
+                    file: "seffect_43513121011",
+                    animation: "animation_1",
+                    impactEvents: [
+                        "qishou_11_4_4",
+                        "qishou_11_4_3",
+                        "qishou_11_4_2",
+                        "qishou_11_4_1"
+                    ],
+                    anchor: "source"
+                }
+            },
+            THOR_ULTIMATE_3: {
+                cast: {
+                    code: "thor_ultimate_cast",
+                    file: "seffect_43513121012",
+                    animation: "animation_0",
+                    impactEvent: "qishou_21_1_1",
+                    anchor: "source"
+                }
+            },
+            THOR_RAK_BASIC_1: {
+                cast: {
+                    code: "thor_rak_basic_cast",
+                    file: "seffect_43517111011",
+                    animation: "animation_0",
+                    impactEvents: [
+                        "qishou_1_3_3",
+                        "qishou_1_3_2",
+                        "qishou_1_3_1"
+                    ],
+                    anchor: "source"
+                }
+            },
+            THOR_RAK_ACTIVE_2: {
+                cast: {
+                    code: "thor_rak_active_cast",
+                    file: "seffect_43517111012",
+                    animation: "animation_0",
+                    impactEvent: "qishou_11_1_1",
+                    anchor: "source"
+                }
+            },
+            THOR_RAK_ULTIMATE_3: {
+                cast: {
+                    code: "thor_rak_ultimate_cast",
+                    file: "seffect_43517111013",
+                    animation: "animation_0",
+                    impactEvents: [
+                        "qishou_21_5_5",
+                        "qishou_21_5_4",
+                        "qishou_21_5_3",
+                        "qishou_21_5_2",
+                        "qishou_21_5_1"
+                    ],
+                    anchor: "source"
+                }
+            },
             GOJO_BASIC_1: {
                 // animation_1 chứa hit_11_1_1 tại 0.1s.
                 impact: {
@@ -204,6 +388,15 @@ window.SPINE_EFFECT_CONFIG = {
                 }
             }        };
 
+        // Hai biến thể Hắc Ám dùng chung bộ effect theo cùng chuỗi faqi_1/11/21
+        // của skeleton gốc; skill code vẫn tách biệt theo hero.
+        definitions.IORI_DARK_BASIC_1 = definitions.IORI_BASIC_1;
+        definitions.IORI_DARK_ACTIVE_2 = definitions.IORI_ACTIVE_2;
+        definitions.IORI_DARK_ULTIMATE_3 = definitions.IORI_ULTIMATE_3;
+        definitions.LELOUD_DARK_BASIC_1 = definitions.LELOUD_BASIC_1;
+        definitions.LELOUD_DARK_ACTIVE_2 = definitions.LELOUD_ACTIVE_2;
+        definitions.LELOUD_DARK_ULTIMATE_3 = definitions.LELOUD_ULTIMATE_3;
+
         // Runtime hiện tại phát mã animation "tohka_active" ở event cast,
         // còn event DAMAGE dùng mã effect "skill_effect_2".
         // Alias Tohka chỉ áp dụng riêng cho hero tohka_dark.
@@ -223,6 +416,26 @@ window.SPINE_EFFECT_CONFIG = {
         }
 
         const texturePages = {
+            seffect_31517110111: [
+                "seffect_31517110111.png",
+                "seffect_315171101112.png"
+            ],
+            seffect_42515121012: [
+                "seffect_42515121012.png",
+                "seffect_425151210122.png"
+            ],
+            seffect_42515121013: [
+                "seffect_42515121013.png",
+                "seffect_425151210132.png"
+            ],
+            seffect_42515121014: [
+                "seffect_42515121014.png",
+                "seffect_425151210142.png"
+            ],
+            seffect_43513121011: [
+                "seffect_43513121011.png",
+                "seffect_435131210112.png"
+            ],
             // Iori active cast atlas sử dụng hai texture pages.
             seffect_51515121014: [
                 "seffect_51515121014.png",
