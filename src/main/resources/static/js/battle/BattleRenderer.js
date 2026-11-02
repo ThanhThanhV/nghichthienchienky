@@ -30,6 +30,7 @@ class BattleRenderer {
         this.eventDelay = options.eventDelay ?? 150;
         this.animationDelay = options.animationDelay ?? 350;
         this.transitionDelay = options.transitionDelay ?? 450;
+        this.hitStaggerDelay = options.hitStaggerDelay ?? 90;
         this.speed = 1;
         this.actionContext = null;
         this.fallbackTimings = {
@@ -350,8 +351,12 @@ class BattleRenderer {
     async renderDamage(event) {
         const character = this.getTargetCharacter(event);
 
-        // Hiệu ứng impact được đặt tại mục tiêu; event backend vẫn quyết định sát thương.
-        await this.effectManager?.playForEvent(event, "impact");
+        // DAMAGE từ backend chính là mốc impact. Không chờ tải effect impact,
+        // tránh làm số sát thương xuất hiện muộn hơn thời điểm va chạm.
+        const impactEffectPromise = this.effectManager?.playForEvent(event, "impact");
+        impactEffectPromise?.catch(error => {
+            console.warn("[BattleRenderer] Không phát được impact effect:", error);
+        });
 
         // Phát animation nhận sát thương.
         if (character) {
@@ -383,6 +388,8 @@ class BattleRenderer {
             }
         }
 
+        // Giãn nhẹ các hit liên tiếp của kỹ năng nhiều mục tiêu.
+        await this.delayScaled(this.hitStaggerDelay);
     }
 
     /**
