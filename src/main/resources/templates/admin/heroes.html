@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080d19">
+    <title>Admin · Quản lý tướng</title>
+    <link rel="stylesheet" th:href="@{/css/admin/heroes.css}">
+</head>
+<body>
+<main class="admin-shell">
+    <header class="admin-header">
+        <div>
+            <a class="back-link" th:href="@{/dashboard}">← ĐẠI SẢNH</a>
+            <p class="eyebrow">NGHỊCH THIÊN CHIẾN KÝ · ADMIN CONTROL</p>
+            <h1>QUẢN TRỊ TƯỚNG</h1>
+            <p class="subtitle">Quản lý danh mục nhân vật, chỉ số chiến đấu, kỹ năng và hiệu ứng.</p>
+        </div>
+        <a class="primary-button" th:href="@{/admin/heroes/new}">＋ THÊM TƯỚNG MỚI</a>
+    </header>
+
+    <nav class="admin-tabs">
+        <a class="active" th:href="@{/admin/heroes}">Danh sách tướng</a>
+        <a th:href="@{/admin/heroes/new}">Thêm tướng mới</a>
+        <a th:href="@{/spine-effects}">Spine Effect Lab</a>
+    </nav>
+
+    <section class="panel">
+        <div class="toolbar">
+            <input id="hero-search" type="search" placeholder="Tìm theo tên hoặc mã tướng...">
+            <select id="rarity-filter">
+                <option value="">Tất cả độ hiếm</option>
+                <option>COMMON</option><option>RARE</option><option>EPIC</option>
+                <option>LEGENDARY</option><option>MYTHIC</option>
+            </select>
+            <select id="status-filter">
+                <option value="">Tất cả trạng thái</option>
+                <option value="true">Đang bật</option>
+                <option value="false">Đang tắt</option>
+            </select>
+        </div>
+        <div id="hero-count" class="count-label">Đang tải danh sách...</div>
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Tướng</th><th>Mã</th><th>Độ hiếm</th><th>Vai trò</th><th>Phe</th><th>Trạng thái</th><th></th></tr></thead>
+                <tbody id="hero-list"><tr><td colspan="7" class="empty">Đang tải...</td></tr></tbody>
+            </table>
+        </div>
+        <p id="page-message" class="message" hidden></p>
+    </section>
+</main>
+<script th:src="@{/js/admin/heroes.js(v=1)}"></script>
+</body>
+</html>
