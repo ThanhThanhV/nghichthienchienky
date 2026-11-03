@@ -2,79 +2,55 @@ document.addEventListener("DOMContentLoaded", () => {
     loadPlayerProfile();
 });
 
-/**
- * Tải hồ sơ và tài nguyên của người chơi đang đăng nhập.
- * Dữ liệu được lấy từ backend, không sử dụng số dư do frontend tự cung cấp.
- */
+/** Tải hồ sơ và tài nguyên của người chơi đang đăng nhập. */
 async function loadPlayerProfile() {
     const errorElement = document.getElementById("dashboardError");
 
     try {
         const response = await fetch("/api/player/me", {
             method: "GET",
-            headers: {
-                "Accept": "application/json"
-            },
+            headers: { "Accept": "application/json" },
             credentials: "same-origin"
         });
 
         if (!response.ok) {
-            throw new Error("Không thể tải hồ sơ người chơi");
+            throw new Error("Không thể tải hồ sơ người chơi (HTTP " + response.status + ").");
         }
 
         const profile = await response.json();
-
         renderPlayerProfile(profile);
-
+        if (errorElement) errorElement.hidden = true;
     } catch (error) {
         console.error("Load player profile failed:", error);
-
-        errorElement.hidden = false;
+        if (errorElement) {
+            errorElement.hidden = false;
+            errorElement.textContent = error.message || "Không thể tải hồ sơ người chơi.";
+        }
     }
 }
 
-/**
- * Hiển thị thông tin hồ sơ người chơi lên Dashboard.
- *
- * @param {Object} profile Dữ liệu hồ sơ nhận từ backend
- */
+/** Render cấp độ và số dư tài nguyên được backend trả về. */
 function renderPlayerProfile(profile) {
-    document.getElementById("playerNickname").textContent =
-        profile.nickname || "Người tu luyện";
+    const playerId = document.getElementById("playerId");
+    const playerLevel = document.getElementById("playerLevel");
 
-    document.getElementById("playerId").textContent =
-        profile.playerId ?? "---";
+    if (playerId) playerId.textContent = profile.playerId ?? "---";
+    if (playerLevel) playerLevel.textContent = profile.playerLevel ?? 1;
 
-    document.querySelector(".player-level span").textContent =
-        profile.playerLevel ?? 1;
-
-    const resources = profile.resources || [];
-
-    resources.forEach(resource => {
-        const element = document.getElementById(
-            `resource-${resource.resourceCode}`
-        );
-
-        if (element) {
-            element.textContent = formatResource(resource.balance);
-        }
+    (profile.resources || []).forEach(resource => {
+        const element = document.getElementById("resource-" + resource.resourceCode);
+        if (element) element.textContent = formatResource(resource.balance);
 
         if (resource.resourceCode === "PLAYER_EXP") {
-            document.getElementById("playerExp").textContent =
-                formatResource(resource.balance);
+            const expElement = document.getElementById("playerExp");
+            if (expElement) expElement.textContent = formatResource(resource.balance);
         }
     });
 }
 
-/**
- * Định dạng số lượng tài nguyên để hiển thị trên giao diện.
- *
- * @param {number|string} value Số lượng tài nguyên
- * @return {string} Giá trị đã định dạng
- */
+/** Định dạng số lượng tài nguyên theo locale Việt Nam. */
 function formatResource(value) {
     const number = Number(value || 0);
-
     return new Intl.NumberFormat("vi-VN", {
         maximumFractionDigits: 2
     }).format(number);
