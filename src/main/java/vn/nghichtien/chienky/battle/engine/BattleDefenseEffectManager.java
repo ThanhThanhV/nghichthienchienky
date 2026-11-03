@@ -43,21 +43,41 @@ public class BattleDefenseEffectManager {
      *
      * Nếu có nhiều hiệu ứng né, xác suất được cộng lại và giới hạn 100%.
      */
-    public boolean tryEvade() {
-        BigDecimal chance = effects.stream()
+    public boolean tryEvade(BigDecimal accuracy) {
+        BigDecimal effectiveAccuracy = accuracy == null
+                ? BigDecimal.ZERO
+                : accuracy.max(BigDecimal.ZERO).min(new BigDecimal("100"));
+
+        BigDecimal evasionChance = effects.stream()
                 .filter(effect ->
                         effect.getType() == BattleEffectType.EVASION)
                 .map(BattleDefenseEffect::getValue)
                 .reduce(BigDecimal.ZERO, BigDecimal::add)
                 .min(BigDecimal.ONE);
 
-        if (chance.signum() <= 0) {
+        // ACCURACY/RESISTANCE/CRIT dùng thang 0..100; EVASION dùng 0..1.
+        // Mỗi 1 điểm ACCURACY triệt tiêu 1 điểm phần trăm né tránh.
+        BigDecimal accuracyChance = effectiveAccuracy
+                .divide(new BigDecimal("100"), 8, RoundingMode.HALF_UP);
+        BigDecimal finalChance = evasionChance
+                .subtract(accuracyChance)
+                .max(BigDecimal.ZERO)
+                .min(BigDecimal.ONE);
+
+        if (finalChance.signum() <= 0) {
             return false;
         }
 
         double random = ThreadLocalRandom.current().nextDouble();
 
-        return BigDecimal.valueOf(random).compareTo(chance) < 0;
+        return BigDecimal.valueOf(random).compareTo(finalChance) < 0;
+    }
+
+    /**
+     * Tương thích với các vị trí gọi cũ chưa truyền ACCURACY.
+     */
+    public boolean tryEvade() {
+        return tryEvade(BigDecimal.ZERO);
     }
 
     /**
