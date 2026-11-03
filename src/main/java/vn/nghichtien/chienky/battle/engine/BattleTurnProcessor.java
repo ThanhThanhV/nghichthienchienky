@@ -65,6 +65,18 @@ public class BattleTurnProcessor {
                 "Round " + round + " started"
         );
 
+        // Nội tại BATTLE_START có thể kết thúc trận; không tick DOT/HOT
+        // hoặc phát sinh thêm hành động sau khi kết quả đã được xác định.
+        if (battle.checkFinished()) {
+            collector.record(
+                    BattleEventType.ROUND_END,
+                    null, null, null, null, null, null,
+                    null, null, null, null, null, null, null,
+                    "Round " + round + " finished"
+            );
+            return;
+        }
+
         // DOT/HOT tick một lần sau ROUND_START và trước hành động của round.
         int periodicEventStartIndex = collector.getEvents().size();
         effectProcessor.tickPeriodicEffects(battle);
