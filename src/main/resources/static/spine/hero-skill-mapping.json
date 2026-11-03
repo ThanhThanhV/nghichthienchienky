@@ -93,6 +93,100 @@
         "scale": 0.2,
         "displayScale": 0.2,
         "layer": "FRONT"
+      },
+      "_TAB_HERO_SOURCE": {
+        "tabHeroId": "31514",
+        "sourceHeroCode": "asuna_dark",
+        "name": "Asuna",
+        "role": "Chiến Binh",
+        "normalAttackId": 315140,
+        "skillGroupIds": [
+          "315141",
+          "315142",
+          "315143",
+          "315144"
+        ],
+        "baseStatsRaw": {
+          "hp": 1051500,
+          "atk": 221200,
+          "def": 60000,
+          "speed": 53300
+        },
+        "baseStatsScaled": {
+          "hp": "1051.500",
+          "atk": "221.200",
+          "def": "60.000",
+          "speed": "53.300"
+        },
+        "initialAttributes": "{{2,720},{3,153},{4,46},{5,96},{105,10000},{106,15000}}",
+        "variantSourceHeroCode": null
+      },
+      "_TAB_SKILL_BINDINGS": {
+        "ASUNA_DARK_BASIC_1": {
+          "tabGroupId": "315140",
+          "tabSkillId": "3151401",
+          "sourceHeroId": "31514",
+          "sourceHeroCode": "asuna_dark",
+          "runtimeSkillType": "BASIC",
+          "tabType": 1,
+          "tabSkillType": 1,
+          "name": "Đánh Thường",
+          "description": "Asuna",
+          "icon": 10002,
+          "script": "$2#31514010"
+        },
+        "ASUNA_DARK_ACTIVE_2": {
+          "tabGroupId": "315141",
+          "tabSkillId": "3151411",
+          "sourceHeroId": "31514",
+          "sourceHeroCode": "asuna_dark",
+          "runtimeSkillType": "ACTIVE",
+          "tabType": 2,
+          "tabSkillType": 2,
+          "name": "Horizontal Square",
+          "description": "Thi triển kỹ năng kiếm cao siêu, gây cho địch hàng trước và giữa 89% sát thương vật lý, 50% kèm trạng thái {Mất HP}; duy trì 3 lượt; nếu mục tiêu là hệ Tank, tăng thêm sát thương bằng 7% giới hạn HP cho mục tiêu (Không vượt quá 10 lần lực công bản thân)",
+          "icon": 3151411,
+          "script": "$10#31514110&31514110"
+        },
+        "ASUNA_DARK_PASSIVE_3": {
+          "tabGroupId": "315142",
+          "tabSkillId": "3151421",
+          "sourceHeroId": "31514",
+          "sourceHeroCode": "asuna_dark",
+          "runtimeSkillType": "PASSIVE",
+          "tabType": 3,
+          "tabSkillType": 3,
+          "name": "Ánh Sáng Lấp Lánh",
+          "description": "Asuna có vũ khí cấp tối đa xuất hiện ở Aincrad, tuyệt phẩm độc nhất vô nhị do Lisbeth tạo ra, HP tăng 20%, tấn công tăng 10%, tốc độ tăng 5",
+          "icon": 3151421,
+          "script": "null"
+        },
+        "ASUNA_DARK_ULTIMATE_4": {
+          "tabGroupId": "315143",
+          "tabSkillId": "3151431",
+          "sourceHeroId": "31514",
+          "sourceHeroCode": "asuna_dark",
+          "runtimeSkillType": "ULTIMATE",
+          "tabType": 2,
+          "tabSkillType": 2,
+          "name": "Tia chớp đâm xuyên",
+          "description": "Dồn lực đột kích kẻ địch phía trước, gây ra 248% sát thương vật lý lên kẻ địch có HP thấp nhất, nếu mục tiêu ở trạng thái {Mất HP} hàng loạt, nhất định bạo kích",
+          "icon": 3151431,
+          "script": "$24#31514310&31514310"
+        },
+        "ASUNA_DARK_PASSIVE_5": {
+          "tabGroupId": "315144",
+          "tabSkillId": "3151441",
+          "sourceHeroId": "31514",
+          "sourceHeroCode": "asuna_dark",
+          "runtimeSkillType": "PASSIVE",
+          "tabType": 3,
+          "tabSkillType": 3,
+          "name": "Quỷ Công Lược",
+          "description": "Thi triển kỹ năng kiếm cao siêu, lấy tốc độ nhanh nhất chỉnh thành trạng thái tốt nhất của bản thân, sát thương đối với đơn vị {Mất HP} hàng loạt tăng 10%",
+          "icon": 3151441,
+          "script": "$32?31514410"
+        }
       }
     },
     "gojo": {
@@ -106,7 +200,8 @@
       "skillAnimations": {
         "GOJO_BASIC_1": "att",
         "GOJO_ACTIVE_2": "ultimateskill",
-        "GOJO_ULTIMATE_3": "ultimateskill",
+        "GOJO_PASSIVE_3": "skill",
+        "GOJO_PASSIVE_4": "skill",
         "GOJO_PASSIVE_5": "skill"
       },
       "_BASIC_ATTACK": {
@@ -209,6 +304,120 @@
             "impactEvent": "qishou_21_1_1",
             "anchor": "source"
           }
+        },
+        "GOJO_PASSIVE_3": {
+          "cast": {
+            "code": "gojo_luc_nhan_chase",
+            "file": "seffect_52517111013",
+            "animation": "animation_0",
+            "impactEvents": [
+              "qishou_21_1_1"
+            ],
+            "anchor": "source"
+          }
+        },
+        "GOJO_PASSIVE_4": {
+          "cast": {
+            "code": "gojo_infinity_passive",
+            "file": "seffect_52517111011",
+            "animation": "animation_0",
+            "impactEvent": "qishou_1_1_1",
+            "anchor": "source"
+          }
+        }
+      },
+      "_TAB_HERO_SOURCE": {
+        "tabHeroId": "52517",
+        "sourceHeroCode": "gojo",
+        "name": "Gojo Satoru",
+        "role": "Pháp Sư",
+        "normalAttackId": 525170,
+        "skillGroupIds": [
+          "525171",
+          "525172",
+          "525173",
+          "525174"
+        ],
+        "baseStatsRaw": {
+          "hp": 1198300,
+          "atk": 243700,
+          "def": 63800,
+          "speed": 55100
+        },
+        "baseStatsScaled": {
+          "hp": "1198.300",
+          "atk": "243.700",
+          "def": "63.800",
+          "speed": "55.100"
+        },
+        "initialAttributes": "{{2,832},{3,182},{4,50},{5,125},{105,10000},{106,15000}}",
+        "variantSourceHeroCode": null
+      },
+      "_TAB_SKILL_BINDINGS": {
+        "GOJO_BASIC_1": {
+          "tabGroupId": "525170",
+          "tabSkillId": "5251701",
+          "sourceHeroId": "52517",
+          "sourceHeroCode": "gojo",
+          "runtimeSkillType": "BASIC",
+          "tabType": 1,
+          "tabSkillType": 1,
+          "name": "Đánh Thường",
+          "description": "Gojo Satoru",
+          "icon": 10002,
+          "script": "$2#52517010"
+        },
+        "GOJO_PASSIVE_2": {
+          "tabGroupId": "525171",
+          "tabSkillId": "5251711",
+          "sourceHeroId": "52517",
+          "sourceHeroCode": "gojo",
+          "runtimeSkillType": "PASSIVE",
+          "tabType": 3,
+          "tabSkillType": 3,
+          "name": "Thuật thức Phản Chuyển-Hách",
+          "description": "10 lượt đầu tiên, bản thân không hành động, nhưng khi địch hành động tăng sát thương ma pháp bằng 97% lực công cho địch; sau 10 lượt dùng thêm đánh thường (hệ số sát thương 50%) để tấn công",
+          "icon": 5251711,
+          "script": "$32?52517110"
+        },
+        "GOJO_PASSIVE_3": {
+          "tabGroupId": "525172",
+          "tabSkillId": "5251721",
+          "sourceHeroId": "52517",
+          "sourceHeroCode": "gojo",
+          "runtimeSkillType": "PASSIVE",
+          "tabType": 3,
+          "tabSkillType": 3,
+          "name": "Chú thuật Vô Hạ Hạn",
+          "description": "Thuật thức tương truyền của gia tộc Gojo; tấn công tăng 20%, HP tăng 10%, bạo kích tăng 5%",
+          "icon": 5251721,
+          "script": "null"
+        },
+        "GOJO_PASSIVE_4": {
+          "tabGroupId": "525173",
+          "tabSkillId": "5251731",
+          "sourceHeroId": "52517",
+          "sourceHeroCode": "gojo",
+          "runtimeSkillType": "PASSIVE",
+          "tabType": 3,
+          "tabSkillType": 3,
+          "name": "Lục Nhãn",
+          "description": "Khi bắt đầu chiến đấu, tăng cho bản thân 5 tầng miễn sát thương 3%, duy trì 4 lượt; khi địch tử vong, tăng cho bản thân 6% công, tối đa cộng dồn 3 tầng, tất cả trạng thái buff đều không thể thanh tẩy; khi đơn thể địch hồi sinh, truy sát mục tiêu, gây ra 10% sát thương ma pháp",
+          "icon": 5251731,
+          "script": "$32?52517311?52517311?52517311?52517311?52517311?52517310"
+        },
+        "GOJO_ACTIVE_5": {
+          "tabGroupId": "525174",
+          "tabSkillId": "5251741",
+          "sourceHeroId": "52517",
+          "sourceHeroCode": "gojo",
+          "runtimeSkillType": "ACTIVE",
+          "tabType": 3,
+          "tabSkillType": 3,
+          "name": "Triển khai {Khoảng Trống Vô Tận}",
+          "description": "Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 15%",
+          "icon": 5251741,
+          "script": "$32?52517411"
         }
       }
     },
@@ -355,6 +564,100 @@
         "scale": 0.2,
         "displayScale": 0.2,
         "layer": "FRONT"
+      },
+      "_TAB_HERO_SOURCE": {
+        "tabHeroId": "51515",
+        "sourceHeroCode": "iori",
+        "name": "Iori",
+        "role": "Chiến Binh",
+        "normalAttackId": 515150,
+        "skillGroupIds": [
+          "515151",
+          "515152",
+          "515153",
+          "515154"
+        ],
+        "baseStatsRaw": {
+          "hp": 1136400,
+          "atk": 237600,
+          "def": 65100,
+          "speed": 57300
+        },
+        "baseStatsScaled": {
+          "hp": "1136.400",
+          "atk": "237.600",
+          "def": "65.100",
+          "speed": "57.300"
+        },
+        "initialAttributes": "{{2,799},{3,160},{4,50},{5,107},{105,10000},{106,15000}}",
+        "variantSourceHeroCode": null
+      },
+      "_TAB_SKILL_BINDINGS": {
+        "IORI_BASIC_1": {
+          "tabGroupId": "515150",
+          "tabSkillId": "5151501",
+          "sourceHeroId": "51515",
+          "sourceHeroCode": "iori",
+          "runtimeSkillType": "BASIC",
+          "tabType": 1,
+          "tabSkillType": 1,
+          "name": "Đánh Thường",
+          "description": "Iori",
+          "icon": 10002,
+          "script": "$2#51515010"
+        },
+        "IORI_ACTIVE_2": {
+          "tabGroupId": "515151",
+          "tabSkillId": "5151511",
+          "sourceHeroId": "51515",
+          "sourceHeroCode": "iori",
+          "runtimeSkillType": "ACTIVE",
+          "tabType": 2,
+          "tabSkillType": 2,
+          "name": "Viêm Âu",
+          "description": "Nhảy lên đè đối thủ xuống đất và dùng Quỷ Thiêu truy kích, kỹ năng này bỏ qua khống chế, gây 144% ST vật lý cho 2 mục tiêu địch ngẫu nhiên, gây thêm sát thương bằng 3% giới hạn HP mục tiêu cho Tank, Hỗ Trợ (Không vượt quá 2 lần lực công bản thân)",
+          "icon": 5151511,
+          "script": "$16#51515110&51515110"
+        },
+        "IORI_PASSIVE_3": {
+          "tabGroupId": "515152",
+          "tabSkillId": "5151521",
+          "sourceHeroId": "51515",
+          "sourceHeroCode": "iori",
+          "runtimeSkillType": "PASSIVE",
+          "tabType": 3,
+          "tabSkillType": 3,
+          "name": "Sức Mạnh Thương Viêm",
+          "description": "Lửa sức mạnh của nhà Bát Thần, tấn công tăng 20%, HP tăng 10%, sau khi vào chiến đấu phòng thủ tăng thêm 5%",
+          "icon": 5151521,
+          "script": "$32?104005"
+        },
+        "IORI_ULTIMATE_4": {
+          "tabGroupId": "515153",
+          "tabSkillId": "5151531",
+          "sourceHeroId": "51515",
+          "sourceHeroCode": "iori",
+          "runtimeSkillType": "ULTIMATE",
+          "tabType": 2,
+          "tabSkillType": 2,
+          "name": "Yatagarasu",
+          "description": "Dùng {8 Ly Rượu} đánh úp đối thủ, {Yatagara} tiến đánh bằng vết móng xanh nóng, kỹ năng này bỏ qua khống chế, tăng 10% bạo kích, tạo 150% ST vật lý cho 3 mục tiêu lực công cao nhất của địch",
+          "icon": 5151531,
+          "script": "($32?51515310)($22#51515310)"
+        },
+        "IORI_PASSIVE_5": {
+          "tabGroupId": "515154",
+          "tabSkillId": "5151541",
+          "sourceHeroId": "51515",
+          "sourceHeroCode": "iori",
+          "runtimeSkillType": "PASSIVE",
+          "tabType": 3,
+          "tabSkillType": 3,
+          "name": "Banned",
+          "description": "Khi tấn công chính xác, nếu HP bản thân >40%, sát thương lần này tăng 10%, nếu không, 20% sát thương lần này chuyển thành HP bản thân; khi chủ động đánh thường, có 30% thêm thi triển {Banned}, gây thêm 134% sát thương vật lý",
+          "icon": 5151541,
+          "script": "$32?51515410"
+        }
       }
     },
     "iori_dark": {
@@ -475,6 +778,100 @@
         "scale": 0.2,
         "displayScale": 0.2,
         "layer": "FRONT"
+      },
+      "_TAB_HERO_SOURCE": {
+        "tabHeroId": "51515",
+        "sourceHeroCode": "iori",
+        "name": "Iori",
+        "role": "Chiến Binh",
+        "normalAttackId": 515150,
+        "skillGroupIds": [
+          "515151",
+          "515152",
+          "515153",
+          "515154"
+        ],
+        "baseStatsRaw": {
+          "hp": 1136400,
+          "atk": 237600,
+          "def": 65100,
+          "speed": 57300
+        },
+        "baseStatsScaled": {
+          "hp": "1136.400",
+          "atk": "237.600",
+          "def": "65.100",
+          "speed": "57.300"
+        },
+        "initialAttributes": "{{2,799},{3,160},{4,50},{5,107},{105,10000},{106,15000}}",
+        "variantSourceHeroCode": "iori"
+      },
+      "_TAB_SKILL_BINDINGS": {
+        "IORI_DARK_BASIC_1": {
+          "tabGroupId": "515150",
+          "tabSkillId": "5151501",
+          "sourceHeroId": "51515",
+          "sourceHeroCode": "iori",
+          "runtimeSkillType": "BASIC",
+          "tabType": 1,
+          "tabSkillType": 1,
+          "name": "Đánh Thường",
+          "description": "Iori",
+          "icon": 10002,
+          "script": "$2#51515010"
+        },
+        "IORI_DARK_ACTIVE_2": {
+          "tabGroupId": "515151",
+          "tabSkillId": "5151511",
+          "sourceHeroId": "51515",
+          "sourceHeroCode": "iori",
+          "runtimeSkillType": "ACTIVE",
+          "tabType": 2,
+          "tabSkillType": 2,
+          "name": "Viêm Âu",
+          "description": "Nhảy lên đè đối thủ xuống đất và dùng Quỷ Thiêu truy kích, kỹ năng này bỏ qua khống chế, gây 144% ST vật lý cho 2 mục tiêu địch ngẫu nhiên, gây thêm sát thương bằng 3% giới hạn HP mục tiêu cho Tank, Hỗ Trợ (Không vượt quá 2 lần lực công bản thân)",
+          "icon": 5151511,
+          "script": "$16#51515110&51515110"
+        },
+        "IORI_DARK_PASSIVE_3": {
+          "tabGroupId": "515152",
+          "tabSkillId": "5151521",
+          "sourceHeroId": "51515",
+          "sourceHeroCode": "iori",
+          "runtimeSkillType": "PASSIVE",
+          "tabType": 3,
+          "tabSkillType": 3,
+          "name": "Sức Mạnh Thương Viêm",
+          "description": "Lửa sức mạnh của nhà Bát Thần, tấn công tăng 20%, HP tăng 10%, sau khi vào chiến đấu phòng thủ tăng thêm 5%",
+          "icon": 5151521,
+          "script": "$32?104005"
+        },
+        "IORI_DARK_ULTIMATE_4": {
+          "tabGroupId": "515153",
+          "tabSkillId": "5151531",
+          "sourceHeroId": "51515",
+          "sourceHeroCode": "iori",
+          "runtimeSkillType": "ULTIMATE",
+          "tabType": 2,
+          "tabSkillType": 2,
+          "name": "Yatagarasu",
+          "description": "Dùng {8 Ly Rượu} đánh úp đối thủ, {Yatagara} tiến đánh bằng vết móng xanh nóng, kỹ năng này bỏ qua khống chế, tăng 10% bạo kích, tạo 150% ST vật lý cho 3 mục tiêu lực công cao nhất của địch",
+          "icon": 5151531,
+          "script": "($32?51515310)($22#51515310)"
+        },
+        "IORI_DARK_PASSIVE_5": {
+          "tabGroupId": "515154",
+          "tabSkillId": "5151541",
+          "sourceHeroId": "51515",
+          "sourceHeroCode": "iori",
+          "runtimeSkillType": "PASSIVE",
+          "tabType": 3,
+          "tabSkillType": 3,
+          "name": "Banned",
+          "description": "Khi tấn công chính xác, nếu HP bản thân >40%, sát thương lần này tăng 10%, nếu không, 20% sát thương lần này chuyển thành HP bản thân; khi chủ động đánh thường, có 30% thêm thi triển {Banned}, gây thêm 134% sát thương vật lý",
+          "icon": 5151541,
+          "script": "$32?51515410"
+        }
       }
     },
     "kirito": {
@@ -608,6 +1005,100 @@
         "scale": 0.2,
         "displayScale": 0.2,
         "layer": "FRONT"
+      },
+      "_TAB_HERO_SOURCE": {
+        "tabHeroId": "31517",
+        "sourceHeroCode": "kirito",
+        "name": "Kirito",
+        "role": "Chiến Binh",
+        "normalAttackId": 315170,
+        "skillGroupIds": [
+          "315171",
+          "315172",
+          "315173",
+          "315174"
+        ],
+        "baseStatsRaw": {
+          "hp": 1031200,
+          "atk": 217300,
+          "def": 58900,
+          "speed": 53800
+        },
+        "baseStatsScaled": {
+          "hp": "1031.200",
+          "atk": "217.300",
+          "def": "58.900",
+          "speed": "53.800"
+        },
+        "initialAttributes": "{{2,761},{3,154},{4,49},{5,98},{105,10000},{106,15000}}",
+        "variantSourceHeroCode": null
+      },
+      "_TAB_SKILL_BINDINGS": {
+        "KIRITO_BASIC_1": {
+          "tabGroupId": "315170",
+          "tabSkillId": "3151701",
+          "sourceHeroId": "31517",
+          "sourceHeroCode": "kirito",
+          "runtimeSkillType": "BASIC",
+          "tabType": 1,
+          "tabSkillType": 1,
+          "name": "Đánh Thường",
+          "description": "Kirito",
+          "icon": 10002,
+          "script": "$2#31517010"
+        },
+        "KIRITO_ACTIVE_2": {
+          "tabGroupId": "315171",
+          "tabSkillId": "3151711",
+          "sourceHeroId": "31517",
+          "sourceHeroCode": "kirito",
+          "runtimeSkillType": "ACTIVE",
+          "tabType": 2,
+          "tabSkillType": 2,
+          "name": "Trảm Kép Hình Quạt",
+          "description": "Kirito dùng {Dual Blades} đột ngột tấn công với kỹ năng {Trảm Kép Hình Quạt} gây ra 151% ST vật lý lên 2 mục tiêu ngẫu nhiên phe địch (ưu tiên chiến binh), 40% tỷ lệ kèm {Không Ngừng Mất HP}, duy trì 2 lượt, trạng thái này xem như mất HP, không thể thanh tẩy.",
+          "icon": 3151711,
+          "script": "$87#31517110&31517110"
+        },
+        "KIRITO_PASSIVE_3": {
+          "tabGroupId": "315172",
+          "tabSkillId": "3151721",
+          "sourceHeroId": "31517",
+          "sourceHeroCode": "kirito",
+          "runtimeSkillType": "PASSIVE",
+          "tabType": 3,
+          "tabSkillType": 3,
+          "name": "Kẻ Gian Lận",
+          "description": "Kirito hiểu cơ chế game sớm hơn người khác, còn có ưu thế hơn; tấn công tăng 20%, HP tăng 10%, bạo kích tăng 5%",
+          "icon": 3151721,
+          "script": "null"
+        },
+        "KIRITO_ULTIMATE_4": {
+          "tabGroupId": "315173",
+          "tabSkillId": "3151731",
+          "sourceHeroId": "31517",
+          "sourceHeroCode": "kirito",
+          "runtimeSkillType": "ULTIMATE",
+          "tabType": 2,
+          "tabSkillType": 2,
+          "name": "Star Burst Stream",
+          "description": "Kirito dùng {Dual Blades} đạt kỹ năng kiếm {Star Burst Stream} trước rồi phát động tấn công 2 lần, gây 124% x2 sát thương cho mục tiêu HP thấp nhất phe địch",
+          "icon": 3151731,
+          "script": "($24#31517310&31517310)($24#31517311&31517310)"
+        },
+        "KIRITO_PASSIVE_5": {
+          "tabGroupId": "315174",
+          "tabSkillId": "3151741",
+          "sourceHeroId": "31517",
+          "sourceHeroCode": "kirito",
+          "runtimeSkillType": "PASSIVE",
+          "tabType": 3,
+          "tabSkillType": 3,
+          "name": "Dual Blades",
+          "description": "Tốc độ phản ứng nhanh nhất còn nhận kỹ năng {Dual Blades}, khi dùng đồng thời trang bị {Elucidator} và {Dark Repulsor}; tỷ lệ kích hoạt hiệu quả mất HP tăng 10%, khi sát thương mất HP sinh hiệu lực, kèm sát thương bằng 5% lực công Kirito",
+          "icon": 3151741,
+          "script": "$32?31517410"
+        }
       }
     },
     "leloud": {
@@ -744,6 +1235,100 @@
         "scale": 0.2,
         "displayScale": 0.2,
         "layer": "FRONT"
+      },
+      "_TAB_HERO_SOURCE": {
+        "tabHeroId": "42515",
+        "sourceHeroCode": "leloud",
+        "name": "Lelouch",
+        "role": "Pháp Sư",
+        "normalAttackId": 425150,
+        "skillGroupIds": [
+          "425151",
+          "425152",
+          "425153",
+          "425154"
+        ],
+        "baseStatsRaw": {
+          "hp": 1215900,
+          "atk": 251700,
+          "def": 65100,
+          "speed": 57300
+        },
+        "baseStatsScaled": {
+          "hp": "1215.900",
+          "atk": "251.700",
+          "def": "65.100",
+          "speed": "57.300"
+        },
+        "initialAttributes": "{{2,878},{3,171},{4,50},{5,111},{105,10000},{106,15000}}",
+        "variantSourceHeroCode": null
+      },
+      "_TAB_SKILL_BINDINGS": {
+        "LELOUD_BASIC_1": {
+          "tabGroupId": "425150",
+          "tabSkillId": "4251501",
+          "sourceHeroId": "42515",
+          "sourceHeroCode": "leloud",
+          "runtimeSkillType": "BASIC",
+          "tabType": 1,
+          "tabSkillType": 1,
+          "name": "Đánh Thường",
+          "description": "Lelouch",
+          "icon": 10002,
+          "script": "$2#42515010"
+        },
+        "LELOUD_ACTIVE_2": {
+          "tabGroupId": "425151",
+          "tabSkillId": "4251511",
+          "sourceHeroId": "42515",
+          "sourceHeroCode": "leloud",
+          "runtimeSkillType": "ACTIVE",
+          "tabType": 2,
+          "tabSkillType": 2,
+          "name": "Geass",
+          "description": "Gây cho 3 mục tiêu ngẫu nhiên 105% sát thương ma pháp, 60% kèm {Geass}, khiến sát thương ma pháp phải chịu của mục tiêu tăng 10%, duy trì 2 lượt",
+          "icon": 4251511,
+          "script": "$17#42515110&42515110"
+        },
+        "LELOUD_PASSIVE_3": {
+          "tabGroupId": "425152",
+          "tabSkillId": "4251521",
+          "sourceHeroId": "42515",
+          "sourceHeroCode": "leloud",
+          "runtimeSkillType": "PASSIVE",
+          "tabType": 3,
+          "tabSkillType": 3,
+          "name": "Mệnh Lệnh Tuyệt Đối",
+          "description": "Mọi người đều là con cờ của ta; công tăng 20%, HP tăng 10%, bạo kích tăng 5%",
+          "icon": 4251521,
+          "script": "null"
+        },
+        "LELOUD_ULTIMATE_4": {
+          "tabGroupId": "425153",
+          "tabSkillId": "4251531",
+          "sourceHeroId": "42515",
+          "sourceHeroCode": "leloud",
+          "runtimeSkillType": "ULTIMATE",
+          "tabType": 2,
+          "tabSkillType": 2,
+          "name": "Pháo Kích Cường Lạp Tử",
+          "description": "Gây cho toàn thể địch 120% ST ma pháp, sau khi thi triển kỹ năng, kèm cho mục tiêu HP thấp nhất phe địch {Mệnh Lệnh Chiến Thuật-ATK}, không thể thanh tẩy, duy trì 2 lượt. Đơn vị mang hiệu quả {Mệnh Lệnh Chiến Thuật-ATK} tăng 10% sát thương phải chịu và trở thành một trong những mục tiêu",
+          "icon": 4251531,
+          "script": "($19#42515310)($24?42515310)"
+        },
+        "LELOUD_PASSIVE_5": {
+          "tabGroupId": "425154",
+          "tabSkillId": "4251541",
+          "sourceHeroId": "42515",
+          "sourceHeroCode": "leloud",
+          "runtimeSkillType": "PASSIVE",
+          "tabType": 3,
+          "tabSkillType": 3,
+          "name": "Ném Bom Chiến Thuật",
+          "description": "Bị sát thương 1 lần sẽ không vượt quá 60% giới hạn HP bản thân; khi Lelouch tấn công, nếu HP bị địch tấn công > 60% thì lần tấn công này nhận thêm 8% tăng ST;",
+          "icon": 4251541,
+          "script": "$32?42515410?42515412"
+        }
       }
     },
     "leloud_dark": {
@@ -764,7 +1349,71 @@
       "_BASIC_ATTACK": {
         "movement": "DASH"
       },
-      "_SKILL_EFFECTS": {},
+      "_SKILL_EFFECTS": {
+        "LELOUD_BASIC_1": {
+          "cast": {
+            "code": "leloud_dark_basic_cast",
+            "file": "seffect_42515121011",
+            "animation": "animation_0",
+            "impactEvent": "qishou_1_1_1",
+            "anchor": "source"
+          },
+          "impact": {
+            "code": "leloud_dark_basic_impact",
+            "file": "seffect_42515121011",
+            "animation": "animation_1",
+            "impactEvent": "hit_1_1_1",
+            "impactEvents": [
+              "hit_1_1_1"
+            ],
+            "anchor": "target"
+          }
+        },
+        "LELOUD_ACTIVE_2": {
+          "cast": {
+            "code": "leloud_dark_active_cast",
+            "file": "seffect_42515121012",
+            "animation": "animation_1",
+            "impactEvents": [
+              "qishou_11_4_4",
+              "qishou_11_4_3",
+              "qishou_11_4_2",
+              "qishou_11_4_1"
+            ],
+            "anchor": "source"
+          },
+          "impact": {
+            "code": "leloud_dark_active_impact",
+            "file": "seffect_42515121012",
+            "animation": "animation_2",
+            "impactEvent": "hit_11_1_1",
+            "impactEvents": [
+              "hit_11_1_1"
+            ],
+            "anchor": "enemy_formation"
+          }
+        },
+        "LELOUD_ULTIMATE_3": {
+          "cast": {
+            "code": "leloud_dark_ultimate_cast",
+            "file": "seffect_42515121013",
+            "animation": "animation_1",
+            "impactEvent": "qishou_21_1_1",
+            "anchor": "source"
+          },
+          "impact": {
+            "code": "leloud_dark_ultimate_impact",
+            "file": "seffect_42515121013",
+            "animation": "animation_2",
+            "impactEvents": [
+              "hit_21_3_3",
+              "hit_21_3_2",
+              "hit_21_3_1"
+            ],
+            "anchor": "enemy_formation"
+          }
+        }
+      },
       "_SKILL_EFFECT_ALIASES": {},
       "_SPINE_EFFECT_BASE_PATH": "/assets/spine/seffects/",
       "_SPINE_EFFECT_TEXTURE_PAGES": {
@@ -816,6 +1465,100 @@
         "scale": 0.2,
         "displayScale": 0.2,
         "layer": "FRONT"
+      },
+      "_TAB_HERO_SOURCE": {
+        "tabHeroId": "42515",
+        "sourceHeroCode": "leloud",
+        "name": "Lelouch",
+        "role": "Pháp Sư",
+        "normalAttackId": 425150,
+        "skillGroupIds": [
+          "425151",
+          "425152",
+          "425153",
+          "425154"
+        ],
+        "baseStatsRaw": {
+          "hp": 1215900,
+          "atk": 251700,
+          "def": 65100,
+          "speed": 57300
+        },
+        "baseStatsScaled": {
+          "hp": "1215.900",
+          "atk": "251.700",
+          "def": "65.100",
+          "speed": "57.300"
+        },
+        "initialAttributes": "{{2,878},{3,171},{4,50},{5,111},{105,10000},{106,15000}}",
+        "variantSourceHeroCode": "leloud"
+      },
+      "_TAB_SKILL_BINDINGS": {
+        "LELOUD_DARK_BASIC_1": {
+          "tabGroupId": "425150",
+          "tabSkillId": "4251501",
+          "sourceHeroId": "42515",
+          "sourceHeroCode": "leloud",
+          "runtimeSkillType": "BASIC",
+          "tabType": 1,
+          "tabSkillType": 1,
+          "name": "Đánh Thường",
+          "description": "Lelouch",
+          "icon": 10002,
+          "script": "$2#42515010"
+        },
+        "LELOUD_DARK_ACTIVE_2": {
+          "tabGroupId": "425151",
+          "tabSkillId": "4251511",
+          "sourceHeroId": "42515",
+          "sourceHeroCode": "leloud",
+          "runtimeSkillType": "ACTIVE",
+          "tabType": 2,
+          "tabSkillType": 2,
+          "name": "Geass",
+          "description": "Gây cho 3 mục tiêu ngẫu nhiên 105% sát thương ma pháp, 60% kèm {Geass}, khiến sát thương ma pháp phải chịu của mục tiêu tăng 10%, duy trì 2 lượt",
+          "icon": 4251511,
+          "script": "$17#42515110&42515110"
+        },
+        "LELOUD_DARK_PASSIVE_3": {
+          "tabGroupId": "425152",
+          "tabSkillId": "4251521",
+          "sourceHeroId": "42515",
+          "sourceHeroCode": "leloud",
+          "runtimeSkillType": "PASSIVE",
+          "tabType": 3,
+          "tabSkillType": 3,
+          "name": "Mệnh Lệnh Tuyệt Đối",
+          "description": "Mọi người đều là con cờ của ta; công tăng 20%, HP tăng 10%, bạo kích tăng 5%",
+          "icon": 4251521,
+          "script": "null"
+        },
+        "LELOUD_DARK_ULTIMATE_4": {
+          "tabGroupId": "425153",
+          "tabSkillId": "4251531",
+          "sourceHeroId": "42515",
+          "sourceHeroCode": "leloud",
+          "runtimeSkillType": "ULTIMATE",
+          "tabType": 2,
+          "tabSkillType": 2,
+          "name": "Pháo Kích Cường Lạp Tử",
+          "description": "Gây cho toàn thể địch 120% ST ma pháp, sau khi thi triển kỹ năng, kèm cho mục tiêu HP thấp nhất phe địch {Mệnh Lệnh Chiến Thuật-ATK}, không thể thanh tẩy, duy trì 2 lượt. Đơn vị mang hiệu quả {Mệnh Lệnh Chiến Thuật-ATK} tăng 10% sát thương phải chịu và trở thành một trong những mục tiêu",
+          "icon": 4251531,
+          "script": "($19#42515310)($24?42515310)"
+        },
+        "LELOUD_DARK_PASSIVE_5": {
+          "tabGroupId": "425154",
+          "tabSkillId": "4251541",
+          "sourceHeroId": "42515",
+          "sourceHeroCode": "leloud",
+          "runtimeSkillType": "PASSIVE",
+          "tabType": 3,
+          "tabSkillType": 3,
+          "name": "Ném Bom Chiến Thuật",
+          "description": "Bị sát thương 1 lần sẽ không vượt quá 60% giới hạn HP bản thân; khi Lelouch tấn công, nếu HP bị địch tấn công > 60% thì lần tấn công này nhận thêm 8% tăng ST;",
+          "icon": 4251541,
+          "script": "$32?42515410?42515412"
+        }
       }
     },
     "thor": {
@@ -957,6 +1700,100 @@
         "scale": 0.2,
         "displayScale": 0.2,
         "layer": "FRONT"
+      },
+      "_TAB_HERO_SOURCE": {
+        "tabHeroId": "43513",
+        "sourceHeroCode": "thor",
+        "name": "Thần Sấm Thor",
+        "role": "Tank",
+        "normalAttackId": 435130,
+        "skillGroupIds": [
+          "435131",
+          "435132",
+          "435133",
+          "435134"
+        ],
+        "baseStatsRaw": {
+          "hp": 1290900,
+          "atk": 183400,
+          "def": 67100,
+          "speed": 57300
+        },
+        "baseStatsScaled": {
+          "hp": "1290.900",
+          "atk": "183.400",
+          "def": "67.100",
+          "speed": "57.300"
+        },
+        "initialAttributes": "{{2,759},{3,125},{4,48},{5,96},{105,10000},{106,15000}}",
+        "variantSourceHeroCode": null
+      },
+      "_TAB_SKILL_BINDINGS": {
+        "THOR_BASIC_1": {
+          "tabGroupId": "435130",
+          "tabSkillId": "4351301",
+          "sourceHeroId": "43513",
+          "sourceHeroCode": "thor",
+          "runtimeSkillType": "BASIC",
+          "tabType": 1,
+          "tabSkillType": 1,
+          "name": "Đánh Thường",
+          "description": "Thần Sấm",
+          "icon": 10002,
+          "script": "$2#43513010"
+        },
+        "THOR_ACTIVE_2": {
+          "tabGroupId": "435131",
+          "tabSkillId": "4351311",
+          "sourceHeroId": "43513",
+          "sourceHeroCode": "thor",
+          "runtimeSkillType": "ACTIVE",
+          "tabType": 2,
+          "tabSkillType": 2,
+          "name": "Búa Sấm Thức Tỉnh",
+          "description": "Gây cho toàn thể địch 90% sát thương vật lý, có 30% tỉ lệ kèm 10% {Phá giáp}, nếu mục tiêu là Chiến Binh hoặc Pháp Sư thì giảm 10% tấn công, nếu là Tank hoặc Hỗ Trợ sẽ giảm 10% miễn sát thương, tất cả hiệu quả duy trì 2 lượt",
+          "icon": 4351311,
+          "script": "$19#43513110&43513110"
+        },
+        "THOR_PASSIVE_3": {
+          "tabGroupId": "435132",
+          "tabSkillId": "4351321",
+          "sourceHeroId": "43513",
+          "sourceHeroCode": "thor",
+          "runtimeSkillType": "PASSIVE",
+          "tabType": 3,
+          "tabSkillType": 3,
+          "name": "Berserker Sấm",
+          "description": "HP tăng 20%, tấn công tăng 10%, kháng bạo tăng 10%",
+          "icon": 4351321,
+          "script": "null"
+        },
+        "THOR_ULTIMATE_4": {
+          "tabGroupId": "435133",
+          "tabSkillId": "4351331",
+          "sourceHeroId": "43513",
+          "sourceHeroCode": "thor",
+          "runtimeSkillType": "ULTIMATE",
+          "tabType": 2,
+          "tabSkillType": 2,
+          "name": "Búa Sấm Trỗi Dậy",
+          "description": "Hồi HP bằng 14% HP tối đa, thêm 1 hiệu quả {Hồi phục chậm} hồi phục 2 lần cho bản thân: khi bắt đầu lượt, hồi phục HP bằng 10% HP tối đa",
+          "icon": 4351331,
+          "script": "$32#43513310&43513310"
+        },
+        "THOR_PASSIVE_5": {
+          "tabGroupId": "435134",
+          "tabSkillId": "4351341",
+          "sourceHeroId": "43513",
+          "sourceHeroCode": "thor",
+          "runtimeSkillType": "PASSIVE",
+          "tabType": 3,
+          "tabSkillType": 3,
+          "name": "Tia chớp hiệp trợ",
+          "description": "Khi bắt đầu lượt, chọn 1 đơn vị có HP thấp nhất hàng sau phe ta để thêm hiệu quả {Hiệp trợ}, hấp thu 50% sát thương, duy trì 1 lượt",
+          "icon": 4351341,
+          "script": "$32?43513410"
+        }
       }
     },
     "thor_rak": {
@@ -979,41 +1816,71 @@
         "movement": "DASH"
       },
       "_SKILL_EFFECTS": {
-        "THOR_RAK_BASIC_1": {
+        "THOR_BASIC_1": {
           "cast": {
             "code": "thor_rak_basic_cast",
-            "file": "seffect_43517111011",
+            "file": "seffect_43513121011",
             "animation": "animation_0",
             "impactEvents": [
-              "qishou_1_3_3",
-              "qishou_1_3_2",
-              "qishou_1_3_1"
+              "qishou_1_2_2",
+              "qishou_1_2_1"
             ],
             "anchor": "source"
+          },
+          "impact": {
+            "code": "thor_rak_basic_impact",
+            "file": "seffect_43503010111",
+            "animation": "animation_5",
+            "impactEvent": "hit_1_1_1",
+            "impactEvents": [
+              "hit_1_1_1"
+            ],
+            "anchor": "target"
           }
         },
-        "THOR_RAK_ACTIVE_2": {
+        "THOR_ACTIVE_2": {
           "cast": {
             "code": "thor_rak_active_cast",
-            "file": "seffect_43517111012",
-            "animation": "animation_0",
-            "impactEvent": "qishou_11_1_1",
-            "anchor": "source"
-          }
-        },
-        "THOR_RAK_ULTIMATE_3": {
-          "cast": {
-            "code": "thor_rak_ultimate_cast",
-            "file": "seffect_43517111013",
-            "animation": "animation_0",
+            "file": "seffect_43513121011",
+            "animation": "animation_1",
             "impactEvents": [
-              "qishou_21_5_5",
-              "qishou_21_5_4",
-              "qishou_21_5_3",
-              "qishou_21_5_2",
-              "qishou_21_5_1"
+              "qishou_11_4_4",
+              "qishou_11_4_3",
+              "qishou_11_4_2",
+              "qishou_11_4_1"
             ],
             "anchor": "source"
+          },
+          "impact": {
+            "code": "thor_rak_active_impact",
+            "file": "seffect_43513",
+            "animation": "animation_0",
+            "impactEvents": [
+              "hit_111_4_4",
+              "hit_111_4_3",
+              "hit_111_4_2",
+              "hit_111_4_1"
+            ],
+            "anchor": "enemy_formation"
+          }
+        },
+        "THOR_ULTIMATE_3": {
+          "cast": {
+            "code": "thor_rak_ultimate_cast",
+            "file": "seffect_43513121012",
+            "animation": "animation_0",
+            "impactEvent": "qishou_21_1_1",
+            "anchor": "source"
+          },
+          "impact": {
+            "code": "thor_rak_ultimate_impact",
+            "file": "seffect_43503110111",
+            "animation": "animation_1",
+            "impactEvent": "hit_21_1_1",
+            "impactEvents": [
+              "hit_21_1_1"
+            ],
+            "anchor": "enemy_formation"
           }
         }
       },
@@ -1068,6 +1935,100 @@
         "scale": 0.2,
         "displayScale": 0.2,
         "layer": "FRONT"
+      },
+      "_TAB_HERO_SOURCE": {
+        "tabHeroId": "43513",
+        "sourceHeroCode": "thor",
+        "name": "Thần Sấm Thor",
+        "role": "Tank",
+        "normalAttackId": 435130,
+        "skillGroupIds": [
+          "435131",
+          "435132",
+          "435133",
+          "435134"
+        ],
+        "baseStatsRaw": {
+          "hp": 1290900,
+          "atk": 183400,
+          "def": 67100,
+          "speed": 57300
+        },
+        "baseStatsScaled": {
+          "hp": "1290.900",
+          "atk": "183.400",
+          "def": "67.100",
+          "speed": "57.300"
+        },
+        "initialAttributes": "{{2,759},{3,125},{4,48},{5,96},{105,10000},{106,15000}}",
+        "variantSourceHeroCode": "thor"
+      },
+      "_TAB_SKILL_BINDINGS": {
+        "THOR_RAK_BASIC_1": {
+          "tabGroupId": "435130",
+          "tabSkillId": "4351301",
+          "sourceHeroId": "43513",
+          "sourceHeroCode": "thor",
+          "runtimeSkillType": "BASIC",
+          "tabType": 1,
+          "tabSkillType": 1,
+          "name": "Đánh Thường",
+          "description": "Thần Sấm",
+          "icon": 10002,
+          "script": "$2#43513010"
+        },
+        "THOR_RAK_ACTIVE_2": {
+          "tabGroupId": "435131",
+          "tabSkillId": "4351311",
+          "sourceHeroId": "43513",
+          "sourceHeroCode": "thor",
+          "runtimeSkillType": "ACTIVE",
+          "tabType": 2,
+          "tabSkillType": 2,
+          "name": "Búa Sấm Thức Tỉnh",
+          "description": "Gây cho toàn thể địch 90% sát thương vật lý, có 30% tỉ lệ kèm 10% {Phá giáp}, nếu mục tiêu là Chiến Binh hoặc Pháp Sư thì giảm 10% tấn công, nếu là Tank hoặc Hỗ Trợ sẽ giảm 10% miễn sát thương, tất cả hiệu quả duy trì 2 lượt",
+          "icon": 4351311,
+          "script": "$19#43513110&43513110"
+        },
+        "THOR_RAK_PASSIVE_3": {
+          "tabGroupId": "435132",
+          "tabSkillId": "4351321",
+          "sourceHeroId": "43513",
+          "sourceHeroCode": "thor",
+          "runtimeSkillType": "PASSIVE",
+          "tabType": 3,
+          "tabSkillType": 3,
+          "name": "Berserker Sấm",
+          "description": "HP tăng 20%, tấn công tăng 10%, kháng bạo tăng 10%",
+          "icon": 4351321,
+          "script": "null"
+        },
+        "THOR_RAK_ULTIMATE_4": {
+          "tabGroupId": "435133",
+          "tabSkillId": "4351331",
+          "sourceHeroId": "43513",
+          "sourceHeroCode": "thor",
+          "runtimeSkillType": "ULTIMATE",
+          "tabType": 2,
+          "tabSkillType": 2,
+          "name": "Búa Sấm Trỗi Dậy",
+          "description": "Hồi HP bằng 14% HP tối đa, thêm 1 hiệu quả {Hồi phục chậm} hồi phục 2 lần cho bản thân: khi bắt đầu lượt, hồi phục HP bằng 10% HP tối đa",
+          "icon": 4351331,
+          "script": "$32#43513310&43513310"
+        },
+        "THOR_RAK_PASSIVE_5": {
+          "tabGroupId": "435134",
+          "tabSkillId": "4351341",
+          "sourceHeroId": "43513",
+          "sourceHeroCode": "thor",
+          "runtimeSkillType": "PASSIVE",
+          "tabType": 3,
+          "tabSkillType": 3,
+          "name": "Tia chớp hiệp trợ",
+          "description": "Khi bắt đầu lượt, chọn 1 đơn vị có HP thấp nhất hàng sau phe ta để thêm hiệu quả {Hiệp trợ}, hấp thu 50% sát thương, duy trì 1 lượt",
+          "icon": 4351341,
+          "script": "$32?43513410"
+        }
       }
     },
     "tohka_dark": {
@@ -1193,6 +2154,100 @@
         "scale": 0.2,
         "displayScale": 0.2,
         "layer": "FRONT"
+      },
+      "_TAB_HERO_SOURCE": {
+        "tabHeroId": "41514",
+        "sourceHeroCode": "tohka_dark",
+        "name": "Yatogami Tohka",
+        "role": "Chiến Binh",
+        "normalAttackId": 415140,
+        "skillGroupIds": [
+          "415141",
+          "415142",
+          "415143",
+          "415144"
+        ],
+        "baseStatsRaw": {
+          "hp": 1113900,
+          "atk": 228200,
+          "def": 63800,
+          "speed": 57600
+        },
+        "baseStatsScaled": {
+          "hp": "1113.900",
+          "atk": "228.200",
+          "def": "63.800",
+          "speed": "57.600"
+        },
+        "initialAttributes": "{{2,784},{3,162},{4,49},{5,105},{105,10000},{106,15000}}",
+        "variantSourceHeroCode": null
+      },
+      "_TAB_SKILL_BINDINGS": {
+        "TOHKA_DARK_BASIC_1": {
+          "tabGroupId": "415140",
+          "tabSkillId": "4151401",
+          "sourceHeroId": "41514",
+          "sourceHeroCode": "tohka_dark",
+          "runtimeSkillType": "BASIC",
+          "tabType": 1,
+          "tabSkillType": 1,
+          "name": "Đánh Thường",
+          "description": "Yatogami Tohka",
+          "icon": 10002,
+          "script": "$2#41514010"
+        },
+        "TOHKA_DARK_ACTIVE_2": {
+          "tabGroupId": "415141",
+          "tabSkillId": "4151411",
+          "sourceHeroId": "41514",
+          "sourceHeroCode": "tohka_dark",
+          "runtimeSkillType": "ACTIVE",
+          "tabType": 2,
+          "tabSkillType": 2,
+          "name": "Sandalphon",
+          "description": "Tohka dùng Sandalphon triệu hồi ngai vàng; gây cho toàn thể địch 68% ST vật lý, kèm cho mọi mục tiêu phe ta {Chúc phúc ngai vàng}, đơn vị mang {Chúc phúc ngai vàng} khi tấn công thêm 5% bạo kích cho Tank hoặc Hỗ Trợ, duy trì 2 lượt, không thể thanh tẩy",
+          "icon": 4151411,
+          "script": "($37|?41514110)($19#41514110)"
+        },
+        "TOHKA_DARK_PASSIVE_3": {
+          "tabGroupId": "415142",
+          "tabSkillId": "4151421",
+          "sourceHeroId": "41514",
+          "sourceHeroCode": "tohka_dark",
+          "runtimeSkillType": "PASSIVE",
+          "tabType": 3,
+          "tabSkillType": 3,
+          "name": "Adonai Melekh",
+          "description": "Tohka có linh trang thần uy-Juban; tấn công tăng 20%, HP tăng 10%, bạo kích tăng 5%, đang chiến đấu tăng cho bản thân 10% kháng khống, giảm 30% khống chế bản thân.",
+          "icon": 4151421,
+          "script": "($32?41514210)($37|?41514211)"
+        },
+        "TOHKA_DARK_ULTIMATE_4": {
+          "tabGroupId": "415143",
+          "tabSkillId": "4151431",
+          "sourceHeroId": "41514",
+          "sourceHeroCode": "tohka_dark",
+          "runtimeSkillType": "ULTIMATE",
+          "tabType": 2,
+          "tabSkillType": 2,
+          "name": "Halvanhelev",
+          "description": "Tohka dùng Halvanhelev của thiên sứ kiếm - Sandalphon tiến hành trảm kích toàn lực; gây cho hàng có số người nhiều nhất của địch 161% ST vật lý, tăng sát thương 10% cho Tank và Hỗ Trợ",
+          "icon": 4151431,
+          "script": "$76#41514310&41514310"
+        },
+        "TOHKA_DARK_PASSIVE_5": {
+          "tabGroupId": "415144",
+          "tabSkillId": "4151441",
+          "sourceHeroId": "41514",
+          "sourceHeroCode": "tohka_dark",
+          "runtimeSkillType": "PASSIVE",
+          "tabType": 3,
+          "tabSkillType": 3,
+          "name": "Kabala-Malkuth",
+          "description": "Tohka có sức mạnh Malkuth; khi tự hành động tốc độ nhanh nhất phe ta, tấn công lần này kèm 15% sát thương và 5% bạo kích, nếu không thì thêm {Giải phóng Thần Lực}, tăng 4% miễn vật lý, 4% miễn ma pháp, 3% miễn giảm sát thương, 5% kháng khống, 5% được trị liệu, 5% chính xác, 5% bạo thương, 5% sát thương vật lý, 15% hút HP, duy trì cả trận chiến, không thể cộng dồn, thanh tẩy, tử vong không kế thừa",
+          "icon": 4151441,
+          "script": "$32?41514410"
+        }
       }
     }
   }
