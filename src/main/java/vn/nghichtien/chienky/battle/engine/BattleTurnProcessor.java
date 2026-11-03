@@ -137,6 +137,11 @@ public class BattleTurnProcessor {
             var statusManager = unit.getStatusEffectManager();
 
             if (statusManager.shouldSkipAction()) {
+                // Lưu loại khống chế trước passive AFTER_ACTION vì passive có thể
+                // giải trừ CC và làm crowdControl trở thành null.
+                String crowdControlType =
+                        statusManager.getCrowdControl().getType().name();
+
                 skillExecutor.executePassives(
                         battle, unit, BattlePassiveTrigger.AFTER_ACTION
                 );
@@ -146,8 +151,7 @@ public class BattleTurnProcessor {
                         unit.getInstanceId(),
                         null, null, null, null,
                         null, null, null, null, null, null, null,
-                        "Action skipped: "
-                                + statusManager.getCrowdControl().getType()
+                        "Action skipped: " + crowdControlType
                 );
                 if (battle.checkFinished()) {
                     break;
