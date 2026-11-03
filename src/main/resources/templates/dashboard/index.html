@@ -205,9 +205,14 @@
 
                 message.className = "gift-code-message success";
                 message.textContent = result.message || "Đổi GIFTCODE thành công.";
+                const grantedCount = Number(result.grantedCount || 0);
+                const totalOwned = Number(result.totalOwned || 0);
+                message.textContent += " Đã nhận " + grantedCount + " tướng; hiện sở hữu " +
+                    totalOwned + " tướng.";
                 if (Array.isArray(result.grantedHeroNames) && result.grantedHeroNames.length) {
-                    message.textContent += " Đã nhận: " + result.grantedHeroNames.join(", ") + ".";
+                    message.textContent += " Danh sách nhận: " + result.grantedHeroNames.join(", ") + ".";
                 }
+                input.value = "";
             } catch (error) {
                 message.className = "gift-code-message error";
                 message.textContent = error.message || "Đổi GIFTCODE thất bại.";
