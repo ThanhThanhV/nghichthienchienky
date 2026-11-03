@@ -209,15 +209,15 @@ public class BattleTurnProcessor {
             int eventStartIndex = collector.getEvents().size();
             skillExecutor.execute(battle, unit, actionType);
 
-            // Chỉ dispatch event do action chính tạo ra, không tạo chuỗi passive vô hạn.
+            // Chụp event của action gốc trước khi dispatch phản ứng ON_DAMAGED.
             List<BattleEventDTO> actionEvents = List.copyOf(collector.getEvents()
                     .subList(eventStartIndex, collector.getEvents().size()));
-            dispatchActionEventPassives(battle, actionEvents);
 
             skillExecutor.executePassives(
                     battle, unit, BattlePassiveTrigger.AFTER_ACTION
             );
 
+            // Frontend phải hoàn tất animation đòn gốc trước khi phát phản kích.
             collector.record(
                     BattleEventType.ACTION_END,
                     unit.getTeam().name(),
@@ -226,6 +226,8 @@ public class BattleTurnProcessor {
                     null, null, null, null, null, null, null,
                     "Character action finished"
             );
+
+            dispatchActionEventPassives(battle, actionEvents);
 
             // EXTRA_ACTION phát sinh từ AFTER_ACTION hoặc nội tại đầu round.
             executePendingExtraAction(battle, unit);
@@ -356,12 +358,12 @@ public class BattleTurnProcessor {
                 battle, unit, BattlePassiveTrigger.ON_ATTACK
         );
 
+        List<BattleEventDTO> actionEvents = List.of();
         if (!battle.isFinished() && unit.isAlive()) {
             int eventStartIndex = collector.getEvents().size();
             skillExecutor.execute(battle, unit, actionType);
-            List<BattleEventDTO> actionEvents = List.copyOf(collector.getEvents()
+            actionEvents = List.copyOf(collector.getEvents()
                     .subList(eventStartIndex, collector.getEvents().size()));
-            dispatchActionEventPassives(battle, actionEvents);
         }
 
         skillExecutor.executePassives(
@@ -376,6 +378,10 @@ public class BattleTurnProcessor {
                 null, null, null, null, null, null, null,
                 "Extra action finished"
         );
+
+        if (!actionEvents.isEmpty()) {
+            dispatchActionEventPassives(battle, actionEvents);
+        }
     }
 
     private void dispatchActionEventPassives(
@@ -409,12 +415,31 @@ public class BattleTurnProcessor {
                     // cho mỗi cặp mục tiêu/người tấn công trong cùng action.
                     if (canTriggerDamagedPassive
                             && processedDamageReactions.add(reactionKey)) {
+                        battle.getEventCollector().record(
+                                BattleEventType.ACTION_START,
+                                damaged.getTeam().name(),
+                                damaged.getInstanceId(),
+                                null, null, null, null,
+                                null, null, null, null, null, null, null,
+                                "Damage reaction started"
+                        );
+
                         skillExecutor.executePassives(
                                 battle,
                                 damaged,
                                 BattlePassiveTrigger.ON_DAMAGED,
                                 event.sourceInstanceId()
                         );
+
+                        battle.getEventCollector().record(
+                                BattleEventType.ACTION_END,
+                                damaged.getTeam().name(),
+                                damaged.getInstanceId(),
+                                null, null, null, null,
+                                null, null, null, null, null, null, null,
+                                "Damage reaction finished"
+                        );
+
                         if (pendingExtraActionIds.add(damaged.getInstanceId())) {
                             pendingExtraActions.add(damaged);
                         }
