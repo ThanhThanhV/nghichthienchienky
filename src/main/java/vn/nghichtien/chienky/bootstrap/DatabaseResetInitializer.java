@@ -45,7 +45,13 @@ public class DatabaseResetInitializer implements ApplicationRunner {
                     if (isMigrationMetadataTable(table)) {
                         continue;
                     }
-                    statement.execute("TRUNCATE TABLE " + quoteIdentifier(table));
+                    statement.executeUpdate("DELETE FROM " + quoteIdentifier(table));
+                    if (hasAutoIncrementColumn(connection, table)) {
+                        statement.execute(
+                                "ALTER TABLE " + quoteIdentifier(table)
+                                        + " AUTO_INCREMENT = 1"
+                        );
+                    }
                 }
             } finally {
                 statement.execute("SET FOREIGN_KEY_CHECKS = 1");
@@ -75,6 +81,22 @@ public class DatabaseResetInitializer implements ApplicationRunner {
             }
         }
         return tables;
+    }
+
+    private boolean hasAutoIncrementColumn(
+            Connection connection,
+            String table
+    ) throws SQLException {
+        try (ResultSet columns = connection.getMetaData().getColumns(
+                connection.getCatalog(), null, table, "%"
+        )) {
+            while (columns.next()) {
+                if ("YES".equalsIgnoreCase(columns.getString("IS_AUTOINCREMENT"))) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     private boolean isMigrationMetadataTable(String table) {
