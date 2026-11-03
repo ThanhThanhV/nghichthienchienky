@@ -10,7 +10,9 @@ import vn.nghichtien.chienky.battle.domain.BattleUnitState;
 import vn.nghichtien.chienky.battle.dto.BattleEventDTO;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Điều phối thứ tự hành động của các nhân vật trong từng round
@@ -361,6 +363,9 @@ public class BattleTurnProcessor {
             List<BattleEventDTO> events
     ) {
         List<BattleUnitState> pendingExtraActions = new ArrayList<>();
+        Set<DamageReactionKey> processedDamageReactions = new HashSet<>();
+        Set<Long> pendingExtraActionIds = new HashSet<>();
+
         for (BattleEventDTO event : events) {
             if (battle.isFinished()) {
                 return;
@@ -371,15 +376,28 @@ public class BattleTurnProcessor {
                 if (damaged != null && damaged.isAlive()) {
                     // COUNTER damage không kích hoạt COUNTER tiếp,
                     // tránh chuỗi phản công vô hạn giữa hai đơn vị.
-                    if (!"COUNTER".equalsIgnoreCase(event.effectCategory())
-                            && !"DEFENSE".equalsIgnoreCase(event.effectCategory())) {
+                    boolean canTriggerDamagedPassive =
+                            !"COUNTER".equalsIgnoreCase(event.effectCategory())
+                                    && !"DEFENSE".equalsIgnoreCase(event.effectCategory());
+
+                    DamageReactionKey reactionKey = new DamageReactionKey(
+                            event.targetInstanceId(),
+                            event.sourceInstanceId()
+                    );
+
+                    // Một đòn nhiều hit chỉ kích hoạt ON_DAMAGED một lần
+                    // cho mỗi cặp mục tiêu/người tấn công trong cùng action.
+                    if (canTriggerDamagedPassive
+                            && processedDamageReactions.add(reactionKey)) {
                         skillExecutor.executePassives(
                                 battle,
                                 damaged,
                                 BattlePassiveTrigger.ON_DAMAGED,
                                 event.sourceInstanceId()
                         );
-                        pendingExtraActions.add(damaged);
+                        if (pendingExtraActionIds.add(damaged.getInstanceId())) {
+                            pendingExtraActions.add(damaged);
+                        }
                     }
                 }
             }
@@ -390,7 +408,9 @@ public class BattleTurnProcessor {
                     skillExecutor.executePassives(
                             battle, killer, BattlePassiveTrigger.ON_KILL
                     );
-                    pendingExtraActions.add(killer);
+                    if (pendingExtraActionIds.add(killer.getInstanceId())) {
+                        pendingExtraActions.add(killer);
+                    }
                 }
             }
         }
@@ -403,5 +423,11 @@ public class BattleTurnProcessor {
             }
             executePendingExtraAction(battle, unit);
         }
+    }
+
+    private record DamageReactionKey(
+            Long damagedInstanceId,
+            Long attackerInstanceId
+    ) {
     }
 }
