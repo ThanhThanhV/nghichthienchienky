@@ -1,5 +1,8 @@
 package vn.nghichtien.chienky.bootstrap;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
@@ -24,17 +27,20 @@ import java.util.Map;
 
 @Component
 public class GameBootstrapDataInitializer implements ApplicationRunner {
+    private final ObjectMapper objectMapper;
     private final HeroDefinitionRepository heroDefinitionRepository;
     private final HeroBaseStatsRepository heroBaseStatsRepository;
     private final HeroGrowthConfigRepository heroGrowthConfigRepository;
     private final HeroSkillDefinitionRepository heroSkillDefinitionRepository;
 
     public GameBootstrapDataInitializer(
+            ObjectMapper objectMapper,
             HeroDefinitionRepository heroDefinitionRepository,
             HeroBaseStatsRepository heroBaseStatsRepository,
             HeroGrowthConfigRepository heroGrowthConfigRepository,
             HeroSkillDefinitionRepository heroSkillDefinitionRepository
     ) {
+        this.objectMapper = objectMapper;
         this.heroDefinitionRepository = heroDefinitionRepository;
         this.heroBaseStatsRepository = heroBaseStatsRepository;
         this.heroGrowthConfigRepository = heroGrowthConfigRepository;
@@ -60,6 +66,7 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                 avatarCode == null || avatarCode.isBlank() ? seed.code() : avatarCode,
                 spineSkeleton == null || spineSkeleton.isBlank() ? seed.code() : spineSkeleton
         );
+        ensureBasicAttackDash(definition);
         if (definition.getSortOrder() == null || definition.getSortOrder() == 0) {
             definition.changeSortOrder(sortOrder);
         }
@@ -68,6 +75,46 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
         seedBaseStats(definition);
         seedGrowthConfig(definition);
         seedSkills(definition, seed);
+    }
+
+    /**
+     * Đặt kiểu đánh thường mặc định DASH cho các tướng hiện có.
+     * Chỉ bổ sung khi chưa có cấu hình movement, không ghi đè lựa chọn
+     * đã được quản trị viên lưu và không làm mất mapping animation khác.
+     */
+    private void ensureBasicAttackDash(HeroDefinition definition) {
+        String currentConfig = definition.getSpineSkillAnimations();
+        ObjectNode animations;
+
+        try {
+            if (currentConfig == null || currentConfig.isBlank()) {
+                animations = objectMapper.createObjectNode();
+            } else {
+                JsonNode parsed = objectMapper.readTree(currentConfig);
+                if (parsed == null || !parsed.isObject()) {
+                    return;
+                }
+                animations = (ObjectNode) parsed.deepCopy();
+            }
+
+            JsonNode basicAttack = animations.get("_BASIC_ATTACK");
+            if (basicAttack != null && basicAttack.isObject()
+                    && basicAttack.hasNonNull("movement")) {
+                return;
+            }
+
+            ObjectNode basicAttackConfig = basicAttack != null && basicAttack.isObject()
+                    ? (ObjectNode) basicAttack
+                    : objectMapper.createObjectNode();
+            basicAttackConfig.put("movement", "DASH");
+            animations.set("_BASIC_ATTACK", basicAttackConfig);
+            definition.updateSpineSkillAnimations(
+                    objectMapper.writeValueAsString(animations)
+            );
+        } catch (com.fasterxml.jackson.core.JsonProcessingException exception) {
+            // Không ghi đè mapping cũ nếu JSON hiện tại không hợp lệ.
+            // Frontend vẫn mặc định DASH khi không đọc được movement.
+        }
     }
 
     private HeroDefinition createDefinition(HeroSeed seed, int sortOrder) {
