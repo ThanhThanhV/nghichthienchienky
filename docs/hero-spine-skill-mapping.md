@@ -1,65 +1,83 @@
-# Hero Spine skill integration
+# Hero TAB + Spine skill integration
 
-## Scope
+## Source of truth
 
-The current game seeds these ten heroes:
+- `static/spine/hero-tab-skill-config.json` stores the TAB-derived hero row, the five runtime skill slots, level rows, script references, resolved `TAB_Sseffect` / `TAB_EffectPerfor` records, and the subset of battle effects that the current Java engine can execute.
+- `static/spine/hero-skill-mapping.json` stores each hero's own skeleton, texture pages, skill animation names, VFX files/events, and `_TAB_SKILL_BINDINGS` metadata.
+- `animation_config.lua` remains the source for per-animation event anchors/coordinates. The backend parses it and persists it into `HeroDefinition.spineSkillAnimations`.
+- The frontend resolves skeletons and VFX from the database response; it does not invent hero animation defaults.
 
-- `asuna_dark`
-- `gojo`
-- `iori`
-- `iori_dark`
-- `kirito`
-- `leloud`
-- `leloud_dark`
-- `thor`
-- `thor_rak`
-- `tohka_dark`
+## Current ten heroes
 
-All ten hero skeletons are registered in `static/js/spine/SpineConfig.js`.
-This change adds explicit skill-code-to-animation mappings for all five seeded
-skill slots, using the event codes created by `GameBootstrapDataInitializer`.
+| Runtime hero code | TAB source hero | TAB hero ID | Spine folder |
+|---|---|---:|---|
+| `asuna_dark` | Asuna | 31514 | `asuna_dark` |
+| `gojo` | Gojo Satoru | 52517 | `gojo` |
+| `iori` | Iori | 51515 | `iori` |
+| `iori_dark` | Iori | 51515 | `iori_dark` |
+| `kirito` | Kirito | 31517 | `kirito` |
+| `leloud` | Lelouch | 42515 | `leloud` |
+| `leloud_dark` | Lelouch | 42515 | `leloud_dark` |
+| `thor` | Thần Sấm Thor | 43513 | `thor` |
+| `thor_rak` | Thần Sấm Thor | 43513 | `thor_rak` |
+| `tohka_dark` | Yatogami Tohka | 41514 | `tohka_dark` |
 
-| Skill code suffix | Seeded type | Spine animation |
-|---|---|---|
-| `_BASIC_1` | BASIC | `att` |
-| `_ACTIVE_2` | ACTIVE | `skill` |
-| `_ULTIMATE_3` | ULTIMATE | `ultimateskill` |
-| `_PASSIVE_4` | PASSIVE | `skill` |
-| `_PASSIVE_5` | PASSIVE | `skill` |
+The dark/awakened variants have separate runtime hero codes, skill-code namespaces,
+Spine folders, and VFX mapping entries. Where the TAB files contain only one base
+hero row, `_TAB_HERO_SOURCE.variantSourceHeroCode` explicitly records the source
+row used; it does not pretend that the source contains a second independent TAB
+hero definition.
 
-The mapping is generated per hero code, for example
-`TOHKA_DARK_ACTIVE_2 -> skill` and `GOJO_ULTIMATE_3 -> ultimateskill`.
-The runtime checks that the selected animation exists in that hero's skeleton.
-If a skeleton does not contain the configured animation, BattleRenderer falls
-back to its existing event-type animation mapping.
+## Runtime skill slots
 
-## Effect asset families found by filename
+For the nine heroes with two active TAB skill groups, the runtime slots are
+`BASIC -> ACTIVE -> ULTIMATE -> PASSIVE -> PASSIVE`. The actual group IDs and
+level-one skill IDs are bound in `_TAB_SKILL_BINDINGS` and mirrored in the TAB
+catalog. The full level rows remain available for future level-up synchronization.
 
-The following files are candidates from the existing effect directory. A numeric
-prefix links an effect to a source asset family; it does not prove the exact
-skill dispatch on its own.
+Gojo's TAB row has one normal attack and four special groups that are all marked
+as TAB passive-type skills. The game-specific runtime mapping preserves the
+previously agreed active `Vô Hạ Hạn` slot and keeps the other three as PASSIVE;
+there is no fabricated ULTIMATE slot for Gojo. The battle cycle therefore skips
+the ULTIMATE action for Gojo rather than relabeling a TAB passive as an ultimate.
 
-| Hero(s) | Effect asset family |
-|---|---|
-| Asuna Dark | `seffect_31514120111`, `seffect_31514130111` |
-| Gojo | `seffect_52517111011`–`11014` |
-| Iori / Iori Dark | `seffect_51515110111`, `10211`, `21011`–`21016` |
-| Kirito | `seffect_31517110111`, `10112` |
-| Lelouch / Lelouch Dark | `seffect_42515111011`–`11016`, `21011`–`21014` |
-| Thor / Thor Awakened | `seffect_43513121011`, `21012` |
-| Tohka Dark | `seffect_41514111011`–`11013`, `21011`–`21014` |
+## Startup synchronization
 
-Iori/Iori Dark, Lelouch/Lelouch Dark, and Thor/Thor Awakened share numeric
-effect prefixes. The source files do not identify which variant owns each
-effect. The current runtime effect mapping remains intentionally limited to
-the already-integrated Tohka Dark mappings; the other families are not assigned
-to live skills by guesswork.
+On each application startup, `GameBootstrapDataInitializer`:
+
+1. Loads and validates the TAB skill catalog, Spine mapping, and animation config.
+2. Removes old skill-instance links for all ten runtime hero codes.
+3. Deletes and recreates all five skill definitions and their effects for each hero.
+4. Synchronizes base HP/ATK/DEF/SPEED from the TAB hero row.
+5. Rebuilds the five skill links for owned hero instances.
+6. Persists TAB skill bindings and animation/VFX metadata with each hero definition.
+
+Player accounts, owned hero instances, and formation data are not reset by this
+skill-config synchronization.
+
+## Effect execution scope
+
+Direct damage targets, selected target counts/rows, supported permanent stat
+passives, Gojo's approved 20-round defensive active, and the supported counter /
+shield triggers are represented using the existing Java battle-effect handlers.
+TAB script references and their `TAB_Sseffect` / `TAB_EffectPerfor` chain are
+retained verbatim for audit. Complex source mechanics that the current engine
+cannot represent exactly (for example conditional role-specific bonuses,
+stacking, revival chase, and some max-HP-based effects) are not silently
+converted into generic damage. They remain visible in the TAB source catalog
+until their corresponding Java handlers are implemented.
+
+## Spine VFX validation
+
+Every referenced VFX JSON and atlas path in `_SKILL_EFFECTS` must exist under
+`static/assets/spine/seffects/`. Animation names are taken from the referenced
+Spine JSON animation list; asset filenames are never renamed or guessed.
 
 ## Adding a future hero
 
-1. Add its skeleton, atlas, and texture filenames to `SpineConfig.js`.
-2. Add the hero seed and skill codes to `GameBootstrapDataInitializer`.
-3. The five standard skill animation mappings are generated automatically
-   from the hero code.
-4. Add effect mappings only after checking the hero's own effect family and
-   animation/event markers. Keep original asset filenames unchanged.
+1. Add the TAB hero and skill groups to `hero-tab-skill-config.json`.
+2. Add its skeleton, atlas, textures, animation names, and skill VFX to
+   `hero-skill-mapping.json`.
+3. Add the runtime hero seed with an explicit skill-slot mapping.
+4. Validate the referenced Spine animation names and VFX files before enabling
+   the hero.
