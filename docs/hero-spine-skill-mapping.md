@@ -48,7 +48,7 @@ On each application startup, `GameBootstrapDataInitializer`:
 1. Loads and validates the TAB skill catalog, Spine mapping, and animation config.
 2. Removes old skill-instance links for all ten runtime hero codes.
 3. Deletes and recreates all five skill definitions and their effects for each hero.
-4. Synchronizes base HP/ATK/DEF/SPEED from the TAB hero row.
+4. Synchronizes base HP/ATK/DEF/SPEED from TAB `u_InitialAttribute` IDs 2/3/4/5; the raw `RacialLife`/`RacialAtt`/`RacialDef`/`RacialSpeed` values remain in the metadata for later progression analysis.
 5. Rebuilds the five skill links for owned hero instances.
 6. Persists TAB skill bindings and animation/VFX metadata with each hero definition.
 
