@@ -1,6 +1,7 @@
 package vn.nghichtien.chienky.power.controller;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +27,11 @@ public class PowerRankingApiController {
     @GetMapping
     public List<PowerRankingEntryResponse> getRanking() {
         return powerRankingService.getRanking();
+    }
+
+    @GetMapping("/me")
+    public PowerRankingDetailResponse getMyPower(Authentication authentication) {
+        return powerRankingService.getMyPower(authentication.getName());
     }
 
     @GetMapping("/{playerId}")
