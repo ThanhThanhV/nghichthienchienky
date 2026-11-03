@@ -74,6 +74,7 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
     public void run(ApplicationArguments args) {
         List<HeroSeed> seeds = heroSeeds();
         JsonNode spineCatalog = loadSpineMappingCatalog();
+        validateSkillAnimationCatalog(seeds, spineCatalog);
         List<String> heroCodes = seeds.stream().map(HeroSeed::code).toList();
 
         // Tạm thời reset dữ liệu kỹ năng của 10 tướng seed mỗi lần khởi động.
@@ -184,6 +185,55 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                     "Không thể đọc catalog Spine hero-skill-mapping.json",
                     exception
             );
+        }
+    }
+
+    /**
+     * Kiểm tra catalog animation phải khớp chính xác skillCode mà seedSkills tạo ra.
+     * Đặc biệt Gojo chỉ có ACTIVE ở slot 2; các slot còn lại là PASSIVE.
+     * Nếu mapping lệch, dừng khởi động thay vì lưu cấu hình thiếu và làm mất animation.
+     */
+    private void validateSkillAnimationCatalog(
+            List<HeroSeed> seeds,
+            JsonNode catalog
+    ) {
+        JsonNode heroes = catalog.path("heroes");
+
+        for (HeroSeed seed : seeds) {
+            JsonNode heroMapping = heroes.path(seed.code());
+            JsonNode animations = heroMapping.path("skillAnimations");
+            if (!animations.isObject()) {
+                throw new IllegalStateException(
+                        "Thiếu skillAnimations trong catalog cho tướng " + seed.code()
+                );
+            }
+
+            if (animations.size() != seed.skills().size()) {
+                throw new IllegalStateException(
+                        "Tướng " + seed.code() + " phải có đúng "
+                                + seed.skills().size() + " mapping animation, hiện có "
+                                + animations.size()
+                );
+            }
+
+            for (int index = 0; index < seed.skills().size(); index++) {
+                int order = index + 1;
+                SkillSeed skill = seed.skills().get(index);
+                String skillType = "gojo".equalsIgnoreCase(seed.code())
+                        ? (order == 2 ? "ACTIVE" : "PASSIVE")
+                        : skill.type();
+                String skillCode = seed.code().toUpperCase(java.util.Locale.ROOT)
+                        + "_" + skillType + "_" + order;
+                JsonNode animation = animations.get(skillCode);
+
+                if (animation == null || !animation.isTextual()
+                        || animation.asText().isBlank()) {
+                    throw new IllegalStateException(
+                            "Thiếu mapping animation cho skillCode "
+                                    + skillCode + " của tướng " + seed.code()
+                    );
+                }
+            }
         }
     }
 
