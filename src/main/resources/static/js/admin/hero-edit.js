@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded",()=>{
  const $=id=>document.getElementById(id),form=$("hero-edit-form"),editor=$("skill-editor"),save=$("save-hero"),msg=$("page-message"),code=decodeURIComponent(location.pathname.split("/").filter(Boolean).pop());
  const statKeys=["hp","atk","def","speed","crit","critDamage","accuracy","resistance","penFlat","penPercent","lifesteal"];
  const effectTypes=["DAMAGE","HEAL","BUFF","DEBUFF","CC","SHIELD","EVASION","BLOCK","REFLECT","IMMUNITY","DISPEL","REVIVE","EXTRA_ACTION","COUNTER","DOT","HOT"];
- const targets=["SELF","RANDOM","FRONT","LOWEST_HP","HIGHEST_ATK","ALL_ENEMIES"];
+ const targets=["SELF","RANDOM","RANDOM_2","RANDOM_3","FRONT","BACK","LOWEST_HP","LOWEST_HP_PERCENT","HIGHEST_HP_PERCENT","HIGHEST_ATK","LOWEST_ATK","ALL_ENEMIES","ALL_ALLIES"];
  const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
  const val=(id,v)=>$(id).value=v??"";
  let current;
