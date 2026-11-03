@@ -113,6 +113,48 @@ class BattleTurnProcessorTest {
     }
 
     @Test
+    void processRoundShouldStopBeforePeriodicTickWhenBattleStartPassiveEndsFight() {
+        DatabaseSkillExecutor skillExecutor = mock(DatabaseSkillExecutor.class);
+        BattleEffectProcessor effectProcessor = mock(BattleEffectProcessor.class);
+        BattleTurnProcessor processor = new BattleTurnProcessor(
+                skillExecutor,
+                effectProcessor
+        );
+
+        BattleUnitState player = unit(
+                1L, BattleTeam.PLAYER, "PLAYER_1", "100", "30"
+        );
+        BattleUnitState enemy = unit(
+                -1L, BattleTeam.ENEMY, "ENEMY_1", "10", "10"
+        );
+        BattleState battle = new BattleState(List.of(player, enemy));
+
+        doAnswer(invocation -> {
+            BattleUnitState source = invocation.getArgument(1);
+            BattlePassiveTrigger trigger = invocation.getArgument(2);
+            if (source == player && trigger == BattlePassiveTrigger.BATTLE_START) {
+                enemy.takeDamage(enemy.getCurrentHp());
+            }
+            return null;
+        }).when(skillExecutor).executePassives(
+                eq(battle),
+                any(BattleUnitState.class),
+                any(BattlePassiveTrigger.class)
+        );
+
+        processor.processRound(battle);
+
+        verify(effectProcessor, never()).tickPeriodicEffects(eq(battle));
+        verify(skillExecutor, never()).execute(
+                eq(battle),
+                any(BattleUnitState.class),
+                any(BattleActionType.class)
+        );
+        assertTrue(battle.isFinished());
+        assertEquals(BattleTeam.PLAYER, battle.getWinner());
+    }
+
+    @Test
     void processRoundShouldKeepCrowdControlMessageWhenAfterActionPassiveDispelsIt() {
         DatabaseSkillExecutor skillExecutor = mock(DatabaseSkillExecutor.class);
         BattleEffectProcessor effectProcessor = mock(BattleEffectProcessor.class);
