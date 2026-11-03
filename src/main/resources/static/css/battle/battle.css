@@ -914,7 +914,12 @@ body {
         transform: translate(-50%, -5px) rotate(5deg) scale(1.2);
     }
     35% {
+        opacity: .92;
         transform: translate(-50%, -9px) rotate(-3deg) scale(.96);
+    }
+    65% {
+        opacity: .48;
+        transform: translate(-50%, -38px) rotate(-4deg) scale(1.03);
     }
     100% {
         opacity: 0;
@@ -933,8 +938,14 @@ body {
         filter: brightness(1.5);
     }
     30% {
+        opacity: .94;
         transform: translate(-50%, -13px) rotate(-4deg) scale(1.08);
         filter: brightness(1.15);
+    }
+    62% {
+        opacity: .5;
+        transform: translate(-50%, -45px) rotate(-6deg) scale(1.12);
+        filter: brightness(1.08);
     }
     100% {
         opacity: 0;
