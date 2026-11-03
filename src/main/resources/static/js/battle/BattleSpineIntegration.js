@@ -151,10 +151,23 @@ class BattleSpineIntegration {
                 const rect = slot.getBoundingClientRect();
                 const x = rect.left + rect.width / 2 - canvasCenterX;
 
+                // Scale every skeleton against the REAL 3x3 slot dimensions.
+                // The old fixed 0.45 displayScale was tuned for the former
+                // 116px+ rows; the portrait layout has much shorter rows.
+                // 140x116 is the reference slot size used by that old layout.
+                // This keeps each rig proportional while preventing adjacent
+                // characters from spilling into one another's cells.
+                const baseScale = Number(entry.character.config?.displayScale ?? 0.45);
+                const slotFit = Math.min(
+                    rect.width / 140,
+                    rect.height / 116
+                );
+                entry.character.setScale(baseScale * Math.max(0.01, slotFit));
+
                 // Character placement is anchored to the bottom of its slot.
                 // HP UI is an independent overlay above the character and must
                 // never move the skeleton when HP text/bar dimensions change.
-                const groundY = rect.bottom - Math.max(8, rect.height * 0.06);
+                const groundY = rect.bottom - Math.max(5, rect.height * 0.04);
                 const y = canvasCenterY - groundY;
                 entry.character.setPosition(x, y);
             }
@@ -288,7 +301,8 @@ class BattleSpineIntegration {
                         "-" + unit.team + "-" + instanceId
                 });
 
-                character.setScale(Number(config.displayScale ?? 0.45));
+                // Scale is applied after the character is attached to its
+                // actual formation slot, when its rendered dimensions are known.
                 character.setFacingLeft(unit.team === "ENEMY");
 
                 this.formation.addCharacter(
