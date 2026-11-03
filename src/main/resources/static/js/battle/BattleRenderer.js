@@ -428,6 +428,51 @@ class BattleRenderer {
     }
 
     /**
+     * Phát impact được đánh dấu AFTER_CAST ngay sau hiệu ứng cast.
+     * Dùng cho kỹ năng không gây DAMAGE như buff SELF của Gojo:
+     * animation impact vẫn chạy đúng mốc Spine mà không phải giả lập DAMAGE.
+     */
+    async playAfterCastImpact(event) {
+        const configs =
+            this.effectManager?.resolveEffectConfigs(event, "impact") || [];
+        const afterCastConfigs = configs.filter(config =>
+            String(config.trigger || "").toUpperCase() === "AFTER_CAST"
+        );
+
+        if (!afterCastConfigs.length) {
+            return false;
+        }
+
+        const effects = [];
+        for (const config of afterCastConfigs) {
+            try {
+                const effect = await this.effectManager.playEffect(config, event);
+                if (effect) {
+                    effects.push(effect);
+                }
+            } catch (error) {
+                console.warn(
+                    "[BattleRenderer] Không phát được post-cast effect:",
+                    config.code || config.skeleton,
+                    error
+                );
+            }
+        }
+
+        if (!effects.length) {
+            return false;
+        }
+
+        this.registerActionCompletions(
+            effects.map(effect => effect.completionPromise)
+        );
+
+        // Chờ nhịp visual đầu tiên; ACTION_END sẽ chờ toàn bộ animation kết thúc.
+        await Promise.all(effects.map(effect => effect.impactPromise));
+        return true;
+    }
+
+    /**
      * Phát animation tấn công của nhân vật.
      *
      * @param {Object} event Sự kiện tấn công, gồm team, instanceId và type.
@@ -547,11 +592,14 @@ class BattleRenderer {
             // Chờ cast chạm mốc tung chiêu, sau đó mới khởi chạy impact diện rộng.
             await Promise.all(effects.map(effect => effect.impactPromise));
             await this.playFormationImpact(event);
+            await this.playAfterCastImpact(event);
             return;
         }
 
         // Không có cast effect: effect diện rộng bắt đầu trực tiếp tại event kỹ năng.
-        if (await this.playFormationImpact(event)) {
+        const formationImpactPlayed = await this.playFormationImpact(event);
+        const postCastImpactPlayed = await this.playAfterCastImpact(event);
+        if (formationImpactPlayed || postCastImpactPlayed) {
             return;
         }
 
