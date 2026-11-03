@@ -5,6 +5,11 @@
     "asuna_dark": {
       "tabSkillRows": [
         {
+          "id": "3151401",
+          "source": "TAB_Skill_1.lua",
+          "raw": "TAB_Skill[3151401] = {315140,2,{{}},10002,1,1,1,1,0,1,0,0,\"$2#31514010\",{},\"Asuna\",{1},0,0,\"Đánh Thường\",{0,0},0,0,10000}"
+        },
+        {
           "id": "3151411",
           "source": "TAB_Skill_1.lua",
           "raw": "TAB_Skill[3151411] = {315141,2,{{}},3151411,1,2,2,1,3,1,1,0,\"$10#31514110&31514110\",{},\"Thi triển kỹ năng kiếm cao siêu, gây cho địch hàng trước và giữa 89% sát thương vật lý, 50% kèm trạng thái {Mất HP}; duy trì 3 lượt; nếu mục tiêu là hệ Tank, tăng thêm sát thương bằng 7% giới hạn HP cho mục tiêu (Không vượt quá 10 lần lực công bản thân)\",{2},0,0,\"Horizontal Square\",{0,6},1,0,10000}"
@@ -43,6 +48,131 @@
           "id": "3151418",
           "source": "TAB_Skill_1.lua",
           "raw": "TAB_Skill[3151418] = {315141,2,{{}},3151411,8,2,2,1,3,1,1,0,\"$10#31514180&31514180\",{},\"Thi triển kỹ năng kiếm cao siêu, gây cho địch hàng trước và giữa 154% sát thương vật lý, 100% kèm trạng thái {Mất HP}; duy trì 3 lượt; nếu mục tiêu là hệ Tank, tăng thêm sát thương bằng 12% giới hạn HP cho mục tiêu (Không vượt quá 10 lần lực công bản thân)\",{2},0,0,\"Horizontal Square\",{0,0},1,0,10000}"
+        },
+        {
+          "id": "3151421",
+          "source": "TAB_Skill_1.lua",
+          "raw": "TAB_Skill[3151421] = {315142,2,{{}},3151421,1,3,3,0,1,0,0,0,\"null\",{{10,2000},{11,1000},{9,5}},\"Asuna có vũ khí cấp tối đa xuất hiện ở Aincrad, tuyệt phẩm độc nhất vô nhị do Lisbeth tạo ra, HP tăng 20%, tấn công tăng 10%, tốc độ tăng 5\",{0},0,0,\"Ánh Sáng Lấp Lánh\",{1,6},2,0,10000}"
+        },
+        {
+          "id": "3151422",
+          "source": "TAB_Skill_1.lua",
+          "raw": "TAB_Skill[3151422] = {315142,2,{{}},3151421,2,3,3,0,1,0,0,0,\"null\",{{10,3000},{11,1500},{9,10}},\"Asuna có vũ khí cấp tối đa xuất hiện ở Aincrad, tuyệt phẩm độc nhất vô nhị do Lisbeth tạo ra, HP tăng 30%, tấn công tăng 15%, tốc độ tăng 10\",{0},0,0,\"Ánh Sáng Lấp Lánh\",{1,8},2,0,10000}"
+        },
+        {
+          "id": "3151423",
+          "source": "TAB_Skill_1.lua",
+          "raw": "TAB_Skill[3151423] = {315142,2,{{}},3151421,3,3,3,0,1,0,0,0,\"null\",{{10,4000},{11,2000},{9,15}},\"Asuna có vũ khí cấp tối đa xuất hiện ở Aincrad, tuyệt phẩm độc nhất vô nhị do Lisbeth tạo ra, HP tăng 40%, tấn công tăng 20%, tốc độ tăng 15\",{0},0,0,\"Ánh Sáng Lấp Lánh\",{1,101},2,0,10000}"
+        },
+        {
+          "id": "3151424",
+          "source": "TAB_Skill_1.lua",
+          "raw": "TAB_Skill[3151424] = {315142,2,{{}},3151421,4,3,3,0,1,0,0,0,\"null\",{{10,4400},{11,2000},{9,15}},\"Asuna có vũ khí cấp tối đa xuất hiện ở Aincrad, tuyệt phẩm độc nhất vô nhị do Lisbeth tạo ra, HP tăng 44%, tấn công tăng 20%, tốc độ tăng 15\",{0},0,0,\"Ánh Sáng Lấp Lánh\",{1,102},2,0,10000}"
+        },
+        {
+          "id": "3151425",
+          "source": "TAB_Skill_1.lua",
+          "raw": "TAB_Skill[3151425] = {315142,2,{{}},3151421,5,3,3,0,1,0,0,0,\"null\",{{10,4800},{11,2000},{9,15}},\"Asuna có vũ khí cấp tối đa xuất hiện ở Aincrad, tuyệt phẩm độc nhất vô nhị do Lisbeth tạo ra, HP tăng 48%, tấn công tăng 20%, tốc độ tăng 15\",{0},0,0,\"Ánh Sáng Lấp Lánh\",{1,103},2,0,10000}"
+        },
+        {
+          "id": "3151426",
+          "source": "TAB_Skill_1.lua",
+          "raw": "TAB_Skill[3151426] = {315142,2,{{}},3151421,6,3,3,0,1,0,0,0,\"null\",{{10,5200},{11,2000},{9,15}},\"Asuna có vũ khí cấp tối đa xuất hiện ở Aincrad, tuyệt phẩm độc nhất vô nhị do Lisbeth tạo ra, HP tăng 52%, tấn công tăng 20%, tốc độ tăng 15\",{0},0,0,\"Ánh Sáng Lấp Lánh\",{1,104},2,0,10000}"
+        },
+        {
+          "id": "3151427",
+          "source": "TAB_Skill_1.lua",
+          "raw": "TAB_Skill[3151427] = {315142,2,{{}},3151421,7,3,3,0,1,0,0,0,\"null\",{{10,5600},{11,2000},{9,15}},\"Asuna có vũ khí cấp tối đa xuất hiện ở Aincrad, tuyệt phẩm độc nhất vô nhị do Lisbeth tạo ra, HP tăng 56%, tấn công tăng 20%, tốc độ tăng 15\",{0},0,0,\"Ánh Sáng Lấp Lánh\",{1,105},2,0,10000}"
+        },
+        {
+          "id": "3151428",
+          "source": "TAB_Skill_1.lua",
+          "raw": "TAB_Skill[3151428] = {315142,2,{{}},3151421,8,3,3,0,1,0,0,0,\"null\",{{10,6000},{11,2000},{9,15}},\"Asuna có vũ khí cấp tối đa xuất hiện ở Aincrad, tuyệt phẩm độc nhất vô nhị do Lisbeth tạo ra, HP tăng 60%, tấn công tăng 20%, tốc độ tăng 15\",{0},0,0,\"Ánh Sáng Lấp Lánh\",{1,0},2,0,10000}"
+        },
+        {
+          "id": "3151429",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[3151429] = {3151421,2,{{}},3151421,3,3,3,0,1,0,0,0,\"$32?1003030\",{{10,4000},{11,2000},{9,15}},\"HP tăng 40%, công tăng 20%, tốc độ tăng 15; đồng thời nhận lượng lớn miễn ST, nhưng giảm kháng tính với trạng thái debuff.\",{0},0,0,\"Kiên Trì Rèn Luyện\",{1,101},2,0,10000}"
+        },
+        {
+          "id": "3151431",
+          "source": "TAB_Skill_1.lua",
+          "raw": "TAB_Skill[3151431] = {315143,2,{{}},3151431,1,2,2,1,2,2,3,0,\"$24#31514310&31514310\",{},\"Dồn lực đột kích kẻ địch phía trước, gây ra 248% sát thương vật lý lên kẻ địch có HP thấp nhất, nếu mục tiêu ở trạng thái {Mất HP} hàng loạt, nhất định bạo kích\",{0},0,0,\"Tia chớp đâm xuyên\",{3,6},3,0,10000}"
+        },
+        {
+          "id": "3151432",
+          "source": "TAB_Skill_1.lua",
+          "raw": "TAB_Skill[3151432] = {315143,2,{{}},3151431,2,2,2,1,2,2,3,0,\"$24#31514320&31514320\",{},\"Dồn lực đột kích kẻ địch phía trước, gây ra 297% sát thương vật lý lên kẻ địch có HP thấp nhất, nếu mục tiêu ở trạng thái {Mất HP} hàng loạt, nhất định bạo kích, đồng thời tăng bản thân 20% sát thương bạo kích\",{0},0,0,\"Tia chớp đâm xuyên\",{3,9},3,0,10000}"
+        },
+        {
+          "id": "3151433",
+          "source": "TAB_Skill_1.lua",
+          "raw": "TAB_Skill[3151433] = {315143,2,{{}},3151431,3,2,2,1,2,2,3,0,\"$24#31514330&31514330\",{},\"Dồn lực đột kích kẻ địch phía trước, gây ra 375% sát thương vật lý lên kẻ địch có HP thấp nhất, nếu mục tiêu ở trạng thái {Mất HP} hàng loạt, nhất định bạo kích, đồng thời tăng bản thân 20% sát thương bạo kích, hồi phục HP bằng 50% sát thương lần này\",{0},0,0,\"Tia chớp đâm xuyên\",{3,101},3,0,10000}"
+        },
+        {
+          "id": "3151434",
+          "source": "TAB_Skill_1.lua",
+          "raw": "TAB_Skill[3151434] = {315143,2,{{}},3151431,4,2,2,1,2,2,3,0,\"$24#31514340&31514340\",{},\"Dồn lực đột kích kẻ địch phía trước, gây ra 390% sát thương vật lý lên kẻ địch có HP thấp nhất, nếu mục tiêu ở trạng thái {Mất HP} hàng loạt, nhất định bạo kích, đồng thời tăng bản thân 20% sát thương bạo kích, hồi phục HP bằng 50% sát thương lần này\",{0},0,0,\"Tia chớp đâm xuyên\",{3,102},3,0,10000}"
+        },
+        {
+          "id": "3151435",
+          "source": "TAB_Skill_1.lua",
+          "raw": "TAB_Skill[3151435] = {315143,2,{{}},3151431,5,2,2,1,2,2,3,0,\"$24#31514350&31514350\",{},\"Dồn lực đột kích kẻ địch phía trước, gây ra 405% sát thương vật lý sát thương vật lý lên kẻ địch có HP thấp nhất, nếu mục tiêu ở trạng thái {Mất HP} hàng loạt, nhất định bạo kích, đồng thời tăng bản thân 20% sát thương bạo kích, hồi phục HP bằng 50% sát thương lần này\",{0},0,0,\"Tia chớp đâm xuyên\",{3,103},3,0,10000}"
+        },
+        {
+          "id": "3151436",
+          "source": "TAB_Skill_1.lua",
+          "raw": "TAB_Skill[3151436] = {315143,2,{{}},3151431,6,2,2,1,2,2,3,0,\"$24#31514360&31514360\",{},\"Dồn lực đột kích kẻ địch phía trước, gây ra 420% sát thương vật lý sát thương vật lý lên kẻ địch có HP thấp nhất, nếu mục tiêu ở trạng thái {Mất HP} hàng loạt, nhất định bạo kích, đồng thời tăng bản thân 20% sát thương bạo kích, hồi phục HP bằng 50% sát thương lần này\",{0},0,0,\"Tia chớp đâm xuyên\",{3,104},3,0,10000}"
+        },
+        {
+          "id": "3151437",
+          "source": "TAB_Skill_1.lua",
+          "raw": "TAB_Skill[3151437] = {315143,2,{{}},3151431,7,2,2,1,2,2,3,0,\"$24#31514370&31514370\",{},\"Dồn lực đột kích kẻ địch phía trước, gây ra 435% sát thương vật lý sát thương vật lý lên kẻ địch có HP thấp nhất, nếu mục tiêu ở trạng thái {Mất HP} hàng loạt, nhất định bạo kích, đồng thời tăng bản thân 20% sát thương bạo kích, hồi phục HP bằng 50% sát thương lần này\",{0},0,0,\"Tia chớp đâm xuyên\",{3,105},3,0,10000}"
+        },
+        {
+          "id": "3151438",
+          "source": "TAB_Skill_1.lua",
+          "raw": "TAB_Skill[3151438] = {315143,2,{{}},3151431,8,2,2,1,2,2,3,0,\"$24#31514380&31514380\",{},\"Dồn lực đột kích kẻ địch phía trước, gây ra 450% sát thương vật lý sát thương vật lý lên kẻ địch có HP thấp nhất, nếu mục tiêu ở trạng thái {Mất HP} hàng loạt, nhất định bạo kích, đồng thời tăng bản thân 20% sát thương bạo kích, hồi phục HP bằng 50% sát thương lần này\",{0},0,0,\"Tia chớp đâm xuyên\",{3,0},3,0,10000}"
+        },
+        {
+          "id": "3151441",
+          "source": "TAB_Skill_1.lua",
+          "raw": "TAB_Skill[3151441] = {315144,2,{{}},3151441,1,3,3,0,1,0,0,0,\"$32?31514410\",{},\"Thi triển kỹ năng kiếm cao siêu, lấy tốc độ nhanh nhất chỉnh thành trạng thái tốt nhất của bản thân, sát thương đối với đơn vị {Mất HP} hàng loạt tăng 10%\",{0},0,0,\"Quỷ Công Lược\",{5,6},4,0,10000}"
+        },
+        {
+          "id": "3151442",
+          "source": "TAB_Skill_1.lua",
+          "raw": "TAB_Skill[3151442] = {315144,2,{{}},3151441,2,3,3,0,1,0,0,0,\"$32?31514420\",{},\"Thi triển kỹ năng kiếm cao siêu, lấy tốc độ nhanh nhất chỉnh thành trạng thái tốt nhất của bản thân, sát thương đối với đơn vị {Mất HP} hàng loạt tăng 15%\",{0},0,0,\"Quỷ Công Lược\",{5,10},4,0,10000}"
+        },
+        {
+          "id": "3151443",
+          "source": "TAB_Skill_1.lua",
+          "raw": "TAB_Skill[3151443] = {315144,2,{{}},3151441,3,3,3,0,1,0,0,0,\"$32?31514430?31514432\",{},\"Thi triển kỹ năng kiếm cao siêu, lấy tốc độ nhanh nhất chỉnh thành trạng thái tốt nhất của bản thân, sát thương đối với đơn vị {Mất HP} hàng loạt tăng 20%, {Đánh thường} ưu tiên tấn công đơn vị ở trạng thái {Mất HP} hàng loạt\",{0},0,0,\"Quỷ Công Lược\",{5,101},4,0,10000}"
+        },
+        {
+          "id": "3151444",
+          "source": "TAB_Skill_1.lua",
+          "raw": "TAB_Skill[3151444] = {315144,2,{{}},3151441,4,3,3,0,1,0,0,0,\"$32?31514440?31514442\",{},\"Thi triển kỹ năng kiếm cao siêu, lấy tốc độ nhanh nhất chỉnh thành trạng thái tốt nhất của bản thân, sát thương đối với đơn vị {Mất HP} hàng loạt tăng 20.8%, {Đánh thường} ưu tiên tấn công đơn vị ở trạng thái {Mất HP} hàng loạt\",{0},0,0,\"Quỷ Công Lược\",{5,102},4,0,10000}"
+        },
+        {
+          "id": "3151445",
+          "source": "TAB_Skill_1.lua",
+          "raw": "TAB_Skill[3151445] = {315144,2,{{}},3151441,5,3,3,0,1,0,0,0,\"$32?31514450?31514452\",{},\"Thi triển kỹ năng kiếm cao siêu, lấy tốc độ nhanh nhất chỉnh thành trạng thái tốt nhất của bản thân, sát thương đối với đơn vị {Mất HP} hàng loạt tăng 21.6%, {Đánh thường} ưu tiên tấn công đơn vị ở trạng thái {Mất HP} hàng loạt\",{0},0,0,\"Quỷ Công Lược\",{5,103},4,0,10000}"
+        },
+        {
+          "id": "3151446",
+          "source": "TAB_Skill_1.lua",
+          "raw": "TAB_Skill[3151446] = {315144,2,{{}},3151441,6,3,3,0,1,0,0,0,\"$32?31514460?31514462\",{},\"Thi triển kỹ năng kiếm cao siêu, lấy tốc độ nhanh nhất chỉnh thành trạng thái tốt nhất của bản thân, sát thương đối với đơn vị {Mất HP} hàng loạt tăng 22.4%, {Đánh thường} ưu tiên tấn công đơn vị ở trạng thái {Mất HP} hàng loạt\",{0},0,0,\"Quỷ Công Lược\",{5,104},4,0,10000}"
+        },
+        {
+          "id": "3151447",
+          "source": "TAB_Skill_1.lua",
+          "raw": "TAB_Skill[3151447] = {315144,2,{{}},3151441,7,3,3,0,1,0,0,0,\"$32?31514470?31514472\",{},\"Thi triển kỹ năng kiếm cao siêu, lấy tốc độ nhanh nhất chỉnh thành trạng thái tốt nhất của bản thân, sát thương đối với đơn vị {Mất HP} hàng loạt tăng 23.2%, {Đánh thường} ưu tiên tấn công đơn vị ở trạng thái {Mất HP} hàng loạt\",{0},0,0,\"Quỷ Công Lược\",{5,105},4,0,10000}"
+        },
+        {
+          "id": "3151448",
+          "source": "TAB_Skill_1.lua",
+          "raw": "TAB_Skill[3151448] = {315144,2,{{}},3151441,8,3,3,0,1,0,0,0,\"$32?31514480?31514482\",{},\"Thi triển kỹ năng kiếm cao siêu, lấy tốc độ nhanh nhất chỉnh thành trạng thái tốt nhất của bản thân, sát thương đối với đơn vị {Mất HP} hàng loạt tăng 24%, {Đánh thường} ưu tiên tấn công đơn vị ở trạng thái {Mất HP} hàng loạt\",{0},0,0,\"Quỷ Công Lược\",{5,0},4,0,10000}"
         }
       ],
       "tabEffectPerforRows": [
@@ -846,6 +976,11 @@
     "iori": {
       "tabSkillRows": [
         {
+          "id": "5151501",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151501] = {515150,2,{{}},10002,1,1,1,1,0,1,0,0,\"$2#51515010\",{},\"Iori\",{0},0,0,\"Đánh Thường\",{0,0},0,0,10000}"
+        },
+        {
           "id": "5151511",
           "source": "TAB_Skill_2.lua",
           "raw": "TAB_Skill[5151511] = {515151,2,{{}},5151511,1,2,2,1,1,1,1,1,\"$16#51515110&51515110\",{},\"Nhảy lên đè đối thủ xuống đất và dùng Quỷ Thiêu truy kích, kỹ năng này bỏ qua khống chế, gây 144% ST vật lý cho 2 mục tiêu địch ngẫu nhiên, gây thêm sát thương bằng 3% giới hạn HP mục tiêu cho Tank, Hỗ Trợ (Không vượt quá 2 lần lực công bản thân)\",{0},0,0,\"Viêm Âu\",{0,6},1,0,10000}"
@@ -884,6 +1019,126 @@
           "id": "5151518",
           "source": "TAB_Skill_2.lua",
           "raw": "TAB_Skill[5151518] = {515151,2,{{}},5151511,8,2,2,1,1,1,1,1,\"$16#51515180&51515130\",{},\"Nhảy lên đè đối thủ xuống đất và dùng Quỷ Thiêu truy kích, kỹ năng này bỏ qua khống chế, gây 246% ST vật lý cho 2 mục tiêu địch ngẫu nhiên, gây thêm sát thương bằng 5% giới hạn HP mục tiêu cho Tank, Hỗ Trợ (Không vượt quá 2 lần lực công bản thân)\",{0},0,0,\"Viêm Âu\",{0,0},1,0,10000}"
+        },
+        {
+          "id": "5151521",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151521] = {515152,2,{{}},5151521,1,3,3,0,0,0,0,0,\"$32?104005\",{{11,2000},{10,1000}},\"Lửa sức mạnh của nhà Bát Thần, tấn công tăng 20%, HP tăng 10%, sau khi vào chiến đấu phòng thủ tăng thêm 5%\",{0},0,0,\"Sức Mạnh Thương Viêm\",{1,6},2,0,10000}"
+        },
+        {
+          "id": "5151522",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151522] = {515152,2,{{}},5151521,2,3,3,0,0,0,0,0,\"$32?104010\",{{11,3000},{10,1500}},\"Lửa sức mạnh của nhà Bát Thần, tấn công tăng 30%, HP tăng 15%, sau khi vào chiến đấu phòng thủ tăng thêm 10%\",{0},0,0,\"Sức Mạnh Thương Viêm\",{1,8},2,0,10000}"
+        },
+        {
+          "id": "5151523",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151523] = {515152,2,{{}},5151521,3,3,3,0,0,0,0,0,\"$32?104015\",{{11,4000},{10,2000}},\"Lửa sức mạnh của nhà Bát Thần, tấn công tăng 40%, HP tăng 20%, sau khi vào chiến đấu phòng thủ tăng thêm 15%\",{0},0,0,\"Sức Mạnh Thương Viêm\",{1,101},2,0,10000}"
+        },
+        {
+          "id": "5151524",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151524] = {515152,2,{{}},5151521,4,3,3,0,0,0,0,0,\"$32?104015\",{{11,4000},{10,2400}},\"Lửa sức mạnh của nhà Bát Thần, tấn công tăng 40%, HP tăng 24%, sau khi vào chiến đấu phòng thủ tăng thêm 15%\",{0},0,0,\"Sức Mạnh Thương Viêm\",{1,102},2,0,10000}"
+        },
+        {
+          "id": "5151525",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151525] = {515152,2,{{}},5151521,5,3,3,0,0,0,0,0,\"$32?104015\",{{11,4000},{10,2800}},\"Lửa sức mạnh của nhà Bát Thần, tấn công tăng 40%, HP tăng 28%, sau khi vào chiến đấu phòng thủ tăng thêm 15%\",{0},0,0,\"Sức Mạnh Thương Viêm\",{1,103},2,0,10000}"
+        },
+        {
+          "id": "5151526",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151526] = {515152,2,{{}},5151521,6,3,3,0,0,0,0,0,\"$32?104015\",{{11,4000},{10,3200}},\"Lửa sức mạnh của nhà Bát Thần, tấn công tăng 40%, HP tăng 32%, sau khi vào chiến đấu phòng thủ tăng thêm 15%\",{0},0,0,\"Sức Mạnh Thương Viêm\",{1,104},2,0,10000}"
+        },
+        {
+          "id": "5151527",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151527] = {515152,2,{{}},5151521,7,3,3,0,0,0,0,0,\"$32?104015\",{{11,4000},{10,3600}},\"Lửa sức mạnh của nhà Bát Thần, tấn công tăng 40%, HP tăng 36%, sau khi vào chiến đấu phòng thủ tăng thêm 15%\",{0},0,0,\"Sức Mạnh Thương Viêm\",{1,105},2,0,10000}"
+        },
+        {
+          "id": "5151528",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151528] = {515152,2,{{}},5151521,8,3,3,0,0,0,0,0,\"$32?104015\",{{11,4000},{10,4000}},\"Lửa sức mạnh của nhà Bát Thần, tấn công tăng 40%, HP tăng 40%, sau khi vào chiến đấu phòng thủ tăng thêm 15%\",{0},0,0,\"Sức Mạnh Thương Viêm\",{1,0},2,0,10000}"
+        },
+        {
+          "id": "5151531",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151531] = {515153,2,{{}},5151531,1,2,2,1,2,2,3,1,\"($32?51515310)($22#51515310)\",{},\"Dùng {8 Ly Rượu} đánh úp đối thủ, {Yatagara} tiến đánh bằng vết móng xanh nóng, kỹ năng này bỏ qua khống chế, tăng 10% bạo kích, tạo 150% ST vật lý cho 3 mục tiêu lực công cao nhất của địch\",{0},0,0,\"Yatagarasu\",{3,6},3,0,10000}"
+        },
+        {
+          "id": "5151532",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151532] = {515153,2,{{}},5151531,2,2,2,1,2,2,3,1,\"($32?51515310)($22#51515320)\",{},\"Dùng {8 Ly Rượu} đánh úp đối thủ, {Yatagara} tiến đánh bằng vết móng xanh nóng, kỹ năng này bỏ qua khống chế, tăng 15% bạo kích, tạo 176% ST vật lý cho 3 mục tiêu lực công cao nhất của địch\",{0},0,0,\"Yatagarasu\",{3,9},3,0,10000}"
+        },
+        {
+          "id": "5151533",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151533] = {515153,2,{{}},5151531,3,2,2,1,2,2,3,1,\"($32?51515310)($22#51515330)\",{},\"Dùng {8 Ly Rượu} đánh úp đối thủ, {Yatagara} tiến đánh bằng vết móng xanh nóng, kỹ năng này bỏ qua khống chế, tăng 20% bạo kích, tạo 208% ST vật lý cho 3 mục tiêu lực công cao nhất của địch\",{0},0,0,\"Yatagarasu\",{3,101},3,0,10000}"
+        },
+        {
+          "id": "5151534",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151534] = {515153,2,{{}},5151531,4,2,2,1,2,2,3,1,\"($32?51515310)($22#51515340)\",{},\"Dùng {8 Ly Rượu} đánh úp đối thủ, {Yatagara} tiến đánh bằng vết móng xanh nóng, kỹ năng này bỏ qua khống chế, tăng 20% bạo kích, tạo 216% ST vật lý cho 3 mục tiêu lực công cao nhất của địch\",{0},0,0,\"Yatagarasu\",{3,102},3,0,10000}"
+        },
+        {
+          "id": "5151535",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151535] = {515153,2,{{}},5151531,5,2,2,1,2,2,3,1,\"($32?51515310)($22#51515350)\",{},\"Dùng {8 Ly Rượu} đánh úp đối thủ, {Yatagara} tiến đánh bằng vết móng xanh nóng, kỹ năng này bỏ qua khống chế, tăng 20% bạo kích, tạo 224% ST vật lý cho 3 mục tiêu lực công cao nhất của địch\",{0},0,0,\"Yatagarasu\",{3,103},3,0,10000}"
+        },
+        {
+          "id": "5151536",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151536] = {515153,2,{{}},5151531,6,2,2,1,2,2,3,1,\"($32?51515310)($22#51515360)\",{},\"Dùng {8 Ly Rượu} đánh úp đối thủ, {Yatagara} tiến đánh bằng vết móng xanh nóng, kỹ năng này bỏ qua khống chế, tăng 20% bạo kích, tạo 233% ST vật lý cho 3 mục tiêu lực công cao nhất của địch\",{0},0,0,\"Yatagarasu\",{3,104},3,0,10000}"
+        },
+        {
+          "id": "5151537",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151537] = {515153,2,{{}},5151531,7,2,2,1,2,2,3,1,\"($32?51515310)($22#51515370)\",{},\"Dùng {8 Ly Rượu} đánh úp đối thủ, {Yatagara} tiến đánh bằng vết móng xanh nóng, kỹ năng này bỏ qua khống chế, tăng 20% bạo kích, tạo 241% ST vật lý cho 3 mục tiêu lực công cao nhất của địch\",{0},0,0,\"Yatagarasu\",{3,105},3,0,10000}"
+        },
+        {
+          "id": "5151538",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151538] = {515153,2,{{}},5151531,8,2,2,1,2,2,3,1,\"($32?51515310)($22#51515380)\",{},\"Dùng {8 Ly Rượu} đánh úp đối thủ, {Yatagara} tiến đánh bằng vết móng xanh nóng, kỹ năng này bỏ qua khống chế, tăng 20% bạo kích, tạo 250% ST vật lý cho 3 mục tiêu lực công cao nhất của địch\",{0},0,0,\"Yatagarasu\",{3,0},3,0,10000}"
+        },
+        {
+          "id": "5151541",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151541] = {515154,2,{{}},5151541,1,3,3,0,0,0,0,0,\"$32?51515410\",{},\"Khi tấn công chính xác, nếu HP bản thân >40%, sát thương lần này tăng 10%, nếu không, 20% sát thương lần này chuyển thành HP bản thân; khi chủ động đánh thường, có 30% thêm thi triển {Banned}, gây thêm 134% sát thương vật lý\",{0},0,0,\"Banned\",{5,6},4,0,10000}"
+        },
+        {
+          "id": "5151542",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151542] = {515154,2,{{}},5151541,2,3,3,0,0,0,0,0,\"$32?51515420\",{},\"Khi tấn công chính xác, nếu HP bản thân >40%, sát thương lần này tăng 15%, nếu không, 25% sát thương lần này chuyển thành HP bản thân; khi chủ động đánh thường, có 30% thêm thi triển {Banned}, gây thêm 161% sát thương vật lý\",{0},0,0,\"Banned\",{5,10},4,0,10000}"
+        },
+        {
+          "id": "5151543",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151543] = {515154,2,{{}},5151541,3,3,3,0,0,0,0,0,\"$32?51515430\",{},\"Khi tấn công chính xác, nếu HP bản thân >40%, sát thương lần này tăng 20%, nếu không, 30% sát thương lần này chuyển thành HP bản thân; khi chủ động đánh thường, có 30% thêm thi triển {Banned}, gây thêm 193% sát thương vật lý\",{0},0,0,\"Banned\",{5,101},4,0,10000}"
+        },
+        {
+          "id": "5151544",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151544] = {515154,2,{{}},5151541,4,3,3,0,0,0,0,0,\"$32?51515440\",{},\"Khi tấn công chính xác, nếu HP bản thân >40%, sát thương lần này tăng 21%, nếu không, 31% sát thương lần này chuyển thành HP bản thân; khi chủ động đánh thường, có 30% thêm thi triển {Banned}, gây thêm 200% sát thương vật lý\",{0},0,0,\"Banned\",{5,102},4,0,10000}"
+        },
+        {
+          "id": "5151545",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151545] = {515154,2,{{}},5151541,5,3,3,0,0,0,0,0,\"$32?51515450\",{},\"Khi tấn công chính xác, nếu HP bản thân >40%, sát thương lần này tăng 22%, nếu không, 32% sát thương lần này chuyển thành HP bản thân; khi chủ động đánh thường, có 30% thêm thi triển {Banned}, gây thêm 208% sát thương vật lý\",{0},0,0,\"Banned\",{5,103},4,0,10000}"
+        },
+        {
+          "id": "5151546",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151546] = {515154,2,{{}},5151541,6,3,3,0,0,0,0,0,\"$32?51515460\",{},\"Khi tấn công chính xác, nếu HP bản thân >40%, sát thương lần này tăng 23%, nếu không, 33% sát thương lần này chuyển thành HP bản thân; khi chủ động đánh thường, có 30% thêm thi triển {Banned}, gây thêm 216% sát thương vật lý\",{0},0,0,\"Banned\",{5,104},4,0,10000}"
+        },
+        {
+          "id": "5151547",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151547] = {515154,2,{{}},5151541,7,3,3,0,0,0,0,0,\"$32?51515470\",{},\"Khi tấn công chính xác, nếu HP bản thân >40%, sát thương lần này tăng 24%, nếu không, 34% sát thương lần này chuyển thành HP bản thân; khi chủ động đánh thường, có 30% thêm thi triển {Banned}, gây thêm 224% sát thương vật lý\",{0},0,0,\"Banned\",{5,105},4,0,10000}"
+        },
+        {
+          "id": "5151548",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151548] = {515154,2,{{}},5151541,8,3,3,0,0,0,0,0,\"$32?51515480\",{},\"Khi tấn công chính xác, nếu HP bản thân >40%, sát thương lần này tăng 25%, nếu không, 35% sát thương lần này chuyển thành HP bản thân; khi chủ động đánh thường, có 30% thêm thi triển {Banned}, gây thêm 232% sát thương vật lý\",{0},0,0,\"Banned\",{5,0},4,0,10000}"
         }
       ],
       "tabEffectPerforRows": [
@@ -1139,6 +1394,11 @@
     "iori_dark": {
       "tabSkillRows": [
         {
+          "id": "5151501",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151501] = {515150,2,{{}},10002,1,1,1,1,0,1,0,0,\"$2#51515010\",{},\"Iori\",{0},0,0,\"Đánh Thường\",{0,0},0,0,10000}"
+        },
+        {
           "id": "5151511",
           "source": "TAB_Skill_2.lua",
           "raw": "TAB_Skill[5151511] = {515151,2,{{}},5151511,1,2,2,1,1,1,1,1,\"$16#51515110&51515110\",{},\"Nhảy lên đè đối thủ xuống đất và dùng Quỷ Thiêu truy kích, kỹ năng này bỏ qua khống chế, gây 144% ST vật lý cho 2 mục tiêu địch ngẫu nhiên, gây thêm sát thương bằng 3% giới hạn HP mục tiêu cho Tank, Hỗ Trợ (Không vượt quá 2 lần lực công bản thân)\",{0},0,0,\"Viêm Âu\",{0,6},1,0,10000}"
@@ -1177,6 +1437,126 @@
           "id": "5151518",
           "source": "TAB_Skill_2.lua",
           "raw": "TAB_Skill[5151518] = {515151,2,{{}},5151511,8,2,2,1,1,1,1,1,\"$16#51515180&51515130\",{},\"Nhảy lên đè đối thủ xuống đất và dùng Quỷ Thiêu truy kích, kỹ năng này bỏ qua khống chế, gây 246% ST vật lý cho 2 mục tiêu địch ngẫu nhiên, gây thêm sát thương bằng 5% giới hạn HP mục tiêu cho Tank, Hỗ Trợ (Không vượt quá 2 lần lực công bản thân)\",{0},0,0,\"Viêm Âu\",{0,0},1,0,10000}"
+        },
+        {
+          "id": "5151521",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151521] = {515152,2,{{}},5151521,1,3,3,0,0,0,0,0,\"$32?104005\",{{11,2000},{10,1000}},\"Lửa sức mạnh của nhà Bát Thần, tấn công tăng 20%, HP tăng 10%, sau khi vào chiến đấu phòng thủ tăng thêm 5%\",{0},0,0,\"Sức Mạnh Thương Viêm\",{1,6},2,0,10000}"
+        },
+        {
+          "id": "5151522",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151522] = {515152,2,{{}},5151521,2,3,3,0,0,0,0,0,\"$32?104010\",{{11,3000},{10,1500}},\"Lửa sức mạnh của nhà Bát Thần, tấn công tăng 30%, HP tăng 15%, sau khi vào chiến đấu phòng thủ tăng thêm 10%\",{0},0,0,\"Sức Mạnh Thương Viêm\",{1,8},2,0,10000}"
+        },
+        {
+          "id": "5151523",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151523] = {515152,2,{{}},5151521,3,3,3,0,0,0,0,0,\"$32?104015\",{{11,4000},{10,2000}},\"Lửa sức mạnh của nhà Bát Thần, tấn công tăng 40%, HP tăng 20%, sau khi vào chiến đấu phòng thủ tăng thêm 15%\",{0},0,0,\"Sức Mạnh Thương Viêm\",{1,101},2,0,10000}"
+        },
+        {
+          "id": "5151524",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151524] = {515152,2,{{}},5151521,4,3,3,0,0,0,0,0,\"$32?104015\",{{11,4000},{10,2400}},\"Lửa sức mạnh của nhà Bát Thần, tấn công tăng 40%, HP tăng 24%, sau khi vào chiến đấu phòng thủ tăng thêm 15%\",{0},0,0,\"Sức Mạnh Thương Viêm\",{1,102},2,0,10000}"
+        },
+        {
+          "id": "5151525",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151525] = {515152,2,{{}},5151521,5,3,3,0,0,0,0,0,\"$32?104015\",{{11,4000},{10,2800}},\"Lửa sức mạnh của nhà Bát Thần, tấn công tăng 40%, HP tăng 28%, sau khi vào chiến đấu phòng thủ tăng thêm 15%\",{0},0,0,\"Sức Mạnh Thương Viêm\",{1,103},2,0,10000}"
+        },
+        {
+          "id": "5151526",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151526] = {515152,2,{{}},5151521,6,3,3,0,0,0,0,0,\"$32?104015\",{{11,4000},{10,3200}},\"Lửa sức mạnh của nhà Bát Thần, tấn công tăng 40%, HP tăng 32%, sau khi vào chiến đấu phòng thủ tăng thêm 15%\",{0},0,0,\"Sức Mạnh Thương Viêm\",{1,104},2,0,10000}"
+        },
+        {
+          "id": "5151527",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151527] = {515152,2,{{}},5151521,7,3,3,0,0,0,0,0,\"$32?104015\",{{11,4000},{10,3600}},\"Lửa sức mạnh của nhà Bát Thần, tấn công tăng 40%, HP tăng 36%, sau khi vào chiến đấu phòng thủ tăng thêm 15%\",{0},0,0,\"Sức Mạnh Thương Viêm\",{1,105},2,0,10000}"
+        },
+        {
+          "id": "5151528",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151528] = {515152,2,{{}},5151521,8,3,3,0,0,0,0,0,\"$32?104015\",{{11,4000},{10,4000}},\"Lửa sức mạnh của nhà Bát Thần, tấn công tăng 40%, HP tăng 40%, sau khi vào chiến đấu phòng thủ tăng thêm 15%\",{0},0,0,\"Sức Mạnh Thương Viêm\",{1,0},2,0,10000}"
+        },
+        {
+          "id": "5151531",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151531] = {515153,2,{{}},5151531,1,2,2,1,2,2,3,1,\"($32?51515310)($22#51515310)\",{},\"Dùng {8 Ly Rượu} đánh úp đối thủ, {Yatagara} tiến đánh bằng vết móng xanh nóng, kỹ năng này bỏ qua khống chế, tăng 10% bạo kích, tạo 150% ST vật lý cho 3 mục tiêu lực công cao nhất của địch\",{0},0,0,\"Yatagarasu\",{3,6},3,0,10000}"
+        },
+        {
+          "id": "5151532",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151532] = {515153,2,{{}},5151531,2,2,2,1,2,2,3,1,\"($32?51515310)($22#51515320)\",{},\"Dùng {8 Ly Rượu} đánh úp đối thủ, {Yatagara} tiến đánh bằng vết móng xanh nóng, kỹ năng này bỏ qua khống chế, tăng 15% bạo kích, tạo 176% ST vật lý cho 3 mục tiêu lực công cao nhất của địch\",{0},0,0,\"Yatagarasu\",{3,9},3,0,10000}"
+        },
+        {
+          "id": "5151533",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151533] = {515153,2,{{}},5151531,3,2,2,1,2,2,3,1,\"($32?51515310)($22#51515330)\",{},\"Dùng {8 Ly Rượu} đánh úp đối thủ, {Yatagara} tiến đánh bằng vết móng xanh nóng, kỹ năng này bỏ qua khống chế, tăng 20% bạo kích, tạo 208% ST vật lý cho 3 mục tiêu lực công cao nhất của địch\",{0},0,0,\"Yatagarasu\",{3,101},3,0,10000}"
+        },
+        {
+          "id": "5151534",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151534] = {515153,2,{{}},5151531,4,2,2,1,2,2,3,1,\"($32?51515310)($22#51515340)\",{},\"Dùng {8 Ly Rượu} đánh úp đối thủ, {Yatagara} tiến đánh bằng vết móng xanh nóng, kỹ năng này bỏ qua khống chế, tăng 20% bạo kích, tạo 216% ST vật lý cho 3 mục tiêu lực công cao nhất của địch\",{0},0,0,\"Yatagarasu\",{3,102},3,0,10000}"
+        },
+        {
+          "id": "5151535",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151535] = {515153,2,{{}},5151531,5,2,2,1,2,2,3,1,\"($32?51515310)($22#51515350)\",{},\"Dùng {8 Ly Rượu} đánh úp đối thủ, {Yatagara} tiến đánh bằng vết móng xanh nóng, kỹ năng này bỏ qua khống chế, tăng 20% bạo kích, tạo 224% ST vật lý cho 3 mục tiêu lực công cao nhất của địch\",{0},0,0,\"Yatagarasu\",{3,103},3,0,10000}"
+        },
+        {
+          "id": "5151536",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151536] = {515153,2,{{}},5151531,6,2,2,1,2,2,3,1,\"($32?51515310)($22#51515360)\",{},\"Dùng {8 Ly Rượu} đánh úp đối thủ, {Yatagara} tiến đánh bằng vết móng xanh nóng, kỹ năng này bỏ qua khống chế, tăng 20% bạo kích, tạo 233% ST vật lý cho 3 mục tiêu lực công cao nhất của địch\",{0},0,0,\"Yatagarasu\",{3,104},3,0,10000}"
+        },
+        {
+          "id": "5151537",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151537] = {515153,2,{{}},5151531,7,2,2,1,2,2,3,1,\"($32?51515310)($22#51515370)\",{},\"Dùng {8 Ly Rượu} đánh úp đối thủ, {Yatagara} tiến đánh bằng vết móng xanh nóng, kỹ năng này bỏ qua khống chế, tăng 20% bạo kích, tạo 241% ST vật lý cho 3 mục tiêu lực công cao nhất của địch\",{0},0,0,\"Yatagarasu\",{3,105},3,0,10000}"
+        },
+        {
+          "id": "5151538",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151538] = {515153,2,{{}},5151531,8,2,2,1,2,2,3,1,\"($32?51515310)($22#51515380)\",{},\"Dùng {8 Ly Rượu} đánh úp đối thủ, {Yatagara} tiến đánh bằng vết móng xanh nóng, kỹ năng này bỏ qua khống chế, tăng 20% bạo kích, tạo 250% ST vật lý cho 3 mục tiêu lực công cao nhất của địch\",{0},0,0,\"Yatagarasu\",{3,0},3,0,10000}"
+        },
+        {
+          "id": "5151541",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151541] = {515154,2,{{}},5151541,1,3,3,0,0,0,0,0,\"$32?51515410\",{},\"Khi tấn công chính xác, nếu HP bản thân >40%, sát thương lần này tăng 10%, nếu không, 20% sát thương lần này chuyển thành HP bản thân; khi chủ động đánh thường, có 30% thêm thi triển {Banned}, gây thêm 134% sát thương vật lý\",{0},0,0,\"Banned\",{5,6},4,0,10000}"
+        },
+        {
+          "id": "5151542",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151542] = {515154,2,{{}},5151541,2,3,3,0,0,0,0,0,\"$32?51515420\",{},\"Khi tấn công chính xác, nếu HP bản thân >40%, sát thương lần này tăng 15%, nếu không, 25% sát thương lần này chuyển thành HP bản thân; khi chủ động đánh thường, có 30% thêm thi triển {Banned}, gây thêm 161% sát thương vật lý\",{0},0,0,\"Banned\",{5,10},4,0,10000}"
+        },
+        {
+          "id": "5151543",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151543] = {515154,2,{{}},5151541,3,3,3,0,0,0,0,0,\"$32?51515430\",{},\"Khi tấn công chính xác, nếu HP bản thân >40%, sát thương lần này tăng 20%, nếu không, 30% sát thương lần này chuyển thành HP bản thân; khi chủ động đánh thường, có 30% thêm thi triển {Banned}, gây thêm 193% sát thương vật lý\",{0},0,0,\"Banned\",{5,101},4,0,10000}"
+        },
+        {
+          "id": "5151544",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151544] = {515154,2,{{}},5151541,4,3,3,0,0,0,0,0,\"$32?51515440\",{},\"Khi tấn công chính xác, nếu HP bản thân >40%, sát thương lần này tăng 21%, nếu không, 31% sát thương lần này chuyển thành HP bản thân; khi chủ động đánh thường, có 30% thêm thi triển {Banned}, gây thêm 200% sát thương vật lý\",{0},0,0,\"Banned\",{5,102},4,0,10000}"
+        },
+        {
+          "id": "5151545",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151545] = {515154,2,{{}},5151541,5,3,3,0,0,0,0,0,\"$32?51515450\",{},\"Khi tấn công chính xác, nếu HP bản thân >40%, sát thương lần này tăng 22%, nếu không, 32% sát thương lần này chuyển thành HP bản thân; khi chủ động đánh thường, có 30% thêm thi triển {Banned}, gây thêm 208% sát thương vật lý\",{0},0,0,\"Banned\",{5,103},4,0,10000}"
+        },
+        {
+          "id": "5151546",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151546] = {515154,2,{{}},5151541,6,3,3,0,0,0,0,0,\"$32?51515460\",{},\"Khi tấn công chính xác, nếu HP bản thân >40%, sát thương lần này tăng 23%, nếu không, 33% sát thương lần này chuyển thành HP bản thân; khi chủ động đánh thường, có 30% thêm thi triển {Banned}, gây thêm 216% sát thương vật lý\",{0},0,0,\"Banned\",{5,104},4,0,10000}"
+        },
+        {
+          "id": "5151547",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151547] = {515154,2,{{}},5151541,7,3,3,0,0,0,0,0,\"$32?51515470\",{},\"Khi tấn công chính xác, nếu HP bản thân >40%, sát thương lần này tăng 24%, nếu không, 34% sát thương lần này chuyển thành HP bản thân; khi chủ động đánh thường, có 30% thêm thi triển {Banned}, gây thêm 224% sát thương vật lý\",{0},0,0,\"Banned\",{5,105},4,0,10000}"
+        },
+        {
+          "id": "5151548",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151548] = {515154,2,{{}},5151541,8,3,3,0,0,0,0,0,\"$32?51515480\",{},\"Khi tấn công chính xác, nếu HP bản thân >40%, sát thương lần này tăng 25%, nếu không, 35% sát thương lần này chuyển thành HP bản thân; khi chủ động đánh thường, có 30% thêm thi triển {Banned}, gây thêm 232% sát thương vật lý\",{0},0,0,\"Banned\",{5,0},4,0,10000}"
         }
       ],
       "tabEffectPerforRows": [
@@ -1432,6 +1812,11 @@
     "kirito": {
       "tabSkillRows": [
         {
+          "id": "3151701",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[3151701] = {315170,2,{{}},10002,1,1,1,1,0,1,0,0,\"$2#31517010\",{},\"Kirito\",{0},0,0,\"Đánh Thường\",{0,0},0,0,10000}"
+        },
+        {
           "id": "3151711",
           "source": "TAB_Skill_2.lua",
           "raw": "TAB_Skill[3151711] = {315171,2,{{}},3151711,1,2,2,1,1,1,1,0,\"$87#31517110&31517110\",{},\"Kirito dùng {Dual Blades} đột ngột tấn công với kỹ năng {Trảm Kép Hình Quạt} gây ra 151% ST vật lý lên 2 mục tiêu ngẫu nhiên phe địch (ưu tiên chiến binh), 40% tỷ lệ kèm {Không Ngừng Mất HP}, duy trì 2 lượt, trạng thái này xem như mất HP, không thể thanh tẩy.\",{87},0,0,\"Trảm Kép Hình Quạt\",{0,6},1,0,10000}"
@@ -1470,6 +1855,131 @@
           "id": "3151718",
           "source": "TAB_Skill_2.lua",
           "raw": "TAB_Skill[3151718] = {315171,2,{{}},3151711,8,2,2,1,1,1,1,0,\"$87#31517180&31517130\",{},\"Kirito dùng {Dual Blades} đột ngột tấn công với kỹ năng {Trảm Kép Hình Quạt} gây ra 264% ST vật lý lên 2 mục tiêu ngẫu nhiên phe địch (ưu tiên chiến binh), 80% tỷ lệ kèm {Không Ngừng Mất HP}, duy trì 2 lượt, trạng thái này xem như mất HP, không thể thanh tẩy.\",{87},0,0,\"Trảm Kép Hình Quạt\",{0,0},1,0,10000}"
+        },
+        {
+          "id": "3151721",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[3151721] = {315172,2,{{}},3151721,1,3,3,0,0,0,0,0,\"null\",{{11,2000},{10,1000},{102,500}},\"Kirito hiểu cơ chế game sớm hơn người khác, còn có ưu thế hơn; tấn công tăng 20%, HP tăng 10%, bạo kích tăng 5%\",{0},0,0,\"Kẻ Gian Lận\",{1,6},2,0,10000}"
+        },
+        {
+          "id": "3151722",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[3151722] = {315172,2,{{}},3151721,2,3,3,0,0,0,0,0,\"null\",{{11,3000},{10,1500},{102,1000}},\"Kirito hiểu cơ chế game sớm hơn người khác, còn có ưu thế hơn; tấn công tăng 30%, HP tăng 15%, bạo kích tăng 10%\",{0},0,0,\"Kẻ Gian Lận\",{1,8},2,0,10000}"
+        },
+        {
+          "id": "3151723",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[3151723] = {315172,2,{{}},3151721,3,3,3,0,0,0,0,0,\"null\",{{11,4000},{10,2000},{102,1500}},\"Kirito hiểu cơ chế game sớm hơn người khác, còn có ưu thế hơn; tấn công tăng 40%, HP tăng 20%, bạo kích tăng 15%\",{0},0,0,\"Kẻ Gian Lận\",{1,101},2,0,10000}"
+        },
+        {
+          "id": "3151724",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[3151724] = {315172,2,{{}},3151721,4,3,3,0,0,0,0,0,\"null\",{{11,4000},{10,2400},{102,1500}},\"Kirito hiểu cơ chế game sớm hơn người khác, còn có ưu thế hơn; tấn công tăng 40%, HP tăng 24%, bạo kích tăng 15%\",{0},0,0,\"Kẻ Gian Lận\",{1,102},2,0,10000}"
+        },
+        {
+          "id": "3151725",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[3151725] = {315172,2,{{}},3151721,5,3,3,0,0,0,0,0,\"null\",{{11,4000},{10,2800},{102,1500}},\"Kirito hiểu cơ chế game sớm hơn người khác, còn có ưu thế hơn; tấn công tăng 40%, HP tăng 28%, bạo kích tăng 15%\",{0},0,0,\"Kẻ Gian Lận\",{1,103},2,0,10000}"
+        },
+        {
+          "id": "3151726",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[3151726] = {315172,2,{{}},3151721,6,3,3,0,0,0,0,0,\"null\",{{11,4000},{10,3200},{102,1500}},\"Kirito hiểu cơ chế game sớm hơn người khác, còn có ưu thế hơn; tấn công tăng 40%, HP tăng 32%, bạo kích tăng 15%\",{0},0,0,\"Kẻ Gian Lận\",{1,104},2,0,10000}"
+        },
+        {
+          "id": "3151727",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[3151727] = {315172,2,{{}},3151721,7,3,3,0,0,0,0,0,\"null\",{{11,4000},{10,3600},{102,1500}},\"Kirito hiểu cơ chế game sớm hơn người khác, còn có ưu thế hơn; tấn công tăng 40%, HP tăng 36%, bạo kích tăng 15%\",{0},0,0,\"Kẻ Gian Lận\",{1,105},2,0,10000}"
+        },
+        {
+          "id": "3151728",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[3151728] = {315172,2,{{}},3151721,8,3,3,0,0,0,0,0,\"null\",{{11,4000},{10,4000},{102,1500}},\"Kirito hiểu cơ chế game sớm hơn người khác, còn có ưu thế hơn; tấn công tăng 40%, HP tăng 40%, bạo kích tăng 15%\",{0},0,0,\"Kẻ Gian Lận\",{1,0},2,0,10000}"
+        },
+        {
+          "id": "3151731",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[3151731] = {315173,2,{{}},3151731,1,2,2,1,2,2,3,0,\"($24#31517310&31517310)($24#31517311&31517310)\",{},\"Kirito dùng {Dual Blades} đạt kỹ năng kiếm {Star Burst Stream} trước rồi phát động tấn công 2 lần, gây 124% x2 sát thương cho mục tiêu HP thấp nhất phe địch\",{2},0,0,\"Star Burst Stream\",{3,6},3,0,10000}"
+        },
+        {
+          "id": "3151732",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[3151732] = {315173,2,{{}},3151731,2,2,2,1,2,2,3,0,\"($24#31517320&31517320)($24#31517321&31517320)\",{},\"Kirito dùng {Dual Blades} đạt kỹ năng kiếm {Star Burst Stream} trước rồi phát động tấn công 2 lần, gây 149% x2 sát thương cho mục tiêu HP thấp nhất phe địch, nếu mục tiêu mang hiệu quả debuff loại mất HP, sát thương lần này tăng 15%, nếu không thì kèm 1 tầng {Mất HP}\",{2},0,0,\"Star Burst Stream\",{3,9},3,0,10000}"
+        },
+        {
+          "id": "3151733",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[3151733] = {315173,2,{{}},3151731,3,2,2,1,2,2,3,0,\"($24#31517330&31517330)($24#31517331&31517330)\",{},\"Kirito dùng {Dual Blades} đạt kỹ năng kiếm {Star Burst Stream} trước rồi phát động tấn công 2 lần, gây 188% x2 sát thương cho mục tiêu HP thấp nhất phe địch, nếu mục tiêu mang hiệu quả debuff loại mất HP, sát thương lần này tăng 20%, nếu không thì kèm 2 tầng {Mất HP}\",{2},0,0,\"Star Burst Stream\",{3,101},3,0,10000}"
+        },
+        {
+          "id": "3151734",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[3151734] = {315173,2,{{}},3151731,4,2,2,1,2,2,3,0,\"($24#31517340&31517330)($24#31517341&31517330)\",{},\"Kirito dùng {Dual Blades} đạt kỹ năng kiếm {Star Burst Stream} trước rồi phát động tấn công 2 lần, gây 195% x2 sát thương cho mục tiêu HP thấp nhất phe địch, nếu mục tiêu mang hiệu quả debuff loại mất HP, sát thương lần này tăng 20%, nếu không thì kèm 2 tầng {Mất HP}\",{2},0,0,\"Star Burst Stream\",{3,102},3,0,10000}"
+        },
+        {
+          "id": "3151735",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[3151735] = {315173,2,{{}},3151731,5,2,2,1,2,2,3,0,\"($24#31517350&31517330)($24#31517351&31517330)\",{},\"Kirito dùng {Dual Blades} đạt kỹ năng kiếm {Star Burst Stream} trước rồi phát động tấn công 2 lần, gây 203% x2 sát thương cho mục tiêu HP thấp nhất phe địch, nếu mục tiêu mang hiệu quả debuff loại mất HP, sát thương lần này tăng 20%, nếu không thì kèm 2 tầng {Mất HP}\",{2},0,0,\"Star Burst Stream\",{3,103},3,0,10000}"
+        },
+        {
+          "id": "3151736",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[3151736] = {315173,2,{{}},3151731,6,2,2,1,2,2,3,0,\"($24#31517360&31517330)($24#31517361&31517330)\",{},\"Kirito dùng {Dual Blades} đạt kỹ năng kiếm {Star Burst Stream} trước rồi phát động tấn công 2 lần, gây 211% x2 sát thương cho mục tiêu HP thấp nhất phe địch, nếu mục tiêu mang hiệu quả debuff loại mất HP, sát thương lần này tăng 20%, nếu không thì kèm 2 tầng {Mất HP}\",{2},0,0,\"Star Burst Stream\",{3,104},3,0,10000}"
+        },
+        {
+          "id": "3151737",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[3151737] = {315173,2,{{}},3151731,7,2,2,1,2,2,3,0,\"($24#31517370&31517330)($24#31517371&31517330)\",{},\"Kirito dùng {Dual Blades} đạt kỹ năng kiếm {Star Burst Stream} trước rồi phát động tấn công 2 lần, gây 218% x2 sát thương cho mục tiêu HP thấp nhất phe địch, nếu mục tiêu mang hiệu quả debuff loại mất HP, sát thương lần này tăng 20%, nếu không thì kèm 2 tầng {Mất HP}\",{2},0,0,\"Star Burst Stream\",{3,105},3,0,10000}"
+        },
+        {
+          "id": "3151738",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[3151738] = {315173,2,{{}},3151731,8,2,2,1,2,2,3,0,\"($24#31517380&31517330)($24#31517381&31517330)\",{},\"Kirito dùng {Dual Blades} đạt kỹ năng kiếm {Star Burst Stream} trước rồi phát động tấn công 2 lần, gây 226% x2 sát thương cho mục tiêu HP thấp nhất phe địch, nếu mục tiêu mang hiệu quả debuff loại mất HP, sát thương lần này tăng 20%, nếu không thì kèm 2 tầng {Mất HP}\",{2},0,0,\"Star Burst Stream\",{3,0},3,0,10000}"
+        },
+        {
+          "id": "3151741",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[3151741] = {315174,2,{{}},3151741,1,3,3,0,0,0,0,0,\"$32?31517410\",{},\"Tốc độ phản ứng nhanh nhất còn nhận kỹ năng {Dual Blades}, khi dùng đồng thời trang bị {Elucidator} và {Dark Repulsor}; tỷ lệ kích hoạt hiệu quả mất HP tăng 10%, khi sát thương mất HP sinh hiệu lực, kèm sát thương bằng 5% lực công Kirito\",{0},0,0,\"Dual Blades\",{5,6},4,0,10000}"
+        },
+        {
+          "id": "3151742",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[3151742] = {315174,2,{{}},3151741,2,3,3,0,0,0,0,0,\"$32?31517420\",{},\"Tốc độ phản ứng nhanh nhất còn nhận kỹ năng {Dual Blades}, khi dùng đồng thời trang bị {Elucidator} và {Dark Repulsor}; tỷ lệ kích hoạt hiệu quả mất HP tăng 15%, khi sát thương mất HP sinh hiệu lực, kèm sát thương bằng 10% lực công Kirito\",{0},0,0,\"Dual Blades\",{5,10},4,0,10000}"
+        },
+        {
+          "id": "3151743",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[3151743] = {315174,2,{{}},3151741,3,3,3,0,0,0,0,0,\"$32?31517430\",{},\"Tốc độ phản ứng nhanh nhất còn nhận kỹ năng {Dual Blades}, khi dùng đồng thời trang bị {Elucidator} và {Dark Repulsor}; tỷ lệ kích hoạt hiệu quả mất HP tăng 20%, khi sát thương mất HP sinh hiệu lực, kèm sát thương bằng 15% lực công Kirito\",{0},0,0,\"Dual Blades\",{5,101},4,0,10000}"
+        },
+        {
+          "id": "3151744",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[3151744] = {315174,2,{{}},3151741,4,3,3,0,0,0,0,0,\"$32?31517440\",{},\"Tốc độ phản ứng nhanh nhất còn nhận kỹ năng {Dual Blades}, khi dùng đồng thời trang bị {Elucidator} và {Dark Repulsor}; tỷ lệ kích hoạt hiệu quả mất HP tăng 20.8%, khi sát thương mất HP sinh hiệu lực, kèm sát thương bằng 15.6% lực công Kirito\",{0},0,0,\"Dual Blades\",{5,102},4,0,10000}"
+        },
+        {
+          "id": "3151745",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[3151745] = {315174,2,{{}},3151741,5,3,3,0,0,0,0,0,\"$32?31517450\",{},\"Tốc độ phản ứng nhanh nhất còn nhận kỹ năng {Dual Blades}, khi dùng đồng thời trang bị {Elucidator} và {Dark Repulsor}; tỷ lệ kích hoạt hiệu quả mất HP tăng 21.6%, khi sát thương mất HP sinh hiệu lực, kèm sát thương bằng 16.2% lực công Kirito\",{0},0,0,\"Dual Blades\",{5,103},4,0,10000}"
+        },
+        {
+          "id": "3151746",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[3151746] = {315174,2,{{}},3151741,6,3,3,0,0,0,0,0,\"$32?31517460\",{},\"Tốc độ phản ứng nhanh nhất còn nhận kỹ năng {Dual Blades}, khi dùng đồng thời trang bị {Elucidator} và {Dark Repulsor}; tỷ lệ kích hoạt hiệu quả mất HP tăng 22.4%, khi sát thương mất HP sinh hiệu lực, kèm sát thương bằng 16.8% lực công Kirito\",{0},0,0,\"Dual Blades\",{5,104},4,0,10000}"
+        },
+        {
+          "id": "3151747",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[3151747] = {315174,2,{{}},3151741,7,3,3,0,0,0,0,0,\"$32?31517470\",{},\"Tốc độ phản ứng nhanh nhất còn nhận kỹ năng {Dual Blades}, khi dùng đồng thời trang bị {Elucidator} và {Dark Repulsor}; tỷ lệ kích hoạt hiệu quả mất HP tăng 23.2%, khi sát thương mất HP sinh hiệu lực, kèm sát thương bằng 17.4% lực công Kirito\",{0},0,0,\"Dual Blades\",{5,105},4,0,10000}"
+        },
+        {
+          "id": "3151748",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[3151748] = {315174,2,{{}},3151741,8,3,3,0,0,0,0,0,\"$32?31517480\",{},\"Tốc độ phản ứng nhanh nhất còn nhận kỹ năng {Dual Blades}, khi dùng đồng thời trang bị {Elucidator} và {Dark Repulsor}; tỷ lệ kích hoạt hiệu quả mất HP tăng 24%, khi sát thương mất HP sinh hiệu lực, kèm sát thương bằng 18% lực công Kirito\",{0},0,0,\"Dual Blades\",{5,0},4,0,10000}"
+        },
+        {
+          "id": "3151749",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[3151749] = {3151741,2,{{}},3151741,3,3,3,0,0,0,0,0,\"$32?31517490\",{},\"Tốc độ phản ứng nhanh nhất còn nhận kỹ năng {Dual Blades}, khi dùng đồng thời trang bị {Elucidator} và {Dark Repulsor}; bị tấn công kèm thêm {Mất HP} cho mục tiêu tấn công, tỷ lệ kích hoạt hiệu quả mất HP phe ta tăng 20%, khi sát thương mất HP sinh hiệu lực, kèm sát thương bằng 30% lực công Kirito\",{0},0,0,\"Dual Blades\",{5,101},4,0,10000}"
         }
       ],
       "tabEffectPerforRows": [
@@ -1740,6 +2250,11 @@
     "leloud": {
       "tabSkillRows": [
         {
+          "id": "4251501",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251501] = {425150,2,{{}},10002,1,1,1,2,0,1,0,0,\"$2#42515010\",{},\"Lelouch\",{0},0,0,\"Đánh Thường\",{0,0},0,0,10000}"
+        },
+        {
           "id": "4251511",
           "source": "TAB_Skill_2.lua",
           "raw": "TAB_Skill[4251511] = {425151,2,{{}},4251511,1,2,2,2,2,1,1,0,\"$17#42515110&42515110\",{},\"Gây cho 3 mục tiêu ngẫu nhiên 105% sát thương ma pháp, 60% kèm {Geass}, khiến sát thương ma pháp phải chịu của mục tiêu tăng 10%, duy trì 2 lượt\",{116},0,0,\"Geass\",{0,6},1,0,10000}"
@@ -1778,6 +2293,126 @@
           "id": "4251518",
           "source": "TAB_Skill_2.lua",
           "raw": "TAB_Skill[4251518] = {425151,2,{{}},4251511,8,2,2,2,2,1,1,0,\"$17#42515180&42515130\",{},\"Gây cho 3 mục tiêu ngẫu nhiên 181% sát thương ma pháp, kèm {Geass}, khiến sát thương ma pháp phải chịu của mục tiêu tăng 10%, duy trì 2 lượt\",{116},0,0,\"Geass\",{0,0},1,0,10000}"
+        },
+        {
+          "id": "4251521",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251521] = {425152,2,{{}},4251521,1,3,3,0,0,0,0,0,\"null\",{{11,2000},{10,1000},{102,500}},\"Mọi người đều là con cờ của ta; công tăng 20%, HP tăng 10%, bạo kích tăng 5%\",{0},0,0,\"Mệnh Lệnh Tuyệt Đối\",{1,6},2,0,10000}"
+        },
+        {
+          "id": "4251522",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251522] = {425152,2,{{}},4251521,2,3,3,0,0,0,0,0,\"null\",{{11,3000},{10,1500},{102,1000}},\"Mọi người đều là con cờ của ta; công tăng 30%, HP tăng 15%, bạo kích tăng 10%\",{0},0,0,\"Mệnh Lệnh Tuyệt Đối\",{1,8},2,0,10000}"
+        },
+        {
+          "id": "4251523",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251523] = {425152,2,{{}},4251521,3,3,3,0,0,0,0,0,\"null\",{{11,4000},{10,2000},{102,1500}},\"Mọi người đều là con cờ của ta; công tăng 40%, HP tăng 20%, bạo kích tăng 15%\",{0},0,0,\"Mệnh Lệnh Tuyệt Đối\",{1,101},2,0,10000}"
+        },
+        {
+          "id": "4251524",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251524] = {425152,2,{{}},4251521,4,3,3,0,0,0,0,0,\"null\",{{11,4000},{10,2400},{102,1500}},\"Mọi người đều là con cờ của ta; công tăng 40%, HP tăng 24%, bạo kích tăng 15%\",{0},0,0,\"Mệnh Lệnh Tuyệt Đối\",{1,102},2,0,10000}"
+        },
+        {
+          "id": "4251525",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251525] = {425152,2,{{}},4251521,5,3,3,0,0,0,0,0,\"null\",{{11,4000},{10,2800},{102,1500}},\"Mọi người đều là con cờ của ta; công tăng 40%, HP tăng 28%, bạo kích tăng 15%\",{0},0,0,\"Mệnh Lệnh Tuyệt Đối\",{1,103},2,0,10000}"
+        },
+        {
+          "id": "4251526",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251526] = {425152,2,{{}},4251521,6,3,3,0,0,0,0,0,\"null\",{{11,4000},{10,3200},{102,1500}},\"Mọi người đều là con cờ của ta; công tăng 40%, HP tăng 32%, bạo kích tăng 15%\",{0},0,0,\"Mệnh Lệnh Tuyệt Đối\",{1,104},2,0,10000}"
+        },
+        {
+          "id": "4251527",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251527] = {425152,2,{{}},4251521,7,3,3,0,0,0,0,0,\"null\",{{11,4000},{10,3600},{102,1500}},\"Mọi người đều là con cờ của ta; công tăng 40%, HP tăng 36%, bạo kích tăng 15%\",{0},0,0,\"Mệnh Lệnh Tuyệt Đối\",{1,105},2,0,10000}"
+        },
+        {
+          "id": "4251528",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251528] = {425152,2,{{}},4251521,8,3,3,0,0,0,0,0,\"null\",{{11,4000},{10,4000},{102,1500}},\"Mọi người đều là con cờ của ta; công tăng 40%, HP tăng 40%, bạo kích tăng 15%\",{0},0,0,\"Mệnh Lệnh Tuyệt Đối\",{1,0},2,0,10000}"
+        },
+        {
+          "id": "4251531",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251531] = {425153,2,{{}},4251531,1,2,2,2,3,2,3,0,\"($19#42515310)($24?42515310)\",{},\"Gây cho toàn thể địch 120% ST ma pháp, sau khi thi triển kỹ năng, kèm cho mục tiêu HP thấp nhất phe địch {Mệnh Lệnh Chiến Thuật-ATK}, không thể thanh tẩy, duy trì 2 lượt. Đơn vị mang hiệu quả {Mệnh Lệnh Chiến Thuật-ATK} tăng 10% sát thương phải chịu và trở thành một trong những mục tiêu\",{118},0,0,\"Pháo Kích Cường Lạp Tử\",{3,6},3,0,10000}"
+        },
+        {
+          "id": "4251532",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251532] = {425153,2,{{}},4251531,2,2,2,2,3,2,3,0,\"($19#42515320)($24?42515310)\",{},\"Gây cho toàn thể địch 145% ST ma pháp, sau khi thi triển kỹ năng, kèm cho mục tiêu HP thấp nhất phe địch {Mệnh Lệnh Chiến Thuật-ATK}, không thể thanh tẩy, duy trì 2 lượt. Đơn vị mang hiệu quả {Mệnh Lệnh Chiến Thuật-ATK} tăng 10% sát thương phải chịu và trở thành một trong những mục tiêu\",{118},0,0,\"Pháo Kích Cường Lạp Tử\",{3,9},3,0,10000}"
+        },
+        {
+          "id": "4251533",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251533] = {425153,2,{{}},4251531,3,2,2,2,3,2,3,0,\"($19#42515330)($24?42515310)\",{},\"Gây cho toàn thể địch 173% ST ma pháp, sau khi thi triển kỹ năng, kèm cho mục tiêu HP thấp nhất phe địch {Mệnh Lệnh Chiến Thuật-ATK}, không thể thanh tẩy, duy trì 2 lượt. Đơn vị mang hiệu quả {Mệnh Lệnh Chiến Thuật-ATK} tăng 10% sát thương phải chịu và trở thành một trong những mục tiêu\",{118},0,0,\"Pháo Kích Cường Lạp Tử\",{3,101},3,0,10000}"
+        },
+        {
+          "id": "4251534",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251534] = {425153,2,{{}},4251531,4,2,2,2,3,2,3,0,\"($19#42515340)($24?42515310)\",{},\"Gây cho toàn thể địch 180% ST ma pháp, sau khi thi triển kỹ năng, kèm cho mục tiêu HP thấp nhất phe địch {Mệnh Lệnh Chiến Thuật-ATK}, không thể thanh tẩy, duy trì 2 lượt. Đơn vị mang hiệu quả {Mệnh Lệnh Chiến Thuật-ATK} tăng 10% sát thương phải chịu và trở thành một trong những mục tiêu\",{118},0,0,\"Pháo Kích Cường Lạp Tử\",{3,102},3,0,10000}"
+        },
+        {
+          "id": "4251535",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251535] = {425153,2,{{}},4251531,5,2,2,2,3,2,3,0,\"($19#42515350)($24?42515310)\",{},\"Gây cho toàn thể địch 187% ST ma pháp, sau khi thi triển kỹ năng, kèm cho mục tiêu HP thấp nhất phe địch {Mệnh Lệnh Chiến Thuật-ATK}, không thể thanh tẩy, duy trì 2 lượt. Đơn vị mang hiệu quả {Mệnh Lệnh Chiến Thuật-ATK} tăng 10% sát thương phải chịu và trở thành một trong những mục tiêu\",{118},0,0,\"Pháo Kích Cường Lạp Tử\",{3,103},3,0,10000}"
+        },
+        {
+          "id": "4251536",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251536] = {425153,2,{{}},4251531,6,2,2,2,3,2,3,0,\"($19#42515360)($24?42515310)\",{},\"Gây cho toàn thể địch 194% ST ma pháp, sau khi thi triển kỹ năng, kèm cho mục tiêu HP thấp nhất phe địch {Mệnh Lệnh Chiến Thuật-ATK}, không thể thanh tẩy, duy trì 2 lượt. Đơn vị mang hiệu quả {Mệnh Lệnh Chiến Thuật-ATK} tăng 10% sát thương phải chịu và trở thành một trong những mục tiêu\",{118},0,0,\"Pháo Kích Cường Lạp Tử\",{3,104},3,0,10000}"
+        },
+        {
+          "id": "4251537",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251537] = {425153,2,{{}},4251531,7,2,2,2,3,2,3,0,\"($19#42515370)($24?42515310)\",{},\"Gây cho toàn thể địch 201% ST ma pháp, sau khi thi triển kỹ năng, kèm cho mục tiêu HP thấp nhất phe địch {Mệnh Lệnh Chiến Thuật-ATK}, không thể thanh tẩy, duy trì 2 lượt. Đơn vị mang hiệu quả {Mệnh Lệnh Chiến Thuật-ATK} tăng 10% sát thương phải chịu và trở thành một trong những mục tiêu\",{118},0,0,\"Pháo Kích Cường Lạp Tử\",{3,105},3,0,10000}"
+        },
+        {
+          "id": "4251538",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251538] = {425153,2,{{}},4251531,8,2,2,2,3,2,3,0,\"($19#42515380)($24?42515310)\",{},\"Gây cho toàn thể địch 208% ST ma pháp, sau khi thi triển kỹ năng, kèm cho mục tiêu HP thấp nhất phe địch {Mệnh Lệnh Chiến Thuật-ATK}, không thể thanh tẩy, duy trì 2 lượt. Đơn vị mang hiệu quả {Mệnh Lệnh Chiến Thuật-ATK} tăng 10% sát thương phải chịu và trở thành một trong những mục tiêu\",{118},0,0,\"Pháo Kích Cường Lạp Tử\",{3,0},3,0,10000}"
+        },
+        {
+          "id": "4251541",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251541] = {425154,2,{{}},4251541,1,3,3,0,0,1,0,0,\"$32?42515410?42515412\",{},\"Bị sát thương 1 lần sẽ không vượt quá 60% giới hạn HP bản thân; khi Lelouch tấn công, nếu HP bị địch tấn công > 60% thì lần tấn công này nhận thêm 8% tăng ST;\",{},0,0,\"Ném Bom Chiến Thuật\",{5,6},4,0,10000}"
+        },
+        {
+          "id": "4251542",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251542] = {425154,2,{{}},4251541,2,3,3,0,0,1,0,0,\"$32?42515420?42515422\",{},\"Bị sát thương 1 lần sẽ không vượt quá 50% giới hạn HP bản thân; khi Lelouch tấn công, nếu HP bị địch tấn công > 60% thì lần tấn công này nhận thêm 12% tăng ST; kẻ phản loạn, hãy tận hưởng thử thách của Freyja; khi mục tiêu {Geass} tử vong, hành động thêm 1 lần, gây cho toàn thể địch ST ma pháp bằng 25% công \",{},0,0,\"Ném Bom Chiến Thuật\",{5,10},4,0,10000}"
+        },
+        {
+          "id": "4251543",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251543] = {425154,2,{{}},4251541,3,3,3,0,0,1,0,0,\"$32?42515430?42515432\",{},\"Bị sát thương 1 lần sẽ không vượt quá 40% giới hạn HP bản thân; khi Lelouch tấn công, nếu HP bị địch tấn công > 60% thì lần tấn công này nhận thêm 15% tăng ST; kẻ phản loạn, hãy tận hưởng thử thách của Freyja; khi mục tiêu {Geass} tử vong, hành động thêm 1 lần, gây cho toàn thể địch ST ma pháp bằng 50% công \",{},0,0,\"Ném Bom Chiến Thuật\",{5,101},4,0,10000}"
+        },
+        {
+          "id": "4251544",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251544] = {425154,2,{{}},4251541,4,3,3,0,0,1,0,0,\"$32?42515440?42515432\",{},\"Bị sát thương 1 lần sẽ không vượt quá 40% giới hạn HP bản thân; khi Lelouch tấn công, nếu HP bị địch tấn công > 60% thì lần tấn công này nhận thêm 15.6% tăng ST; kẻ phản loạn, hãy tận hưởng thử thách của Freyja; khi mục tiêu {Geass} tử vong, hành động thêm 1 lần, gây cho toàn thể địch ST ma pháp bằng 52% công \",{},0,0,\"Ném Bom Chiến Thuật\",{5,102},4,0,10000}"
+        },
+        {
+          "id": "4251545",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251545] = {425154,2,{{}},4251541,5,3,3,0,0,1,0,0,\"$32?42515450?42515432\",{},\"Bị sát thương 1 lần sẽ không vượt quá 40% giới hạn HP bản thân; khi Lelouch tấn công, nếu HP bị địch tấn công > 60% thì lần tấn công này nhận thêm 16.2% tăng ST; kẻ phản loạn, hãy tận hưởng thử thách của Freyja; khi mục tiêu {Geass} tử vong, hành động thêm 1 lần, gây cho toàn thể địch ST ma pháp bằng 54% công \",{},0,0,\"Ném Bom Chiến Thuật\",{5,103},4,0,10000}"
+        },
+        {
+          "id": "4251546",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251546] = {425154,2,{{}},4251541,6,3,3,0,0,1,0,0,\"$32?42515460?42515432\",{},\"Bị sát thương 1 lần sẽ không vượt quá 40% giới hạn HP bản thân; khi Lelouch tấn công, nếu HP bị địch tấn công > 60% thì lần tấn công này nhận thêm 16.8% tăng ST; kẻ phản loạn, hãy tận hưởng thử thách của Freyja; khi mục tiêu {Geass} tử vong, hành động thêm 1 lần, gây cho toàn thể địch ST ma pháp bằng 56% công \",{},0,0,\"Ném Bom Chiến Thuật\",{5,104},4,0,10000}"
+        },
+        {
+          "id": "4251547",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251547] = {425154,2,{{}},4251541,7,3,3,0,0,1,0,0,\"$32?42515470?42515432\",{},\"Bị sát thương 1 lần sẽ không vượt quá 40% giới hạn HP bản thân; khi Lelouch tấn công, nếu HP bị địch tấn công > 60% thì lần tấn công này nhận thêm 17.4% tăng ST; kẻ phản loạn, hãy tận hưởng thử thách của Freyja; khi mục tiêu {Geass} tử vong, hành động thêm 1 lần, gây cho toàn thể địch ST ma pháp bằng 58% công \",{},0,0,\"Ném Bom Chiến Thuật\",{5,105},4,0,10000}"
+        },
+        {
+          "id": "4251548",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251548] = {425154,2,{{}},4251541,8,3,3,0,0,1,0,0,\"$32?42515480?42515432\",{},\"Bị sát thương 1 lần sẽ không vượt quá 40% giới hạn HP bản thân; khi Lelouch tấn công, nếu HP bị địch tấn công > 60% thì lần tấn công này nhận thêm 18% tăng ST; kẻ phản loạn, hãy tận hưởng thử thách của Freyja; khi mục tiêu {Geass} tử vong, hành động thêm 1 lần, gây cho toàn thể địch ST ma pháp bằng 60% công \",{},0,0,\"Ném Bom Chiến Thuật\",{5,0},4,0,10000}"
         }
       ],
       "tabEffectPerforRows": [
@@ -1998,6 +2633,11 @@
     "leloud_dark": {
       "tabSkillRows": [
         {
+          "id": "4251501",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251501] = {425150,2,{{}},10002,1,1,1,2,0,1,0,0,\"$2#42515010\",{},\"Lelouch\",{0},0,0,\"Đánh Thường\",{0,0},0,0,10000}"
+        },
+        {
           "id": "4251511",
           "source": "TAB_Skill_2.lua",
           "raw": "TAB_Skill[4251511] = {425151,2,{{}},4251511,1,2,2,2,2,1,1,0,\"$17#42515110&42515110\",{},\"Gây cho 3 mục tiêu ngẫu nhiên 105% sát thương ma pháp, 60% kèm {Geass}, khiến sát thương ma pháp phải chịu của mục tiêu tăng 10%, duy trì 2 lượt\",{116},0,0,\"Geass\",{0,6},1,0,10000}"
@@ -2036,6 +2676,126 @@
           "id": "4251518",
           "source": "TAB_Skill_2.lua",
           "raw": "TAB_Skill[4251518] = {425151,2,{{}},4251511,8,2,2,2,2,1,1,0,\"$17#42515180&42515130\",{},\"Gây cho 3 mục tiêu ngẫu nhiên 181% sát thương ma pháp, kèm {Geass}, khiến sát thương ma pháp phải chịu của mục tiêu tăng 10%, duy trì 2 lượt\",{116},0,0,\"Geass\",{0,0},1,0,10000}"
+        },
+        {
+          "id": "4251521",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251521] = {425152,2,{{}},4251521,1,3,3,0,0,0,0,0,\"null\",{{11,2000},{10,1000},{102,500}},\"Mọi người đều là con cờ của ta; công tăng 20%, HP tăng 10%, bạo kích tăng 5%\",{0},0,0,\"Mệnh Lệnh Tuyệt Đối\",{1,6},2,0,10000}"
+        },
+        {
+          "id": "4251522",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251522] = {425152,2,{{}},4251521,2,3,3,0,0,0,0,0,\"null\",{{11,3000},{10,1500},{102,1000}},\"Mọi người đều là con cờ của ta; công tăng 30%, HP tăng 15%, bạo kích tăng 10%\",{0},0,0,\"Mệnh Lệnh Tuyệt Đối\",{1,8},2,0,10000}"
+        },
+        {
+          "id": "4251523",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251523] = {425152,2,{{}},4251521,3,3,3,0,0,0,0,0,\"null\",{{11,4000},{10,2000},{102,1500}},\"Mọi người đều là con cờ của ta; công tăng 40%, HP tăng 20%, bạo kích tăng 15%\",{0},0,0,\"Mệnh Lệnh Tuyệt Đối\",{1,101},2,0,10000}"
+        },
+        {
+          "id": "4251524",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251524] = {425152,2,{{}},4251521,4,3,3,0,0,0,0,0,\"null\",{{11,4000},{10,2400},{102,1500}},\"Mọi người đều là con cờ của ta; công tăng 40%, HP tăng 24%, bạo kích tăng 15%\",{0},0,0,\"Mệnh Lệnh Tuyệt Đối\",{1,102},2,0,10000}"
+        },
+        {
+          "id": "4251525",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251525] = {425152,2,{{}},4251521,5,3,3,0,0,0,0,0,\"null\",{{11,4000},{10,2800},{102,1500}},\"Mọi người đều là con cờ của ta; công tăng 40%, HP tăng 28%, bạo kích tăng 15%\",{0},0,0,\"Mệnh Lệnh Tuyệt Đối\",{1,103},2,0,10000}"
+        },
+        {
+          "id": "4251526",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251526] = {425152,2,{{}},4251521,6,3,3,0,0,0,0,0,\"null\",{{11,4000},{10,3200},{102,1500}},\"Mọi người đều là con cờ của ta; công tăng 40%, HP tăng 32%, bạo kích tăng 15%\",{0},0,0,\"Mệnh Lệnh Tuyệt Đối\",{1,104},2,0,10000}"
+        },
+        {
+          "id": "4251527",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251527] = {425152,2,{{}},4251521,7,3,3,0,0,0,0,0,\"null\",{{11,4000},{10,3600},{102,1500}},\"Mọi người đều là con cờ của ta; công tăng 40%, HP tăng 36%, bạo kích tăng 15%\",{0},0,0,\"Mệnh Lệnh Tuyệt Đối\",{1,105},2,0,10000}"
+        },
+        {
+          "id": "4251528",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251528] = {425152,2,{{}},4251521,8,3,3,0,0,0,0,0,\"null\",{{11,4000},{10,4000},{102,1500}},\"Mọi người đều là con cờ của ta; công tăng 40%, HP tăng 40%, bạo kích tăng 15%\",{0},0,0,\"Mệnh Lệnh Tuyệt Đối\",{1,0},2,0,10000}"
+        },
+        {
+          "id": "4251531",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251531] = {425153,2,{{}},4251531,1,2,2,2,3,2,3,0,\"($19#42515310)($24?42515310)\",{},\"Gây cho toàn thể địch 120% ST ma pháp, sau khi thi triển kỹ năng, kèm cho mục tiêu HP thấp nhất phe địch {Mệnh Lệnh Chiến Thuật-ATK}, không thể thanh tẩy, duy trì 2 lượt. Đơn vị mang hiệu quả {Mệnh Lệnh Chiến Thuật-ATK} tăng 10% sát thương phải chịu và trở thành một trong những mục tiêu\",{118},0,0,\"Pháo Kích Cường Lạp Tử\",{3,6},3,0,10000}"
+        },
+        {
+          "id": "4251532",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251532] = {425153,2,{{}},4251531,2,2,2,2,3,2,3,0,\"($19#42515320)($24?42515310)\",{},\"Gây cho toàn thể địch 145% ST ma pháp, sau khi thi triển kỹ năng, kèm cho mục tiêu HP thấp nhất phe địch {Mệnh Lệnh Chiến Thuật-ATK}, không thể thanh tẩy, duy trì 2 lượt. Đơn vị mang hiệu quả {Mệnh Lệnh Chiến Thuật-ATK} tăng 10% sát thương phải chịu và trở thành một trong những mục tiêu\",{118},0,0,\"Pháo Kích Cường Lạp Tử\",{3,9},3,0,10000}"
+        },
+        {
+          "id": "4251533",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251533] = {425153,2,{{}},4251531,3,2,2,2,3,2,3,0,\"($19#42515330)($24?42515310)\",{},\"Gây cho toàn thể địch 173% ST ma pháp, sau khi thi triển kỹ năng, kèm cho mục tiêu HP thấp nhất phe địch {Mệnh Lệnh Chiến Thuật-ATK}, không thể thanh tẩy, duy trì 2 lượt. Đơn vị mang hiệu quả {Mệnh Lệnh Chiến Thuật-ATK} tăng 10% sát thương phải chịu và trở thành một trong những mục tiêu\",{118},0,0,\"Pháo Kích Cường Lạp Tử\",{3,101},3,0,10000}"
+        },
+        {
+          "id": "4251534",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251534] = {425153,2,{{}},4251531,4,2,2,2,3,2,3,0,\"($19#42515340)($24?42515310)\",{},\"Gây cho toàn thể địch 180% ST ma pháp, sau khi thi triển kỹ năng, kèm cho mục tiêu HP thấp nhất phe địch {Mệnh Lệnh Chiến Thuật-ATK}, không thể thanh tẩy, duy trì 2 lượt. Đơn vị mang hiệu quả {Mệnh Lệnh Chiến Thuật-ATK} tăng 10% sát thương phải chịu và trở thành một trong những mục tiêu\",{118},0,0,\"Pháo Kích Cường Lạp Tử\",{3,102},3,0,10000}"
+        },
+        {
+          "id": "4251535",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251535] = {425153,2,{{}},4251531,5,2,2,2,3,2,3,0,\"($19#42515350)($24?42515310)\",{},\"Gây cho toàn thể địch 187% ST ma pháp, sau khi thi triển kỹ năng, kèm cho mục tiêu HP thấp nhất phe địch {Mệnh Lệnh Chiến Thuật-ATK}, không thể thanh tẩy, duy trì 2 lượt. Đơn vị mang hiệu quả {Mệnh Lệnh Chiến Thuật-ATK} tăng 10% sát thương phải chịu và trở thành một trong những mục tiêu\",{118},0,0,\"Pháo Kích Cường Lạp Tử\",{3,103},3,0,10000}"
+        },
+        {
+          "id": "4251536",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251536] = {425153,2,{{}},4251531,6,2,2,2,3,2,3,0,\"($19#42515360)($24?42515310)\",{},\"Gây cho toàn thể địch 194% ST ma pháp, sau khi thi triển kỹ năng, kèm cho mục tiêu HP thấp nhất phe địch {Mệnh Lệnh Chiến Thuật-ATK}, không thể thanh tẩy, duy trì 2 lượt. Đơn vị mang hiệu quả {Mệnh Lệnh Chiến Thuật-ATK} tăng 10% sát thương phải chịu và trở thành một trong những mục tiêu\",{118},0,0,\"Pháo Kích Cường Lạp Tử\",{3,104},3,0,10000}"
+        },
+        {
+          "id": "4251537",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251537] = {425153,2,{{}},4251531,7,2,2,2,3,2,3,0,\"($19#42515370)($24?42515310)\",{},\"Gây cho toàn thể địch 201% ST ma pháp, sau khi thi triển kỹ năng, kèm cho mục tiêu HP thấp nhất phe địch {Mệnh Lệnh Chiến Thuật-ATK}, không thể thanh tẩy, duy trì 2 lượt. Đơn vị mang hiệu quả {Mệnh Lệnh Chiến Thuật-ATK} tăng 10% sát thương phải chịu và trở thành một trong những mục tiêu\",{118},0,0,\"Pháo Kích Cường Lạp Tử\",{3,105},3,0,10000}"
+        },
+        {
+          "id": "4251538",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251538] = {425153,2,{{}},4251531,8,2,2,2,3,2,3,0,\"($19#42515380)($24?42515310)\",{},\"Gây cho toàn thể địch 208% ST ma pháp, sau khi thi triển kỹ năng, kèm cho mục tiêu HP thấp nhất phe địch {Mệnh Lệnh Chiến Thuật-ATK}, không thể thanh tẩy, duy trì 2 lượt. Đơn vị mang hiệu quả {Mệnh Lệnh Chiến Thuật-ATK} tăng 10% sát thương phải chịu và trở thành một trong những mục tiêu\",{118},0,0,\"Pháo Kích Cường Lạp Tử\",{3,0},3,0,10000}"
+        },
+        {
+          "id": "4251541",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251541] = {425154,2,{{}},4251541,1,3,3,0,0,1,0,0,\"$32?42515410?42515412\",{},\"Bị sát thương 1 lần sẽ không vượt quá 60% giới hạn HP bản thân; khi Lelouch tấn công, nếu HP bị địch tấn công > 60% thì lần tấn công này nhận thêm 8% tăng ST;\",{},0,0,\"Ném Bom Chiến Thuật\",{5,6},4,0,10000}"
+        },
+        {
+          "id": "4251542",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251542] = {425154,2,{{}},4251541,2,3,3,0,0,1,0,0,\"$32?42515420?42515422\",{},\"Bị sát thương 1 lần sẽ không vượt quá 50% giới hạn HP bản thân; khi Lelouch tấn công, nếu HP bị địch tấn công > 60% thì lần tấn công này nhận thêm 12% tăng ST; kẻ phản loạn, hãy tận hưởng thử thách của Freyja; khi mục tiêu {Geass} tử vong, hành động thêm 1 lần, gây cho toàn thể địch ST ma pháp bằng 25% công \",{},0,0,\"Ném Bom Chiến Thuật\",{5,10},4,0,10000}"
+        },
+        {
+          "id": "4251543",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251543] = {425154,2,{{}},4251541,3,3,3,0,0,1,0,0,\"$32?42515430?42515432\",{},\"Bị sát thương 1 lần sẽ không vượt quá 40% giới hạn HP bản thân; khi Lelouch tấn công, nếu HP bị địch tấn công > 60% thì lần tấn công này nhận thêm 15% tăng ST; kẻ phản loạn, hãy tận hưởng thử thách của Freyja; khi mục tiêu {Geass} tử vong, hành động thêm 1 lần, gây cho toàn thể địch ST ma pháp bằng 50% công \",{},0,0,\"Ném Bom Chiến Thuật\",{5,101},4,0,10000}"
+        },
+        {
+          "id": "4251544",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251544] = {425154,2,{{}},4251541,4,3,3,0,0,1,0,0,\"$32?42515440?42515432\",{},\"Bị sát thương 1 lần sẽ không vượt quá 40% giới hạn HP bản thân; khi Lelouch tấn công, nếu HP bị địch tấn công > 60% thì lần tấn công này nhận thêm 15.6% tăng ST; kẻ phản loạn, hãy tận hưởng thử thách của Freyja; khi mục tiêu {Geass} tử vong, hành động thêm 1 lần, gây cho toàn thể địch ST ma pháp bằng 52% công \",{},0,0,\"Ném Bom Chiến Thuật\",{5,102},4,0,10000}"
+        },
+        {
+          "id": "4251545",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251545] = {425154,2,{{}},4251541,5,3,3,0,0,1,0,0,\"$32?42515450?42515432\",{},\"Bị sát thương 1 lần sẽ không vượt quá 40% giới hạn HP bản thân; khi Lelouch tấn công, nếu HP bị địch tấn công > 60% thì lần tấn công này nhận thêm 16.2% tăng ST; kẻ phản loạn, hãy tận hưởng thử thách của Freyja; khi mục tiêu {Geass} tử vong, hành động thêm 1 lần, gây cho toàn thể địch ST ma pháp bằng 54% công \",{},0,0,\"Ném Bom Chiến Thuật\",{5,103},4,0,10000}"
+        },
+        {
+          "id": "4251546",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251546] = {425154,2,{{}},4251541,6,3,3,0,0,1,0,0,\"$32?42515460?42515432\",{},\"Bị sát thương 1 lần sẽ không vượt quá 40% giới hạn HP bản thân; khi Lelouch tấn công, nếu HP bị địch tấn công > 60% thì lần tấn công này nhận thêm 16.8% tăng ST; kẻ phản loạn, hãy tận hưởng thử thách của Freyja; khi mục tiêu {Geass} tử vong, hành động thêm 1 lần, gây cho toàn thể địch ST ma pháp bằng 56% công \",{},0,0,\"Ném Bom Chiến Thuật\",{5,104},4,0,10000}"
+        },
+        {
+          "id": "4251547",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251547] = {425154,2,{{}},4251541,7,3,3,0,0,1,0,0,\"$32?42515470?42515432\",{},\"Bị sát thương 1 lần sẽ không vượt quá 40% giới hạn HP bản thân; khi Lelouch tấn công, nếu HP bị địch tấn công > 60% thì lần tấn công này nhận thêm 17.4% tăng ST; kẻ phản loạn, hãy tận hưởng thử thách của Freyja; khi mục tiêu {Geass} tử vong, hành động thêm 1 lần, gây cho toàn thể địch ST ma pháp bằng 58% công \",{},0,0,\"Ném Bom Chiến Thuật\",{5,105},4,0,10000}"
+        },
+        {
+          "id": "4251548",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251548] = {425154,2,{{}},4251541,8,3,3,0,0,1,0,0,\"$32?42515480?42515432\",{},\"Bị sát thương 1 lần sẽ không vượt quá 40% giới hạn HP bản thân; khi Lelouch tấn công, nếu HP bị địch tấn công > 60% thì lần tấn công này nhận thêm 18% tăng ST; kẻ phản loạn, hãy tận hưởng thử thách của Freyja; khi mục tiêu {Geass} tử vong, hành động thêm 1 lần, gây cho toàn thể địch ST ma pháp bằng 60% công \",{},0,0,\"Ném Bom Chiến Thuật\",{5,0},4,0,10000}"
         }
       ],
       "tabEffectPerforRows": [
@@ -2256,6 +3016,11 @@
     "thor": {
       "tabSkillRows": [
         {
+          "id": "4351301",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351301] = {435130,2,{{}},10002,1,1,1,1,0,1,0,0,\"$2#43513010\",{},\"Thần Sấm\",{0},0,0,\"Đánh Thường\",{0,0},0,0,10000}"
+        },
+        {
           "id": "4351311",
           "source": "TAB_Skill_2.lua",
           "raw": "TAB_Skill[4351311] = {435131,2,{{}},4351311,1,2,2,1,1,1,3,0,\"$19#43513110&43513110\",{},\"Gây cho toàn thể địch 90% sát thương vật lý, có 30% tỉ lệ kèm 10% {Phá giáp}, nếu mục tiêu là Chiến Binh hoặc Pháp Sư thì giảm 10% tấn công, nếu là Tank hoặc Hỗ Trợ sẽ giảm 10% miễn sát thương, tất cả hiệu quả duy trì 2 lượt\",{13},0,0,\"Búa Sấm Thức Tỉnh\",{0,6},1,0,10000}"
@@ -2294,6 +3059,126 @@
           "id": "4351318",
           "source": "TAB_Skill_2.lua",
           "raw": "TAB_Skill[4351318] = {435131,2,{{}},4351311,8,2,2,1,1,1,3,0,\"$19#43513180&43513180\",{},\"Gây cho toàn thể địch 162% sát thương vật lý, có 84% tỉ lệ kèm 20% {Phá giáp}, nếu mục tiêu là Chiến Binh hoặc Pháp Sư thì giảm 20% tấn công, nếu là Tank hoặc Hỗ Trợ sẽ giảm 20% miễn sát thương, tất cả hiệu quả duy trì 2 lượt\",{13},0,0,\"Búa Sấm Thức Tỉnh\",{0,0},1,0,10000}"
+        },
+        {
+          "id": "4351321",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351321] = {435132,2,{{}},4351321,1,3,3,0,0,0,0,0,\"null\",{{10,2000},{11,1000},{103,1000}},\"HP tăng 20%, tấn công tăng 10%, kháng bạo tăng 10%\",{0},0,0,\"Berserker Sấm\",{1,6},2,0,10000}"
+        },
+        {
+          "id": "4351322",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351322] = {435132,2,{{}},4351321,2,3,3,0,0,0,0,0,\"null\",{{10,3000},{11,1500},{103,2000}},\"HP tăng 30%, tấn công tăng 15%, kháng bạo tăng 20%\",{0},0,0,\"Berserker Sấm\",{1,8},2,0,10000}"
+        },
+        {
+          "id": "4351323",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351323] = {435132,2,{{}},4351321,3,3,3,0,0,0,0,0,\"null\",{{10,4000},{11,2000},{103,3000}},\"HP tăng 40%, tấn công tăng 20%, kháng bạo tăng 30%\",{0},0,0,\"Berserker Sấm\",{1,101},2,0,10000}"
+        },
+        {
+          "id": "4351324",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351324] = {435132,2,{{}},4351321,4,3,3,0,0,0,0,0,\"null\",{{10,4400},{11,2000},{103,3000}},\"HP tăng 44%, tấn công tăng 20%, kháng bạo tăng 30%\",{0},0,0,\"Berserker Sấm\",{1,102},2,0,10000}"
+        },
+        {
+          "id": "4351325",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351325] = {435132,2,{{}},4351321,5,3,3,0,0,0,0,0,\"null\",{{10,4800},{11,2000},{103,3000}},\"HP tăng 48%, tấn công tăng 20%, kháng bạo tăng 30%\",{0},0,0,\"Berserker Sấm\",{1,103},2,0,10000}"
+        },
+        {
+          "id": "4351326",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351326] = {435132,2,{{}},4351321,6,3,3,0,0,0,0,0,\"null\",{{10,5200},{11,2000},{103,3000}},\"HP tăng 52%, tấn công tăng 20%, kháng bạo tăng 30%\",{0},0,0,\"Berserker Sấm\",{1,104},2,0,10000}"
+        },
+        {
+          "id": "4351327",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351327] = {435132,2,{{}},4351321,7,3,3,0,0,0,0,0,\"null\",{{10,5600},{11,2000},{103,3000}},\"HP tăng 56%, tấn công tăng 20%, kháng bạo tăng 30%\",{0},0,0,\"Berserker Sấm\",{1,105},2,0,10000}"
+        },
+        {
+          "id": "4351328",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351328] = {435132,2,{{}},4351321,8,3,3,0,0,0,0,0,\"null\",{{10,6000},{11,2000},{103,3000}},\"HP tăng 60%, tấn công tăng 20%, kháng bạo tăng 30%\",{0},0,0,\"Berserker Sấm\",{1,0},2,0,10000}"
+        },
+        {
+          "id": "4351331",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351331] = {435133,2,{{}},4351331,1,2,2,0,2,2,3,0,\"$32#43513310&43513310\",{},\"Hồi HP bằng 14% HP tối đa, thêm 1 hiệu quả {Hồi phục chậm} hồi phục 2 lần cho bản thân: khi bắt đầu lượt, hồi phục HP bằng 10% HP tối đa\",{84},0,0,\"Búa Sấm Trỗi Dậy\",{3,6},3,0,10000}"
+        },
+        {
+          "id": "4351332",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351332] = {435133,2,{{}},4351331,2,2,2,0,2,2,3,0,\"$32#43513320&43513320\",{},\"Hồi HP bằng 17% HP tối đa, thêm 1 hiệu quả {Hồi phục chậm} hồi phục 2 lần cho bản thân: khi bắt đầu lượt, hồi HP bằng 12% HP tối đa\",{84},0,0,\"Búa Sấm Trỗi Dậy\",{3,9},3,0,10000}"
+        },
+        {
+          "id": "4351333",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351333] = {435133,2,{{}},4351331,3,2,2,0,2,2,3,1,\"$32#43513331#43513330&43513330\",{},\"Kỹ năng này bỏ qua khống chế, thanh tẩy tất cả hiệu quả debuff của bản thân, hồi phục HP bằng 20% giới hạn HP bản thân, thêm hiệu quả {Hồi phục chậm} 2 lần: Khi bắt đầu lượt, hồi phục HP bằng 15% giới hạn HP bản thân\",{84},0,0,\"Búa Sấm Trỗi Dậy\",{3,101},3,0,10000}"
+        },
+        {
+          "id": "4351334",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351334] = {435133,2,{{}},4351331,4,2,2,0,2,2,3,1,\"$32#43513331#43513340&43513340\",{},\"Kỹ năng này bỏ qua khống chế, thanh tẩy tất cả hiệu quả debuff của bản thân, hồi phục HP bằng 20.8% giới hạn HP bản thân, thêm hiệu quả {Hồi phục chậm} 2 lần: Khi bắt đầu lượt, hồi phục HP bằng 15% giới hạn HP bản thân\",{84},0,0,\"Búa Sấm Trỗi Dậy\",{3,102},3,0,10000}"
+        },
+        {
+          "id": "4351335",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351335] = {435133,2,{{}},4351331,5,2,2,0,2,2,3,1,\"$32#43513331#43513350&43513350\",{},\"Kỹ năng này bỏ qua khống chế, thanh tẩy tất cả hiệu quả debuff của bản thân, hồi phục HP bằng 21.6% giới hạn HP bản thân, thêm hiệu quả {Hồi phục chậm} 2 lần: Khi bắt đầu lượt, hồi phục HP bằng 15% giới hạn HP bản thân\",{84},0,0,\"Búa Sấm Trỗi Dậy\",{3,103},3,0,10000}"
+        },
+        {
+          "id": "4351336",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351336] = {435133,2,{{}},4351331,6,2,2,0,2,2,3,1,\"$32#43513331#43513360&43513360\",{},\"Kỹ năng này bỏ qua khống chế, thanh tẩy tất cả hiệu quả debuff của bản thân, hồi phục HP bằng 22.4% giới hạn HP bản thân, thêm hiệu quả {Hồi phục chậm} 2 lần: Khi bắt đầu lượt, hồi phục HP bằng 15% giới hạn HP bản thân\",{84},0,0,\"Búa Sấm Trỗi Dậy\",{3,104},3,0,10000}"
+        },
+        {
+          "id": "4351337",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351337] = {435133,2,{{}},4351331,7,2,2,0,2,2,3,1,\"$32#43513331#43513370&43513370\",{},\"Kỹ năng này bỏ qua khống chế, thanh tẩy tất cả hiệu quả debuff của bản thân, hồi phục HP bằng 23.2% giới hạn HP bản thân, thêm hiệu quả {Hồi phục chậm} 2 lần: Khi bắt đầu lượt, hồi phục HP bằng 15% giới hạn HP bản thân\",{84},0,0,\"Búa Sấm Trỗi Dậy\",{3,105},3,0,10000}"
+        },
+        {
+          "id": "4351338",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351338] = {435133,2,{{}},4351331,8,2,2,0,2,2,3,1,\"$32#43513331#43513380&43513380\",{},\"Kỹ năng này bỏ qua khống chế, thanh tẩy tất cả hiệu quả debuff của bản thân, hồi phục HP bằng 24% giới hạn HP bản thân, thêm hiệu quả {Hồi phục chậm} 2 lần: Khi bắt đầu lượt, hồi phục HP bằng 15% giới hạn HP bản thân\",{84},0,0,\"Búa Sấm Trỗi Dậy\",{3,0},3,0,10000}"
+        },
+        {
+          "id": "4351341",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351341] = {435134,2,{{}},4351341,1,3,3,0,0,0,0,0,\"$32?43513410\",{},\"Khi bắt đầu lượt, chọn 1 đơn vị có HP thấp nhất hàng sau phe ta để thêm hiệu quả {Hiệp trợ}, hấp thu 50% sát thương, duy trì 1 lượt\",{85},0,0,\"Tia chớp hiệp trợ\",{5,6},4,0,10000}"
+        },
+        {
+          "id": "4351342",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351342] = {435134,2,{{}},4351341,2,3,3,0,0,0,0,0,\"$32?43513420\",{},\"Khi bắt đầu lượt, chọn 1 đơn vị có HP thấp nhất hàng sau phe ta để thêm hiệu quả {Hiệp trợ}, hấp thu 50% sát thương, tăng 10% miễn sát thương, duy trì 1 lượt\",{85},0,0,\"Tia chớp hiệp trợ\",{5,10},4,0,10000}"
+        },
+        {
+          "id": "4351343",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351343] = {435134,2,{{}},4351341,3,3,3,0,0,0,0,0,\"$32?43513430\",{},\"Khi bắt đầu lượt, chọn 2 đơn vị có HP thấp nhất hàng sau phe ta để thêm hiệu quả {Hiệp trợ}, hấp thu 50% sát thương, tăng 20% miễn sát thương, duy trì 1 lượt\",{85},0,0,\"Tia chớp hiệp trợ\",{5,101},4,0,10000}"
+        },
+        {
+          "id": "4351344",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351344] = {435134,2,{{}},4351341,4,3,3,0,0,0,0,0,\"$32?43513440\",{{110,100}},\"Bản thân miễn sát thương tăng 1%, khi bắt đầu lượt, chọn 2 đơn vị có HP thấp nhất hàng sau phe ta để thêm hiệu quả {Hiệp trợ}, hấp thu 50% sát thương, tăng 20.8% miễn sát thương, duy trì 1 lượt\",{85},0,0,\"Tia chớp hiệp trợ\",{5,102},4,0,10000}"
+        },
+        {
+          "id": "4351345",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351345] = {435134,2,{{}},4351341,5,3,3,0,0,0,0,0,\"$32?43513450\",{{110,200}},\"Bản thân miễn sát thương tăng 2%, khi bắt đầu lượt, chọn 2 đơn vị có HP thấp nhất hàng sau phe ta để thêm hiệu quả {Hiệp trợ}, hấp thu 50% sát thương, tăng 21.6% miễn sát thương, duy trì 1 lượt\",{85},0,0,\"Tia chớp hiệp trợ\",{5,103},4,0,10000}"
+        },
+        {
+          "id": "4351346",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351346] = {435134,2,{{}},4351341,6,3,3,0,0,0,0,0,\"$32?43513460\",{{110,300}},\"Bản thân miễn sát thương tăng 3%, khi bắt đầu lượt, chọn 2 đơn vị có HP thấp nhất hàng sau phe ta để thêm hiệu quả {Hiệp trợ}, hấp thu 50% sát thương, tăng 22.4% miễn sát thương, duy trì 1 lượt\",{85},0,0,\"Tia chớp hiệp trợ\",{5,104},4,0,10000}"
+        },
+        {
+          "id": "4351347",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351347] = {435134,2,{{}},4351341,7,3,3,0,0,0,0,0,\"$32?43513470\",{{110,400}},\"Bản thân miễn sát thương tăng 4%, khi bắt đầu lượt, chọn 2 đơn vị có HP thấp nhất hàng sau phe ta để thêm hiệu quả {Hiệp trợ}, hấp thu 50% sát thương, tăng 23.2% miễn sát thương, duy trì 1 lượt\",{85},0,0,\"Tia chớp hiệp trợ\",{5,105},4,0,10000}"
+        },
+        {
+          "id": "4351348",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351348] = {435134,2,{{}},4351341,8,3,3,0,0,0,0,0,\"$32?43513480\",{{110,500}},\"Bản thân miễn sát thương tăng 5%, khi bắt đầu lượt, chọn 2 đơn vị có HP thấp nhất hàng sau phe ta để thêm hiệu quả {Hiệp trợ}, hấp thu 50% sát thương, tăng 24% miễn sát thương, duy trì 1 lượt\",{85},0,0,\"Tia chớp hiệp trợ\",{5,0},4,0,10000}"
         }
       ],
       "tabEffectPerforRows": [
@@ -2514,6 +3399,11 @@
     "thor_rak": {
       "tabSkillRows": [
         {
+          "id": "4351301",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351301] = {435130,2,{{}},10002,1,1,1,1,0,1,0,0,\"$2#43513010\",{},\"Thần Sấm\",{0},0,0,\"Đánh Thường\",{0,0},0,0,10000}"
+        },
+        {
           "id": "4351311",
           "source": "TAB_Skill_2.lua",
           "raw": "TAB_Skill[4351311] = {435131,2,{{}},4351311,1,2,2,1,1,1,3,0,\"$19#43513110&43513110\",{},\"Gây cho toàn thể địch 90% sát thương vật lý, có 30% tỉ lệ kèm 10% {Phá giáp}, nếu mục tiêu là Chiến Binh hoặc Pháp Sư thì giảm 10% tấn công, nếu là Tank hoặc Hỗ Trợ sẽ giảm 10% miễn sát thương, tất cả hiệu quả duy trì 2 lượt\",{13},0,0,\"Búa Sấm Thức Tỉnh\",{0,6},1,0,10000}"
@@ -2552,6 +3442,126 @@
           "id": "4351318",
           "source": "TAB_Skill_2.lua",
           "raw": "TAB_Skill[4351318] = {435131,2,{{}},4351311,8,2,2,1,1,1,3,0,\"$19#43513180&43513180\",{},\"Gây cho toàn thể địch 162% sát thương vật lý, có 84% tỉ lệ kèm 20% {Phá giáp}, nếu mục tiêu là Chiến Binh hoặc Pháp Sư thì giảm 20% tấn công, nếu là Tank hoặc Hỗ Trợ sẽ giảm 20% miễn sát thương, tất cả hiệu quả duy trì 2 lượt\",{13},0,0,\"Búa Sấm Thức Tỉnh\",{0,0},1,0,10000}"
+        },
+        {
+          "id": "4351321",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351321] = {435132,2,{{}},4351321,1,3,3,0,0,0,0,0,\"null\",{{10,2000},{11,1000},{103,1000}},\"HP tăng 20%, tấn công tăng 10%, kháng bạo tăng 10%\",{0},0,0,\"Berserker Sấm\",{1,6},2,0,10000}"
+        },
+        {
+          "id": "4351322",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351322] = {435132,2,{{}},4351321,2,3,3,0,0,0,0,0,\"null\",{{10,3000},{11,1500},{103,2000}},\"HP tăng 30%, tấn công tăng 15%, kháng bạo tăng 20%\",{0},0,0,\"Berserker Sấm\",{1,8},2,0,10000}"
+        },
+        {
+          "id": "4351323",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351323] = {435132,2,{{}},4351321,3,3,3,0,0,0,0,0,\"null\",{{10,4000},{11,2000},{103,3000}},\"HP tăng 40%, tấn công tăng 20%, kháng bạo tăng 30%\",{0},0,0,\"Berserker Sấm\",{1,101},2,0,10000}"
+        },
+        {
+          "id": "4351324",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351324] = {435132,2,{{}},4351321,4,3,3,0,0,0,0,0,\"null\",{{10,4400},{11,2000},{103,3000}},\"HP tăng 44%, tấn công tăng 20%, kháng bạo tăng 30%\",{0},0,0,\"Berserker Sấm\",{1,102},2,0,10000}"
+        },
+        {
+          "id": "4351325",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351325] = {435132,2,{{}},4351321,5,3,3,0,0,0,0,0,\"null\",{{10,4800},{11,2000},{103,3000}},\"HP tăng 48%, tấn công tăng 20%, kháng bạo tăng 30%\",{0},0,0,\"Berserker Sấm\",{1,103},2,0,10000}"
+        },
+        {
+          "id": "4351326",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351326] = {435132,2,{{}},4351321,6,3,3,0,0,0,0,0,\"null\",{{10,5200},{11,2000},{103,3000}},\"HP tăng 52%, tấn công tăng 20%, kháng bạo tăng 30%\",{0},0,0,\"Berserker Sấm\",{1,104},2,0,10000}"
+        },
+        {
+          "id": "4351327",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351327] = {435132,2,{{}},4351321,7,3,3,0,0,0,0,0,\"null\",{{10,5600},{11,2000},{103,3000}},\"HP tăng 56%, tấn công tăng 20%, kháng bạo tăng 30%\",{0},0,0,\"Berserker Sấm\",{1,105},2,0,10000}"
+        },
+        {
+          "id": "4351328",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351328] = {435132,2,{{}},4351321,8,3,3,0,0,0,0,0,\"null\",{{10,6000},{11,2000},{103,3000}},\"HP tăng 60%, tấn công tăng 20%, kháng bạo tăng 30%\",{0},0,0,\"Berserker Sấm\",{1,0},2,0,10000}"
+        },
+        {
+          "id": "4351331",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351331] = {435133,2,{{}},4351331,1,2,2,0,2,2,3,0,\"$32#43513310&43513310\",{},\"Hồi HP bằng 14% HP tối đa, thêm 1 hiệu quả {Hồi phục chậm} hồi phục 2 lần cho bản thân: khi bắt đầu lượt, hồi phục HP bằng 10% HP tối đa\",{84},0,0,\"Búa Sấm Trỗi Dậy\",{3,6},3,0,10000}"
+        },
+        {
+          "id": "4351332",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351332] = {435133,2,{{}},4351331,2,2,2,0,2,2,3,0,\"$32#43513320&43513320\",{},\"Hồi HP bằng 17% HP tối đa, thêm 1 hiệu quả {Hồi phục chậm} hồi phục 2 lần cho bản thân: khi bắt đầu lượt, hồi HP bằng 12% HP tối đa\",{84},0,0,\"Búa Sấm Trỗi Dậy\",{3,9},3,0,10000}"
+        },
+        {
+          "id": "4351333",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351333] = {435133,2,{{}},4351331,3,2,2,0,2,2,3,1,\"$32#43513331#43513330&43513330\",{},\"Kỹ năng này bỏ qua khống chế, thanh tẩy tất cả hiệu quả debuff của bản thân, hồi phục HP bằng 20% giới hạn HP bản thân, thêm hiệu quả {Hồi phục chậm} 2 lần: Khi bắt đầu lượt, hồi phục HP bằng 15% giới hạn HP bản thân\",{84},0,0,\"Búa Sấm Trỗi Dậy\",{3,101},3,0,10000}"
+        },
+        {
+          "id": "4351334",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351334] = {435133,2,{{}},4351331,4,2,2,0,2,2,3,1,\"$32#43513331#43513340&43513340\",{},\"Kỹ năng này bỏ qua khống chế, thanh tẩy tất cả hiệu quả debuff của bản thân, hồi phục HP bằng 20.8% giới hạn HP bản thân, thêm hiệu quả {Hồi phục chậm} 2 lần: Khi bắt đầu lượt, hồi phục HP bằng 15% giới hạn HP bản thân\",{84},0,0,\"Búa Sấm Trỗi Dậy\",{3,102},3,0,10000}"
+        },
+        {
+          "id": "4351335",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351335] = {435133,2,{{}},4351331,5,2,2,0,2,2,3,1,\"$32#43513331#43513350&43513350\",{},\"Kỹ năng này bỏ qua khống chế, thanh tẩy tất cả hiệu quả debuff của bản thân, hồi phục HP bằng 21.6% giới hạn HP bản thân, thêm hiệu quả {Hồi phục chậm} 2 lần: Khi bắt đầu lượt, hồi phục HP bằng 15% giới hạn HP bản thân\",{84},0,0,\"Búa Sấm Trỗi Dậy\",{3,103},3,0,10000}"
+        },
+        {
+          "id": "4351336",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351336] = {435133,2,{{}},4351331,6,2,2,0,2,2,3,1,\"$32#43513331#43513360&43513360\",{},\"Kỹ năng này bỏ qua khống chế, thanh tẩy tất cả hiệu quả debuff của bản thân, hồi phục HP bằng 22.4% giới hạn HP bản thân, thêm hiệu quả {Hồi phục chậm} 2 lần: Khi bắt đầu lượt, hồi phục HP bằng 15% giới hạn HP bản thân\",{84},0,0,\"Búa Sấm Trỗi Dậy\",{3,104},3,0,10000}"
+        },
+        {
+          "id": "4351337",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351337] = {435133,2,{{}},4351331,7,2,2,0,2,2,3,1,\"$32#43513331#43513370&43513370\",{},\"Kỹ năng này bỏ qua khống chế, thanh tẩy tất cả hiệu quả debuff của bản thân, hồi phục HP bằng 23.2% giới hạn HP bản thân, thêm hiệu quả {Hồi phục chậm} 2 lần: Khi bắt đầu lượt, hồi phục HP bằng 15% giới hạn HP bản thân\",{84},0,0,\"Búa Sấm Trỗi Dậy\",{3,105},3,0,10000}"
+        },
+        {
+          "id": "4351338",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351338] = {435133,2,{{}},4351331,8,2,2,0,2,2,3,1,\"$32#43513331#43513380&43513380\",{},\"Kỹ năng này bỏ qua khống chế, thanh tẩy tất cả hiệu quả debuff của bản thân, hồi phục HP bằng 24% giới hạn HP bản thân, thêm hiệu quả {Hồi phục chậm} 2 lần: Khi bắt đầu lượt, hồi phục HP bằng 15% giới hạn HP bản thân\",{84},0,0,\"Búa Sấm Trỗi Dậy\",{3,0},3,0,10000}"
+        },
+        {
+          "id": "4351341",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351341] = {435134,2,{{}},4351341,1,3,3,0,0,0,0,0,\"$32?43513410\",{},\"Khi bắt đầu lượt, chọn 1 đơn vị có HP thấp nhất hàng sau phe ta để thêm hiệu quả {Hiệp trợ}, hấp thu 50% sát thương, duy trì 1 lượt\",{85},0,0,\"Tia chớp hiệp trợ\",{5,6},4,0,10000}"
+        },
+        {
+          "id": "4351342",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351342] = {435134,2,{{}},4351341,2,3,3,0,0,0,0,0,\"$32?43513420\",{},\"Khi bắt đầu lượt, chọn 1 đơn vị có HP thấp nhất hàng sau phe ta để thêm hiệu quả {Hiệp trợ}, hấp thu 50% sát thương, tăng 10% miễn sát thương, duy trì 1 lượt\",{85},0,0,\"Tia chớp hiệp trợ\",{5,10},4,0,10000}"
+        },
+        {
+          "id": "4351343",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351343] = {435134,2,{{}},4351341,3,3,3,0,0,0,0,0,\"$32?43513430\",{},\"Khi bắt đầu lượt, chọn 2 đơn vị có HP thấp nhất hàng sau phe ta để thêm hiệu quả {Hiệp trợ}, hấp thu 50% sát thương, tăng 20% miễn sát thương, duy trì 1 lượt\",{85},0,0,\"Tia chớp hiệp trợ\",{5,101},4,0,10000}"
+        },
+        {
+          "id": "4351344",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351344] = {435134,2,{{}},4351341,4,3,3,0,0,0,0,0,\"$32?43513440\",{{110,100}},\"Bản thân miễn sát thương tăng 1%, khi bắt đầu lượt, chọn 2 đơn vị có HP thấp nhất hàng sau phe ta để thêm hiệu quả {Hiệp trợ}, hấp thu 50% sát thương, tăng 20.8% miễn sát thương, duy trì 1 lượt\",{85},0,0,\"Tia chớp hiệp trợ\",{5,102},4,0,10000}"
+        },
+        {
+          "id": "4351345",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351345] = {435134,2,{{}},4351341,5,3,3,0,0,0,0,0,\"$32?43513450\",{{110,200}},\"Bản thân miễn sát thương tăng 2%, khi bắt đầu lượt, chọn 2 đơn vị có HP thấp nhất hàng sau phe ta để thêm hiệu quả {Hiệp trợ}, hấp thu 50% sát thương, tăng 21.6% miễn sát thương, duy trì 1 lượt\",{85},0,0,\"Tia chớp hiệp trợ\",{5,103},4,0,10000}"
+        },
+        {
+          "id": "4351346",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351346] = {435134,2,{{}},4351341,6,3,3,0,0,0,0,0,\"$32?43513460\",{{110,300}},\"Bản thân miễn sát thương tăng 3%, khi bắt đầu lượt, chọn 2 đơn vị có HP thấp nhất hàng sau phe ta để thêm hiệu quả {Hiệp trợ}, hấp thu 50% sát thương, tăng 22.4% miễn sát thương, duy trì 1 lượt\",{85},0,0,\"Tia chớp hiệp trợ\",{5,104},4,0,10000}"
+        },
+        {
+          "id": "4351347",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351347] = {435134,2,{{}},4351341,7,3,3,0,0,0,0,0,\"$32?43513470\",{{110,400}},\"Bản thân miễn sát thương tăng 4%, khi bắt đầu lượt, chọn 2 đơn vị có HP thấp nhất hàng sau phe ta để thêm hiệu quả {Hiệp trợ}, hấp thu 50% sát thương, tăng 23.2% miễn sát thương, duy trì 1 lượt\",{85},0,0,\"Tia chớp hiệp trợ\",{5,105},4,0,10000}"
+        },
+        {
+          "id": "4351348",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351348] = {435134,2,{{}},4351341,8,3,3,0,0,0,0,0,\"$32?43513480\",{{110,500}},\"Bản thân miễn sát thương tăng 5%, khi bắt đầu lượt, chọn 2 đơn vị có HP thấp nhất hàng sau phe ta để thêm hiệu quả {Hiệp trợ}, hấp thu 50% sát thương, tăng 24% miễn sát thương, duy trì 1 lượt\",{85},0,0,\"Tia chớp hiệp trợ\",{5,0},4,0,10000}"
         }
       ],
       "tabEffectPerforRows": [
@@ -2772,6 +3782,11 @@
     "tohka_dark": {
       "tabSkillRows": [
         {
+          "id": "4151401",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4151401] = {415140,2,{{}},10002,1,1,1,1,0,1,0,0,\"$2#41514010\",{},\"Yatogami Tohka\",{0},0,0,\"Đánh Thường\",{0,0},0,0,10000}"
+        },
+        {
           "id": "4151411",
           "source": "TAB_Skill_2.lua",
           "raw": "TAB_Skill[4151411] = {415141,2,{{}},4151411,1,2,2,1,1,1,1,0,\"($37|?41514110)($19#41514110)\",{},\"Tohka dùng Sandalphon triệu hồi ngai vàng; gây cho toàn thể địch 68% ST vật lý, kèm cho mọi mục tiêu phe ta {Chúc phúc ngai vàng}, đơn vị mang {Chúc phúc ngai vàng} khi tấn công thêm 5% bạo kích cho Tank hoặc Hỗ Trợ, duy trì 2 lượt, không thể thanh tẩy\",{0},0,0,\"Sandalphon\",{0,6},1,0,10000}"
@@ -2810,6 +3825,126 @@
           "id": "4151418",
           "source": "TAB_Skill_2.lua",
           "raw": "TAB_Skill[4151418] = {415141,2,{{}},4151411,8,2,2,1,1,1,1,0,\"($37|?41514130)($19#41514180)\",{},\"Tohka dùng Sandalphon triệu hồi ngai vàng; gây cho toàn thể địch 130% ST vật lý, kèm cho mọi mục tiêu phe ta {Chúc phúc ngai vàng}, đơn vị mang {Chúc phúc ngai vàng} khi tấn công thêm 15% bạo kích cho Tank hoặc Hỗ Trợ, duy trì 2 lượt, không thể thanh tẩy\",{0},0,0,\"Sandalphon\",{0,0},2,0,10000}"
+        },
+        {
+          "id": "4151421",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4151421] = {415142,2,{{}},4151421,1,3,3,0,0,0,0,0,\"($32?41514210)($37|?41514211)\",{{11,2000},{10,1000},{102,500}},\"Tohka có linh trang thần uy-Juban; tấn công tăng 20%, HP tăng 10%, bạo kích tăng 5%, đang chiến đấu tăng cho bản thân 10% kháng khống, giảm 30% khống chế bản thân.\",{0},0,0,\"Adonai Melekh\",{1,6},2,0,10000}"
+        },
+        {
+          "id": "4151422",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4151422] = {415142,2,{{}},4151421,2,3,3,0,0,0,0,0,\"($32?41514220)($37|?41514211)\",{{11,3000},{10,1500},{102,1000}},\"Tohka có linh trang thần uy-Juban; tấn công tăng 30%, HP tăng 15%, bạo kích tăng 10%, đang chiến đấu tăng cho bản thân 20% kháng khống, giảm 40% khống chế bản thân.\",{0},0,0,\"Adonai Melekh\",{1,8},2,0,10000}"
+        },
+        {
+          "id": "4151423",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4151423] = {415142,2,{{}},4151421,3,3,3,0,0,0,0,0,\"($32?41514230)($37|?41514211)\",{{11,4000},{10,2000},{102,1500},{9,15}},\"Tohka có linh trang thần uy-Juban; tấn công tăng 40%, HP tăng 20%, bạo kích tăng 15%, tốc độ tăng 15, đang chiến đấu tăng cho bản thân 30% kháng khống, giảm 50% khống chế bản thân.\",{0},0,0,\"Adonai Melekh\",{1,101},2,0,10000}"
+        },
+        {
+          "id": "4151424",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4151424] = {415142,2,{{}},4151421,4,3,3,0,0,0,0,0,\"($32?41514230)($37|?41514211)\",{{11,4000},{10,2400},{102,1500},{9,15}},\"Tohka có linh trang thần uy-Juban; tấn công tăng 40%, HP tăng 24%, bạo kích tăng 15%, tốc độ tăng 15, đang chiến đấu tăng cho bản thân 30% kháng khống, giảm 50% khống chế bản thân.\",{0},0,0,\"Adonai Melekh\",{1,102},2,0,10000}"
+        },
+        {
+          "id": "4151425",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4151425] = {415142,2,{{}},4151421,5,3,3,0,0,0,0,0,\"($32?41514230)($37|?41514211)\",{{11,4000},{10,2800},{102,1500},{9,15}},\"Tohka có linh trang thần uy-Juban; tấn công tăng 40%, HP tăng 28%, bạo kích tăng 15%, tốc độ tăng 15, đang chiến đấu tăng cho bản thân 30% kháng khống, giảm 50% khống chế bản thân.\",{0},0,0,\"Adonai Melekh\",{1,103},2,0,10000}"
+        },
+        {
+          "id": "4151426",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4151426] = {415142,2,{{}},4151421,6,3,3,0,0,0,0,0,\"($32?41514230)($37|?41514211)\",{{11,4000},{10,3200},{102,1500},{9,15}},\"Tohka có linh trang thần uy-Juban; tấn công tăng 40%, HP tăng 32%, bạo kích tăng 15%, tốc độ tăng 15, đang chiến đấu tăng cho bản thân 30% kháng khống, giảm 50% khống chế bản thân.\",{0},0,0,\"Adonai Melekh\",{1,104},2,0,10000}"
+        },
+        {
+          "id": "4151427",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4151427] = {415142,2,{{}},4151421,7,3,3,0,0,0,0,0,\"($32?41514230)($37|?41514211)\",{{11,4000},{10,3600},{102,1500},{9,15}},\"Tohka có linh trang thần uy-Juban; tấn công tăng 40%, HP tăng 36%, bạo kích tăng 15%, tốc độ tăng 15, đang chiến đấu tăng cho bản thân 30% kháng khống, giảm 50% khống chế bản thân.\",{0},0,0,\"Adonai Melekh\",{1,105},2,0,10000}"
+        },
+        {
+          "id": "4151428",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4151428] = {415142,2,{{}},4151421,8,3,3,0,0,0,0,0,\"($32?41514230)($37|?41514211)\",{{11,4000},{10,4000},{102,1500},{9,15}},\"Tohka có linh trang thần uy-Juban; tấn công tăng 40%, HP tăng 40%, bạo kích tăng 15%, tốc độ tăng 15, đang chiến đấu tăng cho bản thân 30% kháng khống, giảm 50% khống chế bản thân.\",{0},0,0,\"Adonai Melekh\",{1,0},2,0,10000}"
+        },
+        {
+          "id": "4151431",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4151431] = {415143,2,{{}},4151431,1,2,2,1,2,2,3,0,\"$76#41514310&41514310\",{},\"Tohka dùng Halvanhelev của thiên sứ kiếm - Sandalphon tiến hành trảm kích toàn lực; gây cho hàng có số người nhiều nhất của địch 161% ST vật lý, tăng sát thương 10% cho Tank và Hỗ Trợ\",{0},0,0,\"Halvanhelev\",{3,6},3,0,10000}"
+        },
+        {
+          "id": "4151432",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4151432] = {415143,2,{{}},4151431,2,2,2,1,2,2,3,0,\"$76#41514320&41514320\",{},\"Tohka dùng Halvanhelev của thiên sứ kiếm - Sandalphon tiến hành trảm kích toàn lực; gây cho hàng có số người nhiều nhất của địch 192% ST vật lý, tăng sát thương 20% cho Tank và Hỗ Trợ\",{0},0,0,\"Halvanhelev\",{3,9},3,0,10000}"
+        },
+        {
+          "id": "4151433",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4151433] = {415143,2,{{}},4151431,3,2,2,1,2,2,3,0,\"$76#41514330&41514330\",{},\"Tohka dùng Halvanhelev của thiên sứ kiếm - Sandalphon tiến hành trảm kích toàn lực; gây cho hàng có số người nhiều nhất của địch 225% ST vật lý, tăng sát thương 30% cho Tank và Hỗ Trợ\",{0},0,0,\"Halvanhelev\",{3,101},3,0,10000}"
+        },
+        {
+          "id": "4151434",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4151434] = {415143,2,{{}},4151431,4,2,2,1,2,2,3,0,\"$76#41514340&41514330\",{},\"Tohka dùng Halvanhelev của thiên sứ kiếm - Sandalphon tiến hành trảm kích toàn lực; gây cho hàng có số người nhiều nhất của địch 233% ST vật lý, tăng sát thương 30% cho Tank và Hỗ Trợ\",{0},0,0,\"Halvanhelev\",{3,102},3,0,10000}"
+        },
+        {
+          "id": "4151435",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4151435] = {415143,2,{{}},4151431,5,2,2,1,2,2,3,0,\"$76#41514350&41514330\",{},\"Tohka dùng Halvanhelev của thiên sứ kiếm - Sandalphon tiến hành trảm kích toàn lực; gây cho hàng có số người nhiều nhất của địch 241% ST vật lý, tăng sát thương 30% cho Tank và Hỗ Trợ\",{0},0,0,\"Halvanhelev\",{3,103},3,0,10000}"
+        },
+        {
+          "id": "4151436",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4151436] = {415143,2,{{}},4151431,6,2,2,1,2,2,3,0,\"$76#41514360&41514330\",{},\"Tohka dùng Halvanhelev của thiên sứ kiếm - Sandalphon tiến hành trảm kích toàn lực; gây cho hàng có số người nhiều nhất của địch 249% ST vật lý, tăng sát thương 30% cho Tank và Hỗ Trợ\",{0},0,0,\"Halvanhelev\",{3,104},3,0,10000}"
+        },
+        {
+          "id": "4151437",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4151437] = {415143,2,{{}},4151431,7,2,2,1,2,2,3,0,\"$76#41514370&41514330\",{},\"Tohka dùng Halvanhelev của thiên sứ kiếm - Sandalphon tiến hành trảm kích toàn lực; gây cho hàng có số người nhiều nhất của địch 257% ST vật lý, tăng sát thương 30% cho Tank và Hỗ Trợ\",{0},0,0,\"Halvanhelev\",{3,105},3,0,10000}"
+        },
+        {
+          "id": "4151438",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4151438] = {415143,2,{{}},4151431,8,2,2,1,2,2,3,0,\"$76#41514380&41514330\",{},\"Tohka dùng Halvanhelev của thiên sứ kiếm - Sandalphon tiến hành trảm kích toàn lực; gây cho hàng có số người nhiều nhất của địch 263% ST vật lý, tăng sát thương 30% cho Tank và Hỗ Trợ\",{0},0,0,\"Halvanhelev\",{3,0},3,0,10000}"
+        },
+        {
+          "id": "4151441",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4151441] = {415144,2,{{}},4151441,1,3,3,0,0,0,0,0,\"$32?41514410\",{},\"Tohka có sức mạnh Malkuth; khi tự hành động tốc độ nhanh nhất phe ta, tấn công lần này kèm 15% sát thương và 5% bạo kích, nếu không thì thêm {Giải phóng Thần Lực}, tăng 4% miễn vật lý, 4% miễn ma pháp, 3% miễn giảm sát thương, 5% kháng khống, 5% được trị liệu, 5% chính xác, 5% bạo thương, 5% sát thương vật lý, 15% hút HP, duy trì cả trận chiến, không thể cộng dồn, thanh tẩy, tử vong không kế thừa\",{88},0,0,\"Kabala-Malkuth\",{5,6},4,0,10000}"
+        },
+        {
+          "id": "4151442",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4151442] = {415144,2,{{}},4151441,2,3,3,0,0,0,0,0,\"$32?41514420\",{},\"Tohka có sức mạnh Malkuth; khi tự hành động tốc độ nhanh nhất phe ta, tấn công lần này kèm 20% sát thương và 10% bạo kích, nếu không thì thêm {Giải phóng Thần Lực}, tăng 6% miễn vật lý, 6% miễn ma pháp, 5% miễn giảm sát thương, 7% kháng khống, 7% được trị liệu, 7% chính xác, 7% bạo thương, 7% sát thương vật lý, 20% hút HP, duy trì cả trận chiến, không thể cộng dồn, thanh tẩy, tử vong không kế thừa\",{88},0,0,\"Kabala-Malkuth\",{5,10},4,0,10000}"
+        },
+        {
+          "id": "4151443",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4151443] = {415144,2,{{}},4151441,3,3,3,0,0,0,0,0,\"$32?41514430\",{},\"Tohka có sức mạnh Malkuth; khi tự hành động tốc độ nhanh nhất phe ta, tấn công lần này kèm 25% sát thương và 15% bạo kích, nếu không thì thêm {Giải phóng Thần Lực}, tăng 8% miễn vật lý, 8% miễn ma pháp, 7% miễn giảm sát thương, 10% kháng khống, 10% được trị liệu, 10% chính xác, 10% bạo thương, 10% sát thương vật lý, 25% hút HP, duy trì cả trận chiến, không thể cộng dồn, thanh tẩy, tử vong không kế thừa\",{88},0,0,\"Kabala-Malkuth\",{5,101},4,0,10000}"
+        },
+        {
+          "id": "4151444",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4151444] = {415144,2,{{}},4151441,4,3,3,0,0,0,0,0,\"$32?41514430\",{{14,100}},\"Tohka có sức mạnh Malkuth; sát thương vật lý tăng 1%, khi tự hành động tốc độ nhanh nhất phe ta, tấn công lần này kèm 25% sát thương và 15% bạo kích, nếu không thì thêm {Giải phóng Thần Lực}, tăng 8% miễn vật lý, 8% miễn ma pháp, 7% miễn giảm sát thương, 10% kháng khống, 10% được trị liệu, 10% chính xác, 10% bạo thương, 10% sát thương vật lý, 25% hút HP, duy trì cả trận chiến, không thể cộng dồn, thanh tẩy, tử vong không kế thừa\",{88},0,0,\"Kabala-Malkuth\",{5,102},4,0,10000}"
+        },
+        {
+          "id": "4151445",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4151445] = {415144,2,{{}},4151441,5,3,3,0,0,0,0,0,\"$32?41514430\",{{14,200}},\"Tohka có sức mạnh Malkuth; sát thương vật lý tăng 2%, khi tự hành động tốc độ nhanh nhất phe ta, tấn công lần này kèm 25% sát thương và 15% bạo kích, nếu không thì thêm {Giải phóng Thần Lực}, tăng 8% miễn vật lý, 8% miễn ma pháp, 7% miễn giảm sát thương, 10% kháng khống, 10% được trị liệu, 10% chính xác, 10% bạo thương, 10% sát thương vật lý, 25% hút HP, duy trì cả trận chiến, không thể cộng dồn, thanh tẩy, tử vong không kế thừa\",{88},0,0,\"Kabala-Malkuth\",{5,103},4,0,10000}"
+        },
+        {
+          "id": "4151446",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4151446] = {415144,2,{{}},4151441,6,3,3,0,0,0,0,0,\"$32?41514430\",{{14,300}},\"Tohka có sức mạnh Malkuth; sát thương vật lý tăng 3%, khi tự hành động tốc độ nhanh nhất phe ta, tấn công lần này kèm 25% sát thương và 15% bạo kích, nếu không thì thêm {Giải phóng Thần Lực}, tăng 8% miễn vật lý, 8% miễn ma pháp, 7% miễn giảm sát thương, 10% kháng khống, 10% được trị liệu, 10% chính xác, 10% bạo thương, 10% sát thương vật lý, 25% hút HP, duy trì cả trận chiến, không thể cộng dồn, thanh tẩy, tử vong không kế thừa\",{88},0,0,\"Kabala-Malkuth\",{5,104},4,0,10000}"
+        },
+        {
+          "id": "4151447",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4151447] = {415144,2,{{}},4151441,7,3,3,0,0,0,0,0,\"$32?41514430\",{{14,400}},\"Tohka có sức mạnh Malkuth; sát thương vật lý tăng 4%, khi tự hành động tốc độ nhanh nhất phe ta, tấn công lần này kèm 25% sát thương và 15% bạo kích, nếu không thì thêm {Giải phóng Thần Lực}, tăng 8% miễn vật lý, 8% miễn ma pháp, 7% miễn giảm sát thương, 10% kháng khống, 10% được trị liệu, 10% chính xác, 10% bạo thương, 10% sát thương vật lý, 25% hút HP, duy trì cả trận chiến, không thể cộng dồn, thanh tẩy, tử vong không kế thừa\",{88},0,0,\"Kabala-Malkuth\",{5,105},4,0,10000}"
+        },
+        {
+          "id": "4151448",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4151448] = {415144,2,{{}},4151441,8,3,3,0,0,0,0,0,\"$32?41514430\",{{14,500}},\"Tohka có sức mạnh Malkuth; sát thương vật lý tăng 5%, khi tự hành động tốc độ nhanh nhất phe ta, tấn công lần này kèm 25% sát thương và 15% bạo kích, nếu không thì thêm {Giải phóng Thần Lực}, tăng 8% miễn vật lý, 8% miễn ma pháp, 7% miễn giảm sát thương, 10% kháng khống, 10% được trị liệu, 10% chính xác, 10% bạo thương, 10% sát thương vật lý, 25% hút HP, duy trì cả trận chiến, không thể cộng dồn, thanh tẩy, tử vong không kế thừa\",{88},0,0,\"Kabala-Malkuth\",{5,0},4,0,10000}"
         }
       ],
       "tabEffectPerforRows": [
