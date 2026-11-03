@@ -28,6 +28,15 @@ public interface HeroSkillDefinitionRepository
     );
 
     /**
+     * Lấy toàn bộ kỹ năng của nhân vật, bao gồm cả kỹ năng đang tắt,
+     * đồng thời tải các hiệu ứng để phục vụ màn hình quản trị.
+     */
+    @EntityGraph(attributePaths = "effects")
+    List<HeroSkillDefinition> findAllByHeroDefinitionHeroCodeOrderBySkillOrderAsc(
+            String heroCode
+    );
+
+    /**
      * Lấy chi tiết một kỹ năng theo mã nhân vật và mã kỹ năng.
      *
      * @param heroCode Mã nhân vật
