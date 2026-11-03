@@ -274,7 +274,8 @@ public class BattleTurnProcessor {
                 if (damaged != null && damaged.isAlive()) {
                     // COUNTER damage không kích hoạt COUNTER tiếp,
                     // tránh chuỗi phản công vô hạn giữa hai đơn vị.
-                    if (!"COUNTER".equalsIgnoreCase(event.effectCategory())) {
+                    if (!"COUNTER".equalsIgnoreCase(event.effectCategory())
+                            && !"DEFENSE".equalsIgnoreCase(event.effectCategory())) {
                         skillExecutor.executePassives(
                                 battle,
                                 damaged,
