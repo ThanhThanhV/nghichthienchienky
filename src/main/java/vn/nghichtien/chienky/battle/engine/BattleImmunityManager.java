@@ -42,6 +42,11 @@ public class BattleImmunityManager {
                 .orElse(null);
 
         if (existing != null) {
+            // Cùng một hiệu ứng miễn nhiễm không tự gia hạn mỗi lần ACTIVE
+            // lặp lại; thời hạn tối đa vẫn được tính từ lần áp dụng đầu tiên.
+            if (existing.getEffectCode().equals(effectCode)) {
+                return;
+            }
             existing.extendToMax(duration);
             return;
         }
