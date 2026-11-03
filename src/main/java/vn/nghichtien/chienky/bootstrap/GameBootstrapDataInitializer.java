@@ -151,7 +151,94 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
             }
         }
 
+        if ("gojo".equalsIgnoreCase(definition.getHeroCode())) {
+            seedGojoInfinityEffects(skillsByOrder);
+        }
+
         if (!skillsToSave.isEmpty()) heroSkillDefinitionRepository.saveAll(skillsToSave);
+    }
+
+    /**
+     * Bổ sung cấu hình mặc định cho Gojo mà không ghi đè các hiệu ứng
+     * đã được quản trị viên cấu hình. Mỗi hiệu ứng có bootstrapKey riêng
+     * để việc khởi tạo có thể chạy lặp lại an toàn.
+     */
+    private void seedGojoInfinityEffects(
+            Map<Integer, HeroSkillDefinition> skillsByOrder
+    ) {
+        HeroSkillDefinition infinity = skillsByOrder.get(2);
+        if (infinity != null) {
+            addGojoEffectIfMissing(
+                    infinity,
+                    "GOJO_INFINITY_DEF",
+                    BattleEffectType.BUFF,
+                    "SELF",
+                    "0.5",
+                    20,
+                    "{\"statType\":\"DEF\"}"
+            );
+            addGojoEffectIfMissing(
+                    infinity,
+                    "GOJO_INFINITY_CC_IMMUNITY",
+                    BattleEffectType.IMMUNITY,
+                    "SELF",
+                    "0",
+                    20,
+                    "{\"immunityType\":\"CC\"}"
+            );
+        }
+
+        HeroSkillDefinition sixEyes = skillsByOrder.get(4);
+        if (sixEyes != null) {
+            addGojoEffectIfMissing(
+                    sixEyes,
+                    "GOJO_SIX_EYES_COUNTER",
+                    BattleEffectType.COUNTER,
+                    "FRONT",
+                    "1.0",
+                    null,
+                    "{\"trigger\":\"ON_DAMAGED\"}"
+            );
+        }
+    }
+
+    private void addGojoEffectIfMissing(
+            HeroSkillDefinition skill,
+            String bootstrapKey,
+            BattleEffectType effectType,
+            String targetType,
+            String multiplier,
+            Integer duration,
+            String config
+    ) {
+        String marker = "\"bootstrapKey\":\"" + bootstrapKey + "\"";
+        boolean alreadySeeded = skill.getEffects().stream()
+                .anyMatch(effect -> effect.getConfigJson() != null
+                        && effect.getConfigJson().contains(marker));
+
+        if (alreadySeeded) {
+            return;
+        }
+
+        int nextOrder = skill.getEffects().stream()
+                .map(HeroSkillEffect::getEffectOrder)
+                .filter(order -> order != null)
+                .max(Integer::compareTo)
+                .orElse(0) + 1;
+
+        HeroSkillEffect effect = new HeroSkillEffect(
+                nextOrder,
+                effectType.name(),
+                BattleTargetMode.valueOf(targetType).name()
+        );
+        effect.updateParameters(
+                new BigDecimal(multiplier),
+                BigDecimal.ONE,
+                duration
+        );
+        effect.updateConfig(config.substring(0, config.length() - 1)
+                + ",\"bootstrapKey\":\"" + bootstrapKey + "\"}");
+        skill.addEffect(effect);
     }
 
     private void addDamageEffect(HeroSkillDefinition skill, String targetType, String multiplier) {
