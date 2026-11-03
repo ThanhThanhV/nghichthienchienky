@@ -67,32 +67,40 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
         List<HeroSeed> seeds = heroSeeds();
         JsonNode spineCatalog = loadSpineMappingCatalog();
         JsonNode animationConfigCatalog = loadAnimationConfigCatalog();
-        validateSkillAnimationCatalog(seeds, spineCatalog, animationConfigCatalog);
+        JsonNode tabSkillCatalog = loadTabSkillConfigCatalog();
+        validateSkillAnimationCatalog(
+                seeds, spineCatalog, animationConfigCatalog, tabSkillCatalog
+        );
         List<String> heroCodes = seeds.stream().map(HeroSeed::code).toList();
 
-        // Tái tạo định nghĩa kỹ năng Gojo từ đầu mỗi lần khởi động.
-        // Chỉ xóa liên kết kỹ năng và skill data của Gojo, không xóa dữ liệu
-        // tài khoản, bản sao tướng, chỉ số hoặc đội hình người chơi.
-        resetGojoSkillSeed();
+        // Tái tạo đồng bộ toàn bộ 10 bộ kỹ năng từ TAB ở mỗi lần khởi chạy.
+        // Giữ tài khoản, bản sao tướng và đội hình; chỉ thay cấu hình định nghĩa.
+        resetHeroSkillSeed(heroCodes);
 
         for (int i = 0; i < seeds.size(); i++) {
-            seedHero(seeds.get(i), i + 1, spineCatalog, animationConfigCatalog);
+            HeroSeed seed = seeds.get(i);
+            seedHero(
+                    seed, i + 1, spineCatalog, animationConfigCatalog,
+                    tabSkillCatalog.path("heroes").path(seed.code())
+            );
         }
 
         // Gắn lại 5 kỹ năng cấp 1 cho mọi bản sao tướng người chơi đang sở hữu.
         rebuildOwnedHeroSkills(heroCodes);
     }
 
-    private void resetGojoSkillSeed() {
-        List<String> gojoCodes = List.of("gojo");
+    private void resetHeroSkillSeed(List<String> heroCodes) {
         heroInstanceSkillRepository
-                .deleteAllBySkillDefinitionHeroDefinitionHeroCodeIn(gojoCodes);
+                .deleteAllBySkillDefinitionHeroDefinitionHeroCodeIn(heroCodes);
         heroInstanceSkillRepository.flush();
 
-        // Load effects để cascade remove xóa cả hero_skill_effects.
-        List<HeroSkillDefinition> oldSkills =
-                heroSkillDefinitionRepository
-                        .findAllByHeroDefinitionHeroCodeOrderBySkillOrderAsc("gojo");
+        List<HeroSkillDefinition> oldSkills = new ArrayList<>();
+        for (String heroCode : heroCodes) {
+            oldSkills.addAll(
+                    heroSkillDefinitionRepository
+                            .findAllByHeroDefinitionHeroCodeOrderBySkillOrderAsc(heroCode)
+            );
+        }
         if (!oldSkills.isEmpty()) {
             heroSkillDefinitionRepository.deleteAll(oldSkills);
             heroSkillDefinitionRepository.flush();
@@ -144,7 +152,8 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
             HeroSeed seed,
             int sortOrder,
             JsonNode spineCatalog,
-            JsonNode animationConfigCatalog
+            JsonNode animationConfigCatalog,
+            JsonNode tabSkillConfig
     ) {
         HeroDefinition definition = heroDefinitionRepository.findById(seed.code())
                 .orElseGet(() -> createDefinition(seed, sortOrder));
@@ -165,9 +174,9 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
         }
         heroDefinitionRepository.save(definition);
 
-        seedBaseStats(definition);
+        seedBaseStats(definition, tabSkillConfig);
         seedGrowthConfig(definition);
-        seedSkills(definition, seed);
+        seedSkills(definition, seed, tabSkillConfig);
     }
 
     /**
@@ -199,6 +208,25 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
      * key [number]/["string"] và phép gán thành JSON để Jackson parse.
      * Giữ nguyên toàn bộ tọa độ, eventName và effectId từ nguồn.
      */
+    private JsonNode loadTabSkillConfigCatalog() {
+        try (var input = new ClassPathResource(
+                "static/spine/hero-tab-skill-config.json"
+        ).getInputStream()) {
+            JsonNode catalog = objectMapper.readTree(input);
+            if (catalog == null || !catalog.path("heroes").isObject()) {
+                throw new IllegalStateException(
+                        "TAB skill catalog không có cấu trúc heroes hợp lệ"
+                );
+            }
+            return catalog;
+        } catch (IOException exception) {
+            throw new IllegalStateException(
+                    "Không thể đọc catalog TAB hero-tab-skill-config.json",
+                    exception
+            );
+        }
+    }
+
     private JsonNode loadAnimationConfigCatalog() {
         try (var input = new ClassPathResource("animation_config.lua").getInputStream()) {
             String lua = new String(input.readAllBytes(), java.nio.charset.StandardCharsets.UTF_8);
@@ -227,12 +255,20 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
     private void validateSkillAnimationCatalog(
             List<HeroSeed> seeds,
             JsonNode catalog,
-            JsonNode animationConfigCatalog
+            JsonNode animationConfigCatalog,
+            JsonNode tabSkillCatalog
     ) {
         JsonNode heroes = catalog.path("heroes");
 
         for (HeroSeed seed : seeds) {
             JsonNode heroMapping = heroes.path(seed.code());
+            JsonNode tabHero = tabSkillCatalog.path("heroes").path(seed.code());
+            if (!tabHero.path("skills").isArray()
+                    || tabHero.path("skills").size() != 5) {
+                throw new IllegalStateException(
+                        "TAB phải cung cấp đúng 5 slot kỹ năng cho " + seed.code()
+                );
+            }
             String assetBase = heroMapping.path("asset").path("base").asText("");
             String configId = assetBase.replaceFirst("^sanim_", "");
             if (configId.isBlank() || !animationConfigCatalog.path(configId).isObject()) {
@@ -350,6 +386,8 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                 "_BASIC_ATTACK",
                 "_SKILL_EFFECTS",
                 "_SKILL_EFFECT_ALIASES",
+                "_TAB_HERO_SOURCE",
+                "_TAB_SKILL_BINDINGS",
                 "_SPINE_EFFECT_BASE_PATH",
                 "_SPINE_EFFECT_TEXTURE_PAGES",
                 "_SPINE_EFFECT_DEFAULTS"
@@ -383,12 +421,34 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
         return heroDefinitionRepository.save(definition);
     }
 
-    private void seedBaseStats(HeroDefinition definition) {
-        if (heroBaseStatsRepository.existsById(definition.getHeroCode())) return;
-        StatSeed stats = statsForRole(definition.getRole());
-        heroBaseStatsRepository.save(new HeroBaseStats(
-                definition, stats.hp(), stats.atk(), stats.def(), stats.speed()
-        ));
+    private void seedBaseStats(
+            HeroDefinition definition,
+            JsonNode tabSkillConfig
+    ) {
+        JsonNode stats = tabSkillConfig.path("tabHero").path("baseStatsScaled");
+        if (!stats.isObject()) {
+            throw new IllegalStateException(
+                    "Thiếu baseStatsScaled từ TAB cho " + definition.getHeroCode()
+            );
+        }
+
+        BigDecimal hp = new BigDecimal(stats.path("hp").asText());
+        BigDecimal atk = new BigDecimal(stats.path("atk").asText());
+        BigDecimal def = new BigDecimal(stats.path("def").asText());
+        BigDecimal speed = new BigDecimal(stats.path("speed").asText());
+
+        HeroBaseStats baseStats = heroBaseStatsRepository
+                .findByHeroCode(definition.getHeroCode())
+                .orElseGet(() -> new HeroBaseStats(
+                        definition, hp, atk, def, speed
+                ));
+        baseStats.updateStats(
+                hp, atk, def, speed,
+                BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO,
+                BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO,
+                BigDecimal.ZERO
+        );
+        heroBaseStatsRepository.save(baseStats);
     }
 
     private void seedGrowthConfig(HeroDefinition definition) {
@@ -414,55 +474,81 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
         };
     }
 
-    private void seedSkills(HeroDefinition definition, HeroSeed seed) {
-        List<HeroSkillDefinition> existingSkills = heroSkillDefinitionRepository.findAll()
-                .stream()
-                .filter(skill -> definition.getHeroCode().equals(
-                        skill.getHeroDefinition().getHeroCode()
-                ))
-                .toList();
-
-        Map<Integer, HeroSkillDefinition> skillsByOrder = new HashMap<>();
-        existingSkills.forEach(skill -> skillsByOrder.put(skill.getSkillOrder(), skill));
-
-        List<HeroSkillDefinition> skillsToSave = new ArrayList<>();
-        for (int i = 0; i < seed.skills().size(); i++) {
-            int order = i + 1;
-            SkillSeed skillSeed = seed.skills().get(i);
-            String skillType = skillSeed.type();
-            HeroSkillDefinition skill = skillsByOrder.get(order);
-
-            if (skill == null) {
-                skill = new HeroSkillDefinition(
-                        definition,
-                        seed.code().toUpperCase() + "_" + skillType + "_" + order,
-                        skillSeed.name(),
-                        skillType,
-                        order
-                );
-                skill.updateInformation(skillSeed.name(),
-                        "Kỹ năng khởi tạo của " + seed.name() + ".", null);
-                skillsToSave.add(skill);
-                skillsByOrder.put(order, skill);
-            } else {
-                skill.changeEnabled(true);
-            }
-
-            if ("gojo".equals(seed.code())) {
-                seedGojoSkillEffects(skill, order);
-            } else if (!"PASSIVE".equalsIgnoreCase(skillType)) {
-                if (order == 1 && skill.getEffects().isEmpty()) {
-                    addDamageEffect(skill, "FRONT", "1.0");
-                } else if (order == 2 && skill.getEffects().isEmpty()) {
-                    addDamageEffect(skill, "ALL_ENEMIES", "1.5");
-                } else if (order == 3 && skill.getEffects().isEmpty()) {
-                    addDamageEffect(skill, "ALL_ENEMIES", "2.5");
-                }
-            }
+    private void seedSkills(
+            HeroDefinition definition,
+            HeroSeed seed,
+            JsonNode tabSkillConfig
+    ) {
+        JsonNode tabSkills = tabSkillConfig.path("skills");
+        if (!tabSkills.isArray() || tabSkills.size() != 5) {
+            throw new IllegalStateException(
+                    "TAB skill config phải có đúng 5 kỹ năng cho " + seed.code()
+            );
         }
 
+        List<HeroSkillDefinition> skillsToSave = new ArrayList<>();
+        for (int i = 0; i < tabSkills.size(); i++) {
+            JsonNode tabSkill = tabSkills.get(i);
+            int order = i + 1;
+            String skillType = tabSkill.path("runtimeSkillType").asText("");
+            String skillName = tabSkill.path("name").asText("");
+            String description = tabSkill.path("description").asText("");
+            String tabGroupId = tabSkill.path("groupId").asText("");
+            String skillCode = seed.code().toUpperCase(java.util.Locale.ROOT)
+                    + "_" + skillType + "_" + order;
 
-        if (!skillsToSave.isEmpty()) heroSkillDefinitionRepository.saveAllAndFlush(skillsToSave);
+            if (skillType.isBlank() || skillName.isBlank()
+                    || description.isBlank() || tabGroupId.isBlank()) {
+                throw new IllegalStateException(
+                        "TAB skill config thiếu type/name/description/groupId: "
+                                + seed.code() + " slot " + order
+                );
+            }
+
+            HeroSkillDefinition skill = new HeroSkillDefinition(
+                    definition, skillCode, skillName, skillType, order
+            );
+            skill.updateInformation(
+                    skillName, description, tabSkill.path("icon").asText("")
+            );
+
+            JsonNode effects = tabSkill.path("battleEffects");
+            if (effects.isArray()) {
+                for (int effectIndex = 0; effectIndex < effects.size(); effectIndex++) {
+                    JsonNode effectConfig = effects.get(effectIndex);
+                    String effectType = effectConfig.path("effectType").asText("");
+                    String targetType = effectConfig.path("targetType").asText("");
+                    if (effectType.isBlank() || targetType.isBlank()) {
+                        throw new IllegalStateException(
+                                "TAB battle effect thiếu effectType/targetType: "
+                                        + skillCode
+                        );
+                    }
+
+                    HeroSkillEffect effect = new HeroSkillEffect(
+                            effectIndex + 1, effectType, targetType
+                    );
+                    BigDecimal multiplier = effectConfig.hasNonNull("multiplier")
+                            ? effectConfig.path("multiplier").decimalValue()
+                            : BigDecimal.ZERO;
+                    BigDecimal chance = effectConfig.hasNonNull("chance")
+                            ? effectConfig.path("chance").decimalValue()
+                            : BigDecimal.ONE;
+                    Integer duration = effectConfig.hasNonNull("duration")
+                            ? effectConfig.path("duration").asInt()
+                            : null;
+                    effect.updateParameters(multiplier, chance, duration);
+                    JsonNode configJson = effectConfig.path("configJson");
+                    effect.updateConfig(
+                            configJson.isObject() ? writeJson(configJson) : "{}"
+                    );
+                    skill.addEffect(effect);
+                }
+            }
+            skillsToSave.add(skill);
+        }
+
+        heroSkillDefinitionRepository.saveAllAndFlush(skillsToSave);
     }
 
     
@@ -541,7 +627,11 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                 new HeroSeed("asuna_dark", "Asuna Hắc Ám", "LEGENDARY", "ASSASSIN",
                         skills("Kiếm tốc ảnh", "Liên kích", "Tuyệt kỹ kiếm vũ", "Tốc độ phản xạ", "Kiếm ý")),
                 new HeroSeed("gojo", "Gojo Satoru", "MYTHIC", "MAGE",
-                        skills("Vô hạn", "Vô Hạ Hạn", "Hư thức: Tử", "Lục nhãn", "Vô hạ hạn")),
+                        skillsWithoutUltimate(
+                                "Đánh Thường", "Vô Hạ Hạn",
+                                "Thuật thức Phản Chuyển-Hách",
+                                "Chú thuật Vô Hạ Hạn", "Lục Nhãn"
+                        )),
                 new HeroSeed("iori", "Iori", "LEGENDARY", "ASSASSIN",
                         skills("Hỏa quyền", "Bạo liệt", "Quỷ thiêu", "Cuồng chiến", "Huyết thống")),
                 new HeroSeed("iori_dark", "Iori Hắc Ám", "MYTHIC", "ASSASSIN",
@@ -556,6 +646,19 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                         skills("Lôi thần chùy", "Sấm sét", "Ragnarok", "Thần lực", "Lôi giáp")),
                 new HeroSeed("thor_rak", "Thor Thức Tỉnh", "MYTHIC", "WARRIOR",
                         skills("Lôi thần thức tỉnh", "Bão sấm", "Lôi đình Ragnarok", "Bất diệt", "Lôi huyết"))
+        );
+    }
+
+    private List<SkillSeed> skillsWithoutUltimate(
+            String basic, String active, String passiveOne,
+            String passiveTwo, String passiveThree
+    ) {
+        return List.of(
+                new SkillSeed(basic, "BASIC"),
+                new SkillSeed(active, "ACTIVE"),
+                new SkillSeed(passiveOne, "PASSIVE"),
+                new SkillSeed(passiveTwo, "PASSIVE"),
+                new SkillSeed(passiveThree, "PASSIVE")
         );
     }
 
