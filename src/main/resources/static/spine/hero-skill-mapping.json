@@ -13,9 +13,7 @@
       "skillAnimations": {
         "ASUNA_DARK_BASIC_1": "att",
         "ASUNA_DARK_ACTIVE_2": "skill",
-        "ASUNA_DARK_ULTIMATE_3": "ultimateskill",
-        "ASUNA_DARK_PASSIVE_4": "skill",
-        "ASUNA_DARK_PASSIVE_5": "skill"
+        "ASUNA_DARK_ULTIMATE_3": "ultimateskill"
       },
       "_BASIC_ATTACK": {
         "movement": "DASH"
@@ -205,10 +203,8 @@
       },
       "skillAnimations": {
         "GOJO_BASIC_1": "att",
-        "GOJO_ACTIVE_2": "ultimateskill",
-        "GOJO_PASSIVE_3": "skill",
-        "GOJO_PASSIVE_4": "skill",
-        "GOJO_PASSIVE_5": "skill"
+        "GOJO_ACTIVE_2": "skill",
+        "GOJO_PASSIVE_3": "ultimateskill"
       },
       "_BASIC_ATTACK": {
         "movement": "DASH"
@@ -304,15 +300,6 @@
         },
         "GOJO_PASSIVE_5": {
           "cast": {
-            "code": "gojo_counter_cast",
-            "file": "seffect_52517111012",
-            "animation": "animation_0",
-            "impactEvent": "qishou_21_1_1",
-            "anchor": "source"
-          }
-        },
-        "GOJO_PASSIVE_3": {
-          "cast": {
             "code": "gojo_luc_nhan_chase",
             "file": "seffect_52517111013",
             "animation": "animation_0",
@@ -322,12 +309,12 @@
             "anchor": "source"
           }
         },
-        "GOJO_PASSIVE_4": {
+        "GOJO_PASSIVE_3": {
           "cast": {
-            "code": "gojo_infinity_passive",
-            "file": "seffect_52517111011",
+            "code": "gojo_counter_cast",
+            "file": "seffect_52517111012",
             "animation": "animation_0",
-            "impactEvent": "qishou_1_1_1",
+            "impactEvent": "qishou_21_1_1",
             "anchor": "source"
           }
         }
@@ -443,10 +430,8 @@
       },
       "skillAnimations": {
         "IORI_BASIC_1": "att",
-        "IORI_ACTIVE_2": "ultimateskill",
-        "IORI_ULTIMATE_3": "superskill",
-        "IORI_PASSIVE_4": "skill",
-        "IORI_PASSIVE_5": "skill"
+        "IORI_ACTIVE_2": "skill",
+        "IORI_ULTIMATE_3": "ultimateskill"
       },
       "_BASIC_ATTACK": {
         "movement": "DASH"
@@ -688,10 +673,8 @@
       },
       "skillAnimations": {
         "IORI_DARK_BASIC_1": "att",
-        "IORI_DARK_ACTIVE_2": "ultimateskill",
-        "IORI_DARK_ULTIMATE_3": "superskill",
-        "IORI_DARK_PASSIVE_4": "skill",
-        "IORI_DARK_PASSIVE_5": "skill"
+        "IORI_DARK_ACTIVE_2": "skill",
+        "IORI_DARK_ULTIMATE_3": "ultimateskill"
       },
       "_BASIC_ATTACK": {
         "movement": "DASH"
@@ -909,9 +892,7 @@
       "skillAnimations": {
         "KIRITO_BASIC_1": "att",
         "KIRITO_ACTIVE_2": "skill",
-        "KIRITO_ULTIMATE_3": "ultimateskill",
-        "KIRITO_PASSIVE_4": "skill",
-        "KIRITO_PASSIVE_5": "skill"
+        "KIRITO_ULTIMATE_3": "ultimateskill"
       },
       "_BASIC_ATTACK": {
         "movement": "DASH"
@@ -1142,9 +1123,7 @@
       "skillAnimations": {
         "LELOUD_BASIC_1": "att",
         "LELOUD_ACTIVE_2": "skill",
-        "LELOUD_ULTIMATE_3": "ultimateskill",
-        "LELOUD_PASSIVE_4": "skill",
-        "LELOUD_PASSIVE_5": "skill"
+        "LELOUD_ULTIMATE_3": "ultimateskill"
       },
       "_BASIC_ATTACK": {
         "movement": "DASH"
@@ -1378,9 +1357,7 @@
       "skillAnimations": {
         "LELOUD_DARK_BASIC_1": "att",
         "LELOUD_DARK_ACTIVE_2": "skill",
-        "LELOUD_DARK_ULTIMATE_3": "ultimateskill",
-        "LELOUD_DARK_PASSIVE_4": "skill",
-        "LELOUD_DARK_PASSIVE_5": "skill"
+        "LELOUD_DARK_ULTIMATE_3": "ultimateskill"
       },
       "_BASIC_ATTACK": {
         "movement": "DASH"
@@ -1615,9 +1592,7 @@
       "skillAnimations": {
         "THOR_BASIC_1": "att",
         "THOR_ACTIVE_2": "skill",
-        "THOR_ULTIMATE_3": "ultimateskill",
-        "THOR_PASSIVE_4": "skill",
-        "THOR_PASSIVE_5": "skill"
+        "THOR_ULTIMATE_3": "ultimateskill"
       },
       "_BASIC_ATTACK": {
         "movement": "DASH"
@@ -1856,9 +1831,7 @@
       "skillAnimations": {
         "THOR_RAK_BASIC_1": "att",
         "THOR_RAK_ACTIVE_2": "skill",
-        "THOR_RAK_ULTIMATE_3": "ultimateskill",
-        "THOR_RAK_PASSIVE_4": "skill",
-        "THOR_RAK_PASSIVE_5": "skill"
+        "THOR_RAK_ULTIMATE_3": "ultimateskill"
       },
       "_BASIC_ATTACK": {
         "movement": "DASH"
@@ -2097,9 +2070,7 @@
       "skillAnimations": {
         "TOHKA_DARK_BASIC_1": "att",
         "TOHKA_DARK_ACTIVE_2": "skill",
-        "TOHKA_DARK_ULTIMATE_3": "ultimateskill",
-        "TOHKA_DARK_PASSIVE_4": "skill",
-        "TOHKA_DARK_PASSIVE_5": "skill"
+        "TOHKA_DARK_ULTIMATE_3": "ultimateskill"
       },
       "_BASIC_ATTACK": {
         "movement": "DASH"

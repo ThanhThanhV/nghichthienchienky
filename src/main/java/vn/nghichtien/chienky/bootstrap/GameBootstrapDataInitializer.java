@@ -300,9 +300,23 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                 );
             }
 
-            // Catalog có thể khai báo animation cho cả PASSIVE để phục vụ
-            // animation/hiển thị trạng thái. Chỉ bắt buộc mapping cho các skill
-            // có hành động trong lượt: BASIC, ACTIVE và ULTIMATE.
+            JsonNode skeletonAnimations = loadSkeletonAnimations(heroMapping, seed.code());
+            Iterator<Map.Entry<String, JsonNode>> configuredAnimations = animations.fields();
+            while (configuredAnimations.hasNext()) {
+                Map.Entry<String, JsonNode> configured = configuredAnimations.next();
+                String animationName = configured.getValue().asText("");
+                if (animationName.isBlank() || !skeletonAnimations.has(animationName)) {
+                    throw new IllegalStateException(
+                            "Animation mapping không tồn tại trong Spine skeleton: "
+                                    + seed.code() + " / " + configured.getKey()
+                                    + " -> " + animationName
+                    );
+                }
+            }
+
+            // BASIC/ACTIVE/ULTIMATE bắt buộc phải có mapping theo đúng skillCode.
+            // PASSIVE chỉ phát animation nhân vật khi có mapping tường minh;
+            // VFX của passive được resolve độc lập từ _SKILL_EFFECTS.
             for (int index = 0; index < seed.skills().size(); index++) {
                 int order = index + 1;
                 SkillSeed skill = seed.skills().get(index);
@@ -322,6 +336,34 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                     );
                 }
             }
+        }
+    }
+
+    private JsonNode loadSkeletonAnimations(JsonNode heroMapping, String heroCode) {
+        String folder = heroMapping.path("asset").path("folder").asText("");
+        String base = heroMapping.path("asset").path("base").asText("");
+        if (folder.isBlank() || base.isBlank()) {
+            throw new IllegalStateException(
+                    "Thiếu folder/base Spine khi validate animation của " + heroCode
+            );
+        }
+
+        String resourcePath = "static/assets/spine/heroes/"
+                + folder + "/" + base + ".json";
+        try (var input = new ClassPathResource(resourcePath).getInputStream()) {
+            JsonNode skeleton = objectMapper.readTree(input);
+            JsonNode animations = skeleton.path("animations");
+            if (!animations.isObject()) {
+                throw new IllegalStateException(
+                        "Skeleton không có danh sách animations: " + resourcePath
+                );
+            }
+            return animations;
+        } catch (IOException exception) {
+            throw new IllegalStateException(
+                    "Không thể đọc Spine skeleton để validate animation: " + resourcePath,
+                    exception
+            );
         }
     }
 

@@ -395,15 +395,20 @@ class BattleSpineIntegration {
             return;
         }
 
+        const sourceTeam = event.sourceTeam || event.team;
+        const sourceInstanceId = event.sourceInstanceId ?? event.instanceId;
         const sourceCharacter = this.formation?.getCharacter(
-            event.sourceTeam,
-            event.sourceInstanceId
+            sourceTeam,
+            sourceInstanceId
         );
         const normalizedEvent = {
             ...event,
-            heroCode: event.heroCode || sourceCharacter?.config?.heroCode,
-            team: event.sourceTeam,
-            instanceId: event.sourceInstanceId,
+            sourceTeam,
+            sourceInstanceId,
+            heroCode: event.heroCode || event.sourceHeroCode ||
+                sourceCharacter?.config?.heroCode,
+            team: sourceTeam,
+            instanceId: sourceInstanceId,
             isCritical: event.critical
         };
 

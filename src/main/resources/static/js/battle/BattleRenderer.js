@@ -1004,7 +1004,34 @@ class BattleRenderer {
             return null;
         }
 
-        return character.config?.skillAnimations?.[event.skillCode] || null;
+        const mappings = character.config?.skillAnimations;
+        if (!mappings || typeof mappings !== "object" || Array.isArray(mappings)) {
+            return null;
+        }
+
+        const requestedCode = String(event.skillCode).trim().toUpperCase();
+        const mappingKey = Object.keys(mappings).find(
+            key => String(key).trim().toUpperCase() === requestedCode
+        );
+        if (!mappingKey) {
+            return null;
+        }
+
+        const mapping = mappings[mappingKey];
+        if (typeof mapping === "string" && mapping.trim()) {
+            return { animation: mapping.trim() };
+        }
+        if (
+            mapping &&
+            typeof mapping === "object" &&
+            !Array.isArray(mapping) &&
+            typeof mapping.animation === "string" &&
+            mapping.animation.trim()
+        ) {
+            return mapping;
+        }
+
+        return null;
     }
 
     getAnimation(eventOrType) {
@@ -1015,8 +1042,65 @@ class BattleRenderer {
 
         if (event) {
             const character = this.getCharacter(event);
+            const skillCode = String(event.skillCode || "").trim();
+            const normalizedType = String(event.type || "").trim().toUpperCase();
+            const skillEvent = [
+                "ATTACK",
+                "BASIC_ATTACK",
+                "ACTIVE_SKILL",
+                "ULTIMATE_SKILL",
+                "PASSIVE"
+            ].includes(normalizedType);
+
+            // Skill events must use their exact per-hero mapping. A generic
+            // fallback hides missing mappings and makes different heroes play
+            // the same incorrect animation.
+            if (skillEvent) {
+                if (!skillCode) {
+                    console.error(
+                        "[BattleRenderer] Skill event thiếu skillCode, không dùng animation mặc định:",
+                        event
+                    );
+                    return null;
+                }
+
+                const config = this.getSkillAnimationConfig(character, event);
+                const configuredAnimation = config?.animation;
+                if (!character) {
+                    console.error(
+                        "[BattleRenderer] Không tìm thấy nhân vật nguồn cho skillCode:",
+                        skillCode,
+                        event
+                    );
+                    return null;
+                }
+                if (!configuredAnimation) {
+                    console.error(
+                        "[BattleRenderer] Thiếu mapping animation cho:",
+                        character.config?.heroCode || character.config?.code,
+                        skillCode,
+                        Object.keys(character.config?.skillAnimations || {})
+                    );
+                    return null;
+                }
+                if (!character.getAnimationNames().includes(configuredAnimation)) {
+                    console.error(
+                        "[BattleRenderer] Animation mapping không tồn tại trong skeleton:",
+                        character.config?.heroCode || character.config?.code,
+                        skillCode,
+                        configuredAnimation,
+                        character.getAnimationNames()
+                    );
+                    return null;
+                }
+                return configuredAnimation;
+            }
+
             const configuredAnimation = this.getSkillAnimationConfig(character, event)?.animation;
-            if (configuredAnimation && character.getAnimationNames().includes(configuredAnimation)) {
+            if (
+                configuredAnimation &&
+                character?.getAnimationNames?.().includes(configuredAnimation)
+            ) {
                 return configuredAnimation;
             }
         }

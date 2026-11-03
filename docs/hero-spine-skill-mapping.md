@@ -82,3 +82,13 @@ Spine JSON animation list; asset filenames are never renamed or guessed.
 3. Add the runtime hero seed with an explicit skill-slot mapping.
 4. Validate the referenced Spine animation names and VFX files before enabling
    the hero.
+
+
+## Runtime animation validation and event mapping
+
+- BASIC uses the hero's explicit `att` mapping; ACTIVE/ULTIMATE use the explicit per-skill mapping in this file.
+- Iori and Iori Dark use `skill` for ACTIVE and `ultimateskill` for ULTIMATE, matching the confirmed action mapping.
+- Gojo ACTIVE field uses `skill`; the counter passive uses `ultimateskill`. The chase passive uses its dedicated VFX and does not force a generic character animation.
+- Passive slots without an explicit character animation do not fall back to a generic skill animation. Their VFX continues to resolve independently from `_SKILL_EFFECTS`.
+- `GameBootstrapDataInitializer` validates every configured animation name against the actual hero skeleton JSON before saving the DB mapping. A bad name fails bootstrap with the hero, skill code, and missing animation.
+- The browser renderer accepts both raw string mappings and BE-enriched `{ animation: ... }` objects. A missing or invalid skill mapping is logged and skipped instead of silently playing a generic animation.
