@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="_csrf" th:content="${_csrf.token}">
+    <meta name="_csrf_header" th:content="${_csrf.headerName}">
+    <title>Bảng xếp hạng lực chiến - Nghịch Thiên Chiến Ký</title>
+    <style>
+        *{box-sizing:border-box}body{margin:0;min-height:100vh;padding:24px;color:#edf2fa;background:radial-gradient(circle at 15% 0%,#263653 0,transparent 34%),#080d19;font-family:Arial,sans-serif}
+        .page{width:min(1080px,100%);margin:auto}.top{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:22px}.back{color:#d9bd83;text-decoration:none;font-size:12px}.eyebrow{color:#8e9eb7;font-size:10px;letter-spacing:.24em;margin-top:18px}h1{margin:8px 0;color:#f4d58f;font:700 clamp(25px,5vw,38px) Georgia,serif}.sub{color:#aab7ca;font-size:13px;line-height:1.6}
+        .panel{border:1px solid rgba(212,181,119,.25);border-radius:14px;background:rgba(15,23,38,.94);box-shadow:0 18px 60px #0005;overflow:hidden}.panel-head{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid #344158}.panel-head h2{margin:0;color:#f4d58f;font:700 18px Georgia,serif}.refresh{padding:9px 13px;color:#f4d58f;border:1px solid #79633e;border-radius:7px;background:#202a3d;cursor:pointer}
+        table{width:100%;border-collapse:collapse}th,td{padding:14px 16px;text-align:left;border-bottom:1px solid #283449}th{color:#8292aa;font-size:10px;letter-spacing:.1em}td{font-size:13px;color:#dce5f2}tbody tr{cursor:pointer;transition:background .15s}tbody tr:hover{background:#202d43}.rank{width:70px;color:#f4d58f;font-weight:800}.player{font-weight:700;color:#fff}.power{color:#f4d58f;font-weight:800;font-variant-numeric:tabular-nums}.team-size{color:#9eacc2}.empty,.error{padding:28px;text-align:center;color:#9eacc2}
+        .modal{position:fixed;inset:0;z-index:30;display:none;align-items:center;justify-content:center;padding:18px;background:#030711d9}.modal.open{display:flex}.dialog{width:min(820px,100%);max-height:min(88vh,900px);overflow:auto;border:1px solid #8c744d;border-radius:14px;background:#101a2b;box-shadow:0 24px 90px #000b}.dialog-head{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 20px;background:#101a2b;border-bottom:1px solid #39465c}.dialog-head h2{margin:0;color:#f4d58f;font:700 20px Georgia,serif}.close{border:0;background:transparent;color:#cbd5e1;font-size:25px;cursor:pointer}.profile-summary{display:flex;justify-content:space-between;gap:16px;padding:18px 20px;border-bottom:1px solid #344158}.profile-summary strong{display:block;color:#fff;font-size:17px}.profile-summary span{display:block;margin-top:5px;color:#9eacc2;font-size:12px}.profile-power{color:#f4d58f!important;font-size:20px!important;font-weight:800}.formation-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;padding:18px 20px}.hero{display:flex;gap:12px;align-items:center;min-width:0;padding:12px;border:1px solid #34445d;border-radius:9px;background:#162338}.hero-avatar{display:grid;place-items:center;flex:0 0 48px;width:48px;height:58px;border:1px solid #806d4b;border-radius:6px;background:linear-gradient(145deg,#35445e,#171e2c);color:#f4d58f;font-weight:800}.hero-info{min-width:0}.hero-name{display:block;color:#f2e3bf;font-weight:700;overflow-wrap:anywhere}.hero-meta{display:block;margin-top:5px;color:#9eacc2;font-size:11px}.hero-power{display:block;margin-top:6px;color:#e9c77e;font-size:12px;font-weight:800}.dialog-actions{position:sticky;bottom:0;display:flex;justify-content:flex-end;gap:10px;padding:14px 20px;border-top:1px solid #344158;background:#101a2b}.challenge{padding:12px 22px;color:#21190d;border:1px solid #e4c77e;border-radius:7px;background:linear-gradient(135deg,#f4dfa9,#bd914e);font-weight:800;cursor:pointer}.challenge:disabled{opacity:.5;cursor:wait}.message{padding:0 20px 14px;color:#fca5a5;font-size:12px}
+        @media(max-width:620px){body{padding:14px 10px}.top{align-items:flex-start}.panel-head{padding:14px}.panel-head h2{font-size:16px}th,td{padding:12px 8px;font-size:11px}th:nth-child(4),td:nth-child(4){display:none}.rank{width:40px}.profile-summary{padding:14px}.formation-list{padding:12px;grid-template-columns:1fr}.dialog-actions{padding:12px}.challenge{width:100%}}
+    </style>
+</head>
+<body>
+<main class="page">
+    <header class="top">
+        <div><a class="back" th:href="@{/dashboard}">← TRỞ VỀ ĐẠI SẢNH</a><div class="eyebrow">THIÊN HẠ TRANH PHONG</div><h1>BẢNG XẾP HẠNG LỰC CHIẾN</h1><p class="sub">Thứ hạng được tính từ tổng lực chiến của các tướng trong đội hình chính. Chọn một tu sĩ để xem trận pháp và phát động khiêu chiến.</p></div>
+    </header>
+    <section class="panel">
+        <div class="panel-head"><h2>TOP TU SĨ MẠNH NHẤT</h2><button id="refresh" class="refresh" type="button">↻ LÀM MỚI</button></div>
+        <div id="ranking-state" class="empty">Đang tính toán lực chiến toàn server...</div>
+        <table id="ranking-table" hidden>
+            <thead><tr><th>HẠNG</th><th>TU SĨ</th><th>LỰC CHIẾN</th><th>CẤP</th><th>ĐỘI HÌNH</th></tr></thead>
+            <tbody id="ranking-rows"></tbody>
+        </table>
+    </section>
+</main>
+<div id="player-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <section class="dialog">
+        <header class="dialog-head"><h2 id="modal-title">ĐỘI HÌNH CHÍNH</h2><button id="close-modal" class="close" type="button" aria-label="Đóng">×</button></header>
+        <div id="profile-summary" class="profile-summary"></div>
+        <div id="formation-list" class="formation-list"></div>
+        <div id="modal-message" class="message" role="status"></div>
+        <footer class="dialog-actions"><button id="challenge-button" class="challenge" type="button">⚔ KHIÊU CHIẾN</button></footer>
+    </section>
+</div>
+<script>
+(() => {
+    const state = { currentPlayerId: null, selectedPlayerId: null, selectedNickname: "" };
+    const number = value => Math.round(Number(value || 0)).toLocaleString("vi-VN");
+    const csrfHeaders = () => {
+        const token = document.querySelector('meta[name="_csrf"]')?.content;
+        const name = document.querySelector('meta[name="_csrf_header"]')?.content;
+        const headers = { "Accept": "application/json", "Content-Type": "application/json" };
+        if (token && name) headers[name] = token;
+        return headers;
+    };
+    async function request(url, options = {}) {
+        const response = await fetch(url, { credentials: "same-origin", headers: csrfHeaders(), ...options });
+        const data = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(data.detail || data.message || "Yêu cầu thất bại (HTTP " + response.status + ").");
+        return data;
+    }
+    async function loadRanking() {
+        const status = document.getElementById("ranking-state");
+        const table = document.getElementById("ranking-table");
+        status.hidden = false; status.className = "empty"; status.textContent = "Đang tính toán lực chiến toàn server...";
+        table.hidden = true;
+        try {
+            const [rows, me] = await Promise.all([
+                request("/api/power-ranking"),
+                request("/api/player/me")
+            ]);
+            state.currentPlayerId = Number(me.playerId);
+            const body = document.getElementById("ranking-rows");
+            body.replaceChildren();
+            rows.forEach(item => {
+                const tr = document.createElement("tr");
+                tr.dataset.playerId = item.playerId;
+                const values = [
+                    ["rank", "#" + item.rank],
+                    ["player", item.nickname || ("Tu sĩ #" + item.playerId)],
+                    ["power", number(item.totalPower)],
+                    ["", "Cấp " + item.playerLevel],
+                    ["team-size", item.teamSize + " / 5 tướng"]
+                ];
+                values.forEach(([className, value]) => {
+                    const td = document.createElement("td");
+                    if (className) td.className = className;
+                    td.textContent = value;
+                    tr.appendChild(td);
+                });
+                if (Number(item.playerId) === state.currentPlayerId) tr.style.background = "rgba(212,181,119,.09)";
+                tr.addEventListener("click", () => openPlayer(item.playerId));
+                body.appendChild(tr);
+            });
+            status.hidden = rows.length > 0;
+            status.textContent = rows.length ? "" : "Chưa có người chơi nào xếp đội hình chính.";
+            table.hidden = rows.length === 0;
+        } catch (error) {
+            status.className = "error"; status.textContent = error.message || "Không thể tải bảng xếp hạng.";
+        }
+    }
+    async function openPlayer(playerId) {
+        const modal = document.getElementById("player-modal");
+        const list = document.getElementById("formation-list");
+        const summary = document.getElementById("profile-summary");
+        const message = document.getElementById("modal-message");
+        const challenge = document.getElementById("challenge-button");
+        state.selectedPlayerId = Number(playerId);
+        modal.classList.add("open");
+        list.replaceChildren();
+        summary.textContent = "Đang tải đội hình...";
+        message.textContent = "";
+        challenge.disabled = true;
+        try {
+            const data = await request("/api/power-ranking/" + encodeURIComponent(playerId));
+            state.selectedNickname = data.nickname || ("Tu sĩ #" + data.playerId);
+            summary.replaceChildren();
+            const left = document.createElement("div");
+            const name = document.createElement("strong"); name.textContent = state.selectedNickname;
+            const level = document.createElement("span"); level.textContent = "Cấp tu sĩ " + data.playerLevel + " · " + data.formation.length + " tướng trong đội hình chính";
+            left.append(name, level);
+            const power = document.createElement("strong"); power.className = "profile-power"; power.textContent = number(data.totalPower) + " LC";
+            summary.append(left, power);
+            data.formation.forEach(hero => {
+                const card = document.createElement("article"); card.className = "hero";
+                const avatar = document.createElement("div"); avatar.className = "hero-avatar";
+                avatar.textContent = (hero.heroName || hero.heroCode || "?").slice(0, 1);
+                const info = document.createElement("div"); info.className = "hero-info";
+                const heroName = document.createElement("strong"); heroName.className = "hero-name"; heroName.textContent = hero.heroName;
+                const meta = document.createElement("span"); meta.className = "hero-meta";
+                meta.textContent = (hero.rarity || "") + " · Cấp " + hero.heroLevel + " · " + hero.starLevel + " sao · Hàng " + (hero.row + 1) + " / Cột " + (hero.column + 1);
+                const heroPower = document.createElement("span"); heroPower.className = "hero-power"; heroPower.textContent = number(hero.power) + " LC";
+                info.append(heroName, meta, heroPower); card.append(avatar, info); list.appendChild(card);
+            });
+            challenge.disabled = Number(playerId) === state.currentPlayerId || data.formation.length === 0;
+            challenge.textContent = Number(playerId) === state.currentPlayerId ? "ĐÂY LÀ ĐỘI HÌNH CỦA NGƯƠI" : "⚔ KHIÊU CHIẾN " + state.selectedNickname.toUpperCase();
+        } catch (error) {
+            summary.textContent = "Không thể tải đội hình người chơi.";
+            message.textContent = error.message || "Đã xảy ra lỗi.";
+        }
+    }
+    function closeModal() { document.getElementById("player-modal").classList.remove("open"); }
+    document.getElementById("refresh").addEventListener("click", loadRanking);
+    document.getElementById("close-modal").addEventListener("click", closeModal);
+    document.getElementById("player-modal").addEventListener("click", event => { if (event.target.id === "player-modal") closeModal(); });
+    document.getElementById("challenge-button").addEventListener("click", () => {
+        if (!state.selectedPlayerId || state.selectedPlayerId === state.currentPlayerId) return;
+        window.location.href = "/battle?challenge=" + encodeURIComponent(state.selectedPlayerId) +
+            "&opponent=" + encodeURIComponent(state.selectedNickname);
+    });
+    document.addEventListener("keydown", event => { if (event.key === "Escape") closeModal(); });
+    loadRanking();
+})();
+</script>
+</body>
+</html>
