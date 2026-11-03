@@ -273,7 +273,67 @@ public class HeroAdminService {
                 || effect.chance().compareTo(BigDecimal.ONE) > 0)) {
             throw badRequest("Chance phải nằm trong khoảng 0 đến 1");
         }
-        normalizeConfig(effect.configJson());
+        String normalizedConfig = normalizeConfig(effect.configJson());
+        JsonNode config = readConfig(normalizedConfig);
+        String type = effect.effectType().trim().toUpperCase(Locale.ROOT);
+        if ("SUMMON".equals(type)) {
+            throw badRequest("SUMMON chưa được hỗ trợ trong bộ máy chiến đấu hiện tại");
+        }
+        boolean permanent = config.path("permanent").asBoolean(false);
+        if (permanent && !"BUFF".equals(type) && !"DEBUFF".equals(type)) {
+            throw badRequest("Hiệu ứng vĩnh viễn chỉ áp dụng cho BUFF/DEBUFF");
+        }
+        if (("BUFF".equals(type) || "DEBUFF".equals(type))
+                && !isOneOf(config, "statType", Set.of(
+                        "ATK", "DEF", "SPEED", "CRIT", "CRIT_DAMAGE",
+                        "ACCURACY", "RESISTANCE", "PEN_FLAT", "PEN_PERCENT", "LIFESTEAL"))) {
+            throw badRequest(type + " cần cấu hình statType hợp lệ");
+        }
+        if ("CC".equals(type) && !isOneOf(config, "statusType",
+                Set.of("STUN", "FREEZE", "SILENCE", "TAUNT"))) {
+            throw badRequest("CC cần cấu hình statusType hợp lệ");
+        }
+        if ("IMMUNITY".equals(type) && !isOneOf(config, "immunityType",
+                Set.of("BUFF", "DEBUFF", "CC", "DAMAGE"))) {
+            throw badRequest("IMMUNITY cần cấu hình immunityType hợp lệ");
+        }
+        if ("DISPEL".equals(type) && !isOneOf(config, "dispelType",
+                Set.of("BUFF", "DEBUFF", "CC"))) {
+            throw badRequest("DISPEL cần cấu hình dispelType hợp lệ");
+        }
+        JsonNode flatValue = config.get("flatValue");
+        if (flatValue != null && !flatValue.isNull()
+                && (!flatValue.isNumber() || flatValue.decimalValue().signum() < 0)) {
+            throw badRequest("flatValue phải là số không âm");
+        }
+        if (("DOT".equals(type) || "HOT".equals(type))
+                && effect.duration() <= 0) {
+            throw badRequest(type + " cần duration lớn hơn 0");
+        }
+        if ("DOT".equals(type) || "HOT".equals(type)) {
+            BigDecimal flat = flatValue == null || !flatValue.isNumber()
+                    ? BigDecimal.ZERO : flatValue.decimalValue();
+            if (effect.multiplier().signum() == 0 && flat.signum() == 0) {
+                throw badRequest(type + " cần multiplier hoặc flatValue lớn hơn 0");
+            }
+        }
+        JsonNode animationDuration = config.get("animationDurationMs");
+        JsonNode impactTime = config.get("impactTimeMs");
+        if (animationDuration != null && animationDuration.isNumber()
+                && animationDuration.asInt() < 1) {
+            throw badRequest("animationDurationMs phải lớn hơn 0");
+        }
+        if (impactTime != null && impactTime.isNumber()
+                && animationDuration != null && animationDuration.isNumber()
+                && impactTime.asInt() > animationDuration.asInt()) {
+            throw badRequest("impactTimeMs không được vượt animationDurationMs");
+        }
+    }
+
+    private boolean isOneOf(JsonNode config, String field, Set<String> allowed) {
+        JsonNode value = config.get(field);
+        return value != null && value.isTextual()
+                && allowed.contains(value.asText().trim().toUpperCase(Locale.ROOT));
     }
 
     private String normalizeConfig(String configJson) {
