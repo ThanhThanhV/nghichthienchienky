@@ -14,6 +14,11 @@ public interface HeroInstanceSkillRepository
         extends JpaRepository<HeroInstanceSkill, Long> {
 
     /**
+     * Xóa liên kết kỹ năng của các bản sao thuộc nhóm tướng seed trước khi tạo lại.
+     */
+    long deleteAllBySkillDefinitionHeroDefinitionHeroCodeIn(List<String> heroCodes);
+
+    /**
      * Lấy toàn bộ kỹ năng của một bản sao nhân vật,
      * kèm định nghĩa kỹ năng.
      *
