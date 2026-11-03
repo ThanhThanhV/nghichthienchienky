@@ -22,6 +22,13 @@ document.addEventListener("DOMContentLoaded",()=>{
   <label>Animation Spine<input data-animation value="${esc(c.animation??"")}"></label>
   <label>Thời lượng animation (ms)<input data-animation-duration type="number" min="0" value="${esc(c.animationDurationMs??0)}"></label>
   <label>Thời điểm tác động (ms)<input data-impact-time type="number" min="0" value="${esc(c.impactTimeMs??0)}"></label>
+  <label>Giá trị cộng cố định<input data-flat-value type="number" min="0" step="any" value="${esc(c.flatValue??0)}"></label>
+  <label>Chỉ số BUFF/DEBUFF<select data-stat-type><option value="">Không áp dụng</option>${["ATK","DEF","SPEED","CRIT","CRIT_DAMAGE","ACCURACY","RESISTANCE","PEN_FLAT","PEN_PERCENT","LIFESTEAL"].map(x=>`<option ${x===c.statType?"selected":""}>${x}</option>`).join("")}</select></label>
+  <label>Trạng thái CC<select data-status-type><option value="">Không áp dụng</option>${["STUN","FREEZE","SILENCE","TAUNT"].map(x=>`<option ${x===c.statusType?"selected":""}>${x}</option>`).join("")}</select></label>
+  <label>Miễn nhiễm<select data-immunity-type><option value="">Không áp dụng</option>${["BUFF","DEBUFF","CC","DAMAGE"].map(x=>`<option ${x===c.immunityType?"selected":""}>${x}</option>`).join("")}</select></label>
+  <label>Giải hiệu ứng<select data-dispel-type><option value="">Không áp dụng</option>${["BUFF","DEBUFF","CC"].map(x=>`<option ${x===c.dispelType?"selected":""}>${x}</option>`).join("")}</select></label>
+  <label>Trigger nội tại<input data-trigger value="${esc(c.trigger??"")}" placeholder="BATTLE_START / ON_ATTACK..."></label>
+  <label class="check-label"><input data-permanent type="checkbox" ${c.permanent===true?"checked":""}> Hiệu ứng vĩnh viễn</label>
   <label class="wide">Cấu hình nâng cao (JSON)<textarea data-config rows="4" spellcheck="false">${esc(JSON.stringify(c,null,2))}</textarea></label></div>
   <div class="effect-actions"><button type="button" class="small-button danger" data-remove>XÓA HIỆU ỨNG</button></div></article>`;
  }
@@ -42,6 +49,9 @@ document.addEventListener("DOMContentLoaded",()=>{
    if(!c||typeof c!=="object"||Array.isArray(c))throw Error("Cấu hình hiệu ứng phải là JSON object.");
    const a=e.querySelector("[data-animation]").value.trim();if(a)c.animation=a;else delete c.animation;
    c.animationDurationMs=Number(e.querySelector("[data-animation-duration]").value||0);c.impactTimeMs=Number(e.querySelector("[data-impact-time]").value||0);
+   c.flatValue=Number(e.querySelector("[data-flat-value]").value||0);
+   for(const [selector,key] of [["[data-stat-type]","statType"],["[data-status-type]","statusType"],["[data-immunity-type]","immunityType"],["[data-dispel-type]","dispelType"],["[data-trigger]","trigger"]]){const v=e.querySelector(selector).value.trim();if(v)c[key]=v;else delete c[key];}
+   c.permanent=e.querySelector("[data-permanent]").checked;
    const id=e.querySelector("[data-id]").value,ch=e.querySelector("[data-chance]").value;
    return {id:id?Number(id):null,effectOrder:Number(e.querySelector("[data-order]").value),effectType:e.querySelector("[data-type]").value,targetType:e.querySelector("[data-target]").value,multiplier:Number(e.querySelector("[data-mult]").value),chance:ch===""?null:Number(ch),duration:Number(e.querySelector("[data-duration]").value),configJson:JSON.stringify(c),enabled:e.querySelector("[data-enabled]").checked};
   })}))};
