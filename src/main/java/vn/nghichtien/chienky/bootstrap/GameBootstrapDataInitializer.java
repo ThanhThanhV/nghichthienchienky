@@ -12,12 +12,18 @@ import vn.nghichtien.chienky.battle.domain.BattleTargetMode;
 import vn.nghichtien.chienky.hero.domain.HeroBaseStats;
 import vn.nghichtien.chienky.hero.domain.HeroDefinition;
 import vn.nghichtien.chienky.hero.domain.HeroGrowthConfig;
+import vn.nghichtien.chienky.hero.domain.HeroInstance;
+import vn.nghichtien.chienky.hero.domain.HeroInstanceSkill;
 import vn.nghichtien.chienky.hero.domain.HeroSkillDefinition;
 import vn.nghichtien.chienky.hero.domain.HeroSkillEffect;
 import vn.nghichtien.chienky.hero.repository.HeroBaseStatsRepository;
 import vn.nghichtien.chienky.hero.repository.HeroDefinitionRepository;
 import vn.nghichtien.chienky.hero.repository.HeroGrowthConfigRepository;
+import vn.nghichtien.chienky.hero.repository.HeroInstanceRepository;
+import vn.nghichtien.chienky.hero.repository.HeroInstanceSkillRepository;
 import vn.nghichtien.chienky.hero.repository.HeroSkillDefinitionRepository;
+import vn.nghichtien.chienky.hero.repository.HeroSkillUpgradeConfigRepository;
+import vn.nghichtien.chienky.hero.repository.HeroSkillUpgradeCostRepository;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -32,27 +38,103 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
     private final HeroBaseStatsRepository heroBaseStatsRepository;
     private final HeroGrowthConfigRepository heroGrowthConfigRepository;
     private final HeroSkillDefinitionRepository heroSkillDefinitionRepository;
+    private final HeroInstanceRepository heroInstanceRepository;
+    private final HeroInstanceSkillRepository heroInstanceSkillRepository;
+    private final HeroSkillUpgradeConfigRepository heroSkillUpgradeConfigRepository;
+    private final HeroSkillUpgradeCostRepository heroSkillUpgradeCostRepository;
 
     public GameBootstrapDataInitializer(
             ObjectMapper objectMapper,
             HeroDefinitionRepository heroDefinitionRepository,
             HeroBaseStatsRepository heroBaseStatsRepository,
             HeroGrowthConfigRepository heroGrowthConfigRepository,
-            HeroSkillDefinitionRepository heroSkillDefinitionRepository
+            HeroSkillDefinitionRepository heroSkillDefinitionRepository,
+            HeroInstanceRepository heroInstanceRepository,
+            HeroInstanceSkillRepository heroInstanceSkillRepository,
+            HeroSkillUpgradeConfigRepository heroSkillUpgradeConfigRepository,
+            HeroSkillUpgradeCostRepository heroSkillUpgradeCostRepository
     ) {
         this.objectMapper = objectMapper;
         this.heroDefinitionRepository = heroDefinitionRepository;
         this.heroBaseStatsRepository = heroBaseStatsRepository;
         this.heroGrowthConfigRepository = heroGrowthConfigRepository;
         this.heroSkillDefinitionRepository = heroSkillDefinitionRepository;
+        this.heroInstanceRepository = heroInstanceRepository;
+        this.heroInstanceSkillRepository = heroInstanceSkillRepository;
+        this.heroSkillUpgradeConfigRepository = heroSkillUpgradeConfigRepository;
+        this.heroSkillUpgradeCostRepository = heroSkillUpgradeCostRepository;
     }
 
     @Override
     @Transactional
     public void run(ApplicationArguments args) {
         List<HeroSeed> seeds = heroSeeds();
+        List<String> heroCodes = seeds.stream().map(HeroSeed::code).toList();
+
+        // Tạm thời reset dữ liệu kỹ năng của 10 tướng seed mỗi lần khởi động.
+        // Toàn bộ thao tác nằm trong cùng transaction: lỗi ở bất kỳ bước nào
+        // sẽ rollback cả việc xóa lẫn việc tạo lại dữ liệu.
+        resetSeededSkillData(heroCodes);
+
         for (int i = 0; i < seeds.size(); i++) {
             seedHero(seeds.get(i), i + 1);
+        }
+
+        // Gắn lại 5 kỹ năng cấp 1 cho mọi bản sao tướng người chơi đang sở hữu.
+        rebuildOwnedHeroSkills(heroCodes);
+    }
+
+    private void resetSeededSkillData(List<String> heroCodes) {
+        // Xóa từ bảng con lên bảng cha để không vi phạm khóa ngoại.
+        heroSkillUpgradeCostRepository
+                .deleteAllByUpgradeConfigSkillDefinitionHeroDefinitionHeroCodeIn(heroCodes);
+        heroSkillUpgradeCostRepository.flush();
+
+        heroSkillUpgradeConfigRepository
+                .deleteAllBySkillDefinitionHeroDefinitionHeroCodeIn(heroCodes);
+        heroSkillUpgradeConfigRepository.flush();
+
+        heroInstanceSkillRepository
+                .deleteAllBySkillDefinitionHeroDefinitionHeroCodeIn(heroCodes);
+        heroInstanceSkillRepository.flush();
+
+        heroSkillDefinitionRepository.deleteAllByHeroDefinitionHeroCodeIn(heroCodes);
+        heroSkillDefinitionRepository.flush();
+    }
+
+    private void rebuildOwnedHeroSkills(List<String> heroCodes) {
+        Map<String, List<HeroSkillDefinition>> skillsByHero = new HashMap<>();
+        for (String heroCode : heroCodes) {
+            List<HeroSkillDefinition> skills =
+                    heroSkillDefinitionRepository
+                            .findAllByHeroDefinitionHeroCodeAndEnabledTrueOrderBySkillOrderAsc(
+                                    heroCode
+                            );
+            if (skills.size() != 5) {
+                throw new IllegalStateException(
+                        "Seed phải tạo đúng 5 kỹ năng cho tướng " + heroCode
+                );
+            }
+            skillsByHero.put(heroCode, skills);
+        }
+
+        List<HeroInstanceSkill> links = new ArrayList<>();
+        List<HeroInstance> ownedHeroes =
+                heroInstanceRepository.findAllByHeroDefinitionHeroCodeIn(heroCodes);
+
+        for (HeroInstance instance : ownedHeroes) {
+            List<HeroSkillDefinition> skills = skillsByHero.get(instance.getHeroCode());
+            if (skills == null) {
+                continue;
+            }
+            for (HeroSkillDefinition skill : skills) {
+                links.add(new HeroInstanceSkill(instance, skill));
+            }
+        }
+
+        if (!links.isEmpty()) {
+            heroInstanceSkillRepository.saveAll(links);
+            heroInstanceSkillRepository.flush();
         }
     }
 
@@ -214,7 +296,7 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
             seedGojoInfinityEffects(skillsByOrder);
         }
 
-        if (!skillsToSave.isEmpty()) heroSkillDefinitionRepository.saveAll(skillsToSave);
+        if (!skillsToSave.isEmpty()) heroSkillDefinitionRepository.saveAllAndFlush(skillsToSave);
     }
 
     /**
