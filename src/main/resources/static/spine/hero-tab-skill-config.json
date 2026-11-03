@@ -25,7 +25,20 @@
           "315143",
           "315144"
         ],
-        "raw": "TAB_Hero[31514] = {\"Asuna\",\"Thẻ 5 Sao (Hỏa) Cao Cấp\",3,1,\"Chiến Binh (nhanh nhẹn, bạo kích, tốc độ)\",\"Chiến Binh\",31514,5,31514,31514,315140,{315141,315142,315143,315144},{},1051500,221200,60000,53300,{{2,720},{3,153},{4,46},{5,96},{105,10000},{106,15000}},\"Chiêu mộ\",{4001,4002,4003,4004},{{7001,100,0},{7001,0,7}},{{9001,6},{9001,11},{9002,13}},31514,999,{{8001,1000},{1001,50}},{1,3,1,0},0,1,16,356023,1003,0,\"16\"}"
+        "raw": "TAB_Hero[31514] = {\"Asuna\",\"Thẻ 5 Sao (Hỏa) Cao Cấp\",3,1,\"Chiến Binh (nhanh nhẹn, bạo kích, tốc độ)\",\"Chiến Binh\",31514,5,31514,31514,315140,{315141,315142,315143,315144},{},1051500,221200,60000,53300,{{2,720},{3,153},{4,46},{5,96},{105,10000},{106,15000}},\"Chiêu mộ\",{4001,4002,4003,4004},{{7001,100,0},{7001,0,7}},{{9001,6},{9001,11},{9002,13}},31514,999,{{8001,1000},{1001,50}},{1,3,1,0},0,1,16,356023,1003,0,\"16\"}",
+        "baseStatsRaw": {
+          "hp": 1051500,
+          "atk": 221200,
+          "def": 60000,
+          "speed": 53300
+        },
+        "baseStatsScaled": {
+          "hp": "1051.500",
+          "atk": "221.200",
+          "def": "60.000",
+          "speed": "53.300"
+        },
+        "initialAttributes": "{{2,720},{3,153},{4,46},{5,96},{105,10000},{106,15000}}"
       },
       "skills": [
         {
@@ -87,7 +100,17 @@
               }
             ],
             "effects": []
-          }
+          },
+          "battleEffects": [
+            {
+              "effectType": "DAMAGE",
+              "targetType": "FRONT",
+              "multiplier": 1,
+              "chance": 1,
+              "duration": null,
+              "configJson": {}
+            }
+          ]
         },
         {
           "order": 2,
@@ -326,7 +349,17 @@
               }
             ],
             "effects": []
-          }
+          },
+          "battleEffects": [
+            {
+              "effectType": "DAMAGE",
+              "targetType": "FRONT_AND_MIDDLE",
+              "multiplier": 0.89,
+              "chance": 1,
+              "duration": null,
+              "configJson": {}
+            }
+          ]
         },
         {
           "order": 3,
@@ -514,7 +547,33 @@
             "sse": [],
             "performance": [],
             "effects": []
-          }
+          },
+          "battleEffects": [
+            {
+              "effectType": "BUFF",
+              "targetType": "SELF",
+              "multiplier": 0.1,
+              "chance": 1,
+              "duration": 0,
+              "configJson": {
+                "statType": "ATK",
+                "permanent": true,
+                "trigger": "BATTLE_START"
+              }
+            },
+            {
+              "effectType": "BUFF",
+              "targetType": "SELF",
+              "multiplier": 0.05,
+              "chance": 1,
+              "duration": 0,
+              "configJson": {
+                "statType": "SPEED",
+                "permanent": true,
+                "trigger": "BATTLE_START"
+              }
+            }
+          ]
         },
         {
           "order": 4,
@@ -753,7 +812,17 @@
               }
             ],
             "effects": []
-          }
+          },
+          "battleEffects": [
+            {
+              "effectType": "DAMAGE",
+              "targetType": "LOWEST_HP",
+              "multiplier": 2.48,
+              "chance": 1,
+              "duration": null,
+              "configJson": {}
+            }
+          ]
         },
         {
           "order": 5,
@@ -995,7 +1064,20 @@
           "525173",
           "525174"
         ],
-        "raw": "TAB_Hero[52517] = {\"Gojo Satoru\",\"Thẻ 5 Sao (Ám) Thần Cấp\",5,2,\"Pháp Sư (Phản chế, Debuff)\",\"Pháp Sư\",52517,5,52517,52517,525170,{525171,525172,525173,525174},{},1198300,243700,63800,55100,{{2,832},{3,182},{4,50},{5,125},{105,10000},{106,15000}},\"Chiêu mộ\",{4001,4002,4003,4004},{{7001,100,0},{7001,0,7}},{{9001,6},{9001,11},{9002,13}},52517,999,{{8001,1000},{1001,50}},{1,3,1,0},0,1,18,525170,1005,0,\"17+\"}"
+        "raw": "TAB_Hero[52517] = {\"Gojo Satoru\",\"Thẻ 5 Sao (Ám) Thần Cấp\",5,2,\"Pháp Sư (Phản chế, Debuff)\",\"Pháp Sư\",52517,5,52517,52517,525170,{525171,525172,525173,525174},{},1198300,243700,63800,55100,{{2,832},{3,182},{4,50},{5,125},{105,10000},{106,15000}},\"Chiêu mộ\",{4001,4002,4003,4004},{{7001,100,0},{7001,0,7}},{{9001,6},{9001,11},{9002,13}},52517,999,{{8001,1000},{1001,50}},{1,3,1,0},0,1,18,525170,1005,0,\"17+\"}",
+        "baseStatsRaw": {
+          "hp": 1198300,
+          "atk": 243700,
+          "def": 63800,
+          "speed": 55100
+        },
+        "baseStatsScaled": {
+          "hp": "1198.300",
+          "atk": "243.700",
+          "def": "63.800",
+          "speed": "55.100"
+        },
+        "initialAttributes": "{{2,832},{3,182},{4,50},{5,125},{105,10000},{106,15000}}"
       },
       "skills": [
         {
@@ -1057,7 +1139,17 @@
               }
             ],
             "effects": []
-          }
+          },
+          "battleEffects": [
+            {
+              "effectType": "DAMAGE",
+              "targetType": "FRONT",
+              "multiplier": 1,
+              "chance": 1,
+              "duration": null,
+              "configJson": {}
+            }
+          ]
         },
         {
           "order": 2,
@@ -1286,7 +1378,19 @@
               }
             ],
             "effects": []
-          }
+          },
+          "battleEffects": [
+            {
+              "effectType": "COUNTER",
+              "targetType": "SELF",
+              "multiplier": 0.5,
+              "chance": 1,
+              "duration": 0,
+              "configJson": {
+                "trigger": "ON_DAMAGED"
+              }
+            }
+          ]
         },
         {
           "order": 3,
@@ -1474,7 +1578,33 @@
             "sse": [],
             "performance": [],
             "effects": []
-          }
+          },
+          "battleEffects": [
+            {
+              "effectType": "BUFF",
+              "targetType": "SELF",
+              "multiplier": 0.2,
+              "chance": 1,
+              "duration": 0,
+              "configJson": {
+                "statType": "ATK",
+                "permanent": true,
+                "trigger": "BATTLE_START"
+              }
+            },
+            {
+              "effectType": "BUFF",
+              "targetType": "SELF",
+              "multiplier": 0.05,
+              "chance": 1,
+              "duration": 0,
+              "configJson": {
+                "statType": "CRIT",
+                "permanent": true,
+                "trigger": "BATTLE_START"
+              }
+            }
+          ]
         },
         {
           "order": 4,
@@ -1932,7 +2062,37 @@
             "sse": [],
             "performance": [],
             "effects": []
-          }
+          },
+          "battleEffects": [
+            {
+              "effectType": "BUFF",
+              "targetType": "SELF",
+              "multiplier": 0.3,
+              "chance": 1,
+              "duration": 20,
+              "configJson": {
+                "statType": "DEF"
+              }
+            },
+            {
+              "effectType": "BLOCK",
+              "targetType": "SELF",
+              "multiplier": 0.3,
+              "chance": 1,
+              "duration": 20,
+              "configJson": {}
+            },
+            {
+              "effectType": "IMMUNITY",
+              "targetType": "SELF",
+              "multiplier": 0,
+              "chance": 1,
+              "duration": 20,
+              "configJson": {
+                "immunityType": "CC"
+              }
+            }
+          ]
         }
       ]
     },
@@ -1949,7 +2109,20 @@
           "515153",
           "515154"
         ],
-        "raw": "TAB_Hero[51515] = {\"Iori\",\"Thẻ 5 Sao (Ám) Thần Cấp\",5,1,\"Chiến Binh (Hút HP, bỏ qua khống chế)\",\"Chiến Binh\",51515,5,51515,51515,515150,{515151,515152,515153,515154},{},1136400,237600,65100,57300,{{2,799},{3,160},{4,50},{5,107},{105,10000},{106,15000}},\"Chiêu mộ\",{4001,4002,4003,4004},{{7001,100,0},{7001,0,7}},{{9001,6},{9001,11},{9002,13}},51515,999,{{8001,1000},{1001,50}},{1,3,1,0},0,1,17,556047,1005,0,\"17\"}"
+        "raw": "TAB_Hero[51515] = {\"Iori\",\"Thẻ 5 Sao (Ám) Thần Cấp\",5,1,\"Chiến Binh (Hút HP, bỏ qua khống chế)\",\"Chiến Binh\",51515,5,51515,51515,515150,{515151,515152,515153,515154},{},1136400,237600,65100,57300,{{2,799},{3,160},{4,50},{5,107},{105,10000},{106,15000}},\"Chiêu mộ\",{4001,4002,4003,4004},{{7001,100,0},{7001,0,7}},{{9001,6},{9001,11},{9002,13}},51515,999,{{8001,1000},{1001,50}},{1,3,1,0},0,1,17,556047,1005,0,\"17\"}",
+        "baseStatsRaw": {
+          "hp": 1136400,
+          "atk": 237600,
+          "def": 65100,
+          "speed": 57300
+        },
+        "baseStatsScaled": {
+          "hp": "1136.400",
+          "atk": "237.600",
+          "def": "65.100",
+          "speed": "57.300"
+        },
+        "initialAttributes": "{{2,799},{3,160},{4,50},{5,107},{105,10000},{106,15000}}"
       },
       "skills": [
         {
@@ -2011,7 +2184,17 @@
               }
             ],
             "effects": []
-          }
+          },
+          "battleEffects": [
+            {
+              "effectType": "DAMAGE",
+              "targetType": "FRONT",
+              "multiplier": 1,
+              "chance": 1,
+              "duration": null,
+              "configJson": {}
+            }
+          ]
         },
         {
           "order": 2,
@@ -2255,7 +2438,17 @@
               }
             ],
             "effects": []
-          }
+          },
+          "battleEffects": [
+            {
+              "effectType": "DAMAGE",
+              "targetType": "RANDOM_2",
+              "multiplier": 1.44,
+              "chance": 1,
+              "duration": null,
+              "configJson": {}
+            }
+          ]
         },
         {
           "order": 3,
@@ -2463,7 +2656,21 @@
             "sse": [],
             "performance": [],
             "effects": []
-          }
+          },
+          "battleEffects": [
+            {
+              "effectType": "BUFF",
+              "targetType": "SELF",
+              "multiplier": 0.2,
+              "chance": 1,
+              "duration": 0,
+              "configJson": {
+                "statType": "ATK",
+                "permanent": true,
+                "trigger": "BATTLE_START"
+              }
+            }
+          ]
         },
         {
           "order": 4,
@@ -2709,7 +2916,17 @@
               }
             ],
             "effects": []
-          }
+          },
+          "battleEffects": [
+            {
+              "effectType": "DAMAGE",
+              "targetType": "HIGHEST_ATK_3",
+              "multiplier": 1.5,
+              "chance": 1,
+              "duration": null,
+              "configJson": {}
+            }
+          ]
         },
         {
           "order": 5,
@@ -2965,7 +3182,20 @@
           "515153",
           "515154"
         ],
-        "raw": "TAB_Hero[51515] = {\"Iori\",\"Thẻ 5 Sao (Ám) Thần Cấp\",5,1,\"Chiến Binh (Hút HP, bỏ qua khống chế)\",\"Chiến Binh\",51515,5,51515,51515,515150,{515151,515152,515153,515154},{},1136400,237600,65100,57300,{{2,799},{3,160},{4,50},{5,107},{105,10000},{106,15000}},\"Chiêu mộ\",{4001,4002,4003,4004},{{7001,100,0},{7001,0,7}},{{9001,6},{9001,11},{9002,13}},51515,999,{{8001,1000},{1001,50}},{1,3,1,0},0,1,17,556047,1005,0,\"17\"}"
+        "raw": "TAB_Hero[51515] = {\"Iori\",\"Thẻ 5 Sao (Ám) Thần Cấp\",5,1,\"Chiến Binh (Hút HP, bỏ qua khống chế)\",\"Chiến Binh\",51515,5,51515,51515,515150,{515151,515152,515153,515154},{},1136400,237600,65100,57300,{{2,799},{3,160},{4,50},{5,107},{105,10000},{106,15000}},\"Chiêu mộ\",{4001,4002,4003,4004},{{7001,100,0},{7001,0,7}},{{9001,6},{9001,11},{9002,13}},51515,999,{{8001,1000},{1001,50}},{1,3,1,0},0,1,17,556047,1005,0,\"17\"}",
+        "baseStatsRaw": {
+          "hp": 1136400,
+          "atk": 237600,
+          "def": 65100,
+          "speed": 57300
+        },
+        "baseStatsScaled": {
+          "hp": "1136.400",
+          "atk": "237.600",
+          "def": "65.100",
+          "speed": "57.300"
+        },
+        "initialAttributes": "{{2,799},{3,160},{4,50},{5,107},{105,10000},{106,15000}}"
       },
       "skills": [
         {
@@ -3027,7 +3257,17 @@
               }
             ],
             "effects": []
-          }
+          },
+          "battleEffects": [
+            {
+              "effectType": "DAMAGE",
+              "targetType": "FRONT",
+              "multiplier": 1,
+              "chance": 1,
+              "duration": null,
+              "configJson": {}
+            }
+          ]
         },
         {
           "order": 2,
@@ -3271,7 +3511,17 @@
               }
             ],
             "effects": []
-          }
+          },
+          "battleEffects": [
+            {
+              "effectType": "DAMAGE",
+              "targetType": "RANDOM_2",
+              "multiplier": 1.44,
+              "chance": 1,
+              "duration": null,
+              "configJson": {}
+            }
+          ]
         },
         {
           "order": 3,
@@ -3479,7 +3729,21 @@
             "sse": [],
             "performance": [],
             "effects": []
-          }
+          },
+          "battleEffects": [
+            {
+              "effectType": "BUFF",
+              "targetType": "SELF",
+              "multiplier": 0.2,
+              "chance": 1,
+              "duration": 0,
+              "configJson": {
+                "statType": "ATK",
+                "permanent": true,
+                "trigger": "BATTLE_START"
+              }
+            }
+          ]
         },
         {
           "order": 4,
@@ -3725,7 +3989,17 @@
               }
             ],
             "effects": []
-          }
+          },
+          "battleEffects": [
+            {
+              "effectType": "DAMAGE",
+              "targetType": "HIGHEST_ATK_3",
+              "multiplier": 1.5,
+              "chance": 1,
+              "duration": null,
+              "configJson": {}
+            }
+          ]
         },
         {
           "order": 5,
@@ -3966,7 +4240,8 @@
             "effects": []
           }
         }
-      ]
+      ],
+      "variantSourceHeroCode": "iori"
     },
     "kirito": {
       "tabHeroId": "31517",
@@ -3981,7 +4256,20 @@
           "315173",
           "315174"
         ],
-        "raw": "TAB_Hero[31517] = {\"Kirito\",\"Thẻ 5 Sao (Hỏa) Cao Cấp\",3,1,\"Chiến Binh (Mất HP, Bạo Kích, tăng ST)\",\"Chiến Binh\",31517,5,31517,31517,315170,{315171,315172,315173,315174},{},1031200,217300,58900,53800,{{2,761},{3,154},{4,49},{5,98},{105,10000},{106,15000}},\"Chiêu mộ\",{4001,4002,4003,4004},{{7001,100,0},{7001,0,7}},{{9001,6},{9001,11},{9002,13}},31517,999,{{8001,1000},{1001,50}},{1,3,1,0},0,1,16,353024,1003,0,\"16\"}"
+        "raw": "TAB_Hero[31517] = {\"Kirito\",\"Thẻ 5 Sao (Hỏa) Cao Cấp\",3,1,\"Chiến Binh (Mất HP, Bạo Kích, tăng ST)\",\"Chiến Binh\",31517,5,31517,31517,315170,{315171,315172,315173,315174},{},1031200,217300,58900,53800,{{2,761},{3,154},{4,49},{5,98},{105,10000},{106,15000}},\"Chiêu mộ\",{4001,4002,4003,4004},{{7001,100,0},{7001,0,7}},{{9001,6},{9001,11},{9002,13}},31517,999,{{8001,1000},{1001,50}},{1,3,1,0},0,1,16,353024,1003,0,\"16\"}",
+        "baseStatsRaw": {
+          "hp": 1031200,
+          "atk": 217300,
+          "def": 58900,
+          "speed": 53800
+        },
+        "baseStatsScaled": {
+          "hp": "1031.200",
+          "atk": "217.300",
+          "def": "58.900",
+          "speed": "53.800"
+        },
+        "initialAttributes": "{{2,761},{3,154},{4,49},{5,98},{105,10000},{106,15000}}"
       },
       "skills": [
         {
@@ -4043,7 +4331,17 @@
               }
             ],
             "effects": []
-          }
+          },
+          "battleEffects": [
+            {
+              "effectType": "DAMAGE",
+              "targetType": "FRONT",
+              "multiplier": 1,
+              "chance": 1,
+              "duration": null,
+              "configJson": {}
+            }
+          ]
         },
         {
           "order": 2,
@@ -4277,7 +4575,17 @@
               }
             ],
             "effects": []
-          }
+          },
+          "battleEffects": [
+            {
+              "effectType": "DAMAGE",
+              "targetType": "RANDOM_2",
+              "multiplier": 1.51,
+              "chance": 1,
+              "duration": null,
+              "configJson": {}
+            }
+          ]
         },
         {
           "order": 3,
@@ -4465,7 +4773,33 @@
             "sse": [],
             "performance": [],
             "effects": []
-          }
+          },
+          "battleEffects": [
+            {
+              "effectType": "BUFF",
+              "targetType": "SELF",
+              "multiplier": 0.2,
+              "chance": 1,
+              "duration": 0,
+              "configJson": {
+                "statType": "ATK",
+                "permanent": true,
+                "trigger": "BATTLE_START"
+              }
+            },
+            {
+              "effectType": "BUFF",
+              "targetType": "SELF",
+              "multiplier": 0.05,
+              "chance": 1,
+              "duration": 0,
+              "configJson": {
+                "statType": "CRIT",
+                "permanent": true,
+                "trigger": "BATTLE_START"
+              }
+            }
+          ]
         },
         {
           "order": 4,
@@ -4715,7 +5049,17 @@
               }
             ],
             "effects": []
-          }
+          },
+          "battleEffects": [
+            {
+              "effectType": "DAMAGE",
+              "targetType": "LOWEST_HP",
+              "multiplier": 2.48,
+              "chance": 1,
+              "duration": null,
+              "configJson": {}
+            }
+          ]
         },
         {
           "order": 5,
@@ -4945,7 +5289,20 @@
           "425153",
           "425154"
         ],
-        "raw": "TAB_Hero[42515] = {\"Lelouch\",\"Thẻ 5 Sao (Quang) Thần Cấp\",4,2,\"Pháp Sư (Sát thương nhóm, áp chế, liên hoàn)\",\"Pháp Sư\",42515,5,42515,42515,425150,{425151,425152,425153,425154},{},1215900,251700,65100,57300,{{2,878},{3,171},{4,50},{5,111},{105,10000},{106,15000}},\"Chiêu mộ\",{4001,4002,4003,4004},{{7001,100,0},{7001,0,7}},{{9001,6},{9001,11},{9002,13}},42515,999,{{8001,1000},{1001,50}},{1,3,1,0},0,1,18,456040,1004,0,\"17+\"}"
+        "raw": "TAB_Hero[42515] = {\"Lelouch\",\"Thẻ 5 Sao (Quang) Thần Cấp\",4,2,\"Pháp Sư (Sát thương nhóm, áp chế, liên hoàn)\",\"Pháp Sư\",42515,5,42515,42515,425150,{425151,425152,425153,425154},{},1215900,251700,65100,57300,{{2,878},{3,171},{4,50},{5,111},{105,10000},{106,15000}},\"Chiêu mộ\",{4001,4002,4003,4004},{{7001,100,0},{7001,0,7}},{{9001,6},{9001,11},{9002,13}},42515,999,{{8001,1000},{1001,50}},{1,3,1,0},0,1,18,456040,1004,0,\"17+\"}",
+        "baseStatsRaw": {
+          "hp": 1215900,
+          "atk": 251700,
+          "def": 65100,
+          "speed": 57300
+        },
+        "baseStatsScaled": {
+          "hp": "1215.900",
+          "atk": "251.700",
+          "def": "65.100",
+          "speed": "57.300"
+        },
+        "initialAttributes": "{{2,878},{3,171},{4,50},{5,111},{105,10000},{106,15000}}"
       },
       "skills": [
         {
@@ -5007,7 +5364,17 @@
               }
             ],
             "effects": []
-          }
+          },
+          "battleEffects": [
+            {
+              "effectType": "DAMAGE",
+              "targetType": "FRONT",
+              "multiplier": 1,
+              "chance": 1,
+              "duration": null,
+              "configJson": {}
+            }
+          ]
         },
         {
           "order": 2,
@@ -5241,7 +5608,17 @@
               }
             ],
             "effects": []
-          }
+          },
+          "battleEffects": [
+            {
+              "effectType": "DAMAGE",
+              "targetType": "RANDOM_3",
+              "multiplier": 1.05,
+              "chance": 1,
+              "duration": null,
+              "configJson": {}
+            }
+          ]
         },
         {
           "order": 3,
@@ -5429,7 +5806,33 @@
             "sse": [],
             "performance": [],
             "effects": []
-          }
+          },
+          "battleEffects": [
+            {
+              "effectType": "BUFF",
+              "targetType": "SELF",
+              "multiplier": 0.2,
+              "chance": 1,
+              "duration": 0,
+              "configJson": {
+                "statType": "ATK",
+                "permanent": true,
+                "trigger": "BATTLE_START"
+              }
+            },
+            {
+              "effectType": "BUFF",
+              "targetType": "SELF",
+              "multiplier": 0.05,
+              "chance": 1,
+              "duration": 0,
+              "configJson": {
+                "statType": "CRIT",
+                "permanent": true,
+                "trigger": "BATTLE_START"
+              }
+            }
+          ]
         },
         {
           "order": 4,
@@ -5665,7 +6068,17 @@
               }
             ],
             "effects": []
-          }
+          },
+          "battleEffects": [
+            {
+              "effectType": "DAMAGE",
+              "targetType": "ALL_ENEMIES",
+              "multiplier": 1.2,
+              "chance": 1,
+              "duration": null,
+              "configJson": {}
+            }
+          ]
         },
         {
           "order": 5,
@@ -5922,7 +6335,20 @@
           "425153",
           "425154"
         ],
-        "raw": "TAB_Hero[42515] = {\"Lelouch\",\"Thẻ 5 Sao (Quang) Thần Cấp\",4,2,\"Pháp Sư (Sát thương nhóm, áp chế, liên hoàn)\",\"Pháp Sư\",42515,5,42515,42515,425150,{425151,425152,425153,425154},{},1215900,251700,65100,57300,{{2,878},{3,171},{4,50},{5,111},{105,10000},{106,15000}},\"Chiêu mộ\",{4001,4002,4003,4004},{{7001,100,0},{7001,0,7}},{{9001,6},{9001,11},{9002,13}},42515,999,{{8001,1000},{1001,50}},{1,3,1,0},0,1,18,456040,1004,0,\"17+\"}"
+        "raw": "TAB_Hero[42515] = {\"Lelouch\",\"Thẻ 5 Sao (Quang) Thần Cấp\",4,2,\"Pháp Sư (Sát thương nhóm, áp chế, liên hoàn)\",\"Pháp Sư\",42515,5,42515,42515,425150,{425151,425152,425153,425154},{},1215900,251700,65100,57300,{{2,878},{3,171},{4,50},{5,111},{105,10000},{106,15000}},\"Chiêu mộ\",{4001,4002,4003,4004},{{7001,100,0},{7001,0,7}},{{9001,6},{9001,11},{9002,13}},42515,999,{{8001,1000},{1001,50}},{1,3,1,0},0,1,18,456040,1004,0,\"17+\"}",
+        "baseStatsRaw": {
+          "hp": 1215900,
+          "atk": 251700,
+          "def": 65100,
+          "speed": 57300
+        },
+        "baseStatsScaled": {
+          "hp": "1215.900",
+          "atk": "251.700",
+          "def": "65.100",
+          "speed": "57.300"
+        },
+        "initialAttributes": "{{2,878},{3,171},{4,50},{5,111},{105,10000},{106,15000}}"
       },
       "skills": [
         {
@@ -5984,7 +6410,17 @@
               }
             ],
             "effects": []
-          }
+          },
+          "battleEffects": [
+            {
+              "effectType": "DAMAGE",
+              "targetType": "FRONT",
+              "multiplier": 1,
+              "chance": 1,
+              "duration": null,
+              "configJson": {}
+            }
+          ]
         },
         {
           "order": 2,
@@ -6218,7 +6654,17 @@
               }
             ],
             "effects": []
-          }
+          },
+          "battleEffects": [
+            {
+              "effectType": "DAMAGE",
+              "targetType": "RANDOM_3",
+              "multiplier": 1.05,
+              "chance": 1,
+              "duration": null,
+              "configJson": {}
+            }
+          ]
         },
         {
           "order": 3,
@@ -6406,7 +6852,33 @@
             "sse": [],
             "performance": [],
             "effects": []
-          }
+          },
+          "battleEffects": [
+            {
+              "effectType": "BUFF",
+              "targetType": "SELF",
+              "multiplier": 0.2,
+              "chance": 1,
+              "duration": 0,
+              "configJson": {
+                "statType": "ATK",
+                "permanent": true,
+                "trigger": "BATTLE_START"
+              }
+            },
+            {
+              "effectType": "BUFF",
+              "targetType": "SELF",
+              "multiplier": 0.05,
+              "chance": 1,
+              "duration": 0,
+              "configJson": {
+                "statType": "CRIT",
+                "permanent": true,
+                "trigger": "BATTLE_START"
+              }
+            }
+          ]
         },
         {
           "order": 4,
@@ -6642,7 +7114,17 @@
               }
             ],
             "effects": []
-          }
+          },
+          "battleEffects": [
+            {
+              "effectType": "DAMAGE",
+              "targetType": "ALL_ENEMIES",
+              "multiplier": 1.2,
+              "chance": 1,
+              "duration": null,
+              "configJson": {}
+            }
+          ]
         },
         {
           "order": 5,
@@ -6884,7 +7366,8 @@
             "effects": []
           }
         }
-      ]
+      ],
+      "variantSourceHeroCode": "leloud"
     },
     "thor": {
       "tabHeroId": "43513",
@@ -6899,7 +7382,20 @@
           "435133",
           "435134"
         ],
-        "raw": "TAB_Hero[43513] = {\"Thần Sấm Thor\",\"Thẻ 5 Sao (Quang) Cao Cấp\",4,3,\"Tank (Phá giáp, hiệp trợ)\",\"Tank\",43513,5,43513,43513,435130,{435131,435132,435133,435134},{},1290900,183400,67100,57300,{{2,759},{3,125},{4,48},{5,96},{105,10000},{106,15000}},\"Chiêu mộ\",{4001,4002,4003,4004},{{7001,100,0},{7001,0,7}},{{9001,6},{9001,11},{9002,13}},43513,999,{{8001,1000},{1001,50}},{1,3,1,0},0,1,17,455029,1004,0,\"17\"}"
+        "raw": "TAB_Hero[43513] = {\"Thần Sấm Thor\",\"Thẻ 5 Sao (Quang) Cao Cấp\",4,3,\"Tank (Phá giáp, hiệp trợ)\",\"Tank\",43513,5,43513,43513,435130,{435131,435132,435133,435134},{},1290900,183400,67100,57300,{{2,759},{3,125},{4,48},{5,96},{105,10000},{106,15000}},\"Chiêu mộ\",{4001,4002,4003,4004},{{7001,100,0},{7001,0,7}},{{9001,6},{9001,11},{9002,13}},43513,999,{{8001,1000},{1001,50}},{1,3,1,0},0,1,17,455029,1004,0,\"17\"}",
+        "baseStatsRaw": {
+          "hp": 1290900,
+          "atk": 183400,
+          "def": 67100,
+          "speed": 57300
+        },
+        "baseStatsScaled": {
+          "hp": "1290.900",
+          "atk": "183.400",
+          "def": "67.100",
+          "speed": "57.300"
+        },
+        "initialAttributes": "{{2,759},{3,125},{4,48},{5,96},{105,10000},{106,15000}}"
       },
       "skills": [
         {
@@ -6961,7 +7457,17 @@
               }
             ],
             "effects": []
-          }
+          },
+          "battleEffects": [
+            {
+              "effectType": "DAMAGE",
+              "targetType": "FRONT",
+              "multiplier": 1,
+              "chance": 1,
+              "duration": null,
+              "configJson": {}
+            }
+          ]
         },
         {
           "order": 2,
@@ -7200,7 +7706,17 @@
               }
             ],
             "effects": []
-          }
+          },
+          "battleEffects": [
+            {
+              "effectType": "DAMAGE",
+              "targetType": "ALL_ENEMIES",
+              "multiplier": 0.9,
+              "chance": 1,
+              "duration": null,
+              "configJson": {}
+            }
+          ]
         },
         {
           "order": 3,
@@ -7388,7 +7904,33 @@
             "sse": [],
             "performance": [],
             "effects": []
-          }
+          },
+          "battleEffects": [
+            {
+              "effectType": "BUFF",
+              "targetType": "SELF",
+              "multiplier": 0.1,
+              "chance": 1,
+              "duration": 0,
+              "configJson": {
+                "statType": "ATK",
+                "permanent": true,
+                "trigger": "BATTLE_START"
+              }
+            },
+            {
+              "effectType": "BUFF",
+              "targetType": "SELF",
+              "multiplier": 0.1,
+              "chance": 1,
+              "duration": 0,
+              "configJson": {
+                "statType": "RESISTANCE",
+                "permanent": true,
+                "trigger": "BATTLE_START"
+              }
+            }
+          ]
         },
         {
           "order": 4,
@@ -7847,7 +8389,19 @@
             "sse": [],
             "performance": [],
             "effects": []
-          }
+          },
+          "battleEffects": [
+            {
+              "effectType": "SHIELD",
+              "targetType": "LOWEST_HP",
+              "multiplier": 0.5,
+              "chance": 1,
+              "duration": 1,
+              "configJson": {
+                "trigger": "ROUND_START"
+              }
+            }
+          ]
         }
       ]
     },
@@ -7864,7 +8418,20 @@
           "435133",
           "435134"
         ],
-        "raw": "TAB_Hero[43513] = {\"Thần Sấm Thor\",\"Thẻ 5 Sao (Quang) Cao Cấp\",4,3,\"Tank (Phá giáp, hiệp trợ)\",\"Tank\",43513,5,43513,43513,435130,{435131,435132,435133,435134},{},1290900,183400,67100,57300,{{2,759},{3,125},{4,48},{5,96},{105,10000},{106,15000}},\"Chiêu mộ\",{4001,4002,4003,4004},{{7001,100,0},{7001,0,7}},{{9001,6},{9001,11},{9002,13}},43513,999,{{8001,1000},{1001,50}},{1,3,1,0},0,1,17,455029,1004,0,\"17\"}"
+        "raw": "TAB_Hero[43513] = {\"Thần Sấm Thor\",\"Thẻ 5 Sao (Quang) Cao Cấp\",4,3,\"Tank (Phá giáp, hiệp trợ)\",\"Tank\",43513,5,43513,43513,435130,{435131,435132,435133,435134},{},1290900,183400,67100,57300,{{2,759},{3,125},{4,48},{5,96},{105,10000},{106,15000}},\"Chiêu mộ\",{4001,4002,4003,4004},{{7001,100,0},{7001,0,7}},{{9001,6},{9001,11},{9002,13}},43513,999,{{8001,1000},{1001,50}},{1,3,1,0},0,1,17,455029,1004,0,\"17\"}",
+        "baseStatsRaw": {
+          "hp": 1290900,
+          "atk": 183400,
+          "def": 67100,
+          "speed": 57300
+        },
+        "baseStatsScaled": {
+          "hp": "1290.900",
+          "atk": "183.400",
+          "def": "67.100",
+          "speed": "57.300"
+        },
+        "initialAttributes": "{{2,759},{3,125},{4,48},{5,96},{105,10000},{106,15000}}"
       },
       "skills": [
         {
@@ -7926,7 +8493,17 @@
               }
             ],
             "effects": []
-          }
+          },
+          "battleEffects": [
+            {
+              "effectType": "DAMAGE",
+              "targetType": "FRONT",
+              "multiplier": 1,
+              "chance": 1,
+              "duration": null,
+              "configJson": {}
+            }
+          ]
         },
         {
           "order": 2,
@@ -8165,7 +8742,17 @@
               }
             ],
             "effects": []
-          }
+          },
+          "battleEffects": [
+            {
+              "effectType": "DAMAGE",
+              "targetType": "ALL_ENEMIES",
+              "multiplier": 0.9,
+              "chance": 1,
+              "duration": null,
+              "configJson": {}
+            }
+          ]
         },
         {
           "order": 3,
@@ -8353,7 +8940,33 @@
             "sse": [],
             "performance": [],
             "effects": []
-          }
+          },
+          "battleEffects": [
+            {
+              "effectType": "BUFF",
+              "targetType": "SELF",
+              "multiplier": 0.1,
+              "chance": 1,
+              "duration": 0,
+              "configJson": {
+                "statType": "ATK",
+                "permanent": true,
+                "trigger": "BATTLE_START"
+              }
+            },
+            {
+              "effectType": "BUFF",
+              "targetType": "SELF",
+              "multiplier": 0.1,
+              "chance": 1,
+              "duration": 0,
+              "configJson": {
+                "statType": "RESISTANCE",
+                "permanent": true,
+                "trigger": "BATTLE_START"
+              }
+            }
+          ]
         },
         {
           "order": 4,
@@ -8812,9 +9425,22 @@
             "sse": [],
             "performance": [],
             "effects": []
-          }
+          },
+          "battleEffects": [
+            {
+              "effectType": "SHIELD",
+              "targetType": "LOWEST_HP",
+              "multiplier": 0.5,
+              "chance": 1,
+              "duration": 1,
+              "configJson": {
+                "trigger": "ROUND_START"
+              }
+            }
+          ]
         }
-      ]
+      ],
+      "variantSourceHeroCode": "thor"
     },
     "tohka_dark": {
       "tabHeroId": "41514",
@@ -8829,7 +9455,20 @@
           "415143",
           "415144"
         ],
-        "raw": "TAB_Hero[41514] = {\"Yatogami Tohka\",\"Thẻ 5 Sao (Quang) Thần Cấp\",4,1,\"Chiến Binh (Tăng S.Thương, bạo kích)\",\"Chiến Binh\",41514,5,41514,41514,415140,{415141,415142,415143,415144},{},1113900,228200,63800,57600,{{2,784},{3,162},{4,49},{5,105},{105,10000},{106,15000}},\"Chiêu mộ\",{4001,4002,4003,4004},{{7001,100,0},{7001,0,7}},{{9001,6},{9001,11},{9002,13}},41514,999,{{8001,1000},{1001,50}},{1,3,1,0},0,1,17,452026,1004,0,\"17\"}"
+        "raw": "TAB_Hero[41514] = {\"Yatogami Tohka\",\"Thẻ 5 Sao (Quang) Thần Cấp\",4,1,\"Chiến Binh (Tăng S.Thương, bạo kích)\",\"Chiến Binh\",41514,5,41514,41514,415140,{415141,415142,415143,415144},{},1113900,228200,63800,57600,{{2,784},{3,162},{4,49},{5,105},{105,10000},{106,15000}},\"Chiêu mộ\",{4001,4002,4003,4004},{{7001,100,0},{7001,0,7}},{{9001,6},{9001,11},{9002,13}},41514,999,{{8001,1000},{1001,50}},{1,3,1,0},0,1,17,452026,1004,0,\"17\"}",
+        "baseStatsRaw": {
+          "hp": 1113900,
+          "atk": 228200,
+          "def": 63800,
+          "speed": 57600
+        },
+        "baseStatsScaled": {
+          "hp": "1113.900",
+          "atk": "228.200",
+          "def": "63.800",
+          "speed": "57.600"
+        },
+        "initialAttributes": "{{2,784},{3,162},{4,49},{5,105},{105,10000},{106,15000}}"
       },
       "skills": [
         {
@@ -8891,7 +9530,17 @@
               }
             ],
             "effects": []
-          }
+          },
+          "battleEffects": [
+            {
+              "effectType": "DAMAGE",
+              "targetType": "FRONT",
+              "multiplier": 1,
+              "chance": 1,
+              "duration": null,
+              "configJson": {}
+            }
+          ]
         },
         {
           "order": 2,
@@ -9135,7 +9784,17 @@
               }
             ],
             "effects": []
-          }
+          },
+          "battleEffects": [
+            {
+              "effectType": "DAMAGE",
+              "targetType": "ALL_ENEMIES",
+              "multiplier": 0.68,
+              "chance": 1,
+              "duration": null,
+              "configJson": {}
+            }
+          ]
         },
         {
           "order": 3,
@@ -9352,7 +10011,33 @@
             "sse": [],
             "performance": [],
             "effects": []
-          }
+          },
+          "battleEffects": [
+            {
+              "effectType": "BUFF",
+              "targetType": "SELF",
+              "multiplier": 0.2,
+              "chance": 1,
+              "duration": 0,
+              "configJson": {
+                "statType": "ATK",
+                "permanent": true,
+                "trigger": "BATTLE_START"
+              }
+            },
+            {
+              "effectType": "BUFF",
+              "targetType": "SELF",
+              "multiplier": 0.05,
+              "chance": 1,
+              "duration": 0,
+              "configJson": {
+                "statType": "CRIT",
+                "permanent": true,
+                "trigger": "BATTLE_START"
+              }
+            }
+          ]
         },
         {
           "order": 4,
@@ -9596,7 +10281,17 @@
               }
             ],
             "effects": []
-          }
+          },
+          "battleEffects": [
+            {
+              "effectType": "DAMAGE",
+              "targetType": "MOST_POPULATED_ROW",
+              "multiplier": 1.61,
+              "chance": 1,
+              "duration": null,
+              "configJson": {}
+            }
+          ]
         },
         {
           "order": 5,
