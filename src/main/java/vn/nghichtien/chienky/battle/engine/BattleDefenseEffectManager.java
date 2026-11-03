@@ -30,6 +30,12 @@ public class BattleDefenseEffectManager {
             BigDecimal value,
             int duration
     ) {
+        boolean alreadyApplied = effects.stream()
+                .anyMatch(existing -> existing.getEffectCode().equals(effectCode));
+        if (alreadyApplied) {
+            return;
+        }
+
         effects.add(new BattleDefenseEffect(
                 type,
                 effectCode,
