@@ -5,7 +5,9 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+import vn.nghichtien.chienky.player.domain.PlayerLevelConfig;
 import vn.nghichtien.chienky.player.domain.PlayerProfile;
+import vn.nghichtien.chienky.player.repository.PlayerLevelConfigRepository;
 import vn.nghichtien.chienky.player.repository.PlayerProfileRepository;
 import vn.nghichtien.chienky.resource.domain.PlayerResource;
 import vn.nghichtien.chienky.resource.domain.ResourceDefinition;
@@ -28,15 +30,18 @@ import java.util.Set;
 public class ResourceBootstrapDataInitializer implements ApplicationRunner {
 
     private final ResourceDefinitionRepository resourceDefinitionRepository;
+    private final PlayerLevelConfigRepository playerLevelConfigRepository;
     private final PlayerProfileRepository playerProfileRepository;
     private final PlayerResourceRepository playerResourceRepository;
 
     public ResourceBootstrapDataInitializer(
             ResourceDefinitionRepository resourceDefinitionRepository,
+            PlayerLevelConfigRepository playerLevelConfigRepository,
             PlayerProfileRepository playerProfileRepository,
             PlayerResourceRepository playerResourceRepository
     ) {
         this.resourceDefinitionRepository = resourceDefinitionRepository;
+        this.playerLevelConfigRepository = playerLevelConfigRepository;
         this.playerProfileRepository = playerProfileRepository;
         this.playerResourceRepository = playerResourceRepository;
     }
@@ -49,6 +54,7 @@ public class ResourceBootstrapDataInitializer implements ApplicationRunner {
     @Transactional
     public void run(ApplicationArguments args) {
         seedResourceDefinitions();
+        seedPlayerLevelConfigs();
         backfillPlayerResources();
     }
 
@@ -81,6 +87,22 @@ public class ResourceBootstrapDataInitializer implements ApplicationRunner {
                     definition.getResourceCode()
             )) {
                 resourceDefinitionRepository.save(definition);
+            }
+        }
+    }
+
+
+    /**
+     * Seed đường cong EXP mẫu cho 100 cấp nếu cấu hình cấp đó chưa tồn tại.
+     * Ngưỡng khởi đầu: 100 EXP tổng cho mỗi cấp kế tiếp; admin có thể chỉnh DB.
+     */
+    private void seedPlayerLevelConfigs() {
+        for (int level = 1; level <= 100; level++) {
+            if (!playerLevelConfigRepository.existsById(level)) {
+                BigDecimal requiredTotalExp = BigDecimal.valueOf((long) (level - 1) * 100);
+                playerLevelConfigRepository.save(
+                        new PlayerLevelConfig(level, requiredTotalExp)
+                );
             }
         }
     }
