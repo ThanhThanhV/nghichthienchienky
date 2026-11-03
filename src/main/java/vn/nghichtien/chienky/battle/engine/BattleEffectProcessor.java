@@ -107,10 +107,9 @@ public class BattleEffectProcessor {
             return;
         }
 
-        // Chặn vòng lặp phản công Gojo-vs-Gojo ở mọi chế độ PLAYER/ENEMY/PVE.
-        // Nội tại COUNTER của các tướng khác vẫn có thể phản công Gojo bình thường.
-        if ("gojo".equalsIgnoreCase(source.getHeroCode())
-                && "gojo".equalsIgnoreCase(attacker.getHeroCode())) {
+        // Gojo không bị phản công bởi nội tại COUNTER của Gojo khác.
+        // Áp dụng theo heroCode nên thống nhất cho cả PLAYER, ENEMY và PVE.
+        if ("gojo".equalsIgnoreCase(attacker.getHeroCode())) {
             return;
         }
 
