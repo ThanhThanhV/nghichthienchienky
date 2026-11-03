@@ -195,14 +195,17 @@ public class BattleDamageProcessor {
             return;
         }
 
+        // Chụp lượng REFLECT trước khi trừ HP. takeDamage() sẽ xóa toàn bộ
+        // hiệu ứng khi mục tiêu tử trận, nhưng đòn kết liễu vẫn phải phản sát thương.
+        BigDecimal expectedActualDamage = remainingDamage.min(target.getCurrentHp());
+        BigDecimal reflectedDamage = target.getDefenseEffectManager()
+                .calculateReflectDamage(expectedActualDamage);
+
         // 7. Trừ HP.
         BigDecimal actualDamage = target.takeDamage(remainingDamage);
 
         // Phản sát thương trực tiếp, không kích hoạt REFLECT dây chuyền.
         if (actualDamage.signum() > 0 && source.isAlive()) {
-            BigDecimal reflectedDamage = target.getDefenseEffectManager()
-                    .calculateReflectDamage(actualDamage);
-
             if (reflectedDamage.signum() > 0) {
                 BigDecimal actualReflectedDamage =
                         source.takeDamage(reflectedDamage);
