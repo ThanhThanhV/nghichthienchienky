@@ -105,6 +105,19 @@ public class DatabaseSkillExecutor {
             BattleUnitState source,
             BattlePassiveTrigger trigger
     ) {
+        executePassives(battle, source, trigger, null);
+    }
+
+    /**
+     * Thực thi nội tại với ngữ cảnh kẻ vừa gây sát thương, dùng riêng cho ON_DAMAGED.
+     */
+    @Transactional(readOnly = true)
+    public void executePassives(
+            BattleState battle,
+            BattleUnitState source,
+            BattlePassiveTrigger trigger,
+            Long counterTargetInstanceId
+    ) {
         if (battle == null || source == null || trigger == null) {
             throw new IllegalArgumentException(
                     "Battle, source and trigger must not be null"
@@ -139,7 +152,14 @@ public class DatabaseSkillExecutor {
             }
 
             recordPassiveActivation(battle, source, skill, trigger);
-            effectProcessor.executeEffects(battle, source, effects);
+            effectProcessor.executeEffects(
+                    battle,
+                    source,
+                    effects,
+                    trigger == BattlePassiveTrigger.ON_DAMAGED
+                            ? counterTargetInstanceId
+                            : null
+            );
         }
     }
 
