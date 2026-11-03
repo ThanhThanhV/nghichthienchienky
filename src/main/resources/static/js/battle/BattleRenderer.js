@@ -344,12 +344,12 @@ class BattleRenderer {
 
         // Tohka Dark ACTIVE (chiêu 1 trên UI) phát animation ở tâm đội hình địch.
         // Sau khi hành động kết thúc, khôi phục vị trí slot ban đầu của nhân vật.
-        if (sourceCharacter?.loaded && action?.sourceOriginalPosition) {
-            sourceCharacter.setPosition(
-                action.sourceOriginalPosition.x,
-                action.sourceOriginalPosition.y
-            );
+        const returnPosition = action?.sourceOriginalPosition
+            || action?.basicAttackOriginalPosition;
+        if (sourceCharacter?.loaded && returnPosition) {
+            sourceCharacter.setPosition(returnPosition.x, returnPosition.y);
             action.sourceOriginalPosition = null;
+            action.basicAttackOriginalPosition = null;
         }
 
         if (sourceCharacter?.loaded) {
@@ -575,6 +575,98 @@ class BattleRenderer {
      * @param {Object} event Sự kiện sát thương từ backend.
      * @returns {Promise<void>}
      */
+    /**
+     * Cho nhân vật áp sát mục tiêu bằng một cú lướt nhanh trước thời điểm va chạm.
+     * Backend vẫn quyết định mục tiêu và sát thương; frontend chỉ nội suy chuyển động.
+     */
+    async animateBasicAttackDash(event, action) {
+        if (!action || action.actionType !== "BASIC_ATTACK" ||
+            !this.isCurrentAttackDamage(event, action) || action.basicDashStarted) return;
+
+        const source = this.formation?.getCharacter(action.sourceTeam, action.sourceInstanceId);
+        const target = this.getTargetCharacter(event);
+        if (!source?.loaded || !target?.loaded) return;
+
+        action.basicDashStarted = true;
+        action.basicAttackOriginalPosition = { x: source.positionX, y: source.positionY };
+
+        const startX = source.positionX;
+        const startY = source.positionY;
+        const dx = target.positionX - startX;
+        const dy = target.positionY - startY;
+        const distance = Math.hypot(dx, dy);
+        if (distance < 8) return;
+
+        // Dừng trước tâm mục tiêu để rig, vũ khí và hiệu ứng không chồng lấn.
+        const ratio = distance < 90 ? 0.42 : 0.68;
+        const endX = startX + dx * ratio;
+        const endY = startY + dy * ratio;
+
+        this.showBasicAttackDashTrail(
+            action.sourceTeam, action.sourceInstanceId,
+            event.targetTeam, event.targetInstanceId
+        );
+
+        const duration = Math.max(110, Math.min(250, distance * 0.52))
+            / Math.max(1, Number(this.speed) || 1);
+        const startedAt = performance.now();
+
+        await new Promise(resolve => {
+            const step = now => {
+                const progress = Math.min(1, (now - startedAt) / duration);
+                const eased = 1 - Math.pow(1 - progress, 3);
+                source.setPosition(
+                    startX + (endX - startX) * eased,
+                    startY + (endY - startY) * eased
+                );
+                if (progress >= 1 || this.actionContext !== action) {
+                    resolve();
+                    return;
+                }
+                requestAnimationFrame(step);
+            };
+            requestAnimationFrame(step);
+        });
+    }
+
+    /**
+     * Vệt tốc độ anime chạy dọc đường lướt, không làm thay đổi layout/slot/HP.
+     */
+    showBasicAttackDashTrail(sourceTeam, sourceInstanceId, targetTeam, targetInstanceId) {
+        const field = document.querySelector(".battle-field");
+        if (!field) return;
+
+        const findSlot = (team, id) => {
+            const container = document.getElementById(
+                team === "PLAYER" ? "player-formation" : "enemy-formation"
+            );
+            return [...(container?.querySelectorAll(".unit-slot") || [])]
+                .find(slot => slot.dataset.instanceId === String(id));
+        };
+        const sourceSlot = findSlot(sourceTeam, sourceInstanceId);
+        const targetSlot = findSlot(targetTeam, targetInstanceId);
+        if (!sourceSlot || !targetSlot) return;
+
+        const fieldRect = field.getBoundingClientRect();
+        const a = sourceSlot.getBoundingClientRect();
+        const b = targetSlot.getBoundingClientRect();
+        const x = a.left + a.width / 2 - fieldRect.left;
+        const y = a.top + a.height * 0.56 - fieldRect.top;
+        const targetX = b.left + b.width / 2 - fieldRect.left;
+        const targetY = b.top + b.height * 0.56 - fieldRect.top;
+        const length = Math.hypot(targetX - x, targetY - y);
+        if (length < 12) return;
+
+        const trail = document.createElement("span");
+        trail.className = "battle-dash-trail" + (sourceTeam === "ENEMY" ? " enemy" : "");
+        trail.style.left = x + "px";
+        trail.style.top = y + "px";
+        trail.style.width = Math.max(28, length * 0.68) + "px";
+        trail.style.transform = "rotate(" + Math.atan2(targetY - y, targetX - x) + "rad)";
+        field.appendChild(trail);
+        window.setTimeout(() => trail.remove(), 360 / Math.max(1, this.speed));
+    }
+
     async renderDamage(event) {
         const character = this.getTargetCharacter(event);
 
@@ -586,6 +678,10 @@ class BattleRenderer {
             String(event.message || "").toLowerCase().includes("reflected damage");
         const belongsToCurrentAttack =
             this.isCurrentAttackDamage(event, action);
+        if (belongsToCurrentAttack && action.actionType === "BASIC_ATTACK") {
+            await this.animateBasicAttackDash(event, action);
+        }
+
         const impactEvent = {
             ...event,
             sourceTeam: event.sourceTeam || action.sourceTeam,
