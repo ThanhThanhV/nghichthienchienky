@@ -279,7 +279,11 @@ public class HeroAdminService {
         if ("SUMMON".equals(type)) {
             throw badRequest("SUMMON chưa được hỗ trợ trong bộ máy chiến đấu hiện tại");
         }
-        boolean permanent = config.path("permanent").asBoolean(false);
+        JsonNode permanentNode = config.get("permanent");
+        if (permanentNode != null && !permanentNode.isNull() && !permanentNode.isBoolean()) {
+            throw badRequest("permanent phải là boolean");
+        }
+        boolean permanent = permanentNode != null && permanentNode.asBoolean();
         if (permanent && !"BUFF".equals(type) && !"DEBUFF".equals(type)) {
             throw badRequest("Hiệu ứng vĩnh viễn chỉ áp dụng cho BUFF/DEBUFF");
         }
@@ -319,14 +323,22 @@ public class HeroAdminService {
         }
         JsonNode animationDuration = config.get("animationDurationMs");
         JsonNode impactTime = config.get("impactTimeMs");
-        if (animationDuration != null && animationDuration.isNumber()
-                && animationDuration.asInt() < 1) {
-            throw badRequest("animationDurationMs phải lớn hơn 0");
+        if (animationDuration != null && !animationDuration.isNull()
+                && (!animationDuration.isNumber() || animationDuration.asInt() < 1)) {
+            throw badRequest("animationDurationMs phải là số lớn hơn 0");
+        }
+        if (impactTime != null && !impactTime.isNull()
+                && (!impactTime.isNumber() || impactTime.asInt() < 0)) {
+            throw badRequest("impactTimeMs phải là số không âm");
         }
         if (impactTime != null && impactTime.isNumber()
                 && animationDuration != null && animationDuration.isNumber()
                 && impactTime.asInt() > animationDuration.asInt()) {
             throw badRequest("impactTimeMs không được vượt animationDurationMs");
+        }
+        JsonNode animation = config.get("animation");
+        if (animation != null && !animation.isNull() && !animation.isTextual()) {
+            throw badRequest("animation phải là chuỗi");
         }
     }
 
