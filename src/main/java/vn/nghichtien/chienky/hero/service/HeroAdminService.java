@@ -90,6 +90,8 @@ public class HeroAdminService {
         result.put("description", hero.getDescription());
         result.put("enabled", hero.getEnabled());
         result.put("sortOrder", hero.getSortOrder());
+        result.put("basicAttackMovement", readConfig(hero.getSpineSkillAnimations())
+                .path("_BASIC_ATTACK").path("movement").asText("DASH"));
         result.put("spineSkeleton", hero.getSpineSkeleton());
         result.put("spineAtlas", hero.getSpineAtlas());
         result.put("spineTextures", parseJsonArray(hero.getSpineTextures()));
@@ -132,6 +134,10 @@ public class HeroAdminService {
         Map<Long, HeroSkillDefinition> skillById = currentSkills.stream()
                 .collect(Collectors.toMap(HeroSkillDefinition::getId, skill -> skill));
         Map<String, Object> animationMapping = new LinkedHashMap<>();
+        String basicAttackMovement = request.basicAttackMovement() == null
+                ? "DASH"
+                : request.basicAttackMovement().trim().toUpperCase(Locale.ROOT);
+        animationMapping.put("_BASIC_ATTACK", Map.of("movement", basicAttackMovement));
 
         for (HeroAdminUpdateRequest.SkillRequest skillRequest : request.skills()) {
             HeroSkillDefinition skill = skillById.get(skillRequest.id());
@@ -236,6 +242,11 @@ public class HeroAdminService {
         }
         if (!ROLES.contains(request.role().trim().toUpperCase(Locale.ROOT))) {
             throw badRequest("Vai trò không hợp lệ");
+        }
+        if (request.basicAttackMovement() != null
+                && !Set.of("DASH", "STATIONARY").contains(
+                        request.basicAttackMovement().trim().toUpperCase(Locale.ROOT))) {
+            throw badRequest("Kiểu di chuyển đánh thường chỉ được là DASH hoặc STATIONARY");
         }
         validateStats(request.baseStats(), true);
         validateStats(request.growthStats(), false);
