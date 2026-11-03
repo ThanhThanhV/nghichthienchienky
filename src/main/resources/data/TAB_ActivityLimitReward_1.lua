@@ -1,0 +1,16 @@
+TAB_ActivityLimitReward = TAB_ActivityLimitReward or {}
+TAB_ActivityLimitReward[-1] = {"Rankmin","Rankmax","Integral","Rewardid","Activityid"}
+TAB_ActivityLimitReward[1] = {1,1,4000,44001,5008}
+TAB_ActivityLimitReward[2] = {2,2,2500,44002,5008}
+TAB_ActivityLimitReward[3] = {3,3,1500,44003,5008}
+TAB_ActivityLimitReward[4] = {4,6,1000,44004,5008}
+TAB_ActivityLimitReward[5] = {7,10,500,44005,5008}
+TAB_ActivityLimitReward[6] = {11,20,100,44006,5008}
+TAB_ActivityLimitReward[7] = {21,50,50,44007,5008}
+TAB_ActivityLimitReward[8] = {1,1,3000,100004,5010}
+TAB_ActivityLimitReward[9] = {2,2,2000,100005,5010}
+TAB_ActivityLimitReward[10] = {3,3,2000,100006,5010}
+TAB_ActivityLimitReward[11] = {4,6,1000,100007,5010}
+TAB_ActivityLimitReward[12] = {7,10,500,100008,5010}
+TAB_ActivityLimitReward[13] = {11,20,300,100009,5010}
+TAB_ActivityLimitReward[14] = {21,50,100,100010,5010}

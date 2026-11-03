@@ -1,0 +1,13 @@
+TAB_ChampionRule = TAB_ChampionRule or {}
+TAB_ChampionRule[-1] = {"Stage","Round","WinScore","u_SectionTime","Number","Gambling","FightGroundId"}
+TAB_ChampionRule[1] = {1,1,100,{20,60,100},128,60,5001}
+TAB_ChampionRule[2] = {1,2,90,{20,60,100},128,60,5001}
+TAB_ChampionRule[3] = {1,3,80,{20,60,100},128,60,5001}
+TAB_ChampionRule[4] = {1,4,70,{20,60,100},128,60,5001}
+TAB_ChampionRule[5] = {1,5,60,{20,60,100},128,60,5001}
+TAB_ChampionRule[6] = {1,6,50,{20,60,100},128,60,5001}
+TAB_ChampionRule[7] = {2,1,1000,{20,60,100},32,60,5001}
+TAB_ChampionRule[8] = {2,2,1000,{20,60,100},16,60,5001}
+TAB_ChampionRule[9] = {2,3,1000,{20,60,100},8,60,5001}
+TAB_ChampionRule[10] = {3,1,1000,{20,60,100},4,60,5001}
+TAB_ChampionRule[11] = {3,2,1000,{20,60,100},2,60,5001}

@@ -1,0 +1,11 @@
+TAB_HeartenEquipSuite = TAB_HeartenEquipSuite or {}
+TAB_HeartenEquipSuite[-1] = {"Amount","u_Attributes","SpritStar","s_Desc","u_Appointment","u_Gift"}
+TAB_HeartenEquipSuite[1] = {1,{{}},0,"<Linh thú giai đoạn 1> Thuộc tính cố định toàn bộ tiếp ứng +5% (thuộc tính nhận được qua hẹn hò và quà)",{500},{500}}
+TAB_HeartenEquipSuite[2] = {2,{{9,10},{110,200}},0,"<Linh thú giai đoạn 2> Tốc độ toàn bộ anh hùng tăng 10, miễn giảm S.Thương 2%",{500},{500}}
+TAB_HeartenEquipSuite[3] = {3,{{9,10},{110,200}},1,"<Linh thú giai đoạn 3> Toàn bộ tiếp ứng kích hoạt Linh Sủng Lv1",{500},{500}}
+TAB_HeartenEquipSuite[4] = {4,{{9,10},{110,200}},1,"<Linh thú giai đoạn 4> Thuộc tính cố định toàn bộ tiếp ứng +5% (thuộc tính nhận được qua hẹn hò và quà)",{1000},{1000}}
+TAB_HeartenEquipSuite[5] = {5,{{9,30},{110,600}},1,"<Linh thú giai đoạn 5> Tốc độ toàn bộ anh hùng tăng 20, miễn giảm S.Thương 4%",{1000},{1000}}
+TAB_HeartenEquipSuite[6] = {6,{{9,30},{110,600}},2,"<Linh thú giai đoạn 6> Toàn bộ linh sủng tiếp ứng tăng đến Lv2",{1000},{1000}}
+TAB_HeartenEquipSuite[7] = {7,{{9,30},{110,600}},2,"<Linh thú giai đoạn 7> Toàn bộ thuộc tính tiếp ứng cố định +10% (thuộc tính nhận được qua hẹn hò và quà)",{2000},{2000}}
+TAB_HeartenEquipSuite[8] = {8,{{9,60},{110,1200}},2,"<Linh thú giai đoạn 8> Tốc độ toàn bộ anh hùng tăng 30, miễn giảm S.Thương 6%",{2000},{2000}}
+TAB_HeartenEquipSuite[9] = {9,{{9,60},{110,1200}},3,"<Linh thú giai đoạn 9> Toàn bộ linh sủng tiếp ứng tăng đến Lv3",{2000},{2000}}

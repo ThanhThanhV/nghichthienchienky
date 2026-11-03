@@ -1,0 +1,13 @@
+TAB_WorldBulletin = TAB_WorldBulletin or {}
+TAB_WorldBulletin[-1] = {"s_PublicNotice"}
+TAB_WorldBulletin[1] = {"#C(#ffffff)May mắn ập đến! #C(#33b1f3)%s#C(#ffffff) trong #C(#ff91ec)Triệu Hồi#C(#ffffff) đã nhận được anh hùng 5 sao #C(#%s)%s"}
+TAB_WorldBulletin[2] = {"#C(#ffffff)May mắn ập đến! #C(#33b1f3)%s#C(#ffffff) trong #C(#ff91ec)Triệu Hồi Hệ#C(#ffffff) đã nhận được anh hùng 5 sao #C(#%s)%s"}
+TAB_WorldBulletin[3] = {"#C(#ff91ec)Giải vô địch Đấu Trường#C(#ffffff) đã kết thúc! Người Tuân Lệnh #C(#33b1f3)%s, %s, %s)#C(#ffffff) có lực chiến xuất sắc, đã nhận được #C(#F69D1E)top 3#C(#ffffff), thực lực vang danh!"}
+TAB_WorldBulletin[4] = {"#C(#ff91ec)Giải vô địch Võ Đạo Liên SV#C(#ffffff) đã kết thúc! Người Tuân Lệnh #C(#33b1f3)%s, %s, %s)#C(#ffffff) có lực chiến xuất sắc, đã nhận được #C(#F69D1E)top 3#C(#ffffff), thực lực vang danh!"}
+TAB_WorldBulletin[5] = {"#C(#ffffff)Người Tuân Lệnh #C(#33b1f3)%s#C(#ffffff) trải qua nỗ lực không ngừng, đã vượt ải #C(#ff91ec)Xâm Lược Xeno-Khó#C(#ffffff), nhận được thưởng phong phú!"}
+TAB_WorldBulletin[6] = {"#C(#ff91ec)Giải xếp hạng Đấu Trường#C(#ffffff) #C(#F69D1E)hạng 1#C(#ffffff) #C(#33b1f3)%s#C(#ffffff) đã online rồi!"}
+TAB_WorldBulletin[7] = {"#C(#ff91ec)Giải xếp hạng Võ Đạo Liên SV#C(#ffffff) #C(#F69D1E)hạng 1#C(#ffffff) #C(#33b1f3)%s#C(#ffffff) đã online rồi!"}
+TAB_WorldBulletin[8] = {"#C(#ffffff)Người Tuân Lệnh #C(#33b1f3)%s#C(#ffffff) đã khiêu chiến thành công trong Thần Điện Dũng Sĩ, chiếm lĩnh thần vị “#C(#F69D1E)%s”#C(#ffffff)!"}
+TAB_WorldBulletin[9] = {"#C(#ffffff)Người Tuân Lệnh #C(#33b1f3)%s#C(#ffffff) đã thay thế vị trí #C(#33b1f3)%s#C(#ffffff) trong Thần Điện Dũng Sĩ, chiếm lĩnh thần vị “#C(#F69D1E)%s”#C(#ffffff)!"}
+TAB_WorldBulletin[10] = {"#C(#ffffff)Chúc mừng Người Tuân Lệnh #C(#33b1f3)%s#C(#ffffff) đã đạt Lv#C(#F69D1E)%s#C(#ffffff), nhận được #C(#F69D1E)Quà EXP VIP#C(#ffffff) trong sự kiện #C(#F69D1E)Quà Tăng Cấp#C(#ffffff)!"}
+TAB_WorldBulletin[11] = {"#C(#ffffff)Chúc mừng Người Tuân Lệnh #C(#33b1f3)%s#C(#ffffff) thắng liên tục #C(#F69D1E)%s#C(#ffffff) trận trong Đấu Trường Toàn Dân, đạt được bậc #C(#F69D1E)%s#C(#ffffff)!"}

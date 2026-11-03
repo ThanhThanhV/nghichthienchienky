@@ -1,0 +1,11 @@
+TAB_PvpScore = TAB_PvpScore or {}
+TAB_PvpScore[-1] = {"RankMin","RankMax","Reward"}
+TAB_PvpScore[1] = {1,1,630001}
+TAB_PvpScore[2] = {2,2,630002}
+TAB_PvpScore[3] = {3,3,630003}
+TAB_PvpScore[4] = {4,6,630004}
+TAB_PvpScore[5] = {7,10,630005}
+TAB_PvpScore[6] = {11,20,630006}
+TAB_PvpScore[7] = {21,30,630007}
+TAB_PvpScore[8] = {31,50,630008}
+TAB_PvpScore[9] = {51,100,630009}

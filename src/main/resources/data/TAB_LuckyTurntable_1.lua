@@ -1,0 +1,10 @@
+TAB_LuckyTurntable = TAB_LuckyTurntable or {}
+TAB_LuckyTurntable[-1] = {"Turntable1","Turntable2","Rewardtype","Weight1","Weight2"}
+TAB_LuckyTurntable[1] = {1,9,2,2000,10000}
+TAB_LuckyTurntable[2] = {2,10,2,3000,10000}
+TAB_LuckyTurntable[3] = {3,11,2,3000,5000}
+TAB_LuckyTurntable[4] = {4,12,2,1000,5000}
+TAB_LuckyTurntable[5] = {5,13,2,1000,10000}
+TAB_LuckyTurntable[6] = {6,14,2,5000,500}
+TAB_LuckyTurntable[7] = {7,15,2,2000,5000}
+TAB_LuckyTurntable[8] = {8,16,2,2000,10000}

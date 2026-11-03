@@ -1,0 +1,11 @@
+TAB_MineGuildRank = TAB_MineGuildRank or {}
+TAB_MineGuildRank[-1] = {"u_Rank","DropID"}
+TAB_MineGuildRank[1] = {{1, 1},233801}
+TAB_MineGuildRank[2] = {{2, 2},233802}
+TAB_MineGuildRank[3] = {{3, 3},233803}
+TAB_MineGuildRank[4] = {{4, 10},233804}
+TAB_MineGuildRank[5] = {{11, 30},233805}
+TAB_MineGuildRank[6] = {{31, 50},233806}
+TAB_MineGuildRank[7] = {{50, 80},233807}
+TAB_MineGuildRank[8] = {{81, 100},233808}
+TAB_MineGuildRank[9] = {{101, 99999},233809}

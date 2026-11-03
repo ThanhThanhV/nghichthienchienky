@@ -1,0 +1,12 @@
+TAB_ArtifactSmelt = TAB_ArtifactSmelt or {}
+TAB_ArtifactSmelt[-1] = {"SmeltID","u_Target"}
+TAB_ArtifactSmelt[1] = {1055,{1054,30}}
+TAB_ArtifactSmelt[2] = {1523,{1054,30}}
+TAB_ArtifactSmelt[3] = {1535,{1054,30}}
+TAB_ArtifactSmelt[4] = {1537,{1054,30}}
+TAB_ArtifactSmelt[5] = {1541,{1054,30}}
+TAB_ArtifactSmelt[6] = {1545,{1054,30}}
+TAB_ArtifactSmelt[7] = {1555,{1054,30}}
+TAB_ArtifactSmelt[8] = {1560,{1054,30}}
+TAB_ArtifactSmelt[9] = {1573,{1054,30}}
+TAB_ArtifactSmelt[10] = {1580,{1054,30}}

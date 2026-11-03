@@ -1,0 +1,10 @@
+TAB_ConquerReward = TAB_ConquerReward or {}
+TAB_ConquerReward[-1] = {"Dropid","u_Cost","Num"}
+TAB_ConquerReward[1] = {14501,{{8002,150}},18}
+TAB_ConquerReward[2] = {14502,{{8002,180}},18}
+TAB_ConquerReward[3] = {14503,{{8002,210}},18}
+TAB_ConquerReward[4] = {14504,{{8002,240}},18}
+TAB_ConquerReward[5] = {14505,{{8002,270}},18}
+TAB_ConquerReward[6] = {14506,{{8002,300}},18}
+TAB_ConquerReward[7] = {14507,{{8002,330}},18}
+TAB_ConquerReward[8] = {14508,{{8002,360}},18}

@@ -1,0 +1,14 @@
+TAB_Zone = TAB_Zone or {}
+TAB_Zone[-1] = {"NewServer","Boundary","NumberServer","NumberPeople"}
+TAB_Zone[1] = {6,0,3,800}
+TAB_Zone[2] = {6,29,6,2000}
+TAB_Zone[3] = {6,15,10,1500}
+TAB_Zone[4] = {6,0,6,2500}
+TAB_Zone[5] = {6,0,6,1500}
+TAB_Zone[6] = {21,40,6,2000}
+TAB_Zone[7] = {6,0,6,800}
+TAB_Zone[8] = {6,0,6,500}
+TAB_Zone[9] = {21,40,6,2000}
+TAB_Zone[10] = {6,40,6,300}
+TAB_Zone[11] = {6,40,6,99999}
+TAB_Zone[12] = {6,0,6,800}

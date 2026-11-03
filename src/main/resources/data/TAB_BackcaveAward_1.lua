@@ -1,0 +1,11 @@
+TAB_BackcaveAward = TAB_BackcaveAward or {}
+TAB_BackcaveAward[-1] = {"RankMin","RankMax","u_BackcaveAwards"}
+TAB_BackcaveAward[1] = {1,1,{{600206,3},{600205,6},{98004,3},{8001,200000}}}
+TAB_BackcaveAward[2] = {2,2,{{600206,1},{600205,5},{98004,2},{8001,150000}}}
+TAB_BackcaveAward[3] = {3,3,{{600205,4},{64002,8},{98004,1},{8001,100000}}}
+TAB_BackcaveAward[4] = {4,10,{{600205,3},{64002,6},{8001,50000}}}
+TAB_BackcaveAward[5] = {11,20,{{600205,2},{64002,4},{8001,30000}}}
+TAB_BackcaveAward[6] = {21,50,{{64002,3},{8001,20000}}}
+TAB_BackcaveAward[7] = {51,100,{{64002,2},{8001,10000}}}
+TAB_BackcaveAward[8] = {101,500,{{64002,1},{8001,5000}}}
+TAB_BackcaveAward[9] = {501,3000,{{64001,2}}}

@@ -1,0 +1,10 @@
+TAB_CrossPvpKing = TAB_CrossPvpKing or {}
+TAB_CrossPvpKing[-1] = {"u_Rank","Drop","u_Show"}
+TAB_CrossPvpKing[1] = {{1,1},43301,{{8047,15000},{8002,1000},{2083,1}}}
+TAB_CrossPvpKing[2] = {{2,2},43302,{{8047,12000},{8002,700},{2084,1}}}
+TAB_CrossPvpKing[3] = {{3,4},43303,{{8047,10000},{8002,500}}}
+TAB_CrossPvpKing[4] = {{5,8},43304,{{8047,8000},{8002,400}}}
+TAB_CrossPvpKing[5] = {{9,16},43305,{{8047,6000},{8002,300}}}
+TAB_CrossPvpKing[6] = {{17,32},43306,{{8047,4000},{8002,250}}}
+TAB_CrossPvpKing[7] = {{33,64},43307,{{8047,4000},{8002,200}}}
+TAB_CrossPvpKing[8] = {{65,128},43308,{{8047,3000},{8002,150}}}

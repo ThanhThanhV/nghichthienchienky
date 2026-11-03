@@ -1,0 +1,10 @@
+TAB_TreasureSuit = TAB_TreasureSuit or {}
+TAB_TreasureSuit[-1] = {"RewardNum","u_Reward","s_Name"}
+TAB_TreasureSuit[1] = {1,{},"Phương án 1"}
+TAB_TreasureSuit[2] = {2,{},"Phương án 2"}
+TAB_TreasureSuit[3] = {3,{},"Phương án 3"}
+TAB_TreasureSuit[4] = {4,{{8002,300}},"Phương án 4"}
+TAB_TreasureSuit[5] = {5,{{8002,400}},"Phương án 5"}
+TAB_TreasureSuit[6] = {6,{{8002,500}},"Phương án 6"}
+TAB_TreasureSuit[7] = {7,{{8002,500}},"Phương án 7"}
+TAB_TreasureSuit[8] = {8,{{8002,500}},"Phương án 8"}

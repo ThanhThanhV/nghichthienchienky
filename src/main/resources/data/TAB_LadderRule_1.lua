@@ -1,0 +1,14 @@
+TAB_LadderRule = TAB_LadderRule or {}
+TAB_LadderRule[-1] = {"Stage","Round","WinScore","u_SectionTime","Number","Gambling","FightGroundId"}
+TAB_LadderRule[1] = {1,1,70,{30,90,180},256,60,5001}
+TAB_LadderRule[2] = {1,2,60,{30,90,180},256,60,5001}
+TAB_LadderRule[3] = {1,3,50,{30,90,180},256,60,5001}
+TAB_LadderRule[4] = {1,4,40,{30,90,180},256,60,5001}
+TAB_LadderRule[5] = {1,5,30,{30,90,180},256,60,5001}
+TAB_LadderRule[6] = {1,6,20,{30,90,180},256,60,5001}
+TAB_LadderRule[7] = {2,1,1000,{30,90,180},64,60,5001}
+TAB_LadderRule[8] = {2,2,1000,{30,90,180},32,60,5001}
+TAB_LadderRule[9] = {2,3,1000,{30,90,180},16,60,5001}
+TAB_LadderRule[10] = {3,1,1000,{30,90,180},8,60,5001}
+TAB_LadderRule[11] = {3,2,1000,{30,90,180},4,60,5001}
+TAB_LadderRule[12] = {3,3,1000,{30,90,180},2,60,5001}

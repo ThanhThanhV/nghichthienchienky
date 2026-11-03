@@ -1,0 +1,16 @@
+TAB_Color = TAB_Color or {}
+TAB_Color[-1] = {"s_Color"}
+TAB_Color[1] = {"747474"}
+TAB_Color[2] = {"20cf9b"}
+TAB_Color[3] = {"49C5ff"}
+TAB_Color[4] = {"BE69FF"}
+TAB_Color[5] = {"F69D1E"}
+TAB_Color[6] = {"FF2C5E"}
+TAB_Color[7] = {"FFDE00"}
+TAB_Color[8] = {"7ac8ff"}
+TAB_Color[9] = {"ff91ec"}
+TAB_Color[10] = {"ffaf32"}
+TAB_Color[11] = {"fd5858"}
+TAB_Color[12] = {"33b1f3"}
+TAB_Color[13] = {"f34b87"}
+TAB_Color[14] = {"313c4d"}

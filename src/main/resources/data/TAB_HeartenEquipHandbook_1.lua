@@ -1,0 +1,6 @@
+TAB_HeartenEquipHandbook = TAB_HeartenEquipHandbook or {}
+TAB_HeartenEquipHandbook[-1] = {"Item","Star","s_Desc","s_Get"}
+TAB_HeartenEquipHandbook[1] = {1402101,5,"Thanh Long, một trong bốn linh thú bảo vệ thế giới ở khu vực phía đông, Linh thú Thanh Long do thần hồn Thanh Long ngưng tụ mà thành, nâng cao hiệu quả kỹ năng của linh sủng và thuộc tính tiếp ứng. ","Nhận qua sự kiện, Thủ lĩnh Guild rơi nhận"}
+TAB_HeartenEquipHandbook[2] = {1402201,5,"Bạch Hổ, một trong bốn thánh thú bảo vệ thế giới ở khu vực phương Tây. Linh thú Bạch Hổ do thần hồn Bạch Hổ ngưng tụ mà thành, nâng cao hiệu quả kỹ năng của linh sủng và thuộc tính tiếp ứng. ","Nhận qua sự kiện, Thủ lĩnh Guild rơi nhận"}
+TAB_HeartenEquipHandbook[3] = {1402301,5,"Chu Tước, một trong bốn linh thú bảo vệ thế giới ở khu vực phía nam, Linh thú Chu Tước do thần hồn Chu Tước ngưng tụ mà thành, nâng cao hiệu quả kỹ năng của linh sủng và thuộc tính tiếp ứng. ","Nhận qua sự kiện, Thủ lĩnh Guild rơi nhận"}
+TAB_HeartenEquipHandbook[4] = {1402401,5,"Huyền Vũ, một trong bốn linh thú bảo vệ thế giới ở khu vực phía bắc, linh thú Huyền Vũ do thần hồn Huyền Vũ ngưng tụ mà thành, nâng cao hiệu quả kỹ năng của linh sủng và thuộc tính tiếp ứng. ","Nhận qua sự kiện, Thủ lĩnh Guild rơi nhận"}

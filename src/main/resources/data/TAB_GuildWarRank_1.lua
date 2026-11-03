@@ -1,0 +1,9 @@
+TAB_GuildWarRank = TAB_GuildWarRank or {}
+TAB_GuildWarRank[-1] = {"u_Rank","DropId"}
+TAB_GuildWarRank[1] = {{1,1},18101}
+TAB_GuildWarRank[2] = {{2,2},18102}
+TAB_GuildWarRank[3] = {{3,3},18103}
+TAB_GuildWarRank[4] = {{4,10},18104}
+TAB_GuildWarRank[5] = {{11,20},18105}
+TAB_GuildWarRank[6] = {{21,50},18106}
+TAB_GuildWarRank[7] = {{51,99},18107}

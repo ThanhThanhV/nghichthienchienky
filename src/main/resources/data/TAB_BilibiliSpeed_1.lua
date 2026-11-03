@@ -1,0 +1,12 @@
+TAB_BilibiliSpeed = TAB_BilibiliSpeed or {}
+TAB_BilibiliSpeed[-1] = {"s_Speed"}
+TAB_BilibiliSpeed[1] = {"3"}
+TAB_BilibiliSpeed[2] = {"3.1"}
+TAB_BilibiliSpeed[3] = {"3.5"}
+TAB_BilibiliSpeed[4] = {"4"}
+TAB_BilibiliSpeed[5] = {"4.1"}
+TAB_BilibiliSpeed[6] = {"4.3"}
+TAB_BilibiliSpeed[7] = {"4.5"}
+TAB_BilibiliSpeed[8] = {"4.8"}
+TAB_BilibiliSpeed[9] = {"5"}
+TAB_BilibiliSpeed[10] = {"5.1"}

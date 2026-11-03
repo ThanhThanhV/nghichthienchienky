@@ -1,0 +1,12 @@
+TAB_LevelPrice = TAB_LevelPrice or {}
+TAB_LevelPrice[-1] = {"StoryGroup","s_Des1","s_Des2","Picture1"}
+TAB_LevelPrice[1] = {10,"Vượt 10 ải tặng #C(#%s)Vé Triệu Hồi Cao Cấp","#C(#000000)Vượt thêm #C(#B1633A)%s#C(#000000) ải có thể nhận #C(#B1633A)Vé Triệu Hồi Cao Cấp",11}
+TAB_LevelPrice[2] = {15,"Vượt 15 ải tặng #C(#%s)Đá Tiến Bậc","#C(#000000)Vượt tiếp #C(#B1633A)%s#C(#000000) ải được nhận #C(#B1633A)Đá Tiến Bậc",2}
+TAB_LevelPrice[3] = {20,"Vượt 20 ải tặng #C(#%s)Rút 10 lần","#C(#000000)Vượt thêm #C(#B1633A)%s#C(#000000) ải có thể nhận #C(#B1633A)Rút 10 lần",12}
+TAB_LevelPrice[4] = {45,"Vượt 45 ải tặng #C(#%s)Vũ Khí Đỏ","#C(#000000)Vượt tiếp #C(#B1633A)%s#C(#000000) ải, sẽ nhận được #C(#B1633A)Vũ Khí Đỏ",3}
+TAB_LevelPrice[5] = {70,"Vượt 70 ải tặng #C(#%s)Rem","#C(#000000)Vượt thêm #C(#B1633A)%s#C(#000000) ải có thể nhận #C(#B1633A)Rem",13}
+TAB_LevelPrice[6] = {90,"Vượt 90 ải tặng #C(#%s)Mảnh Thần Khí","#C(#000000)Vượt tiếp #C(#B1633A)%s#C(#000000) ải, sẽ nhận được #C(#B1633A)Mảnh Thần Khí",6}
+TAB_LevelPrice[7] = {120,"Vượt 120 ải tặng #C(#%s)Đá Thần Luyện","#C(#000000)Vượt tiếp #C(#B1633A)%s#C(#000000) ải, sẽ nhận được #C(#B1633A)Đá Thần Luyện",7}
+TAB_LevelPrice[8] = {150,"Vượt 150 ải tặng #C(#%s)Saber","#C(#000000)Vượt tiếp #C(#B1633A)%s#C(#000000) ải, sẽ nhận được #C(#B1633A)Saber",8}
+TAB_LevelPrice[9] = {160,"Vượt 160 ải tặng #C(#%s)Sparta","#C(#000000)Vượt tiếp #C(#B1633A)%s#C(#000000) ải, sẽ nhận được #C(#B1633A)Sparti",9}
+TAB_LevelPrice[10] = {180,"Vượt 180 ải tặng #C(#%s)Saber","#C(#000000)Vượt tiếp #C(#B1633A)%s#C(#000000) ải, sẽ nhận được #C(#B1633A)Saber",10}

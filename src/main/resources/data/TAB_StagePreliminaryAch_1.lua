@@ -1,0 +1,13 @@
+TAB_StagePreliminaryAch = TAB_StagePreliminaryAch or {}
+TAB_StagePreliminaryAch[-1] = {"Type","Param","u_Reward","s_Describe","Pos"}
+TAB_StagePreliminaryAch[1] = {1,1,{1051,20},"Thắng Giải Đỉnh Cao 1 lần",1}
+TAB_StagePreliminaryAch[2] = {1,2,{1051,5},"Thắng Giải Đỉnh Cao 2 lần",2}
+TAB_StagePreliminaryAch[3] = {1,4,{1051,5},"Thắng Giải Đỉnh Cao 4 lần",3}
+TAB_StagePreliminaryAch[4] = {1,6,{1051,20},"Thắng Giải Đỉnh Cao 6 lần",4}
+TAB_StagePreliminaryAch[5] = {1,8,{1051,5},"Thẳng Giải Đỉnh Cao 8 lần",5}
+TAB_StagePreliminaryAch[6] = {1,10,{1050,5},"Thắng Giải Đỉnh Cao 10 lần",6}
+TAB_StagePreliminaryAch[7] = {2,128,{1051,5},"Vòng loại Giải Đỉnh Cao đạt hạng 128",1}
+TAB_StagePreliminaryAch[8] = {2,100,{1051,5},"Vòng loại Giải Đỉnh Cao đạt hạng 100",2}
+TAB_StagePreliminaryAch[9] = {2,80,{1051,20},"Vòng loại Giải Đỉnh Cao đạt hạng 80",3}
+TAB_StagePreliminaryAch[10] = {2,65,{1051,5},"Vòng loại Giải Đỉnh Cao đạt hạng 65",4}
+TAB_StagePreliminaryAch[11] = {2,50,{1050,10},"Vòng loại Giải Đỉnh Cao đạt hạng 50",5}

@@ -1,0 +1,11 @@
+TAB_Adventure = TAB_Adventure or {}
+TAB_Adventure[-1] = {"s_Name","s_OpenUI","OpenLv","OpenWorldLv","u_OpenLv2","s_Des","SeverTime","s_Open","u_ItemShow","IconShow","Order"}
+TAB_Adventure[1] = {"PHÓ BẢN NGÀY","UIAdventureDaily",15,0,{},"Có thể nhận các loại vật phẩm thiết thực",0,"Cấp 15 mở",{8001,8005},1,1}
+TAB_Adventure[2] = {"Khiêu Chiến Giới Hạn","UIAdventureTrial",25,0,{},"Có thể nhận lượng lớn EXP anh hùng",0,"Cấp 25 mở",{1003,8028},2,2}
+TAB_Adventure[3] = {"Xâm Lược Xeno","UIChampion",30,0,{},"Đếm ngược cài lại:",0,"Cấp 30 mở",{8010,1001},3,3}
+TAB_Adventure[4] = {"Thánh Điện Dũng Sĩ","UITemple",35,0,{},"Đoạt Thánh Điện, giành được tôn hiệu mạnh",0,"Cấp 35 mở",{2008,2009},4,4}
+TAB_Adventure[5] = {"Mê Cung Ảo Cảnh","UIMazeLine",40,0,{},"Đếm ngược cài lại:",0,"Lv 40 mở",{1003,8028},5,5}
+TAB_Adventure[6] = {"Tấn Công Thứ Nguyên","UIReverse",60,0,{},"Mở vào mỗi thứ 3, 5, 7",6,"Mở khi đạt Lv60 và ngày thứ 7 mở SV",{1600056,8028},6,6}
+TAB_Adventure[7] = {"Mê Cung Bàn Cờ ","UIChess",70,0,{},"5:00 mỗi sáng T2 cài lại",0,"Lv 70 mở",{1114,1120},7,7}
+TAB_Adventure[8] = {"Thế Giới Hỗn Loạn","UIChaos",78,0,{},"Lần lượt mở từ T2 đến T6, cuối tuần mở toàn bộ",0,"Cấp 78 mở",{1030,1025},8,8}
+TAB_Adventure[9] = {"Trận Chiến Chén Thánh","UIWar",110,0,{105,110},"Có thể nhận Bảo Khí",0,"Lv105 và cấp Thế Giới đạt Lv110 hoặc Lv110 sẽ mở",{100001,1058},9,9}

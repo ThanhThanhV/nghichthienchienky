@@ -1,0 +1,9 @@
+TAB_StageFinRound = TAB_StageFinRound or {}
+TAB_StageFinRound[-1] = {"Stage","Round","Gambling","u_Time","FightGroundId","WinIntegral"}
+TAB_StageFinRound[1] = {1,1,60,{30,90,180},13003,1000}
+TAB_StageFinRound[2] = {1,2,60,{30,90,180},13003,1000}
+TAB_StageFinRound[3] = {1,3,60,{30,90,180},13003,1000}
+TAB_StageFinRound[4] = {2,4,60,{30,90,180},13003,1000}
+TAB_StageFinRound[5] = {2,5,60,{30,90,180},13003,1000}
+TAB_StageFinRound[6] = {3,6,60,{30,90,180},13003,1000}
+TAB_StageFinRound[7] = {3,7,60,{30,90,180},13003,1000}

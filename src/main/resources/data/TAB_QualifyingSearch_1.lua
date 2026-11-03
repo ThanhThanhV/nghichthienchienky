@@ -1,0 +1,12 @@
+TAB_QualifyingSearch = TAB_QualifyingSearch or {}
+TAB_QualifyingSearch[-1] = {"ScoreMin","ScoreMax","Weight"}
+TAB_QualifyingSearch[1] = {1,50,5000}
+TAB_QualifyingSearch[2] = {-30,1,3000}
+TAB_QualifyingSearch[3] = {50,100,2000}
+TAB_QualifyingSearch[4] = {-100,-31,1200}
+TAB_QualifyingSearch[5] = {101,200,800}
+TAB_QualifyingSearch[6] = {-200,-101,480}
+TAB_QualifyingSearch[7] = {201,500,320}
+TAB_QualifyingSearch[8] = {-500,-201,192}
+TAB_QualifyingSearch[9] = {-1000,1000,128}
+TAB_QualifyingSearch[10] = {-9999,9999,1}

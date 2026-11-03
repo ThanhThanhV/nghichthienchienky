@@ -1,0 +1,9 @@
+TAB_CrossPvpBet = TAB_CrossPvpBet or {}
+TAB_CrossPvpBet[-1] = {"Round","Min","Max","Odds"}
+TAB_CrossPvpBet[1] = {1,100,1000,150}
+TAB_CrossPvpBet[2] = {2,100,1000,150}
+TAB_CrossPvpBet[3] = {3,100,1500,180}
+TAB_CrossPvpBet[4] = {4,100,1500,180}
+TAB_CrossPvpBet[5] = {5,100,2000,200}
+TAB_CrossPvpBet[6] = {6,100,2500,200}
+TAB_CrossPvpBet[7] = {7,100,3000,200}

@@ -1,0 +1,9 @@
+TAB_AdventureType = TAB_AdventureType or {}
+TAB_AdventureType[-1] = {"u_RandType","u_DownRandType"}
+TAB_AdventureType[1] = {{{1,3885},{2,4316},{3,1151},{4,518}},{{0,4684},{1,2316},{2,3000}}}
+TAB_AdventureType[2] = {{{1,3885},{2,4316},{3,1151},{4,518}},{{0,4684},{1,2316},{2,3000}}}
+TAB_AdventureType[3] = {{{1,3885},{2,4316},{3,1151},{4,518},{5,129}},{{0,4684},{1,2316},{2,3000}}}
+TAB_AdventureType[4] = {{{3,10000}},{}}
+TAB_AdventureType[5] = {{{4,10000}},{}}
+TAB_AdventureType[6] = {{{6,10000}},{}}
+TAB_AdventureType[7] = {{{3,10000}},{}}

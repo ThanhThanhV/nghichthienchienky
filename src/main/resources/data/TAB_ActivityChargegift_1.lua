@@ -1,0 +1,10 @@
+TAB_ActivityChargegift = TAB_ActivityChargegift or {}
+TAB_ActivityChargegift[-1] = {"privilegeType","minLv","maxLv","diamond","gold","giftid","recharge","keepDay","icon","s_title","s_describe","Sort"}
+TAB_ActivityChargegift[1] = {2,6,999,0,0,22001,29,30,1,"Tốc chiến","Sau khi kích hoạt mỗi ngày có 3 lần miễn phí tốc chiến, có thể mua 8 lần!",1}
+TAB_ActivityChargegift[2] = {3,120,999,0,0,22002,30,7,7,"Đặc Quyền Giám Định","Ô Giám Định chuyên thuộc thêm, mỗi ngày nhận 2 Thẻ Di Tích",5}
+TAB_ActivityChargegift[3] = {4,80,999,0,0,22003,31,30,3,"Đặc quyền Hỗn Loạn","Mỗi ngày Thế Giới Hỗn Loạn +2 lần khiêu chiến miễn phí, +8 lần mua!",4}
+TAB_ActivityChargegift[4] = {7,6,999,0,0,22006,32,7,6,"Đặc quyền Triệu Hồi","Phúc lợi combo Triệu Hồi, mỗi ngày có thể nhận 2 Vé Triệu Hồi Cao Cấp!",2}
+TAB_ActivityChargegift[5] = {5,6,999,980,0,22004,0,0,4,"Lịch Luyện Cao Cấp","Mỗi ngày dùng KC và Vé làm mới Lịch Luyện chắc chắn ra nhiệm vụ Tím!",6}
+TAB_ActivityChargegift[6] = {6,6,999,1980,0,22005,0,0,5,"Lịch Luyện Hào Hoa","Mỗi ngày dùng KC và Vé làm mới Lịch Luyện chắc chắn ra nhiệm vụ Cam!",7}
+TAB_ActivityChargegift[7] = {8,70,999,0,0,22007,1100,30,8,"Đặc Quyền Bàn Cờ","0h, 12h hồi phục thêm 1 Xúc xắc Trắng, mỗi ngày +6 lần mua thêm Kim Cương!",3}
+TAB_ActivityChargegift[8] = {9,25,999,0,0,22008,1101,0,1,"Đặc quyền tiếp ứng","Độ Thiện Cảm Emilia+500",0}

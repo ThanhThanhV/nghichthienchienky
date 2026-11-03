@@ -1,0 +1,17 @@
+TAB_HeroFavorItem = TAB_HeroFavorItem or {}
+TAB_HeroFavorItem[-1] = {"Favour","Charm","Type","ShowType","s_ItemType","u_Attributes","FavourLevel","u_Amount"}
+TAB_HeroFavorItem[1201] = {5,5,1,1,"Cơ bản",{{}},1,{{}}}
+TAB_HeroFavorItem[1202] = {8,8,2,1,"Cơ bản",{{}},1,{{}}}
+TAB_HeroFavorItem[1203] = {10,10,3,1,"Cơ bản",{{}},1,{{}}}
+TAB_HeroFavorItem[1204] = {40,40,4,2," Trung cấp",{{6,2000},{7,200}},1,{{5,5},{9,8},{10,11}}}
+TAB_HeroFavorItem[1205] = {40,40,4,2," Trung cấp",{{6,2000},{7,200}},1,{{5,5},{9,8},{10,11}}}
+TAB_HeroFavorItem[1206] = {40,40,4,2," Trung cấp",{{6,2000},{7,200}},1,{{5,5},{9,8},{10,11}}}
+TAB_HeroFavorItem[1207] = {40,40,4,2," Trung cấp",{{6,2000},{7,200}},1,{{5,5},{9,8},{10,11}}}
+TAB_HeroFavorItem[1208] = {80,80,5,3,"Cao cấp ",{{6,4000},{7,400}},1,{{5,2},{9,4},{10,6}}}
+TAB_HeroFavorItem[1209] = {80,80,5,3,"Cao cấp ",{{6,4000},{7,400}},1,{{5,2},{9,4},{10,6}}}
+TAB_HeroFavorItem[1210] = {80,80,5,3,"Cao cấp ",{{6,4000},{7,400}},1,{{5,2},{9,4},{10,6}}}
+TAB_HeroFavorItem[1211] = {80,80,5,3,"Cao cấp ",{{6,4000},{7,400}},1,{{5,2},{9,4},{10,6}}}
+TAB_HeroFavorItem[1212] = {300,300,6,4," Cuối cấp",{{6,12000},{7,1200},{10,100},{11,100}},1,{{5,1},{9,2},{10,2}}}
+TAB_HeroFavorItem[1213] = {300,300,6,4," Cuối cấp",{{6,12000},{7,1200},{10,100},{11,100}},1,{{5,1},{9,1},{10,2}}}
+TAB_HeroFavorItem[1214] = {100,100,6,4," Cuối cấp",{{10,100}},1,{{5,1},{9,1},{10,1}}}
+TAB_HeroFavorItem[1215] = {100,100,6,4," Cuối cấp",{{11,100}},1,{{5,1},{9,1},{10,1}}}

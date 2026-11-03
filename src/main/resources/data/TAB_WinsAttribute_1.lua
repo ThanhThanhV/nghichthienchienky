@@ -1,0 +1,9 @@
+TAB_WinsAttribute = TAB_WinsAttribute or {}
+TAB_WinsAttribute[-1] = {"u_Fatigue","u_LostAttributes"}
+TAB_WinsAttribute[1] = {{0,20},{}}
+TAB_WinsAttribute[2] = {{21,40},{{10,200},{11,200}}}
+TAB_WinsAttribute[3] = {{41,60},{{10,500},{11,500}}}
+TAB_WinsAttribute[4] = {{61,90},{{10,900},{11,900}}}
+TAB_WinsAttribute[5] = {{91,120},{{10,1500},{11,1500}}}
+TAB_WinsAttribute[6] = {{121,180},{{10,2000},{11,2000}}}
+TAB_WinsAttribute[7] = {{181,9999},{{10,3000},{11,3000}}}

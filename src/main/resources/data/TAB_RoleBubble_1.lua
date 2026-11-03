@@ -1,0 +1,9 @@
+TAB_RoleBubble = TAB_RoleBubble or {}
+TAB_RoleBubble[-1] = {"TitlesIcon","TitlesEffect","s_Name","s_Describe","u_AddAttribute","u_Rule","Effective","s_EffDes","Acquire","Sort","Sourse","UseShow","s_Color"}
+TAB_RoleBubble[1] = {1,0,"Khung Chat Ban Đầu","Khung Chat Ban Đầu",{{}},{},0,"",1,1,51,1,"ffffff"}
+TAB_RoleBubble[2] = {2,2,"Cao Thủ Úp Rổ","Điều kiện nhận: Kích hoạt nhận tôn hiệu {Cao Thủ Úp Rổ}",{{}},{1,132},0,"",1,2,51,1,"ffffff"}
+TAB_RoleBubble[3] = {3,3,"SpongeBob","Điều kiện nhận: Kích hoạt nhận tôn hiệu {SpongeBob}",{{}},{1,133},0,"",1,3,51,1,"ffffff"}
+TAB_RoleBubble[4] = {4,4,"Toàn Trí Toàn Năng","Điều kiện nhận: Kích hoạt nhận tôn hiệu {Toàn Trí Toàn Năng}",{{}},{1,134},0,"",1,4,51,1,"ffffff"}
+TAB_RoleBubble[5] = {5,5,"Thám Tử","Điều kiện nhận: Kích hoạt nhận tôn hiệu {Thám Tử}",{{}},{1,135},0,"",1,5,51,1,"ffe1ff"}
+TAB_RoleBubble[6] = {6,6,"Một Cú Sạch Bàn","Điều kiện nhận: Kích hoạt nhận tôn hiệu {Một Cú Sạch Bàn}",{{}},{1,136},0,"",1,6,51,1,"ffe1ff"}
+TAB_RoleBubble[7] = {7,7,"Tiểu Tướng Túc Cầu","Điều kiện nhận: Kích hoạt nhận tôn hiệu {Tiểu Tử Túc Cầu}",{{}},{1,137},0,"",1,7,51,1,"ffe1ff"}

@@ -1,0 +1,17 @@
+TAB_CrossPvpFight = TAB_CrossPvpFight or {}
+TAB_CrossPvpFight[-1] = {"ScoreMin","ScoreMax","Weight","u_OpenDay"}
+TAB_CrossPvpFight[1] = {-50,50,500000000,{2,4,6}}
+TAB_CrossPvpFight[2] = {-100,100,300000000,{2,4,6}}
+TAB_CrossPvpFight[3] = {-200,200,200000000,{2,4,6}}
+TAB_CrossPvpFight[4] = {-300,300,100000000,{2,4,6}}
+TAB_CrossPvpFight[5] = {-400,400,50000000,{2,4,6}}
+TAB_CrossPvpFight[6] = {-500,500,10000000,{2,4,6}}
+TAB_CrossPvpFight[7] = {-600,600,1000000,{2,4,6}}
+TAB_CrossPvpFight[8] = {-700,700,100000,{2,4,6}}
+TAB_CrossPvpFight[9] = {-800,800,10000,{2,4,6}}
+TAB_CrossPvpFight[10] = {-1000,1000,1000,{2,4,6}}
+TAB_CrossPvpFight[11] = {-2000,2000,100,{2,4,6}}
+TAB_CrossPvpFight[12] = {-3000,3000,10,{2,4,6}}
+TAB_CrossPvpFight[13] = {-4000,4000,1,{2,4,6}}
+TAB_CrossPvpFight[14] = {-5000,5000,1,{2,4,6}}
+TAB_CrossPvpFight[15] = {-10000,10000,1,{2,4,6}}

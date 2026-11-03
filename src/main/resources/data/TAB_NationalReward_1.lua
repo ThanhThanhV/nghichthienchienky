@@ -1,0 +1,11 @@
+TAB_NationalReward = TAB_NationalReward or {}
+TAB_NationalReward[-1] = {"u_Exceed","ExceedDropid"}
+TAB_NationalReward[1] = {{1,1},310601}
+TAB_NationalReward[2] = {{2,3},310602}
+TAB_NationalReward[3] = {{4,5},310603}
+TAB_NationalReward[4] = {{6,10},310604}
+TAB_NationalReward[5] = {{11,20},310605}
+TAB_NationalReward[6] = {{21,30},310606}
+TAB_NationalReward[7] = {{31,50},310607}
+TAB_NationalReward[8] = {{51,70},310608}
+TAB_NationalReward[9] = {{71,100},310609}

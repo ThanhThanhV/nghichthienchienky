@@ -1,0 +1,12 @@
+TAB_ActivityHeroExchangeTip = TAB_ActivityHeroExchangeTip or {}
+TAB_ActivityHeroExchangeTip[-1] = {"s_Func","s_Desc","icon"}
+TAB_ActivityHeroExchangeTip[1] = {"Cấp anh hùng","Trùng sinh",2}
+TAB_ActivityHeroExchangeTip[2] = {"Cộng Hưởng","Gỡ",9}
+TAB_ActivityHeroExchangeTip[3] = {"Trang bị","Gỡ",5}
+TAB_ActivityHeroExchangeTip[4] = {"Ấn Ký","Gỡ",20}
+TAB_ActivityHeroExchangeTip[5] = {"Thẻ Tarot","Gỡ",31}
+TAB_ActivityHeroExchangeTip[6] = {"Bảo Khí","Gỡ",14}
+TAB_ActivityHeroExchangeTip[7] = {"Vũ khí chuyên thuộc","Cài lại",23}
+TAB_ActivityHeroExchangeTip[8] = {"Thế thân","Cài lại",19}
+TAB_ActivityHeroExchangeTip[9] = {"Thiên Phú","Cài lại",15}
+TAB_ActivityHeroExchangeTip[10] = {"Trang bị Phụ Linh","Cài lại",6}

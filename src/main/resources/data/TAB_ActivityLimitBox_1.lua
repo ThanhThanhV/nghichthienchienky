@@ -1,0 +1,12 @@
+TAB_ActivityLimitBox = TAB_ActivityLimitBox or {}
+TAB_ActivityLimitBox[-1] = {"Integral","Rewardid","Activityid"}
+TAB_ActivityLimitBox[1] = {500,44100,5008}
+TAB_ActivityLimitBox[2] = {1000,44101,5008}
+TAB_ActivityLimitBox[3] = {2000,44102,5008}
+TAB_ActivityLimitBox[4] = {3000,44103,5008}
+TAB_ActivityLimitBox[5] = {5000,44104,5008}
+TAB_ActivityLimitBox[6] = {100,100011,5010}
+TAB_ActivityLimitBox[7] = {500,100012,5010}
+TAB_ActivityLimitBox[8] = {1500,100013,5010}
+TAB_ActivityLimitBox[9] = {2500,100014,5010}
+TAB_ActivityLimitBox[10] = {5000,100015,5010}

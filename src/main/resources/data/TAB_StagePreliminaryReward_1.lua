@@ -1,0 +1,11 @@
+TAB_StagePreliminaryReward = TAB_StagePreliminaryReward or {}
+TAB_StagePreliminaryReward[-1] = {"RankMin","RankMax","WinDropId","LoseDropId","FightGround"}
+TAB_StagePreliminaryReward[1] = {1,1,311005,311105,13002}
+TAB_StagePreliminaryReward[2] = {2,2,311005,311105,13002}
+TAB_StagePreliminaryReward[3] = {3,3,311005,311105,13002}
+TAB_StagePreliminaryReward[4] = {4,10,311005,311105,13002}
+TAB_StagePreliminaryReward[5] = {11,50,311005,311105,13002}
+TAB_StagePreliminaryReward[6] = {51,100,311005,311105,13002}
+TAB_StagePreliminaryReward[7] = {101,300,311005,311105,13002}
+TAB_StagePreliminaryReward[8] = {301,1000,311005,311105,13002}
+TAB_StagePreliminaryReward[9] = {1001,9999,311005,311105,13002}

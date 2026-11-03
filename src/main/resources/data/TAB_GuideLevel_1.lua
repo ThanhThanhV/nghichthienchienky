@@ -1,0 +1,4 @@
+TAB_GuideLevel = TAB_GuideLevel or {}
+TAB_GuideLevel[-1] = {"JumpId","u_Jump","Factor","u_Factor","s_InitialScript","Abscissa","u_PageOpen","u_Open","Fight","Operate","u_ExecuteScript","Type","u_TypeParameter","u_ItemCost","Locked","s_Other","u_Pos","BubbleText","u_Dialogue","u_Sound","Mask","u_Close"}
+TAB_GuideLevel[10001] = {10002,{},2,{1},"g_openDlgWithName('UIHook',DlgManager._view)",0,{},{{"UIHook",200},{"UIHookFunction",200}},-1,1,{UIHookFunction,Panel_level_reward},12,{},{},1,"",{},1,{{"Vượt chương 15 có thể nhận anh hùng Kujo Jotaro, nhấp để tiến hành bước tiếp theo"}},{},150,{0}}
+TAB_GuideLevel[10002] = {999999,{},2,{1},"",0,{},{{"UIHook",200},{"UIHookFunction",200}},-1,2,{UIGuide},13,{{UIGuide}},{},1,"g_closeDlgWithName('UIGuide')",{},0,{{"npc", "Emi", "Vượt ải nhất định có thể nhận thưởng hậu hĩnh, đừng nên bỏ lỡ"}},{30},150,{0}}

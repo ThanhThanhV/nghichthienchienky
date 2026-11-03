@@ -1,0 +1,15 @@
+TAB_GroupReward = TAB_GroupReward or {}
+TAB_GroupReward[-1] = {"Type","u_Param","Dropid","Postid","s_Name"}
+TAB_GroupReward[1] = {1,{5},300101,10001,"Khiêu chiến tổ đội 5 lần"}
+TAB_GroupReward[2] = {1,{10},300102,10001,"Khiêu chiến tổ đội 10 lần"}
+TAB_GroupReward[3] = {1,{15},300103,10001,"Khiêu chiến tổ đội 15 lần"}
+TAB_GroupReward[4] = {1,{20},300104,10001,"Khiêu chiến tổ đội 20 lần"}
+TAB_GroupReward[5] = {1,{25},300105,10001,"Khiêu chiến tổ đội 25 lần"}
+TAB_GroupReward[6] = {2,{1,1},300201,10002,"0"}
+TAB_GroupReward[7] = {2,{2,3},300202,10002,"0"}
+TAB_GroupReward[8] = {2,{4,5},300203,10002,"0"}
+TAB_GroupReward[9] = {2,{6,10},300204,10002,"0"}
+TAB_GroupReward[10] = {2,{11,20},300205,10002,"0"}
+TAB_GroupReward[11] = {2,{21,50},300206,10002,"0"}
+TAB_GroupReward[12] = {2,{51,100},300207,10002,"0"}
+TAB_GroupReward[13] = {2,{101,99999},300208,10002,"0"}

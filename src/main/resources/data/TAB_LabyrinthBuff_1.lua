@@ -1,0 +1,10 @@
+TAB_LabyrinthBuff = TAB_LabyrinthBuff or {}
+TAB_LabyrinthBuff[-1] = {"u_Attribute","s_AttrDes"}
+TAB_LabyrinthBuff[1] = {{10,50},"HP +%s"}
+TAB_LabyrinthBuff[2] = {{11,50},"Tấn Công +%s"}
+TAB_LabyrinthBuff[3] = {{12,50},"Thủ +%s"}
+TAB_LabyrinthBuff[4] = {{13,50},"Tốc Độ +%s"}
+TAB_LabyrinthBuff[5] = {{111,50},"Trị Liệu +%s"}
+TAB_LabyrinthBuff[6] = {{112,50},"Được Trị Liệu +%s"}
+TAB_LabyrinthBuff[7] = {{109,50},"Tăng S.Thương +%s"}
+TAB_LabyrinthBuff[8] = {{110,50},"Miễn giảm ST +%s"}

@@ -1,0 +1,9 @@
+TAB_OrbmentStarAttribute = TAB_OrbmentStarAttribute or {}
+TAB_OrbmentStarAttribute[-1] = {"Type","u_Orbment","Stars","s_Desc","u_Attributes","u_AllStar"}
+TAB_OrbmentStarAttribute[1] = {1,{1,2,3},3,"Tổng cấp sao Máy Dẫn Lực Loại Cũ đạt 3 sao",{{6,900},{7,90}},{3,5}}
+TAB_OrbmentStarAttribute[2] = {1,{1,2,3},6,"Tổng cấp sao Máy Dẫn Lực Loại Cũ đạt 6 sao",{{6,1350},{7,135}},{6,8}}
+TAB_OrbmentStarAttribute[3] = {1,{1,2,3},9,"Tổng cấp sao Máy Dẫn Lực Loại Cũ đạt 9 sao",{{6,1800},{7,180}},{9,12}}
+TAB_OrbmentStarAttribute[4] = {2,{4,5,6,7},5,"Tổng cấp sao Máy Dẫn Lực loại mới đạt 5 sao",{{6,4320},{7,432}},{5,9}}
+TAB_OrbmentStarAttribute[5] = {2,{4,5,6,7},10,"Tổng cấp sao Máy Dẫn Lực loại mới đạt 10 sao",{{6,6480},{7,648}},{10,14}}
+TAB_OrbmentStarAttribute[6] = {2,{4,5,6,7},15,"Tổng cấp sao Máy Dẫn Lực loại mới đạt 15 sao",{{6,8640},{7,864}},{15,19}}
+TAB_OrbmentStarAttribute[7] = {2,{4,5,6,7},20,"Tổng cấp sao Máy Dẫn Lực loại mới đạt 20 sao",{{6,10800},{7,1080}},{20,25}}

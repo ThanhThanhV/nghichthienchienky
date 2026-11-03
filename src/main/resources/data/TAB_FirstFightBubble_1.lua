@@ -1,0 +1,11 @@
+TAB_FirstFightBubble = TAB_FirstFightBubble or {}
+TAB_FirstFightBubble[-1] = {"s_Content","Time"}
+TAB_FirstFightBubble[1] = {"Kame-Hame-Ha",600}
+TAB_FirstFightBubble[2] = {"Mọi thứ đều trở về con số không",600}
+TAB_FirstFightBubble[3] = {"Hư Trảm",600}
+TAB_FirstFightBubble[4] = {"Railgun",600}
+TAB_FirstFightBubble[5] = {"Nhanh chóng kết thúc, hôm nay là ngày siêu thị giảm giá",600}
+TAB_FirstFightBubble[6] = {"Mùi thật kinh khủng",600}
+TAB_FirstFightBubble[7] = {"Con người vụng về",600}
+TAB_FirstFightBubble[8] = {"Ma Phù {Star Dust Reverie}",600}
+TAB_FirstFightBubble[9] = {"Excalibur",600}

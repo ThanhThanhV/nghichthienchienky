@@ -1,0 +1,12 @@
+TAB_ActivityGiftPack = TAB_ActivityGiftPack or {}
+TAB_ActivityGiftPack[-1] = {"Activityid","Chargeid","s_Name","s_Describe"}
+TAB_ActivityGiftPack[1] = {5003,37,"武藏礼包","5折"}
+TAB_ActivityGiftPack[2] = {5003,40,"小次郎礼包","5折"}
+TAB_ActivityGiftPack[3] = {5003,43,"小霞礼包","5折"}
+TAB_ActivityGiftPack[4] = {5003,46,"小刚礼包","5折"}
+TAB_ActivityGiftPack[5] = {5003,49,"坂木礼包","4.5折"}
+TAB_ActivityGiftPack[6] = {5003,52,"柯拿礼包","4折"}
+TAB_ActivityGiftPack[7] = {5003,55,"希巴礼包","3.5折"}
+TAB_ActivityGiftPack[8] = {5003,58,"菊子礼包","3折"}
+TAB_ActivityGiftPack[9] = {5004,91,"贵族礼包","0.5折"}
+TAB_ActivityGiftPack[10] = {5004,90,"全民礼包","0.3折"}

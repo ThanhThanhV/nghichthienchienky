@@ -1,0 +1,12 @@
+TAB_BilibiliColor = TAB_BilibiliColor or {}
+TAB_BilibiliColor[-1] = {"s_Color","s_Des"}
+TAB_BilibiliColor[1] = {"747474","Bạch"}
+TAB_BilibiliColor[2] = {"20cf9b","Lục"}
+TAB_BilibiliColor[3] = {"49C5ff","Lam"}
+TAB_BilibiliColor[4] = {"BE69FF","橙"}
+TAB_BilibiliColor[5] = {"F69D1E","紫"}
+TAB_BilibiliColor[6] = {"FF2C5E","红"}
+TAB_BilibiliColor[7] = {"FFDE00","金"}
+TAB_BilibiliColor[8] = {"7ac8ff","Lam"}
+TAB_BilibiliColor[9] = {"ff91ec","紫"}
+TAB_BilibiliColor[10] = {"ffaf32","橙"}

@@ -1,0 +1,13 @@
+TAB_ChampionGambling = TAB_ChampionGambling or {}
+TAB_ChampionGambling[-1] = {"u_LeftRatio","LeftOdds","RightOdds"}
+TAB_ChampionGambling[1] = {{91,100},15000,20000}
+TAB_ChampionGambling[2] = {{81,90},15500,19500}
+TAB_ChampionGambling[3] = {{71,80},16000,19000}
+TAB_ChampionGambling[4] = {{61,70},16500,18500}
+TAB_ChampionGambling[5] = {{52,60},17000,18000}
+TAB_ChampionGambling[6] = {{49,51},17500,17500}
+TAB_ChampionGambling[7] = {{40,48},18000,17000}
+TAB_ChampionGambling[8] = {{30,39},18500,16500}
+TAB_ChampionGambling[9] = {{20,29},19000,16000}
+TAB_ChampionGambling[10] = {{10,19},19500,15500}
+TAB_ChampionGambling[11] = {{0,9},20000,15000}

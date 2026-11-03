@@ -1,0 +1,9 @@
+TAB_ActivityHeartenPrice = TAB_ActivityHeartenPrice or {}
+TAB_ActivityHeartenPrice[-1] = {"u_Team","PriceId","PriceType","ShowPrice"}
+TAB_ActivityHeartenPrice[1] = {{1,1,1},1,1,1}
+TAB_ActivityHeartenPrice[2] = {{2,2,2},2,2,1}
+TAB_ActivityHeartenPrice[3] = {{1,1,2},3,3,1}
+TAB_ActivityHeartenPrice[4] = {{3,3,3},4,3,0}
+TAB_ActivityHeartenPrice[5] = {{2,3,3},5,4,0}
+TAB_ActivityHeartenPrice[6] = {{2,2,3},6,4,1}
+TAB_ActivityHeartenPrice[7] = {{1,2,2},7,4,1}

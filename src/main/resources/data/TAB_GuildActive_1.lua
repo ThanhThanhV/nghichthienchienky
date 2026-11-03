@@ -1,0 +1,10 @@
+TAB_GuildActive = TAB_GuildActive or {}
+TAB_GuildActive[-1] = {"s_Name","ResetType","u_Type","Time","ActiveReward","Sourceid"}
+TAB_GuildActive[1] = {"Tăng buff PB Guild",2,{1,0},1,50,5}
+TAB_GuildActive[2] = {"Tăng cấp kỹ năng Guild",1,{2,0},3,10,52}
+TAB_GuildActive[3] = {"Khiêu chiến PB Guild",1,{3,0},3,5,5}
+TAB_GuildActive[4] = {"Tiệm Guild tốn",1,{4,0},2,5,58}
+TAB_GuildActive[5] = {"Xây bằng Vàng",1,{5,1},1,5,4}
+TAB_GuildActive[6] = {"Xây bằng KC",1,{5,2},1,10,4}
+TAB_GuildActive[7] = {"Xây bằng KC Chí Tôn",1,{5,3},1,20,4}
+TAB_GuildActive[8] = {"Phát Lì Xì bất kỳ",1,{6,0},1,20,73}

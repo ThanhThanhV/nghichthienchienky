@@ -1,0 +1,10 @@
+TAB_ActivityEightdays = TAB_ActivityEightdays or {}
+TAB_ActivityEightdays[-1] = {"iconbg","describe","image","icon","effect","s_describe"}
+TAB_ActivityEightdays[1] = {7,4,2,2,0,"Lambda Ngày 2"}
+TAB_ActivityEightdays[2] = {9,4,2,1,26,"Rem Ngày 8"}
+TAB_ActivityEightdays[3] = {7,5,3,1,0,"Rem Ngày 8"}
+TAB_ActivityEightdays[4] = {7,5,3,1,0,"Rem Ngày 8"}
+TAB_ActivityEightdays[5] = {7,5,3,1,0,"Rem Ngày 8"}
+TAB_ActivityEightdays[6] = {7,5,3,1,0,"Rem Ngày 8"}
+TAB_ActivityEightdays[7] = {9,5,3,1,0,"Rem Ngày 8"}
+TAB_ActivityEightdays[8] = {9,5,3,1,26,"Rem Ngày 8"}

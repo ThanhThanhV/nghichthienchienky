@@ -1,0 +1,13 @@
+TAB_Rank = TAB_Rank or {}
+TAB_Rank[-1] = {"RankMax","ColdTime","ShowMax"}
+TAB_Rank[4] = {500,3600,100}
+TAB_Rank[3] = {100,3600,100}
+TAB_Rank[5] = {100,3600,100}
+TAB_Rank[16] = {100,3600,100}
+TAB_Rank[14] = {9999,3600,100}
+TAB_Rank[17] = {9999,3600,100}
+TAB_Rank[18] = {9999,3600,100}
+TAB_Rank[19] = {9999,3600,100}
+TAB_Rank[20] = {9999,3600,100}
+TAB_Rank[13] = {9999,3600,100}
+TAB_Rank[24] = {100,3600,100}

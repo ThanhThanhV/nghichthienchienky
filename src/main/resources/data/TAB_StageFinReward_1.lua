@@ -1,0 +1,15 @@
+TAB_StageFinReward = TAB_StageFinReward or {}
+TAB_StageFinReward[-1] = {"Type","u_Range","u_Reward","Mail"}
+TAB_StageFinReward[1] = {1,{1,1},{{2031,1},{1021,6},{8002,2000},{1149,2}},56}
+TAB_StageFinReward[2] = {1,{2,2},{{2032,1},{1021,4},{8002,1800},{1149,2}},56}
+TAB_StageFinReward[3] = {1,{3,3},{{2033,1},{1021,3},{8002,1600},{1149,2}},56}
+TAB_StageFinReward[4] = {1,{4,5},{{1021,2},{8002,1400},{1149,1}},56}
+TAB_StageFinReward[5] = {1,{6,10},{{1021,1},{8002,1200},{1149,1}},56}
+TAB_StageFinReward[6] = {1,{11,20},{{1021,1},{8002,1000},{1149,1}},56}
+TAB_StageFinReward[7] = {1,{21,50},{{8011,3000},{8002,800},{1149,1}},56}
+TAB_StageFinReward[8] = {1,{51,128},{{8011,2000},{8002,600},{1149,1}},56}
+TAB_StageFinReward[9] = {2,{400},{{8002,18}},0}
+TAB_StageFinReward[10] = {2,{300},{{8002,28}},0}
+TAB_StageFinReward[11] = {2,{200},{{8002,68}},0}
+TAB_StageFinReward[12] = {2,{100},{{8002,88}},0}
+TAB_StageFinReward[13] = {3,{1},{{8011,1}},57}

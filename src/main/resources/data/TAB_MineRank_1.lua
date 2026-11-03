@@ -1,0 +1,11 @@
+TAB_MineRank = TAB_MineRank or {}
+TAB_MineRank[-1] = {"u_Rank","DropID"}
+TAB_MineRank[1] = {{1, 1},233801}
+TAB_MineRank[2] = {{2, 2},233802}
+TAB_MineRank[3] = {{3, 3},233803}
+TAB_MineRank[4] = {{4, 10},233804}
+TAB_MineRank[5] = {{11, 30},233805}
+TAB_MineRank[6] = {{31, 50},233806}
+TAB_MineRank[7] = {{50, 80},233807}
+TAB_MineRank[8] = {{81, 100},233808}
+TAB_MineRank[9] = {{101, 99999},233809}

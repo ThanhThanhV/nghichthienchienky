@@ -1,0 +1,9 @@
+TAB_CrossPvpRankReward = TAB_CrossPvpRankReward or {}
+TAB_CrossPvpRankReward[-1] = {"u_Rank","Drop","ThumbsupDrop"}
+TAB_CrossPvpRankReward[1] = {{1,1},43201,43103}
+TAB_CrossPvpRankReward[2] = {{2,2},43202,43103}
+TAB_CrossPvpRankReward[3] = {{3,3},43203,43103}
+TAB_CrossPvpRankReward[4] = {{4,10},43204,43103}
+TAB_CrossPvpRankReward[5] = {{10,50},43205,43103}
+TAB_CrossPvpRankReward[6] = {{51,100},43206,43103}
+TAB_CrossPvpRankReward[7] = {{101,99999},43207,43103}

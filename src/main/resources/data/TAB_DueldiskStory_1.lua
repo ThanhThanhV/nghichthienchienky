@@ -1,0 +1,9 @@
+TAB_DueldiskStory = TAB_DueldiskStory or {}
+TAB_DueldiskStory[-1] = {"StoryGroup","s_Des","s_RoleName","RoleDrawing","DrawingDir"}
+TAB_DueldiskStory[1] = {1,"Là các ngươi đang tìm cách để trở thành Người Quyết Đấu ư?","Kaiba Seto",22,1}
+TAB_DueldiskStory[2] = {1,"Ta là Kaiba Seto, chủ tịch của tập đoàn Kaiba, người sáng lập Duel Disk","Kaiba Seto",22,1}
+TAB_DueldiskStory[3] = {1,"Đến đây, đánh bại ta, cho ta thấy giác ngộ của các ngươi","Kaiba Seto",22,1}
+TAB_DueldiskStory[4] = {2,"Hừ, quả nhiên có chút thực lực","Kaiba Seto",22,1}
+TAB_DueldiskStory[5] = {2,"Sức mạnh của các ngươi đã đủ để trở thành Người Quyết Đấu","Kaiba Seto",22,1}
+TAB_DueldiskStory[6] = {2,"Hãy cầm lấy–bảo vật xuyên suốt quá khứ và tương lai, kết tinh công nghệ của Tập đoàn Kaiba–Duel Disk!","Kaiba Seto",22,1}
+TAB_DueldiskStory[7] = {2,"Hi vọng nó có thể giúp ích cho hành trình trong tương lai của các ngươi","Kaiba Seto",22,1}

@@ -1,0 +1,10 @@
+TAB_GradeName = TAB_GradeName or {}
+TAB_GradeName[-1] = {"s_Name"}
+TAB_GradeName[1] = {"C"}
+TAB_GradeName[2] = {"B"}
+TAB_GradeName[3] = {"A"}
+TAB_GradeName[4] = {"S"}
+TAB_GradeName[5] = {"S+"}
+TAB_GradeName[6] = {"SS"}
+TAB_GradeName[7] = {"SS+"}
+TAB_GradeName[8] = {"SSS"}

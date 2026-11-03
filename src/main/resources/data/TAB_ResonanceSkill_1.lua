@@ -1,0 +1,10 @@
+TAB_ResonanceSkill = TAB_ResonanceSkill or {}
+TAB_ResonanceSkill[-1] = {"u_HeroTypeA","u_HeroTypeB","HeroGroupSkillA","HeroGroupSkillB"}
+TAB_ResonanceSkill[1] = {{1,3},{2,4},10902,10903}
+TAB_ResonanceSkill[2] = {{1,3},{2,4},10905,10914}
+TAB_ResonanceSkill[3] = {{1,3},{2,4},10917,10922}
+TAB_ResonanceSkill[4] = {{1,3},{2,4},10924,10918}
+TAB_ResonanceSkill[5] = {{2,4},{1,3},10903,10902}
+TAB_ResonanceSkill[6] = {{2,4},{1,3},10914,10905}
+TAB_ResonanceSkill[7] = {{2,4},{1,3},10922,10917}
+TAB_ResonanceSkill[8] = {{2,4},{1,3},10918,10924}

@@ -1,0 +1,10 @@
+TAB_ShowLucky = TAB_ShowLucky or {}
+TAB_ShowLucky[-1] = {"s_ShowPro"}
+TAB_ShowLucky[1] = {"Mảnh Thần Minh 4 sao|0.26%|Mảnh Ác Ma 4 sao|0.26%|Mảnh Ngẫu Nhiên 4 sao|1.56%|Mảnh Ngẫu Nhiên 5 sao|0.02%|Angewomon|0.02%|Krato|0.02%|Titania|0.02%|Vàng|27.3%|EXP|27%|Vé Triệu Hồi Thường|5.5%|Mảnh Thần Khí|6.1%|Lệnh Xuyên Không|4.7%|Ấn Ký I|3.62%|Mảnh Ấn Ký|11.18%|Giày Chính Nghĩa|2.23%|Mũ Chính Nghĩa|2.23%|Đao Chính Nghĩa|2.23%|Áo Choàng Chính Nghĩa|2.23%|Kiếm Kỵ Sĩ|0.83%|Áo Choàng Kỵ Sĩ|0.83%|Mũ Kỵ Sĩ|0.83%|Giày Kỵ Sĩ|0.83%|Kiếm Hợp Kim|0.16%"}
+TAB_ShowLucky[2] = {"Mảnh Thần Minh 4 sao|3.7%|Mảnh Ác Ma 4 sao|3.7%|Mảnh Ngẫu Nhiên 4 sao|0%|Mảnh Thần Minh 5 sao|0.25%|Mảnh Ác Ma 5 sao|0.25%|Mảnh Ngẫu Nhiên 5 sao|1%|Diablo|0.55%|Illya|0.55%|Saitama|0.28%|Tsunade|0.28%|Shana|0.28%|Akemi Homura|0.18%|Kaname Madoka|0.19%|Vàng|27%|Đá Thần Ấn|3.96%|Nguồn Cội Thần Kỹ|13.24%|Bảo Thạch Ma Lực|8.1%|Ấn Ký II|27%|Quyền Trượng Tử Kim|0.82%|Áo Choàng Tử Kim|0.82%|Mũ Tử Kim|0.82%|Giày Tử Kim|0.82%|Sách Ma Thuật Tân Nhật|0.22%|Đao Ám Dạ|1.59%|Giày Ám Dạ|1.59%|Áo Choàng Ám Dạ|1.59%|Băng Đô Đỏ|0.61%|Áo Choàng Đỏ|0.62%"}
+TAB_ShowLucky[1020] = {"Mảnh 4 sao|2%|Mảnh 5 sao|2%|Đá Thánh Văn|40%|Vàng|20%|Vật phẩm khác|35%|Mảnh Skin|1%|"}
+TAB_ShowLucky[6004] = {"Mảnh 4 sao|5%|Mảnh 5 sao|15%|Mảnh Ấn Ký|15%|Mảnh Thần Khí|30%|Vật phẩm khác|30%|Thưởng lớn|5%|"}
+TAB_ShowLucky[6005] = {"Vàng|10%|Mảnh Ấn Ký|4%|Mảnh Thần Khí|25%|Đá Tiến Bậc|10%|Vật phẩm khác|50%|UP anh hùng|1%|"}
+TAB_ShowLucky[6003] = {"Mảnh 4 sao|20%|Mảnh Ấn Ký|20%|Mảnh Thần Khí|20%|Vật phẩm khác|39%|Quẻ Cực Phẩm|1%|"}
+TAB_ShowLucky[6008] = {"Anh hùng 5 sao|10%|Anh hùng 4 sao|20%|Anh hùng 3 sao|70%|"}
+TAB_ShowLucky[1067] = {"Mảnh 3 sao|10%|Mảnh 4 sao|3%|Mảnh 5 sao|3%|Vé Triệu Hồi Thường|5%|Vé Triệu Hồi Cao Cấp|5%|Vàng|20%|Đá Tiến Bậc|5%|Mảnh Thần Khí|15%|Lệnh Xuyên Không|5%|Vé Tầm Bảo|5%|Mảnh Ấn Ký|5%|EXP Anh Hùng|10%|Kim Cương|3%|Quà Bạn Bè|5%|Thủy Tinh May Mắn|1%|"}

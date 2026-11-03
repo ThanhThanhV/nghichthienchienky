@@ -1,0 +1,12 @@
+TAB_StandAttQuality = TAB_StandAttQuality or {}
+TAB_StandAttQuality[-1] = {"Level","s_Des","u_Attr","Weight"}
+TAB_StandAttQuality[1] = {1,"Kém ",{{6,1050},{7,58},{120,8}},1000}
+TAB_StandAttQuality[2] = {1,"Kém ",{{6,1208},{7,67},{120,9}},1000}
+TAB_StandAttQuality[3] = {2,"Cấp trung",{{6,1260},{7,70},{120,10}},1000}
+TAB_StandAttQuality[4] = {2,"Cấp trung",{{6,1313},{7,73},{120,10}},1000}
+TAB_StandAttQuality[5] = {2,"Cấp trung",{{6,1418},{7,78},{120,11}},1000}
+TAB_StandAttQuality[6] = {2,"Cấp trung",{{6,1470},{7,81},{120,11}},1000}
+TAB_StandAttQuality[7] = {3,"Ưu Tú",{{6,1575},{7,87},{120,12}},1000}
+TAB_StandAttQuality[8] = {3,"Ưu Tú",{{6,1680},{7,93},{120,13}},1000}
+TAB_StandAttQuality[9] = {3,"Ưu Tú",{{6,1785},{7,99},{120,14}},1000}
+TAB_StandAttQuality[10] = {4,"Hoàn Mỹ",{{6,2100},{7,116},{120,16}},1000}

@@ -1,0 +1,10 @@
+TAB_ConquerEmploy = TAB_ConquerEmploy or {}
+TAB_ConquerEmploy[-1] = {"u_Employ"}
+TAB_ConquerEmploy[20001] = {{22,23,24}}
+TAB_ConquerEmploy[20002] = {{19,20,21}}
+TAB_ConquerEmploy[20003] = {{16,17,18}}
+TAB_ConquerEmploy[20004] = {{13,14,15}}
+TAB_ConquerEmploy[20005] = {{10,11,12}}
+TAB_ConquerEmploy[20006] = {{7,8,9}}
+TAB_ConquerEmploy[20007] = {{4,5,6}}
+TAB_ConquerEmploy[20008] = {{1,2,3}}

@@ -1,0 +1,17 @@
+TAB_ExtraInterval = TAB_ExtraInterval or {}
+TAB_ExtraInterval[-1] = {"Channel","u_Level","ExtraInterval","Vip"}
+TAB_ExtraInterval[1] = {2,{1,100},290,4}
+TAB_ExtraInterval[2] = {2,{101,118},170,4}
+TAB_ExtraInterval[3] = {2,{119,130},80,4}
+TAB_ExtraInterval[4] = {2,{131,160},10,4}
+TAB_ExtraInterval[5] = {2,{161,9999},0,4}
+TAB_ExtraInterval[6] = {1,{1,148},45,4}
+TAB_ExtraInterval[7] = {1,{149,160},15,4}
+TAB_ExtraInterval[8] = {1,{161,9999},0,4}
+TAB_ExtraInterval[9] = {3,{1,100},17,4}
+TAB_ExtraInterval[10] = {3,{101,118},12,4}
+TAB_ExtraInterval[11] = {3,{119,130},7,4}
+TAB_ExtraInterval[12] = {3,{131,9999},0,4}
+TAB_ExtraInterval[13] = {6,{1,148},50,4}
+TAB_ExtraInterval[14] = {6,{149,160},20,4}
+TAB_ExtraInterval[15] = {6,{161,9999},0,4}

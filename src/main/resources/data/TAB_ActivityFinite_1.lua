@@ -1,0 +1,14 @@
+TAB_ActivityFinite = TAB_ActivityFinite or {}
+TAB_ActivityFinite[-1] = {"ShowHero"}
+TAB_ActivityFinite[58] = {53046}
+TAB_ActivityFinite[59] = {53044}
+TAB_ActivityFinite[60] = {51043}
+TAB_ActivityFinite[298] = {51047}
+TAB_ActivityFinite[299] = {51045}
+TAB_ActivityFinite[300] = {51049}
+TAB_ActivityFinite[498] = {51047}
+TAB_ActivityFinite[499] = {51045}
+TAB_ActivityFinite[500] = {51049}
+TAB_ActivityFinite[978] = {51047}
+TAB_ActivityFinite[979] = {51049}
+TAB_ActivityFinite[980] = {51042}

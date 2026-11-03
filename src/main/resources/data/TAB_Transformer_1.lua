@@ -1,0 +1,10 @@
+TAB_Transformer = TAB_Transformer or {}
+TAB_Transformer[-1] = {"VersionId","u_Hero"}
+TAB_Transformer[1] = {1,{11407,14406,13405,23405,14404}}
+TAB_Transformer[2] = {2,{12516,44403,42402,44506,54506}}
+TAB_Transformer[3] = {3,{41511,43501,43503,44507,41512}}
+TAB_Transformer[4] = {4,{53402,54401,31513,41403,33508}}
+TAB_Transformer[5] = {5,{22404,23509,31406,31511,11514}}
+TAB_Transformer[6] = {6,{32407,44401,42510,14510,54514}}
+TAB_Transformer[7] = {7,{52404,23508,11513,51509,31510}}
+TAB_Transformer[8] = {8,{31512,24406,22514,24510,42509}}

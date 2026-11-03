@@ -1,0 +1,11 @@
+TAB_UnrealPrice = TAB_UnrealPrice or {}
+TAB_UnrealPrice[-1] = {"PriceType","PriceNum","u_Reward","Mail"}
+TAB_UnrealPrice[1] = {1,1,{{8040,1500}},45}
+TAB_UnrealPrice[2] = {1,2,{{8040,300}},45}
+TAB_UnrealPrice[3] = {1,3,{{8040,300}},45}
+TAB_UnrealPrice[4] = {2,1,{{8040,500},{8002,50}},46}
+TAB_UnrealPrice[5] = {2,2,{{8040,1000},{8002,100}},46}
+TAB_UnrealPrice[6] = {2,3,{{8040,1500},{8002,150}},46}
+TAB_UnrealPrice[7] = {2,4,{{8040,2000},{8002,200}},46}
+TAB_UnrealPrice[8] = {2,5,{{8040,2500},{8002,250}},46}
+TAB_UnrealPrice[9] = {3,1,{{8040,1}},47}

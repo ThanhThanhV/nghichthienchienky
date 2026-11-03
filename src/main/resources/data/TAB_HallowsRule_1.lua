@@ -1,0 +1,9 @@
+TAB_HallowsRule = TAB_HallowsRule or {}
+TAB_HallowsRule[-1] = {"s_Name","Icon","u_NeedHero","s_Des","s_DesShow","JumpItem"}
+TAB_HallowsRule[1] = {"Thánh Văn Khoa Học",1,{1,5,1},"Mở khóa Thánh Văn này để tăng thuộc tính cho Anh Hùng Khoa Học phe ta","Thánh Văn Thần Bí chứa sức mạnh không thể lý giải, có thể cộng hưởng với anh hùng cùng phe",1600051}
+TAB_HallowsRule[2] = {"Thánh Văn Ma Pháp",2,{2,5,1},"Mở khóa Thánh Văn này để tăng thuộc tính cho Anh Hùng Ma Pháp phe ta","Thánh Văn Thần Bí chứa sức mạnh không thể lý giải, có thể cộng hưởng với anh hùng cùng phe",1600052}
+TAB_HallowsRule[3] = {"Thánh Văn Chiến Đấu",3,{3,5,1},"Mở khóa Thánh Văn này để tăng thuộc tính cho Anh Hùng Chiến Đấu phe ta","Thánh Văn Thần Bí chứa sức mạnh không thể lý giải, có thể cộng hưởng với anh hùng cùng phe",1600053}
+TAB_HallowsRule[4] = {"Thánh Văn Thần Minh",4,{4,5,1},"Mở khóa Thánh Văn này để tăng thuộc tính cho Anh Hùng Thần phe ta","Thánh Văn Thần Bí chứa sức mạnh không thể lý giải, có thể cộng hưởng với anh hùng cùng phe",1600054}
+TAB_HallowsRule[5] = {"Thánh Văn Ác Ma",5,{5,5,1},"Mở khóa Thánh Văn này để tăng thuộc tính cho Anh Hùng Ma phe ta","Thánh Văn Thần Bí chứa sức mạnh không thể lý giải, có thể cộng hưởng với anh hùng cùng phe",1600055}
+TAB_HallowsRule[6] = {"Chiếm giữ vị trí",0,{},"Vui lòng đợi","Vui lòng đợi",0}
+TAB_HallowsRule[7] = {"Thánh Văn Hỗn Loạn",7,{},"Mở khóa Thánh Văn này cung cấp thuộc tính tăng thêm cho anh hùng Hỗn Loạn","Thánh Văn Thần Bí chứa sức mạnh không thể lý giải, có thể cộng hưởng với anh hùng cùng phe",0}

@@ -1,0 +1,15 @@
+TAB_DailyMission = TAB_DailyMission or {}
+TAB_DailyMission[-1] = {"Open","Type","s_Name","u_Param","Progress","Jumpid","Enliven","Dropid","Order"}
+TAB_DailyMission[1] = {6,1,"Đăng nhập",{0},1,1,5,29001,1}
+TAB_DailyMission[2] = {6,2,"Tiến hành triệu hồi 3 lần",{0},3,6,10,29002,2}
+TAB_DailyMission[3] = {8,3,"Tiến hành khiêu chiến Đấu Trường 3 lần",{0},3,8,15,29003,3}
+TAB_DailyMission[4] = {6,4,"Tiến hành tốc chiến 5 lần",{0},5,15,15,29004,4}
+TAB_DailyMission[5] = {16,5,"Vượt ải và càn quét Tháp Vô Tận 3 lần",{0},3,2,15,29005,5}
+TAB_DailyMission[6] = {18,6,"Khiêu chiến hoặc càn quét PB Guild 3 lần",{0},3,5,15,29006,6}
+TAB_DailyMission[7] = {18,7,"Tiến hành xây dựng Guild 1 lần",{0},1,4,10,29007,7}
+TAB_DailyMission[8] = {25,8,"Tham gia Khiêu Chiến Giới Hạn",{0},1,22,10,29008,8}
+TAB_DailyMission[9] = {12,9,"Nhận nhiệm vụ Lịch Luyện 3 lần",{0},3,11,10,29009,9}
+TAB_DailyMission[10] = {15,10,"Hoàn thành PB Ngày 2 lần",{0},2,45,10,29010,10}
+TAB_DailyMission[11] = {6,21,"Ghép trang bị 1 lần",{0},1,9,10,29011,11}
+TAB_DailyMission[12] = {6,12,"Tặng bạn bè điểm tình bạn 5 lần",{0},5,35,5,29012,12}
+TAB_DailyMission[13] = {6,58,"Làm mới Tiệm 2 lần",{0},2,21,5,29013,13}

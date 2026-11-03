@@ -1,0 +1,13 @@
+TAB_BossLevelReward = TAB_BossLevelReward or {}
+TAB_BossLevelReward[-1] = {"Reward"}
+TAB_BossLevelReward[2000] = {30011}
+TAB_BossLevelReward[5000] = {30012}
+TAB_BossLevelReward[10000] = {30001}
+TAB_BossLevelReward[20000] = {30002}
+TAB_BossLevelReward[30000] = {30003}
+TAB_BossLevelReward[50000] = {30004}
+TAB_BossLevelReward[70000] = {30005}
+TAB_BossLevelReward[100000] = {30006}
+TAB_BossLevelReward[130000] = {30007}
+TAB_BossLevelReward[180000] = {30008}
+TAB_BossLevelReward[230000] = {30009}

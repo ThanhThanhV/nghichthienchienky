@@ -1,0 +1,11 @@
+TAB_GenMountainBuff = TAB_GenMountainBuff or {}
+TAB_GenMountainBuff[-1] = {"AttType","u_StarSkill"}
+TAB_GenMountainBuff[1] = {1,{{1,7000101},{2,7000102},{3,7000103}}}
+TAB_GenMountainBuff[2] = {1,{{1,7000101},{2,7000102},{3,7000103}}}
+TAB_GenMountainBuff[3] = {1,{{1,7000101},{2,7000102},{3,7000103}}}
+TAB_GenMountainBuff[4] = {2,{{1,7000104},{2,7000105},{3,7000106}}}
+TAB_GenMountainBuff[5] = {2,{{1,7000104},{2,7000105},{3,7000106}}}
+TAB_GenMountainBuff[6] = {2,{{1,7000104},{2,7000105},{3,7000106}}}
+TAB_GenMountainBuff[7] = {3,{{1,7000107},{2,7000108},{3,7000109}}}
+TAB_GenMountainBuff[8] = {3,{{1,7000107},{2,7000108},{3,7000109}}}
+TAB_GenMountainBuff[9] = {3,{{1,7000107},{2,7000108},{3,7000109}}}

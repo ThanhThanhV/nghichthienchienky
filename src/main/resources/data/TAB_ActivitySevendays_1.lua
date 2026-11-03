@@ -1,0 +1,9 @@
+TAB_ActivitySevendays = TAB_ActivitySevendays or {}
+TAB_ActivitySevendays[-1] = {"iconbg","describe","image","icon","s_describe"}
+TAB_ActivitySevendays[1] = {7,5,15,2,"宝可梦遗留"}
+TAB_ActivitySevendays[2] = {9,5,15,1,"宝可梦遗留"}
+TAB_ActivitySevendays[3] = {7,6,14,1,"宝可梦遗留"}
+TAB_ActivitySevendays[4] = {7,6,14,1,"宝可梦遗留"}
+TAB_ActivitySevendays[5] = {7,6,14,1,"宝可梦遗留"}
+TAB_ActivitySevendays[6] = {7,6,14,1,"宝可梦遗留"}
+TAB_ActivitySevendays[7] = {9,6,14,1,"宝可梦遗留"}

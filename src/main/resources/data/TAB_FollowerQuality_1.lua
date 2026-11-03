@@ -1,0 +1,9 @@
+TAB_FollowerQuality = TAB_FollowerQuality or {}
+TAB_FollowerQuality[-1] = {"Quality","s_Desc","s_Color"}
+TAB_FollowerQuality[1] = {1,"E","BFBFBF"}
+TAB_FollowerQuality[2] = {2,"D","20cf9b"}
+TAB_FollowerQuality[3] = {3,"C","49C5ff"}
+TAB_FollowerQuality[4] = {4,"B","BE69FF"}
+TAB_FollowerQuality[5] = {5,"A","F69D1E"}
+TAB_FollowerQuality[6] = {6,"S","FF2C5E"}
+TAB_FollowerQuality[7] = {7,"SS","FFFF00"}

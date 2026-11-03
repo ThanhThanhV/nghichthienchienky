@@ -1,0 +1,10 @@
+TAB_ChessRank = TAB_ChessRank or {}
+TAB_ChessRank[-1] = {"u_Rank","PriceDropID"}
+TAB_ChessRank[1] = {{1,1},323001}
+TAB_ChessRank[2] = {{2,2},323002}
+TAB_ChessRank[3] = {{3,3},323003}
+TAB_ChessRank[4] = {{4,10},323004}
+TAB_ChessRank[5] = {{11,20},323005}
+TAB_ChessRank[6] = {{21,50},323006}
+TAB_ChessRank[7] = {{51,200},323007}
+TAB_ChessRank[8] = {{201,9999},323008}

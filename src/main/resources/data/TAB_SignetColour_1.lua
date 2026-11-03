@@ -1,0 +1,14 @@
+TAB_SignetColour = TAB_SignetColour or {}
+TAB_SignetColour[-1] = {"ColourID","Colour","Weight"}
+TAB_SignetColour[1] = {1105,3,4912}
+TAB_SignetColour[2] = {1105,4,5000}
+TAB_SignetColour[3] = {1105,5,80}
+TAB_SignetColour[4] = {1105,6,8}
+TAB_SignetColour[5] = {1104,2,4920}
+TAB_SignetColour[6] = {1104,3,4500}
+TAB_SignetColour[7] = {1104,4,500}
+TAB_SignetColour[8] = {1104,5,80}
+TAB_SignetColour[9] = {1103,2,7500}
+TAB_SignetColour[10] = {1103,3,2000}
+TAB_SignetColour[11] = {1103,4,500}
+TAB_SignetColour[12] = {1107,6,10000}

@@ -1,0 +1,15 @@
+TAB_ArenaAwardEveryday = TAB_ArenaAwardEveryday or {}
+TAB_ArenaAwardEveryday[-1] = {'RankMin', 'RankMax', 'u_Awards'}
+TAB_ArenaAwardEveryday[1] = {1, 1, {{8002,320},{8009,3000}}}
+TAB_ArenaAwardEveryday[2] = {2, 2, {{8002,260},{8009,2700}}}
+TAB_ArenaAwardEveryday[3] = {3, 3, {{8002,200},{8009,2400}}}
+TAB_ArenaAwardEveryday[4] = {4, 10, {{8002,180},{8009,2200}}}
+TAB_ArenaAwardEveryday[5] = {11, 20, {{8002,150},{8009,2000}}}
+TAB_ArenaAwardEveryday[6] = {21, 50, {{8002,120},{8009,1800}}}
+TAB_ArenaAwardEveryday[7] = {51, 100, {{8002,100},{8009,1600}}}
+TAB_ArenaAwardEveryday[8] = {101, 500, {{8002,80},{8009,1400}}}
+TAB_ArenaAwardEveryday[9] = {501, 1000, {{8002,70},{8009,1200}}}
+TAB_ArenaAwardEveryday[10] = {1001, 1500, {{8002,60},{8009,1000}}}
+TAB_ArenaAwardEveryday[11] = {1501, 2000, {{8002,50},{8009,900}}}
+TAB_ArenaAwardEveryday[12] = {2001, 2500, {{8002,40},{8009,800}}}
+TAB_ArenaAwardEveryday[13] = {2501, 3000, {{8002,30},{8009,600}}}

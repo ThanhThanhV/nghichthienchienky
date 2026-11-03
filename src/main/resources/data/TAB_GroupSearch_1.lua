@@ -1,0 +1,11 @@
+TAB_GroupSearch = TAB_GroupSearch or {}
+TAB_GroupSearch[-1] = {"ScoreMin","ScoreMax","Weight"}
+TAB_GroupSearch[1] = {1,31,4050}
+TAB_GroupSearch[2] = {-20,0,3150}
+TAB_GroupSearch[3] = {31,60,4050}
+TAB_GroupSearch[4] = {-60,-21,2250}
+TAB_GroupSearch[5] = {61,120,2700}
+TAB_GroupSearch[6] = {-200,-61,500}
+TAB_GroupSearch[7] = {121,240,600}
+TAB_GroupSearch[8] = {-9999,-201,50}
+TAB_GroupSearch[9] = {241,99999,60}

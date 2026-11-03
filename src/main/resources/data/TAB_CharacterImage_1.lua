@@ -1,0 +1,13 @@
+TAB_CharacterImage = TAB_CharacterImage or {}
+TAB_CharacterImage[-1] = {"s_Name","Configure","Quality","SpeciesLv","NeedItemNum","InitialStar","s_Unlock","s_Describe"}
+TAB_CharacterImage[1] = {"无需翻译",1,3,3,1,1,"无需翻译","无需翻译"}
+TAB_CharacterImage[2] = {"无需翻译",2,3,3,2,1,"无需翻译","无需翻译"}
+TAB_CharacterImage[3] = {"无需翻译",3,3,3,3,0,"无需翻译","无需翻译"}
+TAB_CharacterImage[4] = {"无需翻译",6,3,3,4,0,"无需翻译","无需翻译"}
+TAB_CharacterImage[5] = {"无需翻译",4,4,4,5,0,"无需翻译","无需翻译"}
+TAB_CharacterImage[6] = {"无需翻译",5,4,4,6,0,"无需翻译","无需翻译"}
+TAB_CharacterImage[7] = {"无需翻译",7,4,4,7,0,"无需翻译","无需翻译"}
+TAB_CharacterImage[8] = {"无需翻译",8,5,5,8,0,"无需翻译","无需翻译"}
+TAB_CharacterImage[9] = {"无需翻译",9,5,5,9,0,"无需翻译","无需翻译"}
+TAB_CharacterImage[10] = {"无需翻译",10,5,5,10,0,"无需翻译","无需翻译"}
+TAB_CharacterImage[11] = {"无需翻译",11,6,6,11,0,"无需翻译","无需翻译"}

@@ -1,0 +1,10 @@
+TAB_GoldWeight = TAB_GoldWeight or {}
+TAB_GoldWeight[-1] = {"Weight"}
+TAB_GoldWeight[2] = {100}
+TAB_GoldWeight[3] = {100}
+TAB_GoldWeight[4] = {100}
+TAB_GoldWeight[5] = {100}
+TAB_GoldWeight[6] = {100}
+TAB_GoldWeight[7] = {100}
+TAB_GoldWeight[8] = {100}
+TAB_GoldWeight[9] = {100}

@@ -1,0 +1,11 @@
+TAB_WarArenaReward = TAB_WarArenaReward or {}
+TAB_WarArenaReward[-1] = {"RankMin","RankMax","WinDropId","LoseDropId","FightGround"}
+TAB_WarArenaReward[1] = {1,1,15320,15321,5002}
+TAB_WarArenaReward[2] = {2,2,15320,15321,5002}
+TAB_WarArenaReward[3] = {3,3,15320,15321,5002}
+TAB_WarArenaReward[4] = {4,10,15320,15321,5002}
+TAB_WarArenaReward[5] = {11,50,15320,15321,5002}
+TAB_WarArenaReward[6] = {51,100,15320,15321,5002}
+TAB_WarArenaReward[7] = {101,300,15320,15321,5002}
+TAB_WarArenaReward[8] = {301,1000,15320,15321,5002}
+TAB_WarArenaReward[9] = {1001,2000,15320,15321,5002}

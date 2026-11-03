@@ -1,0 +1,11 @@
+TAB_DuelPrice = TAB_DuelPrice or {}
+TAB_DuelPrice[-1] = {"u_Rank","PriceDropID"}
+TAB_DuelPrice[1] = {{1,1},321001}
+TAB_DuelPrice[2] = {{2,2},321002}
+TAB_DuelPrice[3] = {{3,3},321003}
+TAB_DuelPrice[4] = {{4,5},321004}
+TAB_DuelPrice[5] = {{6,10},321005}
+TAB_DuelPrice[6] = {{11,20},321006}
+TAB_DuelPrice[7] = {{21,50},321007}
+TAB_DuelPrice[8] = {{51,100},321008}
+TAB_DuelPrice[9] = {{101,9999},321009}

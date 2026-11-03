@@ -1,0 +1,11 @@
+TAB_PvpRank = TAB_PvpRank or {}
+TAB_PvpRank[-1] = {"s_Name","Score","RewardEveryday","RewardEnd","RewardTap","WinHonour","LoseHonour","ReScore","Icon","ShowPic"}
+TAB_PvpRank[1] = {"Nhập môn",0,600001,610001,101010,10,5,1000,9,9}
+TAB_PvpRank[2] = {"Kurogane",1200,600002,610002,101010,15,8,1200,8,8}
+TAB_PvpRank[3] = {"Đồng",1400,600003,610003,101010,18,10,1200,7,7}
+TAB_PvpRank[4] = {"Bạc",1600,600004,610004,101010,18,10,1200,6,6}
+TAB_PvpRank[5] = {"Vàng",1800,600005,610005,101010,20,11,1250,5,5}
+TAB_PvpRank[6] = {"Bạch kim",2000,600006,610006,101010,20,11,1300,4,4}
+TAB_PvpRank[7] = {"Kim Cương",2200,600007,610007,101010,22,12,1400,3,3}
+TAB_PvpRank[8] = {"Chí tôn",2400,600008,610008,101010,24,14,1500,2,2}
+TAB_PvpRank[9] = {"Vương Giả",2600,600009,610009,101010,25,15,1600,1,1}

@@ -1,0 +1,15 @@
+TAB_GroupMenu = TAB_GroupMenu or {}
+TAB_GroupMenu[-1] = {"Type","Param"}
+TAB_GroupMenu[1] = {1,0}
+TAB_GroupMenu[2] = {1,500000}
+TAB_GroupMenu[3] = {1,1000000}
+TAB_GroupMenu[4] = {1,1500000}
+TAB_GroupMenu[5] = {1,2000000}
+TAB_GroupMenu[6] = {1,2500000}
+TAB_GroupMenu[7] = {1,3000000}
+TAB_GroupMenu[8] = {2,0}
+TAB_GroupMenu[9] = {2,80}
+TAB_GroupMenu[10] = {2,100}
+TAB_GroupMenu[11] = {2,120}
+TAB_GroupMenu[12] = {2,140}
+TAB_GroupMenu[13] = {2,160}

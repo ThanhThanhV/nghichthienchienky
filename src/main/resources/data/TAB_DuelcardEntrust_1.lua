@@ -1,0 +1,9 @@
+TAB_DuelcardEntrust = TAB_DuelcardEntrust or {}
+TAB_DuelcardEntrust[-1] = {"Item","GroupId","Weight","FloorNum","FloorId","Time","SimpleShop","Order"}
+TAB_DuelcardEntrust[1] = {3501,1,8750,0,1,14400,3501,1}
+TAB_DuelcardEntrust[2] = {3501,2,1250,0,0,14400,3501,1}
+TAB_DuelcardEntrust[4] = {3502,1,6300,0,0,21600,0,2}
+TAB_DuelcardEntrust[5] = {3502,2,2850,0,0,21600,0,2}
+TAB_DuelcardEntrust[6] = {3502,3,550,0,0,21600,0,2}
+TAB_DuelcardEntrust[7] = {3503,2,9722,10,3,28800,0,3}
+TAB_DuelcardEntrust[8] = {3503,3,278,0,0,28800,0,3}

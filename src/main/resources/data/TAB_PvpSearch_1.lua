@@ -1,0 +1,17 @@
+TAB_PvpSearch = TAB_PvpSearch or {}
+TAB_PvpSearch[-1] = {"ScoreMin","ScoreMax","Weight"}
+TAB_PvpSearch[1] = {-50,50,4000}
+TAB_PvpSearch[2] = {-100,100,3000}
+TAB_PvpSearch[3] = {-200,200,2000}
+TAB_PvpSearch[4] = {-300,300,1000}
+TAB_PvpSearch[5] = {-400,400,100}
+TAB_PvpSearch[6] = {-500,500,100}
+TAB_PvpSearch[7] = {-600,600,100}
+TAB_PvpSearch[8] = {-700,700,100}
+TAB_PvpSearch[9] = {-800,800,100}
+TAB_PvpSearch[10] = {-1000,1000,100}
+TAB_PvpSearch[11] = {-2000,2000,100}
+TAB_PvpSearch[12] = {-3000,3000,100}
+TAB_PvpSearch[13] = {-4000,4000,100}
+TAB_PvpSearch[14] = {-5000,5000,100}
+TAB_PvpSearch[15] = {-10000,10000,100}

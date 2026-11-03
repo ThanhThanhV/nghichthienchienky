@@ -1,0 +1,7 @@
+TAB_Chapter = TAB_Chapter or {}
+TAB_Chapter[-1] = {"s_Name","MapID","u_MonsterShow","s_Des"}
+TAB_Chapter[1] = {"Đô thị",1,{32407,54401,22404,14406,11407,53402},"Những truyền thuyết thành thị được truyền bá rộng rãi trong trẻ em không hề hư cấu, những cô gái đến từ địa ngục thường không bắt mắt cho lắm, và những Hiệp Hội Anh Hùng âm thầm chiến đấu với những kẻ lạ mặt và bảo vệ loài người là có thật."}
+TAB_Chapter[2] = {"Thảo nguyên",2,{13405,44401,44403,22407,52404,14404},"Khu vực thảo nguyên gần thị trấn là nơi sinh vật và quái vật cấp thấp trú ngụ, và thường trở thành khu vực luyện tập cho các Học viên mới tập thử kỹ năng, nhưng đôi lúc sẽ có ngoại lệ khi quái vật BOSS được triệu hồi."}
+TAB_Chapter[3] = {"Sa mạc",3,{31512,31513,22513,51508,44508,12515},"Một số người đi sâu vào lăng mộ bị lãng quên, tìm kiếm kho báu mà họ tin rằng được chôn trong đó, còn có một nhóm người trở thành lính đánh thuê, làm việc lấy tiền, và sau đó biến mất trong bãi cát vàng không có pháp luật."}
+TAB_Chapter[4] = {"Thung lũng",4,{42509,13509,12516,21512,44507,22514},"Đầu Bí Ngô ẩn trong bóng tối, đây có phải là một bữa tiệc Halloween? Hiệp hội tổ chức những người có khả năng trừ linh phụ trách tịnh hóa vùng đất này, đồng thời mời các thợ săn tiền thưởng thực hiện nhiệm vụ Mạo Hiểm."}
+TAB_Chapter[5] = {"Băng Đảo",5,{11513,31511,44506,14510,43501,51502},"Trong thế giới băng lửa khủng khiếp, bạn chỉ có thể bước đi liên tục, không thể dừng lại."}

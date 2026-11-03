@@ -1,0 +1,13 @@
+TAB_ActivityLotteryTimes = TAB_ActivityLotteryTimes or {}
+TAB_ActivityLotteryTimes[-1] = {"Sort","Times","Weight","Score"}
+TAB_ActivityLotteryTimes[1] = {1,10,5000,100}
+TAB_ActivityLotteryTimes[2] = {1,15,3000,150}
+TAB_ActivityLotteryTimes[3] = {1,20,1500,200}
+TAB_ActivityLotteryTimes[4] = {1,25,1000,250}
+TAB_ActivityLotteryTimes[5] = {1,30,500,300}
+TAB_ActivityLotteryTimes[6] = {1,40,150,400}
+TAB_ActivityLotteryTimes[7] = {6,4,10000,40}
+TAB_ActivityLotteryTimes[8] = {10,2,10000,20}
+TAB_ActivityLotteryTimes[9] = {15,3,10000,30}
+TAB_ActivityLotteryTimes[10] = {19,2,10000,20}
+TAB_ActivityLotteryTimes[11] = {22,3,10000,30}

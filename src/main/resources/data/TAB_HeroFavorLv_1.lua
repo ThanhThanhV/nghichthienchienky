@@ -1,0 +1,13 @@
+TAB_HeroFavorLv = TAB_HeroFavorLv or {}
+TAB_HeroFavorLv[-1] = {"Favour","s_Desc","DropID"}
+TAB_HeroFavorLv[1] = {50,"Lần Đầu Quen Biết",0}
+TAB_HeroFavorLv[2] = {150,"Khẩu Hiềm Thể Trực",6202}
+TAB_HeroFavorLv[3] = {350,"Thiện cảm lạ kỳ",6203}
+TAB_HeroFavorLv[4] = {850,"Bạn tốt",6204}
+TAB_HeroFavorLv[5] = {1650,"Thân như ruột thịt",6205}
+TAB_HeroFavorLv[6] = {2850,"Đủ điểm ăn ý",6206}
+TAB_HeroFavorLv[7] = {4450,"Cảm ứng tâm linh",6207}
+TAB_HeroFavorLv[8] = {6450,"Thiên Sứ Thủ Hộ",6208}
+TAB_HeroFavorLv[9] = {8850,"Lời Thề Trung Thành",6209}
+TAB_HeroFavorLv[10] = {11650,"Duyên phận linh hồn",6210}
+TAB_HeroFavorLv[11] = {0,"Khế Ước Thần Thánh",6211}

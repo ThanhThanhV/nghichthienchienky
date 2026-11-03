@@ -1,0 +1,11 @@
+TAB_ActivityCard = TAB_ActivityCard or {}
+TAB_ActivityCard[-1] = {"Type","CostNum","GiftId"}
+TAB_ActivityCard[1] = {2,1,22001}
+TAB_ActivityCard[2] = {2,2,22002}
+TAB_ActivityCard[3] = {2,3,22003}
+TAB_ActivityCard[4] = {2,4,22004}
+TAB_ActivityCard[5] = {2,5,22005}
+TAB_ActivityCard[6] = {2,6,22006}
+TAB_ActivityCard[7] = {2,7,22007}
+TAB_ActivityCard[10] = {3,1,23001}
+TAB_ActivityCard[11] = {4,1,24001}

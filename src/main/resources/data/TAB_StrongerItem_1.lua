@@ -1,0 +1,11 @@
+TAB_StrongerItem = TAB_StrongerItem or {}
+TAB_StrongerItem[-1] = {"s_Name","Icon","s_Des","u_Sourceid","OpenLv"}
+TAB_StrongerItem[1] = {"Vàng",8001,"Vàng, tiền tệ thông dụng",{1,2,46,18},1}
+TAB_StrongerItem[2] = {"Kim Cương",8002,"Kim Cương dùng để mua nhiều vật phẩm hữu ích và có sức mạnh, mọi người đều hiểu.",{38,8,11,15,1},1}
+TAB_StrongerItem[3] = {"Đá Tiến Bậc",1001,"Có thể dùng để tiến bậc anh hùng, đột phá giới hạn cấp",{2,21,15,1},1}
+TAB_StrongerItem[4] = {"Mảnh Anh Hùng",1600056,"Dùng để ghép Võ Tướng",{15,1,11,21,7},1}
+TAB_StrongerItem[5] = {"EXP Anh Hùng",8005,"Vật phẩm có thể khiến Anh Hùng tăng cấp",{15,1,2,22,47,11},1}
+TAB_StrongerItem[6] = {"Điểm Lịch Luyện",8003,"Tình báo lịch luyện quan trọng, dùng để nhận nhiệm vụ Lịch Luyện",{15,1},1}
+TAB_StrongerItem[7] = {"Ấn Ký",1401101,"Dùng để ghép Ấn Ký anh hùng mang",{11,10,15,58},1}
+TAB_StrongerItem[8] = {"Cống Hiến Guild",8007,"Biểu tượng vinh dự của Guild, có thể dùng để tăng cấp kỹ năng Guild, hoặc đổi vật phẩm trong Tiệm Guild",{4,5},1}
+TAB_StrongerItem[9] = {"Mảnh Thần Khí",1012,"Dùng để tăng cấp Thần Khí",{38,61},1}

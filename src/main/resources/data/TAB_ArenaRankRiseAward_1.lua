@@ -1,0 +1,13 @@
+TAB_ArenaRankRiseAward = TAB_ArenaRankRiseAward or {}
+TAB_ArenaRankRiseAward[-1] = {'RankMin', 'RankMax', 'f_Diamond', 'u_WinAwards', 'u_LoseAwards'}
+TAB_ArenaRankRiseAward[1] = {1, 1, 300, {{8001,5000},{8009,30}}, {{8001,5000},{8009,30}}}
+TAB_ArenaRankRiseAward[2] = {2, 2, 200, {{8001,5000},{8009,30}}, {{8001,5000},{8009,30}}}
+TAB_ArenaRankRiseAward[3] = {3, 3, 100, {{8001,5000},{8009,30}}, {{8001,5000},{8009,30}}}
+TAB_ArenaRankRiseAward[4] = {4, 10, 50, {{8001,5000},{8009,30}}, {{8001,5000},{8009,30}}}
+TAB_ArenaRankRiseAward[5] = {11, 50, 20, {{8001,5000},{8009,30}}, {{8001,5000},{8009,30}}}
+TAB_ArenaRankRiseAward[6] = {51, 100, 10, {{8001,5000},{8009,30}}, {{8001,5000},{8009,30}}}
+TAB_ArenaRankRiseAward[7] = {101, 300, 2, {{8001,5000},{8009,30}}, {{8001,5000},{8009,30}}}
+TAB_ArenaRankRiseAward[8] = {301, 1000, 0.5, {{8001,5000},{8009,30}}, {{8001,5000},{8009,30}}}
+TAB_ArenaRankRiseAward[9] = {1001, 2000, 0.3, {{8001,5000},{8009,30}}, {{8001,5000},{8009,30}}}
+TAB_ArenaRankRiseAward[10] = {2001, 5000, 0.02, {{8001,5000},{8009,30}}, {{8001,5000},{8009,30}}}
+TAB_ArenaRankRiseAward[11] = {5001, 99999, 0.005, {{8001,5000},{8009,30}}, {{8001,5000},{8009,30}}}

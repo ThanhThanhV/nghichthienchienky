@@ -1,0 +1,14 @@
+TAB_HangupTime = TAB_HangupTime or {}
+TAB_HangupTime[-1] = {"u_Itemid","Time"}
+TAB_HangupTime[1] = {{8002,50},30}
+TAB_HangupTime[2] = {{8001,50000},120}
+TAB_HangupTime[3] = {{8005,50000},240}
+TAB_HangupTime[4] = {{14406,1},790}
+TAB_HangupTime[5] = {{8002,100},1090}
+TAB_HangupTime[6] = {{8001,150000},1690}
+TAB_HangupTime[7] = {{8005,150000},2590}
+TAB_HangupTime[8] = {{44403,1},3490}
+TAB_HangupTime[9] = {{8002,200},5290}
+TAB_HangupTime[10] = {{8001,300000},7090}
+TAB_HangupTime[11] = {{8005,300000},10690}
+TAB_HangupTime[12] = {{1003,5},14290}

@@ -1,0 +1,9 @@
+TAB_Chat = TAB_Chat or {}
+TAB_Chat[-1] = {"Level"}
+TAB_Chat[1] = {10}
+TAB_Chat[2] = {10}
+TAB_Chat[3] = {18}
+TAB_Chat[4] = {30}
+TAB_Chat[5] = {10}
+TAB_Chat[6] = {18}
+TAB_Chat[7] = {35}

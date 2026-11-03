@@ -1,0 +1,10 @@
+TAB_ConquerCave = TAB_ConquerCave or {}
+TAB_ConquerCave[-1] = {"ReviseLv","Dropid","FightGround"}
+TAB_ConquerCave[70001] = {1,14247,3002}
+TAB_ConquerCave[70002] = {5,14247,3002}
+TAB_ConquerCave[70003] = {10,14247,3002}
+TAB_ConquerCave[70004] = {20,14247,3002}
+TAB_ConquerCave[70005] = {30,14247,3002}
+TAB_ConquerCave[70006] = {40,14247,3002}
+TAB_ConquerCave[70007] = {50,14247,3002}
+TAB_ConquerCave[70008] = {60,14247,3002}

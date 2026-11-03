@@ -1,0 +1,14 @@
+TAB_WarArenaRank = TAB_WarArenaRank or {}
+TAB_WarArenaRank[-1] = {"RankMin","RankMax","DropId","u_Show"}
+TAB_WarArenaRank[1] = {1,1,15301,{{2005,1},{8036,10000},{3031,12}}}
+TAB_WarArenaRank[2] = {2,2,15302,{{2006,1},{8036,8500},{3031,10}}}
+TAB_WarArenaRank[3] = {3,3,15303,{{2007,1},{8036,7000},{3031,9}}}
+TAB_WarArenaRank[4] = {4,5,15304,{{8036,6000},{3031,8}}}
+TAB_WarArenaRank[5] = {6,10,15305,{{8036,5000},{3031,7}}}
+TAB_WarArenaRank[6] = {11,20,15306,{{8036,4500},{3031,6}}}
+TAB_WarArenaRank[7] = {21,50,15307,{{8036,4000},{3031,5}}}
+TAB_WarArenaRank[8] = {51,100,15308,{{8036,3500},{3031,4}}}
+TAB_WarArenaRank[9] = {101,200,15309,{{8036,3000},{3031,3}}}
+TAB_WarArenaRank[10] = {201,300,15310,{{8036,2500},{3031,2}}}
+TAB_WarArenaRank[11] = {301,600,15311,{{8036,2000},{3031,1}}}
+TAB_WarArenaRank[12] = {601,1000,15312,{{8036,2500}}}

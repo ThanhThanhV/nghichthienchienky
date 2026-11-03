@@ -1,0 +1,10 @@
+TAB_ColorName = TAB_ColorName or {}
+TAB_ColorName[-1] = {"s_Name"}
+TAB_ColorName[1] = {"黄色"}
+TAB_ColorName[2] = {"Lục"}
+TAB_ColorName[3] = {"Lam"}
+TAB_ColorName[4] = {"Tím"}
+TAB_ColorName[5] = {"Cam"}
+TAB_ColorName[6] = {"Đỏ"}
+TAB_ColorName[7] = {"Vàng"}
+TAB_ColorName[8] = {"彩色"}

@@ -1,0 +1,9 @@
+TAB_OrbmentHole = TAB_OrbmentHole or {}
+TAB_OrbmentHole[-1] = {"Position","u_GemType"}
+TAB_OrbmentHole[1] = {1,{1,2}}
+TAB_OrbmentHole[2] = {2,{3,4}}
+TAB_OrbmentHole[3] = {3,{}}
+TAB_OrbmentHole[4] = {4,{}}
+TAB_OrbmentHole[5] = {4,{1,2}}
+TAB_OrbmentHole[6] = {5,{3,4}}
+TAB_OrbmentHole[7] = {6,{}}

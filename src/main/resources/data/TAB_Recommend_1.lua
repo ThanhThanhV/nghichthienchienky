@@ -1,0 +1,12 @@
+TAB_Recommend = TAB_Recommend or {}
+TAB_Recommend[-1] = {"s_Describe","u_Hero","Dropid","Headid","NeedVIP"}
+TAB_Recommend[1] = {"Tiến cử mở trận 5 hệ Tân Thủ",{11513,24511,33508,44507,53505},2,1,0}
+TAB_Recommend[2] = {"Tiến cử cường lực 5 hệ Tân Thủ",{11514,23509,31514,44506,51509},2,2,0}
+TAB_Recommend[3] = {"Sát thủ hàng sau",{11512,14511,11514,44507,53505},2,3,0}
+TAB_Recommend[4] = {"Giảm tốc giảm công",{24511,23509,21512,42509,54506},2,4,0}
+TAB_Recommend[5] = {"Nhấp diệt",{34509,31514,33508,42509,54506},2,5,0}
+TAB_Recommend[6] = {"Khoa Học",{13509,11512,14511,11513,11514},2,6,5}
+TAB_Recommend[7] = {"Ma Pháp",{23509,24511,21512,22513,22515},2,7,5}
+TAB_Recommend[8] = {"Chiến Đấu",{33508,34509,31514,31511,32515},2,8,5}
+TAB_Recommend[9] = {"Thần Linh",{43503,44506,44508,42509,42502},2,9,5}
+TAB_Recommend[10] = {"Ác Ma",{53505,54506,51508,51509,51502},2,10,5}

@@ -1,0 +1,12 @@
+TAB_Loading = TAB_Loading or {}
+TAB_Loading[-1] = {"s_Describe_cn"}
+TAB_Loading[1] = {"Anh Hùng 4 kỹ năng mạnh hơn Anh Hùng 3 kỹ năng"}
+TAB_Loading[2] = {"Sau khi Anh Hùng cùng phe ra trận có thể kích hoạt tăng thuộc tính đặc biệt"}
+TAB_Loading[3] = {"Anh Hùng 6 sao, 9 sao có thể làm vật liệu Thức Tỉnh"}
+TAB_Loading[4] = {"Thần Minh, Anh Hùng của Ác Ma mạnh hơn so với phe khác"}
+TAB_Loading[5] = {"Đừng quên nhận thưởng treo máy"}
+TAB_Loading[6] = {"Gilgamesh là anh hùng trung tâm của hệ Toàn Thần, vô cùng hiếm"}
+TAB_Loading[7] = {"Thức tỉnh Anh Hùng 6 sao cần Anh Hùng chỉ định làm vật liệu"}
+TAB_Loading[8] = {"Triệu hồi cao cấp 10 lần chắc chắn ra Anh Hùng 5 sao"}
+TAB_Loading[9] = {"Khoa Học khắc chế Ma Pháp, Ma Pháp khắc chế Chiến Đấu, Chiến Đấu khắc chế Khoa Học"}
+TAB_Loading[10] = {"Phe Thần Minh và phe Ác Ma khắc chế lẫn nhau"}

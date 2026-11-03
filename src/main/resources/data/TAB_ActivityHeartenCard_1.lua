@@ -1,0 +1,11 @@
+TAB_ActivityHeartenCard = TAB_ActivityHeartenCard or {}
+TAB_ActivityHeartenCard[-1] = {"Type","u_Mould","IsLucky"}
+TAB_ActivityHeartenCard[1] = {1,{1,2,3,3,1,3,2,3,1},1}
+TAB_ActivityHeartenCard[2] = {2,{1,2,2,3,2,3,2,3,2},0}
+TAB_ActivityHeartenCard[3] = {3,{3,1,2,2,3,2,1,2,3},0}
+TAB_ActivityHeartenCard[4] = {3,{1,1,2,3,1,3,2,2,3},0}
+TAB_ActivityHeartenCard[5] = {4,{1,2,3,3,2,3,1,3,2},0}
+TAB_ActivityHeartenCard[6] = {4,{2,3,3,2,1,3,3,1,2},0}
+TAB_ActivityHeartenCard[7] = {4,{2,3,3,1,2,2,3,2,1},0}
+TAB_ActivityHeartenCard[8] = {4,{2,1,3,3,3,2,2,1,3},0}
+TAB_ActivityHeartenCard[9] = {4,{3,3,2,3,2,1,1,2,3},0}

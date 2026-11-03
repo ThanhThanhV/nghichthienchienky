@@ -1,0 +1,11 @@
+TAB_GuildScore = TAB_GuildScore or {}
+TAB_GuildScore[-1] = {"RankMin","RankMax","u_Reward"}
+TAB_GuildScore[1] = {1,1,{{8011,2000},{98004,10}}}
+TAB_GuildScore[2] = {2,2,{{8011,1500},{98004,8}}}
+TAB_GuildScore[3] = {3,3,{{8011,1100},{98004,6}}}
+TAB_GuildScore[4] = {4,5,{{8011,750},{98004,5}}}
+TAB_GuildScore[5] = {6,10,{{8011,520},{98004,4}}}
+TAB_GuildScore[6] = {11,20,{{8011,380},{98004,3}}}
+TAB_GuildScore[7] = {21,30,{{8011,280},{98004,2}}}
+TAB_GuildScore[8] = {31,50,{{8011,200},{98004,2}}}
+TAB_GuildScore[9] = {51,100,{{8011,140}}}

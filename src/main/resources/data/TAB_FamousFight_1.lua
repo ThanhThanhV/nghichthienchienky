@@ -1,0 +1,15 @@
+TAB_FamousFight = TAB_FamousFight or {}
+TAB_FamousFight[-1] = {"Type","RankMin","RankMax","RankReward","RankHide"}
+TAB_FamousFight[1] = {3,1,1,650001,3}
+TAB_FamousFight[2] = {3,2,2,650002,3}
+TAB_FamousFight[3] = {3,3,3,650003,3}
+TAB_FamousFight[4] = {3,4,10,650004,2}
+TAB_FamousFight[5] = {3,11,20,650005,2}
+TAB_FamousFight[6] = {3,21,50,650006,1}
+TAB_FamousFight[13] = {4,1,1,650007,3}
+TAB_FamousFight[14] = {4,2,2,650008,3}
+TAB_FamousFight[15] = {4,3,3,650009,3}
+TAB_FamousFight[16] = {4,4,10,650010,2}
+TAB_FamousFight[17] = {4,11,20,650011,2}
+TAB_FamousFight[19] = {4,21,50,650012,1}
+TAB_FamousFight[20] = {4,51,150,650013,0}

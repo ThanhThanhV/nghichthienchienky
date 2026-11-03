@@ -1,0 +1,16 @@
+TAB_MainStory = TAB_MainStory or {}
+TAB_MainStory[-1] = {"StoryLevel","StoryGroup","s_Des","s_RoleName","RoleDrawing","DrawingDir","s_Voice"}
+TAB_MainStory[1] = {1,1,"Ta chờ ngươi đã lâu! Thần Khí không phải các ngươi có tư cách chiếm được!","Kuroki Gai",525101,2,"MainStory_52510"}
+TAB_MainStory[2] = {1,1,"Ngươi không ngăn được ta đâu, không ngừng tiến lên chính là ý nghĩa tồn tại.","Ta",114071,1,"MainStory_114071"}
+TAB_MainStory[3] = {1,1,"Cần giúp không? Sự lựa chọn của chúng ta, sẽ không có gì hối tiếc.","Levi",115131,1,"MainStory_115131"}
+TAB_MainStory[4] = {1,2,"Xem ra chúng ta có chung mục đích, vào đội của bọn ta nhé?","Ta",114071,1,"MainStory_114072"}
+TAB_MainStory[5] = {1,2,"Ta cần đi điều tra bí mật của Thần Khí, lần sau có cơ hội sẽ cùng nhau chiến đấu nhé!","Levi",115131,1,"MainStory_115131"}
+TAB_MainStory[6] = {4,1,"Nơi này cũng có người khổng lồ xuất hiện? Cẩn thận! Chuẩn bị chiến đấu!","Mikasa",115121,1,"MainStory_115121"}
+TAB_MainStory[7] = {4,2,"Đã san bằng mọi vật cản, dũng cảm khiêu chiến, thắng lợi có thể sống sót...","Mikasa",115121,1,"MainStory_115122"}
+TAB_MainStory[8] = {6,1,"Ta đã xông lên để bảo vệ đồng hành quan trọng.","Ichigo",20,1,"MainStory_215121_1"}
+TAB_MainStory[9] = {6,2,"Vượt lên sức mạnh của số mệnh, nhất định phải tồn tại.","Ichigo",20,1,"MainStory_215122_1"}
+TAB_MainStory[10] = {8,1,"Asuna Tia Chớp đội trưởng Huyết Thệ Kỵ Sĩ Đoàn, xông lên!","Asuna",19,1,"MainStory_315141_1"}
+TAB_MainStory[11] = {8,2,"Có một việc cần nhớ, đừng bao giờ từ bỏ.","Asuna",19,1,"MainStory_315142_1"}
+TAB_MainStory[12] = {10,1,"Hãy kết thúc ở đây, đối mặt với kết cục bi thảm của các ngươi!","Menethil",535051,2,"MainStory_535051"}
+TAB_MainStory[13] = {10,1,"Đối mặt nguy hiểm, ngay cả Anh Hùng cũng trốn chạy, vậy còn ai dám đứng lên?","Saitama",115141,1,"MainStory_315141"}
+TAB_MainStory[14] = {10,2,"Ta vẫn chưa dùng sức, ngươi đã ngã xuống... đi nào, xem xem Thần Khí có thể khiến ta có cách nhìn khác không~","Saitama",115141,1,"MainStory_315142"}
