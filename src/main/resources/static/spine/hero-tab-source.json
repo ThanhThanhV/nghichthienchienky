@@ -1,56 +1,3146 @@
 {
   "version": 1,
-  "description": "Verbatim source rows from TAB Lua tables. Raw rows are retained for audit and future deterministic import; do not infer fields from string positions without a typed parser.",
+  "description": "Verbatim source rows from TAB Lua tables. Raw rows are retained for audit and deterministic import; do not infer fields from string positions without a typed parser.",
   "heroes": {
     "asuna_dark": {
-      "tabSkillRows": [],
-      "tabEffectPerforRows": [],
-      "tabEffectRows": []
+      "tabSkillRows": [
+        {
+          "id": "3151411",
+          "source": "TAB_Skill_1.lua",
+          "raw": "TAB_Skill[3151411] = {315141,2,{{}},3151411,1,2,2,1,3,1,1,0,\"$10#31514110&31514110\",{},\"Thi triển kỹ năng kiếm cao siêu, gây cho địch hàng trước và giữa 89% sát thương vật lý, 50% kèm trạng thái {Mất HP}; duy trì 3 lượt; nếu mục tiêu là hệ Tank, tăng thêm sát thương bằng 7% giới hạn HP cho mục tiêu (Không vượt quá 10 lần lực công bản thân)\",{2},0,0,\"Horizontal Square\",{0,6},1,0,10000}"
+        },
+        {
+          "id": "3151412",
+          "source": "TAB_Skill_1.lua",
+          "raw": "TAB_Skill[3151412] = {315141,2,{{}},3151411,2,2,2,1,3,1,1,0,\"$10#31514120&31514120\",{},\"Thi triển kỹ năng kiếm cao siêu, gây cho địch hàng trước và giữa 106% sát thương vật lý, 75% kèm trạng thái {Mất HP}; duy trì 3 lượt; nếu mục tiêu là hệ Tank, tăng thêm sát thương bằng 10% giới hạn HP cho mục tiêu (Không vượt quá 10 lần lực công bản thân)\",{2},0,0,\"Horizontal Square\",{0,7},1,0,10000}"
+        },
+        {
+          "id": "3151413",
+          "source": "TAB_Skill_1.lua",
+          "raw": "TAB_Skill[3151413] = {315141,2,{{}},3151411,3,2,2,1,3,1,1,0,\"$10#31514130&31514130\",{},\"Thi triển kỹ năng kiếm cao siêu, gây cho địch hàng trước và giữa 129% sát thương vật lý, 90% kèm trạng thái {Mất HP}; duy trì 3 lượt; nếu mục tiêu là hệ Tank, tăng thêm sát thương bằng 10% giới hạn HP cho mục tiêu (Không vượt quá 10 lần lực công bản thân)\",{2},0,0,\"Horizontal Square\",{0,101},1,0,10000}"
+        },
+        {
+          "id": "3151414",
+          "source": "TAB_Skill_1.lua",
+          "raw": "TAB_Skill[3151414] = {315141,2,{{}},3151411,4,2,2,1,3,1,1,0,\"$10#31514140&31514140\",{},\"Thi triển kỹ năng kiếm cao siêu, gây cho địch hàng trước và giữa 134% sát thương vật lý, 92% kèm trạng thái {Mất HP}; duy trì 3 lượt; nếu mục tiêu là hệ Tank, tăng thêm sát thương bằng 10.4% giới hạn HP cho mục tiêu (Không vượt quá 10 lần lực công bản thân)\",{2},0,0,\"Horizontal Square\",{0,102},1,0,10000}"
+        },
+        {
+          "id": "3151415",
+          "source": "TAB_Skill_1.lua",
+          "raw": "TAB_Skill[3151415] = {315141,2,{{}},3151411,5,2,2,1,3,1,1,0,\"$10#31514150&31514150\",{},\"Thi triển kỹ năng kiếm cao siêu, gây cho địch hàng trước và giữa 139% sát thương vật lý, 94% kèm trạng thái {Mất HP}; duy trì 3 lượt; nếu mục tiêu là hệ Tank, tăng thêm sát thương bằng 10.8% giới hạn HP cho mục tiêu (Không vượt quá 10 lần lực công bản thân)\",{2},0,0,\"Horizontal Square\",{0,103},1,0,10000}"
+        },
+        {
+          "id": "3151416",
+          "source": "TAB_Skill_1.lua",
+          "raw": "TAB_Skill[3151416] = {315141,2,{{}},3151411,6,2,2,1,3,1,1,0,\"$10#31514160&31514160\",{},\"Thi triển kỹ năng kiếm cao siêu, gây cho địch hàng trước và giữa 144% sát thương vật lý, 96% kèm trạng thái {Mất HP}; duy trì 3 lượt; nếu mục tiêu là hệ Tank, tăng thêm sát thương bằng 11.2% giới hạn HP cho mục tiêu (Không vượt quá 10 lần lực công bản thân)\",{2},0,0,\"Horizontal Square\",{0,104},1,0,10000}"
+        },
+        {
+          "id": "3151417",
+          "source": "TAB_Skill_1.lua",
+          "raw": "TAB_Skill[3151417] = {315141,2,{{}},3151411,7,2,2,1,3,1,1,0,\"$10#31514170&31514170\",{},\"Thi triển kỹ năng kiếm cao siêu, gây cho địch hàng trước và giữa 149% sát thương vật lý, 98% kèm trạng thái {Mất HP}; duy trì 3 lượt; nếu mục tiêu là hệ Tank, tăng thêm sát thương bằng 11.6% giới hạn HP cho mục tiêu (Không vượt quá 10 lần lực công bản thân)\",{2},0,0,\"Horizontal Square\",{0,105},1,0,10000}"
+        },
+        {
+          "id": "3151418",
+          "source": "TAB_Skill_1.lua",
+          "raw": "TAB_Skill[3151418] = {315141,2,{{}},3151411,8,2,2,1,3,1,1,0,\"$10#31514180&31514180\",{},\"Thi triển kỹ năng kiếm cao siêu, gây cho địch hàng trước và giữa 154% sát thương vật lý, 100% kèm trạng thái {Mất HP}; duy trì 3 lượt; nếu mục tiêu là hệ Tank, tăng thêm sát thương bằng 12% giới hạn HP cho mục tiêu (Không vượt quá 10 lần lực công bản thân)\",{2},0,0,\"Horizontal Square\",{0,0},1,0,10000}"
+        }
+      ],
+      "tabEffectPerforRows": [
+        {
+          "id": "31514020",
+          "source": "TAB_EffectPerfor_1.lua",
+          "raw": "TAB_EffectPerfor[31514020] = {1,1,50,0,0,0,\"Skin Asuna Đánh Thường\",1,0,0,{},100,1,0,0,0,1,{100110111,5,0},1,0,{},0,0,2,0,{},1,0,0,0}"
+        },
+        {
+          "id": "31514120",
+          "source": "TAB_EffectPerfor_1.lua",
+          "raw": "TAB_EffectPerfor[31514120] = {2,8,50,0,0,0,\"Skin Asuna-1 Sát Thương\",11,0,0,{},100,1,0,0,0,0,{100110111,5,0},1,0,{},31514110,0,0,0,{},1,0,0,0}"
+        },
+        {
+          "id": "31514320",
+          "source": "TAB_EffectPerfor_1.lua",
+          "raw": "TAB_EffectPerfor[31514320] = {3,6,70,0,1,1,\"Skin Asuna-3 Sát Thương\",21,0,0,{},100,1,0,0,0,1,{31514130111,5,2},1,0,{},31514310,0,0,315141,{},1,0,0,0}"
+        }
+      ],
+      "tabEffectRows": [
+        {
+          "id": "31514010",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514010] = {\"Saitama-Đánh Thường\",0,1,{},{1,1,19,10000},0,{},3,10000,0,31514010,0,0,100,1,2,1}"
+        },
+        {
+          "id": "31514110",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514110] = {\"琦玉-1-伤害&触发\",0,1,{},{1,1,19,8900},0,{},3,8900,0,31514110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "31514111",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514111] = {\"琦玉-1-流血\",21,0,{},{1,1,19,2000},0,{},3,2000,0,0,31514110,0,100,3,1,0}"
+        },
+        {
+          "id": "31514112",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514112] = {\"琦玉-1-附伤\",41,1,{},{2,1,18,700},3,{1,1,19,100000},13,700,0,0,0,0,100,1,1,0}"
+        },
+        {
+          "id": "31514120",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514120] = {\"琦玉-1-伤害&触发\",0,1,{},{1,1,19,10600},0,{},3,10600,0,31514110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "31514121",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514121] = {\"琦玉-1-流血\",21,0,{},{1,1,19,2000},0,{},3,2000,0,0,31514120,0,100,3,1,0}"
+        },
+        {
+          "id": "31514122",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514122] = {\"琦玉-1-附伤\",41,1,{},{2,1,18,1000},3,{1,1,19,100000},13,1000,0,0,0,0,100,1,1,0}"
+        },
+        {
+          "id": "31514130",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514130] = {\"琦玉-1-伤害&触发\",0,1,{},{1,1,19,12900},0,{},3,12900,0,31514110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "31514131",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514131] = {\"琦玉-1-流血\",21,0,{},{1,1,19,2000},0,{},3,2000,0,0,31514130,0,100,3,1,0}"
+        },
+        {
+          "id": "31514132",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514132] = {\"琦玉-1-附伤\",41,1,{},{2,1,18,1000},3,{1,1,19,100000},13,1000,0,0,0,0,100,1,1,0}"
+        },
+        {
+          "id": "31514140",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514140] = {\"琦玉-1-伤害&触发\",0,1,{},{1,1,19,13400},0,{},3,13400,0,31514110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "31514141",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514141] = {\"琦玉-1-流血\",21,0,{},{1,1,19,2000},0,{},3,2000,0,0,31514140,0,100,3,1,0}"
+        },
+        {
+          "id": "31514142",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514142] = {\"琦玉-1-附伤\",41,1,{},{2,1,18,1040},3,{1,1,19,100000},13,1040,0,0,0,0,100,1,1,0}"
+        },
+        {
+          "id": "31514150",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514150] = {\"琦玉-1-伤害&触发\",0,1,{},{1,1,19,13900},0,{},3,13900,0,31514110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "31514151",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514151] = {\"琦玉-1-流血\",21,0,{},{1,1,19,2000},0,{},3,2000,0,0,31514150,0,100,3,1,0}"
+        },
+        {
+          "id": "31514152",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514152] = {\"琦玉-1-附伤\",41,1,{},{2,1,18,1080},3,{1,1,19,100000},13,1080,0,0,0,0,100,1,1,0}"
+        },
+        {
+          "id": "31514160",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514160] = {\"琦玉-1-伤害&触发\",0,1,{},{1,1,19,14400},0,{},3,14400,0,31514110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "31514161",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514161] = {\"琦玉-1-流血\",21,0,{},{1,1,19,2000},0,{},3,2000,0,0,31514160,0,100,3,1,0}"
+        },
+        {
+          "id": "31514162",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514162] = {\"琦玉-1-附伤\",41,1,{},{2,1,18,1120},3,{1,1,19,100000},13,1120,0,0,0,0,100,1,1,0}"
+        },
+        {
+          "id": "31514170",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514170] = {\"琦玉-1-伤害&触发\",0,1,{},{1,1,19,14900},0,{},3,14900,0,31514110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "31514171",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514171] = {\"琦玉-1-流血\",21,0,{},{1,1,19,2000},0,{},3,2000,0,0,31514170,0,100,3,1,0}"
+        },
+        {
+          "id": "31514172",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514172] = {\"琦玉-1-附伤\",41,1,{},{2,1,18,1160},3,{1,1,19,100000},13,1160,0,0,0,0,100,1,1,0}"
+        },
+        {
+          "id": "31514180",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514180] = {\"琦玉-1-伤害&触发\",0,1,{},{1,1,19,15400},0,{},3,15400,0,31514110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "31514181",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514181] = {\"琦玉-1-流血\",21,0,{},{1,1,19,2000},0,{},3,2000,0,0,31514180,0,100,3,1,0}"
+        },
+        {
+          "id": "31514182",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514182] = {\"琦玉-1-附伤\",41,1,{},{2,1,18,1200},3,{1,1,19,100000},13,1200,0,0,0,0,100,1,1,0}"
+        },
+        {
+          "id": "31514310",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514310] = {\"琦玉-3-伤害&触发\",0,1,{},{1,1,19,24800},0,{},3,24800,0,31514310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "31514311",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514311] = {\"琦玉-3-必定暴击\",29,0,{},{},0,{},0,0,20000,0,31514310,0,100,1,0,0}"
+        },
+        {
+          "id": "31514320",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514320] = {\"琦玉-3-伤害&触发\",0,1,{},{1,1,19,29700},0,{},3,29700,0,31514310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "31514321",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514321] = {\"琦玉-3-必定暴击\",29,0,{},{},0,{},0,0,20000,0,31514320,0,100,1,0,0}"
+        },
+        {
+          "id": "31514322",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514322] = {\"琦玉-3-暴伤\",33,0,{},{},0,{},0,0,2000,0,31514321,0,100,1,0,0}"
+        },
+        {
+          "id": "31514330",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514330] = {\"琦玉-3-伤害&触发\",0,1,{},{1,1,19,37500},0,{},3,37500,0,31514310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "31514331",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514331] = {\"琦玉-3-必定暴击\",29,0,{},{},0,{},0,0,20000,0,31514330,0,100,1,0,0}"
+        },
+        {
+          "id": "31514332",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514332] = {\"琦玉-3-暴伤\",33,0,{},{},0,{},0,0,2000,0,31514331,0,100,1,0,0}"
+        },
+        {
+          "id": "31514333",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514333] = {\"琦玉-3-吸血\",24,0,{5000},{},0,{},1,5000,0,0,31514332,0,100,6,1,0}"
+        },
+        {
+          "id": "31514340",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514340] = {\"琦玉-3-伤害&触发\",0,1,{},{1,1,19,39000},0,{},3,39000,0,31514310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "31514341",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514341] = {\"琦玉-3-必定暴击\",29,0,{},{},0,{},0,0,20000,0,31514340,0,100,1,0,0}"
+        },
+        {
+          "id": "31514342",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514342] = {\"琦玉-3-暴伤\",33,0,{},{},0,{},0,0,2000,0,31514341,0,100,1,0,0}"
+        },
+        {
+          "id": "31514343",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514343] = {\"琦玉-3-吸血\",24,0,{5000},{},0,{},1,5000,0,0,31514342,0,100,6,1,0}"
+        },
+        {
+          "id": "31514350",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514350] = {\"琦玉-3-伤害&触发\",0,1,{},{1,1,19,40500},0,{},3,40500,0,31514310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "31514351",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514351] = {\"琦玉-3-必定暴击\",29,0,{},{},0,{},0,0,20000,0,31514350,0,100,1,0,0}"
+        },
+        {
+          "id": "31514352",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514352] = {\"琦玉-3-暴伤\",33,0,{},{},0,{},0,0,2000,0,31514351,0,100,1,0,0}"
+        },
+        {
+          "id": "31514353",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514353] = {\"琦玉-3-吸血\",24,0,{5000},{},0,{},1,5000,0,0,31514352,0,100,6,1,0}"
+        },
+        {
+          "id": "31514360",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514360] = {\"琦玉-3-伤害&触发\",0,1,{},{1,1,19,42000},0,{},3,42000,0,31514310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "31514361",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514361] = {\"琦玉-3-必定暴击\",29,0,{},{},0,{},0,0,20000,0,31514360,0,100,1,0,0}"
+        },
+        {
+          "id": "31514362",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514362] = {\"琦玉-3-暴伤\",33,0,{},{},0,{},0,0,2000,0,31514361,0,100,1,0,0}"
+        },
+        {
+          "id": "31514363",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514363] = {\"琦玉-3-吸血\",24,0,{5000},{},0,{},1,5000,0,0,31514362,0,100,6,1,0}"
+        },
+        {
+          "id": "31514370",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514370] = {\"琦玉-3-伤害&触发\",0,1,{},{1,1,19,43500},0,{},3,43500,0,31514310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "31514371",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514371] = {\"琦玉-3-必定暴击\",29,0,{},{},0,{},0,0,20000,0,31514370,0,100,1,0,0}"
+        },
+        {
+          "id": "31514372",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514372] = {\"琦玉-3-暴伤\",33,0,{},{},0,{},0,0,2000,0,31514371,0,100,1,0,0}"
+        },
+        {
+          "id": "31514373",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514373] = {\"琦玉-3-吸血\",24,0,{5000},{},0,{},1,5000,0,0,31514372,0,100,6,1,0}"
+        },
+        {
+          "id": "31514380",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514380] = {\"琦玉-3-伤害&触发\",0,1,{},{1,1,19,45000},0,{},3,45000,0,31514310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "31514381",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514381] = {\"琦玉-3-必定暴击\",29,0,{},{},0,{},0,0,20000,0,31514380,0,100,1,0,0}"
+        },
+        {
+          "id": "31514382",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514382] = {\"琦玉-3-暴伤\",33,0,{},{},0,{},0,0,2000,0,31514381,0,100,1,0,0}"
+        },
+        {
+          "id": "31514383",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514383] = {\"琦玉-3-吸血\",24,0,{5000},{},0,{},1,5000,0,0,31514382,0,100,6,1,0}"
+        },
+        {
+          "id": "31514410",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514410] = {\"炎魂-debuff-受伤增加\",58,0,{},{},0,{},0,0,1000,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "31514420",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514420] = {\"炎魂-debuff-受伤增加\",58,0,{},{},0,{},0,0,1500,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "31514430",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514430] = {\"炎魂-debuff-受伤增加\",58,0,{},{},0,{},0,0,2000,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "31514431",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514431] = {\"炎魂-被动\",40,0,{21,1,31514411},{},0,{},0,0,0,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "31514440",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514440] = {\"炎魂-debuff-受伤增加\",58,0,{},{},0,{},0,0,2080,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "31514441",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514441] = {\"炎魂-被动\",40,0,{21,1,31514411},{},0,{},0,0,0,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "31514450",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514450] = {\"炎魂-debuff-受伤增加\",58,0,{},{},0,{},0,0,2160,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "31514451",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514451] = {\"炎魂-被动\",40,0,{21,1,31514411},{},0,{},0,0,0,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "31514460",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514460] = {\"炎魂-debuff-受伤增加\",58,0,{},{},0,{},0,0,2240,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "31514461",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514461] = {\"炎魂-被动\",40,0,{21,1,31514411},{},0,{},0,0,0,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "31514470",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514470] = {\"炎魂-debuff-受伤增加\",58,0,{},{},0,{},0,0,2320,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "31514471",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514471] = {\"炎魂-被动\",40,0,{21,1,31514411},{},0,{},0,0,0,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "31514480",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514480] = {\"炎魂-debuff-受伤增加\",58,0,{},{},0,{},0,0,2400,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "31514481",
+          "source": "TAB_Effect_1.lua",
+          "raw": "TAB_Effect[31514481] = {\"炎魂-被动\",40,0,{21,1,31514411},{},0,{},0,0,0,0,0,0,100,1,2,0}"
+        }
+      ]
     },
     "gojo": {
-      "tabSkillRows": [],
-      "tabEffectPerforRows": [],
-      "tabEffectRows": []
+      "tabSkillRows": [
+        {
+          "id": "5251701",
+          "source": "TAB_Skill_3.lua",
+          "raw": "TAB_Skill[5251701] = {525170,2,{{}},10002,1,1,1,0,0,10,0,0,\"$2#52517010\",{},\"Gojo Satoru\",{0},0,0,\"Đánh Thường\",{0,0},0,0,10000}"
+        },
+        {
+          "id": "5251711",
+          "source": "TAB_Skill_3.lua",
+          "raw": "TAB_Skill[5251711] = {525171,2,{{}},5251711,1,3,3,0,1,0,0,0,\"$32?52517110\",{},\"10 lượt đầu tiên, bản thân không hành động, nhưng khi địch hành động tăng sát thương ma pháp bằng 97% lực công cho địch; sau 10 lượt dùng thêm đánh thường (hệ số sát thương 50%) để tấn công\",{0},0,0,\"Thuật thức Phản Chuyển-Hách\",{0,6},1,0,10000}"
+        },
+        {
+          "id": "5251712",
+          "source": "TAB_Skill_3.lua",
+          "raw": "TAB_Skill[5251712] = {525171,2,{{}},5251711,2,3,3,0,1,0,0,0,\"$32?52517120\",{},\"10 lượt đầu tiên, bản thân không hành động, nhưng khi địch hành động tăng sát thương ma pháp bằng 117% lực công cho địch; sau 10 lượt dùng thêm đánh thường (hệ số sát thương 50%) để tấn công\",{0},0,0,\"Thuật thức Phản Chuyển-Hách\",{0,7},1,0,10000}"
+        },
+        {
+          "id": "5251713",
+          "source": "TAB_Skill_3.lua",
+          "raw": "TAB_Skill[5251713] = {525171,2,{{}},5251711,3,3,3,0,1,0,0,0,\"$32?52517130\",{},\"10 lượt đầu tiên, bản thân không hành động, nhưng khi địch hành động tăng sát thương ma pháp bằng 140% lực công cho địch; sau 10 lượt dùng thêm đánh thường (hệ số sát thương 50%) để tấn công\",{0},0,0,\"Thuật thức Phản Chuyển-Hách\",{0,101},1,0,10000}"
+        },
+        {
+          "id": "5251714",
+          "source": "TAB_Skill_3.lua",
+          "raw": "TAB_Skill[5251714] = {525171,2,{{}},5251711,4,3,3,0,1,0,0,0,\"$32?52517140\",{},\"10 lượt đầu tiên, bản thân không hành động, nhưng khi địch hành động tăng sát thương ma pháp bằng 145% lực công cho địch; sau 10 lượt dùng thêm đánh thường (hệ số sát thương 50%) để tấn công\",{0},0,0,\"Thuật thức Phản Chuyển-Hách\",{0,102},1,0,10000}"
+        },
+        {
+          "id": "5251715",
+          "source": "TAB_Skill_3.lua",
+          "raw": "TAB_Skill[5251715] = {525171,2,{{}},5251711,5,3,3,0,1,0,0,0,\"$32?52517150\",{},\"10 lượt đầu tiên, bản thân không hành động, nhưng khi địch hành động tăng sát thương ma pháp bằng 151% lực công cho địch; sau 10 lượt dùng thêm đánh thường (hệ số sát thương 50%) để tấn công\",{0},0,0,\"Thuật thức Phản Chuyển-Hách\",{0,103},1,0,10000}"
+        },
+        {
+          "id": "5251716",
+          "source": "TAB_Skill_3.lua",
+          "raw": "TAB_Skill[5251716] = {525171,2,{{}},5251711,6,3,3,0,1,0,0,0,\"$32?52517160\",{},\"10 lượt đầu tiên, bản thân không hành động, nhưng khi địch hành động tăng sát thương ma pháp bằng 157% lực công cho địch; sau 10 lượt dùng thêm đánh thường (hệ số sát thương 50%) để tấn công\",{0},0,0,\"Thuật thức Phản Chuyển-Hách\",{0,104},1,0,10000}"
+        },
+        {
+          "id": "5251717",
+          "source": "TAB_Skill_3.lua",
+          "raw": "TAB_Skill[5251717] = {525171,2,{{}},5251711,7,3,3,0,1,0,0,0,\"$32?52517170\",{},\"10 lượt đầu tiên, bản thân không hành động, nhưng khi địch hành động tăng sát thương ma pháp bằng 162% lực công cho địch; sau 10 lượt dùng thêm đánh thường (hệ số sát thương 50%) để tấn công\",{0},0,0,\"Thuật thức Phản Chuyển-Hách\",{0,105},1,0,10000}"
+        },
+        {
+          "id": "5251718",
+          "source": "TAB_Skill_3.lua",
+          "raw": "TAB_Skill[5251718] = {525171,2,{{}},5251711,8,3,3,0,1,0,0,0,\"$32?52517180\",{},\"10 lượt đầu tiên, bản thân không hành động, nhưng khi địch hành động tăng sát thương ma pháp bằng 168% lực công cho địch; sau 10 lượt dùng thêm đánh thường (hệ số sát thương 50%) để tấn công\",{0},0,0,\"Thuật thức Phản Chuyển-Hách\",{0,0},1,0,10000}"
+        },
+        {
+          "id": "5251721",
+          "source": "TAB_Skill_3.lua",
+          "raw": "TAB_Skill[5251721] = {525172,2,{{}},5251721,1,3,3,0,0,0,0,0,\"null\",{{11,2000},{10,1000},{102,500}},\"Thuật thức tương truyền của gia tộc Gojo; tấn công tăng 20%, HP tăng 10%, bạo kích tăng 5%\",{0},0,0,\"Chú thuật Vô Hạ Hạn\",{1,6},2,0,10000}"
+        },
+        {
+          "id": "5251722",
+          "source": "TAB_Skill_3.lua",
+          "raw": "TAB_Skill[5251722] = {525172,2,{{}},5251721,2,3,3,0,0,0,0,0,\"null\",{{11,3000},{10,1500},{102,1000}},\"Thuật thức tương truyền của gia tộc Gojo; tấn công tăng 30%, HP tăng 15%, bạo kích tăng 10%\",{0},0,0,\"Chú thuật Vô Hạ Hạn\",{1,8},2,0,10000}"
+        },
+        {
+          "id": "5251723",
+          "source": "TAB_Skill_3.lua",
+          "raw": "TAB_Skill[5251723] = {525172,2,{{}},5251721,3,3,3,0,0,0,0,0,\"null\",{{11,4000},{10,2000},{102,1500}},\"Thuật thức tương truyền của gia tộc Gojo; tấn công tăng 40%, HP tăng 20%, bạo kích tăng 15%\",{0},0,0,\"Chú thuật Vô Hạ Hạn\",{1,101},2,0,10000}"
+        },
+        {
+          "id": "5251724",
+          "source": "TAB_Skill_3.lua",
+          "raw": "TAB_Skill[5251724] = {525172,2,{{}},5251721,4,3,3,0,0,0,0,0,\"null\",{{11,4000},{10,2400},{102,1500}},\"Thuật thức tương truyền của gia tộc Gojo; tấn công tăng 40%, HP tăng 24%, bạo kích tăng 15%\",{0},0,0,\"Chú thuật Vô Hạ Hạn\",{1,102},2,0,10000}"
+        },
+        {
+          "id": "5251725",
+          "source": "TAB_Skill_3.lua",
+          "raw": "TAB_Skill[5251725] = {525172,2,{{}},5251721,5,3,3,0,0,0,0,0,\"null\",{{11,4000},{10,2800},{102,1500}},\"Thuật thức tương truyền của gia tộc Gojo; tấn công tăng 40%, HP tăng 28%, bạo kích tăng 15%\",{0},0,0,\"Chú thuật Vô Hạ Hạn\",{1,103},2,0,10000}"
+        },
+        {
+          "id": "5251726",
+          "source": "TAB_Skill_3.lua",
+          "raw": "TAB_Skill[5251726] = {525172,2,{{}},5251721,6,3,3,0,0,0,0,0,\"null\",{{11,4000},{10,3200},{102,1500}},\"Thuật thức tương truyền của gia tộc Gojo; tấn công tăng 40%, HP tăng 32%, bạo kích tăng 15%\",{0},0,0,\"Chú thuật Vô Hạ Hạn\",{1,104},2,0,10000}"
+        },
+        {
+          "id": "5251727",
+          "source": "TAB_Skill_3.lua",
+          "raw": "TAB_Skill[5251727] = {525172,2,{{}},5251721,7,3,3,0,0,0,0,0,\"null\",{{11,4000},{10,3600},{102,1500}},\"Thuật thức tương truyền của gia tộc Gojo; tấn công tăng 40%, HP tăng 36%, bạo kích tăng 15%\",{0},0,0,\"Chú thuật Vô Hạ Hạn\",{1,105},2,0,10000}"
+        },
+        {
+          "id": "5251728",
+          "source": "TAB_Skill_3.lua",
+          "raw": "TAB_Skill[5251728] = {525172,2,{{}},5251721,8,3,3,0,0,0,0,0,\"null\",{{11,4000},{10,4000},{102,1500}},\"Thuật thức tương truyền của gia tộc Gojo; tấn công tăng 40%, HP tăng 40%, bạo kích tăng 15%\",{0},0,0,\"Chú thuật Vô Hạ Hạn\",{1,0},2,0,10000}"
+        },
+        {
+          "id": "5251731",
+          "source": "TAB_Skill_3.lua",
+          "raw": "TAB_Skill[5251731] = {525173,2,{{}},5251731,1,3,3,0,2,0,0,0,\"$32?52517311?52517311?52517311?52517311?52517311?52517310\",{},\"Khi bắt đầu chiến đấu, tăng cho bản thân 5 tầng miễn sát thương 3%, duy trì 4 lượt; khi địch tử vong, tăng cho bản thân 6% công, tối đa cộng dồn 3 tầng, tất cả trạng thái buff đều không thể thanh tẩy; khi đơn thể địch hồi sinh, truy sát mục tiêu, gây ra 10% sát thương ma pháp\",{0},0,0,\"Lục Nhãn\",{3,6},3,0,10000}"
+        },
+        {
+          "id": "5251732",
+          "source": "TAB_Skill_3.lua",
+          "raw": "TAB_Skill[5251732] = {525173,2,{{}},5251731,2,3,3,0,2,0,0,0,\"$32?52517321?52517321?52517321?52517321?52517321?52517320\",{},\"Khi bắt đầu chiến đấu, tăng cho bản thân 5 tầng miễn sát thương 4%, duy trì 4 lượt; khi địch tử vong, tăng cho bản thân 8% công, tối đa cộng dồn 3 tầng, tất cả trạng thái buff đều không thể thanh tẩy; khi đơn thể địch hồi sinh, truy sát mục tiêu, gây ra 15% sát thương ma pháp\",{0},0,0,\"Lục Nhãn\",{3,9},3,0,10000}"
+        },
+        {
+          "id": "5251733",
+          "source": "TAB_Skill_3.lua",
+          "raw": "TAB_Skill[5251733] = {525173,2,{{}},5251731,3,3,3,0,2,0,0,0,\"$32?52517331?52517331?52517331?52517331?52517331?52517330\",{},\"Khi bắt đầu chiến đấu, tăng cho bản thân 5 tầng miễn sát thương 5%, duy trì 4 lượt; khi địch tử vong, tăng cho bản thân 10% công, tối đa cộng dồn 3 tầng, tất cả trạng thái buff đều không thể thanh tẩy; khi đơn thể địch hồi sinh, truy sát mục tiêu, gây ra 20% sát thương ma pháp\",{0},0,0,\"Lục Nhãn\",{3,101},3,0,10000}"
+        },
+        {
+          "id": "5251734",
+          "source": "TAB_Skill_3.lua",
+          "raw": "TAB_Skill[5251734] = {525173,2,{{}},5251731,4,3,3,0,2,0,0,0,\"$32?52517341?52517341?52517341?52517341?52517341?52517340\",{},\"Khi bắt đầu chiến đấu, tăng cho bản thân 5 tầng miễn sát thương 5.2%, duy trì 4 lượt; khi địch tử vong, tăng cho bản thân 10.4% công, tối đa cộng dồn 3 tầng, tất cả trạng thái buff đều không thể thanh tẩy; khi đơn thể địch hồi sinh, truy sát mục tiêu, gây ra 20% sát thương ma pháp\",{0},0,0,\"Lục Nhãn\",{3,102},3,0,10000}"
+        },
+        {
+          "id": "5251735",
+          "source": "TAB_Skill_3.lua",
+          "raw": "TAB_Skill[5251735] = {525173,2,{{}},5251731,5,3,3,0,2,0,0,0,\"$32?52517351?52517351?52517351?52517351?52517351?52517350\",{},\"Khi bắt đầu chiến đấu, tăng cho bản thân 5 tầng miễn sát thương 5.4%, duy trì 4 lượt; khi địch tử vong, tăng cho bản thân 10.8% công, tối đa cộng dồn 3 tầng, tất cả trạng thái buff đều không thể thanh tẩy; khi đơn thể địch hồi sinh, truy sát mục tiêu, gây ra 20% sát thương ma pháp\",{0},0,0,\"Lục Nhãn\",{3,103},3,0,10000}"
+        },
+        {
+          "id": "5251736",
+          "source": "TAB_Skill_3.lua",
+          "raw": "TAB_Skill[5251736] = {525173,2,{{}},5251731,6,3,3,0,2,0,0,0,\"$32?52517361?52517361?52517361?52517361?52517361?52517360\",{},\"Khi bắt đầu chiến đấu, tăng cho bản thân 5 tầng miễn sát thương 5.6%, duy trì 4 lượt; khi địch tử vong, tăng cho bản thân 11.2% công, tối đa cộng dồn 3 tầng, tất cả trạng thái buff đều không thể thanh tẩy; khi đơn thể địch hồi sinh, truy sát mục tiêu, gây ra 20% sát thương ma pháp\",{0},0,0,\"Lục Nhãn\",{3,104},3,0,10000}"
+        },
+        {
+          "id": "5251737",
+          "source": "TAB_Skill_3.lua",
+          "raw": "TAB_Skill[5251737] = {525173,2,{{}},5251731,7,3,3,0,2,0,0,0,\"$32?52517371?52517371?52517371?52517371?52517371?52517370\",{},\"Khi bắt đầu chiến đấu, tăng cho bản thân 5 tầng miễn sát thương 5.8%, duy trì 4 lượt; khi địch tử vong, tăng cho bản thân 11.6% công, tối đa cộng dồn 3 tầng, tất cả trạng thái buff đều không thể thanh tẩy; khi đơn thể địch hồi sinh, truy sát mục tiêu, gây ra 20% sát thương ma pháp\",{0},0,0,\"Lục Nhãn\",{3,105},3,0,10000}"
+        },
+        {
+          "id": "5251738",
+          "source": "TAB_Skill_3.lua",
+          "raw": "TAB_Skill[5251738] = {525173,2,{{}},5251731,8,3,3,0,2,0,0,0,\"$32?52517381?52517381?52517381?52517381?52517381?52517380\",{},\"Khi bắt đầu chiến đấu, tăng cho bản thân 5 tầng miễn sát thương 6%, duy trì 4 lượt; khi địch tử vong, tăng cho bản thân 12% công, tối đa cộng dồn 3 tầng, tất cả trạng thái buff đều không thể thanh tẩy; khi đơn thể địch hồi sinh, truy sát mục tiêu, gây ra 20% sát thương ma pháp\",{0},0,0,\"Lục Nhãn\",{3,0},3,0,10000}"
+        },
+        {
+          "id": "5251741",
+          "source": "TAB_Skill_3.lua",
+          "raw": "TAB_Skill[5251741] = {525174,2,{{}},5251741,1,3,3,0,0,0,0,0,\"$32?52517411\",{},\"Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 15%\",{0},0,0,\"Triển khai {Khoảng Trống Vô Tận}\",{5,6},4,0,10000}"
+        },
+        {
+          "id": "5251742",
+          "source": "TAB_Skill_3.lua",
+          "raw": "TAB_Skill[5251742] = {525174,2,{{}},5251741,2,3,3,0,0,0,0,0,\"$32?52517421\",{},\"Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 20%\",{0},0,0,\"Triển khai {Khoảng Trống Vô Tận}\",{5,10},4,0,10000}"
+        },
+        {
+          "id": "5251743",
+          "source": "TAB_Skill_3.lua",
+          "raw": "TAB_Skill[5251743] = {525174,2,{{}},5251741,3,3,3,0,0,0,0,0,\"$32?52517431\",{},\"Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 25%\",{0},0,0,\"Triển khai {Khoảng Trống Vô Tận}\",{5,101},4,0,10000}"
+        },
+        {
+          "id": "5251744",
+          "source": "TAB_Skill_3.lua",
+          "raw": "TAB_Skill[5251744] = {525174,2,{{}},5251741,4,3,3,0,0,0,0,0,\"$32?52517441\",{},\"Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 26%\",{0},0,0,\"Triển khai {Khoảng Trống Vô Tận}\",{5,102},4,0,10000}"
+        },
+        {
+          "id": "5251745",
+          "source": "TAB_Skill_3.lua",
+          "raw": "TAB_Skill[5251745] = {525174,2,{{}},5251741,5,3,3,0,0,0,0,0,\"$32?52517451\",{},\"Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 27%\",{0},0,0,\"Triển khai {Khoảng Trống Vô Tận}\",{5,103},4,0,10000}"
+        },
+        {
+          "id": "5251746",
+          "source": "TAB_Skill_3.lua",
+          "raw": "TAB_Skill[5251746] = {525174,2,{{}},5251741,6,3,3,0,0,0,0,0,\"$32?52517461\",{},\"Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 28%\",{0},0,0,\"Triển khai {Khoảng Trống Vô Tận}\",{5,104},4,0,10000}"
+        },
+        {
+          "id": "5251747",
+          "source": "TAB_Skill_3.lua",
+          "raw": "TAB_Skill[5251747] = {525174,2,{{}},5251741,7,3,3,0,0,0,0,0,\"$32?52517471\",{},\"Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 29%\",{0},0,0,\"Triển khai {Khoảng Trống Vô Tận}\",{5,105},4,0,10000}"
+        },
+        {
+          "id": "5251748",
+          "source": "TAB_Skill_3.lua",
+          "raw": "TAB_Skill[5251748] = {525174,2,{{}},5251741,8,3,3,0,0,0,0,0,\"$32?52517481\",{},\"Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 30%\",{0},0,0,\"Triển khai {Khoảng Trống Vô Tận}\",{5,0},4,0,10000}"
+        }
+      ],
+      "tabEffectPerforRows": [
+        {
+          "id": "52517010",
+          "source": "TAB_EffectPerfor_1.lua",
+          "raw": "TAB_EffectPerfor[52517010] = {1,1,0,0,0,0,\"Gojo Satoru-Đánh thường\",1,1,0,{{52517111011,5,0}},100,1,0,0,0,1,{},1,0,{},52517010,0,0,525170,{},1,0,0,0}"
+        },
+        {
+          "id": "52517110",
+          "source": "TAB_EffectPerfor_1.lua",
+          "raw": "TAB_EffectPerfor[52517110] = {2,0,0,0,1,1,\"Gojo Satoru-1-Phản kích\",11,9,150,{{52517111012,5,0}},100,1,0,0,0,1,{52517111011,5,1},1,0,{},52517110,0,0,525171,{},1,0,0,0}"
+        },
+        {
+          "id": "52517310",
+          "source": "TAB_EffectPerfor_1.lua",
+          "raw": "TAB_EffectPerfor[52517310] = {3,0,0,0,0,0,\"Gojo Satoru-3-Truy kích\",21,9,100,{{52517111013,5,0}},100,1,0,0,0,1,{},1,0,{},52517310,0,0,525173,{},1,0,0,0}"
+        },
+        {
+          "id": "52517410",
+          "source": "TAB_EffectPerfor_1.lua",
+          "raw": "TAB_EffectPerfor[52517410] = {4,4,0,0,1,1,\"Gojo Satoru-4-Triển khai\",31,8,0,{{52517111014,5,0}},100,1,0,0,0,1,{52517111014,5,1},1,0,{},52517410,0,0,525174,{},1,0,0,0}"
+        }
+      ],
+      "tabEffectRows": [
+        {
+          "id": "52517010",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[52517010] = {\"法术普攻\",1,2,{},{1,1,19,5000},0,{},0,0,0,52517010,0,0,100,1,2,0}"
+        },
+        {
+          "id": "52517110",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[52517110] = {\"五条悟-1-伤害\",1,2,{},{1,1,19,9700},0,{},0,0,0,52517110,0,0,100,1,2,0}"
+        },
+        {
+          "id": "52517120",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[52517120] = {\"五条悟-1-伤害\",1,2,{},{1,1,19,11700},0,{},0,0,0,52517110,0,0,100,1,2,0}"
+        },
+        {
+          "id": "52517130",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[52517130] = {\"五条悟-1-伤害\",1,2,{},{1,1,19,14000},0,{},0,0,0,52517110,0,0,100,1,2,0}"
+        },
+        {
+          "id": "52517140",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[52517140] = {\"五条悟-1-伤害\",1,2,{},{1,1,19,14500},0,{},0,0,0,52517110,0,0,100,1,2,0}"
+        },
+        {
+          "id": "52517150",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[52517150] = {\"五条悟-1-伤害\",1,2,{},{1,1,19,15100},0,{},0,0,0,52517110,0,0,100,1,2,0}"
+        },
+        {
+          "id": "52517160",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[52517160] = {\"五条悟-1-伤害\",1,2,{},{1,1,19,15700},0,{},0,0,0,52517110,0,0,100,1,2,0}"
+        },
+        {
+          "id": "52517170",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[52517170] = {\"五条悟-1-伤害\",1,2,{},{1,1,19,16200},0,{},0,0,0,52517110,0,0,100,1,2,0}"
+        },
+        {
+          "id": "52517180",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[52517180] = {\"五条悟-1-伤害\",1,2,{},{1,1,19,16800},0,{},0,0,0,52517110,0,0,100,1,2,0}"
+        },
+        {
+          "id": "52517310",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[52517310] = {\"五条悟-3-免伤\",60,0,{},{},0,{},0,0,300,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "52517311",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[52517311] = {\"五条悟-3-攻击提升\",3,0,{},{2,1,3,600},0,{},0,0,0,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "52517313",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[52517313] = {\"五条悟-3-伤害\",1,2,{},{1,1,19,1000},0,{},0,0,0,52517310,0,0,100,1,2,0}"
+        },
+        {
+          "id": "52517320",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[52517320] = {\"五条悟-3-免伤\",60,0,{},{},0,{},0,0,400,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "52517321",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[52517321] = {\"五条悟-3-攻击提升\",3,0,{},{2,1,3,800},0,{},0,0,0,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "52517323",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[52517323] = {\"五条悟-3-伤害\",1,2,{},{1,1,19,1500},0,{},0,0,0,52517310,0,0,100,1,2,0}"
+        },
+        {
+          "id": "52517330",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[52517330] = {\"五条悟-3-免伤\",60,0,{},{},0,{},0,0,500,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "52517331",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[52517331] = {\"五条悟-3-攻击提升\",3,0,{},{2,1,3,1000},0,{},0,0,0,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "52517333",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[52517333] = {\"五条悟-3-伤害\",1,2,{},{1,1,19,2000},0,{},0,0,0,52517310,0,0,100,1,2,0}"
+        },
+        {
+          "id": "52517340",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[52517340] = {\"五条悟-3-免伤\",60,0,{},{},0,{},0,0,520,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "52517341",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[52517341] = {\"五条悟-3-攻击提升\",3,0,{},{2,1,3,1040},0,{},0,0,0,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "52517343",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[52517343] = {\"五条悟-3-伤害\",1,2,{},{1,1,19,2000},0,{},0,0,0,52517310,0,0,100,1,2,0}"
+        },
+        {
+          "id": "52517350",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[52517350] = {\"五条悟-3-免伤\",60,0,{},{},0,{},0,0,540,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "52517351",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[52517351] = {\"五条悟-3-攻击提升\",3,0,{},{2,1,3,1080},0,{},0,0,0,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "52517353",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[52517353] = {\"五条悟-3-伤害\",1,2,{},{1,1,19,2000},0,{},0,0,0,52517310,0,0,100,1,2,0}"
+        },
+        {
+          "id": "52517360",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[52517360] = {\"五条悟-3-免伤\",60,0,{},{},0,{},0,0,560,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "52517361",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[52517361] = {\"五条悟-3-攻击提升\",3,0,{},{2,1,3,1120},0,{},0,0,0,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "52517363",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[52517363] = {\"五条悟-3-伤害\",1,2,{},{1,1,19,2000},0,{},0,0,0,52517310,0,0,100,1,2,0}"
+        },
+        {
+          "id": "52517370",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[52517370] = {\"五条悟-3-免伤\",60,0,{},{},0,{},0,0,580,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "52517371",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[52517371] = {\"五条悟-3-攻击提升\",3,0,{},{2,1,3,1160},0,{},0,0,0,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "52517373",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[52517373] = {\"五条悟-3-伤害\",1,2,{},{1,1,19,2000},0,{},0,0,0,52517310,0,0,100,1,2,0}"
+        },
+        {
+          "id": "52517380",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[52517380] = {\"五条悟-3-免伤\",60,0,{},{},0,{},0,0,600,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "52517381",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[52517381] = {\"五条悟-3-攻击提升\",3,0,{},{2,1,3,1200},0,{},0,0,0,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "52517383",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[52517383] = {\"五条悟-3-伤害\",1,2,{},{1,1,19,2000},0,{},0,0,0,52517310,0,0,100,1,2,0}"
+        },
+        {
+          "id": "52517410",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[52517410] = {\"五条悟-4-领域\",43,0,{},{},0,{},0,0,0,52517410,0,0,100,1,2,0}"
+        },
+        {
+          "id": "52517411",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[52517411] = {\"五条悟-4-伤害加成\",57,0,{},{},0,{},0,0,1500,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "52517420",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[52517420] = {\"五条悟-4-领域\",43,0,{},{},0,{},0,0,0,52517410,0,0,100,1,2,0}"
+        },
+        {
+          "id": "52517421",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[52517421] = {\"五条悟-4-伤害加成\",57,0,{},{},0,{},0,0,2000,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "52517430",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[52517430] = {\"五条悟-4-领域\",43,0,{},{},0,{},0,0,0,52517410,0,0,100,1,2,0}"
+        },
+        {
+          "id": "52517431",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[52517431] = {\"五条悟-4-伤害加成\",57,0,{},{},0,{},0,0,2500,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "52517440",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[52517440] = {\"五条悟-4-领域\",43,0,{},{},0,{},0,0,0,52517410,0,0,100,1,2,0}"
+        },
+        {
+          "id": "52517441",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[52517441] = {\"五条悟-4-伤害加成\",57,0,{},{},0,{},0,0,2600,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "52517450",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[52517450] = {\"五条悟-4-领域\",43,0,{},{},0,{},0,0,0,52517410,0,0,100,1,2,0}"
+        },
+        {
+          "id": "52517451",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[52517451] = {\"五条悟-4-伤害加成\",57,0,{},{},0,{},0,0,2700,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "52517460",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[52517460] = {\"五条悟-4-领域\",43,0,{},{},0,{},0,0,0,52517410,0,0,100,1,2,0}"
+        },
+        {
+          "id": "52517461",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[52517461] = {\"五条悟-4-伤害加成\",57,0,{},{},0,{},0,0,2800,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "52517470",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[52517470] = {\"五条悟-4-领域\",43,0,{},{},0,{},0,0,0,52517410,0,0,100,1,2,0}"
+        },
+        {
+          "id": "52517471",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[52517471] = {\"五条悟-4-伤害加成\",57,0,{},{},0,{},0,0,2900,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "52517480",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[52517480] = {\"五条悟-4-领域\",43,0,{},{},0,{},0,0,0,52517410,0,0,100,1,2,0}"
+        },
+        {
+          "id": "52517481",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[52517481] = {\"五条悟-4-伤害加成\",57,0,{},{},0,{},0,0,3000,0,0,0,100,1,2,0}"
+        }
+      ]
     },
     "iori": {
-      "tabSkillRows": [],
-      "tabEffectPerforRows": [],
-      "tabEffectRows": []
+      "tabSkillRows": [
+        {
+          "id": "5151511",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151511] = {515151,2,{{}},5151511,1,2,2,1,1,1,1,1,\"$16#51515110&51515110\",{},\"Nhảy lên đè đối thủ xuống đất và dùng Quỷ Thiêu truy kích, kỹ năng này bỏ qua khống chế, gây 144% ST vật lý cho 2 mục tiêu địch ngẫu nhiên, gây thêm sát thương bằng 3% giới hạn HP mục tiêu cho Tank, Hỗ Trợ (Không vượt quá 2 lần lực công bản thân)\",{0},0,0,\"Viêm Âu\",{0,6},1,0,10000}"
+        },
+        {
+          "id": "5151512",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151512] = {515151,2,{{}},5151511,2,2,2,1,1,1,1,1,\"$16#51515120&51515120\",{},\"Nhảy lên đè đối thủ xuống đất và dùng Quỷ Thiêu truy kích, kỹ năng này bỏ qua khống chế, gây 170% ST vật lý cho 2 mục tiêu địch ngẫu nhiên, gây thêm sát thương bằng 4% giới hạn HP mục tiêu cho Tank, Hỗ Trợ (Không vượt quá 2 lần lực công bản thân)\",{0},0,0,\"Viêm Âu\",{0,7},1,0,10000}"
+        },
+        {
+          "id": "5151513",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151513] = {515151,2,{{}},5151511,3,2,2,1,1,1,1,1,\"$16#51515130&51515130\",{},\"Nhảy lên đè đối thủ xuống đất và dùng Quỷ Thiêu truy kích, kỹ năng này bỏ qua khống chế, gây 205% ST vật lý cho 2 mục tiêu địch ngẫu nhiên, gây thêm sát thương bằng 5% giới hạn HP mục tiêu cho Tank, Hỗ Trợ (Không vượt quá 2 lần lực công bản thân)\",{0},0,0,\"Viêm Âu\",{0,101},1,0,10000}"
+        },
+        {
+          "id": "5151514",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151514] = {515151,2,{{}},5151511,4,2,2,1,1,1,1,1,\"$16#51515140&51515130\",{},\"Nhảy lên đè đối thủ xuống đất và dùng Quỷ Thiêu truy kích, kỹ năng này bỏ qua khống chế, gây 213% ST vật lý cho 2 mục tiêu địch ngẫu nhiên, gây thêm sát thương bằng 5% giới hạn HP mục tiêu cho Tank, Hỗ Trợ (Không vượt quá 2 lần lực công bản thân)\",{0},0,0,\"Viêm Âu\",{0,102},1,0,10000}"
+        },
+        {
+          "id": "5151515",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151515] = {515151,2,{{}},5151511,5,2,2,1,1,1,1,1,\"$16#51515150&51515130\",{},\"Nhảy lên đè đối thủ xuống đất và dùng Quỷ Thiêu truy kích, kỹ năng này bỏ qua khống chế, gây 221% ST vật lý cho 2 mục tiêu địch ngẫu nhiên, gây thêm sát thương bằng 5% giới hạn HP mục tiêu cho Tank, Hỗ Trợ (Không vượt quá 2 lần lực công bản thân)\",{0},0,0,\"Viêm Âu\",{0,103},1,0,10000}"
+        },
+        {
+          "id": "5151516",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151516] = {515151,2,{{}},5151511,6,2,2,1,1,1,1,1,\"$16#51515160&51515130\",{},\"Nhảy lên đè đối thủ xuống đất và dùng Quỷ Thiêu truy kích, kỹ năng này bỏ qua khống chế, gây 229% ST vật lý cho 2 mục tiêu địch ngẫu nhiên, gây thêm sát thương bằng 5% giới hạn HP mục tiêu cho Tank, Hỗ Trợ (Không vượt quá 2 lần lực công bản thân)\",{0},0,0,\"Viêm Âu\",{0,104},1,0,10000}"
+        },
+        {
+          "id": "5151517",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151517] = {515151,2,{{}},5151511,7,2,2,1,1,1,1,1,\"$16#51515170&51515130\",{},\"Nhảy lên đè đối thủ xuống đất và dùng Quỷ Thiêu truy kích, kỹ năng này bỏ qua khống chế, gây 238% ST vật lý cho 2 mục tiêu địch ngẫu nhiên, gây thêm sát thương bằng 5% giới hạn HP mục tiêu cho Tank, Hỗ Trợ (Không vượt quá 2 lần lực công bản thân)\",{0},0,0,\"Viêm Âu\",{0,105},1,0,10000}"
+        },
+        {
+          "id": "5151518",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151518] = {515151,2,{{}},5151511,8,2,2,1,1,1,1,1,\"$16#51515180&51515130\",{},\"Nhảy lên đè đối thủ xuống đất và dùng Quỷ Thiêu truy kích, kỹ năng này bỏ qua khống chế, gây 246% ST vật lý cho 2 mục tiêu địch ngẫu nhiên, gây thêm sát thương bằng 5% giới hạn HP mục tiêu cho Tank, Hỗ Trợ (Không vượt quá 2 lần lực công bản thân)\",{0},0,0,\"Viêm Âu\",{0,0},1,0,10000}"
+        }
+      ],
+      "tabEffectPerforRows": [
+        {
+          "id": "51515010",
+          "source": "TAB_EffectPerfor_1.lua",
+          "raw": "TAB_EffectPerfor[51515010] = {1,1,0,0,0,0,\"Bát Thần-Đánh Thường\",1,1,0,{{51515110111,5,0}},100,1,0,0,0,1,{100110111,5,0},1,0,{},0,0,4,515151,{},1,0,0,0}"
+        },
+        {
+          "id": "51515110",
+          "source": "TAB_EffectPerfor_1.lua",
+          "raw": "TAB_EffectPerfor[51515110] = {2,5,0,0,1,1,\"Bát Thần-1-Viêm Âu\",11,1,0,{{51515110111,5,1}},100,1,0,0,0,1,{100110111,5,0},1,0,{},51515110,0,15,515152,{},1,0,0,0}"
+        },
+        {
+          "id": "51515310",
+          "source": "TAB_EffectPerfor_1.lua",
+          "raw": "TAB_EffectPerfor[51515310] = {3,5,0,0,1,1,\"Bát Thần-3-Yatagara\",21,1,0,{{51515110111,5,2}},100,1,0,0,0,1,{100110111,5,0},1,0,{},51515130,0,4,515153,{},1,0,0,0}"
+        },
+        {
+          "id": "51515410",
+          "source": "TAB_EffectPerfor_1.lua",
+          "raw": "TAB_EffectPerfor[51515410] = {4,0,0,0,1,1,\"Bát Thần-4-Banned\",31,1,0,{{51515110111,5,3}},100,1,0,0,0,1,{51515110211,5,0},1,0,{},51515140,0,9,515154,{},1,0,0,0}"
+        }
+      ],
+      "tabEffectRows": [
+        {
+          "id": "51515010",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515010] = {\"Bát Thần-Đánh Thường\",0,1,{},{1,1,19,10000},0,{},0,0,0,51515010,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515110",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515110] = {\"八神-1-伤害\",0,1,{},{1,1,19,14400},0,{},0,0,0,51515110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515111",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515111] = {\"八神-1-辅助坦克伤害\",41,0,{},{2,1,18,300},3,{1,1,19,20000},0,0,0,0,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515120",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515120] = {\"八神-1-伤害\",0,1,{},{1,1,19,17000},0,{},0,0,0,51515110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515121",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515121] = {\"八神-1-辅助坦克伤害\",41,0,{},{2,1,18,400},3,{1,1,19,20000},0,0,0,0,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515130",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515130] = {\"八神-1-伤害\",0,1,{},{1,1,19,20500},0,{},0,0,0,51515110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515131",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515131] = {\"八神-1-辅助坦克伤害\",41,0,{},{2,1,18,500},3,{1,1,19,20000},0,0,0,0,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515140",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515140] = {\"八神-1-伤害\",0,1,{},{1,1,19,21300},0,{},0,0,0,51515110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515150",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515150] = {\"八神-1-伤害\",0,1,{},{1,1,19,22100},0,{},0,0,0,51515110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515160",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515160] = {\"八神-1-伤害\",0,1,{},{1,1,19,22900},0,{},0,0,0,51515110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515170",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515170] = {\"八神-1-伤害\",0,1,{},{1,1,19,23800},0,{},0,0,0,51515110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515180",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515180] = {\"八神-1-伤害\",0,1,{},{1,1,19,24600},0,{},0,0,0,51515110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515310",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515310] = {\"八神-3-伤害\",0,1,{},{1,1,19,15000},0,{},0,0,0,51515310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515311",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515311] = {\"八神-1-暴击\",29,0,{},{},0,{},0,0,2000,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "51515320",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515320] = {\"八神-3-伤害\",0,1,{},{1,1,19,17600},0,{},0,0,0,51515310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515330",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515330] = {\"八神-3-伤害\",0,1,{},{1,1,19,20800},0,{},0,0,0,51515310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515340",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515340] = {\"八神-3-伤害\",0,1,{},{1,1,19,21600},0,{},0,0,0,51515310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515350",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515350] = {\"八神-3-伤害\",0,1,{},{1,1,19,22400},0,{},0,0,0,51515310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515360",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515360] = {\"八神-3-伤害\",0,1,{},{1,1,19,23300},0,{},0,0,0,51515310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515370",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515370] = {\"八神-3-伤害\",0,1,{},{1,1,19,24100},0,{},0,0,0,51515310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515380",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515380] = {\"八神-3-伤害\",0,1,{},{1,1,19,25000},0,{},0,0,0,51515310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515410",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515410] = {\"攻击命中时，如果目标血量高于60%，则本次伤害提升15%，\",58,0,{},{},0,{},0,0,1000,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "51515411",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515411] = {\"主动进行普攻时，有25%的概率追加释放【八稚女】；额外造成138%的物理伤害。\",0,1,{},{1,1,19,13400},0,{},0,0,0,51515410,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515412",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515412] = {\"八神-1-吸血\",24,0,{2000},{},0,{},0,0,0,0,0,0,100,6,1,0}"
+        },
+        {
+          "id": "51515420",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515420] = {\"攻击命中时，如果目标血量高于50%，则本次伤害提升20%，\",58,0,{},{},0,{},0,0,1500,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "51515421",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515421] = {\"主动进行普攻时，有25%的概率追加释放【八稚女】；额外造成163%的物理伤害。\",0,1,{},{1,1,19,16100},0,{},0,0,0,51515410,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515422",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515422] = {\"八神-1-吸血\",24,0,{2500},{},0,{},0,0,0,0,0,0,100,6,1,0}"
+        },
+        {
+          "id": "51515430",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515430] = {\"攻击命中时，如果目标血量高于40%，则本次伤害提升25%，\",58,0,{},{},0,{},0,0,2000,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "51515431",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515431] = {\"主动进行普攻时，有25%的概率追加释放【八稚女】；额外造成193%的物理伤害。\",0,1,{},{1,1,19,19300},0,{},0,0,0,51515410,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515432",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515432] = {\"八神-1-吸血\",24,0,{3000},{},0,{},0,0,0,0,0,0,100,6,1,0}"
+        },
+        {
+          "id": "51515440",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515440] = {\"攻击命中时，如果目标血量高于40%，则本次伤害提升26%，\",58,0,{},{},0,{},0,0,2100,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "51515441",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515441] = {\"主动进行普攻时，有25%的概率追加释放【八稚女】；额外造成193%的物理伤害。\",0,1,{},{1,1,19,20000},0,{},0,0,0,51515410,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515442",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515442] = {\"八神-1-吸血\",24,0,{3100},{},0,{},0,0,0,0,0,0,100,6,1,0}"
+        },
+        {
+          "id": "51515450",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515450] = {\"攻击命中时，如果目标血量高于40%，则本次伤害提升27%，\",58,0,{},{},0,{},0,0,2200,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "51515451",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515451] = {\"主动进行普攻时，有25%的概率追加释放【八稚女】；额外造成193%的物理伤害。\",0,1,{},{1,1,19,20800},0,{},0,0,0,51515410,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515452",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515452] = {\"八神-1-吸血\",24,0,{3200},{},0,{},0,0,0,0,0,0,100,6,1,0}"
+        },
+        {
+          "id": "51515460",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515460] = {\"攻击命中时，如果目标血量高于40%，则本次伤害提升28%，\",58,0,{},{},0,{},0,0,2300,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "51515461",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515461] = {\"主动进行普攻时，有25%的概率追加释放【八稚女】；额外造成193%的物理伤害。\",0,1,{},{1,1,19,21600},0,{},0,0,0,51515410,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515462",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515462] = {\"八神-1-吸血\",24,0,{3300},{},0,{},0,0,0,0,0,0,100,6,1,0}"
+        },
+        {
+          "id": "51515470",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515470] = {\"攻击命中时，如果目标血量高于40%，则本次伤害提升29%，\",58,0,{},{},0,{},0,0,2400,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "51515471",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515471] = {\"主动进行普攻时，有25%的概率追加释放【八稚女】；额外造成193%的物理伤害。\",0,1,{},{1,1,19,22400},0,{},0,0,0,51515410,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515472",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515472] = {\"八神-1-吸血\",24,0,{3400},{},0,{},0,0,0,0,0,0,100,6,1,0}"
+        },
+        {
+          "id": "51515480",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515480] = {\"攻击命中时，如果目标血量高于40%，则本次伤害提升30%，\",58,0,{},{},0,{},0,0,2500,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "51515481",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515481] = {\"主动进行普攻时，有25%的概率追加释放【八稚女】；额外造成193%的物理伤害。\",0,1,{},{1,1,19,23200},0,{},0,0,0,51515410,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515482",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515482] = {\"八神-1-吸血\",24,0,{3500},{},0,{},0,0,0,0,0,0,100,6,1,0}"
+        }
+      ]
     },
     "iori_dark": {
-      "tabSkillRows": [],
-      "tabEffectPerforRows": [],
-      "tabEffectRows": []
+      "tabSkillRows": [
+        {
+          "id": "5151511",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151511] = {515151,2,{{}},5151511,1,2,2,1,1,1,1,1,\"$16#51515110&51515110\",{},\"Nhảy lên đè đối thủ xuống đất và dùng Quỷ Thiêu truy kích, kỹ năng này bỏ qua khống chế, gây 144% ST vật lý cho 2 mục tiêu địch ngẫu nhiên, gây thêm sát thương bằng 3% giới hạn HP mục tiêu cho Tank, Hỗ Trợ (Không vượt quá 2 lần lực công bản thân)\",{0},0,0,\"Viêm Âu\",{0,6},1,0,10000}"
+        },
+        {
+          "id": "5151512",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151512] = {515151,2,{{}},5151511,2,2,2,1,1,1,1,1,\"$16#51515120&51515120\",{},\"Nhảy lên đè đối thủ xuống đất và dùng Quỷ Thiêu truy kích, kỹ năng này bỏ qua khống chế, gây 170% ST vật lý cho 2 mục tiêu địch ngẫu nhiên, gây thêm sát thương bằng 4% giới hạn HP mục tiêu cho Tank, Hỗ Trợ (Không vượt quá 2 lần lực công bản thân)\",{0},0,0,\"Viêm Âu\",{0,7},1,0,10000}"
+        },
+        {
+          "id": "5151513",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151513] = {515151,2,{{}},5151511,3,2,2,1,1,1,1,1,\"$16#51515130&51515130\",{},\"Nhảy lên đè đối thủ xuống đất và dùng Quỷ Thiêu truy kích, kỹ năng này bỏ qua khống chế, gây 205% ST vật lý cho 2 mục tiêu địch ngẫu nhiên, gây thêm sát thương bằng 5% giới hạn HP mục tiêu cho Tank, Hỗ Trợ (Không vượt quá 2 lần lực công bản thân)\",{0},0,0,\"Viêm Âu\",{0,101},1,0,10000}"
+        },
+        {
+          "id": "5151514",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151514] = {515151,2,{{}},5151511,4,2,2,1,1,1,1,1,\"$16#51515140&51515130\",{},\"Nhảy lên đè đối thủ xuống đất và dùng Quỷ Thiêu truy kích, kỹ năng này bỏ qua khống chế, gây 213% ST vật lý cho 2 mục tiêu địch ngẫu nhiên, gây thêm sát thương bằng 5% giới hạn HP mục tiêu cho Tank, Hỗ Trợ (Không vượt quá 2 lần lực công bản thân)\",{0},0,0,\"Viêm Âu\",{0,102},1,0,10000}"
+        },
+        {
+          "id": "5151515",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151515] = {515151,2,{{}},5151511,5,2,2,1,1,1,1,1,\"$16#51515150&51515130\",{},\"Nhảy lên đè đối thủ xuống đất và dùng Quỷ Thiêu truy kích, kỹ năng này bỏ qua khống chế, gây 221% ST vật lý cho 2 mục tiêu địch ngẫu nhiên, gây thêm sát thương bằng 5% giới hạn HP mục tiêu cho Tank, Hỗ Trợ (Không vượt quá 2 lần lực công bản thân)\",{0},0,0,\"Viêm Âu\",{0,103},1,0,10000}"
+        },
+        {
+          "id": "5151516",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151516] = {515151,2,{{}},5151511,6,2,2,1,1,1,1,1,\"$16#51515160&51515130\",{},\"Nhảy lên đè đối thủ xuống đất và dùng Quỷ Thiêu truy kích, kỹ năng này bỏ qua khống chế, gây 229% ST vật lý cho 2 mục tiêu địch ngẫu nhiên, gây thêm sát thương bằng 5% giới hạn HP mục tiêu cho Tank, Hỗ Trợ (Không vượt quá 2 lần lực công bản thân)\",{0},0,0,\"Viêm Âu\",{0,104},1,0,10000}"
+        },
+        {
+          "id": "5151517",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151517] = {515151,2,{{}},5151511,7,2,2,1,1,1,1,1,\"$16#51515170&51515130\",{},\"Nhảy lên đè đối thủ xuống đất và dùng Quỷ Thiêu truy kích, kỹ năng này bỏ qua khống chế, gây 238% ST vật lý cho 2 mục tiêu địch ngẫu nhiên, gây thêm sát thương bằng 5% giới hạn HP mục tiêu cho Tank, Hỗ Trợ (Không vượt quá 2 lần lực công bản thân)\",{0},0,0,\"Viêm Âu\",{0,105},1,0,10000}"
+        },
+        {
+          "id": "5151518",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[5151518] = {515151,2,{{}},5151511,8,2,2,1,1,1,1,1,\"$16#51515180&51515130\",{},\"Nhảy lên đè đối thủ xuống đất và dùng Quỷ Thiêu truy kích, kỹ năng này bỏ qua khống chế, gây 246% ST vật lý cho 2 mục tiêu địch ngẫu nhiên, gây thêm sát thương bằng 5% giới hạn HP mục tiêu cho Tank, Hỗ Trợ (Không vượt quá 2 lần lực công bản thân)\",{0},0,0,\"Viêm Âu\",{0,0},1,0,10000}"
+        }
+      ],
+      "tabEffectPerforRows": [
+        {
+          "id": "51515020",
+          "source": "TAB_EffectPerfor_1.lua",
+          "raw": "TAB_EffectPerfor[51515020] = {1,1,95,0,0,0,\"Skin Bát Thần-Đánh Thường\",1,1,0,{{51515121011,5,0}},100,1,0,0,0,1,{},1,0,{},51515020,0,9,515151,{},1,0,0,0}"
+        },
+        {
+          "id": "51515120",
+          "source": "TAB_EffectPerfor_1.lua",
+          "raw": "TAB_EffectPerfor[51515120] = {2,4,0,0,1,1,\"Skin Bát Thần-1-Viêm Âu\",11,1,0,{{51515121012,5,0}},100,1,0,0,0,1,{51515121013,5,0},1,0,{},51515120,0,0,515152,{},1,0,0,0}"
+        },
+        {
+          "id": "51515320",
+          "source": "TAB_EffectPerfor_1.lua",
+          "raw": "TAB_EffectPerfor[51515320] = {3,5,0,0,1,1,\"Skin Bát Thần-3-Yatagara\",21,1,0,{{51515121014,5,0}},100,1,0,0,0,2,{51515121015,5,0},1,0,{},51515320,0,15,515153,{},1,0,0,0}"
+        },
+        {
+          "id": "51515420",
+          "source": "TAB_EffectPerfor_1.lua",
+          "raw": "TAB_EffectPerfor[51515420] = {4,0,0,0,1,1,\"Skin Bát Thần-4-Banned\",31,1,0,{{51515121016,5,0}},100,1,0,0,0,1,{},1,0,{},51515420,0,13,515154,{},1,0,0,0}"
+        }
+      ],
+      "tabEffectRows": [
+        {
+          "id": "51515010",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515010] = {\"Bát Thần-Đánh Thường\",0,1,{},{1,1,19,10000},0,{},0,0,0,51515010,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515110",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515110] = {\"八神-1-伤害\",0,1,{},{1,1,19,14400},0,{},0,0,0,51515110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515111",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515111] = {\"八神-1-辅助坦克伤害\",41,0,{},{2,1,18,300},3,{1,1,19,20000},0,0,0,0,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515120",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515120] = {\"八神-1-伤害\",0,1,{},{1,1,19,17000},0,{},0,0,0,51515110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515121",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515121] = {\"八神-1-辅助坦克伤害\",41,0,{},{2,1,18,400},3,{1,1,19,20000},0,0,0,0,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515130",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515130] = {\"八神-1-伤害\",0,1,{},{1,1,19,20500},0,{},0,0,0,51515110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515131",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515131] = {\"八神-1-辅助坦克伤害\",41,0,{},{2,1,18,500},3,{1,1,19,20000},0,0,0,0,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515140",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515140] = {\"八神-1-伤害\",0,1,{},{1,1,19,21300},0,{},0,0,0,51515110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515150",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515150] = {\"八神-1-伤害\",0,1,{},{1,1,19,22100},0,{},0,0,0,51515110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515160",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515160] = {\"八神-1-伤害\",0,1,{},{1,1,19,22900},0,{},0,0,0,51515110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515170",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515170] = {\"八神-1-伤害\",0,1,{},{1,1,19,23800},0,{},0,0,0,51515110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515180",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515180] = {\"八神-1-伤害\",0,1,{},{1,1,19,24600},0,{},0,0,0,51515110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515310",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515310] = {\"八神-3-伤害\",0,1,{},{1,1,19,15000},0,{},0,0,0,51515310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515311",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515311] = {\"八神-1-暴击\",29,0,{},{},0,{},0,0,2000,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "51515320",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515320] = {\"八神-3-伤害\",0,1,{},{1,1,19,17600},0,{},0,0,0,51515310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515330",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515330] = {\"八神-3-伤害\",0,1,{},{1,1,19,20800},0,{},0,0,0,51515310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515340",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515340] = {\"八神-3-伤害\",0,1,{},{1,1,19,21600},0,{},0,0,0,51515310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515350",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515350] = {\"八神-3-伤害\",0,1,{},{1,1,19,22400},0,{},0,0,0,51515310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515360",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515360] = {\"八神-3-伤害\",0,1,{},{1,1,19,23300},0,{},0,0,0,51515310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515370",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515370] = {\"八神-3-伤害\",0,1,{},{1,1,19,24100},0,{},0,0,0,51515310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515380",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515380] = {\"八神-3-伤害\",0,1,{},{1,1,19,25000},0,{},0,0,0,51515310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515410",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515410] = {\"攻击命中时，如果目标血量高于60%，则本次伤害提升15%，\",58,0,{},{},0,{},0,0,1000,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "51515411",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515411] = {\"主动进行普攻时，有25%的概率追加释放【八稚女】；额外造成138%的物理伤害。\",0,1,{},{1,1,19,13400},0,{},0,0,0,51515410,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515412",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515412] = {\"八神-1-吸血\",24,0,{2000},{},0,{},0,0,0,0,0,0,100,6,1,0}"
+        },
+        {
+          "id": "51515420",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515420] = {\"攻击命中时，如果目标血量高于50%，则本次伤害提升20%，\",58,0,{},{},0,{},0,0,1500,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "51515421",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515421] = {\"主动进行普攻时，有25%的概率追加释放【八稚女】；额外造成163%的物理伤害。\",0,1,{},{1,1,19,16100},0,{},0,0,0,51515410,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515422",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515422] = {\"八神-1-吸血\",24,0,{2500},{},0,{},0,0,0,0,0,0,100,6,1,0}"
+        },
+        {
+          "id": "51515430",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515430] = {\"攻击命中时，如果目标血量高于40%，则本次伤害提升25%，\",58,0,{},{},0,{},0,0,2000,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "51515431",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515431] = {\"主动进行普攻时，有25%的概率追加释放【八稚女】；额外造成193%的物理伤害。\",0,1,{},{1,1,19,19300},0,{},0,0,0,51515410,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515432",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515432] = {\"八神-1-吸血\",24,0,{3000},{},0,{},0,0,0,0,0,0,100,6,1,0}"
+        },
+        {
+          "id": "51515440",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515440] = {\"攻击命中时，如果目标血量高于40%，则本次伤害提升26%，\",58,0,{},{},0,{},0,0,2100,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "51515441",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515441] = {\"主动进行普攻时，有25%的概率追加释放【八稚女】；额外造成193%的物理伤害。\",0,1,{},{1,1,19,20000},0,{},0,0,0,51515410,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515442",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515442] = {\"八神-1-吸血\",24,0,{3100},{},0,{},0,0,0,0,0,0,100,6,1,0}"
+        },
+        {
+          "id": "51515450",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515450] = {\"攻击命中时，如果目标血量高于40%，则本次伤害提升27%，\",58,0,{},{},0,{},0,0,2200,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "51515451",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515451] = {\"主动进行普攻时，有25%的概率追加释放【八稚女】；额外造成193%的物理伤害。\",0,1,{},{1,1,19,20800},0,{},0,0,0,51515410,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515452",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515452] = {\"八神-1-吸血\",24,0,{3200},{},0,{},0,0,0,0,0,0,100,6,1,0}"
+        },
+        {
+          "id": "51515460",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515460] = {\"攻击命中时，如果目标血量高于40%，则本次伤害提升28%，\",58,0,{},{},0,{},0,0,2300,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "51515461",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515461] = {\"主动进行普攻时，有25%的概率追加释放【八稚女】；额外造成193%的物理伤害。\",0,1,{},{1,1,19,21600},0,{},0,0,0,51515410,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515462",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515462] = {\"八神-1-吸血\",24,0,{3300},{},0,{},0,0,0,0,0,0,100,6,1,0}"
+        },
+        {
+          "id": "51515470",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515470] = {\"攻击命中时，如果目标血量高于40%，则本次伤害提升29%，\",58,0,{},{},0,{},0,0,2400,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "51515471",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515471] = {\"主动进行普攻时，有25%的概率追加释放【八稚女】；额外造成193%的物理伤害。\",0,1,{},{1,1,19,22400},0,{},0,0,0,51515410,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515472",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515472] = {\"八神-1-吸血\",24,0,{3400},{},0,{},0,0,0,0,0,0,100,6,1,0}"
+        },
+        {
+          "id": "51515480",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515480] = {\"攻击命中时，如果目标血量高于40%，则本次伤害提升30%，\",58,0,{},{},0,{},0,0,2500,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "51515481",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515481] = {\"主动进行普攻时，有25%的概率追加释放【八稚女】；额外造成193%的物理伤害。\",0,1,{},{1,1,19,23200},0,{},0,0,0,51515410,0,0,100,1,2,1}"
+        },
+        {
+          "id": "51515482",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[51515482] = {\"八神-1-吸血\",24,0,{3500},{},0,{},0,0,0,0,0,0,100,6,1,0}"
+        }
+      ]
     },
     "kirito": {
-      "tabSkillRows": [],
-      "tabEffectPerforRows": [],
-      "tabEffectRows": []
+      "tabSkillRows": [
+        {
+          "id": "3151711",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[3151711] = {315171,2,{{}},3151711,1,2,2,1,1,1,1,0,\"$87#31517110&31517110\",{},\"Kirito dùng {Dual Blades} đột ngột tấn công với kỹ năng {Trảm Kép Hình Quạt} gây ra 151% ST vật lý lên 2 mục tiêu ngẫu nhiên phe địch (ưu tiên chiến binh), 40% tỷ lệ kèm {Không Ngừng Mất HP}, duy trì 2 lượt, trạng thái này xem như mất HP, không thể thanh tẩy.\",{87},0,0,\"Trảm Kép Hình Quạt\",{0,6},1,0,10000}"
+        },
+        {
+          "id": "3151712",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[3151712] = {315171,2,{{}},3151711,2,2,2,1,1,1,1,0,\"$87#31517120&31517120\",{},\"Kirito dùng {Dual Blades} đột ngột tấn công với kỹ năng {Trảm Kép Hình Quạt} gây ra 182% ST vật lý lên 2 mục tiêu ngẫu nhiên phe địch (ưu tiên chiến binh), 60% tỷ lệ kèm {Không Ngừng Mất HP}, duy trì 2 lượt, trạng thái này xem như mất HP, không thể thanh tẩy.\",{87},0,0,\"Trảm Kép Hình Quạt\",{0,7},1,0,10000}"
+        },
+        {
+          "id": "3151713",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[3151713] = {315171,2,{{}},3151711,3,2,2,1,1,1,1,0,\"$87#31517130&31517130\",{},\"Kirito dùng {Dual Blades} đột ngột tấn công với kỹ năng {Trảm Kép Hình Quạt} gây ra 220% ST vật lý lên 2 mục tiêu ngẫu nhiên phe địch (ưu tiên chiến binh), 80% tỷ lệ kèm {Không Ngừng Mất HP}, duy trì 2 lượt, trạng thái này xem như mất HP, không thể thanh tẩy.\",{87},0,0,\"Trảm Kép Hình Quạt\",{0,101},1,0,10000}"
+        },
+        {
+          "id": "3151714",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[3151714] = {315171,2,{{}},3151711,4,2,2,1,1,1,1,0,\"$87#31517140&31517130\",{},\"Kirito dùng {Dual Blades} đột ngột tấn công với kỹ năng {Trảm Kép Hình Quạt} gây ra 229% ST vật lý lên 2 mục tiêu ngẫu nhiên phe địch (ưu tiên chiến binh), 80% tỷ lệ kèm {Không Ngừng Mất HP}, duy trì 2 lượt, trạng thái này xem như mất HP, không thể thanh tẩy.\",{87},0,0,\"Trảm Kép Hình Quạt\",{0,102},1,0,10000}"
+        },
+        {
+          "id": "3151715",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[3151715] = {315171,2,{{}},3151711,5,2,2,1,1,1,1,0,\"$87#31517150&31517130\",{},\"Kirito dùng {Dual Blades} đột ngột tấn công với kỹ năng {Trảm Kép Hình Quạt} gây ra 238% ST vật lý lên 2 mục tiêu ngẫu nhiên phe địch (ưu tiên chiến binh), 80% tỷ lệ kèm {Không Ngừng Mất HP}, duy trì 2 lượt, trạng thái này xem như mất HP, không thể thanh tẩy.\",{87},0,0,\"Trảm Kép Hình Quạt\",{0,103},1,0,10000}"
+        },
+        {
+          "id": "3151716",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[3151716] = {315171,2,{{}},3151711,6,2,2,1,1,1,1,0,\"$87#31517160&31517130\",{},\"Kirito dùng {Dual Blades} đột ngột tấn công với kỹ năng {Trảm Kép Hình Quạt} gây ra 246% ST vật lý lên 2 mục tiêu ngẫu nhiên phe địch (ưu tiên chiến binh), 80% tỷ lệ kèm {Không Ngừng Mất HP}, duy trì 2 lượt, trạng thái này xem như mất HP, không thể thanh tẩy.\",{87},0,0,\"Trảm Kép Hình Quạt\",{0,104},1,0,10000}"
+        },
+        {
+          "id": "3151717",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[3151717] = {315171,2,{{}},3151711,7,2,2,1,1,1,1,0,\"$87#31517170&31517130\",{},\"Kirito dùng {Dual Blades} đột ngột tấn công với kỹ năng {Trảm Kép Hình Quạt} gây ra 255% ST vật lý lên 2 mục tiêu ngẫu nhiên phe địch (ưu tiên chiến binh), 80% tỷ lệ kèm {Không Ngừng Mất HP}, duy trì 2 lượt, trạng thái này xem như mất HP, không thể thanh tẩy.\",{87},0,0,\"Trảm Kép Hình Quạt\",{0,105},1,0,10000}"
+        },
+        {
+          "id": "3151718",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[3151718] = {315171,2,{{}},3151711,8,2,2,1,1,1,1,0,\"$87#31517180&31517130\",{},\"Kirito dùng {Dual Blades} đột ngột tấn công với kỹ năng {Trảm Kép Hình Quạt} gây ra 264% ST vật lý lên 2 mục tiêu ngẫu nhiên phe địch (ưu tiên chiến binh), 80% tỷ lệ kèm {Không Ngừng Mất HP}, duy trì 2 lượt, trạng thái này xem như mất HP, không thể thanh tẩy.\",{87},0,0,\"Trảm Kép Hình Quạt\",{0,0},1,0,10000}"
+        }
+      ],
+      "tabEffectPerforRows": [
+        {
+          "id": "31517010",
+          "source": "TAB_EffectPerfor_1.lua",
+          "raw": "TAB_EffectPerfor[31517010] = {1,1,50,0,0,0,\"Đánh Thường\",1,1,0,{{31517110111,5,0}},100,1,0,0,0,1,{31517110112,5,0},1,0,{},0,0,31517010,0,{},1,0,0,0}"
+        },
+        {
+          "id": "31517110",
+          "source": "TAB_EffectPerfor_1.lua",
+          "raw": "TAB_EffectPerfor[31517110] = {2,8,100,0,0,0,\"Kirito-1-S.Thương\",11,1,0,{{31517110111,5,1}},100,1,0,0,0,1,{31517110112,5,1},1,0,{},31517110,0,0,315170,{},1,0,0,0}"
+        },
+        {
+          "id": "31517310",
+          "source": "TAB_EffectPerfor_1.lua",
+          "raw": "TAB_EffectPerfor[31517310] = {3,1,420,0,1,1,\"Kirito-3-S.Thương\",21,1,0,{{31517110111,5,2}},100,1,0,0,0,1,{31517110112,5,2},1,0,{},31517310,0,0,315171,{},1,0,0,0}"
+        },
+        {
+          "id": "31517315",
+          "source": "TAB_EffectPerfor_1.lua",
+          "raw": "TAB_EffectPerfor[31517315] = {4,0,0,0,1,0,\"Kirito-3-S.Thương\",31,1,0,{},100,1,0,0,0,2,{31517110112,5,3},1,0,{},31517311,0,0,315172,{},1,0,0,0}"
+        }
+      ],
+      "tabEffectRows": [
+        {
+          "id": "31517010",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[31517010] = {\"Kirito\",0,1,{},{1,1,19,10000},0,{},0,0,0,31517010,0,0,100,1,2,1}"
+        },
+        {
+          "id": "31517110",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[31517110] = {\"Kirito-1-S.Thương\",0,1,{},{1,1,19,15100},0,{},0,0,0,31517110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "31517111",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[31517111] = {\"桐人-1-大流血\",21,0,{},{1,1,19,1500},0,{},0,0,0,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "31517120",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[31517120] = {\"Kirito-1-S.Thương\",0,1,{},{1,1,19,18200},0,{},0,0,0,31517110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "31517130",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[31517130] = {\"Kirito-1-S.Thương\",0,1,{},{1,1,19,22000},0,{},0,0,0,31517110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "31517140",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[31517140] = {\"Kirito-1-S.Thương\",0,1,{},{1,1,19,22880},0,{},0,0,0,31517110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "31517150",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[31517150] = {\"Kirito-1-S.Thương\",0,1,{},{1,1,19,23760},0,{},0,0,0,31517110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "31517160",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[31517160] = {\"Kirito-1-S.Thương\",0,1,{},{1,1,19,24640},0,{},0,0,0,31517110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "31517170",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[31517170] = {\"Kirito-1-S.Thương\",0,1,{},{1,1,19,25520},0,{},0,0,0,31517110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "31517180",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[31517180] = {\"Kirito-1-S.Thương\",0,1,{},{1,1,19,26400},0,{},0,0,0,31517110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "31517310",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[31517310] = {\"桐人-3-伤害1\",0,1,{},{1,1,19,12400},0,{},0,0,0,31517310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "31517311",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[31517311] = {\"桐人-3-伤害2\",0,1,{},{1,1,19,12400},0,{},0,0,0,31517315,0,0,100,1,2,1}"
+        },
+        {
+          "id": "31517312",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[31517312] = {\"桐人-3-受伤增加\",58,0,{},{},0,{},0,0,1000,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "31517320",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[31517320] = {\"桐人-3-伤害1\",0,1,{},{1,1,19,14900},0,{},0,0,0,31517310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "31517321",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[31517321] = {\"桐人-3-伤害2\",0,1,{},{1,1,19,14900},0,{},0,0,0,31517315,0,0,100,1,2,1}"
+        },
+        {
+          "id": "31517322",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[31517322] = {\"桐人-3-受伤增加\",58,0,{},{},0,{},0,0,1500,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "31517323",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[31517323] = {\"Mất HP\",21,0,{},{1,1,19,1500},0,{},0,0,0,0,0,0,100,1,1,0}"
+        },
+        {
+          "id": "31517330",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[31517330] = {\"桐人-3-伤害1\",0,1,{},{1,1,19,18800},0,{},0,0,0,31517310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "31517331",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[31517331] = {\"桐人-3-伤害2\",0,1,{},{1,1,19,18800},0,{},0,0,0,31517315,0,0,100,1,2,1}"
+        },
+        {
+          "id": "31517332",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[31517332] = {\"桐人-3-受伤增加\",58,0,{},{},0,{},0,0,2000,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "31517333",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[31517333] = {\"Mất HP\",21,0,{},{1,1,19,1500},0,{},0,0,0,0,0,0,100,1,1,0}"
+        },
+        {
+          "id": "31517340",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[31517340] = {\"桐人-3-伤害1\",0,1,{},{1,1,19,19552},0,{},0,0,0,31517310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "31517341",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[31517341] = {\"桐人-3-伤害2\",0,1,{},{1,1,19,19552},0,{},0,0,0,31517315,0,0,100,1,2,1}"
+        },
+        {
+          "id": "31517350",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[31517350] = {\"桐人-3-伤害1\",0,1,{},{1,1,19,20304},0,{},0,0,0,31517310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "31517351",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[31517351] = {\"桐人-3-伤害2\",0,1,{},{1,1,19,20304},0,{},0,0,0,31517315,0,0,100,1,2,1}"
+        },
+        {
+          "id": "31517360",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[31517360] = {\"桐人-3-伤害1\",0,1,{},{1,1,19,21056},0,{},0,0,0,31517310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "31517361",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[31517361] = {\"桐人-3-伤害2\",0,1,{},{1,1,19,21056},0,{},0,0,0,31517315,0,0,100,1,2,1}"
+        },
+        {
+          "id": "31517370",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[31517370] = {\"桐人-3-伤害1\",0,1,{},{1,1,19,21808},0,{},0,0,0,31517310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "31517371",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[31517371] = {\"桐人-3-伤害2\",0,1,{},{1,1,19,21808},0,{},0,0,0,31517315,0,0,100,1,2,1}"
+        },
+        {
+          "id": "31517380",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[31517380] = {\"桐人-3-伤害1\",0,1,{},{1,1,19,22560},0,{},0,0,0,31517310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "31517381",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[31517381] = {\"桐人-3-伤害2\",0,1,{},{1,1,19,22560},0,{},0,0,0,31517315,0,0,100,1,2,1}"
+        },
+        {
+          "id": "31517410",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[31517410] = {\"流血增伤\",41,1,{},{1,1,19,500},0,{},0,0,0,0,0,0,100,1,2,1}"
+        },
+        {
+          "id": "31517411",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[31517411] = {\"Tỷ lệ mất HP\",126,0,{21,1,10},{},0,{},0,0,0,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "31517420",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[31517420] = {\"流血增伤\",41,1,{},{1,1,19,1000},0,{},0,0,0,0,0,0,100,1,2,1}"
+        },
+        {
+          "id": "31517421",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[31517421] = {\"Tỷ lệ mất HP\",126,0,{21,1,15},{},0,{},0,0,0,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "31517430",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[31517430] = {\"流血增伤\",41,1,{},{1,1,19,1500},0,{},0,0,0,0,0,0,100,1,2,1}"
+        },
+        {
+          "id": "31517431",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[31517431] = {\"Tỷ lệ mất HP\",126,0,{21,1,20},{},0,{},0,0,0,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "31517440",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[31517440] = {\"流血增伤\",41,1,{},{1,1,19,1560},0,{},0,0,0,0,0,0,100,1,2,1}"
+        },
+        {
+          "id": "31517441",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[31517441] = {\"Tỷ lệ mất HP\",126,0,{21,1,21},{},0,{},0,0,0,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "31517450",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[31517450] = {\"流血增伤\",41,1,{},{1,1,19,1620},0,{},0,0,0,0,0,0,100,1,2,1}"
+        },
+        {
+          "id": "31517451",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[31517451] = {\"Tỷ lệ mất HP\",126,0,{21,1,22},{},0,{},0,0,0,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "31517460",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[31517460] = {\"流血增伤\",41,1,{},{1,1,19,1680},0,{},0,0,0,0,0,0,100,1,2,1}"
+        },
+        {
+          "id": "31517461",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[31517461] = {\"Tỷ lệ mất HP\",126,0,{21,1,23},{},0,{},0,0,0,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "31517470",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[31517470] = {\"流血增伤\",41,1,{},{1,1,19,1740},0,{},0,0,0,0,0,0,100,1,2,1}"
+        },
+        {
+          "id": "31517471",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[31517471] = {\"Tỷ lệ mất HP\",126,0,{21,1,24},{},0,{},0,0,0,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "31517480",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[31517480] = {\"流血增伤\",41,1,{},{1,1,19,1800},0,{},0,0,0,0,0,0,100,1,2,1}"
+        },
+        {
+          "id": "31517481",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[31517481] = {\"Tỷ lệ mất HP\",126,0,{21,1,25},{},0,{},0,0,0,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "31517490",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[31517490] = {\"流血增伤\",41,1,{},{1,1,19,3000},0,{},0,0,0,0,0,0,100,1,2,1}"
+        }
+      ]
     },
     "leloud": {
-      "tabSkillRows": [],
-      "tabEffectPerforRows": [],
-      "tabEffectRows": []
+      "tabSkillRows": [
+        {
+          "id": "4251511",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251511] = {425151,2,{{}},4251511,1,2,2,2,2,1,1,0,\"$17#42515110&42515110\",{},\"Gây cho 3 mục tiêu ngẫu nhiên 105% sát thương ma pháp, 60% kèm {Geass}, khiến sát thương ma pháp phải chịu của mục tiêu tăng 10%, duy trì 2 lượt\",{116},0,0,\"Geass\",{0,6},1,0,10000}"
+        },
+        {
+          "id": "4251512",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251512] = {425151,2,{{}},4251511,2,2,2,2,2,1,1,0,\"$17#42515120&42515120\",{},\"Gây cho 3 mục tiêu ngẫu nhiên 126% sát thương ma pháp, 80% kèm {Geass}, khiến sát thương ma pháp phải chịu của mục tiêu tăng 10%, duy trì 2 lượt\",{116},0,0,\"Geass\",{0,7},1,0,10000}"
+        },
+        {
+          "id": "4251513",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251513] = {425151,2,{{}},4251511,3,2,2,2,2,1,1,0,\"$17#42515130&42515130\",{},\"Gây cho 3 mục tiêu ngẫu nhiên 151% sát thương ma pháp, kèm {Geass}, khiến sát thương ma pháp phải chịu của mục tiêu tăng 10%, duy trì 2 lượt\",{116},0,0,\"Geass\",{0,101},1,0,10000}"
+        },
+        {
+          "id": "4251514",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251514] = {425151,2,{{}},4251511,4,2,2,2,2,1,1,0,\"$17#42515140&42515130\",{},\"Gây cho 3 mục tiêu ngẫu nhiên 157% sát thương ma pháp, kèm {Geass}, khiến sát thương ma pháp phải chịu của mục tiêu tăng 10%, duy trì 2 lượt\",{116},0,0,\"Geass\",{0,102},1,0,10000}"
+        },
+        {
+          "id": "4251515",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251515] = {425151,2,{{}},4251511,5,2,2,2,2,1,1,0,\"$17#42515150&42515130\",{},\"Gây cho 3 mục tiêu ngẫu nhiên 163% sát thương ma pháp, kèm {Geass}, khiến sát thương ma pháp phải chịu của mục tiêu tăng 10%, duy trì 2 lượt\",{116},0,0,\"Geass\",{0,103},1,0,10000}"
+        },
+        {
+          "id": "4251516",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251516] = {425151,2,{{}},4251511,6,2,2,2,2,1,1,0,\"$17#42515160&42515130\",{},\"Gây cho 3 mục tiêu ngẫu nhiên 169% sát thương ma pháp, kèm {Geass}, khiến sát thương ma pháp phải chịu của mục tiêu tăng 10%, duy trì 2 lượt\",{116},0,0,\"Geass\",{0,104},1,0,10000}"
+        },
+        {
+          "id": "4251517",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251517] = {425151,2,{{}},4251511,7,2,2,2,2,1,1,0,\"$17#42515170&42515130\",{},\"Gây cho 3 mục tiêu ngẫu nhiên 175% sát thương ma pháp, kèm {Geass}, khiến sát thương ma pháp phải chịu của mục tiêu tăng 10%, duy trì 2 lượt\",{116},0,0,\"Geass\",{0,105},1,0,10000}"
+        },
+        {
+          "id": "4251518",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251518] = {425151,2,{{}},4251511,8,2,2,2,2,1,1,0,\"$17#42515180&42515130\",{},\"Gây cho 3 mục tiêu ngẫu nhiên 181% sát thương ma pháp, kèm {Geass}, khiến sát thương ma pháp phải chịu của mục tiêu tăng 10%, duy trì 2 lượt\",{116},0,0,\"Geass\",{0,0},1,0,10000}"
+        }
+      ],
+      "tabEffectPerforRows": [
+        {
+          "id": "42515010",
+          "source": "TAB_EffectPerfor_1.lua",
+          "raw": "TAB_EffectPerfor[42515010] = {1,1,100,0,0,0,\"Lelouch-Đánh thường\",1,1,0,{{42515111011,5,0}},100,1,0,0,0,1,{42515111012,5,0},1,0,{},42515010,0,0,425150,{},1,0,0,0}"
+        },
+        {
+          "id": "42515110",
+          "source": "TAB_EffectPerfor_1.lua",
+          "raw": "TAB_EffectPerfor[42515110] = {2,4,0,0,1,0,\"Lelouch-1-Sát thương\",11,8,0,{{42515111013,5,0},{42515111013,-5,1}},100,1,0,0,0,2,{42515111012,5,1},1,0,{},42515110,0,0,425151,{},1,0,0,0}"
+        },
+        {
+          "id": "42515310",
+          "source": "TAB_EffectPerfor_1.lua",
+          "raw": "TAB_EffectPerfor[42515310] = {3,5,100,0,1,0,\"Lelouch-3-Sát thương\",21,8,0,{{42515111014,5,0},{42515111014,-5,1}},100,1,0,0,0,1,{42515111012,5,2},1,0,{},42515310,0,0,425153,{},1,0,0,0}"
+        },
+        {
+          "id": "42515410",
+          "source": "TAB_EffectPerfor_1.lua",
+          "raw": "TAB_EffectPerfor[42515410] = {4,0,0,0,1,0,\"Lelouch-4-Sát thương\",31,8,0,{{42515111015,5,0}},100,1,0,0,0,2,{42515111016,5,0},1,2,{{42515111016,-5,1}},42515410,0,0,425154,{},1,0,0,0}"
+        }
+      ],
+      "tabEffectRows": [
+        {
+          "id": "42515010",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515010] = {\"Đánh Thường\",1,2,{},{1,1,19,10000},0,{},0,0,0,42515010,0,0,100,1,2,1}"
+        },
+        {
+          "id": "42515110",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515110] = {\"Lelouch-1-Sát thương\",1,2,{},{1,1,19,10500},0,{},0,0,0,42515110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "42515111",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515111] = {\"Áp chế\",51,0,{},{},0,{},0,0,1000,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "42515120",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515120] = {\"Lelouch-1-Sát thương\",1,2,{},{1,1,19,12600},0,{},0,0,0,42515110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "42515130",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515130] = {\"Lelouch-1-Sát thương\",1,2,{},{1,1,19,15100},0,{},0,0,0,42515110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "42515140",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515140] = {\"Lelouch-1-Sát thương\",1,2,{},{1,1,19,15700},0,{},0,0,0,42515110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "42515150",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515150] = {\"Lelouch-1-Sát thương\",1,2,{},{1,1,19,16300},0,{},0,0,0,42515110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "42515160",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515160] = {\"Lelouch-1-Sát thương\",1,2,{},{1,1,19,16900},0,{},0,0,0,42515110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "42515170",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515170] = {\"Lelouch-1-Sát thương\",1,2,{},{1,1,19,17500},0,{},0,0,0,42515110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "42515180",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515180] = {\"Lelouch-1-Sát thương\",1,2,{},{1,1,19,18100},0,{},0,0,0,42515110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "42515310",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515310] = {\"Lelouch-3-Sát thương\",1,2,{},{1,1,19,12000},0,{},0,0,0,42515310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "42515311",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515311] = {\"Chịu S.Thương tăng \",58,0,{},{},0,{},0,0,1000,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "42515312",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515312] = {\"Khóa\",136,0,{},{},0,{},0,0,0,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "42515320",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515320] = {\"Lelouch-3-Sát thương\",1,2,{},{1,1,19,14500},0,{},0,0,0,42515310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "42515330",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515330] = {\"Lelouch-3-Sát thương\",1,2,{},{1,1,19,17300},0,{},0,0,0,42515310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "42515340",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515340] = {\"Lelouch-3-Sát thương\",1,2,{},{1,1,19,18000},0,{},0,0,0,42515310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "42515350",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515350] = {\"Lelouch-3-Sát thương\",1,2,{},{1,1,19,18700},0,{},0,0,0,42515310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "42515360",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515360] = {\"Lelouch-3-Sát thương\",1,2,{},{1,1,19,19400},0,{},0,0,0,42515310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "42515370",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515370] = {\"Lelouch-3-Sát thương\",1,2,{},{1,1,19,20100},0,{},0,0,0,42515310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "42515380",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515380] = {\"Lelouch-3-Sát thương\",1,2,{},{1,1,19,20800},0,{},0,0,0,42515310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "42515411",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515411] = {\"Tăng S.Thương\",58,0,{},{},0,{},0,0,800,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "42515412",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515412] = {\"鲁路修-2-最大受伤\",90,0,{18,60},{},0,{},0,0,0,0,0,0,100,1,1,0}"
+        },
+        {
+          "id": "42515420",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515420] = {\"尸爆\",1,2,{},{1,1,19,2500},0,{},0,0,0,42515410,0,0,100,1,2,1}"
+        },
+        {
+          "id": "42515421",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515421] = {\"Tăng S.Thương\",58,0,{},{},0,{},0,0,1200,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "42515422",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515422] = {\"鲁路修-2-最大受伤\",90,0,{18,50},{},0,{},0,0,0,0,0,0,100,1,1,0}"
+        },
+        {
+          "id": "42515430",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515430] = {\"尸爆\",1,2,{},{1,1,19,5000},0,{},0,0,0,42515410,0,0,100,1,2,1}"
+        },
+        {
+          "id": "42515431",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515431] = {\"Tăng S.Thương\",58,0,{},{},0,{},0,0,1500,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "42515432",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515432] = {\"鲁路修-2-最大受伤\",90,0,{18,40},{},0,{},0,0,0,0,0,0,100,1,1,0}"
+        },
+        {
+          "id": "42515440",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515440] = {\"尸爆\",1,2,{},{1,1,19,5200},0,{},0,0,0,42515410,0,0,100,1,2,1}"
+        },
+        {
+          "id": "42515441",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515441] = {\"Tăng S.Thương\",58,0,{},{},0,{},0,0,1560,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "42515450",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515450] = {\"尸爆\",1,2,{},{1,1,19,5400},0,{},0,0,0,42515410,0,0,100,1,2,1}"
+        },
+        {
+          "id": "42515451",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515451] = {\"Tăng S.Thương\",58,0,{},{},0,{},0,0,1620,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "42515460",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515460] = {\"尸爆\",1,2,{},{1,1,19,5600},0,{},0,0,0,42515410,0,0,100,1,2,1}"
+        },
+        {
+          "id": "42515461",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515461] = {\"Tăng S.Thương\",58,0,{},{},0,{},0,0,1680,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "42515470",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515470] = {\"尸爆\",1,2,{},{1,1,19,5800},0,{},0,0,0,42515410,0,0,100,1,2,1}"
+        },
+        {
+          "id": "42515471",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515471] = {\"Tăng S.Thương\",58,0,{},{},0,{},0,0,1740,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "42515480",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515480] = {\"尸爆\",1,2,{},{1,1,19,6000},0,{},0,0,0,42515410,0,0,100,1,2,1}"
+        },
+        {
+          "id": "42515481",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515481] = {\"Tăng S.Thương\",58,0,{},{},0,{},0,0,1800,0,0,0,100,1,2,0}"
+        }
+      ]
     },
     "leloud_dark": {
-      "tabSkillRows": [],
-      "tabEffectPerforRows": [],
-      "tabEffectRows": []
+      "tabSkillRows": [
+        {
+          "id": "4251511",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251511] = {425151,2,{{}},4251511,1,2,2,2,2,1,1,0,\"$17#42515110&42515110\",{},\"Gây cho 3 mục tiêu ngẫu nhiên 105% sát thương ma pháp, 60% kèm {Geass}, khiến sát thương ma pháp phải chịu của mục tiêu tăng 10%, duy trì 2 lượt\",{116},0,0,\"Geass\",{0,6},1,0,10000}"
+        },
+        {
+          "id": "4251512",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251512] = {425151,2,{{}},4251511,2,2,2,2,2,1,1,0,\"$17#42515120&42515120\",{},\"Gây cho 3 mục tiêu ngẫu nhiên 126% sát thương ma pháp, 80% kèm {Geass}, khiến sát thương ma pháp phải chịu của mục tiêu tăng 10%, duy trì 2 lượt\",{116},0,0,\"Geass\",{0,7},1,0,10000}"
+        },
+        {
+          "id": "4251513",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251513] = {425151,2,{{}},4251511,3,2,2,2,2,1,1,0,\"$17#42515130&42515130\",{},\"Gây cho 3 mục tiêu ngẫu nhiên 151% sát thương ma pháp, kèm {Geass}, khiến sát thương ma pháp phải chịu của mục tiêu tăng 10%, duy trì 2 lượt\",{116},0,0,\"Geass\",{0,101},1,0,10000}"
+        },
+        {
+          "id": "4251514",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251514] = {425151,2,{{}},4251511,4,2,2,2,2,1,1,0,\"$17#42515140&42515130\",{},\"Gây cho 3 mục tiêu ngẫu nhiên 157% sát thương ma pháp, kèm {Geass}, khiến sát thương ma pháp phải chịu của mục tiêu tăng 10%, duy trì 2 lượt\",{116},0,0,\"Geass\",{0,102},1,0,10000}"
+        },
+        {
+          "id": "4251515",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251515] = {425151,2,{{}},4251511,5,2,2,2,2,1,1,0,\"$17#42515150&42515130\",{},\"Gây cho 3 mục tiêu ngẫu nhiên 163% sát thương ma pháp, kèm {Geass}, khiến sát thương ma pháp phải chịu của mục tiêu tăng 10%, duy trì 2 lượt\",{116},0,0,\"Geass\",{0,103},1,0,10000}"
+        },
+        {
+          "id": "4251516",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251516] = {425151,2,{{}},4251511,6,2,2,2,2,1,1,0,\"$17#42515160&42515130\",{},\"Gây cho 3 mục tiêu ngẫu nhiên 169% sát thương ma pháp, kèm {Geass}, khiến sát thương ma pháp phải chịu của mục tiêu tăng 10%, duy trì 2 lượt\",{116},0,0,\"Geass\",{0,104},1,0,10000}"
+        },
+        {
+          "id": "4251517",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251517] = {425151,2,{{}},4251511,7,2,2,2,2,1,1,0,\"$17#42515170&42515130\",{},\"Gây cho 3 mục tiêu ngẫu nhiên 175% sát thương ma pháp, kèm {Geass}, khiến sát thương ma pháp phải chịu của mục tiêu tăng 10%, duy trì 2 lượt\",{116},0,0,\"Geass\",{0,105},1,0,10000}"
+        },
+        {
+          "id": "4251518",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4251518] = {425151,2,{{}},4251511,8,2,2,2,2,1,1,0,\"$17#42515180&42515130\",{},\"Gây cho 3 mục tiêu ngẫu nhiên 181% sát thương ma pháp, kèm {Geass}, khiến sát thương ma pháp phải chịu của mục tiêu tăng 10%, duy trì 2 lượt\",{116},0,0,\"Geass\",{0,0},1,0,10000}"
+        }
+      ],
+      "tabEffectPerforRows": [
+        {
+          "id": "42515020",
+          "source": "TAB_EffectPerfor_1.lua",
+          "raw": "TAB_EffectPerfor[42515020] = {1,1,100,0,0,0,\"Skin Lelouch-Đánh Thường\",1,1,0,{{42515121011,5,0}},100,1,0,0,0,3,{42515121011,5,1},1,0,{},42515020,0,0,42515020,{},1,0,0,0}"
+        },
+        {
+          "id": "42515120",
+          "source": "TAB_EffectPerfor_1.lua",
+          "raw": "TAB_EffectPerfor[42515120] = {2,5,0,0,1,0,\"Skin Lelouch-1-Sát Thương\",11,1,0,{{42515121012,-5,0},{42515121012,5,1}},100,1,0,0,0,1,{42515121012,5,2},1,0,{},42515120,0,9,42515120,{},1,0,0,0}"
+        },
+        {
+          "id": "42515320",
+          "source": "TAB_EffectPerfor_1.lua",
+          "raw": "TAB_EffectPerfor[42515320] = {3,5,0,0,1,0,\"Skin Lelouch-3-Sát Thương\",21,1,0,{{42515121013,-5,0},{42515121013,5,1}},100,1,0,0,0,1,{42515121013,5,2},1,0,{},42515320,0,0,42515320,{},1,0,0,0}"
+        },
+        {
+          "id": "42515420",
+          "source": "TAB_EffectPerfor_1.lua",
+          "raw": "TAB_EffectPerfor[42515420] = {4,0,0,0,1,0,\"Skin Lelouch-4-Sát Thương\",31,8,0,{{42515121014,-5,0},{42515121014,5,1}},100,1,0,0,0,1,{},1,0,{},42515420,0,0,42515420,{{42515121014,999,2}},0,4,0,0}"
+        }
+      ],
+      "tabEffectRows": [
+        {
+          "id": "42515010",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515010] = {\"Đánh Thường\",1,2,{},{1,1,19,10000},0,{},0,0,0,42515010,0,0,100,1,2,1}"
+        },
+        {
+          "id": "42515110",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515110] = {\"Lelouch-1-Sát thương\",1,2,{},{1,1,19,10500},0,{},0,0,0,42515110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "42515111",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515111] = {\"Áp chế\",51,0,{},{},0,{},0,0,1000,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "42515120",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515120] = {\"Lelouch-1-Sát thương\",1,2,{},{1,1,19,12600},0,{},0,0,0,42515110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "42515130",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515130] = {\"Lelouch-1-Sát thương\",1,2,{},{1,1,19,15100},0,{},0,0,0,42515110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "42515140",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515140] = {\"Lelouch-1-Sát thương\",1,2,{},{1,1,19,15700},0,{},0,0,0,42515110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "42515150",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515150] = {\"Lelouch-1-Sát thương\",1,2,{},{1,1,19,16300},0,{},0,0,0,42515110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "42515160",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515160] = {\"Lelouch-1-Sát thương\",1,2,{},{1,1,19,16900},0,{},0,0,0,42515110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "42515170",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515170] = {\"Lelouch-1-Sát thương\",1,2,{},{1,1,19,17500},0,{},0,0,0,42515110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "42515180",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515180] = {\"Lelouch-1-Sát thương\",1,2,{},{1,1,19,18100},0,{},0,0,0,42515110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "42515310",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515310] = {\"Lelouch-3-Sát thương\",1,2,{},{1,1,19,12000},0,{},0,0,0,42515310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "42515311",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515311] = {\"Chịu S.Thương tăng \",58,0,{},{},0,{},0,0,1000,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "42515312",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515312] = {\"Khóa\",136,0,{},{},0,{},0,0,0,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "42515320",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515320] = {\"Lelouch-3-Sát thương\",1,2,{},{1,1,19,14500},0,{},0,0,0,42515310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "42515330",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515330] = {\"Lelouch-3-Sát thương\",1,2,{},{1,1,19,17300},0,{},0,0,0,42515310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "42515340",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515340] = {\"Lelouch-3-Sát thương\",1,2,{},{1,1,19,18000},0,{},0,0,0,42515310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "42515350",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515350] = {\"Lelouch-3-Sát thương\",1,2,{},{1,1,19,18700},0,{},0,0,0,42515310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "42515360",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515360] = {\"Lelouch-3-Sát thương\",1,2,{},{1,1,19,19400},0,{},0,0,0,42515310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "42515370",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515370] = {\"Lelouch-3-Sát thương\",1,2,{},{1,1,19,20100},0,{},0,0,0,42515310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "42515380",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515380] = {\"Lelouch-3-Sát thương\",1,2,{},{1,1,19,20800},0,{},0,0,0,42515310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "42515411",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515411] = {\"Tăng S.Thương\",58,0,{},{},0,{},0,0,800,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "42515412",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515412] = {\"鲁路修-2-最大受伤\",90,0,{18,60},{},0,{},0,0,0,0,0,0,100,1,1,0}"
+        },
+        {
+          "id": "42515420",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515420] = {\"尸爆\",1,2,{},{1,1,19,2500},0,{},0,0,0,42515410,0,0,100,1,2,1}"
+        },
+        {
+          "id": "42515421",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515421] = {\"Tăng S.Thương\",58,0,{},{},0,{},0,0,1200,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "42515422",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515422] = {\"鲁路修-2-最大受伤\",90,0,{18,50},{},0,{},0,0,0,0,0,0,100,1,1,0}"
+        },
+        {
+          "id": "42515430",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515430] = {\"尸爆\",1,2,{},{1,1,19,5000},0,{},0,0,0,42515410,0,0,100,1,2,1}"
+        },
+        {
+          "id": "42515431",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515431] = {\"Tăng S.Thương\",58,0,{},{},0,{},0,0,1500,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "42515432",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515432] = {\"鲁路修-2-最大受伤\",90,0,{18,40},{},0,{},0,0,0,0,0,0,100,1,1,0}"
+        },
+        {
+          "id": "42515440",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515440] = {\"尸爆\",1,2,{},{1,1,19,5200},0,{},0,0,0,42515410,0,0,100,1,2,1}"
+        },
+        {
+          "id": "42515441",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515441] = {\"Tăng S.Thương\",58,0,{},{},0,{},0,0,1560,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "42515450",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515450] = {\"尸爆\",1,2,{},{1,1,19,5400},0,{},0,0,0,42515410,0,0,100,1,2,1}"
+        },
+        {
+          "id": "42515451",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515451] = {\"Tăng S.Thương\",58,0,{},{},0,{},0,0,1620,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "42515460",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515460] = {\"尸爆\",1,2,{},{1,1,19,5600},0,{},0,0,0,42515410,0,0,100,1,2,1}"
+        },
+        {
+          "id": "42515461",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515461] = {\"Tăng S.Thương\",58,0,{},{},0,{},0,0,1680,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "42515470",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515470] = {\"尸爆\",1,2,{},{1,1,19,5800},0,{},0,0,0,42515410,0,0,100,1,2,1}"
+        },
+        {
+          "id": "42515471",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515471] = {\"Tăng S.Thương\",58,0,{},{},0,{},0,0,1740,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "42515480",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515480] = {\"尸爆\",1,2,{},{1,1,19,6000},0,{},0,0,0,42515410,0,0,100,1,2,1}"
+        },
+        {
+          "id": "42515481",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[42515481] = {\"Tăng S.Thương\",58,0,{},{},0,{},0,0,1800,0,0,0,100,1,2,0}"
+        }
+      ]
     },
     "thor": {
-      "tabSkillRows": [],
-      "tabEffectPerforRows": [],
-      "tabEffectRows": []
+      "tabSkillRows": [
+        {
+          "id": "4351311",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351311] = {435131,2,{{}},4351311,1,2,2,1,1,1,3,0,\"$19#43513110&43513110\",{},\"Gây cho toàn thể địch 90% sát thương vật lý, có 30% tỉ lệ kèm 10% {Phá giáp}, nếu mục tiêu là Chiến Binh hoặc Pháp Sư thì giảm 10% tấn công, nếu là Tank hoặc Hỗ Trợ sẽ giảm 10% miễn sát thương, tất cả hiệu quả duy trì 2 lượt\",{13},0,0,\"Búa Sấm Thức Tỉnh\",{0,6},1,0,10000}"
+        },
+        {
+          "id": "4351312",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351312] = {435131,2,{{}},4351311,2,2,2,1,1,1,3,0,\"$19#43513120&43513120\",{},\"Gây cho toàn thể địch 110% sát thương vật lý, có 50% tỉ lệ kèm 15% {Phá giáp}, nếu mục tiêu là Chiến Binh hoặc Pháp Sư thì giảm 15% tấn công, nếu là Tank hoặc Hỗ Trợ sẽ giảm 15% miễn sát thương, tất cả hiệu quả duy trì 2 lượt\",{13},0,0,\"Búa Sấm Thức Tỉnh\",{0,7},1,0,10000}"
+        },
+        {
+          "id": "4351313",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351313] = {435131,2,{{}},4351311,3,2,2,1,1,1,3,0,\"$19#43513130&43513130\",{},\"Gây cho toàn thể địch 135% sát thương vật lý, có 70% tỉ lệ kèm 20% {Phá giáp}, nếu mục tiêu là Chiến Binh hoặc Pháp Sư thì giảm 20% tấn công, nếu là Tank hoặc Hỗ Trợ sẽ giảm 20% miễn sát thương, tất cả hiệu quả duy trì 2 lượt\",{13},0,0,\"Búa Sấm Thức Tỉnh\",{0,101},1,0,10000}"
+        },
+        {
+          "id": "4351314",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351314] = {435131,2,{{}},4351311,4,2,2,1,1,1,3,0,\"$19#43513140&43513140\",{},\"Gây cho toàn thể địch 140% sát thương vật lý, có 73% tỉ lệ kèm 20% {Phá giáp}, nếu mục tiêu là Chiến Binh hoặc Pháp Sư thì giảm 20% tấn công, nếu là Tank hoặc Hỗ Trợ sẽ giảm 20% miễn sát thương, tất cả hiệu quả duy trì 2 lượt\",{13},0,0,\"Búa Sấm Thức Tỉnh\",{0,102},1,0,10000}"
+        },
+        {
+          "id": "4351315",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351315] = {435131,2,{{}},4351311,5,2,2,1,1,1,3,0,\"$19#43513150&43513150\",{},\"Gây cho toàn thể địch 146% sát thương vật lý, có 76% tỉ lệ kèm 20% {Phá giáp}, nếu mục tiêu là Chiến Binh hoặc Pháp Sư thì giảm 20% tấn công, nếu là Tank hoặc Hỗ Trợ sẽ giảm 20% miễn sát thương, tất cả hiệu quả duy trì 2 lượt\",{13},0,0,\"Búa Sấm Thức Tỉnh\",{0,103},1,0,10000}"
+        },
+        {
+          "id": "4351316",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351316] = {435131,2,{{}},4351311,6,2,2,1,1,1,3,0,\"$19#43513160&43513160\",{},\"Gây cho toàn thể địch 151% sát thương vật lý, có 79% tỉ lệ kèm 20% {Phá giáp}, nếu mục tiêu là Chiến Binh hoặc Pháp Sư thì giảm 20% tấn công, nếu là Tank hoặc Hỗ Trợ sẽ giảm 20% miễn sát thương, tất cả hiệu quả duy trì 2 lượt\",{13},0,0,\"Búa Sấm Thức Tỉnh\",{0,104},1,0,10000}"
+        },
+        {
+          "id": "4351317",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351317] = {435131,2,{{}},4351311,7,2,2,1,1,1,3,0,\"$19#43513170&43513170\",{},\"Gây cho toàn thể địch 156% sát thương vật lý, có 81% tỉ lệ kèm 20% {Phá giáp}, nếu mục tiêu là Chiến Binh hoặc Pháp Sư thì giảm 20% tấn công, nếu là Tank hoặc Hỗ Trợ sẽ giảm 20% miễn sát thương, tất cả hiệu quả duy trì 2 lượt\",{13},0,0,\"Búa Sấm Thức Tỉnh\",{0,105},1,0,10000}"
+        },
+        {
+          "id": "4351318",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351318] = {435131,2,{{}},4351311,8,2,2,1,1,1,3,0,\"$19#43513180&43513180\",{},\"Gây cho toàn thể địch 162% sát thương vật lý, có 84% tỉ lệ kèm 20% {Phá giáp}, nếu mục tiêu là Chiến Binh hoặc Pháp Sư thì giảm 20% tấn công, nếu là Tank hoặc Hỗ Trợ sẽ giảm 20% miễn sát thương, tất cả hiệu quả duy trì 2 lượt\",{13},0,0,\"Búa Sấm Thức Tỉnh\",{0,0},1,0,10000}"
+        }
+      ],
+      "tabEffectPerforRows": [
+        {
+          "id": "43513010",
+          "source": "TAB_EffectPerfor_1.lua",
+          "raw": "TAB_EffectPerfor[43513010] = {1,1,50,0,0,0,\"Đánh Thường\",1,0,0,{},100,1,0,0,0,1,{100110111,5,0},1,0,{},0,0,8,0,{},1,0,0,0}"
+        },
+        {
+          "id": "43513110",
+          "source": "TAB_EffectPerfor_1.lua",
+          "raw": "TAB_EffectPerfor[43513110] = {2,4,180,0,1,1,\"Thor-1-Sát Thương\",11,0,0,{},100,1,0,0,0,1,{100110111,5,0},1,0,{},43513110,0,43513111,435131,{},1,0,0,0}"
+        },
+        {
+          "id": "43513310",
+          "source": "TAB_EffectPerfor_1.lua",
+          "raw": "TAB_EffectPerfor[43513310] = {3,0,0,0,0,1,\"Thor-3-Kỹ năng BUFF\",21,0,0,{},100,1,0,0,0,0,{},1,0,{},43513310,0,13,435132,{},1,0,0,0}"
+        }
+      ],
+      "tabEffectRows": [
+        {
+          "id": "43513010",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513010] = {\"雷神-普攻\",0,1,{},{1,1,19,10000},0,{},0,0,0,43513010,0,0,100,1,2,1}"
+        },
+        {
+          "id": "43513110",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513110] = {\"雷神-1-伤害\",0,1,{},{1,1,19,9000},0,{},0,0,0,43513110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "43513111",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513111] = {\"雷神-1-破甲\",11,0,{},{2,1,4,1000},0,{},11,1000,0,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "43513112",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513112] = {\"雷神-1-攻击降低\",10,0,{},{2,1,3,1000},0,{},8,2000,0,0,13303110,0,100,1,2,0}"
+        },
+        {
+          "id": "43513113",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513113] = {\"雷神-1-受伤提升\",58,0,{},{},0,{},0,0,1000,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "43513120",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513120] = {\"雷神-1-伤害\",0,1,{},{1,1,19,11000},0,{},0,0,0,43513110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "43513121",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513121] = {\"雷神-1-破甲\",11,0,{},{2,1,4,1500},0,{},11,1000,0,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "43513122",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513122] = {\"雷神-1-攻击降低\",10,0,{},{2,1,3,1500},0,{},8,2000,0,0,13303110,0,100,1,2,0}"
+        },
+        {
+          "id": "43513123",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513123] = {\"雷神-1-受伤提升\",58,0,{},{},0,{},0,0,1500,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "43513130",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513130] = {\"雷神-1-伤害\",0,1,{},{1,1,19,13500},0,{},0,0,0,43513110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "43513131",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513131] = {\"雷神-1-破甲\",11,0,{},{2,1,4,2000},0,{},11,1000,0,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "43513132",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513132] = {\"雷神-1-攻击降低\",10,0,{},{2,1,3,2000},0,{},8,2000,0,0,13303110,0,100,1,2,0}"
+        },
+        {
+          "id": "43513133",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513133] = {\"雷神-1-受伤提升\",58,0,{},{},0,{},0,0,2000,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "43513140",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513140] = {\"雷神-1-伤害\",0,1,{},{1,1,19,14000},0,{},0,0,0,43513110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "43513150",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513150] = {\"雷神-1-伤害\",0,1,{},{1,1,19,14600},0,{},0,0,0,43513110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "43513160",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513160] = {\"雷神-1-伤害\",0,1,{},{1,1,19,15100},0,{},0,0,0,43513110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "43513170",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513170] = {\"雷神-1-伤害\",0,1,{},{1,1,19,15600},0,{},0,0,0,43513110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "43513180",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513180] = {\"雷神-1-伤害\",0,1,{},{1,1,19,16200},0,{},0,0,0,43513110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "43513310",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513310] = {\"雷神-2-恢复\",2,0,{},{1,1,18,1400},0,{},3,9720,0,43513310,0,0,100,6,2,0}"
+        },
+        {
+          "id": "43513312",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513312] = {\"雷神-2-缓慢恢复\",2,0,{},{1,1,18,1000},0,{},0,0,0,0,0,0,100,6,1,0}"
+        },
+        {
+          "id": "43513320",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513320] = {\"雷神-2-恢复\",2,0,{},{1,1,18,1700},0,{},3,9720,0,43513310,0,0,100,6,2,0}"
+        },
+        {
+          "id": "43513322",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513322] = {\"雷神-2-缓慢恢复\",2,0,{},{1,1,18,1200},0,{},0,0,0,0,0,0,100,6,1,0}"
+        },
+        {
+          "id": "43513330",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513330] = {\"雷神-2-恢复\",2,0,{},{1,1,18,2000},0,{},3,9720,0,43513310,0,0,100,6,2,0}"
+        },
+        {
+          "id": "43513331",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513331] = {\"雷神-2-驱散\",53,0,{100},{},0,{},0,0,0,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "43513332",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513332] = {\"雷神-2-缓慢恢复\",2,0,{},{1,1,18,1500},0,{},0,0,0,0,0,0,100,6,1,0}"
+        },
+        {
+          "id": "43513340",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513340] = {\"雷神-2-恢复\",2,0,{},{1,1,18,2080},0,{},3,9720,0,43513310,0,0,100,6,2,0}"
+        },
+        {
+          "id": "43513350",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513350] = {\"雷神-2-恢复\",2,0,{},{1,1,18,2160},0,{},3,9720,0,43513310,0,0,100,6,2,0}"
+        },
+        {
+          "id": "43513360",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513360] = {\"雷神-2-恢复\",2,0,{},{1,1,18,2240},0,{},3,9720,0,43513310,0,0,100,6,2,0}"
+        },
+        {
+          "id": "43513370",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513370] = {\"雷神-2-恢复\",2,0,{},{1,1,18,2320},0,{},3,9720,0,43513310,0,0,100,6,2,0}"
+        },
+        {
+          "id": "43513380",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513380] = {\"雷神-2-恢复\",2,0,{},{1,1,18,2400},0,{},3,9720,0,43513310,0,0,100,6,2,0}"
+        },
+        {
+          "id": "43513410",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513410] = {\"雷神-4-绝对保护\",67,0,{},{},0,{},0,0,5000,0,0,0,100,6,2,0}"
+        },
+        {
+          "id": "43513411",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513411] = {\"雷神-4-1点伤害\",2,1,{},{2,1,18,10},3,{1,1,19,20000},0,0,1,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "43513421",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513421] = {\"雷神-4-免伤提升\",60,0,{},{},0,{},0,0,1000,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "43513431",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513431] = {\"雷神-4-免伤提升\",60,0,{},{},0,{},0,0,2000,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "43513441",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513441] = {\"雷神-4-免伤提升\",60,0,{},{},0,{},0,0,2080,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "43513451",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513451] = {\"雷神-4-免伤提升\",60,0,{},{},0,{},0,0,2160,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "43513461",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513461] = {\"雷神-4-免伤提升\",60,0,{},{},0,{},0,0,2240,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "43513471",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513471] = {\"雷神-4-免伤提升\",60,0,{},{},0,{},0,0,2320,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "43513481",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513481] = {\"雷神-4-免伤提升\",60,0,{},{},0,{},0,0,2400,0,0,0,100,1,0,0}"
+        }
+      ]
     },
     "thor_rak": {
-      "tabSkillRows": [],
-      "tabEffectPerforRows": [],
-      "tabEffectRows": []
+      "tabSkillRows": [
+        {
+          "id": "4351311",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351311] = {435131,2,{{}},4351311,1,2,2,1,1,1,3,0,\"$19#43513110&43513110\",{},\"Gây cho toàn thể địch 90% sát thương vật lý, có 30% tỉ lệ kèm 10% {Phá giáp}, nếu mục tiêu là Chiến Binh hoặc Pháp Sư thì giảm 10% tấn công, nếu là Tank hoặc Hỗ Trợ sẽ giảm 10% miễn sát thương, tất cả hiệu quả duy trì 2 lượt\",{13},0,0,\"Búa Sấm Thức Tỉnh\",{0,6},1,0,10000}"
+        },
+        {
+          "id": "4351312",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351312] = {435131,2,{{}},4351311,2,2,2,1,1,1,3,0,\"$19#43513120&43513120\",{},\"Gây cho toàn thể địch 110% sát thương vật lý, có 50% tỉ lệ kèm 15% {Phá giáp}, nếu mục tiêu là Chiến Binh hoặc Pháp Sư thì giảm 15% tấn công, nếu là Tank hoặc Hỗ Trợ sẽ giảm 15% miễn sát thương, tất cả hiệu quả duy trì 2 lượt\",{13},0,0,\"Búa Sấm Thức Tỉnh\",{0,7},1,0,10000}"
+        },
+        {
+          "id": "4351313",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351313] = {435131,2,{{}},4351311,3,2,2,1,1,1,3,0,\"$19#43513130&43513130\",{},\"Gây cho toàn thể địch 135% sát thương vật lý, có 70% tỉ lệ kèm 20% {Phá giáp}, nếu mục tiêu là Chiến Binh hoặc Pháp Sư thì giảm 20% tấn công, nếu là Tank hoặc Hỗ Trợ sẽ giảm 20% miễn sát thương, tất cả hiệu quả duy trì 2 lượt\",{13},0,0,\"Búa Sấm Thức Tỉnh\",{0,101},1,0,10000}"
+        },
+        {
+          "id": "4351314",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351314] = {435131,2,{{}},4351311,4,2,2,1,1,1,3,0,\"$19#43513140&43513140\",{},\"Gây cho toàn thể địch 140% sát thương vật lý, có 73% tỉ lệ kèm 20% {Phá giáp}, nếu mục tiêu là Chiến Binh hoặc Pháp Sư thì giảm 20% tấn công, nếu là Tank hoặc Hỗ Trợ sẽ giảm 20% miễn sát thương, tất cả hiệu quả duy trì 2 lượt\",{13},0,0,\"Búa Sấm Thức Tỉnh\",{0,102},1,0,10000}"
+        },
+        {
+          "id": "4351315",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351315] = {435131,2,{{}},4351311,5,2,2,1,1,1,3,0,\"$19#43513150&43513150\",{},\"Gây cho toàn thể địch 146% sát thương vật lý, có 76% tỉ lệ kèm 20% {Phá giáp}, nếu mục tiêu là Chiến Binh hoặc Pháp Sư thì giảm 20% tấn công, nếu là Tank hoặc Hỗ Trợ sẽ giảm 20% miễn sát thương, tất cả hiệu quả duy trì 2 lượt\",{13},0,0,\"Búa Sấm Thức Tỉnh\",{0,103},1,0,10000}"
+        },
+        {
+          "id": "4351316",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351316] = {435131,2,{{}},4351311,6,2,2,1,1,1,3,0,\"$19#43513160&43513160\",{},\"Gây cho toàn thể địch 151% sát thương vật lý, có 79% tỉ lệ kèm 20% {Phá giáp}, nếu mục tiêu là Chiến Binh hoặc Pháp Sư thì giảm 20% tấn công, nếu là Tank hoặc Hỗ Trợ sẽ giảm 20% miễn sát thương, tất cả hiệu quả duy trì 2 lượt\",{13},0,0,\"Búa Sấm Thức Tỉnh\",{0,104},1,0,10000}"
+        },
+        {
+          "id": "4351317",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351317] = {435131,2,{{}},4351311,7,2,2,1,1,1,3,0,\"$19#43513170&43513170\",{},\"Gây cho toàn thể địch 156% sát thương vật lý, có 81% tỉ lệ kèm 20% {Phá giáp}, nếu mục tiêu là Chiến Binh hoặc Pháp Sư thì giảm 20% tấn công, nếu là Tank hoặc Hỗ Trợ sẽ giảm 20% miễn sát thương, tất cả hiệu quả duy trì 2 lượt\",{13},0,0,\"Búa Sấm Thức Tỉnh\",{0,105},1,0,10000}"
+        },
+        {
+          "id": "4351318",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4351318] = {435131,2,{{}},4351311,8,2,2,1,1,1,3,0,\"$19#43513180&43513180\",{},\"Gây cho toàn thể địch 162% sát thương vật lý, có 84% tỉ lệ kèm 20% {Phá giáp}, nếu mục tiêu là Chiến Binh hoặc Pháp Sư thì giảm 20% tấn công, nếu là Tank hoặc Hỗ Trợ sẽ giảm 20% miễn sát thương, tất cả hiệu quả duy trì 2 lượt\",{13},0,0,\"Búa Sấm Thức Tỉnh\",{0,0},1,0,10000}"
+        }
+      ],
+      "tabEffectPerforRows": [
+        {
+          "id": "43513020",
+          "source": "TAB_EffectPerfor_1.lua",
+          "raw": "TAB_EffectPerfor[43513020] = {1,1,70,0,0,0,\"Skin-Đánh Thường\",1,1,0,{{43513121011,5,0}},100,1,0,0,0,1,{100110111,5,0},1,0,{},0,0,8,0,{},1,0,0,0}"
+        },
+        {
+          "id": "43513120",
+          "source": "TAB_EffectPerfor_1.lua",
+          "raw": "TAB_EffectPerfor[43513120] = {2,5,0,0,1,1,\"Thor-Skin-1-Sát thương\",11,3,0,{{43513121011,5,1}},100,1,0,0,0,1,{100110111,5,0},1,0,{},43513110,0,43513111,435131,{},1,0,0,0}"
+        },
+        {
+          "id": "43513320",
+          "source": "TAB_EffectPerfor_1.lua",
+          "raw": "TAB_EffectPerfor[43513320] = {3,0,0,0,0,1,\"Thor-Skin-3-Kỹ năng BUFF\",21,1,0,{{43513121012,5,0}},100,1,0,0,0,0,{},1,0,{},43513310,0,13,435132,{},1,0,0,0}"
+        }
+      ],
+      "tabEffectRows": [
+        {
+          "id": "43513010",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513010] = {\"雷神-普攻\",0,1,{},{1,1,19,10000},0,{},0,0,0,43513010,0,0,100,1,2,1}"
+        },
+        {
+          "id": "43513110",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513110] = {\"雷神-1-伤害\",0,1,{},{1,1,19,9000},0,{},0,0,0,43513110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "43513111",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513111] = {\"雷神-1-破甲\",11,0,{},{2,1,4,1000},0,{},11,1000,0,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "43513112",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513112] = {\"雷神-1-攻击降低\",10,0,{},{2,1,3,1000},0,{},8,2000,0,0,13303110,0,100,1,2,0}"
+        },
+        {
+          "id": "43513113",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513113] = {\"雷神-1-受伤提升\",58,0,{},{},0,{},0,0,1000,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "43513120",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513120] = {\"雷神-1-伤害\",0,1,{},{1,1,19,11000},0,{},0,0,0,43513110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "43513121",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513121] = {\"雷神-1-破甲\",11,0,{},{2,1,4,1500},0,{},11,1000,0,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "43513122",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513122] = {\"雷神-1-攻击降低\",10,0,{},{2,1,3,1500},0,{},8,2000,0,0,13303110,0,100,1,2,0}"
+        },
+        {
+          "id": "43513123",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513123] = {\"雷神-1-受伤提升\",58,0,{},{},0,{},0,0,1500,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "43513130",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513130] = {\"雷神-1-伤害\",0,1,{},{1,1,19,13500},0,{},0,0,0,43513110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "43513131",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513131] = {\"雷神-1-破甲\",11,0,{},{2,1,4,2000},0,{},11,1000,0,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "43513132",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513132] = {\"雷神-1-攻击降低\",10,0,{},{2,1,3,2000},0,{},8,2000,0,0,13303110,0,100,1,2,0}"
+        },
+        {
+          "id": "43513133",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513133] = {\"雷神-1-受伤提升\",58,0,{},{},0,{},0,0,2000,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "43513140",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513140] = {\"雷神-1-伤害\",0,1,{},{1,1,19,14000},0,{},0,0,0,43513110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "43513150",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513150] = {\"雷神-1-伤害\",0,1,{},{1,1,19,14600},0,{},0,0,0,43513110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "43513160",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513160] = {\"雷神-1-伤害\",0,1,{},{1,1,19,15100},0,{},0,0,0,43513110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "43513170",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513170] = {\"雷神-1-伤害\",0,1,{},{1,1,19,15600},0,{},0,0,0,43513110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "43513180",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513180] = {\"雷神-1-伤害\",0,1,{},{1,1,19,16200},0,{},0,0,0,43513110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "43513310",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513310] = {\"雷神-2-恢复\",2,0,{},{1,1,18,1400},0,{},3,9720,0,43513310,0,0,100,6,2,0}"
+        },
+        {
+          "id": "43513312",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513312] = {\"雷神-2-缓慢恢复\",2,0,{},{1,1,18,1000},0,{},0,0,0,0,0,0,100,6,1,0}"
+        },
+        {
+          "id": "43513320",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513320] = {\"雷神-2-恢复\",2,0,{},{1,1,18,1700},0,{},3,9720,0,43513310,0,0,100,6,2,0}"
+        },
+        {
+          "id": "43513322",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513322] = {\"雷神-2-缓慢恢复\",2,0,{},{1,1,18,1200},0,{},0,0,0,0,0,0,100,6,1,0}"
+        },
+        {
+          "id": "43513330",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513330] = {\"雷神-2-恢复\",2,0,{},{1,1,18,2000},0,{},3,9720,0,43513310,0,0,100,6,2,0}"
+        },
+        {
+          "id": "43513331",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513331] = {\"雷神-2-驱散\",53,0,{100},{},0,{},0,0,0,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "43513332",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513332] = {\"雷神-2-缓慢恢复\",2,0,{},{1,1,18,1500},0,{},0,0,0,0,0,0,100,6,1,0}"
+        },
+        {
+          "id": "43513340",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513340] = {\"雷神-2-恢复\",2,0,{},{1,1,18,2080},0,{},3,9720,0,43513310,0,0,100,6,2,0}"
+        },
+        {
+          "id": "43513350",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513350] = {\"雷神-2-恢复\",2,0,{},{1,1,18,2160},0,{},3,9720,0,43513310,0,0,100,6,2,0}"
+        },
+        {
+          "id": "43513360",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513360] = {\"雷神-2-恢复\",2,0,{},{1,1,18,2240},0,{},3,9720,0,43513310,0,0,100,6,2,0}"
+        },
+        {
+          "id": "43513370",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513370] = {\"雷神-2-恢复\",2,0,{},{1,1,18,2320},0,{},3,9720,0,43513310,0,0,100,6,2,0}"
+        },
+        {
+          "id": "43513380",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513380] = {\"雷神-2-恢复\",2,0,{},{1,1,18,2400},0,{},3,9720,0,43513310,0,0,100,6,2,0}"
+        },
+        {
+          "id": "43513410",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513410] = {\"雷神-4-绝对保护\",67,0,{},{},0,{},0,0,5000,0,0,0,100,6,2,0}"
+        },
+        {
+          "id": "43513411",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513411] = {\"雷神-4-1点伤害\",2,1,{},{2,1,18,10},3,{1,1,19,20000},0,0,1,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "43513421",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513421] = {\"雷神-4-免伤提升\",60,0,{},{},0,{},0,0,1000,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "43513431",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513431] = {\"雷神-4-免伤提升\",60,0,{},{},0,{},0,0,2000,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "43513441",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513441] = {\"雷神-4-免伤提升\",60,0,{},{},0,{},0,0,2080,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "43513451",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513451] = {\"雷神-4-免伤提升\",60,0,{},{},0,{},0,0,2160,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "43513461",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513461] = {\"雷神-4-免伤提升\",60,0,{},{},0,{},0,0,2240,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "43513471",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513471] = {\"雷神-4-免伤提升\",60,0,{},{},0,{},0,0,2320,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "43513481",
+          "source": "TAB_Effect_2.lua",
+          "raw": "TAB_Effect[43513481] = {\"雷神-4-免伤提升\",60,0,{},{},0,{},0,0,2400,0,0,0,100,1,0,0}"
+        }
+      ]
     },
     "tohka_dark": {
-      "tabSkillRows": [],
-      "tabEffectPerforRows": [],
-      "tabEffectRows": []
+      "tabSkillRows": [
+        {
+          "id": "4151411",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4151411] = {415141,2,{{}},4151411,1,2,2,1,1,1,1,0,\"($37|?41514110)($19#41514110)\",{},\"Tohka dùng Sandalphon triệu hồi ngai vàng; gây cho toàn thể địch 68% ST vật lý, kèm cho mọi mục tiêu phe ta {Chúc phúc ngai vàng}, đơn vị mang {Chúc phúc ngai vàng} khi tấn công thêm 5% bạo kích cho Tank hoặc Hỗ Trợ, duy trì 2 lượt, không thể thanh tẩy\",{0},0,0,\"Sandalphon\",{0,6},1,0,10000}"
+        },
+        {
+          "id": "4151412",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4151412] = {415141,2,{{}},4151411,2,2,2,1,1,1,1,0,\"($37|?41514120)($19#41514120)\",{},\"Tohka dùng Sandalphon triệu hồi ngai vàng; gây cho toàn thể địch 82% ST vật lý, kèm cho mọi mục tiêu phe ta {Chúc phúc ngai vàng}, đơn vị mang {Chúc phúc ngai vàng} khi tấn công thêm 10% bạo kích cho Tank hoặc Hỗ Trợ, duy trì 2 lượt, không thể thanh tẩy\",{0},0,0,\"Sandalphon\",{0,7},1,0,10000}"
+        },
+        {
+          "id": "4151413",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4151413] = {415141,2,{{}},4151411,3,2,2,1,1,1,1,0,\"($37|?41514130)($19#41514130)\",{},\"Tohka dùng Sandalphon triệu hồi ngai vàng; gây cho toàn thể địch 100% ST vật lý, kèm cho mọi mục tiêu phe ta {Chúc phúc ngai vàng}, đơn vị mang {Chúc phúc ngai vàng} khi tấn công thêm 15% bạo kích cho Tank hoặc Hỗ Trợ, duy trì 2 lượt, không thể thanh tẩy\",{0},0,0,\"Sandalphon\",{0,101},1,0,10000}"
+        },
+        {
+          "id": "4151414",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4151414] = {415141,2,{{}},4151411,4,2,2,1,1,1,1,0,\"($37|?41514130)($19#41514140)\",{},\"Tohka dùng Sandalphon triệu hồi ngai vàng; gây cho toàn thể địch 106% ST vật lý, kèm cho mọi mục tiêu phe ta {Chúc phúc ngai vàng}, đơn vị mang {Chúc phúc ngai vàng} khi tấn công thêm 15% bạo kích cho Tank hoặc Hỗ Trợ, duy trì 2 lượt, không thể thanh tẩy\",{0},0,0,\"Sandalphon\",{0,102},1,0,10000}"
+        },
+        {
+          "id": "4151415",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4151415] = {415141,2,{{}},4151411,5,2,2,1,1,1,1,0,\"($37|?41514130)($19#41514150)\",{},\"Tohka dùng Sandalphon triệu hồi ngai vàng; gây cho toàn thể địch 112% ST vật lý, kèm cho mọi mục tiêu phe ta {Chúc phúc ngai vàng}, đơn vị mang {Chúc phúc ngai vàng} khi tấn công thêm 15% bạo kích cho Tank hoặc Hỗ Trợ, duy trì 2 lượt, không thể thanh tẩy\",{0},0,0,\"Sandalphon\",{0,103},1,0,10000}"
+        },
+        {
+          "id": "4151416",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4151416] = {415141,2,{{}},4151411,6,2,2,1,1,1,1,0,\"($37|?41514130)($19#41514160)\",{},\"Tohka dùng Sandalphon triệu hồi ngai vàng; gây cho toàn thể địch 118% ST vật lý, kèm cho mọi mục tiêu phe ta {Chúc phúc ngai vàng}, đơn vị mang {Chúc phúc ngai vàng} khi tấn công thêm 15% bạo kích cho Tank hoặc Hỗ Trợ, duy trì 2 lượt, không thể thanh tẩy\",{0},0,0,\"Sandalphon\",{0,104},1,0,10000}"
+        },
+        {
+          "id": "4151417",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4151417] = {415141,2,{{}},4151411,7,2,2,1,1,1,1,0,\"($37|?41514130)($19#41514170)\",{},\"Tohka dùng Sandalphon triệu hồi ngai vàng; gây cho toàn thể địch 124% ST vật lý, kèm cho mọi mục tiêu phe ta {Chúc phúc ngai vàng}, đơn vị mang {Chúc phúc ngai vàng} khi tấn công thêm 15% bạo kích cho Tank hoặc Hỗ Trợ, duy trì 2 lượt, không thể thanh tẩy\",{0},0,0,\"Sandalphon\",{0,105},1,0,10000}"
+        },
+        {
+          "id": "4151418",
+          "source": "TAB_Skill_2.lua",
+          "raw": "TAB_Skill[4151418] = {415141,2,{{}},4151411,8,2,2,1,1,1,1,0,\"($37|?41514130)($19#41514180)\",{},\"Tohka dùng Sandalphon triệu hồi ngai vàng; gây cho toàn thể địch 130% ST vật lý, kèm cho mọi mục tiêu phe ta {Chúc phúc ngai vàng}, đơn vị mang {Chúc phúc ngai vàng} khi tấn công thêm 15% bạo kích cho Tank hoặc Hỗ Trợ, duy trì 2 lượt, không thể thanh tẩy\",{0},0,0,\"Sandalphon\",{0,0},2,0,10000}"
+        }
+      ],
+      "tabEffectPerforRows": [
+        {
+          "id": "41514020",
+          "source": "TAB_EffectPerfor_1.lua",
+          "raw": "TAB_EffectPerfor[41514020] = {1,1,50,0,0,0,\"Skin Yatogami Tohka đánh thường\",1,1,0,{},100,1,0,0,0,2,{41514121011,5,0},1,0,{},41514020,0,0,41514020,{},1,0,0,0}"
+        },
+        {
+          "id": "41514120",
+          "source": "TAB_EffectPerfor_1.lua",
+          "raw": "TAB_EffectPerfor[41514120] = {2,0,0,0,1,1,\"Skin Yatogami Tohka-1-Sát thương\",11,3,0,{{41514121012,5,0},{41514121012,-5,1}},100,1,0,0,0,1,{41514121013,5,0},1,0,{},41514120,0,41514120,41514120,{},1,0,0,0}"
+        },
+        {
+          "id": "41514320",
+          "source": "TAB_EffectPerfor_1.lua",
+          "raw": "TAB_EffectPerfor[41514320] = {3,6,200,0,1,1,\"Skin Yatogami Tohka-3-Sát thương\",21,1,0,{{41514121014,5,0},{41514121014,-5,1}},100,1,0,0,0,1,{},1,0,{},41514320,0,0,41514320,{},1,0,0,0}"
+        }
+      ],
+      "tabEffectRows": [
+        {
+          "id": "41514010",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514010] = {\"Đánh Thường\",0,1,{},{1,1,19,10000},0,{},0,0,0,41514010,0,0,100,1,2,1}"
+        },
+        {
+          "id": "41514110",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514110] = {\"Tohka-Sát thương-1\",0,1,{},{1,1,19,6800},0,{},0,0,0,41514110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "41514111",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514111] = {\"Buff Tohka\",36,0,{},{},0,{},0,0,500,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "41514120",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514120] = {\"Tohka-Sát thương-1\",0,1,{},{1,1,19,8200},0,{},0,0,0,41514110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "41514121",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514121] = {\"Buff Tohka\",36,0,{},{},0,{},0,0,1000,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "41514130",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514130] = {\"Tohka-Sát thương-1\",0,1,{},{1,1,19,10000},0,{},0,0,0,41514110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "41514131",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514131] = {\"Buff Tohka\",36,0,{},{},0,{},0,0,1500,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "41514140",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514140] = {\"Tohka-Sát thương-1\",0,1,{},{1,1,19,10600},0,{},0,0,0,41514110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "41514150",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514150] = {\"Tohka-Sát thương-1\",0,1,{},{1,1,19,11200},0,{},0,0,0,41514110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "41514160",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514160] = {\"Tohka-Sát thương-1\",0,1,{},{1,1,19,11800},0,{},0,0,0,41514110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "41514170",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514170] = {\"Tohka-Sát thương-1\",0,1,{},{1,1,19,12400},0,{},0,0,0,41514110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "41514180",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514180] = {\"Tohka-Sát thương-1\",0,1,{},{1,1,19,13000},0,{},0,0,0,41514110,0,0,100,1,2,1}"
+        },
+        {
+          "id": "41514210",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514210] = {\"Tăng kháng khống\",73,0,{},{},0,{},0,0,1000,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "41514211",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514211] = {\"Giảm kháng khống\",70,0,{},{},0,{},0,0,3000,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "41514220",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514220] = {\"Tăng kháng khống\",73,0,{},{},0,{},0,0,2000,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "41514221",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514221] = {\"Giảm kháng khống\",70,0,{},{},0,{},0,0,4000,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "41514230",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514230] = {\"Tăng kháng khống\",73,0,{},{},0,{},0,0,3000,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "41514231",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514231] = {\"Giảm kháng khống\",70,0,{},{},0,{},0,0,5000,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "41514310",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514310] = {\"Tohka-Sát thương-3\",0,1,{},{1,1,19,16100},0,{},0,0,0,41514310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "41514311",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514311] = {\"Tăng sát thương cho Tank và Hỗ Trợ\",58,0,{},{},0,{},0,0,1000,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "41514320",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514320] = {\"Tohka-Sát thương-3\",0,1,{},{1,1,19,19200},0,{},0,0,0,41514310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "41514321",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514321] = {\"Tăng sát thương cho Tank và Hỗ Trợ\",58,0,{},{},0,{},0,0,2000,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "41514330",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514330] = {\"Tohka-Sát thương-3\",0,1,{},{1,1,19,22500},0,{},0,0,0,41514310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "41514331",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514331] = {\"Tăng sát thương cho Tank và Hỗ Trợ\",58,0,{},{},0,{},0,0,3000,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "41514340",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514340] = {\"Tohka-Sát thương-3\",0,1,{},{1,1,19,23300},0,{},0,0,0,41514310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "41514350",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514350] = {\"Tohka-Sát thương-3\",0,1,{},{1,1,19,24100},0,{},0,0,0,41514310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "41514360",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514360] = {\"Tohka-Sát thương-3\",0,1,{},{1,1,19,24900},0,{},0,0,0,41514310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "41514370",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514370] = {\"Tohka-Sát thương-3\",0,1,{},{1,1,19,25700},0,{},0,0,0,41514310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "41514380",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514380] = {\"Tohka-Sát thương-3\",0,1,{},{1,1,19,26300},0,{},0,0,0,41514310,0,0,100,1,2,1}"
+        },
+        {
+          "id": "41514410",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514410] = {\"Giải phóng Thần Lực-Miễn vật lý\",9,0,{},{},0,{},0,0,400,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "41514411",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514411] = {\"Giải phóng Thần Lực-Miễn ma pháp\",34,0,{},{},0,{},0,0,400,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "41514412",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514412] = {\"Giải phóng Thần Lực-Miễn giảm sát thương\",60,0,{},{},0,{},0,0,300,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "41514413",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514413] = {\"Giải phóng Thần Lực-Kháng khống\",73,0,{},{},0,{},0,0,500,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "41514414",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514414] = {\"Giải phóng Thần Lực-Được trị liệu\",4,0,{},{},0,{},0,0,500,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "41514415",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514415] = {\"Giải phóng Thần Lực-Chính xác\",31,0,{},{},0,{},0,0,500,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "41514416",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514416] = {\"Giải phóng Thần Lực-Bạo thương\",33,0,{},{},0,{},0,0,500,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "41514417",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514417] = {\"Giải phóng Thần Lực-Sát thương vật lý\",112,0,{},{},0,{},0,0,500,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "41514418",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514418] = {\"Giải phóng Thần Lực-Hút HP\",24,0,{1500},{},0,{},0,0,0,0,0,0,100,6,2,0}"
+        },
+        {
+          "id": "41514420",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514420] = {\"Giải phóng Thần Lực-Miễn vật lý\",9,0,{},{},0,{},0,0,600,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "41514421",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514421] = {\"Giải phóng Thần Lực-Miễn ma pháp\",34,0,{},{},0,{},0,0,600,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "41514422",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514422] = {\"Giải phóng Thần Lực-Miễn giảm sát thương\",60,0,{},{},0,{},0,0,500,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "41514423",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514423] = {\"Giải phóng Thần Lực-Kháng khống\",73,0,{},{},0,{},0,0,700,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "41514424",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514424] = {\"Giải phóng Thần Lực-Được trị liệu\",4,0,{},{},0,{},0,0,700,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "41514425",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514425] = {\"Giải phóng Thần Lực-Chính xác\",31,0,{},{},0,{},0,0,700,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "41514426",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514426] = {\"Giải phóng Thần Lực-Bạo thương\",33,0,{},{},0,{},0,0,700,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "41514427",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514427] = {\"Giải phóng Thần Lực-Sát thương vật lý\",112,0,{},{},0,{},0,0,700,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "41514428",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514428] = {\"Giải phóng Thần Lực-Hút HP\",24,0,{2000},{},0,{},0,0,0,0,0,0,100,6,2,0}"
+        },
+        {
+          "id": "41514430",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514430] = {\"Giải phóng Thần Lực-Miễn vật lý\",9,0,{},{},0,{},0,0,800,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "41514431",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514431] = {\"Giải phóng Thần Lực-Miễn ma pháp\",34,0,{},{},0,{},0,0,800,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "41514432",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514432] = {\"Giải phóng Thần Lực-Miễn giảm sát thương\",60,0,{},{},0,{},0,0,700,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "41514433",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514433] = {\"Giải phóng Thần Lực-Kháng khống\",73,0,{},{},0,{},0,0,1000,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "41514434",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514434] = {\"Giải phóng Thần Lực-Được trị liệu\",4,0,{},{},0,{},0,0,1000,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "41514435",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514435] = {\"Giải phóng Thần Lực-Chính xác\",31,0,{},{},0,{},0,0,1000,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "41514436",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514436] = {\"Giải phóng Thần Lực-Bạo thương\",33,0,{},{},0,{},0,0,1000,0,0,0,100,1,2,0}"
+        },
+        {
+          "id": "41514437",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514437] = {\"Giải phóng Thần Lực-Sát thương vật lý\",112,0,{},{},0,{},0,0,1000,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "41514438",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514438] = {\"Giải phóng Thần Lực-Hút HP\",24,0,{2500},{},0,{},0,0,0,0,0,0,100,6,2,0}"
+        },
+        {
+          "id": "41514512",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514512] = {\"Tăng S.Thương\",57,0,{},{},0,{},0,0,1500,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "41514513",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514513] = {\"Tặng bạo\",29,0,{},{},0,{},0,0,500,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "41514522",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514522] = {\"Tăng S.Thương\",57,0,{},{},0,{},0,0,2000,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "41514523",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514523] = {\"Tặng bạo\",29,0,{},{},0,{},0,0,1000,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "41514532",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514532] = {\"Tăng S.Thương\",57,0,{},{},0,{},0,0,2500,0,0,0,100,1,0,0}"
+        },
+        {
+          "id": "41514533",
+          "source": "TAB_Effect_3.lua",
+          "raw": "TAB_Effect[41514533] = {\"Tặng bạo\",29,0,{},{},0,{},0,0,1500,0,0,0,100,1,0,0}"
+        }
+      ]
     }
   }
 }
