@@ -336,10 +336,15 @@
                     } else if (["SHIELD", "BUFF", "DEBUFF", "CC", "IMMUNITY", "EVASION", "BLOCK", "REFLECT"].includes(event.type)
                             && (!["DOT", "HOT"].includes(event.effectCategory)
                                 || ["BUFF", "DEBUFF"].includes(event.type))
-                            // IMMUNITY còn được dùng để báo hiệu một hiệu ứng bị kháng.
-                            // Chỉ hiện badge khi backend xác nhận đã áp dụng miễn nhiễm.
-                            && (event.type !== "IMMUNITY"
-                                || String(event.message || "").startsWith("IMMUNITY applied:"))) {
+                            // Một số event cùng loại chỉ mô tả kết quả đỡ đòn/kháng,
+                            // không phải trạng thái mới được gắn lên nhân vật.
+                            && (event.type === "IMMUNITY"
+                                ? String(event.message || "").startsWith("IMMUNITY applied:")
+                                : event.type === "SHIELD"
+                                    ? event.message === "Shield applied"
+                                    : ["EVASION", "BLOCK", "REFLECT"].includes(event.type)
+                                        ? event.message === "Defense effect applied"
+                                        : true)) {
                         this.addActiveEffect(event);
                     }
                     this.addLog(event.message || (event.type + " · " + this.unitName(event.targetTeam, event.targetInstanceId)), "skill");
