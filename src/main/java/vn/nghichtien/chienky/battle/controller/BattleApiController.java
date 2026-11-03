@@ -67,6 +67,32 @@ public class BattleApiController {
         }
     }
 
+
+    /** Tạo trận PvP với đội hình chính của người chơi được chọn trên BXH. */
+    @PostMapping("/challenge/{playerId}/start")
+    public BattlePlaybackDTO challenge(
+            Authentication authentication,
+            @PathVariable Long playerId
+    ) {
+        try {
+            return battleSessionService.startPlayerChallenge(
+                    authentication.getName(), playerId
+            );
+        } catch (IllegalArgumentException exception) {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND,
+                    exception.getMessage(),
+                    exception
+            );
+        } catch (IllegalStateException exception) {
+            throw new ResponseStatusException(
+                    HttpStatus.CONFLICT,
+                    exception.getMessage(),
+                    exception
+            );
+        }
+    }
+
     /**
      * Giải phóng phiên chiến đấu của chính người chơi hiện tại.
      */
