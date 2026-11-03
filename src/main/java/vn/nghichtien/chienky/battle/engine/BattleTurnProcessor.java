@@ -167,6 +167,7 @@ public class BattleTurnProcessor {
                         null, null, null, null, null, null, null,
                         "Action skipped: " + crowdControlType
                 );
+                executePendingExtraAction(battle, unit);
                 if (battle.checkFinished()) {
                     break;
                 }
