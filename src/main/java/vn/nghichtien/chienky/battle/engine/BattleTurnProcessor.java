@@ -82,8 +82,8 @@ public class BattleTurnProcessor {
         // DOT/HOT tick một lần sau ROUND_START và trước hành động của round.
         int periodicEventStartIndex = collector.getEvents().size();
         effectProcessor.tickPeriodicEffects(battle);
-        List<BattleEventDTO> periodicEvents = collector.getEvents()
-                .subList(periodicEventStartIndex, collector.getEvents().size());
+        List<BattleEventDTO> periodicEvents = List.copyOf(collector.getEvents()
+                .subList(periodicEventStartIndex, collector.getEvents().size()));
         dispatchActionEventPassives(battle, periodicEvents);
 
         if (battle.checkFinished()) {
@@ -199,8 +199,8 @@ public class BattleTurnProcessor {
             skillExecutor.execute(battle, unit, actionType);
 
             // Chỉ dispatch event do action chính tạo ra, không tạo chuỗi passive vô hạn.
-            List<BattleEventDTO> actionEvents = collector.getEvents()
-                    .subList(eventStartIndex, collector.getEvents().size());
+            List<BattleEventDTO> actionEvents = List.copyOf(collector.getEvents()
+                    .subList(eventStartIndex, collector.getEvents().size()));
             dispatchActionEventPassives(battle, actionEvents);
 
             skillExecutor.executePassives(
@@ -336,8 +336,8 @@ public class BattleTurnProcessor {
         if (!battle.isFinished() && unit.isAlive()) {
             int eventStartIndex = collector.getEvents().size();
             skillExecutor.execute(battle, unit, actionType);
-            List<BattleEventDTO> actionEvents = collector.getEvents()
-                    .subList(eventStartIndex, collector.getEvents().size());
+            List<BattleEventDTO> actionEvents = List.copyOf(collector.getEvents()
+                    .subList(eventStartIndex, collector.getEvents().size()));
             dispatchActionEventPassives(battle, actionEvents);
         }
 
