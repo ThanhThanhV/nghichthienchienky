@@ -105,8 +105,9 @@
       },
       "skillAnimations": {
         "GOJO_BASIC_1": "att",
-        "GOJO_ACTIVE_2": "skill",
-        "GOJO_ULTIMATE_3": "ultimateskill"
+        "GOJO_ACTIVE_2": "ultimateskill",
+        "GOJO_ULTIMATE_3": "ultimateskill",
+        "GOJO_PASSIVE_5": "skill"
       },
       "_BASIC_ATTACK": {
         "movement": "DASH"
