@@ -67,32 +67,40 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
         List<HeroSeed> seeds = heroSeeds();
         JsonNode spineCatalog = loadSpineMappingCatalog();
         JsonNode animationConfigCatalog = loadAnimationConfigCatalog();
-        validateSkillAnimationCatalog(seeds, spineCatalog, animationConfigCatalog);
+        JsonNode tabSourceCatalog = loadTabSourceCatalog();
+        validateSkillAnimationCatalog(
+                seeds, spineCatalog, animationConfigCatalog, tabSourceCatalog
+        );
         List<String> heroCodes = seeds.stream().map(HeroSeed::code).toList();
 
-        // Tái tạo định nghĩa kỹ năng Gojo từ đầu mỗi lần khởi động.
-        // Chỉ xóa liên kết kỹ năng và skill data của Gojo, không xóa dữ liệu
-        // tài khoản, bản sao tướng, chỉ số hoặc đội hình người chơi.
-        resetGojoSkillSeed();
+        // Đồng bộ lại toàn bộ cấu hình kỹ năng của 10 tướng từ nguồn TAB
+        // mỗi lần khởi chạy. Chỉ xóa liên kết kỹ năng và dữ liệu định nghĩa
+        // kỹ năng của các tướng seed; không xóa tài khoản hay bản sao tướng.
+        resetHeroSkillSeed(heroCodes);
 
         for (int i = 0; i < seeds.size(); i++) {
-            seedHero(seeds.get(i), i + 1, spineCatalog, animationConfigCatalog);
+            seedHero(
+                    seeds.get(i), i + 1, spineCatalog,
+                    animationConfigCatalog, tabSourceCatalog
+            );
         }
 
         // Gắn lại 5 kỹ năng cấp 1 cho mọi bản sao tướng người chơi đang sở hữu.
         rebuildOwnedHeroSkills(heroCodes);
     }
 
-    private void resetGojoSkillSeed() {
-        List<String> gojoCodes = List.of("gojo");
+    private void resetHeroSkillSeed(List<String> heroCodes) {
         heroInstanceSkillRepository
-                .deleteAllBySkillDefinitionHeroDefinitionHeroCodeIn(gojoCodes);
+                .deleteAllBySkillDefinitionHeroDefinitionHeroCodeIn(heroCodes);
         heroInstanceSkillRepository.flush();
 
-        // Load effects để cascade remove xóa cả hero_skill_effects.
-        List<HeroSkillDefinition> oldSkills =
-                heroSkillDefinitionRepository
-                        .findAllByHeroDefinitionHeroCodeOrderBySkillOrderAsc("gojo");
+        // Cascade ALL + orphanRemoval xóa các hero_skill_effects đi kèm.
+        List<HeroSkillDefinition> oldSkills = heroSkillDefinitionRepository.findAll()
+                .stream()
+                .filter(skill -> heroCodes.contains(
+                        skill.getHeroDefinition().getHeroCode()
+                ))
+                .toList();
         if (!oldSkills.isEmpty()) {
             heroSkillDefinitionRepository.deleteAll(oldSkills);
             heroSkillDefinitionRepository.flush();
@@ -144,7 +152,8 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
             HeroSeed seed,
             int sortOrder,
             JsonNode spineCatalog,
-            JsonNode animationConfigCatalog
+            JsonNode animationConfigCatalog,
+            JsonNode tabSourceCatalog
     ) {
         HeroDefinition definition = heroDefinitionRepository.findById(seed.code())
                 .orElseGet(() -> createDefinition(seed, sortOrder));
@@ -158,7 +167,8 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
         applySpineMapping(
                 definition,
                 spineCatalog.path("heroes").path(seed.code()),
-                animationConfigCatalog
+                animationConfigCatalog,
+                tabSourceCatalog.path("heroes").path(seed.code())
         );
         if (definition.getSortOrder() == null || definition.getSortOrder() == 0) {
             definition.changeSortOrder(sortOrder);
@@ -199,6 +209,25 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
      * key [number]/["string"] và phép gán thành JSON để Jackson parse.
      * Giữ nguyên toàn bộ tọa độ, eventName và effectId từ nguồn.
      */
+    private JsonNode loadTabSourceCatalog() {
+        try (var input = new ClassPathResource(
+                "static/spine/hero-tab-source.json"
+        ).getInputStream()) {
+            JsonNode catalog = objectMapper.readTree(input);
+            if (catalog == null || !catalog.path("heroes").isObject()) {
+                throw new IllegalStateException(
+                        "TAB source catalog không có cấu trúc heroes hợp lệ"
+                );
+            }
+            return catalog;
+        } catch (IOException exception) {
+            throw new IllegalStateException(
+                    "Không thể đọc catalog TAB hero-tab-source.json",
+                    exception
+            );
+        }
+    }
+
     private JsonNode loadAnimationConfigCatalog() {
         try (var input = new ClassPathResource("animation_config.lua").getInputStream()) {
             String lua = new String(input.readAllBytes(), java.nio.charset.StandardCharsets.UTF_8);
@@ -227,7 +256,8 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
     private void validateSkillAnimationCatalog(
             List<HeroSeed> seeds,
             JsonNode catalog,
-            JsonNode animationConfigCatalog
+            JsonNode animationConfigCatalog,
+            JsonNode tabSourceCatalog
     ) {
         JsonNode heroes = catalog.path("heroes");
 
@@ -239,6 +269,17 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                 throw new IllegalStateException(
                         "Không tìm thấy animation_config.lua cho " + seed.code()
                                 + " (asset " + assetBase + ")"
+                );
+            }
+
+            JsonNode tabSkills = tabSourceCatalog.path("tabSkillRows");
+            JsonNode tabEffects = tabSourceCatalog.path("tabEffectRows");
+            JsonNode tabPerformances = tabSourceCatalog.path("tabEffectPerforRows");
+            if (!tabSkills.isArray() || tabSkills.isEmpty()
+                    || !tabEffects.isArray() || tabEffects.isEmpty()
+                    || !tabPerformances.isArray() || tabPerformances.isEmpty()) {
+                throw new IllegalStateException(
+                        "Thiếu dữ liệu TAB skill/effect/performance cho " + seed.code()
                 );
             }
 
@@ -282,7 +323,8 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
     private void applySpineMapping(
             HeroDefinition definition,
             JsonNode heroMapping,
-            JsonNode animationConfigCatalog
+            JsonNode animationConfigCatalog,
+            JsonNode tabSource
     ) {
         if (heroMapping == null || !heroMapping.isObject()) {
             throw new IllegalStateException(
@@ -345,6 +387,12 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
 
         skillAnimations.put("_ANIMATION_CONFIG_ID", configId);
         skillAnimations.set("_ANIMATION_CONFIG", heroAnimationConfig.deepCopy());
+        if (tabSource == null || !tabSource.isObject()) {
+            throw new IllegalStateException(
+                    "Thiếu TAB source cho tướng " + definition.getHeroCode()
+            );
+        }
+        skillAnimations.set("_TAB_SOURCE", tabSource.deepCopy());
 
         for (String key : List.of(
                 "_BASIC_ATTACK",
