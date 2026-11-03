@@ -14,8 +14,8 @@ document.addEventListener("DOMContentLoaded",()=>{
   ["HIGHEST_HP_PERCENT","Mục tiêu có % HP cao nhất"],
   ["HIGHEST_ATK","Mục tiêu có ATK cao nhất"],
   ["LOWEST_ATK","Mục tiêu có ATK thấp nhất"],
-  ["ALL_ENEMIES","Toàn bộ mục tiêu đối phương"],
-  ["ALL_ALLIES","Toàn bộ đồng minh"]
+  ["ALL_ENEMIES","Toàn bộ mục tiêu trong phe được chọn"],
+  ["ALL_ALLIES","Toàn bộ mục tiêu trong phe được chọn (alias)"]
  ];
  const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
  const val=(id,v)=>$(id).value=v??"";
