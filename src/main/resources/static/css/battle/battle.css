@@ -997,3 +997,78 @@ body {
         filter: brightness(1);
     }
 }
+
+
+/* Clean battlefield HUD: no HP frames, only compact colored status markers. */
+.battle-spine-active .unit-info,
+.battle-spine-active .hp-bar,
+.battle-spine-active .hp-text {
+    display: none !important;
+}
+
+.battle-spine-active .unit-effects {
+    position: absolute;
+    z-index: 8;
+    top: 4px;
+    left: 50%;
+    right: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    width: max-content;
+    max-width: 92%;
+    transform: translateX(-50%);
+    pointer-events: none;
+}
+
+.battle-spine-active .unit-effect-badge {
+    display: block;
+    flex: 0 0 7px;
+    width: 7px;
+    height: 7px;
+    min-width: 7px;
+    max-width: 7px;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, .82);
+    border-radius: 50%;
+    box-shadow: 0 0 5px currentColor, 0 1px 3px rgba(0, 0, 0, .8);
+    font-size: 0;
+    line-height: 0;
+    text-indent: -9999px;
+}
+
+.battle-spine-active .unit-effect-badge.buff {
+    color: #55e68b;
+    background: #35c96d;
+    border-color: #b6ffd0;
+}
+.battle-spine-active .unit-effect-badge.debuff,
+.battle-spine-active .unit-effect-badge.cc {
+    color: #ff596d;
+    background: #e83d55;
+    border-color: #ffc0c8;
+}
+.battle-spine-active .unit-effect-badge.shield {
+    color: #54c8ff;
+    background: #259ee8;
+    border-color: #b6eaff;
+}
+.battle-spine-active .unit-effect-badge.immunity {
+    color: #ca83ff;
+    background: #a94de8;
+    border-color: #f0d2ff;
+}
+.battle-spine-active .unit-effect-badge.evasion,
+.battle-spine-active .unit-effect-badge.block {
+    color: #ffd45e;
+    background: #e7ad27;
+    border-color: #fff0b0;
+}
+.battle-spine-active .unit-effect-badge:not(.buff):not(.debuff):not(.cc):not(.shield):not(.immunity):not(.evasion):not(.block) {
+    color: #c5d0e2;
+    background: #8493aa;
+    border-color: #eef3fb;
+}
