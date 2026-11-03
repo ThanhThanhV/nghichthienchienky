@@ -406,8 +406,10 @@ window.SPINE_EFFECT_CONFIG = {
                 }
             },
             GOJO_ACTIVE_2: {
-                // Vô Hạ Hạn: superskill của Gojo phát faqi_31,
-                // tương ứng qishou_31_1_1 trong effect 11014.
+                // Vô Hạ Hạn dùng superskill trên skeleton Gojo (faqi_31).
+                // Effect 11014 animation_0 có đúng marker qishou_31_1_1.
+                // Đây là buff SELF, chỉ phát cast; animation_1 chứa hit_31_3_3..1
+                // là nhịp impact gây hit, không phát lên chính Gojo.
                 cast: {
                     code: "gojo_infinity_active_cast",
                     file: "seffect_52517111014",
@@ -416,22 +418,6 @@ window.SPINE_EFFECT_CONFIG = {
                     impactEvents: ["qishou_31_1_1"],
                     anchor: "source",
                     impactRatio: 0.7
-                },
-                // Đây là buff SELF, ba nhịp visual phải xuất hiện quanh Gojo,
-                // không phải trên đội hình địch và không chờ event DAMAGE.
-                impact: {
-                    code: "gojo_infinity_active_impact",
-                    file: "seffect_52517111014",
-                    animation: "animation_1",
-                    impactEvent: "hit_31_3_3",
-                    impactEvents: [
-                        "hit_31_3_3",
-                        "hit_31_3_2",
-                        "hit_31_3_1"
-                    ],
-                    anchor: "source",
-                    trigger: "AFTER_CAST",
-                    impactRatio: 0.25
                 }
             },
             // Không khai báo cast effect riêng cho Gojo PASSIVE/counter:
@@ -565,12 +551,21 @@ window.SPINE_EFFECT_CONFIG = {
         // Một skill chỉ được resolve từ chính hero đang thực hiện nó.
         // Ngăn skill code IORI_* và IORI_DARK_* bị lấy nhầm mapping của nhau.
         const heroPrefix = normalizedHeroCode.toUpperCase() + "_";
-        const definitionKey = normalizedSkillCode.startsWith(heroPrefix) &&
+        let definitionKey = normalizedSkillCode.startsWith(heroPrefix) &&
                 definitions[normalizedSkillCode]
             ? normalizedSkillCode
             : normalizedHeroCode === "tohka_dark"
                 ? skillAliases[normalizedSkillCode]
                 : null;
+
+        // Dữ liệu Gojo đã tồn tại từ bootstrap cũ có thể còn skillCode cũ,
+        // vì initializer chỉ đổi skillType chứ không đổi skillCode.
+        // Với Gojo, loại event ACTIVE_SKILL là căn cứ ổn định để resolve
+        // Vô Hạ Hạn; không để skillCode cũ làm mất hoàn toàn Spine effect.
+        if (!definitionKey && normalizedHeroCode === "gojo" &&
+            String(event?.type || "").toUpperCase() === "ACTIVE_SKILL") {
+            definitionKey = "GOJO_ACTIVE_2";
+        }
 
         const selected = definitions[definitionKey]?.[phase];
         if (!selected) {
