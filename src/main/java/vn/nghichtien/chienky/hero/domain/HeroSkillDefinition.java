@@ -147,6 +147,18 @@ public class HeroSkillDefinition {
     }
 
     /**
+     * Cập nhật nhóm kỹ năng BASIC, ACTIVE, ULTIMATE hoặc PASSIVE.
+     *
+     * @param skillType Loại kỹ năng mới
+     */
+    public void changeSkillType(String skillType) {
+        if (skillType == null || skillType.isBlank()) {
+            throw new IllegalArgumentException("Skill type không được để trống");
+        }
+        this.skillType = skillType.trim().toUpperCase(java.util.Locale.ROOT);
+    }
+
+    /**
      * Thay đổi trạng thái kích hoạt kỹ năng.
      *
      * @param enabled Trạng thái kích hoạt
