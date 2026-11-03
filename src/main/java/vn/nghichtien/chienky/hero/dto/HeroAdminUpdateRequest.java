@@ -15,6 +15,7 @@ public record HeroAdminUpdateRequest(
         String description,
         Boolean enabled,
         Integer sortOrder,
+        String basicAttackMovement,
         StatsRequest baseStats,
         StatsRequest growthStats,
         List<SkillRequest> skills
