@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="_csrf" th:content="${_csrf.token}">
+    <meta name="_csrf_header" th:content="${_csrf.headerName}">
+    <meta name="theme-color" content="#080d19">
+    <title>Chỉnh sửa tướng · Admin</title>
+    <link rel="stylesheet" th:href="@{/css/admin/heroes.css}">
+</head>
+<body>
+<main class="admin-shell edit-shell">
+    <header class="admin-header">
+        <div>
+            <a class="back-link" th:href="@{/admin/heroes}">← DANH SÁCH TƯỚNG</a>
+            <p class="eyebrow">ADMIN CONTROL · HERO CONFIGURATION</p>
+            <h1 id="edit-title">CHỈNH SỬA TƯỚNG</h1>
+            <p class="subtitle" id="edit-subtitle">Đang tải dữ liệu tướng...</p>
+        </div>
+        <button id="save-hero" class="primary-button" type="button">LƯU THAY ĐỔI</button>
+    </header>
+    <div id="page-message" class="message" hidden></div>
+    <form id="hero-edit-form">
+        <section class="panel">
+            <h2>Thông tin nhân vật</h2>
+            <div class="form-grid">
+                <label>Mã tướng<input id="hero-code" disabled></label>
+                <label>Tên tướng<input id="hero-name" required maxlength="100"></label>
+                <label>Độ hiếm<select id="hero-rarity"><option>COMMON</option><option>RARE</option><option>EPIC</option><option>LEGENDARY</option><option>MYTHIC</option></select></label>
+                <label>Vai trò<select id="hero-role"><option>WARRIOR</option><option>ASSASSIN</option><option>MAGE</option><option>TANK</option><option>SUPPORT</option></select></label>
+                <label>Phe phái<input id="hero-faction" required maxlength="50"></label>
+                <label>Mã avatar<input id="hero-avatar" required maxlength="50"></label>
+                <label>Thứ tự hiển thị<input id="hero-sort" type="number" min="0" step="1"></label>
+                <label class="check-label"><input id="hero-enabled" type="checkbox"> Tướng đang được kích hoạt</label>
+                <label class="wide">Mô tả<textarea id="hero-description" rows="3" maxlength="2000"></textarea></label>
+            </div>
+            <div class="asset-info" id="asset-info"></div>
+        </section>
+
+        <section class="panel">
+            <h2>Chỉ số cơ bản · Cấp 1</h2>
+            <div id="base-stats" class="stats-grid"></div>
+        </section>
+        <section class="panel">
+            <h2>Chỉ số tăng trưởng mỗi cấp</h2>
+            <div id="growth-stats" class="stats-grid"></div>
+        </section>
+        <section class="panel">
+            <div class="section-title-row">
+                <div><h2>Kỹ năng và hiệu ứng</h2><p>Điều chỉnh từng kỹ năng, thêm nhiều hiệu ứng, chỉ số tác động và mục tiêu riêng cho từng hiệu ứng.</p></div>
+                <span class="small-tag">5 KỸ NĂNG</span>
+            </div>
+            <div id="skill-editor" class="skill-editor"></div>
+        </section>
+        <div class="save-footer"><button class="primary-button" type="submit">LƯU TOÀN BỘ CẤU HÌNH</button></div>
+    </form>
+</main>
+<script th:src="@{/js/admin/hero-edit.js(v=1)}"></script>
+</body>
+</html>
