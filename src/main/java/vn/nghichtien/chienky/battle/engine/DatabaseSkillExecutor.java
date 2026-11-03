@@ -26,16 +26,16 @@ public class DatabaseSkillExecutor {
     private static final BigDecimal ONE = BigDecimal.ONE;
 
     private final HeroSkillDefinitionRepository skillRepository;
-    private final BattleEffectProcessor effectProcessor;
+    private final BattleSkillEngine skillEngine;
     private final ObjectMapper objectMapper;
 
     public DatabaseSkillExecutor(
             HeroSkillDefinitionRepository skillRepository,
-            BattleEffectProcessor effectProcessor,
+            BattleSkillEngine skillEngine,
             ObjectMapper objectMapper
     ) {
         this.skillRepository = skillRepository;
-        this.effectProcessor = effectProcessor;
+        this.skillEngine = skillEngine;
         this.objectMapper = objectMapper;
     }
 
@@ -89,8 +89,7 @@ public class DatabaseSkillExecutor {
                 .map(this::toEffectConfig)
                 .toList();
 
-        recordSkillActivation(battle, source, skill, actualAction);
-        effectProcessor.executeEffects(battle, source, effects);
+        skillEngine.executeSkill(battle, source, skill, actualAction, effects);
 
         return actualAction;
     }
@@ -151,10 +150,11 @@ public class DatabaseSkillExecutor {
                 continue;
             }
 
-            recordPassiveActivation(battle, source, skill, trigger);
-            effectProcessor.executeEffects(
+            skillEngine.executePassive(
                     battle,
                     source,
+                    skill,
+                    trigger,
                     effects,
                     trigger == BattlePassiveTrigger.ON_DAMAGED
                             ? counterTargetInstanceId
@@ -337,56 +337,4 @@ public class DatabaseSkillExecutor {
         }
     }
 
-    private void recordSkillActivation(
-            BattleState battle,
-            BattleUnitState source,
-            HeroSkillDefinition skill,
-            BattleActionType actionType
-    ) {
-        BattleEventType eventType = switch (actionType) {
-            case BASIC_ATTACK -> BattleEventType.BASIC_ATTACK;
-            case ACTIVE_SKILL -> BattleEventType.ACTIVE_SKILL;
-            case ULTIMATE_SKILL -> BattleEventType.ULTIMATE_SKILL;
-        };
-
-        battle.getEventCollector().record(
-                eventType,
-                source.getTeam().name(),
-                source.getInstanceId(),
-                null, null,
-                skill.getSkillCode(),
-                null,
-                false,
-                source.getCurrentHp(),
-                source.getMaxHp(),
-                source.isAlive(),
-                null, null, null,
-                "Skill activated: " + skill.getSkillName()
-        );
-    }
-
-    private void recordPassiveActivation(
-            BattleState battle,
-            BattleUnitState source,
-            HeroSkillDefinition skill,
-            BattlePassiveTrigger trigger
-    ) {
-        battle.getEventCollector().record(
-                BattleEventType.PASSIVE,
-                source.getTeam().name(),
-                source.getInstanceId(),
-                null,
-                null,
-                skill.getSkillCode(),
-                null,
-                false,
-                source.getCurrentHp(),
-                source.getMaxHp(),
-                source.isAlive(),
-                null,
-                trigger.name(),
-                null,
-                "Passive activated: " + skill.getSkillName()
-        );
-    }
 }
