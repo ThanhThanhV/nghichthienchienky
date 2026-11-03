@@ -1,1 +1,1206 @@
-{"version":1,"heroes":{"asuna_dark":{"asset":{"folder":"asuna_dark","base":"sanim_315141_1","textures":["sanim_315141_1.png","sanim_315141_12.png"]},"skillAnimations":{"ASUNA_DARK_BASIC_1":"att","ASUNA_DARK_ACTIVE_2":"skill","ASUNA_DARK_ULTIMATE_3":"ultimateskill","ASUNA_DARK_PASSIVE_4":"skill","ASUNA_DARK_PASSIVE_5":"skill"},"_BASIC_ATTACK":{"movement":"DASH"},"_SKILL_EFFECTS":{"ASUNA_DARK_ACTIVE_2":{"cast":{"code":"asuna_dark_active_cast","file":"seffect_31514120111","animation":"animation_2","impactRatio":0.55,"anchor":"source"},"impact":{"code":"asuna_dark_active_impact","file":"seffect_31514130111","animation":"animation_2","impactEvent":"hit_21_1_1","impactEvents":["hit_21_1_1"],"anchor":"enemy_formation","impactRatio":1}}},"_SKILL_EFFECT_ALIASES":{},"_SPINE_EFFECT_BASE_PATH":"/assets/spine/seffects/","_SPINE_EFFECT_TEXTURE_PAGES":{"seffect_51515110111":["seffect_51515110111.png","seffect_515151101112.png"],"seffect_31517110111":["seffect_31517110111.png","seffect_315171101112.png"],"seffect_42515121012":["seffect_42515121012.png","seffect_425151210122.png"],"seffect_42515121013":["seffect_42515121013.png","seffect_425151210132.png"],"seffect_42515121014":["seffect_42515121014.png","seffect_425151210142.png"],"seffect_43513121011":["seffect_43513121011.png","seffect_435131210112.png"],"seffect_51515121014":["seffect_51515121014.png","seffect_515151210142.png"],"seffect_52517111014":["seffect_52517111014.png","seffect_525171110142.png"],"seffect_41514121012":["seffect_41514121012.png","seffect_415141210122.png","seffect_415141210123.png"],"seffect_41514121014":["seffect_41514121014.png","seffect_415141210142.png","seffect_415141210143.png","seffect_415141210144.png"]},"_SPINE_EFFECT_DEFAULTS":{"scale":0.2,"displayScale":0.2,"layer":"FRONT"}},"gojo":{"asset":{"folder":"gojo","base":"sanim_525171","textures":["sanim_525171.png"]},"skillAnimations":{"GOJO_BASIC_1":"att","GOJO_ACTIVE_2":"superskill","GOJO_ULTIMATE_3":"ultimateskill","GOJO_PASSIVE_4":"ultimateskill","GOJO_PASSIVE_5":"ultimateskill"},"_BASIC_ATTACK":{"movement":"DASH"},"_SKILL_EFFECTS":{"GOJO_BASIC_1":{"cast":{"code":"gojo_basic_cast","file":"seffect_52517111011","animation":"animation_0","impactEvent":"qishou_1_1_1","impactEvents":["qishou_1_1_1"],"anchor":"source","impactRatio":0.2},"impact":{"code":"gojo_basic_impact","file":"seffect_52517111011","animation":"animation_1","impactEvent":"hit_11_1_1","impactEvents":["hit_11_1_1"],"anchor":"target","impactRatio":0.2}},"GOJO_ACTIVE_2":{"cast":{"code":"gojo_infinity_active_cast","file":"seffect_52517111014","animation":"animation_0","impactEvent":"qishou_31_1_1","impactEvents":["qishou_31_1_1"],"anchor":"source","impactRatio":0.7},"impact":{"code":"gojo_infinity_active_impact","file":"seffect_52517111014","animation":"animation_1","impactEvent":"hit_31_3_3","impactEvents":["hit_31_3_3","hit_31_3_2","hit_31_3_1"],"anchor":"source","trigger":"AFTER_CAST","impactRatio":0.25}}},"_SKILL_EFFECT_ALIASES":{},"_SPINE_EFFECT_BASE_PATH":"/assets/spine/seffects/","_SPINE_EFFECT_TEXTURE_PAGES":{"seffect_51515110111":["seffect_51515110111.png","seffect_515151101112.png"],"seffect_31517110111":["seffect_31517110111.png","seffect_315171101112.png"],"seffect_42515121012":["seffect_42515121012.png","seffect_425151210122.png"],"seffect_42515121013":["seffect_42515121013.png","seffect_425151210132.png"],"seffect_42515121014":["seffect_42515121014.png","seffect_425151210142.png"],"seffect_43513121011":["seffect_43513121011.png","seffect_435131210112.png"],"seffect_51515121014":["seffect_51515121014.png","seffect_515151210142.png"],"seffect_52517111014":["seffect_52517111014.png","seffect_525171110142.png"],"seffect_41514121012":["seffect_41514121012.png","seffect_415141210122.png","seffect_415141210123.png"],"seffect_41514121014":["seffect_41514121014.png","seffect_415141210142.png","seffect_415141210143.png","seffect_415141210144.png"]},"_SPINE_EFFECT_DEFAULTS":{"scale":0.2,"displayScale":0.2,"layer":"FRONT"}},"iori":{"asset":{"folder":"iori","base":"sanim_515151","textures":["sanim_515151.png"]},"skillAnimations":{"IORI_BASIC_1":"att","IORI_ACTIVE_2":"ultimateskill","IORI_ULTIMATE_3":"superskill","IORI_PASSIVE_4":"skill","IORI_PASSIVE_5":"skill"},"_BASIC_ATTACK":{"movement":"DASH"},"_SKILL_EFFECTS":{"IORI_BASIC_1":{"cast":{"code":"iori_basic_cast","file":"seffect_51515121011","animation":"animation_0","impactEvent":"qishou_1_1_1","anchor":"source","impactRatio":0.45},"impact":{"code":"iori_basic_impact","file":"seffect_51515121013","animation":"animation_0","impactEvent":"hit_11_1_1","impactEvents":["hit_11_1_1"],"anchor":"target","impactRatio":0.5}},"IORI_ACTIVE_2":{"cast":{"code":"iori_active_cast","file":"seffect_51515121014","animation":"animation_0","impactEvent":"qishou_21_1_1","anchor":"source","impactRatio":0.65},"impact":{"code":"iori_active_impact","file":"seffect_51515121015","animation":"animation_0","impactEvents":["hit_21_3_3","hit_21_3_2","hit_21_3_1"],"anchor":"enemy_formation","impactRatio":0.25}},"IORI_ULTIMATE_3":{"cast":{"code":"iori_ultimate_cast","file":"seffect_51515121016","animation":"animation_0","impactEvents":["qishou_31_4_4","qishou_31_4_3","qishou_31_4_2","qishou_31_4_1"],"anchor":"source","impactRatio":0.7},"impact":{"code":"iori_ultimate_impact","file":"seffect_51515110211","animation":"animation_0","impactEvents":["hit_31_5_5","hit_31_5_4","hit_31_5_3","hit_31_5_2","hit_31_5_1"],"anchor":"enemy_formation","impactRatio":0.8}}},"_SKILL_EFFECT_ALIASES":{},"_SPINE_EFFECT_BASE_PATH":"/assets/spine/seffects/","_SPINE_EFFECT_TEXTURE_PAGES":{"seffect_51515110111":["seffect_51515110111.png","seffect_515151101112.png"],"seffect_31517110111":["seffect_31517110111.png","seffect_315171101112.png"],"seffect_42515121012":["seffect_42515121012.png","seffect_425151210122.png"],"seffect_42515121013":["seffect_42515121013.png","seffect_425151210132.png"],"seffect_42515121014":["seffect_42515121014.png","seffect_425151210142.png"],"seffect_43513121011":["seffect_43513121011.png","seffect_435131210112.png"],"seffect_51515121014":["seffect_51515121014.png","seffect_515151210142.png"],"seffect_52517111014":["seffect_52517111014.png","seffect_525171110142.png"],"seffect_41514121012":["seffect_41514121012.png","seffect_415141210122.png","seffect_415141210123.png"],"seffect_41514121014":["seffect_41514121014.png","seffect_415141210142.png","seffect_415141210143.png","seffect_415141210144.png"]},"_SPINE_EFFECT_DEFAULTS":{"scale":0.2,"displayScale":0.2,"layer":"FRONT"}},"iori_dark":{"asset":{"folder":"iori_dark","base":"sanim_515151_1","textures":["sanim_515151_1.png"]},"skillAnimations":{"IORI_DARK_BASIC_1":"att","IORI_DARK_ACTIVE_2":"ultimateskill","IORI_DARK_ULTIMATE_3":"superskill","IORI_DARK_PASSIVE_4":"skill","IORI_DARK_PASSIVE_5":"skill"},"_BASIC_ATTACK":{"movement":"DASH"},"_SKILL_EFFECTS":{"IORI_DARK_BASIC_1":{"cast":{"code":"iori_dark_basic_cast","file":"seffect_51515110111","animation":"animation_0","impactEvent":"qishou_1_1_1","anchor":"source","impactRatio":0.45}},"IORI_DARK_ACTIVE_2":{"cast":{"code":"iori_dark_active_cast","file":"seffect_51515110111","animation":"animation_2","impactEvents":["qishou_21_2_2","qishou_21_2_1"],"anchor":"source","impactRatio":0.65}},"IORI_DARK_ULTIMATE_3":{"cast":{"code":"iori_dark_ultimate_cast","file":"seffect_51515110111","animation":"animation_3","impactEvent":"qishou_31_1_1","anchor":"source","impactRatio":0.7},"impact":{"code":"iori_dark_ultimate_impact","file":"seffect_51515110211","animation":"animation_0","impactEvents":["hit_31_5_5","hit_31_5_4","hit_31_5_3","hit_31_5_2","hit_31_5_1"],"anchor":"enemy_formation","impactRatio":0.8}}},"_SKILL_EFFECT_ALIASES":{},"_SPINE_EFFECT_BASE_PATH":"/assets/spine/seffects/","_SPINE_EFFECT_TEXTURE_PAGES":{"seffect_51515110111":["seffect_51515110111.png","seffect_515151101112.png"],"seffect_31517110111":["seffect_31517110111.png","seffect_315171101112.png"],"seffect_42515121012":["seffect_42515121012.png","seffect_425151210122.png"],"seffect_42515121013":["seffect_42515121013.png","seffect_425151210132.png"],"seffect_42515121014":["seffect_42515121014.png","seffect_425151210142.png"],"seffect_43513121011":["seffect_43513121011.png","seffect_435131210112.png"],"seffect_51515121014":["seffect_51515121014.png","seffect_515151210142.png"],"seffect_52517111014":["seffect_52517111014.png","seffect_525171110142.png"],"seffect_41514121012":["seffect_41514121012.png","seffect_415141210122.png","seffect_415141210123.png"],"seffect_41514121014":["seffect_41514121014.png","seffect_415141210142.png","seffect_415141210143.png","seffect_415141210144.png"]},"_SPINE_EFFECT_DEFAULTS":{"scale":0.2,"displayScale":0.2,"layer":"FRONT"}},"kirito":{"asset":{"folder":"kirito","base":"sanim_315171","textures":["sanim_315171.png"]},"skillAnimations":{"KIRITO_BASIC_1":"att","KIRITO_ACTIVE_2":"skill","KIRITO_ULTIMATE_3":"ultimateskill","KIRITO_PASSIVE_4":"skill","KIRITO_PASSIVE_5":"skill"},"_BASIC_ATTACK":{"movement":"DASH"},"_SKILL_EFFECTS":{"KIRITO_BASIC_1":{"cast":{"code":"kirito_basic_cast","file":"seffect_31517110111","animation":"animation_0","impactEvent":"qishou_11_1_1","anchor":"source"},"impact":{"code":"kirito_basic_impact","file":"seffect_31517110112","animation":"animation_1","impactEvents":["hit_11_2_2","hit_11_2_1"],"anchor":"target"}},"KIRITO_ACTIVE_2":{"cast":{"code":"kirito_active_cast","file":"seffect_31517110111","animation":"animation_1","impactEvent":"qishou_21_1_1","anchor":"source"},"impact":{"code":"kirito_active_impact","file":"seffect_31517110112","animation":"animation_2","impactEvents":["hit_21_5_5","hit_21_5_4","hit_21_5_3","hit_21_5_2","hit_21_5_1"],"anchor":"enemy_formation"}},"KIRITO_ULTIMATE_3":{"cast":{"code":"kirito_ultimate_cast","file":"seffect_31517110111","animation":"animation_2","impactEvent":"qishou_31_1_1","anchor":"source"},"impact":{"code":"kirito_ultimate_impact","file":"seffect_31517110112","animation":"animation_3","impactEvent":"hit_31_1_1","impactEvents":["hit_31_1_1"],"anchor":"enemy_formation"}}},"_SKILL_EFFECT_ALIASES":{},"_SPINE_EFFECT_BASE_PATH":"/assets/spine/seffects/","_SPINE_EFFECT_TEXTURE_PAGES":{"seffect_51515110111":["seffect_51515110111.png","seffect_515151101112.png"],"seffect_31517110111":["seffect_31517110111.png","seffect_315171101112.png"],"seffect_42515121012":["seffect_42515121012.png","seffect_425151210122.png"],"seffect_42515121013":["seffect_42515121013.png","seffect_425151210132.png"],"seffect_42515121014":["seffect_42515121014.png","seffect_425151210142.png"],"seffect_43513121011":["seffect_43513121011.png","seffect_435131210112.png"],"seffect_51515121014":["seffect_51515121014.png","seffect_515151210142.png"],"seffect_52517111014":["seffect_52517111014.png","seffect_525171110142.png"],"seffect_41514121012":["seffect_41514121012.png","seffect_415141210122.png","seffect_415141210123.png"],"seffect_41514121014":["seffect_41514121014.png","seffect_415141210142.png","seffect_415141210143.png","seffect_415141210144.png"]},"_SPINE_EFFECT_DEFAULTS":{"scale":0.2,"displayScale":0.2,"layer":"FRONT"}},"leloud":{"asset":{"folder":"leloud","base":"sanim_425151","textures":["sanim_425151.png"]},"skillAnimations":{"LELOUD_BASIC_1":"att","LELOUD_ACTIVE_2":"skill","LELOUD_ULTIMATE_3":"ultimateskill","LELOUD_PASSIVE_4":"skill","LELOUD_PASSIVE_5":"skill"},"_BASIC_ATTACK":{"movement":"DASH"},"_SKILL_EFFECTS":{"LELOUD_BASIC_1":{"cast":{"code":"leloud_basic_cast","file":"seffect_42515121011","animation":"animation_0","impactEvent":"qishou_1_1_1","anchor":"source"},"impact":{"code":"leloud_basic_impact","file":"seffect_42515121011","animation":"animation_1","impactEvent":"hit_1_1_1","impactEvents":["hit_1_1_1"],"anchor":"target"}},"LELOUD_ACTIVE_2":{"cast":{"code":"leloud_active_cast","file":"seffect_42515121012","animation":"animation_1","impactEvents":["qishou_11_4_4","qishou_11_4_3","qishou_11_4_2","qishou_11_4_1"],"anchor":"source"},"impact":{"code":"leloud_active_impact","file":"seffect_42515121012","animation":"animation_2","impactEvent":"hit_11_1_1","impactEvents":["hit_11_1_1"],"anchor":"enemy_formation"}},"LELOUD_ULTIMATE_3":{"cast":{"code":"leloud_ultimate_cast","file":"seffect_42515121013","animation":"animation_1","impactEvent":"qishou_21_1_1","anchor":"source"},"impact":{"code":"leloud_ultimate_impact","file":"seffect_42515121013","animation":"animation_2","impactEvents":["hit_21_3_3","hit_21_3_2","hit_21_3_1"],"anchor":"enemy_formation"}}},"_SKILL_EFFECT_ALIASES":{},"_SPINE_EFFECT_BASE_PATH":"/assets/spine/seffects/","_SPINE_EFFECT_TEXTURE_PAGES":{"seffect_51515110111":["seffect_51515110111.png","seffect_515151101112.png"],"seffect_31517110111":["seffect_31517110111.png","seffect_315171101112.png"],"seffect_42515121012":["seffect_42515121012.png","seffect_425151210122.png"],"seffect_42515121013":["seffect_42515121013.png","seffect_425151210132.png"],"seffect_42515121014":["seffect_42515121014.png","seffect_425151210142.png"],"seffect_43513121011":["seffect_43513121011.png","seffect_435131210112.png"],"seffect_51515121014":["seffect_51515121014.png","seffect_515151210142.png"],"seffect_52517111014":["seffect_52517111014.png","seffect_525171110142.png"],"seffect_41514121012":["seffect_41514121012.png","seffect_415141210122.png","seffect_415141210123.png"],"seffect_41514121014":["seffect_41514121014.png","seffect_415141210142.png","seffect_415141210143.png","seffect_415141210144.png"]},"_SPINE_EFFECT_DEFAULTS":{"scale":0.2,"displayScale":0.2,"layer":"FRONT"}},"leloud_dark":{"asset":{"folder":"leloud_dark","base":"sanim_425151_1","textures":["sanim_425151_1.png"]},"skillAnimations":{"LELOUD_DARK_BASIC_1":"att","LELOUD_DARK_ACTIVE_2":"skill","LELOUD_DARK_ULTIMATE_3":"ultimateskill","LELOUD_DARK_PASSIVE_4":"skill","LELOUD_DARK_PASSIVE_5":"skill"},"_BASIC_ATTACK":{"movement":"DASH"},"_SKILL_EFFECTS":{},"_SKILL_EFFECT_ALIASES":{},"_SPINE_EFFECT_BASE_PATH":"/assets/spine/seffects/","_SPINE_EFFECT_TEXTURE_PAGES":{"seffect_51515110111":["seffect_51515110111.png","seffect_515151101112.png"],"seffect_31517110111":["seffect_31517110111.png","seffect_315171101112.png"],"seffect_42515121012":["seffect_42515121012.png","seffect_425151210122.png"],"seffect_42515121013":["seffect_42515121013.png","seffect_425151210132.png"],"seffect_42515121014":["seffect_42515121014.png","seffect_425151210142.png"],"seffect_43513121011":["seffect_43513121011.png","seffect_435131210112.png"],"seffect_51515121014":["seffect_51515121014.png","seffect_515151210142.png"],"seffect_52517111014":["seffect_52517111014.png","seffect_525171110142.png"],"seffect_41514121012":["seffect_41514121012.png","seffect_415141210122.png","seffect_415141210123.png"],"seffect_41514121014":["seffect_41514121014.png","seffect_415141210142.png","seffect_415141210143.png","seffect_415141210144.png"]},"_SPINE_EFFECT_DEFAULTS":{"scale":0.2,"displayScale":0.2,"layer":"FRONT"}},"thor":{"asset":{"folder":"thor","base":"sanim_435131","textures":["sanim_435131.png","sanim_4351312.png"]},"skillAnimations":{"THOR_BASIC_1":"att","THOR_ACTIVE_2":"skill","THOR_ULTIMATE_3":"ultimateskill","THOR_PASSIVE_4":"skill","THOR_PASSIVE_5":"skill"},"_BASIC_ATTACK":{"movement":"DASH"},"_SKILL_EFFECTS":{"THOR_BASIC_1":{"cast":{"code":"thor_basic_cast","file":"seffect_43513121011","animation":"animation_0","impactEvents":["qishou_1_2_2","qishou_1_2_1"],"anchor":"source"},"impact":{"code":"thor_basic_impact","file":"seffect_43503010111","animation":"animation_5","impactEvent":"hit_1_1_1","impactEvents":["hit_1_1_1"],"anchor":"target"}},"THOR_ACTIVE_2":{"cast":{"code":"thor_active_cast","file":"seffect_43513121011","animation":"animation_1","impactEvents":["qishou_11_4_4","qishou_11_4_3","qishou_11_4_2","qishou_11_4_1"],"anchor":"source"},"impact":{"code":"thor_active_impact","file":"seffect_43513","animation":"animation_0","impactEvents":["hit_111_4_4","hit_111_4_3","hit_111_4_2","hit_111_4_1"],"anchor":"enemy_formation"}},"THOR_ULTIMATE_3":{"cast":{"code":"thor_ultimate_cast","file":"seffect_43513121012","animation":"animation_0","impactEvent":"qishou_21_1_1","anchor":"source"},"impact":{"code":"thor_ultimate_impact","file":"seffect_43503110111","animation":"animation_1","impactEvent":"hit_21_1_1","impactEvents":["hit_21_1_1"],"anchor":"enemy_formation"}}},"_SKILL_EFFECT_ALIASES":{},"_SPINE_EFFECT_BASE_PATH":"/assets/spine/seffects/","_SPINE_EFFECT_TEXTURE_PAGES":{"seffect_51515110111":["seffect_51515110111.png","seffect_515151101112.png"],"seffect_31517110111":["seffect_31517110111.png","seffect_315171101112.png"],"seffect_42515121012":["seffect_42515121012.png","seffect_425151210122.png"],"seffect_42515121013":["seffect_42515121013.png","seffect_425151210132.png"],"seffect_42515121014":["seffect_42515121014.png","seffect_425151210142.png"],"seffect_43513121011":["seffect_43513121011.png","seffect_435131210112.png"],"seffect_51515121014":["seffect_51515121014.png","seffect_515151210142.png"],"seffect_52517111014":["seffect_52517111014.png","seffect_525171110142.png"],"seffect_41514121012":["seffect_41514121012.png","seffect_415141210122.png","seffect_415141210123.png"],"seffect_41514121014":["seffect_41514121014.png","seffect_415141210142.png","seffect_415141210143.png","seffect_415141210144.png"]},"_SPINE_EFFECT_DEFAULTS":{"scale":0.2,"displayScale":0.2,"layer":"FRONT"}},"thor_rak":{"asset":{"folder":"thor_rak","base":"sanim_435131_1","textures":["sanim_435131_1.png","sanim_435131_12.png"]},"skillAnimations":{"THOR_RAK_BASIC_1":"att","THOR_RAK_ACTIVE_2":"skill","THOR_RAK_ULTIMATE_3":"ultimateskill","THOR_RAK_PASSIVE_4":"skill","THOR_RAK_PASSIVE_5":"skill"},"_BASIC_ATTACK":{"movement":"DASH"},"_SKILL_EFFECTS":{"THOR_RAK_BASIC_1":{"cast":{"code":"thor_rak_basic_cast","file":"seffect_43517111011","animation":"animation_0","impactEvents":["qishou_1_3_3","qishou_1_3_2","qishou_1_3_1"],"anchor":"source"}},"THOR_RAK_ACTIVE_2":{"cast":{"code":"thor_rak_active_cast","file":"seffect_43517111012","animation":"animation_0","impactEvent":"qishou_11_1_1","anchor":"source"}},"THOR_RAK_ULTIMATE_3":{"cast":{"code":"thor_rak_ultimate_cast","file":"seffect_43517111013","animation":"animation_0","impactEvents":["qishou_21_5_5","qishou_21_5_4","qishou_21_5_3","qishou_21_5_2","qishou_21_5_1"],"anchor":"source"}}},"_SKILL_EFFECT_ALIASES":{},"_SPINE_EFFECT_BASE_PATH":"/assets/spine/seffects/","_SPINE_EFFECT_TEXTURE_PAGES":{"seffect_51515110111":["seffect_51515110111.png","seffect_515151101112.png"],"seffect_31517110111":["seffect_31517110111.png","seffect_315171101112.png"],"seffect_42515121012":["seffect_42515121012.png","seffect_425151210122.png"],"seffect_42515121013":["seffect_42515121013.png","seffect_425151210132.png"],"seffect_42515121014":["seffect_42515121014.png","seffect_425151210142.png"],"seffect_43513121011":["seffect_43513121011.png","seffect_435131210112.png"],"seffect_51515121014":["seffect_51515121014.png","seffect_515151210142.png"],"seffect_52517111014":["seffect_52517111014.png","seffect_525171110142.png"],"seffect_41514121012":["seffect_41514121012.png","seffect_415141210122.png","seffect_415141210123.png"],"seffect_41514121014":["seffect_41514121014.png","seffect_415141210142.png","seffect_415141210143.png","seffect_415141210144.png"]},"_SPINE_EFFECT_DEFAULTS":{"scale":0.2,"displayScale":0.2,"layer":"FRONT"}},"tohka_dark":{"asset":{"folder":"tohka_dark","base":"sanim_415141_1","textures":["sanim_415141_1.png","sanim_415141_12.png"]},"skillAnimations":{"TOHKA_DARK_BASIC_1":"att","TOHKA_DARK_ACTIVE_2":"skill","TOHKA_DARK_ULTIMATE_3":"ultimateskill","TOHKA_DARK_PASSIVE_4":"skill","TOHKA_DARK_PASSIVE_5":"skill"},"_BASIC_ATTACK":{"movement":"DASH"},"_SKILL_EFFECTS":{"TOHKA_DARK_BASIC_1":{"cast":{"code":"tohka_dark_skill_1_cast","file":"seffect_41514111011","animation":"animation_0","impactRatio":0.48,"anchor":"source"},"impact":{"code":"tohka_dark_skill_1_impact","file":"seffect_41514121011","animation":"animation_0","impactRatio":0.45,"anchor":"target"}},"TOHKA_DARK_ACTIVE_2":{"cast":{"code":"tohka_dark_skill_2_cast","file":"seffect_41514121012","animation":"animation_0","impactEvents":["qishou_11_5_5","qishou_11_5_4","qishou_11_5_3","qishou_11_5_2","qishou_11_5_1"],"impactRatio":0.5,"anchor":"enemy_formation"}},"TOHKA_DARK_ULTIMATE_3":{"cast":{"code":"tohka_dark_skill_3_cast","file":"seffect_41514111013","animation":"animation_0","impactRatio":0.62,"anchor":"source"},"impact":{"code":"tohka_dark_skill_3_impact","file":"seffect_41514121014","animation":"animation_0","impactRatio":0.62,"anchor":"target"}}},"_SKILL_EFFECT_ALIASES":{"TOHKA_ACTIVE":"TOHKA_DARK_ACTIVE_2","SKILL_EFFECT_2":"TOHKA_DARK_ACTIVE_2"},"_SPINE_EFFECT_BASE_PATH":"/assets/spine/seffects/","_SPINE_EFFECT_TEXTURE_PAGES":{"seffect_51515110111":["seffect_51515110111.png","seffect_515151101112.png"],"seffect_31517110111":["seffect_31517110111.png","seffect_315171101112.png"],"seffect_42515121012":["seffect_42515121012.png","seffect_425151210122.png"],"seffect_42515121013":["seffect_42515121013.png","seffect_425151210132.png"],"seffect_42515121014":["seffect_42515121014.png","seffect_425151210142.png"],"seffect_43513121011":["seffect_43513121011.png","seffect_435131210112.png"],"seffect_51515121014":["seffect_51515121014.png","seffect_515151210142.png"],"seffect_52517111014":["seffect_52517111014.png","seffect_525171110142.png"],"seffect_41514121012":["seffect_41514121012.png","seffect_415141210122.png","seffect_415141210123.png"],"seffect_41514121014":["seffect_41514121014.png","seffect_415141210142.png","seffect_415141210143.png","seffect_415141210144.png"]},"_SPINE_EFFECT_DEFAULTS":{"scale":0.2,"displayScale":0.2,"layer":"FRONT"}}}}
+{
+  "version": 1,
+  "heroes": {
+    "asuna_dark": {
+      "asset": {
+        "folder": "asuna_dark",
+        "base": "sanim_315141_1",
+        "textures": [
+          "sanim_315141_1.png",
+          "sanim_315141_12.png"
+        ]
+      },
+      "skillAnimations": {
+        "ASUNA_DARK_BASIC_1": "att",
+        "ASUNA_DARK_ACTIVE_2": "skill",
+        "ASUNA_DARK_ULTIMATE_3": "ultimateskill",
+        "ASUNA_DARK_PASSIVE_4": "skill",
+        "ASUNA_DARK_PASSIVE_5": "skill"
+      },
+      "_BASIC_ATTACK": {
+        "movement": "DASH"
+      },
+      "_SKILL_EFFECTS": {
+        "ASUNA_DARK_ACTIVE_2": {
+          "cast": {
+            "code": "asuna_dark_active_cast",
+            "file": "seffect_31514120111",
+            "animation": "animation_2",
+            "impactRatio": 0.55,
+            "anchor": "source"
+          },
+          "impact": {
+            "code": "asuna_dark_active_impact",
+            "file": "seffect_31514130111",
+            "animation": "animation_2",
+            "impactEvent": "hit_21_1_1",
+            "impactEvents": [
+              "hit_21_1_1"
+            ],
+            "anchor": "enemy_formation",
+            "impactRatio": 1
+          }
+        }
+      },
+      "_SKILL_EFFECT_ALIASES": {},
+      "_SPINE_EFFECT_BASE_PATH": "/assets/spine/seffects/",
+      "_SPINE_EFFECT_TEXTURE_PAGES": {
+        "seffect_51515110111": [
+          "seffect_51515110111.png",
+          "seffect_515151101112.png"
+        ],
+        "seffect_31517110111": [
+          "seffect_31517110111.png",
+          "seffect_315171101112.png"
+        ],
+        "seffect_42515121012": [
+          "seffect_42515121012.png",
+          "seffect_425151210122.png"
+        ],
+        "seffect_42515121013": [
+          "seffect_42515121013.png",
+          "seffect_425151210132.png"
+        ],
+        "seffect_42515121014": [
+          "seffect_42515121014.png",
+          "seffect_425151210142.png"
+        ],
+        "seffect_43513121011": [
+          "seffect_43513121011.png",
+          "seffect_435131210112.png"
+        ],
+        "seffect_51515121014": [
+          "seffect_51515121014.png",
+          "seffect_515151210142.png"
+        ],
+        "seffect_52517111014": [
+          "seffect_52517111014.png",
+          "seffect_525171110142.png"
+        ],
+        "seffect_41514121012": [
+          "seffect_41514121012.png",
+          "seffect_415141210122.png",
+          "seffect_415141210123.png"
+        ],
+        "seffect_41514121014": [
+          "seffect_41514121014.png",
+          "seffect_415141210142.png",
+          "seffect_415141210143.png",
+          "seffect_415141210144.png"
+        ]
+      },
+      "_SPINE_EFFECT_DEFAULTS": {
+        "scale": 0.2,
+        "displayScale": 0.2,
+        "layer": "FRONT"
+      }
+    },
+    "gojo": {
+      "asset": {
+        "folder": "gojo",
+        "base": "sanim_525171",
+        "textures": [
+          "sanim_525171.png"
+        ]
+      },
+      "skillAnimations": {
+        "GOJO_PASSIVE_1": "att",
+        "GOJO_ACTIVE_2": "superskill",
+        "GOJO_PASSIVE_3": "ultimateskill",
+        "GOJO_PASSIVE_4": "ultimateskill",
+        "GOJO_PASSIVE_5": "ultimateskill"
+      },
+      "_BASIC_ATTACK": {
+        "movement": "DASH"
+      },
+      "_SKILL_EFFECTS": {
+        "GOJO_BASIC_1": {
+          "cast": {
+            "code": "gojo_basic_cast",
+            "file": "seffect_52517111011",
+            "animation": "animation_0",
+            "impactEvent": "qishou_1_1_1",
+            "impactEvents": [
+              "qishou_1_1_1"
+            ],
+            "anchor": "source",
+            "impactRatio": 0.2
+          },
+          "impact": {
+            "code": "gojo_basic_impact",
+            "file": "seffect_52517111011",
+            "animation": "animation_1",
+            "impactEvent": "hit_11_1_1",
+            "impactEvents": [
+              "hit_11_1_1"
+            ],
+            "anchor": "target",
+            "impactRatio": 0.2
+          }
+        },
+        "GOJO_ACTIVE_2": {
+          "cast": {
+            "code": "gojo_infinity_active_cast",
+            "file": "seffect_52517111014",
+            "animation": "animation_0",
+            "impactEvent": "qishou_31_1_1",
+            "impactEvents": [
+              "qishou_31_1_1"
+            ],
+            "anchor": "source",
+            "impactRatio": 0.7
+          },
+          "impact": {
+            "code": "gojo_infinity_active_impact",
+            "file": "seffect_52517111014",
+            "animation": "animation_1",
+            "impactEvent": "hit_31_3_3",
+            "impactEvents": [
+              "hit_31_3_3",
+              "hit_31_3_2",
+              "hit_31_3_1"
+            ],
+            "anchor": "source",
+            "trigger": "AFTER_CAST",
+            "impactRatio": 0.25
+          }
+        }
+      },
+      "_SKILL_EFFECT_ALIASES": {},
+      "_SPINE_EFFECT_BASE_PATH": "/assets/spine/seffects/",
+      "_SPINE_EFFECT_TEXTURE_PAGES": {
+        "seffect_51515110111": [
+          "seffect_51515110111.png",
+          "seffect_515151101112.png"
+        ],
+        "seffect_31517110111": [
+          "seffect_31517110111.png",
+          "seffect_315171101112.png"
+        ],
+        "seffect_42515121012": [
+          "seffect_42515121012.png",
+          "seffect_425151210122.png"
+        ],
+        "seffect_42515121013": [
+          "seffect_42515121013.png",
+          "seffect_425151210132.png"
+        ],
+        "seffect_42515121014": [
+          "seffect_42515121014.png",
+          "seffect_425151210142.png"
+        ],
+        "seffect_43513121011": [
+          "seffect_43513121011.png",
+          "seffect_435131210112.png"
+        ],
+        "seffect_51515121014": [
+          "seffect_51515121014.png",
+          "seffect_515151210142.png"
+        ],
+        "seffect_52517111014": [
+          "seffect_52517111014.png",
+          "seffect_525171110142.png"
+        ],
+        "seffect_41514121012": [
+          "seffect_41514121012.png",
+          "seffect_415141210122.png",
+          "seffect_415141210123.png"
+        ],
+        "seffect_41514121014": [
+          "seffect_41514121014.png",
+          "seffect_415141210142.png",
+          "seffect_415141210143.png",
+          "seffect_415141210144.png"
+        ]
+      },
+      "_SPINE_EFFECT_DEFAULTS": {
+        "scale": 0.2,
+        "displayScale": 0.2,
+        "layer": "FRONT"
+      }
+    },
+    "iori": {
+      "asset": {
+        "folder": "iori",
+        "base": "sanim_515151",
+        "textures": [
+          "sanim_515151.png"
+        ]
+      },
+      "skillAnimations": {
+        "IORI_BASIC_1": "att",
+        "IORI_ACTIVE_2": "ultimateskill",
+        "IORI_ULTIMATE_3": "superskill",
+        "IORI_PASSIVE_4": "skill",
+        "IORI_PASSIVE_5": "skill"
+      },
+      "_BASIC_ATTACK": {
+        "movement": "DASH"
+      },
+      "_SKILL_EFFECTS": {
+        "IORI_BASIC_1": {
+          "cast": {
+            "code": "iori_basic_cast",
+            "file": "seffect_51515121011",
+            "animation": "animation_0",
+            "impactEvent": "qishou_1_1_1",
+            "anchor": "source",
+            "impactRatio": 0.45
+          },
+          "impact": {
+            "code": "iori_basic_impact",
+            "file": "seffect_51515121013",
+            "animation": "animation_0",
+            "impactEvent": "hit_11_1_1",
+            "impactEvents": [
+              "hit_11_1_1"
+            ],
+            "anchor": "target",
+            "impactRatio": 0.5
+          }
+        },
+        "IORI_ACTIVE_2": {
+          "cast": {
+            "code": "iori_active_cast",
+            "file": "seffect_51515121014",
+            "animation": "animation_0",
+            "impactEvent": "qishou_21_1_1",
+            "anchor": "source",
+            "impactRatio": 0.65
+          },
+          "impact": {
+            "code": "iori_active_impact",
+            "file": "seffect_51515121015",
+            "animation": "animation_0",
+            "impactEvents": [
+              "hit_21_3_3",
+              "hit_21_3_2",
+              "hit_21_3_1"
+            ],
+            "anchor": "enemy_formation",
+            "impactRatio": 0.25
+          }
+        },
+        "IORI_ULTIMATE_3": {
+          "cast": {
+            "code": "iori_ultimate_cast",
+            "file": "seffect_51515121016",
+            "animation": "animation_0",
+            "impactEvents": [
+              "qishou_31_4_4",
+              "qishou_31_4_3",
+              "qishou_31_4_2",
+              "qishou_31_4_1"
+            ],
+            "anchor": "source",
+            "impactRatio": 0.7
+          },
+          "impact": {
+            "code": "iori_ultimate_impact",
+            "file": "seffect_51515110211",
+            "animation": "animation_0",
+            "impactEvents": [
+              "hit_31_5_5",
+              "hit_31_5_4",
+              "hit_31_5_3",
+              "hit_31_5_2",
+              "hit_31_5_1"
+            ],
+            "anchor": "enemy_formation",
+            "impactRatio": 0.8
+          }
+        }
+      },
+      "_SKILL_EFFECT_ALIASES": {},
+      "_SPINE_EFFECT_BASE_PATH": "/assets/spine/seffects/",
+      "_SPINE_EFFECT_TEXTURE_PAGES": {
+        "seffect_51515110111": [
+          "seffect_51515110111.png",
+          "seffect_515151101112.png"
+        ],
+        "seffect_31517110111": [
+          "seffect_31517110111.png",
+          "seffect_315171101112.png"
+        ],
+        "seffect_42515121012": [
+          "seffect_42515121012.png",
+          "seffect_425151210122.png"
+        ],
+        "seffect_42515121013": [
+          "seffect_42515121013.png",
+          "seffect_425151210132.png"
+        ],
+        "seffect_42515121014": [
+          "seffect_42515121014.png",
+          "seffect_425151210142.png"
+        ],
+        "seffect_43513121011": [
+          "seffect_43513121011.png",
+          "seffect_435131210112.png"
+        ],
+        "seffect_51515121014": [
+          "seffect_51515121014.png",
+          "seffect_515151210142.png"
+        ],
+        "seffect_52517111014": [
+          "seffect_52517111014.png",
+          "seffect_525171110142.png"
+        ],
+        "seffect_41514121012": [
+          "seffect_41514121012.png",
+          "seffect_415141210122.png",
+          "seffect_415141210123.png"
+        ],
+        "seffect_41514121014": [
+          "seffect_41514121014.png",
+          "seffect_415141210142.png",
+          "seffect_415141210143.png",
+          "seffect_415141210144.png"
+        ]
+      },
+      "_SPINE_EFFECT_DEFAULTS": {
+        "scale": 0.2,
+        "displayScale": 0.2,
+        "layer": "FRONT"
+      }
+    },
+    "iori_dark": {
+      "asset": {
+        "folder": "iori_dark",
+        "base": "sanim_515151_1",
+        "textures": [
+          "sanim_515151_1.png"
+        ]
+      },
+      "skillAnimations": {
+        "IORI_DARK_BASIC_1": "att",
+        "IORI_DARK_ACTIVE_2": "ultimateskill",
+        "IORI_DARK_ULTIMATE_3": "superskill",
+        "IORI_DARK_PASSIVE_4": "skill",
+        "IORI_DARK_PASSIVE_5": "skill"
+      },
+      "_BASIC_ATTACK": {
+        "movement": "DASH"
+      },
+      "_SKILL_EFFECTS": {
+        "IORI_DARK_BASIC_1": {
+          "cast": {
+            "code": "iori_dark_basic_cast",
+            "file": "seffect_51515110111",
+            "animation": "animation_0",
+            "impactEvent": "qishou_1_1_1",
+            "anchor": "source",
+            "impactRatio": 0.45
+          }
+        },
+        "IORI_DARK_ACTIVE_2": {
+          "cast": {
+            "code": "iori_dark_active_cast",
+            "file": "seffect_51515110111",
+            "animation": "animation_2",
+            "impactEvents": [
+              "qishou_21_2_2",
+              "qishou_21_2_1"
+            ],
+            "anchor": "source",
+            "impactRatio": 0.65
+          }
+        },
+        "IORI_DARK_ULTIMATE_3": {
+          "cast": {
+            "code": "iori_dark_ultimate_cast",
+            "file": "seffect_51515110111",
+            "animation": "animation_3",
+            "impactEvent": "qishou_31_1_1",
+            "anchor": "source",
+            "impactRatio": 0.7
+          },
+          "impact": {
+            "code": "iori_dark_ultimate_impact",
+            "file": "seffect_51515110211",
+            "animation": "animation_0",
+            "impactEvents": [
+              "hit_31_5_5",
+              "hit_31_5_4",
+              "hit_31_5_3",
+              "hit_31_5_2",
+              "hit_31_5_1"
+            ],
+            "anchor": "enemy_formation",
+            "impactRatio": 0.8
+          }
+        }
+      },
+      "_SKILL_EFFECT_ALIASES": {},
+      "_SPINE_EFFECT_BASE_PATH": "/assets/spine/seffects/",
+      "_SPINE_EFFECT_TEXTURE_PAGES": {
+        "seffect_51515110111": [
+          "seffect_51515110111.png",
+          "seffect_515151101112.png"
+        ],
+        "seffect_31517110111": [
+          "seffect_31517110111.png",
+          "seffect_315171101112.png"
+        ],
+        "seffect_42515121012": [
+          "seffect_42515121012.png",
+          "seffect_425151210122.png"
+        ],
+        "seffect_42515121013": [
+          "seffect_42515121013.png",
+          "seffect_425151210132.png"
+        ],
+        "seffect_42515121014": [
+          "seffect_42515121014.png",
+          "seffect_425151210142.png"
+        ],
+        "seffect_43513121011": [
+          "seffect_43513121011.png",
+          "seffect_435131210112.png"
+        ],
+        "seffect_51515121014": [
+          "seffect_51515121014.png",
+          "seffect_515151210142.png"
+        ],
+        "seffect_52517111014": [
+          "seffect_52517111014.png",
+          "seffect_525171110142.png"
+        ],
+        "seffect_41514121012": [
+          "seffect_41514121012.png",
+          "seffect_415141210122.png",
+          "seffect_415141210123.png"
+        ],
+        "seffect_41514121014": [
+          "seffect_41514121014.png",
+          "seffect_415141210142.png",
+          "seffect_415141210143.png",
+          "seffect_415141210144.png"
+        ]
+      },
+      "_SPINE_EFFECT_DEFAULTS": {
+        "scale": 0.2,
+        "displayScale": 0.2,
+        "layer": "FRONT"
+      }
+    },
+    "kirito": {
+      "asset": {
+        "folder": "kirito",
+        "base": "sanim_315171",
+        "textures": [
+          "sanim_315171.png"
+        ]
+      },
+      "skillAnimations": {
+        "KIRITO_BASIC_1": "att",
+        "KIRITO_ACTIVE_2": "skill",
+        "KIRITO_ULTIMATE_3": "ultimateskill",
+        "KIRITO_PASSIVE_4": "skill",
+        "KIRITO_PASSIVE_5": "skill"
+      },
+      "_BASIC_ATTACK": {
+        "movement": "DASH"
+      },
+      "_SKILL_EFFECTS": {
+        "KIRITO_BASIC_1": {
+          "cast": {
+            "code": "kirito_basic_cast",
+            "file": "seffect_31517110111",
+            "animation": "animation_0",
+            "impactEvent": "qishou_11_1_1",
+            "anchor": "source"
+          },
+          "impact": {
+            "code": "kirito_basic_impact",
+            "file": "seffect_31517110112",
+            "animation": "animation_1",
+            "impactEvents": [
+              "hit_11_2_2",
+              "hit_11_2_1"
+            ],
+            "anchor": "target"
+          }
+        },
+        "KIRITO_ACTIVE_2": {
+          "cast": {
+            "code": "kirito_active_cast",
+            "file": "seffect_31517110111",
+            "animation": "animation_1",
+            "impactEvent": "qishou_21_1_1",
+            "anchor": "source"
+          },
+          "impact": {
+            "code": "kirito_active_impact",
+            "file": "seffect_31517110112",
+            "animation": "animation_2",
+            "impactEvents": [
+              "hit_21_5_5",
+              "hit_21_5_4",
+              "hit_21_5_3",
+              "hit_21_5_2",
+              "hit_21_5_1"
+            ],
+            "anchor": "enemy_formation"
+          }
+        },
+        "KIRITO_ULTIMATE_3": {
+          "cast": {
+            "code": "kirito_ultimate_cast",
+            "file": "seffect_31517110111",
+            "animation": "animation_2",
+            "impactEvent": "qishou_31_1_1",
+            "anchor": "source"
+          },
+          "impact": {
+            "code": "kirito_ultimate_impact",
+            "file": "seffect_31517110112",
+            "animation": "animation_3",
+            "impactEvent": "hit_31_1_1",
+            "impactEvents": [
+              "hit_31_1_1"
+            ],
+            "anchor": "enemy_formation"
+          }
+        }
+      },
+      "_SKILL_EFFECT_ALIASES": {},
+      "_SPINE_EFFECT_BASE_PATH": "/assets/spine/seffects/",
+      "_SPINE_EFFECT_TEXTURE_PAGES": {
+        "seffect_51515110111": [
+          "seffect_51515110111.png",
+          "seffect_515151101112.png"
+        ],
+        "seffect_31517110111": [
+          "seffect_31517110111.png",
+          "seffect_315171101112.png"
+        ],
+        "seffect_42515121012": [
+          "seffect_42515121012.png",
+          "seffect_425151210122.png"
+        ],
+        "seffect_42515121013": [
+          "seffect_42515121013.png",
+          "seffect_425151210132.png"
+        ],
+        "seffect_42515121014": [
+          "seffect_42515121014.png",
+          "seffect_425151210142.png"
+        ],
+        "seffect_43513121011": [
+          "seffect_43513121011.png",
+          "seffect_435131210112.png"
+        ],
+        "seffect_51515121014": [
+          "seffect_51515121014.png",
+          "seffect_515151210142.png"
+        ],
+        "seffect_52517111014": [
+          "seffect_52517111014.png",
+          "seffect_525171110142.png"
+        ],
+        "seffect_41514121012": [
+          "seffect_41514121012.png",
+          "seffect_415141210122.png",
+          "seffect_415141210123.png"
+        ],
+        "seffect_41514121014": [
+          "seffect_41514121014.png",
+          "seffect_415141210142.png",
+          "seffect_415141210143.png",
+          "seffect_415141210144.png"
+        ]
+      },
+      "_SPINE_EFFECT_DEFAULTS": {
+        "scale": 0.2,
+        "displayScale": 0.2,
+        "layer": "FRONT"
+      }
+    },
+    "leloud": {
+      "asset": {
+        "folder": "leloud",
+        "base": "sanim_425151",
+        "textures": [
+          "sanim_425151.png"
+        ]
+      },
+      "skillAnimations": {
+        "LELOUD_BASIC_1": "att",
+        "LELOUD_ACTIVE_2": "skill",
+        "LELOUD_ULTIMATE_3": "ultimateskill",
+        "LELOUD_PASSIVE_4": "skill",
+        "LELOUD_PASSIVE_5": "skill"
+      },
+      "_BASIC_ATTACK": {
+        "movement": "DASH"
+      },
+      "_SKILL_EFFECTS": {
+        "LELOUD_BASIC_1": {
+          "cast": {
+            "code": "leloud_basic_cast",
+            "file": "seffect_42515121011",
+            "animation": "animation_0",
+            "impactEvent": "qishou_1_1_1",
+            "anchor": "source"
+          },
+          "impact": {
+            "code": "leloud_basic_impact",
+            "file": "seffect_42515121011",
+            "animation": "animation_1",
+            "impactEvent": "hit_1_1_1",
+            "impactEvents": [
+              "hit_1_1_1"
+            ],
+            "anchor": "target"
+          }
+        },
+        "LELOUD_ACTIVE_2": {
+          "cast": {
+            "code": "leloud_active_cast",
+            "file": "seffect_42515121012",
+            "animation": "animation_1",
+            "impactEvents": [
+              "qishou_11_4_4",
+              "qishou_11_4_3",
+              "qishou_11_4_2",
+              "qishou_11_4_1"
+            ],
+            "anchor": "source"
+          },
+          "impact": {
+            "code": "leloud_active_impact",
+            "file": "seffect_42515121012",
+            "animation": "animation_2",
+            "impactEvent": "hit_11_1_1",
+            "impactEvents": [
+              "hit_11_1_1"
+            ],
+            "anchor": "enemy_formation"
+          }
+        },
+        "LELOUD_ULTIMATE_3": {
+          "cast": {
+            "code": "leloud_ultimate_cast",
+            "file": "seffect_42515121013",
+            "animation": "animation_1",
+            "impactEvent": "qishou_21_1_1",
+            "anchor": "source"
+          },
+          "impact": {
+            "code": "leloud_ultimate_impact",
+            "file": "seffect_42515121013",
+            "animation": "animation_2",
+            "impactEvents": [
+              "hit_21_3_3",
+              "hit_21_3_2",
+              "hit_21_3_1"
+            ],
+            "anchor": "enemy_formation"
+          }
+        }
+      },
+      "_SKILL_EFFECT_ALIASES": {},
+      "_SPINE_EFFECT_BASE_PATH": "/assets/spine/seffects/",
+      "_SPINE_EFFECT_TEXTURE_PAGES": {
+        "seffect_51515110111": [
+          "seffect_51515110111.png",
+          "seffect_515151101112.png"
+        ],
+        "seffect_31517110111": [
+          "seffect_31517110111.png",
+          "seffect_315171101112.png"
+        ],
+        "seffect_42515121012": [
+          "seffect_42515121012.png",
+          "seffect_425151210122.png"
+        ],
+        "seffect_42515121013": [
+          "seffect_42515121013.png",
+          "seffect_425151210132.png"
+        ],
+        "seffect_42515121014": [
+          "seffect_42515121014.png",
+          "seffect_425151210142.png"
+        ],
+        "seffect_43513121011": [
+          "seffect_43513121011.png",
+          "seffect_435131210112.png"
+        ],
+        "seffect_51515121014": [
+          "seffect_51515121014.png",
+          "seffect_515151210142.png"
+        ],
+        "seffect_52517111014": [
+          "seffect_52517111014.png",
+          "seffect_525171110142.png"
+        ],
+        "seffect_41514121012": [
+          "seffect_41514121012.png",
+          "seffect_415141210122.png",
+          "seffect_415141210123.png"
+        ],
+        "seffect_41514121014": [
+          "seffect_41514121014.png",
+          "seffect_415141210142.png",
+          "seffect_415141210143.png",
+          "seffect_415141210144.png"
+        ]
+      },
+      "_SPINE_EFFECT_DEFAULTS": {
+        "scale": 0.2,
+        "displayScale": 0.2,
+        "layer": "FRONT"
+      }
+    },
+    "leloud_dark": {
+      "asset": {
+        "folder": "leloud_dark",
+        "base": "sanim_425151_1",
+        "textures": [
+          "sanim_425151_1.png"
+        ]
+      },
+      "skillAnimations": {
+        "LELOUD_DARK_BASIC_1": "att",
+        "LELOUD_DARK_ACTIVE_2": "skill",
+        "LELOUD_DARK_ULTIMATE_3": "ultimateskill",
+        "LELOUD_DARK_PASSIVE_4": "skill",
+        "LELOUD_DARK_PASSIVE_5": "skill"
+      },
+      "_BASIC_ATTACK": {
+        "movement": "DASH"
+      },
+      "_SKILL_EFFECTS": {},
+      "_SKILL_EFFECT_ALIASES": {},
+      "_SPINE_EFFECT_BASE_PATH": "/assets/spine/seffects/",
+      "_SPINE_EFFECT_TEXTURE_PAGES": {
+        "seffect_51515110111": [
+          "seffect_51515110111.png",
+          "seffect_515151101112.png"
+        ],
+        "seffect_31517110111": [
+          "seffect_31517110111.png",
+          "seffect_315171101112.png"
+        ],
+        "seffect_42515121012": [
+          "seffect_42515121012.png",
+          "seffect_425151210122.png"
+        ],
+        "seffect_42515121013": [
+          "seffect_42515121013.png",
+          "seffect_425151210132.png"
+        ],
+        "seffect_42515121014": [
+          "seffect_42515121014.png",
+          "seffect_425151210142.png"
+        ],
+        "seffect_43513121011": [
+          "seffect_43513121011.png",
+          "seffect_435131210112.png"
+        ],
+        "seffect_51515121014": [
+          "seffect_51515121014.png",
+          "seffect_515151210142.png"
+        ],
+        "seffect_52517111014": [
+          "seffect_52517111014.png",
+          "seffect_525171110142.png"
+        ],
+        "seffect_41514121012": [
+          "seffect_41514121012.png",
+          "seffect_415141210122.png",
+          "seffect_415141210123.png"
+        ],
+        "seffect_41514121014": [
+          "seffect_41514121014.png",
+          "seffect_415141210142.png",
+          "seffect_415141210143.png",
+          "seffect_415141210144.png"
+        ]
+      },
+      "_SPINE_EFFECT_DEFAULTS": {
+        "scale": 0.2,
+        "displayScale": 0.2,
+        "layer": "FRONT"
+      }
+    },
+    "thor": {
+      "asset": {
+        "folder": "thor",
+        "base": "sanim_435131",
+        "textures": [
+          "sanim_435131.png",
+          "sanim_4351312.png"
+        ]
+      },
+      "skillAnimations": {
+        "THOR_BASIC_1": "att",
+        "THOR_ACTIVE_2": "skill",
+        "THOR_ULTIMATE_3": "ultimateskill",
+        "THOR_PASSIVE_4": "skill",
+        "THOR_PASSIVE_5": "skill"
+      },
+      "_BASIC_ATTACK": {
+        "movement": "DASH"
+      },
+      "_SKILL_EFFECTS": {
+        "THOR_BASIC_1": {
+          "cast": {
+            "code": "thor_basic_cast",
+            "file": "seffect_43513121011",
+            "animation": "animation_0",
+            "impactEvents": [
+              "qishou_1_2_2",
+              "qishou_1_2_1"
+            ],
+            "anchor": "source"
+          },
+          "impact": {
+            "code": "thor_basic_impact",
+            "file": "seffect_43503010111",
+            "animation": "animation_5",
+            "impactEvent": "hit_1_1_1",
+            "impactEvents": [
+              "hit_1_1_1"
+            ],
+            "anchor": "target"
+          }
+        },
+        "THOR_ACTIVE_2": {
+          "cast": {
+            "code": "thor_active_cast",
+            "file": "seffect_43513121011",
+            "animation": "animation_1",
+            "impactEvents": [
+              "qishou_11_4_4",
+              "qishou_11_4_3",
+              "qishou_11_4_2",
+              "qishou_11_4_1"
+            ],
+            "anchor": "source"
+          },
+          "impact": {
+            "code": "thor_active_impact",
+            "file": "seffect_43513",
+            "animation": "animation_0",
+            "impactEvents": [
+              "hit_111_4_4",
+              "hit_111_4_3",
+              "hit_111_4_2",
+              "hit_111_4_1"
+            ],
+            "anchor": "enemy_formation"
+          }
+        },
+        "THOR_ULTIMATE_3": {
+          "cast": {
+            "code": "thor_ultimate_cast",
+            "file": "seffect_43513121012",
+            "animation": "animation_0",
+            "impactEvent": "qishou_21_1_1",
+            "anchor": "source"
+          },
+          "impact": {
+            "code": "thor_ultimate_impact",
+            "file": "seffect_43503110111",
+            "animation": "animation_1",
+            "impactEvent": "hit_21_1_1",
+            "impactEvents": [
+              "hit_21_1_1"
+            ],
+            "anchor": "enemy_formation"
+          }
+        }
+      },
+      "_SKILL_EFFECT_ALIASES": {},
+      "_SPINE_EFFECT_BASE_PATH": "/assets/spine/seffects/",
+      "_SPINE_EFFECT_TEXTURE_PAGES": {
+        "seffect_51515110111": [
+          "seffect_51515110111.png",
+          "seffect_515151101112.png"
+        ],
+        "seffect_31517110111": [
+          "seffect_31517110111.png",
+          "seffect_315171101112.png"
+        ],
+        "seffect_42515121012": [
+          "seffect_42515121012.png",
+          "seffect_425151210122.png"
+        ],
+        "seffect_42515121013": [
+          "seffect_42515121013.png",
+          "seffect_425151210132.png"
+        ],
+        "seffect_42515121014": [
+          "seffect_42515121014.png",
+          "seffect_425151210142.png"
+        ],
+        "seffect_43513121011": [
+          "seffect_43513121011.png",
+          "seffect_435131210112.png"
+        ],
+        "seffect_51515121014": [
+          "seffect_51515121014.png",
+          "seffect_515151210142.png"
+        ],
+        "seffect_52517111014": [
+          "seffect_52517111014.png",
+          "seffect_525171110142.png"
+        ],
+        "seffect_41514121012": [
+          "seffect_41514121012.png",
+          "seffect_415141210122.png",
+          "seffect_415141210123.png"
+        ],
+        "seffect_41514121014": [
+          "seffect_41514121014.png",
+          "seffect_415141210142.png",
+          "seffect_415141210143.png",
+          "seffect_415141210144.png"
+        ]
+      },
+      "_SPINE_EFFECT_DEFAULTS": {
+        "scale": 0.2,
+        "displayScale": 0.2,
+        "layer": "FRONT"
+      }
+    },
+    "thor_rak": {
+      "asset": {
+        "folder": "thor_rak",
+        "base": "sanim_435131_1",
+        "textures": [
+          "sanim_435131_1.png",
+          "sanim_435131_12.png"
+        ]
+      },
+      "skillAnimations": {
+        "THOR_RAK_BASIC_1": "att",
+        "THOR_RAK_ACTIVE_2": "skill",
+        "THOR_RAK_ULTIMATE_3": "ultimateskill",
+        "THOR_RAK_PASSIVE_4": "skill",
+        "THOR_RAK_PASSIVE_5": "skill"
+      },
+      "_BASIC_ATTACK": {
+        "movement": "DASH"
+      },
+      "_SKILL_EFFECTS": {
+        "THOR_RAK_BASIC_1": {
+          "cast": {
+            "code": "thor_rak_basic_cast",
+            "file": "seffect_43517111011",
+            "animation": "animation_0",
+            "impactEvents": [
+              "qishou_1_3_3",
+              "qishou_1_3_2",
+              "qishou_1_3_1"
+            ],
+            "anchor": "source"
+          }
+        },
+        "THOR_RAK_ACTIVE_2": {
+          "cast": {
+            "code": "thor_rak_active_cast",
+            "file": "seffect_43517111012",
+            "animation": "animation_0",
+            "impactEvent": "qishou_11_1_1",
+            "anchor": "source"
+          }
+        },
+        "THOR_RAK_ULTIMATE_3": {
+          "cast": {
+            "code": "thor_rak_ultimate_cast",
+            "file": "seffect_43517111013",
+            "animation": "animation_0",
+            "impactEvents": [
+              "qishou_21_5_5",
+              "qishou_21_5_4",
+              "qishou_21_5_3",
+              "qishou_21_5_2",
+              "qishou_21_5_1"
+            ],
+            "anchor": "source"
+          }
+        }
+      },
+      "_SKILL_EFFECT_ALIASES": {},
+      "_SPINE_EFFECT_BASE_PATH": "/assets/spine/seffects/",
+      "_SPINE_EFFECT_TEXTURE_PAGES": {
+        "seffect_51515110111": [
+          "seffect_51515110111.png",
+          "seffect_515151101112.png"
+        ],
+        "seffect_31517110111": [
+          "seffect_31517110111.png",
+          "seffect_315171101112.png"
+        ],
+        "seffect_42515121012": [
+          "seffect_42515121012.png",
+          "seffect_425151210122.png"
+        ],
+        "seffect_42515121013": [
+          "seffect_42515121013.png",
+          "seffect_425151210132.png"
+        ],
+        "seffect_42515121014": [
+          "seffect_42515121014.png",
+          "seffect_425151210142.png"
+        ],
+        "seffect_43513121011": [
+          "seffect_43513121011.png",
+          "seffect_435131210112.png"
+        ],
+        "seffect_51515121014": [
+          "seffect_51515121014.png",
+          "seffect_515151210142.png"
+        ],
+        "seffect_52517111014": [
+          "seffect_52517111014.png",
+          "seffect_525171110142.png"
+        ],
+        "seffect_41514121012": [
+          "seffect_41514121012.png",
+          "seffect_415141210122.png",
+          "seffect_415141210123.png"
+        ],
+        "seffect_41514121014": [
+          "seffect_41514121014.png",
+          "seffect_415141210142.png",
+          "seffect_415141210143.png",
+          "seffect_415141210144.png"
+        ]
+      },
+      "_SPINE_EFFECT_DEFAULTS": {
+        "scale": 0.2,
+        "displayScale": 0.2,
+        "layer": "FRONT"
+      }
+    },
+    "tohka_dark": {
+      "asset": {
+        "folder": "tohka_dark",
+        "base": "sanim_415141_1",
+        "textures": [
+          "sanim_415141_1.png",
+          "sanim_415141_12.png"
+        ]
+      },
+      "skillAnimations": {
+        "TOHKA_DARK_BASIC_1": "att",
+        "TOHKA_DARK_ACTIVE_2": "skill",
+        "TOHKA_DARK_ULTIMATE_3": "ultimateskill",
+        "TOHKA_DARK_PASSIVE_4": "skill",
+        "TOHKA_DARK_PASSIVE_5": "skill"
+      },
+      "_BASIC_ATTACK": {
+        "movement": "DASH"
+      },
+      "_SKILL_EFFECTS": {
+        "TOHKA_DARK_BASIC_1": {
+          "cast": {
+            "code": "tohka_dark_skill_1_cast",
+            "file": "seffect_41514111011",
+            "animation": "animation_0",
+            "impactRatio": 0.48,
+            "anchor": "source"
+          },
+          "impact": {
+            "code": "tohka_dark_skill_1_impact",
+            "file": "seffect_41514121011",
+            "animation": "animation_0",
+            "impactRatio": 0.45,
+            "anchor": "target"
+          }
+        },
+        "TOHKA_DARK_ACTIVE_2": {
+          "cast": {
+            "code": "tohka_dark_skill_2_cast",
+            "file": "seffect_41514121012",
+            "animation": "animation_0",
+            "impactEvents": [
+              "qishou_11_5_5",
+              "qishou_11_5_4",
+              "qishou_11_5_3",
+              "qishou_11_5_2",
+              "qishou_11_5_1"
+            ],
+            "impactRatio": 0.5,
+            "anchor": "enemy_formation"
+          }
+        },
+        "TOHKA_DARK_ULTIMATE_3": {
+          "cast": {
+            "code": "tohka_dark_skill_3_cast",
+            "file": "seffect_41514111013",
+            "animation": "animation_0",
+            "impactRatio": 0.62,
+            "anchor": "source"
+          },
+          "impact": {
+            "code": "tohka_dark_skill_3_impact",
+            "file": "seffect_41514121014",
+            "animation": "animation_0",
+            "impactRatio": 0.62,
+            "anchor": "target"
+          }
+        }
+      },
+      "_SKILL_EFFECT_ALIASES": {
+        "TOHKA_ACTIVE": "TOHKA_DARK_ACTIVE_2",
+        "SKILL_EFFECT_2": "TOHKA_DARK_ACTIVE_2"
+      },
+      "_SPINE_EFFECT_BASE_PATH": "/assets/spine/seffects/",
+      "_SPINE_EFFECT_TEXTURE_PAGES": {
+        "seffect_51515110111": [
+          "seffect_51515110111.png",
+          "seffect_515151101112.png"
+        ],
+        "seffect_31517110111": [
+          "seffect_31517110111.png",
+          "seffect_315171101112.png"
+        ],
+        "seffect_42515121012": [
+          "seffect_42515121012.png",
+          "seffect_425151210122.png"
+        ],
+        "seffect_42515121013": [
+          "seffect_42515121013.png",
+          "seffect_425151210132.png"
+        ],
+        "seffect_42515121014": [
+          "seffect_42515121014.png",
+          "seffect_425151210142.png"
+        ],
+        "seffect_43513121011": [
+          "seffect_43513121011.png",
+          "seffect_435131210112.png"
+        ],
+        "seffect_51515121014": [
+          "seffect_51515121014.png",
+          "seffect_515151210142.png"
+        ],
+        "seffect_52517111014": [
+          "seffect_52517111014.png",
+          "seffect_525171110142.png"
+        ],
+        "seffect_41514121012": [
+          "seffect_41514121012.png",
+          "seffect_415141210122.png",
+          "seffect_415141210123.png"
+        ],
+        "seffect_41514121014": [
+          "seffect_41514121014.png",
+          "seffect_415141210142.png",
+          "seffect_415141210143.png",
+          "seffect_415141210144.png"
+        ]
+      },
+      "_SPINE_EFFECT_DEFAULTS": {
+        "scale": 0.2,
+        "displayScale": 0.2,
+        "layer": "FRONT"
+      }
+    }
+  }
+}
