@@ -90,6 +90,19 @@ public class HeroSkillEffect {
     }
 
     /**
+     * Cập nhật định nghĩa và mục tiêu của hiệu ứng.
+     */
+    public void updateDefinition(
+            Integer effectOrder,
+            String effectType,
+            String targetType
+    ) {
+        this.effectOrder = effectOrder;
+        this.effectType = effectType;
+        this.targetType = targetType;
+    }
+
+    /**
      * Cập nhật cấu hình tính toán của hiệu ứng.
      *
      * @param multiplier Hệ số tác động
