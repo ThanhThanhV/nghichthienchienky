@@ -95,6 +95,16 @@
                         IORI_ULTIMATE_3: { animation: "superskill" }
                     }
                     : {}),
+                // Iori Dark dùng cùng bộ nhịp chiêu nhưng skeleton riêng
+                // sanim_515151_1: active nằm ở ultimateskill, ultimate ở superskill.
+                // Không để mapping mặc định (skill / ultimateskill) làm lệch chiêu.
+                ...(key === "iori_dark"
+                    ? {
+                        IORI_DARK_BASIC_1: { animation: "att" },
+                        IORI_DARK_ACTIVE_2: { animation: "ultimateskill" },
+                        IORI_DARK_ULTIMATE_3: { animation: "superskill" }
+                    }
+                    : {}),
                 // superskill dài 4.233s, khớp với effect ultimate của Gojo.
                 ...(key === "gojo"
                     ? { GOJO_ULTIMATE_3: { animation: "superskill" } }
