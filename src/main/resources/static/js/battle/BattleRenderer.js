@@ -281,6 +281,27 @@ class BattleRenderer {
         });
     }
 
+    /**
+     * Chỉ coi DAMAGE là hit của animation hiện tại khi đúng nhân vật nguồn.
+     * REFLECT là một đòn phản công riêng, không được tiêu thụ mốc hit của
+     * kỹ năng mà mục tiêu vừa nhận.
+     */
+    isCurrentAttackDamage(event, action = this.actionContext) {
+        if (!event || !action ||
+            action.sourceTeam == null ||
+            action.sourceInstanceId == null) {
+            return false;
+        }
+
+        const isReflect =
+            String(event.effectCode || "").toUpperCase() === "REFLECT" ||
+            String(event.message || "").toLowerCase().includes("reflected damage");
+
+        return !isReflect &&
+            String(event.sourceTeam) === String(action.sourceTeam) &&
+            String(event.sourceInstanceId) === String(action.sourceInstanceId);
+    }
+
     async finishAction() {
         const action = this.actionContext;
 
@@ -412,12 +433,36 @@ class BattleRenderer {
         if (!this.actionContext) {
             this.actionContext = { completionPromises: [] };
         }
+
+        const incomingSourceTeam = event.sourceTeam || event.team;
+        const incomingSourceInstanceId =
+            event.sourceInstanceId ?? event.instanceId;
+        const incomingSkillCode = event.skillCode || null;
+        const currentAction = this.actionContext;
+        const startsDifferentAttack = Boolean(currentAction.actionType) &&
+            (
+                currentAction.actionType !== event.type ||
+                (incomingSourceTeam != null &&
+                    String(currentAction.sourceTeam) !== String(incomingSourceTeam)) ||
+                (incomingSourceInstanceId != null &&
+                    String(currentAction.sourceInstanceId) !== String(incomingSourceInstanceId)) ||
+                (incomingSkillCode && currentAction.skillCode &&
+                    String(currentAction.skillCode) !== String(incomingSkillCode))
+            );
+
+        // PASSIVE/counter attacks can be emitted inside ACTION_START/ACTION_END.
+        // They must not consume the previous ACTIVE/ULTIMATE hit timeline.
+        if (startsDifferentAttack) {
+            currentAction.impactEffects = [];
+            currentAction.damageImpactIndex = 0;
+        }
+
         this.actionContext.sourceTeam =
-            event.sourceTeam || this.actionContext.sourceTeam || event.team;
+            incomingSourceTeam || this.actionContext.sourceTeam;
         this.actionContext.sourceInstanceId =
-            event.sourceInstanceId ?? this.actionContext.sourceInstanceId ?? event.instanceId;
+            incomingSourceInstanceId ?? this.actionContext.sourceInstanceId;
         this.actionContext.skillCode =
-            event.skillCode || this.actionContext.skillCode || null;
+            incomingSkillCode || this.actionContext.skillCode || null;
         this.actionContext.actionType = event.type || this.actionContext.actionType || null;
 
         const character = this.getCharacter(event);
@@ -536,19 +581,29 @@ class BattleRenderer {
         // DAMAGE từ backend chính là mốc impact. Không chờ tải effect impact,
         // tránh làm số sát thương xuất hiện muộn hơn thời điểm va chạm.
         const action = this.actionContext || {};
+        const isReflectDamage =
+            String(event.effectCode || "").toUpperCase() === "REFLECT" ||
+            String(event.message || "").toLowerCase().includes("reflected damage");
+        const belongsToCurrentAttack =
+            this.isCurrentAttackDamage(event, action);
         const impactEvent = {
             ...event,
             sourceTeam: event.sourceTeam || action.sourceTeam,
             sourceInstanceId: event.sourceInstanceId ?? action.sourceInstanceId,
-            // DAMAGE events có thể mang SKILL_EFFECT_<id> thay vì skillCode
-            // gốc. Ưu tiên mã kỹ năng của ACTION để resolve đúng effect theo hero.
-            skillCode: action.skillCode || event.skillCode,
-            actionType: action.actionType
+            // Chỉ dùng skillCode của ACTION khi DAMAGE thực sự do đúng nguồn
+            // của action gây ra. REFLECT và đòn phản kích phải giữ metadata riêng.
+            skillCode: belongsToCurrentAttack
+                ? (action.skillCode || event.skillCode)
+                : event.skillCode,
+            actionType: belongsToCurrentAttack ? action.actionType : null
         };
 
-        // Nếu effect đã được khởi chạy ở ACTIVE_SKILL, đồng bộ từng DAMAGE
-        // với các mốc hit trong Spine timeline, không tạo lại effect.
-        const activeImpactEffects = action.impactEffects || [];
+        // Chỉ DAMAGE của chính đòn đánh hiện tại mới tiêu thụ mốc hit Spine.
+        // REFLECT xảy ra trước DAMAGE gốc trong backend nên nếu không lọc,
+        // nó sẽ chiếm nhầm hit đầu tiên và làm toàn bộ animation lệch nhịp.
+        const activeImpactEffects = belongsToCurrentAttack
+            ? (action.impactEffects || [])
+            : [];
         if (activeImpactEffects.length > 0) {
             const impactIndex = Number(action.damageImpactIndex) || 0;
             const matchingEffects = activeImpactEffects.filter(effect =>
@@ -566,8 +621,10 @@ class BattleRenderer {
             action.damageImpactIndex = impactIndex + 1;
         }
 
-        // Effect diện rộng đã chạy từ đầu chiêu; không lặp lại trên từng DAMAGE.
-        if (!this.effectManager?.shouldDeferImpact?.(impactEvent)) {
+        // REFLECT là sát thương phản lại, không được phát effect của kỹ năng
+        // mà nó vừa phản. Các impact khác vẫn resolve theo đúng nguồn gây damage.
+        if (!isReflectDamage &&
+            !this.effectManager?.shouldDeferImpact?.(impactEvent)) {
             const impactEffectPromise = this.effectManager?.playForEvent(impactEvent, "impact");
             impactEffectPromise?.catch(error => {
                 console.warn("[BattleRenderer] Không phát được impact effect:", error);
