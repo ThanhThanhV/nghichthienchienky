@@ -61,7 +61,11 @@ public class SecurityConfig {
                                 "/favicon.ico"
                         ).permitAll()
 
-                        .requestMatchers("/admin/**")
+                        .requestMatchers(
+                                "/admin/**",
+                                "/hero-management/**",
+                                "/api/hero-management/**"
+                        )
                         .hasRole("ADMIN")
 
                         .anyRequest()
