@@ -82,6 +82,8 @@ public class AuthController {
     @GetMapping("/dashboard")
     public String dashboard(Authentication authentication, Model model) {
         model.addAttribute("username", authentication.getName());
+        model.addAttribute("isAdmin", authentication.getAuthorities().stream()
+                .anyMatch(authority -> "ROLE_ADMIN".equals(authority.getAuthority())));
         return "dashboard/index";
     }
 }
