@@ -19,6 +19,7 @@ async function loadPlayerProfile() {
 
         const profile = await response.json();
         renderPlayerProfile(profile);
+        loadPlayerPower(profile.playerId);
         if (errorElement) errorElement.hidden = true;
     } catch (error) {
         console.error("Load player profile failed:", error);
@@ -54,4 +55,26 @@ function formatResource(value) {
     return new Intl.NumberFormat("vi-VN", {
         maximumFractionDigits: 2
     }).format(number);
+}
+
+
+/** Tải lực chiến hiện tại, được tính từ đội hình chính trên server. */
+async function loadPlayerPower(playerId) {
+    const element = document.getElementById("playerPower");
+    if (!element || playerId == null) return;
+
+    try {
+        const response = await fetch("/api/power-ranking", {
+            method: "GET",
+            headers: { "Accept": "application/json" },
+            credentials: "same-origin"
+        });
+        if (!response.ok) throw new Error("Không thể tải lực chiến.");
+        const ranking = await response.json();
+        const current = ranking.find(item => Number(item.playerId) === Number(playerId));
+        element.textContent = formatResource(current?.totalPower || 0);
+    } catch (error) {
+        console.error("Load player power failed:", error);
+        element.textContent = "—";
+    }
 }
