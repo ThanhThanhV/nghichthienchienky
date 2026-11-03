@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,6 +35,7 @@ import java.util.List;
 import java.util.Map;
 
 @Component
+@Order(2)
 public class GameBootstrapDataInitializer implements ApplicationRunner {
     private final ObjectMapper objectMapper;
     private final HeroDefinitionRepository heroDefinitionRepository;
@@ -73,8 +75,8 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
         );
         List<String> heroCodes = seeds.stream().map(HeroSeed::code).toList();
 
-        // Tái tạo đồng bộ toàn bộ 10 bộ kỹ năng từ TAB ở mỗi lần khởi chạy.
-        // Giữ tài khoản, bản sao tướng và đội hình; chỉ thay cấu hình định nghĩa.
+        // DatabaseResetInitializer đã xóa toàn bộ dữ liệu ứng dụng ở Order(0);
+        // resource catalog được seed ở Order(1), sau đó mới seed toàn bộ hero.
         resetHeroSkillSeed(heroCodes);
 
         for (int i = 0; i < seeds.size(); i++) {
