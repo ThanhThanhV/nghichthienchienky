@@ -473,9 +473,64 @@ window.SPINE_EFFECT_CONFIG = {
         };
 
         // Lelouch Dark chưa có bộ effect riêng trong asset hiện tại.
-        definitions.LELOUD_DARK_BASIC_1 = definitions.LELOUD_BASIC_1;
-        definitions.LELOUD_DARK_ACTIVE_2 = definitions.LELOUD_ACTIVE_2;
-        definitions.LELOUD_DARK_ULTIMATE_3 = definitions.LELOUD_ULTIMATE_3;
+        // Leloud Dark dùng bộ effect riêng (4251511101x), không dùng chung
+        // asset Leloud thường (4251512101x).
+        definitions.LELOUD_DARK_BASIC_1 = {
+            cast: {
+                code: "leloud_dark_basic_cast",
+                file: "seffect_42515111011",
+                animation: "animation_0",
+                impactEvent: "qishou_1_1_1",
+                anchor: "source"
+            },
+            impact: {
+                code: "leloud_dark_basic_impact",
+                file: "seffect_42515111012",
+                animation: "animation_0",
+                impactEvent: "hit_1_1_1",
+                impactEvents: ["hit_1_1_1"],
+                anchor: "target"
+            }
+        };
+        definitions.LELOUD_DARK_ACTIVE_2 = {
+            cast: {
+                code: "leloud_dark_active_cast",
+                file: "seffect_42515111013",
+                animation: "animation_0",
+                impactEvent: "qishou_11_1_1",
+                anchor: "source"
+            },
+            impact: {
+                code: "leloud_dark_active_impact",
+                file: "seffect_42515111012",
+                animation: "animation_1",
+                impactEvent: "hit_11_1_1",
+                impactEvents: ["hit_11_1_1"],
+                anchor: "enemy_formation"
+            }
+        };
+        definitions.LELOUD_DARK_ULTIMATE_3 = {
+            cast: {
+                code: "leloud_dark_ultimate_cast",
+                file: "seffect_42515111014",
+                animation: "animation_0",
+                impactEvent: "qishou_21_1_1",
+                anchor: "source"
+            },
+            impact: {
+                code: "leloud_dark_ultimate_impact",
+                file: "seffect_42515111012",
+                animation: "animation_2",
+                impactEvents: [
+                    "hit_21_5_5",
+                    "hit_21_5_4",
+                    "hit_21_5_3",
+                    "hit_21_5_2",
+                    "hit_21_5_1"
+                ],
+                anchor: "enemy_formation"
+            }
+        };
 
         // Runtime hiện tại phát mã animation "tohka_active" ở event cast,
         // còn event DAMAGE dùng mã effect "skill_effect_2".
