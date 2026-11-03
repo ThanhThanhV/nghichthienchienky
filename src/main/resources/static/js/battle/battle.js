@@ -11,15 +11,35 @@
         activeEffects: new Map(),
         campaignStages: [],
         selectedStageNumber: 1,
+        mode: "CAMPAIGN",
+        pvpOpponentId: null,
+        pvpOpponentName: null,
 
         init() {
             this.bindControls();
-            this.loadCampaign();
+            const params = new URLSearchParams(window.location.search);
+            const challengeId = Number(params.get("challenge"));
+            if (Number.isInteger(challengeId) && challengeId > 0) {
+                this.mode = "PVP";
+                this.pvpOpponentId = challengeId;
+                this.pvpOpponentName = params.get("opponent") || ("Tu sĩ #" + challengeId);
+                const campaignPanel = document.querySelector(".campaign-panel");
+                if (campaignPanel) campaignPanel.hidden = true;
+                const modeLabel = document.getElementById("battle-mode-label");
+                if (modeLabel) modeLabel.textContent = "PVP · KHIÊU CHIẾN";
+                const enemyHeading = document.querySelector(".enemy-team .team-heading h2");
+                if (enemyHeading) enemyHeading.textContent = this.pvpOpponentName.toUpperCase();
+            } else {
+                this.loadCampaign();
+            }
             this.updateControls();
             this.renderEmptyTeams();
             this.setStatus("CHƯA VÀO TRẬN");
-            this.setSummary("Chọn ải Campaign đã mở khóa, sau đó khiêu chiến để nhận thưởng và mở hành trình tiếp theo.");
+            this.setSummary(this.mode === "PVP"
+                ? "Đang chuẩn bị đối đầu với " + this.pvpOpponentName + "."
+                : "Chọn ải Campaign đã mở khóa, sau đó khiêu chiến để nhận thưởng và mở hành trình tiếp theo.");
             this.addLog("Sẵn sàng tiến vào chiến trường.", "skill");
+            if (this.mode === "PVP") this.runBattleStep();
         },
 
         bindControls() {
@@ -174,10 +194,13 @@
         async startBattle() {
             this.clearLog();
             this.setStatus("ĐANG TẠO TRẬN");
-            this.setSummary("Đang tải đội hình và chuẩn bị đội địch của ải đã chọn...");
-            const payload = await this.postJson(
-                "/api/battle/campaign/" + encodeURIComponent(this.selectedStageNumber) + "/start"
-            );
+            this.setSummary(this.mode === "PVP"
+                ? "Đang tải đội hình chính của hai tu sĩ..."
+                : "Đang tải đội hình và chuẩn bị đội địch của ải đã chọn...");
+            const endpoint = this.mode === "PVP"
+                ? "/api/battle/challenge/" + encodeURIComponent(this.pvpOpponentId) + "/start"
+                : "/api/battle/campaign/" + encodeURIComponent(this.selectedStageNumber) + "/start";
+            const payload = await this.postJson(endpoint);
             if (!payload?.screen) {
                 throw new Error("Dữ liệu khởi tạo trận đấu không hợp lệ.");
             }
@@ -186,9 +209,15 @@
             this.activeEffects.clear();
             this.applyScreen(payload.screen, true);
             this.setStatus("SẴN SÀNG");
-            this.addLog("Bắt đầu Ải " + this.selectedStageNumber + ": " +
-                (payload.screen.campaignStageName || "Campaign") + ".", "skill");
-            this.setSummary("Hai đội đã vào vị trí. Đánh bại toàn bộ địch để nhận thưởng lần đầu và mở khóa ải kế tiếp.");
+            if (this.mode === "PVP") {
+                this.addLog("Khai chiến với " + this.pvpOpponentName + "!", "skill");
+                this.setSummary("Đội hình chính của " + this.pvpOpponentName +
+                    " đã được tải vào chiến trường. Đánh bại toàn bộ đối thủ để giành chiến thắng.");
+            } else {
+                this.addLog("Bắt đầu Ải " + this.selectedStageNumber + ": " +
+                    (payload.screen.campaignStageName || "Campaign") + ".", "skill");
+                this.setSummary("Hai đội đã vào vị trí. Đánh bại toàn bộ địch để nhận thưởng lần đầu và mở khóa ải kế tiếp.");
+            }
         },
 
         async advanceRound() {
@@ -216,17 +245,25 @@
                     ? "HÒA"
                     : (payload.screen.winner === "PLAYER" ? "CHIẾN THẮNG" : "THẤT BẠI"));
                 if (payload.screen.winner === "PLAYER") {
-                    const rewards = payload.screen.campaignRewards || {};
-                    this.setSummary(payload.screen.campaignFirstClear
-                        ? "Vượt ải thành công! Nhận " + this.formatNumber(rewards.GOLD) +
-                          " vàng và " + this.formatNumber(rewards.PLAYER_EXP) +
-                          " EXP. Ải kế tiếp đã được mở khóa."
-                        : "Đã vượt qua ải này trước đó. Lần chơi lại không nhận thêm thưởng lần đầu.");
-                    this.loadCampaign();
+                    if (this.mode === "PVP") {
+                        this.setSummary("CHIẾN THẮNG! Ngươi đã đánh bại " + this.pvpOpponentName + ".");
+                    } else {
+                        const rewards = payload.screen.campaignRewards || {};
+                        this.setSummary(payload.screen.campaignFirstClear
+                            ? "Vượt ải thành công! Nhận " + this.formatNumber(rewards.GOLD) +
+                              " vàng và " + this.formatNumber(rewards.PLAYER_EXP) +
+                              " EXP. Ải kế tiếp đã được mở khóa."
+                            : "Đã vượt qua ải này trước đó. Lần chơi lại không nhận thêm thưởng lần đầu.");
+                        this.loadCampaign();
+                    }
                 } else if (isDraw) {
-                    this.setSummary("Hai đội bị tiêu diệt cùng lúc. Trận đấu kết thúc hòa; không nhận thưởng và không thay đổi tiến độ Campaign.");
+                    this.setSummary(this.mode === "PVP"
+                        ? "Trận khiêu chiến kết thúc hòa."
+                        : "Hai đội bị tiêu diệt cùng lúc. Trận đấu kết thúc hòa; không nhận thưởng và không thay đổi tiến độ Campaign.");
                 } else {
-                    this.setSummary("Đội hình của bạn đã thất thủ. Hãy điều chỉnh đội hình và thử lại.");
+                    this.setSummary(this.mode === "PVP"
+                        ? "THẤT BẠI! " + this.pvpOpponentName + " đã đánh bại đội hình của ngươi."
+                        : "Đội hình của bạn đã thất thủ. Hãy điều chỉnh đội hình và thử lại.");
                 }
                 this.addLog(isDraw
                     ? "HÒA! Hai đội đã bị tiêu diệt cùng lúc."
@@ -718,7 +755,9 @@
                 startButton.disabled = this.busy;
                 startButton.textContent = this.busy
                     ? "ĐANG XỬ LÝ..."
-                    : (this.battleId ? (this.state?.finished ? "↻ CHƠI LẠI ẢI " + this.selectedStageNumber : "⚔ ĐÁNH TIẾP") : "⚔ KHIÊU CHIẾN ẢI " + this.selectedStageNumber);
+                    : (this.mode === "PVP"
+                        ? (this.battleId && !this.state?.finished ? "⚔ ĐÁNH TIẾP" : "⚔ KHIÊU CHIẾN LẠI")
+                        : (this.battleId ? (this.state?.finished ? "↻ CHƠI LẠI ẢI " + this.selectedStageNumber : "⚔ ĐÁNH TIẾP") : "⚔ KHIÊU CHIẾN ẢI " + this.selectedStageNumber));
             }
         },
 
@@ -760,7 +799,9 @@
             this.clearLog();
             this.setRound(0);
             this.setStatus("CHƯA VÀO TRẬN");
-            this.setSummary("Chọn ải Campaign đã mở khóa để bắt đầu một trận chiến mới.");
+            this.setSummary(this.mode === "PVP"
+                ? "Sẵn sàng khiêu chiến lại " + this.pvpOpponentName + "."
+                : "Chọn ải Campaign đã mở khóa để bắt đầu một trận chiến mới.");
             this.addLog("Đã đặt lại màn hình chiến đấu.", "skill");
             this.renderCampaignStages();
             this.updateControls();
