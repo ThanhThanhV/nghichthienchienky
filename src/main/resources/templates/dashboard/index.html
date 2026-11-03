@@ -26,6 +26,20 @@
         h1 { margin: 12px 0; color: #f4d58f; font: 700 clamp(24px,5vw,38px) Georgia,serif; }
         .welcome { color: #b8c1d2; line-height: 1.7; }
         .welcome strong { color: #fff0c9; }
+        .player-overview {
+            margin: 22px 0; padding: 16px; text-align: left;
+            border: 1px solid rgba(212,181,119,.25); border-radius: 12px;
+            background: rgba(8,13,25,.58);
+        }
+        .player-overview-header { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:12px; }
+        .player-overview-header h2 { margin:0; color:#f4d58f; font:700 18px Georgia,serif; }
+        .player-overview-header span { color:#aeb8c9; font-size:11px; }
+        .player-resource-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px; }
+        .player-resource { min-width:0; padding:10px 8px; border:1px solid #35445b; border-radius:8px; background:#111c2d; }
+        .player-resource-label { display:block; color:#9eacc2; font-size:10px; letter-spacing:.06em; }
+        .player-resource-value { display:block; margin-top:6px; color:#f7e2aa; font-size:15px; font-weight:800; overflow-wrap:anywhere; }
+        .player-overview-error { margin-top:10px; color:#fca5a5; font-size:12px; }
+        @media (max-width:600px) { .player-resource-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .player-overview { margin:16px 0; padding:12px; } }
         .actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin: 28px 0; }
         .button {
             display: inline-flex; align-items: center; justify-content: center;
@@ -105,6 +119,33 @@
         Xin chào, <strong th:text="${username}">Tu sĩ</strong>.<br>
         Hành trình nghịch thiên của ngươi bắt đầu từ đây.
     </p>
+    <section class="player-overview" aria-labelledby="player-overview-title">
+        <div class="player-overview-header">
+            <h2 id="player-overview-title">HỒ SƠ TU SĨ</h2>
+            <span>ID: <strong id="playerId">---</strong></span>
+        </div>
+        <div class="player-resource-grid">
+            <div class="player-resource">
+                <span class="player-resource-label">CẤP ĐỘ</span>
+                <strong class="player-resource-value" id="playerLevel">1</strong>
+            </div>
+            <div class="player-resource">
+                <span class="player-resource-label">KINH NGHIỆM</span>
+                <strong class="player-resource-value" id="playerExp">0</strong>
+            </div>
+            <div class="player-resource">
+                <span class="player-resource-label">VÀNG</span>
+                <strong class="player-resource-value" id="resource-GOLD">0</strong>
+            </div>
+            <div class="player-resource">
+                <span class="player-resource-label">THỂ LỰC</span>
+                <strong class="player-resource-value" id="resource-STAMINA">0</strong>
+            </div>
+        </div>
+        <div id="dashboardError" class="player-overview-error" role="status" hidden>
+            Không thể tải hồ sơ người chơi.
+        </div>
+    </section>
     <nav class="actions" aria-label="Điều hướng game">
         <a class="button" th:href="@{/heroes}">✦ NHÂN VẬT</a>
         <a class="button secondary" th:href="@{/formation}">⚔ XẾP ĐỘI HÌNH</a>
@@ -177,5 +218,6 @@
         });
     })();
 </script>
+<script th:src="@{/js/dashboard.js(v=2)}"></script>
 </body>
 </html>
