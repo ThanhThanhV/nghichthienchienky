@@ -395,20 +395,19 @@ window.SPINE_EFFECT_CONFIG = {
                 }
             },
             GOJO_ACTIVE_2: {
-                impact: {
-                    code: "gojo_infinity_active",
-                    file: "seffect_52517111012",
+                // Vô Hạ Hạn dùng đúng bộ effect 11014: qishou_31 là mốc khởi chiêu,
+                // ba event hit_31_* là các nhịp tác động của animation_1.
+                cast: {
+                    code: "gojo_infinity_active_cast",
+                    file: "seffect_52517111014",
                     animation: "animation_0",
-                    impactEvent: "qishou_21_1_1",
-                    impactEvents: ["qishou_21_1_1"],
-                    anchor: "enemy_formation",
-                    impactRatio: 0.58
-                }
-            },
-            GOJO_ULTIMATE_3: {
-                // Ba mốc hit được khai báo trực tiếp trong animation_1.
+                    impactEvent: "qishou_31_1_1",
+                    impactEvents: ["qishou_31_1_1"],
+                    anchor: "source",
+                    impactRatio: 0.7
+                },
                 impact: {
-                    code: "gojo_ultimate_impact",
+                    code: "gojo_infinity_active_impact",
                     file: "seffect_52517111014",
                     animation: "animation_1",
                     impactEvent: "hit_31_3_3",
