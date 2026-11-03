@@ -194,6 +194,50 @@ button { font: inherit; cursor: pointer; }
 .unit-slot.attacking { z-index: 3; border-color: #ffe29a; box-shadow: 0 0 22px rgba(255,205,111,.48); animation: unit-attack .42s ease; }
 .enemy-team .unit-slot.attacking { animation-name: enemy-attack; }
 .unit-slot.damaged { animation: unit-hit .32s ease; }
+
+/* Anime speed streak for a real Spine basic-attack dash. */
+.battle-dash-trail {
+    position: absolute;
+    z-index: 3;
+    height: 22px;
+    margin-top: -11px;
+    overflow: visible;
+    pointer-events: none;
+    transform-origin: 0 50%;
+    filter: blur(.35px);
+    animation: battle-dash-trail-in .28s cubic-bezier(.12,.72,.18,1) both;
+}
+.battle-dash-trail::before,
+.battle-dash-trail::after {
+    position: absolute;
+    inset: 0;
+    content: "";
+    transform-origin: 0 50%;
+}
+.battle-dash-trail::before {
+    background: linear-gradient(90deg, transparent, rgba(177,224,255,.18) 12%, rgba(224,244,255,.88) 52%, transparent);
+    clip-path: polygon(0 42%, 78% 0, 100% 50%, 72% 100%, 8% 62%);
+    filter: drop-shadow(0 0 7px rgba(153,211,255,.9));
+}
+.battle-dash-trail::after {
+    top: 7px;
+    height: 7px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,.9), transparent);
+    filter: blur(2px);
+}
+.battle-dash-trail.enemy::before {
+    background: linear-gradient(90deg, transparent, rgba(255,139,139,.18) 12%, rgba(255,225,225,.9) 52%, transparent);
+    filter: drop-shadow(0 0 7px rgba(255,112,112,.9));
+}
+.battle-dash-trail.enemy::after {
+    background: linear-gradient(90deg, transparent, rgba(255,205,205,.95), transparent);
+}
+@keyframes battle-dash-trail-in {
+    0% { opacity: 0; scale: .12 1; }
+    18% { opacity: 1; }
+    72% { opacity: .88; scale: 1 1; }
+    100% { opacity: 0; scale: .82 1; }
+}
 @keyframes unit-attack { 0%,100% { transform: translateX(0) scale(1); } 45% { transform: translateX(12px) scale(1.04); } }
 @keyframes enemy-attack { 0%,100% { transform: translateX(0) scale(1); } 45% { transform: translateX(-12px) scale(1.04); } }
 @keyframes unit-hit { 0%,100% { filter: brightness(1); } 35% { filter: brightness(2) sepia(.3); } }
