@@ -838,9 +838,14 @@ public class BattleEffectProcessor {
             );
 
             battle.getEventCollector().record(
-                    effect.effectType() == BattleEffectType.EVASION
-                            ? BattleEventType.EVASION
-                            : BattleEventType.BLOCK,
+                    switch (effect.effectType()) {
+                        case EVASION -> BattleEventType.EVASION;
+                        case BLOCK -> BattleEventType.BLOCK;
+                        case REFLECT -> BattleEventType.REFLECT;
+                        default -> throw new IllegalStateException(
+                                "Unsupported defense effect: " + effect.effectType()
+                        );
+                    },
                     source.getTeam().name(),
                     source.getInstanceId(),
                     target.getTeam().name(),
