@@ -45,7 +45,7 @@ the ULTIMATE action for Gojo rather than relabeling a TAB passive as an ultimate
 
 On each application startup, the ordered bootstrap pipeline:
 
-1. `DatabaseResetInitializer` truncates every application table with foreign-key checks temporarily disabled. Migration metadata tables are preserved.
+1. `DatabaseResetInitializer` deletes all rows from every application table with foreign-key checks temporarily disabled, then resets auto-increment counters. Migration metadata tables are preserved.
 2. `ResourceBootstrapDataInitializer` recreates resource definitions and player-level configs.
 3. `GameBootstrapDataInitializer` loads and validates the TAB skill catalog, Spine mapping, and animation config.
 4. It creates the ten hero definitions, base stats, growth defaults, and all five skill definitions/effects per hero.
