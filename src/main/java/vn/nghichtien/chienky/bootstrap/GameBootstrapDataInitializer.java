@@ -270,7 +270,7 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                 );
             }
             String assetBase = heroMapping.path("asset").path("base").asText("");
-            String configId = assetBase.replaceFirst("^sanim_", "");
+            String configId = assetBase.replaceFirst("^sanim_", "").replaceFirst("_1$", "");
             if (configId.isBlank() || !animationConfigCatalog.path(configId).isObject()) {
                 throw new IllegalStateException(
                         "Không tìm thấy animation_config.lua cho " + seed.code()
@@ -348,7 +348,7 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                 writeJson(textureUrls)
         );
 
-        String configId = base.replaceFirst("^sanim_", "");
+        String configId = base.replaceFirst("^sanim_", "").replaceFirst("_1$", "");
         JsonNode heroAnimationConfig = animationConfigCatalog.path(configId);
         if (!heroAnimationConfig.isObject()) {
             throw new IllegalStateException(
