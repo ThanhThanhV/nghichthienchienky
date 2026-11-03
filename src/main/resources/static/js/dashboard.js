@@ -64,15 +64,14 @@ async function loadPlayerPower(playerId) {
     if (!element || playerId == null) return;
 
     try {
-        const response = await fetch("/api/power-ranking", {
+        const response = await fetch("/api/power-ranking/me", {
             method: "GET",
             headers: { "Accept": "application/json" },
             credentials: "same-origin"
         });
         if (!response.ok) throw new Error("Không thể tải lực chiến.");
-        const ranking = await response.json();
-        const current = ranking.find(item => Number(item.playerId) === Number(playerId));
-        element.textContent = formatResource(current?.totalPower || 0);
+        const current = await response.json();
+        element.textContent = formatResource(current.totalPower || 0);
     } catch (error) {
         console.error("Load player power failed:", error);
         element.textContent = "—";
