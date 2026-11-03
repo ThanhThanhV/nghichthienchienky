@@ -16,4 +16,7 @@ public interface HeroSkillUpgradeConfigRepository
             Integer targetSkillLevel,
             Boolean enabled
     );
+
+    /** Xóa cấu hình nâng cấp gắn với các kỹ năng seed cũ. */
+    long deleteAllBySkillDefinitionHeroDefinitionHeroCodeIn(java.util.List<String> heroCodes);
 }
