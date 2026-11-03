@@ -77,8 +77,15 @@ window.SPINE_EFFECT_CONFIG = {
                 }
             },
             ASUNA_DARK_ACTIVE_2: {
-                // Effect có event hit_21_1_1 tại 0.2s; dùng event Spine
-                // làm mốc đồng bộ DAMAGE, không ước lượng theo impactRatio.
+                // Atlas 20111 chứa các frame skill1; 30111 chứa chuỗi shouji
+                // và event hit_21_1_1 để đồng bộ thời điểm sát thương.
+                cast: {
+                    code: "asuna_dark_active_cast",
+                    file: "seffect_31514120111",
+                    animation: "animation_2",
+                    impactRatio: 0.55,
+                    anchor: "source"
+                },
                 impact: {
                     code: "asuna_dark_active_impact",
                     file: "seffect_31514130111",
