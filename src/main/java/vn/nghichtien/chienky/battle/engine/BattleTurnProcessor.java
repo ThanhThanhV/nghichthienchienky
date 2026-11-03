@@ -50,6 +50,7 @@ public class BattleTurnProcessor {
 
         // Tick hiệu ứng cũ trước khi áp dụng nội tại đầu trận.
         for (BattleUnitState unit : battle.getUnits()) {
+            unit.resetExtraActionForRound();
             unit.getStatusEffectManager().decreaseDurations();
             unit.getImmunityManager().decreaseDurations();
             unit.getShieldManager().decreaseDurations();
@@ -214,6 +215,9 @@ public class BattleTurnProcessor {
                     "Character action finished"
             );
 
+            // EXTRA_ACTION phát sinh từ AFTER_ACTION hoặc nội tại đầu round.
+            executePendingExtraAction(battle, unit);
+
             // Chỉ chốt kết quả sau khi toàn bộ effect và passive của hành động
             // hiện tại đã chạy xong (cho phép REVIVE trong cùng chuỗi effect).
             if (battle.checkFinished()) {
@@ -260,6 +264,96 @@ public class BattleTurnProcessor {
         }
     }
 
+    /**
+     * Thực thi một hành động bổ sung ngay khi EXTRA_ACTION được cấp.
+     * Hành động vẫn đi theo chu kỳ ACTIVE -> ULTIMATE -> BASIC.
+     */
+    private void executePendingExtraAction(
+            BattleState battle,
+            BattleUnitState unit
+    ) {
+        if (battle.isFinished() || !unit.consumeExtraAction()) {
+            return;
+        }
+
+        BattleActionType actionType = getNextActionType(unit.getActionCount());
+        unit.incrementActionCount();
+
+        var collector = battle.getEventCollector();
+        collector.record(
+                BattleEventType.ACTION_START,
+                unit.getTeam().name(),
+                unit.getInstanceId(),
+                null, null, null, null,
+                null, null, null, null, null, null, null,
+                "Extra action started"
+        );
+
+        skillExecutor.executePassives(
+                battle, unit, BattlePassiveTrigger.BEFORE_ACTION
+        );
+
+        if (battle.isFinished()) {
+            collector.record(
+                    BattleEventType.ACTION_END,
+                    unit.getTeam().name(),
+                    unit.getInstanceId(),
+                    null, null, null, null,
+                    null, null, null, null, null, null, null,
+                    "Extra action ended because the battle finished"
+            );
+            return;
+        }
+
+        var statusManager = unit.getStatusEffectManager();
+        if (statusManager.shouldSkipAction()) {
+            String crowdControlType =
+                    statusManager.getCrowdControl().getType().name();
+            skillExecutor.executePassives(
+                    battle, unit, BattlePassiveTrigger.AFTER_ACTION
+            );
+            collector.record(
+                    BattleEventType.ACTION_END,
+                    unit.getTeam().name(),
+                    unit.getInstanceId(),
+                    null, null, null, null,
+                    null, null, null, null, null, null, null,
+                    "Extra action skipped: " + crowdControlType
+            );
+            return;
+        }
+
+        if (statusManager.isSilenced()
+                && actionType != BattleActionType.BASIC_ATTACK) {
+            actionType = BattleActionType.BASIC_ATTACK;
+        }
+
+        skillExecutor.executePassives(
+                battle, unit, BattlePassiveTrigger.ON_ATTACK
+        );
+
+        if (!battle.isFinished() && unit.isAlive()) {
+            int eventStartIndex = collector.getEvents().size();
+            skillExecutor.execute(battle, unit, actionType);
+            List<BattleEventDTO> actionEvents = collector.getEvents()
+                    .subList(eventStartIndex, collector.getEvents().size());
+            dispatchActionEventPassives(battle, actionEvents);
+        }
+
+        skillExecutor.executePassives(
+                battle, unit, BattlePassiveTrigger.AFTER_ACTION
+        );
+
+        collector.record(
+                BattleEventType.ACTION_END,
+                unit.getTeam().name(),
+                unit.getInstanceId(),
+                null, null, null, null,
+                null, null, null, null, null, null, null,
+                "Extra action finished"
+        );
+    }
+
     private void dispatchActionEventPassives(
             BattleState battle,
             List<BattleEventDTO> events
@@ -282,6 +376,7 @@ public class BattleTurnProcessor {
                                 BattlePassiveTrigger.ON_DAMAGED,
                                 event.sourceInstanceId()
                         );
+                        executePendingExtraAction(battle, damaged);
                     }
                 }
             }
@@ -292,6 +387,7 @@ public class BattleTurnProcessor {
                     skillExecutor.executePassives(
                             battle, killer, BattlePassiveTrigger.ON_KILL
                     );
+                    executePendingExtraAction(battle, killer);
                 }
             }
         }
