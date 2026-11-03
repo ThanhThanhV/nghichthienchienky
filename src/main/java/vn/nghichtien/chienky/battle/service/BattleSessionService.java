@@ -91,12 +91,7 @@ public class BattleSessionService {
         PveCampaignStage stage = campaignCatalog.get(stageNumber);
         PlayerProfile player = getPlayer(username);
 
-        int highestUnlocked = campaignProgressRepository
-                .findAllByPlayerIdOrderByStageNumberAsc(player.getId())
-                .stream()
-                .mapToInt(PlayerCampaignProgress::getStageNumber)
-                .max()
-                .orElse(0) + 1;
+        int highestUnlocked = highestUnlockedStage(player.getId());
 
         if (stageNumber > highestUnlocked) {
             throw new IllegalStateException(
@@ -105,6 +100,23 @@ public class BattleSessionService {
         }
 
         return createBattle(username, stage);
+    }
+
+    /**
+     * Chỉ mở ải kế tiếp trong chuỗi vượt ải liên tục; dữ liệu rời rạc không
+     * được phép mở khóa vượt qua một ải chưa hoàn thành.
+     */
+    private int highestUnlockedStage(Long playerId) {
+        int nextStage = 1;
+        for (PlayerCampaignProgress progress :
+                campaignProgressRepository.findAllByPlayerIdOrderByStageNumberAsc(playerId)) {
+            if (progress.getStageNumber() == nextStage) {
+                nextStage++;
+            } else if (progress.getStageNumber() > nextStage) {
+                break;
+            }
+        }
+        return Math.min(campaignCatalog.getAll().size(), nextStage);
     }
 
     private BattlePlaybackDTO createBattle(
