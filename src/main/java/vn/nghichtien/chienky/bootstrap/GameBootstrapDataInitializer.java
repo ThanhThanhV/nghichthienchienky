@@ -12,11 +12,15 @@ import vn.nghichtien.chienky.battle.domain.BattleTargetMode;
 import vn.nghichtien.chienky.hero.domain.HeroBaseStats;
 import vn.nghichtien.chienky.hero.domain.HeroDefinition;
 import vn.nghichtien.chienky.hero.domain.HeroGrowthConfig;
+import vn.nghichtien.chienky.hero.domain.HeroInstance;
+import vn.nghichtien.chienky.hero.domain.HeroInstanceSkill;
 import vn.nghichtien.chienky.hero.domain.HeroSkillDefinition;
 import vn.nghichtien.chienky.hero.domain.HeroSkillEffect;
 import vn.nghichtien.chienky.hero.repository.HeroBaseStatsRepository;
 import vn.nghichtien.chienky.hero.repository.HeroDefinitionRepository;
 import vn.nghichtien.chienky.hero.repository.HeroGrowthConfigRepository;
+import vn.nghichtien.chienky.hero.repository.HeroInstanceRepository;
+import vn.nghichtien.chienky.hero.repository.HeroInstanceSkillRepository;
 import vn.nghichtien.chienky.hero.repository.HeroSkillDefinitionRepository;
 
 import java.math.BigDecimal;
@@ -32,19 +36,25 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
     private final HeroBaseStatsRepository heroBaseStatsRepository;
     private final HeroGrowthConfigRepository heroGrowthConfigRepository;
     private final HeroSkillDefinitionRepository heroSkillDefinitionRepository;
+    private final HeroInstanceRepository heroInstanceRepository;
+    private final HeroInstanceSkillRepository heroInstanceSkillRepository;
 
     public GameBootstrapDataInitializer(
             ObjectMapper objectMapper,
             HeroDefinitionRepository heroDefinitionRepository,
             HeroBaseStatsRepository heroBaseStatsRepository,
             HeroGrowthConfigRepository heroGrowthConfigRepository,
-            HeroSkillDefinitionRepository heroSkillDefinitionRepository
+            HeroSkillDefinitionRepository heroSkillDefinitionRepository,
+            HeroInstanceRepository heroInstanceRepository,
+            HeroInstanceSkillRepository heroInstanceSkillRepository
     ) {
         this.objectMapper = objectMapper;
         this.heroDefinitionRepository = heroDefinitionRepository;
         this.heroBaseStatsRepository = heroBaseStatsRepository;
         this.heroGrowthConfigRepository = heroGrowthConfigRepository;
         this.heroSkillDefinitionRepository = heroSkillDefinitionRepository;
+        this.heroInstanceRepository = heroInstanceRepository;
+        this.heroInstanceSkillRepository = heroInstanceSkillRepository;
     }
 
     @Override
@@ -192,7 +202,8 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
 
             if (order == 1 && skill.getEffects().isEmpty()) {
                 addDamageEffect(skill, "FRONT", "1.0");
-            } else if (order == 2 && skill.getEffects().isEmpty()) {
+            } else if (order == 2 && skill.getEffects().isEmpty()
+                    && !"gojo".equalsIgnoreCase(definition.getHeroCode())) {
                 addDamageEffect(skill, "ALL_ENEMIES", "1.5");
             } else if (order == 3 && skill.getEffects().isEmpty()) {
                 addDamageEffect(skill, "ALL_ENEMIES", "2.5");
@@ -203,7 +214,16 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
             seedGojoInfinityEffects(skillsByOrder);
         }
 
-        if (!skillsToSave.isEmpty()) heroSkillDefinitionRepository.saveAll(skillsToSave);
+        if (!skillsToSave.isEmpty()) {
+            heroSkillDefinitionRepository.saveAll(skillsToSave);
+        }
+        heroSkillDefinitionRepository.flush();
+
+        // Các Gojo đã sở hữu từ trước được tự động gắn lại bộ kỹ năng mới.
+        // Bản ghi cấp kỹ năng đã tồn tại được giữ nguyên level.
+        if ("gojo".equalsIgnoreCase(definition.getHeroCode())) {
+            initializeGojoInstanceSkills(definition, skillsByOrder);
+        }
     }
 
     /**
@@ -216,6 +236,12 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
     ) {
         HeroSkillDefinition infinity = skillsByOrder.get(2);
         if (infinity != null) {
+            // ACTIVE Vô Hạ Hạn chỉ phòng thủ, tuyệt đối không còn DAMAGE mặc định.
+            for (HeroSkillEffect effect : new ArrayList<>(infinity.getEffects())) {
+                if (BattleEffectType.DAMAGE.name().equalsIgnoreCase(effect.getEffectType())) {
+                    infinity.removeEffect(effect);
+                }
+            }
             // Chỉ đổi tên mặc định cũ; giữ nguyên tên do quản trị viên tự đặt.
             if ("Lam".equals(infinity.getSkillName())) {
                 infinity.updateInformation(
@@ -256,6 +282,56 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                     null,
                     "{\"trigger\":\"ON_DAMAGED\"}"
             );
+        }
+
+        // Nội tại Vô Hạ Hạn: giảm 20% sát thương nhận vào trong tối đa 20 round.
+        // BLOCK là hiệu ứng phòng thủ dùng chung, được BattleDamageProcessor áp dụng.
+        HeroSkillDefinition passiveInfinity = skillsByOrder.get(5);
+        if (passiveInfinity != null) {
+            addGojoEffectIfMissing(
+                    passiveInfinity,
+                    "GOJO_INFINITY_DAMAGE_REDUCTION",
+                    BattleEffectType.BLOCK,
+                    "SELF",
+                    "0.2",
+                    20,
+                    "{\"trigger\":\"BATTLE_START\"}"
+            );
+        }
+    }
+
+    /**
+     * Tạo liên kết cấp kỹ năng level 1 cho các bản sao Gojo đang sở hữu.
+     * Không ghi đè level nếu liên kết đã tồn tại.
+     */
+    private void initializeGojoInstanceSkills(
+            HeroDefinition definition,
+            Map<Integer, HeroSkillDefinition> skillsByOrder
+    ) {
+        List<HeroInstanceSkill> missingSkills = new ArrayList<>();
+        List<HeroSkillDefinition> definitions = skillsByOrder.values().stream()
+                .filter(skill -> Boolean.TRUE.equals(skill.getEnabled()))
+                .toList();
+
+        for (HeroInstance instance :
+                heroInstanceRepository.findAllByHeroDefinitionHeroCode(
+                        definition.getHeroCode()
+                )) {
+            for (HeroSkillDefinition skill : definitions) {
+                boolean exists = heroInstanceSkillRepository
+                        .findByHeroInstanceIdAndSkillDefinitionId(
+                                instance.getId(), skill.getId()
+                        )
+                        .isPresent();
+
+                if (!exists) {
+                    missingSkills.add(new HeroInstanceSkill(instance, skill));
+                }
+            }
+        }
+
+        if (!missingSkills.isEmpty()) {
+            heroInstanceSkillRepository.saveAll(missingSkills);
         }
     }
 
