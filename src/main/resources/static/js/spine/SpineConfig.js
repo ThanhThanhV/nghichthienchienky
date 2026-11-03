@@ -105,9 +105,16 @@
                         IORI_DARK_ULTIMATE_3: { animation: "superskill" }
                     }
                     : {}),
-                // superskill dài 4.233s, khớp với effect ultimate của Gojo.
+                // Gojo: BASIC = att, ACTIVE (Vô Hạ Hạn) = superskill.
+                // Nội tại phản đòn dùng animation ultimateskill (mục 15).
+                // Gojo không có Ultimate chủ động.
                 ...(key === "gojo"
-                    ? { GOJO_ULTIMATE_3: { animation: "superskill" } }
+                    ? {
+                        GOJO_BASIC_1: { animation: "att" },
+                        GOJO_ACTIVE_2: { animation: "superskill" },
+                        GOJO_PASSIVE_4: { animation: "ultimateskill" },
+                        GOJO_PASSIVE_5: { animation: "ultimateskill" }
+                    }
                     : {})
             },
             scale: 0.16,
