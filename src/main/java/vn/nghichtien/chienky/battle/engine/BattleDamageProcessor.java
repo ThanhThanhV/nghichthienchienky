@@ -97,7 +97,7 @@ public class BattleDamageProcessor {
         }
 
         // 3. Kiểm tra né tránh.
-        if (target.getDefenseEffectManager().tryEvade()) {
+        if (target.getDefenseEffectManager().tryEvade(source.getAccuracy())) {
             battle.getEventCollector().record(
                     BattleEventType.EVASION,
                     source.getTeam().name(),
