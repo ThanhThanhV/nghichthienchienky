@@ -68,6 +68,7 @@ public class BattleEffectProcessor {
                     executeDefenseEffect(battle, source, effect);
             default -> throw new UnsupportedOperationException(
                     "Effect type has not been implemented: " + effect.effectType()
+                            + " (effectCode=" + effect.effectCode() + ")"
             );
         }
     }
