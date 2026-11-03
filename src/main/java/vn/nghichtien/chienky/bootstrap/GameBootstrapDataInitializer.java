@@ -448,7 +448,9 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                 skill.changeEnabled(true);
             }
 
-            if (!"PASSIVE".equalsIgnoreCase(skillType)) {
+            if ("gojo".equals(seed.code())) {
+                seedGojoSkillEffects(skill, order);
+            } else if (!"PASSIVE".equalsIgnoreCase(skillType)) {
                 if (order == 1 && skill.getEffects().isEmpty()) {
                     addDamageEffect(skill, "FRONT", "1.0");
                 } else if (order == 2 && skill.getEffects().isEmpty()) {
@@ -461,6 +463,64 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
 
 
         if (!skillsToSave.isEmpty()) heroSkillDefinitionRepository.saveAllAndFlush(skillsToSave);
+    }
+
+    
+    /**
+     * Cấu hình kỹ năng Gojo bằng cùng hệ thống HeroSkillEffect/DatabaseSkillExecutor.
+     * Vô Hạ Hạn tồn tại tối đa 20 round; nội tại phản công chỉ kích hoạt ON_DAMAGED.
+     */
+    private void seedGojoSkillEffects(HeroSkillDefinition skill, int order) {
+        if (!skill.getEffects().isEmpty()) {
+            return;
+        }
+
+        switch (order) {
+            case 1 -> addDamageEffect(skill, "FRONT", "1.0");
+            case 2 -> {
+                addGojoEffect(
+                        skill, 1, "BUFF", "SELF", "0.30", 20,
+                        "{\"statType\":\"DEF\"}"
+                );
+                addGojoEffect(
+                        skill, 2, "BLOCK", "SELF", "0.30", 20, "{}"
+                );
+                addGojoEffect(
+                        skill, 3, "IMMUNITY", "SELF", "0", 20,
+                        "{\"immunityType\":\"CC\"}"
+                );
+            }
+            case 3 -> addDamageEffect(skill, "ALL_ENEMIES", "2.5");
+            case 5 -> addGojoEffect(
+                    skill, 1, "COUNTER", "SELF", "0.50", 0,
+                    "{\"trigger\":\"ON_DAMAGED\"}"
+            );
+            default -> {
+                // Lục Nhãn được giữ là passive độc lập; chưa tự gán chỉ số
+                // khi chưa có thông số gameplay được xác nhận.
+            }
+        }
+    }
+
+    private void addGojoEffect(
+            HeroSkillDefinition skill,
+            int order,
+            String effectType,
+            String targetType,
+            String multiplier,
+            int duration,
+            String configJson
+    ) {
+        HeroSkillEffect effect = new HeroSkillEffect(
+                order, effectType, targetType
+        );
+        effect.updateParameters(
+                new BigDecimal(multiplier),
+                BigDecimal.ONE,
+                duration
+        );
+        effect.updateConfig(configJson);
+        skill.addEffect(effect);
     }
 
     private void addDamageEffect(HeroSkillDefinition skill, String targetType, String multiplier) {
