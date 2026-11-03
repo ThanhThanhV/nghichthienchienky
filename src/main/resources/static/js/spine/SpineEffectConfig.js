@@ -419,31 +419,11 @@ window.SPINE_EFFECT_CONFIG = {
                     impactRatio: 0.25
                 }
             },
-            GOJO_PASSIVE_4: {
-                // Phản kích dùng lại đúng effect Vô Hạ Hạn cũ 11012.
-                // Asset này chỉ có animation_0 và event qishou_21_1_1.
-                cast: {
-                    code: "gojo_counter_passive_cast",
-                    file: "seffect_52517111012",
-                    animation: "animation_0",
-                    impactEvent: "qishou_21_1_1",
-                    impactEvents: ["qishou_21_1_1"],
-                    anchor: "source",
-                    impactRatio: 0.58
-                }
-            },
-            GOJO_PASSIVE_5: {
-                // Alias cùng mapping để hỗ trợ slot passive thứ hai nếu backend phát mã này.
-                cast: {
-                    code: "gojo_counter_passive_cast",
-                    file: "seffect_52517111012",
-                    animation: "animation_0",
-                    impactEvent: "qishou_21_1_1",
-                    impactEvents: ["qishou_21_1_1"],
-                    anchor: "source",
-                    impactRatio: 0.58
-                }
-            },
+            // Không khai báo cast effect riêng cho Gojo PASSIVE.
+            // seffect_52517111012 thực chất là một bản skeleton Gojo đầy đủ
+            // (cùng kích thước/bộ xương với sanim_525171), phát song song sẽ
+            // tạo ra hai hình Gojo chồng lên nhau. Animation ultimateskill
+            // trên skeleton nhân vật đã là hình ảnh phản kích cần dùng.
             IORI_DARK_BASIC_1: {
                 // Iori Dark dùng bộ cast riêng (sanim_515151_1):
                 // qishou_1_1_1; impact hit tương ứng dùng asset hit riêng hiện có.
