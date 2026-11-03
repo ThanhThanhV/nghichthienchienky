@@ -82,7 +82,18 @@ Với BUFF/HEAL/SHIELD/IMMUNITY/DISPEL, engine chọn mục tiêu cùng đội. 
 | IMMUNITY | Miễn nhiễm | `immunityType` bắt buộc |
 | DISPEL | Giải hiệu ứng | `dispelType` bắt buộc |
 
+| COUNTER | Phản công đúng đơn vị vừa gây sát thương | PASSIVE với `trigger: ON_DAMAGED`; multiplier là hệ số sát thương |
+| EXTRA_ACTION | Cấp thêm một hành động | Không cần config riêng; tối đa 1 lần mỗi đơn vị mỗi round |
+
 Các enum hợp lệ được định nghĩa trong `BattleEffectType`, `BattleTargetMode`, `BattleStatType`, `BattleStatusType`, `BattleImmunityType` và `BattleDispelType`.
+
+## EXTRA_ACTION
+
+- Có thể đặt trong kỹ năng thường hoặc PASSIVE.
+- Khi được kích hoạt, nhân vật thực hiện thêm một hành động ngay sau khi xử lý xong sự kiện đang kích hoạt nó.
+- Hành động bổ sung tiếp tục chu kỳ `ACTIVE -> ULTIMATE -> BASIC`.
+- Mỗi nhân vật tối đa một EXTRA_ACTION trong một round; hiệu ứng kích hoạt thêm trong hành động bổ sung không tạo chuỗi vô hạn.
+- `target_type` nên đặt là `SELF`; `multiplier` và `flatValue` không được sử dụng.
 
 ## Ý nghĩa tham số
 
