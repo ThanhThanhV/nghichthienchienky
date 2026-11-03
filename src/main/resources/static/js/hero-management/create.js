@@ -28,8 +28,8 @@ document.addEventListener("DOMContentLoaded", () => {
         ["HIGHEST_HP_PERCENT", "% HP cao nhất"],
         ["HIGHEST_ATK", "ATK cao nhất"],
         ["LOWEST_ATK", "ATK thấp nhất"],
-        ["ALL_ENEMIES", "Toàn bộ mục tiêu theo phe của hiệu ứng"],
-        ["ALL_ALLIES", "Toàn bộ đồng minh"]
+        ["ALL_ENEMIES", "Toàn bộ mục tiêu trong phe được chọn"],
+        ["ALL_ALLIES", "Toàn bộ mục tiêu trong phe được chọn (alias)"]
     ];
 
     let manager = null;
