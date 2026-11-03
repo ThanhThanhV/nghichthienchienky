@@ -589,13 +589,10 @@ class BattleRenderer {
             this.battleUI.updateCharacterState(event);
         }
 
-        // Nếu mục tiêu chết, phát animation chết.
+        // DAMAGE chỉ cập nhật HP/trạng thái. Animation tử trận được phát
+        // duy nhất tại event DEATH kế tiếp để không restart animation hai lần.
         if (event.alive === false ||
             (event.currentHp != null && Number(event.currentHp) <= 0)) {
-            if (character) {
-                this.playCharacterAnimation(character, "death", false);
-            }
-
             if (this.battleUI) {
                 this.battleUI.setDead(
                     event.targetTeam,
