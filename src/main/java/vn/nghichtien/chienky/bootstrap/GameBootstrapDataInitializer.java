@@ -74,16 +74,14 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
     public void run(ApplicationArguments args) {
         List<HeroSeed> seeds = heroSeeds();
         JsonNode spineCatalog = loadSpineMappingCatalog();
-        validateSkillAnimationCatalog(seeds, spineCatalog);
+        JsonNode animationConfigCatalog = loadAnimationConfigCatalog();
+        validateSkillAnimationCatalog(seeds, spineCatalog, animationConfigCatalog);
         List<String> heroCodes = seeds.stream().map(HeroSeed::code).toList();
 
-        // Tạm thời reset dữ liệu kỹ năng của 10 tướng seed mỗi lần khởi động.
-        // Toàn bộ thao tác nằm trong cùng transaction: lỗi ở bất kỳ bước nào
-        // sẽ rollback cả việc xóa lẫn việc tạo lại dữ liệu.
-        resetSeededSkillData(heroCodes);
-
+        // Đồng bộ cấu hình tướng/kỹ năng mà không xóa dữ liệu người chơi
+        // hoặc ghi đè các hiệu ứng đã được quản trị viên cấu hình.
         for (int i = 0; i < seeds.size(); i++) {
-            seedHero(seeds.get(i), i + 1, spineCatalog);
+            seedHero(seeds.get(i), i + 1, spineCatalog, animationConfigCatalog);
         }
 
         // Gắn lại 5 kỹ năng cấp 1 cho mọi bản sao tướng người chơi đang sở hữu.
@@ -134,7 +132,12 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                 continue;
             }
             for (HeroSkillDefinition skill : skills) {
-                links.add(new HeroInstanceSkill(instance, skill));
+                boolean exists = heroInstanceSkillRepository
+                        .findByHeroInstanceIdAndSkillDefinitionId(instance.getId(), skill.getId())
+                        .isPresent();
+                if (!exists) {
+                    links.add(new HeroInstanceSkill(instance, skill));
+                }
             }
         }
 
@@ -144,7 +147,12 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
         }
     }
 
-    private void seedHero(HeroSeed seed, int sortOrder, JsonNode spineCatalog) {
+    private void seedHero(
+            HeroSeed seed,
+            int sortOrder,
+            JsonNode spineCatalog,
+            JsonNode animationConfigCatalog
+    ) {
         HeroDefinition definition = heroDefinitionRepository.findById(seed.code())
                 .orElseGet(() -> createDefinition(seed, sortOrder));
 
@@ -154,7 +162,11 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                 avatarCode == null || avatarCode.isBlank() ? seed.code() : avatarCode,
                 spineSkeleton == null || spineSkeleton.isBlank() ? seed.code() : spineSkeleton
         );
-        applySpineMapping(definition, spineCatalog.path("heroes").path(seed.code()));
+        applySpineMapping(
+                definition,
+                spineCatalog.path("heroes").path(seed.code()),
+                animationConfigCatalog
+        );
         if (definition.getSortOrder() == null || definition.getSortOrder() == 0) {
             definition.changeSortOrder(sortOrder);
         }
@@ -188,6 +200,32 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
         }
     }
 
+
+    /**
+     * Đọc animation_config.lua. Tệp là Lua table literal; chuyển cú pháp
+     * key [number]/["string"] và phép gán thành JSON để Jackson parse.
+     * Giữ nguyên toàn bộ tọa độ, eventName và effectId từ nguồn.
+     */
+    private JsonNode loadAnimationConfigCatalog() {
+        try (var input = new ClassPathResource("animation_config.lua").getInputStream()) {
+            String lua = new String(input.readAllBytes(), java.nio.charset.StandardCharsets.UTF_8);
+            String json = lua
+                    .replaceFirst("^\\s*local\\s+animation_config\\s*=\\s*", "")
+                    .replaceFirst("\\s*return\\s+animation_config\\s*;?\\s*$", "")
+                    .replaceAll("\\[\"([^\"]+)\"\\]\\s*=", "\"$1\":")
+                    .replaceAll("\\[(\\d+)\\]\\s*=", "\"$1\":")
+                    .replaceAll("=", ":")
+                    .replaceAll(",\\s*([}\\]])", "$1");
+            JsonNode catalog = objectMapper.readTree(json);
+            if (catalog == null || !catalog.isObject() || catalog.isEmpty()) {
+                throw new IllegalStateException("animation_config.lua không có dữ liệu hợp lệ");
+            }
+            return catalog;
+        } catch (IOException exception) {
+            throw new IllegalStateException("Không thể đọc hoặc parse animation_config.lua", exception);
+        }
+    }
+
     /**
      * Kiểm tra catalog animation phải khớp chính xác skillCode mà seedSkills tạo ra.
      * Đặc biệt Gojo chỉ có ACTIVE ở slot 2; các slot còn lại là PASSIVE.
@@ -195,12 +233,22 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
      */
     private void validateSkillAnimationCatalog(
             List<HeroSeed> seeds,
-            JsonNode catalog
+            JsonNode catalog,
+            JsonNode animationConfigCatalog
     ) {
         JsonNode heroes = catalog.path("heroes");
 
         for (HeroSeed seed : seeds) {
             JsonNode heroMapping = heroes.path(seed.code());
+            String assetBase = heroMapping.path("asset").path("base").asText("");
+            String configId = assetBase.replaceFirst("^sanim_", "");
+            if (configId.isBlank() || !animationConfigCatalog.path(configId).isObject()) {
+                throw new IllegalStateException(
+                        "Không tìm thấy animation_config.lua cho " + seed.code()
+                                + " (asset " + assetBase + ")"
+                );
+            }
+
             JsonNode animations = heroMapping.path("skillAnimations");
             if (!animations.isObject()) {
                 throw new IllegalStateException(
@@ -244,7 +292,8 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
      */
     private void applySpineMapping(
             HeroDefinition definition,
-            JsonNode heroMapping
+            JsonNode heroMapping,
+            JsonNode animationConfigCatalog
     ) {
         if (heroMapping == null || !heroMapping.isObject()) {
             throw new IllegalStateException(
@@ -274,6 +323,15 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                 writeJson(textureUrls)
         );
 
+        String configId = base.replaceFirst("^sanim_", "");
+        JsonNode heroAnimationConfig = animationConfigCatalog.path(configId);
+        if (!heroAnimationConfig.isObject()) {
+            throw new IllegalStateException(
+                    "Thiếu animation_config.lua cho " + definition.getHeroCode()
+                            + " (" + configId + ")"
+            );
+        }
+
         ObjectNode skillAnimations = objectMapper.createObjectNode();
         JsonNode animationMappings = heroMapping.path("skillAnimations");
         if (!animationMappings.isObject()) {
@@ -286,14 +344,18 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                 animationMappings.fields();
         while (animationFields.hasNext()) {
             Map.Entry<String, JsonNode> field = animationFields.next();
-            skillAnimations.set(
-                    field.getKey(),
-                    objectMapper.createObjectNode().put(
-                            "animation",
-                            field.getValue().asText()
-                    )
-            );
+            String actionName = field.getValue().asText();
+            ObjectNode skillAnimation = objectMapper.createObjectNode()
+                    .put("animation", actionName);
+            JsonNode actionConfig = heroAnimationConfig.path(actionName);
+            if (actionConfig.isObject()) {
+                skillAnimation.set("animationConfig", actionConfig.deepCopy());
+            }
+            skillAnimations.set(field.getKey(), skillAnimation);
         }
+
+        skillAnimations.put("_ANIMATION_CONFIG_ID", configId);
+        skillAnimations.set("_ANIMATION_CONFIG", heroAnimationConfig.deepCopy());
 
         for (String key : List.of(
                 "_BASIC_ATTACK",
