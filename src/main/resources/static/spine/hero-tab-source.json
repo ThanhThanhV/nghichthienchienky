@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "description": "Verbatim source rows from TAB Lua tables. Raw rows are retained for audit and future deterministic import; do not infer fields from string positions without a typed parser.",
+  "heroes": {
+    "asuna_dark": {
+      "tabSkillRows": [],
+      "tabEffectPerforRows": [],
+      "tabEffectRows": []
+    },
+    "gojo": {
+      "tabSkillRows": [],
+      "tabEffectPerforRows": [],
+      "tabEffectRows": []
+    },
+    "iori": {
+      "tabSkillRows": [],
+      "tabEffectPerforRows": [],
+      "tabEffectRows": []
+    },
+    "iori_dark": {
+      "tabSkillRows": [],
+      "tabEffectPerforRows": [],
+      "tabEffectRows": []
+    },
+    "kirito": {
+      "tabSkillRows": [],
+      "tabEffectPerforRows": [],
+      "tabEffectRows": []
+    },
+    "leloud": {
+      "tabSkillRows": [],
+      "tabEffectPerforRows": [],
+      "tabEffectRows": []
+    },
+    "leloud_dark": {
+      "tabSkillRows": [],
+      "tabEffectPerforRows": [],
+      "tabEffectRows": []
+    },
+    "thor": {
+      "tabSkillRows": [],
+      "tabEffectPerforRows": [],
+      "tabEffectRows": []
+    },
+    "thor_rak": {
+      "tabSkillRows": [],
+      "tabEffectPerforRows": [],
+      "tabEffectRows": []
+    },
+    "tohka_dark": {
+      "tabSkillRows": [],
+      "tabEffectPerforRows": [],
+      "tabEffectRows": []
+    }
+  }
+}
