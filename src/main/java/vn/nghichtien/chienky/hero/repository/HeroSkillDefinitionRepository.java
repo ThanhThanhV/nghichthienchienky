@@ -16,6 +16,12 @@ public interface HeroSkillDefinitionRepository
         extends JpaRepository<HeroSkillDefinition, Long> {
 
     /**
+     * Xóa toàn bộ định nghĩa kỹ năng của nhóm tướng seed.
+     * Các hiệu ứng con được xóa theo cascade ALL của entity.
+     */
+    long deleteAllByHeroDefinitionHeroCodeIn(List<String> heroCodes);
+
+    /**
      * Lấy toàn bộ kỹ năng đang kích hoạt của một nhân vật,
      * đồng thời tải danh sách hiệu ứng theo từng kỹ năng.
      *
