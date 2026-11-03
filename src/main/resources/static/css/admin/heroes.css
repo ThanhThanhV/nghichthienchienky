@@ -68,3 +68,5 @@ tbody tr:hover{background:rgba(82,102,141,.1)}
 @media(max-width:370px){.form-grid,.stats-grid,.skill-fields,.effect-fields{grid-template-columns:1fr}.form-grid .wide,.skill-fields .wide,.effect-fields .wide{grid-column:auto}}
 
 .message.success{border-color:#3c8c63;background:#142d25;color:#a6efc1}
+
+.target-help{display:block;color:#8998af;font-size:10px;font-weight:400;line-height:1.55;margin-top:2px}
