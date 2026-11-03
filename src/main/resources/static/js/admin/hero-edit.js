@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded",()=>{
  function configOf(s){try{const x=JSON.parse(s||"{}");return x&&typeof x==="object"&&!Array.isArray(x)?x:{};}catch(_){return {};}}
  function effectHtml(e,i){
   const c=configOf(e.configJson);
+  const advanced={...c};["animation","animationDurationMs","impactTimeMs","flatValue","statType","statusType","immunityType","dispelType","permanent","trigger"].forEach(k=>delete advanced[k]);
   return `<article class="effect-card"><div class="effect-heading"><span>HIỆU ỨNG #${i+1}</span><label class="check-label"><input type="checkbox" data-enabled ${e.enabled===false?"":"checked"}> Kích hoạt</label></div>
   <input type="hidden" data-id value="${esc(e.id??"")}"><div class="effect-fields">
   <label>Thứ tự<input data-order type="number" min="1" value="${esc(e.effectOrder??i+1)}"></label>
@@ -29,7 +30,7 @@ document.addEventListener("DOMContentLoaded",()=>{
   <label>Giải hiệu ứng<select data-dispel-type><option value="">Không áp dụng</option>${["BUFF","DEBUFF","CC"].map(x=>`<option ${x===c.dispelType?"selected":""}>${x}</option>`).join("")}</select></label>
   <label>Trigger nội tại<input data-trigger value="${esc(c.trigger??"")}" placeholder="BATTLE_START / ON_ATTACK..."></label>
   <label class="check-label"><input data-permanent type="checkbox" ${c.permanent===true?"checked":""}> Hiệu ứng vĩnh viễn</label>
-  <label class="wide">Cấu hình nâng cao (JSON)<textarea data-config rows="4" spellcheck="false">${esc(JSON.stringify(c,null,2))}</textarea></label></div>
+  <label class="wide">Cấu hình nâng cao (JSON)<textarea data-config rows="4" spellcheck="false">${esc(JSON.stringify(advanced,null,2))}</textarea></label></div>
   <div class="effect-actions"><button type="button" class="small-button danger" data-remove>XÓA HIỆU ỨNG</button></div></article>`;
  }
  function skills(items){editor.innerHTML=items.map(s=>`<article class="skill-card" data-id="${s.id}" data-order="${s.skillOrder}">
