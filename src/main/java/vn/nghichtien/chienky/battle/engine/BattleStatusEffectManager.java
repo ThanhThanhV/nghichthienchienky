@@ -38,6 +38,16 @@ public class BattleStatusEffectManager {
      */
     public void addModifier(BattleStatusEffect effect) {
         Objects.requireNonNull(effect, "Effect must not be null");
+
+        // Cùng một effectCode không được cộng dồn khi ACTIVE được gọi lại
+        // trong chu kỳ ACTIVE -> ULTIMATE -> BASIC.
+        boolean alreadyApplied = modifiers.stream()
+                .anyMatch(existing -> existing.getEffectCode()
+                        .equals(effect.getEffectCode()));
+        if (alreadyApplied) {
+            return;
+        }
+
         modifiers.add(effect);
     }
 
