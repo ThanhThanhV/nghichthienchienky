@@ -128,3 +128,80 @@ h1 { margin:9px 0 5px; color:var(--gold-bright); font:700 clamp(25px,4vw,38px) G
     .header-actions .action-button { font-size: 8px; }
     .owned-heroes { grid-template-columns: 1fr; }
 }
+
+
+/* Keep formation management inside the same fixed 9:16 portrait game viewport. */
+html, body {
+    width: 100%;
+    min-width: 320px;
+    min-height: 100%;
+}
+body {
+    min-height: 100dvh;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    background: #03050b;
+}
+.formation-page {
+    width: min(100vw, 56.25dvh, 540px);
+    height: min(100dvh, 177.7778vw, 960px);
+    min-height: 0;
+    max-height: 100dvh;
+    aspect-ratio: 9 / 16;
+    margin: 0 auto;
+    padding: 12px clamp(8px, 2vw, 12px) calc(16px + env(safe-area-inset-bottom));
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(218,190,132,.35) transparent;
+    border-left: 1px solid rgba(218,190,132,.16);
+    border-right: 1px solid rgba(218,190,132,.16);
+    background:
+        radial-gradient(ellipse at 12% 8%, rgba(54,83,132,.25), transparent 34%),
+        radial-gradient(ellipse at 90% 86%, rgba(125,74,39,.17), transparent 38%),
+        #080d18;
+}
+.formation-page::-webkit-scrollbar { width: 4px; }
+.formation-page::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background: rgba(218,190,132,.35);
+}
+.formation-header {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 10px;
+}
+.formation-header h1 { font-size: clamp(21px, 5vw, 28px); }
+.header-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 7px;
+}
+.header-actions .action-button { min-width: 0; padding: 7px 5px; font-size: 9px; }
+#save-formation { grid-column: 1 / -1; }
+.formation-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.formation-main { display: flex; flex-direction: column; gap: 10px; }
+.roster-panel { position: static; }
+.formation-preview { height: clamp(190px, 25dvh, 250px); }
+.formation-grid { gap: 5px; }
+.formation-slot { min-height: 82px; }
+.owned-heroes {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-height: none;
+}
+@media (min-width: 701px) {
+    .formation-page { padding-top: 12px; }
+    .formation-header { align-items: stretch; }
+}
+@media (max-height: 760px) {
+    .formation-preview { height: 175px; }
+    .formation-slot { min-height: 72px; }
+    .formation-page { padding-top: 8px; }
+}
