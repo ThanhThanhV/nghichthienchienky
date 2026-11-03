@@ -83,7 +83,7 @@ public class BattleSessionService {
 
     @Transactional(readOnly = true)
     public BattlePlaybackDTO startBattle(String username) {
-        return createBattle(username, null);
+        return createBattle(username, null, null);
     }
 
     @Transactional(readOnly = true)
@@ -99,7 +99,16 @@ public class BattleSessionService {
             );
         }
 
-        return createBattle(username, stage);
+        return createBattle(username, stage, null);
+    }
+
+    /** Tạo trận khiêu chiến với đội hình chính của người chơi khác. */
+    @Transactional(readOnly = true)
+    public BattlePlaybackDTO startPlayerChallenge(String username, Long opponentPlayerId) {
+        if (opponentPlayerId == null || opponentPlayerId <= 0) {
+            throw new IllegalArgumentException("Người chơi đối thủ không hợp lệ.");
+        }
+        return createBattle(username, null, opponentPlayerId);
     }
 
     /**
@@ -121,11 +130,32 @@ public class BattleSessionService {
 
     private BattlePlaybackDTO createBattle(
             String username,
-            PveCampaignStage campaignStage
+            PveCampaignStage campaignStage,
+            Long opponentPlayerId
     ) {
         PlayerProfile player = getPlayer(username);
+        if (opponentPlayerId != null && player.getId().equals(opponentPlayerId)) {
+            throw new IllegalArgumentException("Không thể khiêu chiến chính mình.");
+        }
+
         List<PlayerFormationSlot> slots = formationSlotRepository
                 .findAllByPlayerProfileIdOrderByRowAscColumnAsc(player.getId());
+        List<PlayerFormationSlot> opponentSlots = List.of();
+        if (opponentPlayerId != null) {
+            PlayerProfile opponent = playerProfileRepository.findById(opponentPlayerId)
+                    .filter(profile -> profile.getAccount() != null
+                            && profile.getAccount().isEnabled())
+                    .orElseThrow(() -> new IllegalArgumentException(
+                            "Không tìm thấy người chơi đối thủ."
+                    ));
+            opponentSlots = formationSlotRepository
+                    .findAllByPlayerProfileIdOrderByRowAscColumnAsc(opponent.getId());
+            if (opponentSlots.isEmpty() || opponentSlots.size() > MAX_TEAM_SIZE) {
+                throw new IllegalStateException(
+                        "Người chơi này chưa có đội hình chính hợp lệ."
+                );
+            }
+        }
 
         if (slots.isEmpty()) {
             throw new IllegalStateException(
@@ -154,76 +184,88 @@ public class BattleSessionService {
             maxPlayerLevel = Math.max(maxPlayerLevel, instance.getHeroLevel());
         }
 
-        List<HeroDefinition> enemies;
-        if (campaignStage == null) {
-            List<String> playerHeroCodes = slots.stream()
-                    .map(slot -> slot.getHeroInstance().getHeroCode())
-                    .toList();
-            enemies = heroDefinitionRepository
-                    .findAllByEnabledTrueOrderBySortOrderAscHeroNameAsc()
-                    .stream()
-                    .filter(definition -> !playerHeroCodes.contains(definition.getHeroCode()))
-                    .limit(MAX_TEAM_SIZE)
-                    .toList();
+        if (opponentPlayerId != null) {
+            for (PlayerFormationSlot slot : opponentSlots) {
+                var instance = slot.getHeroInstance();
+                BattleUnitState enemy = heroBattleUnitFactory.create(
+                        instance, BattleTeam.ENEMY, slot.getRow(), slot.getColumn()
+                );
+                units.add(enemy);
+                definitions.put(instance.getHeroCode(), instance.getHeroDefinition());
+                levels.put(instance.getId(), instance.getHeroLevel());
+            }
         } else {
-            enemies = campaignStage.enemyHeroCodes().stream()
-                    .map(code -> heroDefinitionRepository
-                            .findByHeroCodeAndEnabled(code, true)
-                            .orElseThrow(() -> new IllegalStateException(
-                                    "Thiếu cấu hình tướng địch của ải: " + code
-                            )))
-                    .toList();
-        }
+            List<HeroDefinition> enemies;
+            if (campaignStage == null) {
+                List<String> playerHeroCodes = slots.stream()
+                        .map(slot -> slot.getHeroInstance().getHeroCode())
+                        .toList();
+                enemies = heroDefinitionRepository
+                        .findAllByEnabledTrueOrderBySortOrderAscHeroNameAsc()
+                        .stream()
+                        .filter(definition -> !playerHeroCodes.contains(definition.getHeroCode()))
+                        .limit(MAX_TEAM_SIZE)
+                        .toList();
+            } else {
+                enemies = campaignStage.enemyHeroCodes().stream()
+                        .map(code -> heroDefinitionRepository
+                                .findByHeroCodeAndEnabled(code, true)
+                                .orElseThrow(() -> new IllegalStateException(
+                                        "Thiếu cấu hình tướng địch của ải: " + code
+                                )))
+                        .toList();
+            }
 
-        if (enemies.isEmpty()) {
-            throw new IllegalStateException(
-                    "Chưa có nhân vật đối thủ được kích hoạt trong danh mục nhân vật."
-            );
-        }
+            if (enemies.isEmpty()) {
+                throw new IllegalStateException(
+                        "Chưa có nhân vật đối thủ được kích hoạt trong danh mục nhân vật."
+                );
+            }
 
-        int enemyLevel = campaignStage == null
-                ? maxPlayerLevel
-                : maxPlayerLevel + (campaignStage.stageNumber() - 1) * 2;
-        BigDecimal stageMultiplier = campaignStage == null
-                ? BigDecimal.ONE
-                : BigDecimal.ONE.add(
-                        BigDecimal.valueOf(campaignStage.stageNumber() - 1L)
-                                .multiply(new BigDecimal("0.10"))
+            int enemyLevel = campaignStage == null
+                    ? maxPlayerLevel
+                    : maxPlayerLevel + (campaignStage.stageNumber() - 1) * 2;
+            BigDecimal stageMultiplier = campaignStage == null
+                    ? BigDecimal.ONE
+                    : BigDecimal.ONE.add(
+                            BigDecimal.valueOf(campaignStage.stageNumber() - 1L)
+                                    .multiply(new BigDecimal("0.10"))
+                    );
+
+            for (int i = 0; i < enemies.size(); i++) {
+                HeroDefinition definition = enemies.get(i);
+                HeroStatsResponse response = heroStatsService.calculateStats(
+                        definition.getHeroCode(), enemyLevel
+                );
+                Map<String, BigDecimal> stats = response.getStats();
+                long enemyInstanceId = -(i + 1L);
+                int[] position = ENEMY_POSITIONS[i];
+
+                BattleUnitState enemy = new BattleUnitState(
+                        enemyInstanceId,
+                        BattleTeam.ENEMY,
+                        definition.getHeroCode(),
+                        scaledStat(stats, "HP", stageMultiplier),
+                        scaledStat(stats, "ATK", stageMultiplier),
+                        scaledStat(stats, "DEF", stageMultiplier),
+                        requiredStat(stats, "SPEED"),
+                        position[0],
+                        position[1]
+                );
+                enemy.setCombatStats(
+                        statOrZero(stats, "CRIT"),
+                        statOrZero(stats, "CRIT_DAMAGE"),
+                        statOrZero(stats, "ACCURACY"),
+                        statOrZero(stats, "RESISTANCE"),
+                        statOrZero(stats, "PEN_FLAT"),
+                        statOrZero(stats, "PEN_PERCENT"),
+                        statOrZero(stats, "LIFESTEAL")
                 );
 
-        for (int i = 0; i < enemies.size(); i++) {
-            HeroDefinition definition = enemies.get(i);
-            HeroStatsResponse response = heroStatsService.calculateStats(
-                    definition.getHeroCode(), enemyLevel
-            );
-            Map<String, BigDecimal> stats = response.getStats();
-            long enemyInstanceId = -(i + 1L);
-            int[] position = ENEMY_POSITIONS[i];
-
-            BattleUnitState enemy = new BattleUnitState(
-                    enemyInstanceId,
-                    BattleTeam.ENEMY,
-                    definition.getHeroCode(),
-                    scaledStat(stats, "HP", stageMultiplier),
-                    scaledStat(stats, "ATK", stageMultiplier),
-                    scaledStat(stats, "DEF", stageMultiplier),
-                    requiredStat(stats, "SPEED"),
-                    position[0],
-                    position[1]
-            );
-            enemy.setCombatStats(
-                    statOrZero(stats, "CRIT"),
-                    statOrZero(stats, "CRIT_DAMAGE"),
-                    statOrZero(stats, "ACCURACY"),
-                    statOrZero(stats, "RESISTANCE"),
-                    statOrZero(stats, "PEN_FLAT"),
-                    statOrZero(stats, "PEN_PERCENT"),
-                    statOrZero(stats, "LIFESTEAL")
-            );
-
-            units.add(enemy);
-            definitions.put(definition.getHeroCode(), definition);
-            levels.put(enemyInstanceId, enemyLevel);
+                units.add(enemy);
+                definitions.put(definition.getHeroCode(), definition);
+                levels.put(enemyInstanceId, enemyLevel);
+            }
         }
 
         BattleState battle = new BattleState(units);
