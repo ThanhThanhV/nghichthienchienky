@@ -2,7 +2,21 @@ document.addEventListener("DOMContentLoaded",()=>{
  const $=id=>document.getElementById(id),form=$("hero-edit-form"),editor=$("skill-editor"),save=$("save-hero"),msg=$("page-message"),code=decodeURIComponent(location.pathname.split("/").filter(Boolean).pop());
  const statKeys=["hp","atk","def","speed","crit","critDamage","accuracy","resistance","penFlat","penPercent","lifesteal"];
  const effectTypes=["DAMAGE","HEAL","BUFF","DEBUFF","CC","SHIELD","EVASION","BLOCK","REFLECT","IMMUNITY","DISPEL","REVIVE","EXTRA_ACTION","COUNTER","DOT","HOT"];
- const targets=["SELF","RANDOM","RANDOM_2","RANDOM_3","FRONT","BACK","LOWEST_HP","LOWEST_HP_PERCENT","HIGHEST_HP_PERCENT","HIGHEST_ATK","LOWEST_ATK","ALL_ENEMIES","ALL_ALLIES"];
+ const targets=[
+  ["SELF","Bản thân người thi triển"],
+  ["RANDOM","Ngẫu nhiên 1 mục tiêu"],
+  ["RANDOM_2","Ngẫu nhiên tối đa 2 mục tiêu"],
+  ["RANDOM_3","Ngẫu nhiên tối đa 3 mục tiêu"],
+  ["FRONT","Toàn bộ hàng trước"],
+  ["BACK","Toàn bộ hàng sau"],
+  ["LOWEST_HP","Mục tiêu có HP hiện tại thấp nhất"],
+  ["LOWEST_HP_PERCENT","Mục tiêu có % HP thấp nhất"],
+  ["HIGHEST_HP_PERCENT","Mục tiêu có % HP cao nhất"],
+  ["HIGHEST_ATK","Mục tiêu có ATK cao nhất"],
+  ["LOWEST_ATK","Mục tiêu có ATK thấp nhất"],
+  ["ALL_ENEMIES","Toàn bộ mục tiêu đối phương"],
+  ["ALL_ALLIES","Toàn bộ đồng minh"]
+ ];
  const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
  const val=(id,v)=>$(id).value=v??"";
  let current;
@@ -16,7 +30,7 @@ document.addEventListener("DOMContentLoaded",()=>{
   <input type="hidden" data-id value="${esc(e.id??"")}"><div class="effect-fields">
   <label>Thứ tự<input data-order type="number" min="1" value="${esc(e.effectOrder??i+1)}"></label>
   <label>Loại hiệu ứng<select data-type>${effectTypes.map(x=>`<option ${x===e.effectType?"selected":""}>${x}</option>`).join("")}</select></label>
-  <label>Mục tiêu<select data-target>${targets.map(x=>`<option ${x===e.targetType?"selected":""}>${x}</option>`).join("")}</select></label>
+  <label>Mục tiêu<select data-target>${targets.map(([value,label])=>`<option value="${value}" ${value===e.targetType?"selected":""}>${label}</option>`).join("")}</select><small class="target-help">Phe mục tiêu được xác định theo loại hiệu ứng: sát thương/giảm chỉ số chọn địch; hồi máu/tăng chỉ số/chắn chọn đồng minh. COUNTER luôn đánh kẻ vừa gây sát thương.</small></label>
   <label>Hệ số tác động<input data-mult type="number" min="0" step="any" value="${esc(e.multiplier??0)}"></label>
   <label>Xác suất (0–1)<input data-chance type="number" min="0" max="1" step="any" value="${esc(e.chance??1)}"></label>
   <label>Duration (round)<input data-duration type="number" min="0" step="1" value="${esc(e.duration??0)}"></label>
