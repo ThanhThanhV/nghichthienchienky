@@ -395,8 +395,7 @@ window.SPINE_EFFECT_CONFIG = {
                 }
             },
             GOJO_ACTIVE_2: {
-                // Vô Hạ Hạn dùng đúng bộ effect 11014: qishou_31 là mốc khởi chiêu,
-                // ba event hit_31_* là các nhịp tác động của animation_1.
+                // Vô Hạ Hạn: bộ effect 11014, gồm cast và ba nhịp impact.
                 cast: {
                     code: "gojo_infinity_active_cast",
                     file: "seffect_52517111014",
@@ -418,6 +417,31 @@ window.SPINE_EFFECT_CONFIG = {
                     ],
                     anchor: "enemy_formation",
                     impactRatio: 0.25
+                }
+            },
+            GOJO_PASSIVE_4: {
+                // Phản kích dùng lại đúng effect Vô Hạ Hạn cũ 11012.
+                // Asset này chỉ có animation_0 và event qishou_21_1_1.
+                cast: {
+                    code: "gojo_counter_passive_cast",
+                    file: "seffect_52517111012",
+                    animation: "animation_0",
+                    impactEvent: "qishou_21_1_1",
+                    impactEvents: ["qishou_21_1_1"],
+                    anchor: "enemy_formation",
+                    impactRatio: 0.58
+                }
+            },
+            GOJO_PASSIVE_5: {
+                // Alias cùng mapping để hỗ trợ slot passive thứ hai nếu backend phát mã này.
+                cast: {
+                    code: "gojo_counter_passive_cast",
+                    file: "seffect_52517111012",
+                    animation: "animation_0",
+                    impactEvent: "qishou_21_1_1",
+                    impactEvents: ["qishou_21_1_1"],
+                    anchor: "enemy_formation",
+                    impactRatio: 0.58
                 }
             },
             IORI_DARK_BASIC_1: {
