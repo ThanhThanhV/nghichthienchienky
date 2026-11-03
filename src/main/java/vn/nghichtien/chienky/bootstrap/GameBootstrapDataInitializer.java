@@ -229,8 +229,17 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
         // Phản Kích là hiệu ứng COUNTER, không phải đòn BASIC/ULTIMATE.
         for (HeroSkillDefinition skill : skillsByOrder.values()) {
             List.copyOf(skill.getEffects()).stream()
-                    .filter(effect -> BattleEffectType.DAMAGE.name()
-                            .equalsIgnoreCase(effect.getEffectType()))
+                    .filter(effect -> {
+                        String type = effect.getEffectType();
+                        boolean damageEffect =
+                                BattleEffectType.DAMAGE.name().equalsIgnoreCase(type)
+                                || BattleEffectType.DOT.name().equalsIgnoreCase(type)
+                                || BattleEffectType.REFLECT.name().equalsIgnoreCase(type);
+                        boolean counterOnWrongSkill =
+                                BattleEffectType.COUNTER.name().equalsIgnoreCase(type)
+                                && !Integer.valueOf(4).equals(skill.getSkillOrder());
+                        return damageEffect || counterOnWrongSkill;
+                    })
                     .forEach(skill::removeEffect);
         }
 
@@ -266,7 +275,9 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
         }
 
         HeroSkillDefinition sixEyes = skillsByOrder.get(4);
-        if (sixEyes != null) {
+        if (sixEyes != null && sixEyes.getEffects().stream()
+                .noneMatch(effect -> BattleEffectType.COUNTER.name()
+                        .equalsIgnoreCase(effect.getEffectType()))) {
             addGojoEffectIfMissing(
                     sixEyes,
                     "GOJO_SIX_EYES_COUNTER",
