@@ -473,44 +473,26 @@
             slot.dataset.spineSkeleton = unit.spineSkeleton || "";
             if (unit.alive === false) slot.classList.add("unit-dead");
 
+            // Battle view chỉ giữ các dấu trạng thái màu; không dựng HP bar/text.
             const effects = document.createElement("div");
             effects.className = "unit-effects";
-            effects.setAttribute("aria-label", "Hiệu ứng đang có");
-
-            const info = document.createElement("div");
-            info.className = "unit-info";
-
-            const hpBar = document.createElement("div");
-            hpBar.className = "hp-bar";
-            const hpFill = document.createElement("div");
-            hpFill.className = "hp-bar-fill";
-            hpFill.style.width = Math.max(0, Math.min(100, Number(unit.hpPercent) || 0)) + "%";
-            if (Number(unit.hpPercent) <= 25) hpFill.classList.add("hp-critical");
-            hpBar.appendChild(hpFill);
-
-            const hpText = document.createElement("div");
-            hpText.className = "hp-text";
-            hpText.textContent = this.formatNumber(unit.currentHp) + " / " + this.formatNumber(unit.maxHp);
-
-            info.append(hpBar, hpText);
-            slot.append(effects, info);
+            effects.setAttribute("aria-label", "Hiệu ứng trạng thái");
+            slot.appendChild(effects);
             this.renderEffectBadges(team, unit.instanceId);
         },
 
         updateUnitCard(unit, team) {
             if (!team) return;
-            const container = document.getElementById(team === "PLAYER" ? "player-formation" : "enemy-formation");
-            const card = container?.querySelector('[data-instance-id="' + unit.instanceId + '"]');
+            const container = document.getElementById(
+                team === "PLAYER" ? "player-formation" : "enemy-formation"
+            );
+            const card = container?.querySelector(
+                '[data-instance-id="' + unit.instanceId + '"]'
+            );
             if (!card) return;
 
-            const percent = Math.max(0, Math.min(100, Number(unit.hpPercent) || 0));
-            const fill = card.querySelector(".hp-bar-fill");
-            if (fill) {
-                fill.style.width = percent + "%";
-                fill.classList.toggle("hp-critical", percent <= 25);
-            }
-            const hpText = card.querySelector(".hp-text");
-            if (hpText) hpText.textContent = this.formatNumber(unit.currentHp) + " / " + this.formatNumber(unit.maxHp);
+            // HP vẫn được cập nhật trong state để tính chiến đấu và trạng thái tử trận,
+            // nhưng không còn thanh/số HP phủ lên nhân vật trong battlefield.
             card.classList.toggle("unit-dead", unit.alive === false);
         },
 
@@ -616,21 +598,27 @@
         },
 
         renderEffectBadges(team, instanceId) {
-            const container = document.getElementById(team === "PLAYER" ? "player-formation" : "enemy-formation");
-            const card = container?.querySelector('[data-instance-id="' + instanceId + '"]');
+            const container = document.getElementById(
+                team === "PLAYER" ? "player-formation" : "enemy-formation"
+            );
+            const card = container?.querySelector(
+                '[data-instance-id="' + instanceId + '"]'
+            );
             const badgeContainer = card?.querySelector(".unit-effects");
             if (!badgeContainer) return;
             badgeContainer.replaceChildren();
 
-            const effects = this.activeEffects.get(this.effectUnitKey(team, instanceId));
+            const effects = this.activeEffects.get(
+                this.effectUnitKey(team, instanceId)
+            );
             if (!effects) return;
 
             for (const effect of effects.values()) {
+                const category = String(effect.category || "other").toLowerCase();
                 const badge = document.createElement("span");
-                badge.className = "unit-effect-badge " + effect.category.toLowerCase();
-                const durationText = effect.duration === 0 ? "∞" : String(effect.duration);
-                badge.textContent = effect.code.replace(/[_-]+/g, " ") + " · " + durationText;
-                badge.title = effect.code + " (" + (effect.duration === 0 ? "vĩnh viễn" : effect.duration + " round") + ")";
+                badge.className = "unit-effect-badge " + category;
+                badge.setAttribute("aria-hidden", "true");
+                // Không render tên, mã hoặc thời hạn hiệu ứng trên battlefield.
                 badgeContainer.appendChild(badge);
             }
         },
