@@ -428,7 +428,7 @@ window.SPINE_EFFECT_CONFIG = {
                     animation: "animation_0",
                     impactEvent: "qishou_21_1_1",
                     impactEvents: ["qishou_21_1_1"],
-                    anchor: "enemy_formation",
+                    anchor: "target",
                     impactRatio: 0.58
                 }
             },
@@ -440,7 +440,7 @@ window.SPINE_EFFECT_CONFIG = {
                     animation: "animation_0",
                     impactEvent: "qishou_21_1_1",
                     impactEvents: ["qishou_21_1_1"],
-                    anchor: "enemy_formation",
+                    anchor: "target",
                     impactRatio: 0.58
                 }
             },
