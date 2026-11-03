@@ -172,14 +172,17 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
         for (int i = 0; i < seed.skills().size(); i++) {
             int order = i + 1;
             SkillSeed skillSeed = seed.skills().get(i);
+            String skillType = "gojo".equalsIgnoreCase(definition.getHeroCode())
+                    ? (order == 2 ? "ACTIVE" : "PASSIVE")
+                    : skillSeed.type();
             HeroSkillDefinition skill = skillsByOrder.get(order);
 
             if (skill == null) {
                 skill = new HeroSkillDefinition(
                         definition,
-                        seed.code().toUpperCase() + "_" + skillSeed.type() + "_" + order,
+                        seed.code().toUpperCase() + "_" + skillType + "_" + order,
                         skillSeed.name(),
-                        skillSeed.type(),
+                        skillType,
                         order
                 );
                 skill.updateInformation(skillSeed.name(),
@@ -190,7 +193,7 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                 skill.changeEnabled(true);
                 if ("gojo".equalsIgnoreCase(definition.getHeroCode())) {
                     // Gojo chỉ có một ACTIVE; bốn kỹ năng còn lại đều là PASSIVE.
-                    skill.changeSkillType(skillSeed.type());
+                    skill.changeSkillType(skillType);
                 }
             }
 
