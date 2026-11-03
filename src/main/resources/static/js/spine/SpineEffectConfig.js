@@ -418,6 +418,23 @@ window.SPINE_EFFECT_CONFIG = {
                     impactEvents: ["qishou_31_1_1"],
                     anchor: "source",
                     impactRatio: 0.7
+                },
+                // Vô Hạ Hạn là buff SELF, không có DAMAGE để kích hoạt impact.
+                // Sau khi cast chạm qishou_31_1_1, phát chuỗi visual animation_1
+                // ngay tại Gojo; không neo vào đội hình địch.
+                impact: {
+                    code: "gojo_infinity_active_impact",
+                    file: "seffect_52517111014",
+                    animation: "animation_1",
+                    impactEvent: "hit_31_3_3",
+                    impactEvents: [
+                        "hit_31_3_3",
+                        "hit_31_3_2",
+                        "hit_31_3_1"
+                    ],
+                    anchor: "source",
+                    trigger: "AFTER_CAST",
+                    impactRatio: 0.25
                 }
             },
             // Không khai báo cast effect riêng cho Gojo PASSIVE/counter:
