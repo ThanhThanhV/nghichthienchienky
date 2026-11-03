@@ -61,7 +61,8 @@ class BattleEffectManager {
                 phase,
                 heroCode,
                 skillCode,
-                effectCode
+                effectCode,
+                sourceCharacter: source
             });
 
             return (Array.isArray(resolved) ? resolved : resolved ? [resolved] : [])
@@ -81,7 +82,8 @@ class BattleEffectManager {
                 phase,
                 heroCode,
                 skillCode,
-                effectCode
+                effectCode,
+                sourceCharacter: source
             });
             if (resolved) {
                 return (Array.isArray(resolved) ? resolved : [resolved])
