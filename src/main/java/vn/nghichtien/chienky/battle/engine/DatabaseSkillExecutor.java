@@ -40,10 +40,11 @@ public class DatabaseSkillExecutor {
     }
 
     /**
-     * Thực thi kỹ năng được chọn theo chu kỳ hành động của nhân vật.
-     * Nếu thiếu ACTIVE hoặc ULTIMATE thì tự động dùng BASIC.
+     * Thực thi kỹ năng tương ứng với lượt trong chu kỳ chiến đấu.
+     * Nếu nhân vật không có kỹ năng thuộc nhóm hành động được yêu cầu
+     * (ví dụ Gojo không có BASIC/ULTIMATE), lượt đó được bỏ qua.
      *
-     * @return loại hành động thực tế sau khi áp dụng fallback.
+     * @return loại hành động được yêu cầu; không tự fallback sang BASIC.
      */
     @Transactional(readOnly = true)
     public BattleActionType execute(
@@ -65,18 +66,11 @@ public class DatabaseSkillExecutor {
         String requestedType = toSkillType(requestedAction);
 
         HeroSkillDefinition skill = findSkill(skills, requestedType);
-        BattleActionType actualAction = requestedAction;
 
-        if (skill == null && requestedAction != BattleActionType.BASIC_ATTACK) {
-            skill = findSkill(skills, "BASIC");
-            actualAction = BattleActionType.BASIC_ATTACK;
-        }
-
+        // Không tự biến lượt ACTIVE/ULTIMATE thành đòn BASIC.
+        // Một số nhân vật (Gojo) không có kỹ năng gây sát thương ở các lượt này.
         if (skill == null) {
-            throw new IllegalStateException(
-                    "Không tìm thấy kỹ năng " + requestedType
-                            + " hoặc BASIC cho nhân vật " + source.getHeroCode()
-            );
+            return requestedAction;
         }
 
         List<BattleEffectConfig> effects = skill.getEffects().stream()
@@ -89,10 +83,10 @@ public class DatabaseSkillExecutor {
                 .map(this::toEffectConfig)
                 .toList();
 
-        recordSkillActivation(battle, source, skill, actualAction);
+        recordSkillActivation(battle, source, skill, requestedAction);
         effectProcessor.executeEffects(battle, source, effects);
 
-        return actualAction;
+        return requestedAction;
     }
 
     /**
