@@ -43,17 +43,18 @@ the ULTIMATE action for Gojo rather than relabeling a TAB passive as an ultimate
 
 ## Startup synchronization
 
-On each application startup, `GameBootstrapDataInitializer`:
+On each application startup, the ordered bootstrap pipeline:
 
-1. Loads and validates the TAB skill catalog, Spine mapping, and animation config.
-2. Removes old skill-instance links for all ten runtime hero codes.
-3. Deletes and recreates all five skill definitions and their effects for each hero.
-4. Synchronizes base HP/ATK/DEF/SPEED from TAB `u_InitialAttribute` IDs 2/3/4/5; the raw `RacialLife`/`RacialAtt`/`RacialDef`/`RacialSpeed` values remain in the metadata for later progression analysis.
-5. Rebuilds the five skill links for owned hero instances.
-6. Persists TAB skill bindings and animation/VFX metadata with each hero definition.
+1. `DatabaseResetInitializer` truncates every application table with foreign-key checks temporarily disabled. Migration metadata tables are preserved.
+2. `ResourceBootstrapDataInitializer` recreates resource definitions and player-level configs.
+3. `GameBootstrapDataInitializer` loads and validates the TAB skill catalog, Spine mapping, and animation config.
+4. It creates the ten hero definitions, base stats, growth defaults, and all five skill definitions/effects per hero.
+5. It persists TAB skill bindings and animation/VFX metadata with each hero definition.
 
-Player accounts, owned hero instances, and formation data are not reset by this
-skill-config synchronization.
+**This is a destructive development reset.** Account records, player profiles,
+owned hero instances, formations, campaign progress, inventory, and other
+application data are cleared on every startup. Do not point this configuration
+at a database whose data must be retained.
 
 ## Effect execution scope
 
