@@ -48,6 +48,26 @@ class BattleEffectManager {
         const skillCode = String(event.skillCode || "").toLowerCase();
         const effectCode = String(event.effectCode || "").toLowerCase();
 
+        // Iori và Iori Dark dùng chung family asset "515151", vì vậy
+        // không được resolve theo effectCode/skillCode global trước:
+        // những alias này có thể trỏ sang bộ effect của hero còn lại.
+        // Với hai hero này, chỉ nhận mapping đã được xác thực theo hero prefix.
+        if (
+            ["iori", "iori_dark"].includes(heroCode) &&
+            typeof registry.resolveEffects === "function"
+        ) {
+            const resolved = registry.resolveEffects({
+                event,
+                phase,
+                heroCode,
+                skillCode,
+                effectCode
+            });
+
+            return (Array.isArray(resolved) ? resolved : resolved ? [resolved] : [])
+                .filter(config => !config.phase || config.phase === phase);
+        }
+
         const candidates = [
             effectCode && effects[effectCode],
             heroCode && skillCode && effects[heroCode + "." + skillCode],
