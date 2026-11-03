@@ -107,12 +107,6 @@ public class BattleEffectProcessor {
             return;
         }
 
-        // Gojo không bị phản công bởi nội tại COUNTER của Gojo khác.
-        // Áp dụng theo heroCode nên thống nhất cho cả PLAYER, ENEMY và PVE.
-        if ("gojo".equalsIgnoreCase(attacker.getHeroCode())) {
-            return;
-        }
-
         damageProcessor.executeDamage(
                 battle,
                 source,
