@@ -584,6 +584,13 @@ class BattleRenderer {
             !this.isCurrentAttackDamage(event, action) || action.basicDashStarted) return;
 
         const source = this.formation?.getCharacter(action.sourceTeam, action.sourceInstanceId);
+        const movementMode = String(
+            source?.config?.basicAttackMovement || "DASH"
+        ).trim().toUpperCase();
+        if (movementMode !== "DASH") {
+            action.basicDashStarted = true;
+            return;
+        }
         const target = this.getTargetCharacter(event);
         if (!source?.loaded || !target?.loaded) return;
 
