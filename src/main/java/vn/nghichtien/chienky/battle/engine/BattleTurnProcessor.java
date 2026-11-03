@@ -112,7 +112,15 @@ public class BattleTurnProcessor {
             return;
         }
 
-        List<BattleUnitState> actionOrder = battle.getActionOrder();
+        List<BattleUnitState> actionOrder = new ArrayList<>(battle.getActionOrder());
+        if (round == 1) {
+            // Gojo được ưu tiên hành động mở màn ở round đầu:
+            // PLAYER Gojo -> ENEMY Gojo -> các đơn vị còn lại theo SPEED.
+            // sort ổn định nên thứ tự SPEED hiện tại vẫn được giữ trong từng nhóm.
+            actionOrder.sort(java.util.Comparator.comparingInt(
+                    this::getRoundOneActionPriority
+            ));
+        }
 
         for (BattleUnitState unit : actionOrder) {
             if (battle.checkFinished()) {
@@ -237,6 +245,18 @@ public class BattleTurnProcessor {
                 null, null, null, null, null, null, null,
                 "Round " + round + " finished"
         );
+    }
+
+    /**
+     * Thứ tự ưu tiên riêng ở round 1.
+     * Các đơn vị không phải Gojo cùng nằm trong nhóm cuối và vẫn giữ
+     * thứ tự SPEED đã được BattleState.getActionOrder() sắp xếp.
+     */
+    private int getRoundOneActionPriority(BattleUnitState unit) {
+        if (!"gojo".equalsIgnoreCase(unit.getHeroCode())) {
+            return 2;
+        }
+        return unit.getTeam() == BattleTeam.PLAYER ? 0 : 1;
     }
 
     private void initializeBattlePassives(BattleState battle) {
