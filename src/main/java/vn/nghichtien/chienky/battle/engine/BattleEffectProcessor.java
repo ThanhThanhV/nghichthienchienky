@@ -6,6 +6,7 @@ import vn.nghichtien.chienky.battle.domain.*;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Điều phối thực thi các hiệu ứng của kỹ năng.

@@ -48,13 +48,15 @@ public class PveCampaignService {
             highestUnlocked++;
         }
 
+        final int maxUnlocked = highestUnlocked;
+
         var stages = campaignCatalog.getAll().stream()
                 .map(stage -> new PveCampaignOverviewDTO.StageDTO(
                         stage.stageNumber(),
                         stage.stageCode(),
                         stage.stageName(),
                         stage.description(),
-                        stage.stageNumber() <= highestUnlocked,
+                        stage.stageNumber() <= maxUnlocked,
                         clearedStages.contains(stage.stageNumber()),
                         stage.goldReward(),
                         stage.playerExpReward()
