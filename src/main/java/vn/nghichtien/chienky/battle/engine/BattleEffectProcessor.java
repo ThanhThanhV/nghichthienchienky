@@ -821,7 +821,7 @@ public class BattleEffectProcessor {
 
         if (effect.multiplier().compareTo(BigDecimal.ONE) > 0) {
             throw new IllegalArgumentException(
-                    "EVASION/BLOCK multiplier must not exceed 1"
+                    "EVASION/BLOCK/REFLECT multiplier must not exceed 1"
             );
         }
 
