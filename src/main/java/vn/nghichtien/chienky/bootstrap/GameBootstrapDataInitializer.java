@@ -70,14 +70,33 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
         validateSkillAnimationCatalog(seeds, spineCatalog, animationConfigCatalog);
         List<String> heroCodes = seeds.stream().map(HeroSeed::code).toList();
 
-        // Đồng bộ cấu hình tướng/kỹ năng mà không xóa dữ liệu người chơi
-        // hoặc ghi đè các hiệu ứng đã được quản trị viên cấu hình.
+        // Tái tạo định nghĩa kỹ năng Gojo từ đầu mỗi lần khởi động.
+        // Chỉ xóa liên kết kỹ năng và skill data của Gojo, không xóa dữ liệu
+        // tài khoản, bản sao tướng, chỉ số hoặc đội hình người chơi.
+        resetGojoSkillSeed();
+
         for (int i = 0; i < seeds.size(); i++) {
             seedHero(seeds.get(i), i + 1, spineCatalog, animationConfigCatalog);
         }
 
         // Gắn lại 5 kỹ năng cấp 1 cho mọi bản sao tướng người chơi đang sở hữu.
         rebuildOwnedHeroSkills(heroCodes);
+    }
+
+    private void resetGojoSkillSeed() {
+        List<String> gojoCodes = List.of("gojo");
+        heroInstanceSkillRepository
+                .deleteAllBySkillDefinitionHeroDefinitionHeroCodeIn(gojoCodes);
+        heroInstanceSkillRepository.flush();
+
+        // Load effects để cascade remove xóa cả hero_skill_effects.
+        List<HeroSkillDefinition> oldSkills =
+                heroSkillDefinitionRepository
+                        .findAllByHeroDefinitionHeroCodeOrderBySkillOrderAsc("gojo");
+        if (!oldSkills.isEmpty()) {
+            heroSkillDefinitionRepository.deleteAll(oldSkills);
+            heroSkillDefinitionRepository.flush();
+        }
     }
 
     private void rebuildOwnedHeroSkills(List<String> heroCodes) {
@@ -202,8 +221,8 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
 
     /**
      * Kiểm tra catalog animation phải khớp chính xác skillCode mà seedSkills tạo ra.
-     * Đặc biệt Gojo chỉ có ACTIVE ở slot 2; các slot còn lại là PASSIVE.
-     * Nếu mapping lệch, dừng khởi động thay vì lưu cấu hình thiếu và làm mất animation.
+     * Kỹ năng chủ động phải có mapping animation; PASSIVE không cần animation cast.
+     * Nếu mapping lệch, dừng khởi động thay vì lưu cấu hình thiếu.
      */
     private void validateSkillAnimationCatalog(
             List<HeroSeed> seeds,
@@ -241,9 +260,10 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
             for (int index = 0; index < seed.skills().size(); index++) {
                 int order = index + 1;
                 SkillSeed skill = seed.skills().get(index);
-                String skillType = "gojo".equalsIgnoreCase(seed.code())
-                        ? (order == 2 ? "ACTIVE" : "PASSIVE")
-                        : skill.type();
+                String skillType = skill.type();
+                if ("PASSIVE".equalsIgnoreCase(skillType)) {
+                    continue;
+                }
                 String skillCode = seed.code().toUpperCase(java.util.Locale.ROOT)
                         + "_" + skillType + "_" + order;
                 JsonNode animation = animations.get(skillCode);
@@ -414,9 +434,7 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
         for (int i = 0; i < seed.skills().size(); i++) {
             int order = i + 1;
             SkillSeed skillSeed = seed.skills().get(i);
-            String skillType = "gojo".equalsIgnoreCase(definition.getHeroCode())
-                    ? (order == 2 ? "ACTIVE" : "PASSIVE")
-                    : skillSeed.type();
+            String skillType = skillSeed.type();
             HeroSkillDefinition skill = skillsByOrder.get(order);
 
             if (skill == null) {
@@ -433,15 +451,15 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                 skillsByOrder.put(order, skill);
             } else {
                 skill.changeEnabled(true);
-                if ("gojo".equalsIgnoreCase(definition.getHeroCode())) {
-                    // Gojo chỉ có một ACTIVE; bốn kỹ năng còn lại đều là PASSIVE.
-                    skill.changeSkillType(skillType);
-                }
+                skill.changeSkillType(skillType);
+                skill.updateInformation(
+                        skillSeed.name(),
+                        "Kỹ năng khởi tạo của " + seed.name() + ".",
+                        skill.getIconCode()
+                );
             }
 
-            // Không sinh BASIC/ULTIMATE DAMAGE mặc định cho Gojo.
-            // Sát thương duy nhất của Gojo đến từ nội tại phản kích.
-            if (!"gojo".equalsIgnoreCase(definition.getHeroCode())) {
+            if (!"PASSIVE".equalsIgnoreCase(skillType)) {
                 if (order == 1 && skill.getEffects().isEmpty()) {
                     addDamageEffect(skill, "FRONT", "1.0");
                 } else if (order == 2 && skill.getEffects().isEmpty()) {
@@ -452,123 +470,8 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
             }
         }
 
-        if ("gojo".equalsIgnoreCase(definition.getHeroCode())) {
-            seedGojoInfinityEffects(skillsByOrder);
-        }
 
         if (!skillsToSave.isEmpty()) heroSkillDefinitionRepository.saveAllAndFlush(skillsToSave);
-    }
-
-    /**
-     * Bổ sung cấu hình mặc định cho Gojo mà không ghi đè các hiệu ứng
-     * đã được quản trị viên cấu hình. Mỗi hiệu ứng có bootstrapKey riêng
-     * để việc khởi tạo có thể chạy lặp lại an toàn.
-     */
-    private void seedGojoInfinityEffects(
-            Map<Integer, HeroSkillDefinition> skillsByOrder
-    ) {
-        // Xóa các đòn DAMAGE mặc định/cũ khỏi cả năm kỹ năng Gojo.
-        // Phản Kích là hiệu ứng COUNTER, không phải đòn BASIC/ULTIMATE.
-        for (HeroSkillDefinition skill : skillsByOrder.values()) {
-            List.copyOf(skill.getEffects()).stream()
-                    .filter(effect -> {
-                        String type = effect.getEffectType();
-                        boolean damageEffect =
-                                BattleEffectType.DAMAGE.name().equalsIgnoreCase(type)
-                                || BattleEffectType.DOT.name().equalsIgnoreCase(type)
-                                || BattleEffectType.REFLECT.name().equalsIgnoreCase(type);
-                        boolean counterOnWrongSkill =
-                                BattleEffectType.COUNTER.name().equalsIgnoreCase(type)
-                                && !Integer.valueOf(4).equals(skill.getSkillOrder());
-                        return damageEffect || counterOnWrongSkill;
-                    })
-                    .forEach(skill::removeEffect);
-        }
-
-        HeroSkillDefinition infinity = skillsByOrder.get(2);
-        if (infinity != null) {
-            // Chỉ đổi tên mặc định cũ; giữ nguyên tên do quản trị viên tự đặt.
-            if ("Lam".equals(infinity.getSkillName())) {
-                infinity.updateInformation(
-                        "Vô Hạ Hạn",
-                        infinity.getDescription(),
-                        infinity.getIconCode()
-                );
-            }
-
-            addGojoEffectIfMissing(
-                    infinity,
-                    "GOJO_INFINITY_DEF",
-                    BattleEffectType.BUFF,
-                    "SELF",
-                    "0.5",
-                    20,
-                    "{\"statType\":\"DEF\"}"
-            );
-            addGojoEffectIfMissing(
-                    infinity,
-                    "GOJO_INFINITY_CC_IMMUNITY",
-                    BattleEffectType.IMMUNITY,
-                    "SELF",
-                    "0",
-                    20,
-                    "{\"immunityType\":\"CC\"}"
-            );
-        }
-
-        HeroSkillDefinition sixEyes = skillsByOrder.get(4);
-        if (sixEyes != null && sixEyes.getEffects().stream()
-                .noneMatch(effect -> BattleEffectType.COUNTER.name()
-                        .equalsIgnoreCase(effect.getEffectType()))) {
-            addGojoEffectIfMissing(
-                    sixEyes,
-                    "GOJO_SIX_EYES_COUNTER",
-                    BattleEffectType.COUNTER,
-                    "FRONT",
-                    "1.0",
-                    null,
-                    "{\"trigger\":\"ON_DAMAGED\"}"
-            );
-        }
-    }
-
-    private void addGojoEffectIfMissing(
-            HeroSkillDefinition skill,
-            String bootstrapKey,
-            BattleEffectType effectType,
-            String targetType,
-            String multiplier,
-            Integer duration,
-            String config
-    ) {
-        String marker = "\"bootstrapKey\":\"" + bootstrapKey + "\"";
-        boolean alreadySeeded = skill.getEffects().stream()
-                .anyMatch(effect -> effect.getConfigJson() != null
-                        && effect.getConfigJson().contains(marker));
-
-        if (alreadySeeded) {
-            return;
-        }
-
-        int nextOrder = skill.getEffects().stream()
-                .map(HeroSkillEffect::getEffectOrder)
-                .filter(order -> order != null)
-                .max(Integer::compareTo)
-                .orElse(0) + 1;
-
-        HeroSkillEffect effect = new HeroSkillEffect(
-                nextOrder,
-                effectType.name(),
-                BattleTargetMode.valueOf(targetType).name()
-        );
-        effect.updateParameters(
-                new BigDecimal(multiplier),
-                BigDecimal.ONE,
-                duration
-        );
-        effect.updateConfig(config.substring(0, config.length() - 1)
-                + ",\"bootstrapKey\":\"" + bootstrapKey + "\"}");
-        skill.addEffect(effect);
     }
 
     private void addDamageEffect(HeroSkillDefinition skill, String targetType, String multiplier) {
