@@ -66,6 +66,7 @@ public class BattleTargetSelector {
             case FRONT -> selectRow(candidates, true);
             case FRONT_AND_MIDDLE -> selectFirstRows(candidates, 2);
             case BACK -> selectRow(candidates, false);
+            case LOWEST_HP_BACK -> selectLowestHpBackRow(candidates);
             case MOST_POPULATED_ROW -> selectMostPopulatedRow(candidates);
             case HIGHEST_ATK_3 -> selectTopByAttack(candidates, 3);
             case LOWEST_HP -> selectOne(candidates,
@@ -105,6 +106,22 @@ public class BattleTargetSelector {
                 .sorted(Comparator.comparingInt(BattleUnitState::getRow)
                         .thenComparingInt(BattleUnitState::getColumn))
                 .toList();
+    }
+
+    private List<BattleUnitState> selectLowestHpBackRow(
+            List<BattleUnitState> candidates
+    ) {
+        int backRow = candidates.stream()
+                .mapToInt(BattleUnitState::getRow)
+                .max()
+                .orElseThrow();
+        List<BattleUnitState> backRowCandidates = candidates.stream()
+                .filter(unit -> unit.getRow() == backRow)
+                .toList();
+        return selectOne(
+                backRowCandidates,
+                Comparator.comparing(BattleUnitState::getCurrentHp)
+        );
     }
 
     private List<BattleUnitState> selectMostPopulatedRow(
