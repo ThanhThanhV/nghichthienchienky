@@ -405,36 +405,16 @@ window.SPINE_EFFECT_CONFIG = {
                     impactRatio: 0.2
                 }
             },
-            GOJO_ACTIVE_2: {
-                // Vô Hạ Hạn: bộ effect 11014, gồm cast và ba nhịp impact.
-                cast: {
-                    code: "gojo_infinity_active_cast",
-                    file: "seffect_52517111014",
-                    animation: "animation_0",
-                    impactEvent: "qishou_31_1_1",
-                    impactEvents: ["qishou_31_1_1"],
-                    anchor: "source",
-                    impactRatio: 0.7
-                },
-                impact: {
-                    code: "gojo_infinity_active_impact",
-                    file: "seffect_52517111014",
-                    animation: "animation_1",
-                    impactEvent: "hit_31_3_3",
-                    impactEvents: [
-                        "hit_31_3_3",
-                        "hit_31_3_2",
-                        "hit_31_3_1"
-                    ],
-                    anchor: "enemy_formation",
-                    impactRatio: 0.25
-                }
-            },
-            // Không khai báo cast effect riêng cho Gojo PASSIVE.
-            // seffect_52517111012 thực chất là một bản skeleton Gojo đầy đủ
-            // (cùng kích thước/bộ xương với sanim_525171), phát song song sẽ
-            // tạo ra hai hình Gojo chồng lên nhau. Animation ultimateskill
-            // trên skeleton nhân vật đã là hình ảnh phản kích cần dùng.
+            // GOJO_ACTIVE_2 (Vô Hạ Hạn) dùng animation "superskill" trực tiếp
+            // trên skeleton sanim_525171, không phát effect skeleton chồng lớp.
+            //
+            // Không gán seffect_52517111014 cho ACTIVE_2: asset này phát
+            // qishou_31_1_1 và hit_31_3_3..1, tức nhịp kỹ năng 3, không phải 2.
+            // seffect_52517111012/11013 có gần như đầy đủ rig Gojo
+            // (82-84 bones, 47-48 slots), nên cũng không thể render như VFX rời.
+            //
+            // Không khai báo cast effect riêng cho Gojo PASSIVE/counter:
+            // phản kích dùng animation ultimateskill trên skeleton nhân vật.
             IORI_DARK_BASIC_1: {
                 // Iori Dark dùng bộ cast riêng (sanim_515151_1):
                 // qishou_1_1_1; impact hit tương ứng dùng asset hit riêng hiện có.
