@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080d18">
+    <title>Hero Animation Inspector - Nghịch Thiên Chiến Ký</title>
+    <link rel="stylesheet" th:href="@{/css/spine/hero-animation-inspector.css}">
+    <script th:src="@{/lib/spine/spine-runtime-3.5/spine-ts/build/spine-webgl.js}"></script>
+    <script th:src="@{/js/spine/SpineAnimationController.js}"></script>
+    <script th:src="@{/js/spine/SpineCharacter.js}"></script>
+    <script th:src="@{/js/spine/SpineManager.js}"></script>
+    <script th:src="@{/js/spine/HeroAnimationInspector.js}" defer></script>
+</head>
+<body>
+<main class="hero-inspector">
+    <header class="inspector-header">
+        <a href="/admin">← TRUNG TÂM QUẢN TRỊ</a>
+        <p class="eyebrow">SPINE ASSET TOOLS</p>
+        <h1>HERO ANIMATION INSPECTOR</h1>
+        <p>Kiểm tra animation gốc trong từng thư mục heroes. Thứ tự được sắp xếp tự nhiên và đánh số lại từ 1 cho từng bộ asset. Không tự gán tên animation thành kỹ năng.</p>
+    </header>
+
+    <div class="inspector-layout">
+        <aside class="hero-sidebar">
+            <div class="sidebar-heading">
+                <strong>DANH SÁCH TƯỚNG</strong>
+                <span id="heroCount">Đang tải...</span>
+            </div>
+            <input id="heroSearch" type="search" placeholder="Tìm thư mục tướng...">
+            <div id="heroList" class="hero-list"></div>
+        </aside>
+
+        <section class="inspector-content">
+            <section class="preview-panel">
+                <div class="preview-heading">
+                    <div>
+                        <span class="eyebrow">ĐANG KIỂM TRA</span>
+                        <h2 id="selectedHero">Chọn một tướng</h2>
+                        <p id="selectedAsset">Chưa chọn skeleton</p>
+                    </div>
+                    <label class="asset-picker">Bộ skeleton
+                        <select id="assetSelect" disabled></select>
+                    </label>
+                </div>
+                <div class="preview-stage">
+                    <canvas id="heroCanvas"></canvas>
+                    <div id="previewPlaceholder">Chọn tướng để tải Spine skeleton</div>
+                </div>
+                <div id="previewStatus" class="preview-status" role="status">Đang tải danh sách thư mục heroes...</div>
+                <div class="toolbar">
+                    <button id="playButton" disabled>Phát</button>
+                    <button id="pauseButton" disabled>Tạm dừng</button>
+                    <button id="restartButton" disabled>Phát lại</button>
+                    <button id="centerButton" disabled>Căn giữa</button>
+                    <label><input id="loopInput" type="checkbox" checked> Lặp</label>
+                    <label>Tốc độ <input id="speedInput" type="range" min="0.1" max="3" step="0.1" value="1"><span id="speedValue">1.0x</span></label>
+                    <label>Kích thước <input id="scaleInput" type="range" min="0.05" max="1.5" step="0.05" value="0.35"><span id="scaleValue">0.35</span></label>
+                    <label><input id="debugInput" type="checkbox"> Bones</label>
+                </div>
+            </section>
+
+            <section class="animation-panel">
+                <div class="animation-heading">
+                    <div>
+                        <h2>Danh sách animation</h2>
+                        <p id="animationCount">Chọn một bộ skeleton để xem danh sách.</p>
+                    </div>
+                    <span class="sort-note">SẮP XẾP TĂNG DẦN · STT BẮT ĐẦU TỪ 1</span>
+                </div>
+                <div id="animationList" class="animation-list">
+                    <div class="empty-state">Chưa có animation được tải.</div>
+                </div>
+            </section>
+        </section>
+    </div>
+</main>
+</body>
+</html>
