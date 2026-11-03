@@ -1072,3 +1072,39 @@ body {
     background: #8493aa;
     border-color: #eef3fb;
 }
+
+
+/* Apply the clean HUD even before the Spine canvas is marked active. */
+.battle-team .unit-info,
+.battle-team .hp-bar,
+.battle-team .hp-text {
+    display: none !important;
+}
+.battle-team .unit-effects {
+    position: absolute;
+    z-index: 8;
+    top: 4px;
+    left: 50%;
+    right: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    width: max-content;
+    max-width: 92%;
+    transform: translateX(-50%);
+    pointer-events: none;
+}
+.battle-team .unit-effect-badge {
+    flex: 0 0 7px;
+    width: 7px;
+    height: 7px;
+    min-width: 7px;
+    max-width: 7px;
+    padding: 0;
+    border-radius: 50%;
+    font-size: 0;
+    line-height: 0;
+    text-indent: -9999px;
+}
