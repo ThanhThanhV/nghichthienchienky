@@ -145,7 +145,9 @@ public class DatabaseSkillExecutor {
                 continue;
             }
 
-            recordPassiveActivation(battle, source, skill, trigger);
+            recordPassiveActivation(
+                    battle, source, skill, trigger, counterTargetInstanceId
+            );
             effectProcessor.executeEffects(
                     battle,
                     source,
@@ -363,14 +365,20 @@ public class DatabaseSkillExecutor {
             BattleState battle,
             BattleUnitState source,
             HeroSkillDefinition skill,
-            BattlePassiveTrigger trigger
+            BattlePassiveTrigger trigger,
+            Long counterTargetInstanceId
     ) {
+        BattleUnitState counterTarget = trigger == BattlePassiveTrigger.ON_DAMAGED
+                && counterTargetInstanceId != null
+                ? battle.findUnit(counterTargetInstanceId)
+                : null;
+
         battle.getEventCollector().record(
                 BattleEventType.PASSIVE,
                 source.getTeam().name(),
                 source.getInstanceId(),
-                null,
-                null,
+                counterTarget == null ? null : counterTarget.getTeam().name(),
+                counterTarget == null ? null : counterTarget.getInstanceId(),
                 skill.getSkillCode(),
                 null,
                 false,
