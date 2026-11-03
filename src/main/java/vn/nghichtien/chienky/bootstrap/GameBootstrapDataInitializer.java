@@ -138,6 +138,7 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                 skill.updateInformation(skillSeed.name(),
                         "Kỹ năng khởi tạo của " + seed.name() + ".", null);
                 skillsToSave.add(skill);
+                skillsByOrder.put(order, skill);
             } else {
                 skill.changeEnabled(true);
             }
