@@ -66,3 +66,5 @@ tbody tr:hover{background:rgba(82,102,141,.1)}
 @media(max-width:900px){.form-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.stats-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.skill-fields,.effect-fields{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.admin-shell{padding:15px 10px calc(25px + env(safe-area-inset-bottom))}.admin-header{align-items:stretch;flex-direction:column}.admin-header .primary-button{width:100%}.admin-tabs{overflow:auto}.admin-tabs a{white-space:nowrap}.panel{padding:13px}.toolbar{grid-template-columns:1fr}.form-grid,.stats-grid,.skill-fields,.effect-fields{grid-template-columns:repeat(2,minmax(0,1fr))}.form-grid .wide,.skill-fields .wide,.effect-fields .wide{grid-column:1/-1}.skill-card{padding:10px}.skill-heading{align-items:start;flex-direction:column}.save-footer .primary-button{width:100%}}
 @media(max-width:370px){.form-grid,.stats-grid,.skill-fields,.effect-fields{grid-template-columns:1fr}.form-grid .wide,.skill-fields .wide,.effect-fields .wide{grid-column:auto}}
+
+.message.success{border-color:#3c8c63;background:#142d25;color:#a6efc1}
