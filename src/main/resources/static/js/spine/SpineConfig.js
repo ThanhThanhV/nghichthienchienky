@@ -153,7 +153,36 @@
             // (có thể trùng mã asset giữa Iori và Iori Dark) ghi đè mapping chuẩn.
             const heroCode = String(unit?.heroCode || "").trim().toLowerCase();
             if (heroCode && characters[heroCode]) {
-                return characters[heroCode];
+                const configured = characters[heroCode];
+                let databaseAnimations = unit?.spineSkillAnimations || {};
+                if (typeof databaseAnimations === "string") {
+                    try {
+                        databaseAnimations = JSON.parse(databaseAnimations);
+                    } catch (error) {
+                        console.warn("Không đọc được mapping animation từ database:", error);
+                        databaseAnimations = {};
+                    }
+                }
+                if (!databaseAnimations || typeof databaseAnimations !== "object" ||
+                    Array.isArray(databaseAnimations)) {
+                    databaseAnimations = {};
+                }
+
+                const basicAttackConfig = databaseAnimations._BASIC_ATTACK || {};
+                const basicAttackMovement = String(
+                    basicAttackConfig.movement || "DASH"
+                ).trim().toUpperCase();
+
+                return {
+                    ...configured,
+                    skillAnimations: {
+                        ...configured.skillAnimations,
+                        ...databaseAnimations
+                    },
+                    basicAttackMovement: ["DASH", "STATIONARY"].includes(basicAttackMovement)
+                        ? basicAttackMovement
+                        : "DASH"
+                };
             }
 
             // Tướng mới cấu hình trực tiếp trong database vẫn được hỗ trợ.
@@ -187,6 +216,9 @@
                         skillAnimations: skillAnimations && typeof skillAnimations === "object"
                             ? skillAnimations
                             : {},
+                        basicAttackMovement: ["DASH", "STATIONARY"].includes(
+                            String(skillAnimations?._BASIC_ATTACK?.movement || "DASH").toUpperCase()
+                        ) ? String(skillAnimations?._BASIC_ATTACK?.movement || "DASH").toUpperCase() : "DASH",
                         scale: 0.16,
                         displayScale: 0.45,
                         offsetX: 0,
