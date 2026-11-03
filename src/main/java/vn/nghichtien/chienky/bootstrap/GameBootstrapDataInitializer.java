@@ -2,9 +2,11 @@ package vn.nghichtien.chienky.bootstrap;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import vn.nghichtien.chienky.battle.domain.BattleEffectType;
@@ -25,9 +27,11 @@ import vn.nghichtien.chienky.hero.repository.HeroSkillDefinitionRepository;
 import vn.nghichtien.chienky.hero.repository.HeroSkillUpgradeConfigRepository;
 import vn.nghichtien.chienky.hero.repository.HeroSkillUpgradeCostRepository;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -69,6 +73,7 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
     @Transactional
     public void run(ApplicationArguments args) {
         List<HeroSeed> seeds = heroSeeds();
+        JsonNode spineCatalog = loadSpineMappingCatalog();
         List<String> heroCodes = seeds.stream().map(HeroSeed::code).toList();
 
         // Tạm thời reset dữ liệu kỹ năng của 10 tướng seed mỗi lần khởi động.
@@ -77,7 +82,7 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
         resetSeededSkillData(heroCodes);
 
         for (int i = 0; i < seeds.size(); i++) {
-            seedHero(seeds.get(i), i + 1);
+            seedHero(seeds.get(i), i + 1, spineCatalog);
         }
 
         // Gắn lại 5 kỹ năng cấp 1 cho mọi bản sao tướng người chơi đang sở hữu.
@@ -138,7 +143,7 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
         }
     }
 
-    private void seedHero(HeroSeed seed, int sortOrder) {
+    private void seedHero(HeroSeed seed, int sortOrder, JsonNode spineCatalog) {
         HeroDefinition definition = heroDefinitionRepository.findById(seed.code())
                 .orElseGet(() -> createDefinition(seed, sortOrder));
 
@@ -148,7 +153,7 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                 avatarCode == null || avatarCode.isBlank() ? seed.code() : avatarCode,
                 spineSkeleton == null || spineSkeleton.isBlank() ? seed.code() : spineSkeleton
         );
-        ensureBasicAttackDash(definition);
+        applySpineMapping(definition, spineCatalog.path("heroes").path(seed.code()));
         if (definition.getSortOrder() == null || definition.getSortOrder() == 0) {
             definition.changeSortOrder(sortOrder);
         }
@@ -160,42 +165,111 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
     }
 
     /**
-     * Đặt kiểu đánh thường mặc định DASH cho các tướng hiện có.
-     * Chỉ bổ sung khi chưa có cấu hình movement, không ghi đè lựa chọn
-     * đã được quản trị viên lưu và không làm mất mapping animation khác.
+     * Đọc catalog Spine được lưu cùng static resources.
+     * Catalog là nguồn seed duy nhất cho mapping animation và VFX của 10 tướng.
      */
-    private void ensureBasicAttackDash(HeroDefinition definition) {
-        String currentConfig = definition.getSpineSkillAnimations();
-        ObjectNode animations;
-
-        try {
-            if (currentConfig == null || currentConfig.isBlank()) {
-                animations = objectMapper.createObjectNode();
-            } else {
-                JsonNode parsed = objectMapper.readTree(currentConfig);
-                if (parsed == null || !parsed.isObject()) {
-                    return;
-                }
-                animations = (ObjectNode) parsed.deepCopy();
+    private JsonNode loadSpineMappingCatalog() {
+        try (var input = new ClassPathResource(
+                "static/spine/hero-skill-mapping.json"
+        ).getInputStream()) {
+            JsonNode catalog = objectMapper.readTree(input);
+            if (catalog == null || !catalog.path("heroes").isObject()) {
+                throw new IllegalStateException(
+                        "Catalog Spine không có cấu trúc heroes hợp lệ"
+                );
             }
-
-            JsonNode basicAttack = animations.get("_BASIC_ATTACK");
-            if (basicAttack != null && basicAttack.isObject()
-                    && basicAttack.hasNonNull("movement")) {
-                return;
-            }
-
-            ObjectNode basicAttackConfig = basicAttack != null && basicAttack.isObject()
-                    ? (ObjectNode) basicAttack
-                    : objectMapper.createObjectNode();
-            basicAttackConfig.put("movement", "DASH");
-            animations.set("_BASIC_ATTACK", basicAttackConfig);
-            definition.updateSpineSkillAnimations(
-                    objectMapper.writeValueAsString(animations)
+            return catalog;
+        } catch (IOException exception) {
+            throw new IllegalStateException(
+                    "Không thể đọc catalog Spine hero-skill-mapping.json",
+                    exception
             );
+        }
+    }
+
+    /**
+     * Seed asset và toàn bộ mapping Spine vào HeroDefinition.
+     * Frontend chỉ cần đọc spineSkeleton/spineAtlas/spineTextures và
+     * spineSkillAnimations từ DTO, không tự ghép mapping mặc định nữa.
+     */
+    private void applySpineMapping(
+            HeroDefinition definition,
+            JsonNode heroMapping
+    ) {
+        if (heroMapping == null || !heroMapping.isObject()) {
+            throw new IllegalStateException(
+                    "Thiếu mapping Spine cho tướng " + definition.getHeroCode()
+            );
+        }
+
+        JsonNode asset = heroMapping.path("asset");
+        String folder = asset.path("folder").asText("");
+        String base = asset.path("base").asText("");
+        JsonNode textureFiles = asset.path("textures");
+        if (folder.isBlank() || base.isBlank()
+                || !textureFiles.isArray() || textureFiles.isEmpty()) {
+            throw new IllegalStateException(
+                    "Asset Spine không hợp lệ cho tướng " + definition.getHeroCode()
+            );
+        }
+
+        String assetBaseUrl = "/assets/spine/heroes/" + folder + "/" + base;
+        ArrayNode textureUrls = objectMapper.createArrayNode();
+        textureFiles.forEach(texture -> textureUrls.add(
+                "/assets/spine/heroes/" + folder + "/" + texture.asText()
+        ));
+        definition.updateSpineAssets(
+                assetBaseUrl + ".json",
+                assetBaseUrl + ".atlas",
+                writeJson(textureUrls)
+        );
+
+        ObjectNode skillAnimations = objectMapper.createObjectNode();
+        JsonNode animationMappings = heroMapping.path("skillAnimations");
+        if (!animationMappings.isObject()) {
+            throw new IllegalStateException(
+                    "Thiếu skillAnimations cho tướng " + definition.getHeroCode()
+            );
+        }
+
+        Iterator<Map.Entry<String, JsonNode>> animationFields =
+                animationMappings.fields();
+        while (animationFields.hasNext()) {
+            Map.Entry<String, JsonNode> field = animationFields.next();
+            skillAnimations.set(
+                    field.getKey(),
+                    objectMapper.createObjectNode().put(
+                            "animation",
+                            field.getValue().asText()
+                    )
+            );
+        }
+
+        for (String key : List.of(
+                "_BASIC_ATTACK",
+                "_SKILL_EFFECTS",
+                "_SKILL_EFFECT_ALIASES",
+                "_SPINE_EFFECT_BASE_PATH",
+                "_SPINE_EFFECT_TEXTURE_PAGES",
+                "_SPINE_EFFECT_DEFAULTS"
+        )) {
+            JsonNode value = heroMapping.get(key);
+            if (value != null) {
+                skillAnimations.set(key, value.deepCopy());
+            }
+        }
+
+        definition.updateSpineSkillAnimations(writeJson(skillAnimations));
+    }
+
+    private String writeJson(JsonNode value) {
+        try {
+            return objectMapper.writeValueAsString(value);
         } catch (com.fasterxml.jackson.core.JsonProcessingException exception) {
-            // Không ghi đè mapping cũ nếu JSON hiện tại không hợp lệ.
-            // Frontend vẫn mặc định DASH khi không đọc được movement.
+            throw new IllegalStateException(
+                    "Không thể serialize Spine mapping cho database",
+                    exception
+            );
         }
     }
 
