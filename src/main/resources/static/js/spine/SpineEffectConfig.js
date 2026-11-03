@@ -383,7 +383,18 @@ window.SPINE_EFFECT_CONFIG = {
                 }
             },
             GOJO_BASIC_1: {
-                // animation_1 chứa hit_11_1_1 tại 0.1s.
+                // Bộ 11011 có hai animation độc lập:
+                // animation_0 phát qishou_1_1_1 khi Gojo khởi chiêu,
+                // animation_1 phát hit_11_1_1 tại mục tiêu.
+                cast: {
+                    code: "gojo_basic_cast",
+                    file: "seffect_52517111011",
+                    animation: "animation_0",
+                    impactEvent: "qishou_1_1_1",
+                    impactEvents: ["qishou_1_1_1"],
+                    anchor: "source",
+                    impactRatio: 0.2
+                },
                 impact: {
                     code: "gojo_basic_impact",
                     file: "seffect_52517111011",
