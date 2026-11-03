@@ -40,8 +40,13 @@ Các trigger đều do Java tự kiểm tra; client không gửi yêu cầu kíc
 - `SELF`: chỉ chính nhân vật kích hoạt.
 - `RANDOM`: một mục tiêu ngẫu nhiên.
 - `FRONT`: hàng trước.
+- `FRONT_AND_MIDDLE`: hai hàng đầu tiên (hàng trước và hàng giữa).
+- `BACK`: hàng sau.
+- `RANDOM_2`, `RANDOM_3`: chọn ngẫu nhiên tối đa 2 hoặc 3 mục tiêu.
 - `LOWEST_HP`: mục tiêu có HP hiện tại thấp nhất.
 - `HIGHEST_ATK`: mục tiêu có ATK cao nhất.
+- `HIGHEST_ATK_3`: tối đa 3 mục tiêu có ATK cao nhất.
+- `MOST_POPULATED_ROW`: hàng có nhiều đơn vị còn sống nhất; nếu hòa chọn hàng trước.
 - `ALL_ENEMIES`: toàn bộ đối thủ (với BUFF/HEAL/SHIELD, engine áp dụng cho toàn bộ đồng minh).
 
 Với BUFF/HEAL/SHIELD/IMMUNITY/DISPEL, engine chọn mục tiêu cùng đội. Với DAMAGE/DEBUFF/CC, engine chọn mục tiêu đối phương. `SELF` luôn chọn chính nhân vật sở hữu nội tại.
