@@ -454,12 +454,6 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                 skillsByOrder.put(order, skill);
             } else {
                 skill.changeEnabled(true);
-                skill.changeSkillType(skillType);
-                skill.updateInformation(
-                        skillSeed.name(),
-                        "Kỹ năng khởi tạo của " + seed.name() + ".",
-                        skill.getIconCode()
-                );
             }
 
             if (!"PASSIVE".equalsIgnoreCase(skillType)) {
