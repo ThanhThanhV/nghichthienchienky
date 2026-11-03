@@ -30,6 +30,12 @@ public interface HeroInstanceRepository extends JpaRepository<HeroInstance, Long
     );
 
     /**
+     * Lấy tất cả bản sao của một loại nhân vật.
+     * Dùng khi bootstrap cần bổ sung các liên kết kỹ năng còn thiếu.
+     */
+    List<HeroInstance> findAllByHeroDefinitionHeroCode(String heroCode);
+
+    /**
      * Lấy chi tiết nhân vật thuộc đúng người chơi.
      *
      * @param id ID bản sao nhân vật
