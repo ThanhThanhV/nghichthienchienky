@@ -9,6 +9,7 @@ import vn.nghichtien.chienky.battle.domain.BattleTeam;
 import vn.nghichtien.chienky.battle.domain.BattleUnitState;
 import vn.nghichtien.chienky.battle.dto.BattleEventDTO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -358,6 +359,7 @@ public class BattleTurnProcessor {
             BattleState battle,
             List<BattleEventDTO> events
     ) {
+        List<BattleUnitState> pendingExtraActions = new ArrayList<>();
         for (BattleEventDTO event : events) {
             if (battle.isFinished()) {
                 return;
@@ -376,7 +378,7 @@ public class BattleTurnProcessor {
                                 BattlePassiveTrigger.ON_DAMAGED,
                                 event.sourceInstanceId()
                         );
-                        executePendingExtraAction(battle, damaged);
+                        pendingExtraActions.add(damaged);
                     }
                 }
             }
@@ -387,9 +389,18 @@ public class BattleTurnProcessor {
                     skillExecutor.executePassives(
                             battle, killer, BattlePassiveTrigger.ON_KILL
                     );
-                    executePendingExtraAction(battle, killer);
+                    pendingExtraActions.add(killer);
                 }
             }
+        }
+
+        // Chỉ chạy hành động bổ sung sau khi duyệt xong snapshot sự kiện,
+        // tránh sửa EventCollector khi đang duyệt subList.
+        for (BattleUnitState unit : pendingExtraActions) {
+            if (battle.isFinished()) {
+                return;
+            }
+            executePendingExtraAction(battle, unit);
         }
     }
 }
