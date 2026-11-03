@@ -64,7 +64,10 @@ public class BattleTargetSelector {
             case RANDOM_2 -> selectRandom(candidates, 2);
             case RANDOM_3 -> selectRandom(candidates, 3);
             case FRONT -> selectRow(candidates, true);
+            case FRONT_AND_MIDDLE -> selectFirstRows(candidates, 2);
             case BACK -> selectRow(candidates, false);
+            case MOST_POPULATED_ROW -> selectMostPopulatedRow(candidates);
+            case HIGHEST_ATK_3 -> selectTopByAttack(candidates, 3);
             case LOWEST_HP -> selectOne(candidates,
                     Comparator.comparing(BattleUnitState::getCurrentHp));
             case LOWEST_HP_PERCENT -> selectOne(candidates, this::compareHpPercent);
@@ -85,6 +88,54 @@ public class BattleTargetSelector {
         List<BattleUnitState> shuffled = new ArrayList<>(candidates);
         java.util.Collections.shuffle(shuffled, ThreadLocalRandom.current());
         return List.copyOf(shuffled.subList(0, Math.min(requestedCount, shuffled.size())));
+    }
+
+    private List<BattleUnitState> selectFirstRows(
+            List<BattleUnitState> candidates,
+            int rowCount
+    ) {
+        List<Integer> rows = candidates.stream()
+                .map(BattleUnitState::getRow)
+                .distinct()
+                .sorted()
+                .limit(rowCount)
+                .toList();
+        return candidates.stream()
+                .filter(unit -> rows.contains(unit.getRow()))
+                .sorted(Comparator.comparingInt(BattleUnitState::getRow)
+                        .thenComparingInt(BattleUnitState::getColumn))
+                .toList();
+    }
+
+    private List<BattleUnitState> selectMostPopulatedRow(
+            List<BattleUnitState> candidates
+    ) {
+        int selectedRow = candidates.stream()
+                .map(BattleUnitState::getRow)
+                .distinct()
+                .min(Comparator
+                        .<Integer>comparingLong(row -> -candidates.stream()
+                                .filter(unit -> unit.getRow() == row)
+                                .count())
+                        .thenComparingInt(Integer::intValue))
+                .orElseThrow();
+        return candidates.stream()
+                .filter(unit -> unit.getRow() == selectedRow)
+                .sorted(Comparator.comparingInt(BattleUnitState::getColumn))
+                .toList();
+    }
+
+    private List<BattleUnitState> selectTopByAttack(
+            List<BattleUnitState> candidates,
+            int count
+    ) {
+        return candidates.stream()
+                .sorted(Comparator.comparing(
+                        BattleUnitState::getAttack
+                ).reversed().thenComparingInt(BattleUnitState::getRow)
+                        .thenComparingInt(BattleUnitState::getColumn))
+                .limit(count)
+                .toList();
     }
 
     private List<BattleUnitState> selectRow(
