@@ -148,20 +148,7 @@
           "icon": 3151411,
           "script": "$10#31514110&31514110"
         },
-        "ASUNA_DARK_PASSIVE_3": {
-          "tabGroupId": "315142",
-          "tabSkillId": "3151421",
-          "sourceHeroId": "31514",
-          "sourceHeroCode": "asuna_dark",
-          "runtimeSkillType": "PASSIVE",
-          "tabType": 3,
-          "tabSkillType": 3,
-          "name": "Ánh Sáng Lấp Lánh",
-          "description": "Asuna có vũ khí cấp tối đa xuất hiện ở Aincrad, tuyệt phẩm độc nhất vô nhị do Lisbeth tạo ra, HP tăng 20%, tấn công tăng 10%, tốc độ tăng 5",
-          "icon": 3151421,
-          "script": "null"
-        },
-        "ASUNA_DARK_ULTIMATE_4": {
+        "ASUNA_DARK_ULTIMATE_3": {
           "tabGroupId": "315143",
           "tabSkillId": "3151431",
           "sourceHeroId": "31514",
@@ -173,6 +160,19 @@
           "description": "Dồn lực đột kích kẻ địch phía trước, gây ra 248% sát thương vật lý lên kẻ địch có HP thấp nhất, nếu mục tiêu ở trạng thái {Mất HP} hàng loạt, nhất định bạo kích",
           "icon": 3151431,
           "script": "$24#31514310&31514310"
+        },
+        "ASUNA_DARK_PASSIVE_4": {
+          "tabGroupId": "315142",
+          "tabSkillId": "3151421",
+          "sourceHeroId": "31514",
+          "sourceHeroCode": "asuna_dark",
+          "runtimeSkillType": "PASSIVE",
+          "tabType": 3,
+          "tabSkillType": 3,
+          "name": "Ánh Sáng Lấp Lánh",
+          "description": "Asuna có vũ khí cấp tối đa xuất hiện ở Aincrad, tuyệt phẩm độc nhất vô nhị do Lisbeth tạo ra, HP tăng 20%, tấn công tăng 10%, tốc độ tăng 5",
+          "icon": 3151421,
+          "script": "null"
         },
         "ASUNA_DARK_PASSIVE_5": {
           "tabGroupId": "315144",
@@ -367,7 +367,20 @@
           "icon": 10002,
           "script": "$2#52517010"
         },
-        "GOJO_PASSIVE_2": {
+        "GOJO_ACTIVE_2": {
+          "tabGroupId": "525174",
+          "tabSkillId": "5251741",
+          "sourceHeroId": "52517",
+          "sourceHeroCode": "gojo",
+          "runtimeSkillType": "ACTIVE",
+          "tabType": 3,
+          "tabSkillType": 3,
+          "name": "Triển khai {Khoảng Trống Vô Tận}",
+          "description": "Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 15%",
+          "icon": 5251741,
+          "script": "$32?52517411"
+        },
+        "GOJO_PASSIVE_3": {
           "tabGroupId": "525171",
           "tabSkillId": "5251711",
           "sourceHeroId": "52517",
@@ -380,7 +393,7 @@
           "icon": 5251711,
           "script": "$32?52517110"
         },
-        "GOJO_PASSIVE_3": {
+        "GOJO_PASSIVE_4": {
           "tabGroupId": "525172",
           "tabSkillId": "5251721",
           "sourceHeroId": "52517",
@@ -393,7 +406,7 @@
           "icon": 5251721,
           "script": "null"
         },
-        "GOJO_PASSIVE_4": {
+        "GOJO_PASSIVE_5": {
           "tabGroupId": "525173",
           "tabSkillId": "5251731",
           "sourceHeroId": "52517",
@@ -405,19 +418,6 @@
           "description": "Khi bắt đầu chiến đấu, tăng cho bản thân 5 tầng miễn sát thương 3%, duy trì 4 lượt; khi địch tử vong, tăng cho bản thân 6% công, tối đa cộng dồn 3 tầng, tất cả trạng thái buff đều không thể thanh tẩy; khi đơn thể địch hồi sinh, truy sát mục tiêu, gây ra 10% sát thương ma pháp",
           "icon": 5251731,
           "script": "$32?52517311?52517311?52517311?52517311?52517311?52517310"
-        },
-        "GOJO_ACTIVE_5": {
-          "tabGroupId": "525174",
-          "tabSkillId": "5251741",
-          "sourceHeroId": "52517",
-          "sourceHeroCode": "gojo",
-          "runtimeSkillType": "ACTIVE",
-          "tabType": 3,
-          "tabSkillType": 3,
-          "name": "Triển khai {Khoảng Trống Vô Tận}",
-          "description": "Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 15%",
-          "icon": 5251741,
-          "script": "$32?52517411"
         }
       }
     },
@@ -619,20 +619,7 @@
           "icon": 5151511,
           "script": "$16#51515110&51515110"
         },
-        "IORI_PASSIVE_3": {
-          "tabGroupId": "515152",
-          "tabSkillId": "5151521",
-          "sourceHeroId": "51515",
-          "sourceHeroCode": "iori",
-          "runtimeSkillType": "PASSIVE",
-          "tabType": 3,
-          "tabSkillType": 3,
-          "name": "Sức Mạnh Thương Viêm",
-          "description": "Lửa sức mạnh của nhà Bát Thần, tấn công tăng 20%, HP tăng 10%, sau khi vào chiến đấu phòng thủ tăng thêm 5%",
-          "icon": 5151521,
-          "script": "$32?104005"
-        },
-        "IORI_ULTIMATE_4": {
+        "IORI_ULTIMATE_3": {
           "tabGroupId": "515153",
           "tabSkillId": "5151531",
           "sourceHeroId": "51515",
@@ -644,6 +631,19 @@
           "description": "Dùng {8 Ly Rượu} đánh úp đối thủ, {Yatagara} tiến đánh bằng vết móng xanh nóng, kỹ năng này bỏ qua khống chế, tăng 10% bạo kích, tạo 150% ST vật lý cho 3 mục tiêu lực công cao nhất của địch",
           "icon": 5151531,
           "script": "($32?51515310)($22#51515310)"
+        },
+        "IORI_PASSIVE_4": {
+          "tabGroupId": "515152",
+          "tabSkillId": "5151521",
+          "sourceHeroId": "51515",
+          "sourceHeroCode": "iori",
+          "runtimeSkillType": "PASSIVE",
+          "tabType": 3,
+          "tabSkillType": 3,
+          "name": "Sức Mạnh Thương Viêm",
+          "description": "Lửa sức mạnh của nhà Bát Thần, tấn công tăng 20%, HP tăng 10%, sau khi vào chiến đấu phòng thủ tăng thêm 5%",
+          "icon": 5151521,
+          "script": "$32?104005"
         },
         "IORI_PASSIVE_5": {
           "tabGroupId": "515154",
@@ -833,20 +833,7 @@
           "icon": 5151511,
           "script": "$16#51515110&51515110"
         },
-        "IORI_DARK_PASSIVE_3": {
-          "tabGroupId": "515152",
-          "tabSkillId": "5151521",
-          "sourceHeroId": "51515",
-          "sourceHeroCode": "iori",
-          "runtimeSkillType": "PASSIVE",
-          "tabType": 3,
-          "tabSkillType": 3,
-          "name": "Sức Mạnh Thương Viêm",
-          "description": "Lửa sức mạnh của nhà Bát Thần, tấn công tăng 20%, HP tăng 10%, sau khi vào chiến đấu phòng thủ tăng thêm 5%",
-          "icon": 5151521,
-          "script": "$32?104005"
-        },
-        "IORI_DARK_ULTIMATE_4": {
+        "IORI_DARK_ULTIMATE_3": {
           "tabGroupId": "515153",
           "tabSkillId": "5151531",
           "sourceHeroId": "51515",
@@ -858,6 +845,19 @@
           "description": "Dùng {8 Ly Rượu} đánh úp đối thủ, {Yatagara} tiến đánh bằng vết móng xanh nóng, kỹ năng này bỏ qua khống chế, tăng 10% bạo kích, tạo 150% ST vật lý cho 3 mục tiêu lực công cao nhất của địch",
           "icon": 5151531,
           "script": "($32?51515310)($22#51515310)"
+        },
+        "IORI_DARK_PASSIVE_4": {
+          "tabGroupId": "515152",
+          "tabSkillId": "5151521",
+          "sourceHeroId": "51515",
+          "sourceHeroCode": "iori",
+          "runtimeSkillType": "PASSIVE",
+          "tabType": 3,
+          "tabSkillType": 3,
+          "name": "Sức Mạnh Thương Viêm",
+          "description": "Lửa sức mạnh của nhà Bát Thần, tấn công tăng 20%, HP tăng 10%, sau khi vào chiến đấu phòng thủ tăng thêm 5%",
+          "icon": 5151521,
+          "script": "$32?104005"
         },
         "IORI_DARK_PASSIVE_5": {
           "tabGroupId": "515154",
@@ -1060,20 +1060,7 @@
           "icon": 3151711,
           "script": "$87#31517110&31517110"
         },
-        "KIRITO_PASSIVE_3": {
-          "tabGroupId": "315172",
-          "tabSkillId": "3151721",
-          "sourceHeroId": "31517",
-          "sourceHeroCode": "kirito",
-          "runtimeSkillType": "PASSIVE",
-          "tabType": 3,
-          "tabSkillType": 3,
-          "name": "Kẻ Gian Lận",
-          "description": "Kirito hiểu cơ chế game sớm hơn người khác, còn có ưu thế hơn; tấn công tăng 20%, HP tăng 10%, bạo kích tăng 5%",
-          "icon": 3151721,
-          "script": "null"
-        },
-        "KIRITO_ULTIMATE_4": {
+        "KIRITO_ULTIMATE_3": {
           "tabGroupId": "315173",
           "tabSkillId": "3151731",
           "sourceHeroId": "31517",
@@ -1085,6 +1072,19 @@
           "description": "Kirito dùng {Dual Blades} đạt kỹ năng kiếm {Star Burst Stream} trước rồi phát động tấn công 2 lần, gây 124% x2 sát thương cho mục tiêu HP thấp nhất phe địch",
           "icon": 3151731,
           "script": "($24#31517310&31517310)($24#31517311&31517310)"
+        },
+        "KIRITO_PASSIVE_4": {
+          "tabGroupId": "315172",
+          "tabSkillId": "3151721",
+          "sourceHeroId": "31517",
+          "sourceHeroCode": "kirito",
+          "runtimeSkillType": "PASSIVE",
+          "tabType": 3,
+          "tabSkillType": 3,
+          "name": "Kẻ Gian Lận",
+          "description": "Kirito hiểu cơ chế game sớm hơn người khác, còn có ưu thế hơn; tấn công tăng 20%, HP tăng 10%, bạo kích tăng 5%",
+          "icon": 3151721,
+          "script": "null"
         },
         "KIRITO_PASSIVE_5": {
           "tabGroupId": "315174",
@@ -1290,20 +1290,7 @@
           "icon": 4251511,
           "script": "$17#42515110&42515110"
         },
-        "LELOUD_PASSIVE_3": {
-          "tabGroupId": "425152",
-          "tabSkillId": "4251521",
-          "sourceHeroId": "42515",
-          "sourceHeroCode": "leloud",
-          "runtimeSkillType": "PASSIVE",
-          "tabType": 3,
-          "tabSkillType": 3,
-          "name": "Mệnh Lệnh Tuyệt Đối",
-          "description": "Mọi người đều là con cờ của ta; công tăng 20%, HP tăng 10%, bạo kích tăng 5%",
-          "icon": 4251521,
-          "script": "null"
-        },
-        "LELOUD_ULTIMATE_4": {
+        "LELOUD_ULTIMATE_3": {
           "tabGroupId": "425153",
           "tabSkillId": "4251531",
           "sourceHeroId": "42515",
@@ -1315,6 +1302,19 @@
           "description": "Gây cho toàn thể địch 120% ST ma pháp, sau khi thi triển kỹ năng, kèm cho mục tiêu HP thấp nhất phe địch {Mệnh Lệnh Chiến Thuật-ATK}, không thể thanh tẩy, duy trì 2 lượt. Đơn vị mang hiệu quả {Mệnh Lệnh Chiến Thuật-ATK} tăng 10% sát thương phải chịu và trở thành một trong những mục tiêu",
           "icon": 4251531,
           "script": "($19#42515310)($24?42515310)"
+        },
+        "LELOUD_PASSIVE_4": {
+          "tabGroupId": "425152",
+          "tabSkillId": "4251521",
+          "sourceHeroId": "42515",
+          "sourceHeroCode": "leloud",
+          "runtimeSkillType": "PASSIVE",
+          "tabType": 3,
+          "tabSkillType": 3,
+          "name": "Mệnh Lệnh Tuyệt Đối",
+          "description": "Mọi người đều là con cờ của ta; công tăng 20%, HP tăng 10%, bạo kích tăng 5%",
+          "icon": 4251521,
+          "script": "null"
         },
         "LELOUD_PASSIVE_5": {
           "tabGroupId": "425154",
@@ -1520,20 +1520,7 @@
           "icon": 4251511,
           "script": "$17#42515110&42515110"
         },
-        "LELOUD_DARK_PASSIVE_3": {
-          "tabGroupId": "425152",
-          "tabSkillId": "4251521",
-          "sourceHeroId": "42515",
-          "sourceHeroCode": "leloud",
-          "runtimeSkillType": "PASSIVE",
-          "tabType": 3,
-          "tabSkillType": 3,
-          "name": "Mệnh Lệnh Tuyệt Đối",
-          "description": "Mọi người đều là con cờ của ta; công tăng 20%, HP tăng 10%, bạo kích tăng 5%",
-          "icon": 4251521,
-          "script": "null"
-        },
-        "LELOUD_DARK_ULTIMATE_4": {
+        "LELOUD_DARK_ULTIMATE_3": {
           "tabGroupId": "425153",
           "tabSkillId": "4251531",
           "sourceHeroId": "42515",
@@ -1545,6 +1532,19 @@
           "description": "Gây cho toàn thể địch 120% ST ma pháp, sau khi thi triển kỹ năng, kèm cho mục tiêu HP thấp nhất phe địch {Mệnh Lệnh Chiến Thuật-ATK}, không thể thanh tẩy, duy trì 2 lượt. Đơn vị mang hiệu quả {Mệnh Lệnh Chiến Thuật-ATK} tăng 10% sát thương phải chịu và trở thành một trong những mục tiêu",
           "icon": 4251531,
           "script": "($19#42515310)($24?42515310)"
+        },
+        "LELOUD_DARK_PASSIVE_4": {
+          "tabGroupId": "425152",
+          "tabSkillId": "4251521",
+          "sourceHeroId": "42515",
+          "sourceHeroCode": "leloud",
+          "runtimeSkillType": "PASSIVE",
+          "tabType": 3,
+          "tabSkillType": 3,
+          "name": "Mệnh Lệnh Tuyệt Đối",
+          "description": "Mọi người đều là con cờ của ta; công tăng 20%, HP tăng 10%, bạo kích tăng 5%",
+          "icon": 4251521,
+          "script": "null"
         },
         "LELOUD_DARK_PASSIVE_5": {
           "tabGroupId": "425154",
@@ -1755,20 +1755,7 @@
           "icon": 4351311,
           "script": "$19#43513110&43513110"
         },
-        "THOR_PASSIVE_3": {
-          "tabGroupId": "435132",
-          "tabSkillId": "4351321",
-          "sourceHeroId": "43513",
-          "sourceHeroCode": "thor",
-          "runtimeSkillType": "PASSIVE",
-          "tabType": 3,
-          "tabSkillType": 3,
-          "name": "Berserker Sấm",
-          "description": "HP tăng 20%, tấn công tăng 10%, kháng bạo tăng 10%",
-          "icon": 4351321,
-          "script": "null"
-        },
-        "THOR_ULTIMATE_4": {
+        "THOR_ULTIMATE_3": {
           "tabGroupId": "435133",
           "tabSkillId": "4351331",
           "sourceHeroId": "43513",
@@ -1780,6 +1767,19 @@
           "description": "Hồi HP bằng 14% HP tối đa, thêm 1 hiệu quả {Hồi phục chậm} hồi phục 2 lần cho bản thân: khi bắt đầu lượt, hồi phục HP bằng 10% HP tối đa",
           "icon": 4351331,
           "script": "$32#43513310&43513310"
+        },
+        "THOR_PASSIVE_4": {
+          "tabGroupId": "435132",
+          "tabSkillId": "4351321",
+          "sourceHeroId": "43513",
+          "sourceHeroCode": "thor",
+          "runtimeSkillType": "PASSIVE",
+          "tabType": 3,
+          "tabSkillType": 3,
+          "name": "Berserker Sấm",
+          "description": "HP tăng 20%, tấn công tăng 10%, kháng bạo tăng 10%",
+          "icon": 4351321,
+          "script": "null"
         },
         "THOR_PASSIVE_5": {
           "tabGroupId": "435134",
@@ -1990,20 +1990,7 @@
           "icon": 4351311,
           "script": "$19#43513110&43513110"
         },
-        "THOR_RAK_PASSIVE_3": {
-          "tabGroupId": "435132",
-          "tabSkillId": "4351321",
-          "sourceHeroId": "43513",
-          "sourceHeroCode": "thor",
-          "runtimeSkillType": "PASSIVE",
-          "tabType": 3,
-          "tabSkillType": 3,
-          "name": "Berserker Sấm",
-          "description": "HP tăng 20%, tấn công tăng 10%, kháng bạo tăng 10%",
-          "icon": 4351321,
-          "script": "null"
-        },
-        "THOR_RAK_ULTIMATE_4": {
+        "THOR_RAK_ULTIMATE_3": {
           "tabGroupId": "435133",
           "tabSkillId": "4351331",
           "sourceHeroId": "43513",
@@ -2015,6 +2002,19 @@
           "description": "Hồi HP bằng 14% HP tối đa, thêm 1 hiệu quả {Hồi phục chậm} hồi phục 2 lần cho bản thân: khi bắt đầu lượt, hồi phục HP bằng 10% HP tối đa",
           "icon": 4351331,
           "script": "$32#43513310&43513310"
+        },
+        "THOR_RAK_PASSIVE_4": {
+          "tabGroupId": "435132",
+          "tabSkillId": "4351321",
+          "sourceHeroId": "43513",
+          "sourceHeroCode": "thor",
+          "runtimeSkillType": "PASSIVE",
+          "tabType": 3,
+          "tabSkillType": 3,
+          "name": "Berserker Sấm",
+          "description": "HP tăng 20%, tấn công tăng 10%, kháng bạo tăng 10%",
+          "icon": 4351321,
+          "script": "null"
         },
         "THOR_RAK_PASSIVE_5": {
           "tabGroupId": "435134",
@@ -2209,20 +2209,7 @@
           "icon": 4151411,
           "script": "($37|?41514110)($19#41514110)"
         },
-        "TOHKA_DARK_PASSIVE_3": {
-          "tabGroupId": "415142",
-          "tabSkillId": "4151421",
-          "sourceHeroId": "41514",
-          "sourceHeroCode": "tohka_dark",
-          "runtimeSkillType": "PASSIVE",
-          "tabType": 3,
-          "tabSkillType": 3,
-          "name": "Adonai Melekh",
-          "description": "Tohka có linh trang thần uy-Juban; tấn công tăng 20%, HP tăng 10%, bạo kích tăng 5%, đang chiến đấu tăng cho bản thân 10% kháng khống, giảm 30% khống chế bản thân.",
-          "icon": 4151421,
-          "script": "($32?41514210)($37|?41514211)"
-        },
-        "TOHKA_DARK_ULTIMATE_4": {
+        "TOHKA_DARK_ULTIMATE_3": {
           "tabGroupId": "415143",
           "tabSkillId": "4151431",
           "sourceHeroId": "41514",
@@ -2234,6 +2221,19 @@
           "description": "Tohka dùng Halvanhelev của thiên sứ kiếm - Sandalphon tiến hành trảm kích toàn lực; gây cho hàng có số người nhiều nhất của địch 161% ST vật lý, tăng sát thương 10% cho Tank và Hỗ Trợ",
           "icon": 4151431,
           "script": "$76#41514310&41514310"
+        },
+        "TOHKA_DARK_PASSIVE_4": {
+          "tabGroupId": "415142",
+          "tabSkillId": "4151421",
+          "sourceHeroId": "41514",
+          "sourceHeroCode": "tohka_dark",
+          "runtimeSkillType": "PASSIVE",
+          "tabType": 3,
+          "tabSkillType": 3,
+          "name": "Adonai Melekh",
+          "description": "Tohka có linh trang thần uy-Juban; tấn công tăng 20%, HP tăng 10%, bạo kích tăng 5%, đang chiến đấu tăng cho bản thân 10% kháng khống, giảm 30% khống chế bản thân.",
+          "icon": 4151421,
+          "script": "($32?41514210)($37|?41514211)"
         },
         "TOHKA_DARK_PASSIVE_5": {
           "tabGroupId": "415144",
