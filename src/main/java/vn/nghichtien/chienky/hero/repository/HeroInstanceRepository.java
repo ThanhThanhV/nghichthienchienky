@@ -51,6 +51,12 @@ public interface HeroInstanceRepository extends JpaRepository<HeroInstance, Long
     long countByPlayerProfileId(Long playerId);
 
     /**
+     * Lấy toàn bộ bản sao người chơi đang sở hữu thuộc danh sách tướng seed.
+     */
+    @EntityGraph(attributePaths = "heroDefinition")
+    List<HeroInstance> findAllByHeroDefinitionHeroCodeIn(List<String> heroCodes);
+
+    /**
      * Lấy nhân vật thuộc người chơi và khóa bản ghi trong transaction hiện tại.
      *
      * @param instanceId ID bản sao nhân vật
