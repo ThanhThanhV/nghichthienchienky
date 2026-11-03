@@ -321,7 +321,7 @@
                     this.applyEventHp(event, "damage");
                     if (event.effectCategory === "DOT") this.updatePeriodicEffectDuration(event);
                     this.animateUnit(event.targetTeam, event.targetInstanceId, "damaged");
-                    this.showFloatingNumber(event.targetTeam, event.targetInstanceId, event.amount, "damage");
+                    this.showFloatingNumber(event.targetTeam, event.targetInstanceId, event.amount, event.critical ? "critical" : "damage");
                     this.addLog(
                         this.unitName(event.sourceTeam, event.sourceInstanceId) + " gây " +
                         this.formatNumber(event.amount) + " sát thương lên " +
@@ -690,10 +690,13 @@
             const card = container?.querySelector('[data-instance-id="' + instanceId + '"]');
             if (!card) return;
             const number = document.createElement("div");
-            number.className = "damage-number" + (kind === "heal" ? " heal" : "");
+            const isCritical = kind === "critical";
+            number.className = "damage-number" +
+                (kind === "heal" ? " heal" : "") +
+                (isCritical ? " critical" : "");
             number.textContent = (kind === "heal" ? "+" : "-") + this.formatNumber(amount);
             card.appendChild(number);
-            window.setTimeout(() => number.remove(), 950);
+            window.setTimeout(() => number.remove(), isCritical ? 1100 : 900);
         },
 
         showSkillLabel(event) {
