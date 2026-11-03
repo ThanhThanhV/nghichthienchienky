@@ -48,6 +48,8 @@ public class BattleUnitState {
             new BattlePeriodicEffectManager();
 
     private int actionCount;
+    private boolean extraActionPending;
+    private boolean extraActionUsedThisRound;
     private boolean alive;
 
     /**
@@ -208,6 +210,35 @@ public class BattleUnitState {
 
     public void incrementActionCount() {
         actionCount++;
+    }
+
+    /**
+     * Đặt lại giới hạn EXTRA_ACTION khi bắt đầu round mới.
+     */
+    public void resetExtraActionForRound() {
+        extraActionPending = false;
+        extraActionUsedThisRound = false;
+    }
+
+    /**
+     * Mỗi đơn vị chỉ nhận tối đa một EXTRA_ACTION trong một round.
+     */
+    public boolean grantExtraAction() {
+        if (!alive || extraActionUsedThisRound || extraActionPending) {
+            return false;
+        }
+        extraActionPending = true;
+        extraActionUsedThisRound = true;
+        return true;
+    }
+
+    public boolean consumeExtraAction() {
+        if (!extraActionPending || !alive) {
+            extraActionPending = false;
+            return false;
+        }
+        extraActionPending = false;
+        return true;
     }
 
     public Long getInstanceId() {
