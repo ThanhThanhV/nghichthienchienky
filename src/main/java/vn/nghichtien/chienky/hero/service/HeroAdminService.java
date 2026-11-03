@@ -340,6 +340,14 @@ public class HeroAdminService {
         if (animation != null && !animation.isNull() && !animation.isTextual()) {
             throw badRequest("animation phải là chuỗi");
         }
+        JsonNode trigger = config.get("trigger");
+        if (trigger != null && !trigger.isNull()
+                && (!trigger.isTextual() || !Set.of(
+                        "BATTLE_START", "ROUND_START", "BEFORE_ACTION",
+                        "AFTER_ACTION", "ON_ATTACK", "ON_DAMAGED", "ON_KILL"
+                ).contains(trigger.asText().trim().toUpperCase(Locale.ROOT)))) {
+            throw badRequest("Trigger nội tại không được hỗ trợ");
+        }
     }
 
     private boolean isOneOf(JsonNode config, String field, Set<String> allowed) {
