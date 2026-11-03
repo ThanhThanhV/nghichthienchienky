@@ -598,7 +598,9 @@ class BattleRenderer {
         if (distance < 8) return;
 
         // Dừng trước tâm mục tiêu để rig, vũ khí và hiệu ứng không chồng lấn.
-        const ratio = distance < 90 ? 0.42 : 0.68;
+        const ratio = distance < 90
+            ? 0.42
+            : Math.min(0.88, Math.max(0.72, 1 - 58 / distance));
         const endX = startX + dx * ratio;
         const endY = startY + dy * ratio;
 
