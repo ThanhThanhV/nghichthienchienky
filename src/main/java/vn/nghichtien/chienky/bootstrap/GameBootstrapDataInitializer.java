@@ -169,6 +169,15 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
     ) {
         HeroSkillDefinition infinity = skillsByOrder.get(2);
         if (infinity != null) {
+            // Chỉ đổi tên mặc định cũ; giữ nguyên tên do quản trị viên tự đặt.
+            if ("Lam".equals(infinity.getSkillName())) {
+                infinity.updateInformation(
+                        "Vô Hạ Hạn",
+                        infinity.getDescription(),
+                        infinity.getIconCode()
+                );
+            }
+
             addGojoEffectIfMissing(
                     infinity,
                     "GOJO_INFINITY_DEF",
@@ -257,7 +266,7 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                 new HeroSeed("asuna_dark", "Asuna Hắc Ám", "LEGENDARY", "ASSASSIN",
                         skills("Kiếm tốc ảnh", "Liên kích", "Tuyệt kỹ kiếm vũ", "Tốc độ phản xạ", "Kiếm ý")),
                 new HeroSeed("gojo", "Gojo Satoru", "MYTHIC", "MAGE",
-                        skills("Vô hạn", "Lam", "Hư thức: Tử", "Lục nhãn", "Vô hạ hạn")),
+                        skills("Vô hạn", "Vô Hạ Hạn", "Hư thức: Tử", "Lục nhãn", "Vô hạ hạn")),
                 new HeroSeed("iori", "Iori", "LEGENDARY", "ASSASSIN",
                         skills("Hỏa quyền", "Bạo liệt", "Quỷ thiêu", "Cuồng chiến", "Huyết thống")),
                 new HeroSeed("iori_dark", "Iori Hắc Ám", "MYTHIC", "ASSASSIN",
