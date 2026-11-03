@@ -188,14 +188,22 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                 skillsByOrder.put(order, skill);
             } else {
                 skill.changeEnabled(true);
+                if ("gojo".equalsIgnoreCase(definition.getHeroCode())) {
+                    // Gojo chỉ có một ACTIVE; bốn kỹ năng còn lại đều là PASSIVE.
+                    skill.changeSkillType(skillSeed.type());
+                }
             }
 
-            if (order == 1 && skill.getEffects().isEmpty()) {
-                addDamageEffect(skill, "FRONT", "1.0");
-            } else if (order == 2 && skill.getEffects().isEmpty()) {
-                addDamageEffect(skill, "ALL_ENEMIES", "1.5");
-            } else if (order == 3 && skill.getEffects().isEmpty()) {
-                addDamageEffect(skill, "ALL_ENEMIES", "2.5");
+            // Không sinh BASIC/ULTIMATE DAMAGE mặc định cho Gojo.
+            // Sát thương duy nhất của Gojo đến từ nội tại phản kích.
+            if (!"gojo".equalsIgnoreCase(definition.getHeroCode())) {
+                if (order == 1 && skill.getEffects().isEmpty()) {
+                    addDamageEffect(skill, "FRONT", "1.0");
+                } else if (order == 2 && skill.getEffects().isEmpty()) {
+                    addDamageEffect(skill, "ALL_ENEMIES", "1.5");
+                } else if (order == 3 && skill.getEffects().isEmpty()) {
+                    addDamageEffect(skill, "ALL_ENEMIES", "2.5");
+                }
             }
         }
 
@@ -214,6 +222,15 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
     private void seedGojoInfinityEffects(
             Map<Integer, HeroSkillDefinition> skillsByOrder
     ) {
+        // Xóa các đòn DAMAGE mặc định/cũ khỏi cả năm kỹ năng Gojo.
+        // Phản Kích là hiệu ứng COUNTER, không phải đòn BASIC/ULTIMATE.
+        for (HeroSkillDefinition skill : skillsByOrder.values()) {
+            List.copyOf(skill.getEffects()).stream()
+                    .filter(effect -> BattleEffectType.DAMAGE.name()
+                            .equalsIgnoreCase(effect.getEffectType()))
+                    .forEach(skill::removeEffect);
+        }
+
         HeroSkillDefinition infinity = skillsByOrder.get(2);
         if (infinity != null) {
             // Chỉ đổi tên mặc định cũ; giữ nguyên tên do quản trị viên tự đặt.
