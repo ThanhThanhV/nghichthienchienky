@@ -6,12 +6,9 @@ import vn.nghichtien.chienky.battle.domain.BattleEventType;
 import vn.nghichtien.chienky.battle.domain.BattleImmunityType;
 import vn.nghichtien.chienky.battle.domain.BattleState;
 import vn.nghichtien.chienky.battle.domain.BattleUnitState;
-import java.util.concurrent.ThreadLocalRandom;
-
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Objects;
-import java.math.RoundingMode;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -166,9 +163,33 @@ public class BattleDamageProcessor {
             );
         }
 
-        // 6. Áp dụng SHIELD.
+        // 6. Áp dụng SHIELD và ghi nhận lượng sát thương khiên đã hấp thụ.
+        // Event riêng giúp frontend hiển thị phản hồi kể cả khi khiên chặn
+        // toàn bộ đòn đánh và HP mục tiêu không thay đổi.
+        BigDecimal damageBeforeShield = remainingDamage;
         remainingDamage = target.getShieldManager()
-                .absorbDamage(remainingDamage);
+                .absorbDamage(damageBeforeShield);
+        BigDecimal absorbedByShield = damageBeforeShield.subtract(remainingDamage);
+
+        if (absorbedByShield.signum() > 0) {
+            battle.getEventCollector().record(
+                    BattleEventType.SHIELD,
+                    source.getTeam().name(),
+                    source.getInstanceId(),
+                    target.getTeam().name(),
+                    target.getInstanceId(),
+                    skillCode,
+                    absorbedByShield,
+                    critical,
+                    target.getCurrentHp(),
+                    target.getMaxHp(),
+                    target.isAlive(),
+                    "SHIELD",
+                    "DEFENSE",
+                    null,
+                    "Shield absorbed damage"
+            );
+        }
 
         if (remainingDamage.signum() <= 0) {
             return;
