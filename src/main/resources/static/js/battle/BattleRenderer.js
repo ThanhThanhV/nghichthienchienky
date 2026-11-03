@@ -337,10 +337,16 @@ class BattleRenderer {
         }
 
         // Chỉ trả nhân vật tung chiêu về hold sau khi effect cuối cùng kết thúc.
-        const sourceCharacter = this.getCharacter({
-            team: action?.sourceTeam,
-            instanceId: action?.sourceInstanceId
-        });
+        // Giữ tham chiếu đúng nhân vật gốc của action. Các PASSIVE/counter
+        // (ví dụ Gojo phản đòn) có thể cập nhật sourceTeam/sourceInstanceId
+        // trong actionContext; không được dùng source mới để khôi phục vị trí
+        // đã lưu của nhân vật tung chiêu ban đầu.
+        const sourceCharacter = action?.sourceCharacter?.loaded
+            ? action.sourceCharacter
+            : this.getCharacter({
+                team: action?.sourceTeam,
+                instanceId: action?.sourceInstanceId
+            });
 
         // Tohka Dark ACTIVE (chiêu 1 trên UI) phát animation ở tâm đội hình địch.
         // Sau khi hành động kết thúc, khôi phục vị trí slot ban đầu của nhân vật.
@@ -500,6 +506,7 @@ class BattleRenderer {
                     const center = this.effectManager?.getFormationCenter?.(enemyTeam);
 
                     if (center) {
+                        this.actionContext.sourceCharacter = character;
                         this.actionContext.sourceOriginalPosition = {
                             x: character.positionX,
                             y: character.positionY
