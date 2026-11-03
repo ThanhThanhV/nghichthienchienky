@@ -323,6 +323,7 @@
                 case "IMMUNITY":
                 case "EVASION":
                 case "BLOCK":
+                case "REFLECT":
                 case "REVIVE":
                 case "COUNTER":
                 case "EXTRA_ACTION":
@@ -332,7 +333,7 @@
                     }
                     if (event.type === "DISPEL") {
                         this.removeDispelledEffects(event);
-                    } else if (["SHIELD", "BUFF", "DEBUFF", "CC", "IMMUNITY", "EVASION", "BLOCK"].includes(event.type)
+                    } else if (["SHIELD", "BUFF", "DEBUFF", "CC", "IMMUNITY", "EVASION", "BLOCK", "REFLECT"].includes(event.type)
                             && (!["DOT", "HOT"].includes(event.effectCategory)
                                 || ["BUFF", "DEBUFF"].includes(event.type))) {
                         this.addActiveEffect(event);
