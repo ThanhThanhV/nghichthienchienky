@@ -561,3 +561,66 @@ button { font: inherit; cursor: pointer; }
         top: 1px;
     }
 }
+
+/* Portrait-first mobile game layout */
+@media (max-width: 600px) {
+    html, body { width: 100%; overflow-x: hidden; }
+    .battle-page { width: 100%; padding: 8px 8px calc(18px + env(safe-area-inset-bottom)); }
+    .battle-header { gap: 8px; padding: 9px 4px 10px; }
+    .battle-title h1 { font-size: 17px; letter-spacing: .08em; }
+    .battle-title span { font-size: 8px; letter-spacing: .2em; }
+    .battle-information { gap: 6px; }
+    .info-item { min-width: 0; padding: 6px 5px; border-radius: 7px; }
+    .info-label { font-size: 8px; letter-spacing: .06em; }
+    .info-item strong { font-size: 14px; }
+    .campaign-panel { margin: 8px 0; padding: 10px; }
+    .campaign-panel h2 { font-size: 14px; margin-bottom: 8px; }
+    .campaign-stage-list { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 6px; }
+    .campaign-stage { min-height: 65px; padding: 8px; }
+    .battle-controls { margin: 8px 0; padding: 8px; gap: 7px; }
+    .battle-control-left, .battle-control-right { gap: 6px; }
+    .battle-control-left .control-button { min-height: 31px; padding: 6px 8px; font-size: 9px; }
+    .battle-control-right .control-button { min-height: 36px; padding: 7px 8px; font-size: 9px; }
+    .control-label { margin: 0; font-size: 9px; }
+    .turn-order-section { min-height: 0; gap: 7px; padding: 8px; }
+    .turn-order-section h2 { font-size: 9px; }
+    .turn-order-list { width: 100%; }
+    .battle-field { display: grid; grid-template-columns: minmax(0,1fr); gap: 6px; margin: 8px auto; min-height: 0; }
+    .battle-team { width: 100%; }
+    .team-heading { margin: 0 2px 5px; }
+    .team-heading h2 { font-size: 10px; letter-spacing: .05em; }
+    .team-side { padding: 3px 5px; font-size: 8px; }
+    .team-formation { min-height: 0; height: clamp(218px, 31vh, 270px); grid-template-rows: repeat(3,minmax(0,1fr)); gap: 4px; padding: 5px; border-radius: 9px; }
+    .unit-slot { padding: 3px; border-radius: 6px; }
+    .unit-visual { width: 36px; top: 5%; font-size: 16px; }
+    .unit-info { padding: 3px 3px 2px; }
+    .unit-name { font-size: 8px; }
+    .unit-role { font-size: 6px; }
+    .hp-bar { height: 4px; margin-top: 3px; }
+    .hp-text { font-size: 7px; }
+    .unit-resource-bar { height: 2px; }
+    .unit-level { top: 3px; left: 3px; font-size: 7px; }
+    .unit-effects { top: 3px; right: 2px; gap: 2px; }
+    .unit-effect-badge { padding: 2px 3px; font-size: 6px; }
+    .battle-vs { display: flex; gap: 9px; font-size: 14px; line-height: 1; }
+    .battle-vs::before, .battle-vs::after { width: 30px; height: 1px; }
+    .battle-spine-active .unit-info { padding: 3px; }
+    .battle-spine-active .hp-bar { height: 5px; }
+    .battle-spine-active .hp-text { font-size: 7px; }
+    .battle-spine-active .unit-name { font-size: 8px; }
+    .battle-bottom { grid-template-columns: 1fr; gap: 7px; }
+    .battle-log-section, .battle-summary { padding: 9px; }
+    .battle-log { max-height: 100px; }
+    .battle-log-item { font-size: 9px; }
+    .summary-title { font-size: 9px; }
+    .summary-text { font-size: 10px; }
+    .battle-footer { padding: 12px 0 2px; }
+}
+@media (max-width: 380px) {
+    .battle-page { padding-left: 5px; padding-right: 5px; }
+    .battle-title h1 { font-size: 15px; }
+    .control-button { letter-spacing: 0; }
+    .team-formation { height: 215px; }
+    .unit-visual { width: 30px; }
+    .unit-name { font-size: 7px; }
+}
