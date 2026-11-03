@@ -266,10 +266,23 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
             JsonNode heroMapping = heroes.path(seed.code());
             JsonNode tabHero = tabSkillCatalog.path("heroes").path(seed.code());
             if (!tabHero.path("skills").isArray()
-                    || tabHero.path("skills").size() != 5) {
+                    || tabHero.path("skills").size() != 5
+                    || tabHero.path("skills").size() != seed.skills().size()) {
                 throw new IllegalStateException(
                         "TAB phải cung cấp đúng 5 slot kỹ năng cho " + seed.code()
                 );
+            }
+            for (int slot = 0; slot < seed.skills().size(); slot++) {
+                String tabRuntimeType = tabHero.path("skills").get(slot)
+                        .path("runtimeSkillType").asText("");
+                if (!tabRuntimeType.equalsIgnoreCase(seed.skills().get(slot).type())) {
+                    throw new IllegalStateException(
+                            "Sai runtimeSkillType tại " + seed.code()
+                                    + " slot " + (slot + 1)
+                                    + ": seed=" + seed.skills().get(slot).type()
+                                    + ", TAB=" + tabRuntimeType
+                    );
+                }
             }
             String assetBase = heroMapping.path("asset").path("base").asText("");
             String configId = assetBase.replaceFirst("^sanim_", "").replaceFirst("_1$", "");
