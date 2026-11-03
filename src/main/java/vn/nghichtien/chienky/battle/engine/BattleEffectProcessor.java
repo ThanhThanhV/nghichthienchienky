@@ -79,6 +79,7 @@ public class BattleEffectProcessor {
             case COUNTER -> executeCounter(
                     battle, source, effect, counterTargetInstanceId
             );
+            case EXTRA_ACTION -> executeExtraAction(battle, source, effect);
             default -> throw new UnsupportedOperationException(
                     "Effect type has not been implemented: " + effect.effectType()
                             + " (effectCode=" + effect.effectCode() + ")"
@@ -114,6 +115,36 @@ public class BattleEffectProcessor {
                 effect.effectCode(),
                 "COUNTER"
         );
+    }
+
+    /**
+     * Cấp một hành động bổ sung trong round hiện tại.
+     * Giới hạn một lần mỗi đơn vị mỗi round để chặn vòng lặp nội tại.
+     */
+    private void executeExtraAction(
+            BattleState battle,
+            BattleUnitState source,
+            BattleEffectConfig effect
+    ) {
+        if (source.grantExtraAction()) {
+            battle.getEventCollector().record(
+                    BattleEventType.EXTRA_ACTION,
+                    source.getTeam().name(),
+                    source.getInstanceId(),
+                    source.getTeam().name(),
+                    source.getInstanceId(),
+                    effect.effectCode(),
+                    BigDecimal.ONE,
+                    false,
+                    source.getCurrentHp(),
+                    source.getMaxHp(),
+                    source.isAlive(),
+                    effect.effectCode(),
+                    "EXTRA_ACTION",
+                    null,
+                    "Extra action granted"
+            );
+        }
     }
 
     private void executeDamage(
