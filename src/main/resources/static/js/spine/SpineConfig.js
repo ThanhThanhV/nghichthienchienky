@@ -110,7 +110,7 @@
                     ? { GOJO_ULTIMATE_3: { animation: "superskill" } }
                     : {})
             },
-            scale: 0.2,
+            scale: 0.16,
             displayScale: 0.45,
             offsetX: 0,
             offsetY: 0
@@ -187,7 +187,7 @@
                         skillAnimations: skillAnimations && typeof skillAnimations === "object"
                             ? skillAnimations
                             : {},
-                        scale: 0.2,
+                        scale: 0.16,
                         displayScale: 0.45,
                         offsetX: 0,
                         offsetY: 0
