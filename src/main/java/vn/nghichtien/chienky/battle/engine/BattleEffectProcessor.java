@@ -30,6 +30,15 @@ public class BattleEffectProcessor {
             BattleUnitState source,
             List<BattleEffectConfig> effects
     ) {
+        executeEffects(battle, source, effects, null);
+    }
+
+    public void executeEffects(
+            BattleState battle,
+            BattleUnitState source,
+            List<BattleEffectConfig> effects,
+            Long counterTargetInstanceId
+    ) {
         Objects.requireNonNull(battle);
         Objects.requireNonNull(source);
         Objects.requireNonNull(effects);
@@ -42,14 +51,15 @@ public class BattleEffectProcessor {
             if (battle.isFinished() || !source.isAlive()) {
                 break;
             }
-            executeEffect(battle, source, effect);
+            executeEffect(battle, source, effect, counterTargetInstanceId);
         }
     }
 
     private void executeEffect(
             BattleState battle,
             BattleUnitState source,
-            BattleEffectConfig effect
+            BattleEffectConfig effect,
+            Long counterTargetInstanceId
     ) {
         Objects.requireNonNull(effect);
 
@@ -66,11 +76,44 @@ public class BattleEffectProcessor {
             case SHIELD -> executeShield(battle, source, effect);
             case EVASION, BLOCK, REFLECT ->
                     executeDefenseEffect(battle, source, effect);
+            case COUNTER -> executeCounter(
+                    battle, source, effect, counterTargetInstanceId
+            );
             default -> throw new UnsupportedOperationException(
                     "Effect type has not been implemented: " + effect.effectType()
                             + " (effectCode=" + effect.effectCode() + ")"
             );
         }
+    }
+
+    /**
+     * Phản công trực tiếp vào đơn vị vừa gây sát thương cho nguồn.
+     * Không dùng targetMode để chọn lại mục tiêu.
+     */
+    private void executeCounter(
+            BattleState battle,
+            BattleUnitState source,
+            BattleEffectConfig effect,
+            Long counterTargetInstanceId
+    ) {
+        if (counterTargetInstanceId == null || effect.multiplier().signum() <= 0) {
+            return;
+        }
+
+        BattleUnitState attacker = battle.findUnit(counterTargetInstanceId);
+        if (attacker == null || !attacker.isAlive()
+                || attacker.getTeam() == source.getTeam()) {
+            return;
+        }
+
+        damageProcessor.executeDamage(
+                battle,
+                source,
+                attacker,
+                effect.multiplier(),
+                effect.effectCode(),
+                "COUNTER"
+        );
     }
 
     private void executeDamage(
