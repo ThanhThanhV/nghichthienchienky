@@ -11,8 +11,8 @@
         .page{width:min(1080px,100%);margin:auto}.top{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:22px}.back{color:#d9bd83;text-decoration:none;font-size:12px}.eyebrow{color:#8e9eb7;font-size:10px;letter-spacing:.24em;margin-top:18px}h1{margin:8px 0;color:#f4d58f;font:700 clamp(25px,5vw,38px) Georgia,serif}.sub{color:#aab7ca;font-size:13px;line-height:1.6}
         .panel{border:1px solid rgba(212,181,119,.25);border-radius:14px;background:rgba(15,23,38,.94);box-shadow:0 18px 60px #0005;overflow:hidden}.panel-head{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid #344158}.panel-head h2{margin:0;color:#f4d58f;font:700 18px Georgia,serif}.refresh{padding:9px 13px;color:#f4d58f;border:1px solid #79633e;border-radius:7px;background:#202a3d;cursor:pointer}
         table{width:100%;border-collapse:collapse}th,td{padding:14px 16px;text-align:left;border-bottom:1px solid #283449}th{color:#8292aa;font-size:10px;letter-spacing:.1em}td{font-size:13px;color:#dce5f2}tbody tr{cursor:pointer;transition:background .15s}tbody tr:hover{background:#202d43}.rank{width:70px;color:#f4d58f;font-weight:800}.player{font-weight:700;color:#fff}.power{color:#f4d58f;font-weight:800;font-variant-numeric:tabular-nums}.team-size{color:#9eacc2}.empty,.error{padding:28px;text-align:center;color:#9eacc2}
-        .modal{position:fixed;inset:0;z-index:30;display:none;align-items:center;justify-content:center;padding:18px;background:#030711d9}.modal.open{display:flex}.dialog{width:min(820px,100%);max-height:min(88vh,900px);overflow:auto;border:1px solid #8c744d;border-radius:14px;background:#101a2b;box-shadow:0 24px 90px #000b}.dialog-head{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 20px;background:#101a2b;border-bottom:1px solid #39465c}.dialog-head h2{margin:0;color:#f4d58f;font:700 20px Georgia,serif}.close{border:0;background:transparent;color:#cbd5e1;font-size:25px;cursor:pointer}.profile-summary{display:flex;justify-content:space-between;gap:16px;padding:18px 20px;border-bottom:1px solid #344158}.profile-summary strong{display:block;color:#fff;font-size:17px}.profile-summary span{display:block;margin-top:5px;color:#9eacc2;font-size:12px}.profile-power{color:#f4d58f!important;font-size:20px!important;font-weight:800}.formation-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;padding:18px 20px}.hero{display:flex;gap:12px;align-items:center;min-width:0;padding:12px;border:1px solid #34445d;border-radius:9px;background:#162338}.hero-avatar{display:grid;place-items:center;flex:0 0 48px;width:48px;height:58px;border:1px solid #806d4b;border-radius:6px;background:linear-gradient(145deg,#35445e,#171e2c);color:#f4d58f;font-weight:800}.hero-info{min-width:0}.hero-name{display:block;color:#f2e3bf;font-weight:700;overflow-wrap:anywhere}.hero-meta{display:block;margin-top:5px;color:#9eacc2;font-size:11px}.hero-power{display:block;margin-top:6px;color:#e9c77e;font-size:12px;font-weight:800}.dialog-actions{position:sticky;bottom:0;display:flex;justify-content:flex-end;gap:10px;padding:14px 20px;border-top:1px solid #344158;background:#101a2b}.challenge{padding:12px 22px;color:#21190d;border:1px solid #e4c77e;border-radius:7px;background:linear-gradient(135deg,#f4dfa9,#bd914e);font-weight:800;cursor:pointer}.challenge:disabled{opacity:.5;cursor:wait}.message{padding:0 20px 14px;color:#fca5a5;font-size:12px}
-        @media(max-width:620px){body{padding:14px 10px}.top{align-items:flex-start}.panel-head{padding:14px}.panel-head h2{font-size:16px}th,td{padding:12px 8px;font-size:11px}th:nth-child(4),td:nth-child(4){display:none}.rank{width:40px}.profile-summary{padding:14px}.formation-list{padding:12px;grid-template-columns:1fr}.dialog-actions{padding:12px}.challenge{width:100%}}
+        .modal{position:fixed;inset:0;z-index:30;display:none;align-items:center;justify-content:center;padding:18px;background:#030711d9}.modal.open{display:flex}.dialog{width:min(820px,100%);max-height:min(88vh,900px);overflow:auto;border:1px solid #8c744d;border-radius:14px;background:#101a2b;box-shadow:0 24px 90px #000b}.dialog-head{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 20px;background:#101a2b;border-bottom:1px solid #39465c}.dialog-head h2{margin:0;color:#f4d58f;font:700 20px Georgia,serif}.close{border:0;background:transparent;color:#cbd5e1;font-size:25px;cursor:pointer}.profile-summary{display:flex;justify-content:space-between;gap:16px;padding:18px 20px;border-bottom:1px solid #344158}.profile-summary strong{display:block;color:#fff;font-size:17px}.profile-summary span{display:block;margin-top:5px;color:#9eacc2;font-size:12px}.profile-power{color:#f4d58f!important;font-size:20px!important;font-weight:800}.formation-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(3,minmax(100px,auto));gap:8px;padding:18px 20px}.formation-cell{display:grid;place-items:center;min-width:0;padding:7px;border:1px solid #34445d;border-radius:9px;background:#121f33}.formation-cell.empty-cell{color:#65758d;font-size:10px;letter-spacing:.08em}.hero{display:flex;flex-direction:column;gap:6px;align-items:center;min-width:0;width:100%;padding:5px;text-align:center;border:0;background:transparent}.hero-avatar{display:grid;place-items:center;flex:0 0 48px;width:48px;height:58px;border:1px solid #806d4b;border-radius:6px;background:linear-gradient(145deg,#35445e,#171e2c);color:#f4d58f;font-weight:800}.hero-info{min-width:0}.hero-name{display:block;color:#f2e3bf;font-weight:700;overflow-wrap:anywhere}.hero-meta{display:block;margin-top:5px;color:#9eacc2;font-size:11px}.hero-power{display:block;margin-top:6px;color:#e9c77e;font-size:12px;font-weight:800}.dialog-actions{position:sticky;bottom:0;display:flex;justify-content:flex-end;gap:10px;padding:14px 20px;border-top:1px solid #344158;background:#101a2b}.challenge{padding:12px 22px;color:#21190d;border:1px solid #e4c77e;border-radius:7px;background:linear-gradient(135deg,#f4dfa9,#bd914e);font-weight:800;cursor:pointer}.challenge:disabled{opacity:.5;cursor:wait}.message{padding:0 20px 14px;color:#fca5a5;font-size:12px}
+        @media(max-width:620px){body{padding:14px 10px}.top{align-items:flex-start}.panel-head{padding:14px}.panel-head h2{font-size:16px}th,td{padding:12px 8px;font-size:11px}th:nth-child(4),td:nth-child(4){display:none}.rank{width:40px}.profile-summary{padding:14px}.formation-list{padding:12px;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(3,minmax(82px,auto));gap:5px}.formation-cell{padding:3px}.hero-avatar{width:34px;height:38px;flex-basis:34px}.hero-meta{font-size:9px}.hero-name{font-size:10px}.hero-power{font-size:10px}.dialog-actions{padding:12px}.challenge{width:100%}}
     </style>
 </head>
 <body>
@@ -117,17 +117,29 @@
             left.append(name, level);
             const power = document.createElement("strong"); power.className = "profile-power"; power.textContent = number(data.totalPower) + " LC";
             summary.append(left, power);
-            data.formation.forEach(hero => {
-                const card = document.createElement("article"); card.className = "hero";
-                const avatar = document.createElement("div"); avatar.className = "hero-avatar";
-                avatar.textContent = (hero.heroName || hero.heroCode || "?").slice(0, 1);
-                const info = document.createElement("div"); info.className = "hero-info";
-                const heroName = document.createElement("strong"); heroName.className = "hero-name"; heroName.textContent = hero.heroName;
-                const meta = document.createElement("span"); meta.className = "hero-meta";
-                meta.textContent = (hero.rarity || "") + " · Cấp " + hero.heroLevel + " · " + hero.starLevel + " sao · Hàng " + (hero.row + 1) + " / Cột " + (hero.column + 1);
-                const heroPower = document.createElement("span"); heroPower.className = "hero-power"; heroPower.textContent = number(hero.power) + " LC";
-                info.append(heroName, meta, heroPower); card.append(avatar, info); list.appendChild(card);
-            });
+            const heroByPosition = new Map(data.formation.map(hero => [hero.row + ":" + hero.column, hero]));
+            for (let row = 0; row < 3; row++) {
+                for (let column = 0; column < 3; column++) {
+                    const cell = document.createElement("div");
+                    cell.className = "formation-cell";
+                    const hero = heroByPosition.get(row + ":" + column);
+                    if (!hero) {
+                        cell.classList.add("empty-cell");
+                        cell.textContent = "TRỐNG";
+                    } else {
+                        const card = document.createElement("article"); card.className = "hero";
+                        const avatar = document.createElement("div"); avatar.className = "hero-avatar";
+                        avatar.textContent = (hero.heroName || hero.heroCode || "?").slice(0, 1);
+                        const info = document.createElement("div"); info.className = "hero-info";
+                        const heroName = document.createElement("strong"); heroName.className = "hero-name"; heroName.textContent = hero.heroName;
+                        const meta = document.createElement("span"); meta.className = "hero-meta";
+                        meta.textContent = (hero.rarity || "") + " · Lv." + hero.heroLevel + " · " + hero.starLevel + "★";
+                        const heroPower = document.createElement("span"); heroPower.className = "hero-power"; heroPower.textContent = number(hero.power) + " LC";
+                        info.append(heroName, meta, heroPower); card.append(avatar, info); cell.appendChild(card);
+                    }
+                    list.appendChild(cell);
+                }
+            }
             challenge.disabled = Number(playerId) === state.currentPlayerId || data.formation.length === 0;
             challenge.textContent = Number(playerId) === state.currentPlayerId ? "ĐÂY LÀ ĐỘI HÌNH CỦA NGƯƠI" : "⚔ KHIÊU CHIẾN " + state.selectedNickname.toUpperCase();
         } catch (error) {
