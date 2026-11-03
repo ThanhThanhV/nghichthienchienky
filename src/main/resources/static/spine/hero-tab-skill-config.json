@@ -2721,6 +2721,16 @@
           },
           "battleEffects": [
             {
+              "effectType": "BUFF",
+              "targetType": "SELF",
+              "multiplier": 0.1,
+              "chance": 1,
+              "duration": 1,
+              "configJson": {
+                "statType": "CRIT"
+              }
+            },
+            {
               "effectType": "DAMAGE",
               "targetType": "HIGHEST_ATK_3",
               "multiplier": 1.5,
@@ -2946,6 +2956,18 @@
               "duration": 0,
               "configJson": {
                 "statType": "ATK",
+                "permanent": true,
+                "trigger": "BATTLE_START"
+              }
+            },
+            {
+              "effectType": "BUFF",
+              "targetType": "SELF",
+              "multiplier": 0.05,
+              "chance": 1,
+              "duration": 0,
+              "configJson": {
+                "statType": "DEF",
                 "permanent": true,
                 "trigger": "BATTLE_START"
               }
@@ -3802,6 +3824,16 @@
           },
           "battleEffects": [
             {
+              "effectType": "BUFF",
+              "targetType": "SELF",
+              "multiplier": 0.1,
+              "chance": 1,
+              "duration": 1,
+              "configJson": {
+                "statType": "CRIT"
+              }
+            },
+            {
               "effectType": "DAMAGE",
               "targetType": "HIGHEST_ATK_3",
               "multiplier": 1.5,
@@ -4027,6 +4059,18 @@
               "duration": 0,
               "configJson": {
                 "statType": "ATK",
+                "permanent": true,
+                "trigger": "BATTLE_START"
+              }
+            },
+            {
+              "effectType": "BUFF",
+              "targetType": "SELF",
+              "multiplier": 0.05,
+              "chance": 1,
+              "duration": 0,
+              "configJson": {
+                "statType": "DEF",
                 "permanent": true,
                 "trigger": "BATTLE_START"
               }
@@ -8227,18 +8271,6 @@
                 "permanent": true,
                 "trigger": "BATTLE_START"
               }
-            },
-            {
-              "effectType": "BUFF",
-              "targetType": "SELF",
-              "multiplier": 0.1,
-              "chance": 1,
-              "duration": 0,
-              "configJson": {
-                "statType": "RESISTANCE",
-                "permanent": true,
-                "trigger": "BATTLE_START"
-              }
             }
           ]
         },
@@ -8456,8 +8488,8 @@
           },
           "battleEffects": [
             {
-              "effectType": "SHIELD",
-              "targetType": "LOWEST_HP",
+              "effectType": "BLOCK",
+              "targetType": "LOWEST_HP_BACK",
               "multiplier": 0.5,
               "chance": 1,
               "duration": 1,
@@ -9271,18 +9303,6 @@
                 "permanent": true,
                 "trigger": "BATTLE_START"
               }
-            },
-            {
-              "effectType": "BUFF",
-              "targetType": "SELF",
-              "multiplier": 0.1,
-              "chance": 1,
-              "duration": 0,
-              "configJson": {
-                "statType": "RESISTANCE",
-                "permanent": true,
-                "trigger": "BATTLE_START"
-              }
             }
           ]
         },
@@ -9500,8 +9520,8 @@
           },
           "battleEffects": [
             {
-              "effectType": "SHIELD",
-              "targetType": "LOWEST_HP",
+              "effectType": "BLOCK",
+              "targetType": "LOWEST_HP_BACK",
               "multiplier": 0.5,
               "chance": 1,
               "duration": 1,
@@ -10367,6 +10387,18 @@
               "duration": 0,
               "configJson": {
                 "statType": "CRIT",
+                "permanent": true,
+                "trigger": "BATTLE_START"
+              }
+            },
+            {
+              "effectType": "BUFF",
+              "targetType": "SELF",
+              "multiplier": 0.1,
+              "chance": 1,
+              "duration": 0,
+              "configJson": {
+                "statType": "RESISTANCE",
                 "permanent": true,
                 "trigger": "BATTLE_START"
               }
