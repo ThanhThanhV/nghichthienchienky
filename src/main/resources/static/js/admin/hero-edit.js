@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded",()=>{
   <label>Trạng thái CC<select data-status-type><option value="">Không áp dụng</option>${["STUN","FREEZE","SILENCE","TAUNT"].map(x=>`<option ${x===c.statusType?"selected":""}>${x}</option>`).join("")}</select></label>
   <label>Miễn nhiễm<select data-immunity-type><option value="">Không áp dụng</option>${["BUFF","DEBUFF","CC","DAMAGE"].map(x=>`<option ${x===c.immunityType?"selected":""}>${x}</option>`).join("")}</select></label>
   <label>Giải hiệu ứng<select data-dispel-type><option value="">Không áp dụng</option>${["BUFF","DEBUFF","CC"].map(x=>`<option ${x===c.dispelType?"selected":""}>${x}</option>`).join("")}</select></label>
-  <label>Trigger nội tại<input data-trigger value="${esc(c.trigger??"")}" placeholder="BATTLE_START / ON_ATTACK..."></label>
+  <label>Trigger nội tại<select data-trigger><option value="">Mặc định</option>${["BATTLE_START","ROUND_START","BEFORE_ACTION","AFTER_ACTION","ON_ATTACK","ON_DAMAGED","ON_KILL"].map(x=>`<option ${x===c.trigger?"selected":""}>${x}</option>`).join("")}</select></label>
   <label class="check-label"><input data-permanent type="checkbox" ${c.permanent===true?"checked":""}> Hiệu ứng vĩnh viễn</label>
   <label class="wide">Cấu hình nâng cao (JSON)<textarea data-config rows="4" spellcheck="false">${esc(JSON.stringify(advanced,null,2))}</textarea></label></div>
   <div class="effect-actions"><button type="button" class="small-button danger" data-remove>XÓA HIỆU ỨNG</button></div></article>`;
