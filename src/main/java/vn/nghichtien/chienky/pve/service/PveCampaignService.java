@@ -42,10 +42,11 @@ public class PveCampaignService {
             clearedStages.add(progress.getStageNumber());
         }
 
-        int highestUnlocked = Math.min(
-                campaignCatalog.getAll().size(),
-                clearedStages.stream().mapToInt(Integer::intValue).max().orElse(0) + 1
-        );
+        int highestUnlocked = 1;
+        while (clearedStages.contains(highestUnlocked)
+                && highestUnlocked < campaignCatalog.getAll().size()) {
+            highestUnlocked++;
+        }
 
         var stages = campaignCatalog.getAll().stream()
                 .map(stage -> new PveCampaignOverviewDTO.StageDTO(
