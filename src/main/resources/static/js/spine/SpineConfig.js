@@ -1,256 +1,89 @@
+/**
+ * Spine runtime configuration.
+ *
+ * Asset paths and per-skill animation/VFX mappings are supplied by
+ * HeroDefinition from the database. This file contains no hero-specific
+ * animation defaults so the database remains the single source of truth.
+ */
 (function () {
-    const assetRoot = "/assets/spine/heroes/";
-    const definitions = {
-        asuna_dark: {
-            folder: "asuna_dark",
-            base: "sanim_315141_1",
-            textures: ["sanim_315141_1.png", "sanim_315141_12.png"]
-        },
-        gojo: {
-            folder: "gojo",
-            base: "sanim_525171",
-            textures: ["sanim_525171.png"]
-        },
-        iori: {
-            folder: "iori",
-            base: "sanim_515151",
-            textures: ["sanim_515151.png"]
-        },
-        iori_dark: {
-            folder: "iori_dark",
-            base: "sanim_515151_1",
-            textures: ["sanim_515151_1.png"]
-        },
-        kirito: {
-            folder: "kirito",
-            base: "sanim_315171",
-            textures: ["sanim_315171.png"]
-        },
-        leloud: {
-            folder: "leloud",
-            base: "sanim_425151",
-            textures: ["sanim_425151.png"]
-        },
-        leloud_dark: {
-            folder: "leloud_dark",
-            base: "sanim_425151_1",
-            textures: ["sanim_425151_1.png"]
-        },
-        thor: {
-            folder: "thor",
-            base: "sanim_435131",
-            textures: ["sanim_435131.png", "sanim_4351312.png"]
-        },
-        thor_rak: {
-            folder: "thor_rak",
-            base: "sanim_435131_1",
-            textures: ["sanim_435131_1.png", "sanim_435131_12.png"]
-        },
-        tohka_dark: {
-            folder: "tohka_dark",
-            base: "sanim_415141_1",
-            textures: ["sanim_415141_1.png", "sanim_415141_12.png"]
-        }
-    };
-
-    /**
-     * Skill code được tạo từ GameBootstrapDataInitializer:
-     * HERO_BASIC_1, HERO_ACTIVE_2, HERO_ULTIMATE_3,
-     * HERO_PASSIVE_4 và HERO_PASSIVE_5.
-     *
-     * Mỗi tướng khai báo animation riêng thay vì phụ thuộc vào animationMap
-     * chung của BattleRenderer. BattleRenderer vẫn kiểm tra animation tồn tại
-     * trước khi phát, nên skeleton thiếu animation sẽ tự dùng fallback an toàn.
-     */
-    function createSkillAnimations(heroCode) {
-        const prefix = heroCode.toUpperCase();
-
-        return {
-            [prefix + "_BASIC_1"]: { animation: "att" },
-            [prefix + "_ACTIVE_2"]: { animation: "skill" },
-            [prefix + "_ULTIMATE_3"]: { animation: "ultimateskill" },
-            [prefix + "_PASSIVE_4"]: { animation: "skill" },
-            [prefix + "_PASSIVE_5"]: { animation: "skill" }
-        };
-    }
-
-    const characters = {};
-
-    Object.entries(definitions).forEach(([key, definition]) => {
-        const directory = assetRoot + definition.folder + "/";
-        const character = {
-            code: key,
-            skeleton: directory + definition.base + ".json",
-            atlas: directory + definition.base + ".atlas",
-            textures: definition.textures.map(file => directory + file),
-            skillAnimations: {
-                ...createSkillAnimations(key),
-                // Iori thường: att = basic, ultimateskill = active (faqi_21),
-                // superskill = ultimate (faqi_31). Không dùng mapping mặc định
-                // skill/ultimateskill vì sẽ lệch toàn bộ bộ chiêu của Iori.
-                ...(key === "iori"
-                    ? {
-                        IORI_BASIC_1: { animation: "att" },
-                        IORI_ACTIVE_2: { animation: "ultimateskill" },
-                        IORI_ULTIMATE_3: { animation: "superskill" }
-                    }
-                    : {}),
-                // Iori Dark dùng cùng bộ nhịp chiêu nhưng skeleton riêng
-                // sanim_515151_1: active nằm ở ultimateskill, ultimate ở superskill.
-                // Không để mapping mặc định (skill / ultimateskill) làm lệch chiêu.
-                ...(key === "iori_dark"
-                    ? {
-                        IORI_DARK_BASIC_1: { animation: "att" },
-                        IORI_DARK_ACTIVE_2: { animation: "ultimateskill" },
-                        IORI_DARK_ULTIMATE_3: { animation: "superskill" }
-                    }
-                    : {}),
-                // Gojo: BASIC = att, ACTIVE (Vô Hạ Hạn) = superskill.
-                // Nội tại phản đòn dùng animation ultimateskill (mục 15).
-                // Gojo không có Ultimate chủ động.
-                ...(key === "gojo"
-                    ? {
-                        GOJO_BASIC_1: { animation: "att" },
-                        GOJO_ACTIVE_2: { animation: "superskill" },
-                        GOJO_PASSIVE_4: { animation: "ultimateskill" },
-                        GOJO_PASSIVE_5: { animation: "ultimateskill" }
-                    }
-                    : {})
-            },
-            scale: 0.16,
-            displayScale: 0.45,
-            offsetX: 0,
-            offsetY: 0
-        };
-
-        characters[key] = character;
-        characters[definition.base.toLowerCase()] = character;
-    });
-
-    function candidateKeys(value) {
-        if (!value) {
-            return [];
+    function parseJsonValue(value, fallback, label) {
+        if (value == null || value === "") {
+            return fallback;
         }
 
-        const normalized = String(value)
-            .replace(/\\/g, "/")
-            .split(/[?#]/, 1)[0]
-            .toLowerCase();
+        if (typeof value !== "string") {
+            return value;
+        }
 
-        const segments = normalized.split("/").filter(Boolean);
-        const filename = segments.length
-            ? segments[segments.length - 1]
-            : normalized;
-        const baseName = filename.replace(/\.(json|atlas|skel)$/i, "");
-        const folderName = segments.length > 1
-            ? segments[segments.length - 2]
-            : "";
-
-        return [normalized, filename, baseName, folderName].filter(Boolean);
+        try {
+            return JSON.parse(value);
+        } catch (error) {
+            console.error("[SPINE_CONFIG] JSON không hợp lệ:", label, error);
+            return null;
+        }
     }
 
     window.SPINE_CONFIG = {
         runtimeUrl: "/lib/spine/spine-runtime-3.5/spine-ts/build/spine-webgl.js",
-        // No global fallback: every hero must resolve to its own configured asset.
         character: null,
-        characters,
+        characters: {},
+
         resolveCharacterConfig(unit) {
-            // Với các tướng đã có asset chuẩn trong repository, heroCode là khóa
-            // định danh đáng tin cậy nhất. Không để spineSkeleton/avatarCode cũ
-            // (có thể trùng mã asset giữa Iori và Iori Dark) ghi đè mapping chuẩn.
-            const heroCode = String(unit?.heroCode || "").trim().toLowerCase();
-            if (heroCode && characters[heroCode]) {
-                const configured = characters[heroCode];
-                let databaseAnimations = unit?.spineSkillAnimations || {};
-                if (typeof databaseAnimations === "string") {
-                    try {
-                        databaseAnimations = JSON.parse(databaseAnimations);
-                    } catch (error) {
-                        console.warn("Không đọc được mapping animation từ database:", error);
-                        databaseAnimations = {};
-                    }
-                }
-                if (!databaseAnimations || typeof databaseAnimations !== "object" ||
-                    Array.isArray(databaseAnimations)) {
-                    databaseAnimations = {};
-                }
-
-                const basicAttackConfig = databaseAnimations._BASIC_ATTACK || {};
-                const basicAttackMovement = String(
-                    basicAttackConfig.movement || "DASH"
-                ).trim().toUpperCase();
-
-                return {
-                    ...configured,
-                    skillAnimations: {
-                        ...configured.skillAnimations,
-                        ...databaseAnimations
-                    },
-                    basicAttackMovement: ["DASH", "STATIONARY"].includes(basicAttackMovement)
-                        ? basicAttackMovement
-                        : "DASH"
-                };
+            if (!unit) {
+                return null;
             }
 
-            // Tướng mới cấu hình trực tiếp trong database vẫn được hỗ trợ.
-            if (unit?.spineSkeleton && unit?.spineAtlas && unit?.spineTextures) {
-                let textures = unit.spineTextures;
-                if (typeof textures === "string") {
-                    try {
-                        textures = JSON.parse(textures);
-                    } catch (error) {
-                        console.error("Spine texture mapping không phải JSON hợp lệ:", error);
-                        return null;
-                    }
-                }
+            const heroCode = String(unit.heroCode || "").trim().toLowerCase();
+            const textures = parseJsonValue(
+                unit.spineTextures,
+                [],
+                heroCode + ".spineTextures"
+            );
+            const skillAnimations = parseJsonValue(
+                unit.spineSkillAnimations,
+                {},
+                heroCode + ".spineSkillAnimations"
+            );
 
-                let skillAnimations = unit.spineSkillAnimations || {};
-                if (typeof skillAnimations === "string") {
-                    try {
-                        skillAnimations = JSON.parse(skillAnimations);
-                    } catch (error) {
-                        console.error("Spine skill animation mapping không phải JSON hợp lệ:", error);
-                        skillAnimations = {};
-                    }
-                }
-
-                if (Array.isArray(textures) && textures.length > 0) {
-                    return {
-                        code: unit.heroCode,
-                        skeleton: unit.spineSkeleton,
-                        atlas: unit.spineAtlas,
-                        textures,
-                        skillAnimations: skillAnimations && typeof skillAnimations === "object"
-                            ? skillAnimations
-                            : {},
-                        basicAttackMovement: ["DASH", "STATIONARY"].includes(
-                            String(skillAnimations?._BASIC_ATTACK?.movement || "DASH").toUpperCase()
-                        ) ? String(skillAnimations?._BASIC_ATTACK?.movement || "DASH").toUpperCase() : "DASH",
-                        scale: 0.16,
-                        displayScale: 0.45,
-                        offsetX: 0,
-                        offsetY: 0
-                    };
-                }
+            if (
+                !unit.spineSkeleton ||
+                !unit.spineAtlas ||
+                !Array.isArray(textures) ||
+                textures.length === 0 ||
+                !skillAnimations ||
+                typeof skillAnimations !== "object" ||
+                Array.isArray(skillAnimations)
+            ) {
+                console.warn(
+                    "[SPINE_CONFIG] Thiếu asset hoặc mapping Spine trong database:",
+                    heroCode || unit.heroCode
+                );
+                return null;
             }
 
-            // Chỉ dùng các alias asset khi heroCode chưa có mapping chuẩn.
-            const values = [
-                unit?.avatarCode,
-                unit?.spineSkeleton
-            ];
-            for (const value of values) {
-                for (const key of candidateKeys(value)) {
-                    if (characters[key]) {
-                        return characters[key];
-                    }
-                }
-            }
+            const movement = String(
+                skillAnimations._BASIC_ATTACK?.movement || "DASH"
+            ).trim().toUpperCase();
 
-
-
-            return null;
+            return {
+                code: heroCode || unit.heroCode,
+                heroCode,
+                skeleton: unit.spineSkeleton,
+                atlas: unit.spineAtlas,
+                textures,
+                // Bao gồm animation, VFX catalog và metadata effect được seed
+                // trong cùng spine_skill_animations.
+                skillAnimations,
+                basicAttackMovement: ["DASH", "STATIONARY"].includes(movement)
+                    ? movement
+                    : "DASH",
+                scale: 0.16,
+                displayScale: 0.45,
+                offsetX: 0,
+                offsetY: 0
+            };
         },
+
         render: {
             backgroundAlpha: false,
             debug: false,
