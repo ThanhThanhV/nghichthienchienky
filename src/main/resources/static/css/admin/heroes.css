@@ -1,0 +1,68 @@
+*{box-sizing:border-box}
+:root{color-scheme:dark}
+body{margin:0;min-height:100vh;background:radial-gradient(circle at 12% 0,rgba(83,105,156,.18),transparent 32%),#080d19;color:#edf2fb;font-family:Arial,sans-serif}
+.admin-shell{width:min(1480px,100%);margin:auto;padding:28px}
+.admin-header{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:22px}
+.back-link{color:#c7b17f;text-decoration:none;font-size:10px;letter-spacing:.12em}
+.eyebrow{margin:18px 0 7px;color:#8f9eb6;font-size:9px;letter-spacing:.24em}
+h1{margin:0;color:#f3d99f;font:700 clamp(27px,4vw,40px) Georgia,serif}
+.subtitle{margin:8px 0 0;color:#9eabc0;font-size:13px;line-height:1.6}
+.primary-button{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 18px;border:1px solid #d0ae70;border-radius:8px;background:linear-gradient(135deg,#f1dca7,#b88b4b);color:#21190d;text-decoration:none;font-size:11px;font-weight:800;letter-spacing:.06em;cursor:pointer;white-space:nowrap}
+.primary-button:disabled{opacity:.55;cursor:wait}
+.admin-tabs{display:flex;gap:8px;margin:0 0 16px;padding:8px;border:1px solid #27344a;border-radius:10px;background:#101a2b}
+.admin-tabs a{padding:10px 13px;border-radius:7px;color:#aebbd0;text-decoration:none;font-size:12px}
+.admin-tabs a.active,.admin-tabs a:hover{background:#28354b;color:#f1d9a4}
+.panel{margin-bottom:16px;padding:20px;border:1px solid rgba(193,169,119,.2);border-radius:12px;background:rgba(17,25,41,.94);box-shadow:0 12px 35px rgba(0,0,0,.16)}
+.panel h2{margin:0 0 16px;color:#f1dba9;font:700 20px Georgia,serif}
+.toolbar{display:grid;grid-template-columns:minmax(220px,1fr) 190px 180px;gap:10px}
+input,select,textarea{width:100%;min-width:0;padding:10px 11px;border:1px solid #39465e;border-radius:7px;background:#0b1322;color:#f5f7fb;font:13px Arial,sans-serif;outline:none}
+input:focus,select:focus,textarea:focus{border-color:#c9a96d;box-shadow:0 0 0 2px rgba(201,169,109,.12)}
+.count-label{margin:15px 0 9px;color:#8998af;font-size:11px}
+.table-wrap{overflow:auto;border:1px solid #2b3850;border-radius:8px}
+table{width:100%;border-collapse:collapse;min-width:760px}
+th,td{padding:12px 13px;border-bottom:1px solid #263249;text-align:left;font-size:12px}
+th{background:#111d30;color:#d8c18f;font-size:10px;letter-spacing:.08em}
+td{color:#c5cede}
+tbody tr:hover{background:rgba(82,102,141,.1)}
+.hero-name{color:#f1d9a5;font-weight:700}
+.hero-code{color:#8f9db3;font-size:10px}
+.status{display:inline-block;padding:5px 8px;border-radius:20px;background:#17372b;color:#8ce0ac;font-size:10px}
+.status.off{background:#39252a;color:#efaaaa}
+.edit-link{color:#e5c98f;text-decoration:none;font-weight:700}
+.empty{padding:28px;text-align:center;color:#8e9bb0}
+.message{margin-top:14px;padding:11px 13px;border:1px solid #8b5555;border-radius:8px;background:#321c24;color:#ffc2c2;font-size:12px}
+.message[hidden]{display:none}
+.form-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.form-grid label,.stats-grid label{display:grid;gap:6px;color:#b9c5d7;font-size:11px;font-weight:700}
+.form-grid .wide{grid-column:1/-1}
+.check-label{display:flex!important;align-items:center;gap:9px!important}
+.check-label input{width:17px;height:17px}
+.asset-info{margin-top:14px;padding:10px 12px;border-radius:7px;background:#0b1423;color:#8fa0ba;font-size:11px;overflow-wrap:anywhere;line-height:1.6}
+.stats-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.stats-grid input{padding:9px}
+.section-title-row{display:flex;justify-content:space-between;align-items:start;gap:12px}
+.section-title-row p{margin:-7px 0 16px;color:#8f9db3;font-size:12px;line-height:1.6}
+.small-tag{padding:7px 9px;border:1px solid #62543a;border-radius:20px;color:#e5c98f;font-size:9px;white-space:nowrap}
+.skill-editor{display:grid;gap:14px}
+.skill-card{padding:15px;border:1px solid #35435a;border-radius:10px;background:#0c1423}
+.skill-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}
+.skill-heading h3{margin:0;color:#f0d59b;font-size:14px}
+.skill-heading span{color:#8e9db3;font-size:10px}
+.skill-fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.skill-fields label,.effect-fields label{display:grid;gap:6px;color:#acb9cd;font-size:10px;font-weight:700}
+.skill-fields .wide{grid-column:1/-1}
+.effect-list{display:grid;gap:10px;margin-top:14px}
+.effect-card{padding:13px;border:1px solid #48536a;border-radius:8px;background:#111c2d}
+.effect-heading{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;color:#e7d19e;font-size:11px;font-weight:700}
+.effect-fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+.effect-fields .wide{grid-column:1/-1}
+.effect-fields textarea{font-family:Consolas,monospace;font-size:11px}
+.effect-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:10px}
+.small-button{padding:8px 10px;border:1px solid #58647b;border-radius:7px;background:#202c41;color:#e6d4aa;font-size:10px;font-weight:700;cursor:pointer}
+.small-button.danger{border-color:#70434a;color:#f2b4b4}
+.add-effect{margin-top:10px}
+.save-footer{position:sticky;bottom:0;display:flex;justify-content:flex-end;padding:12px 0;background:linear-gradient(180deg,transparent,#080d19 30%)}
+.save-footer .primary-button{min-width:230px}
+@media(max-width:900px){.form-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.stats-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.skill-fields,.effect-fields{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.admin-shell{padding:15px 10px calc(25px + env(safe-area-inset-bottom))}.admin-header{align-items:stretch;flex-direction:column}.admin-header .primary-button{width:100%}.admin-tabs{overflow:auto}.admin-tabs a{white-space:nowrap}.panel{padding:13px}.toolbar{grid-template-columns:1fr}.form-grid,.stats-grid,.skill-fields,.effect-fields{grid-template-columns:repeat(2,minmax(0,1fr))}.form-grid .wide,.skill-fields .wide,.effect-fields .wide{grid-column:1/-1}.skill-card{padding:10px}.skill-heading{align-items:start;flex-direction:column}.save-footer .primary-button{width:100%}}
+@media(max-width:370px){.form-grid,.stats-grid,.skill-fields,.effect-fields{grid-template-columns:1fr}.form-grid .wide,.skill-fields .wide,.effect-fields .wide{grid-column:auto}}
