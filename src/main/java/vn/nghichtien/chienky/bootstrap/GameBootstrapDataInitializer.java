@@ -491,13 +491,16 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                 );
             }
             case 3 -> addDamageEffect(skill, "ALL_ENEMIES", "2.5");
+            case 4 -> addGojoEffect(
+                    skill, 1, "BUFF", "SELF", "0.20", 20,
+                    "{\"statType\":\"CRIT\"}"
+            );
             case 5 -> addGojoEffect(
                     skill, 1, "COUNTER", "SELF", "0.50", 0,
                     "{\"trigger\":\"ON_DAMAGED\"}"
             );
             default -> {
-                // Lục Nhãn được giữ là passive độc lập; chưa tự gán chỉ số
-                // khi chưa có thông số gameplay được xác nhận.
+                // Các passive khác chưa có hiệu ứng riêng được giữ nguyên.
             }
         }
     }
