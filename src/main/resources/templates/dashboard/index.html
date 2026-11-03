@@ -81,13 +81,12 @@
             .welcome { font-size: 12px; text-align: center; line-height: 1.55; }
             .actions {
                 position: fixed; z-index: 20; left: 0; right: 0; bottom: 0;
-                display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 5px;
+                display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: 5px;
                 margin: 0; padding: 9px 8px calc(9px + env(safe-area-inset-bottom));
                 border-top: 1px solid rgba(212,181,119,.22);
                 background: rgba(6,10,19,.96); backdrop-filter: blur(14px);
             }
             .button { min-width: 0; min-height: 48px; padding: 7px 4px; border-radius: 7px; font-size: 8px; letter-spacing: 0; }
-            .actions .button:nth-child(5) { display: none; }
             .gift-code-panel { margin: 18px 0; padding: 13px; }
             .gift-code-panel h2 { font-size: 17px; }
             .gift-code-panel p { font-size: 11px; line-height: 1.55; }
@@ -110,8 +109,8 @@
         <a class="button" th:href="@{/heroes}">✦ NHÂN VẬT</a>
         <a class="button secondary" th:href="@{/formation}">⚔ XẾP ĐỘI HÌNH</a>
         <a class="button secondary" th:href="@{/battle}">VÀO CHIẾN ĐẤU</a>
-        <a class="button secondary" th:href="@{/hero-management/new}">✦ QUẢN LÝ TƯỚNG</a>
-        <a class="button secondary" th:href="@{/spine-effects}">✧ SPINE EFFECT LAB</a>
+        <a class="button secondary" th:if="${isAdmin}" th:href="@{/admin/heroes}">⚙ QUẢN TRỊ ADMIN</a>
+        <a class="button secondary" th:if="${isAdmin}" th:href="@{/spine-effects}">✧ SPINE EFFECT LAB</a>
     </nav>
     <section class="gift-code-panel" aria-labelledby="gift-code-title">
         <h2 id="gift-code-title">Đổi GIFTCODE</h2>
