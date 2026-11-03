@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded",()=>{
   <label>Xác suất (0–1)<input data-chance type="number" min="0" max="1" step="any" value="${esc(e.chance??1)}"></label>
   <label>Duration (round)<input data-duration type="number" min="0" step="1" value="${esc(e.duration??0)}"></label>
   <label>Animation Spine<input data-animation value="${esc(c.animation??"")}"></label>
-  <label>Thời lượng animation (ms)<input data-animation-duration type="number" min="0" value="${esc(c.animationDurationMs??0)}"></label>
+  <label>Thời lượng animation (ms)<input data-animation-duration type="number" min="0" value="${esc(c.animationDurationMs??1000)}"></label>
   <label>Thời điểm tác động (ms)<input data-impact-time type="number" min="0" value="${esc(c.impactTimeMs??0)}"></label>
   <label>Giá trị cộng cố định<input data-flat-value type="number" min="0" step="any" value="${esc(c.flatValue??0)}"></label>
   <label>Chỉ số BUFF/DEBUFF<select data-stat-type><option value="">Không áp dụng</option>${["ATK","DEF","SPEED","CRIT","CRIT_DAMAGE","ACCURACY","RESISTANCE","PEN_FLAT","PEN_PERCENT","LIFESTEAL"].map(x=>`<option ${x===c.statType?"selected":""}>${x}</option>`).join("")}</select></label>
