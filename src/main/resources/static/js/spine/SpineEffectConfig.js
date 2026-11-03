@@ -395,23 +395,9 @@ window.SPINE_EFFECT_CONFIG = {
                 }
             },
             GOJO_ACTIVE_2: {
-                // Vô Hạ Hạn là kỹ năng buff bản thân: effect phải xuất hiện
-                // tại vị trí Gojo, không đặt ở đội hình địch như một đòn phản kích.
                 impact: {
                     code: "gojo_infinity_active",
                     file: "seffect_52517111012",
-                    animation: "animation_0",
-                    impactEvent: "qishou_21_1_1",
-                    impactEvents: ["qishou_21_1_1"],
-                    anchor: "source",
-                    impactRatio: 0.58
-                }
-            },
-            GOJO_PASSIVE_4: {
-                // Lục Nhãn - Phản Kích: effect đánh trả phát về phía đội hình địch.
-                impact: {
-                    code: "gojo_six_eyes_counter",
-                    file: "seffect_52517111013",
                     animation: "animation_0",
                     impactEvent: "qishou_21_1_1",
                     impactEvents: ["qishou_21_1_1"],
