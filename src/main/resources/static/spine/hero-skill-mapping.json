@@ -158,12 +158,57 @@
         ],
         "seffect_52517111013": [
           "seffect_52517111013.png"
+        ],
+        "seffect_52517111011": [
+          "seffect_52517111011.png"
+        ],
+        "seffect_52517111012": [
+          "seffect_52517111012.png"
         ]
       },
       "_SPINE_EFFECT_DEFAULTS": {
         "scale": 0.2,
         "displayScale": 0.2,
         "layer": "FRONT"
+      },
+      "_SKILL_EFFECTS": {
+        "GOJO_BASIC_1": {
+          "cast": {
+            "code": "gojo_basic_cast",
+            "file": "seffect_52517111011",
+            "animation": "animation_0",
+            "impactEvent": "qishou_1_1_1",
+            "anchor": "source"
+          },
+          "impact": {
+            "code": "gojo_basic_impact",
+            "file": "seffect_52517111011",
+            "animation": "animation_1",
+            "impactEvent": "hit_11_1_1",
+            "impactEvents": [
+              "hit_11_1_1"
+            ],
+            "anchor": "target"
+          }
+        },
+        "GOJO_ACTIVE_2": {
+          "cast": {
+            "code": "gojo_domain_cast",
+            "file": "seffect_52517111014",
+            "animation": "animation_0",
+            "impactEvent": "qishou_31_1_1",
+            "anchor": "source"
+          }
+        },
+        "GOJO_PASSIVE_5": {
+          "cast": {
+            "code": "gojo_counter_cast",
+            "file": "seffect_52517111012",
+            "animation": "animation_0",
+            "impactEvent": "qishou_21_1_1",
+            "anchor": "source"
+          }
+        }
       }
     },
     "iori": {

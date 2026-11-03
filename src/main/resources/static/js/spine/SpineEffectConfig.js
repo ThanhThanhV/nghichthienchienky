@@ -31,16 +31,6 @@ window.SPINE_EFFECT_CONFIG = {
             ? normalizedSkillCode
             : aliases[normalizedSkillCode] || null;
 
-        // Backward compatibility for older Gojo events whose skillCode was
-        // generated before the ACTIVE/PASSIVE skill types were corrected.
-        if (
-            !definitionKey &&
-            normalizedHeroCode === "gojo" &&
-            String(event?.type || "").toUpperCase() === "ACTIVE_SKILL"
-        ) {
-            definitionKey = "GOJO_ACTIVE_2";
-        }
-
         const selected = definitions[definitionKey]?.[phase];
         if (!selected?.file) {
             return [];
