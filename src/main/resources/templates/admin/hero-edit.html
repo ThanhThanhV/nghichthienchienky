@@ -36,6 +36,15 @@
                 <label class="wide">Mô tả<textarea id="hero-description" rows="3" maxlength="2000"></textarea></label>
             </div>
             <div class="asset-info" id="asset-info"></div>
+            <div class="form-grid" style="margin-top:14px">
+                <label>Kiểu di chuyển khi đánh thường
+                    <select id="basic-attack-movement">
+                        <option value="DASH">DASH · Lướt áp sát mục tiêu</option>
+                        <option value="STATIONARY">STATIONARY · Đứng tại chỗ tấn công</option>
+                    </select>
+                    <small>Áp dụng riêng cho từng tướng, không ảnh hưởng animation Spine hoặc cách chọn mục tiêu.</small>
+                </label>
+            </div>
         </section>
 
         <section class="panel">
@@ -56,6 +65,6 @@
         <div class="save-footer"><button class="primary-button" type="submit">LƯU TOÀN BỘ CẤU HÌNH</button></div>
     </form>
 </main>
-<script th:src="@{/js/admin/hero-edit.js(v=1)}"></script>
+<script th:src="@{/js/admin/hero-edit.js(v=2)}"></script>
 </body>
 </html>
