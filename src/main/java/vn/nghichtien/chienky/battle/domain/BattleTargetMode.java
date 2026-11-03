@@ -14,6 +14,7 @@ public enum BattleTargetMode {
     FRONT,
     FRONT_AND_MIDDLE,
     BACK,
+    LOWEST_HP_BACK,
     MOST_POPULATED_ROW,
     HIGHEST_ATK_3,
     LOWEST_HP,
