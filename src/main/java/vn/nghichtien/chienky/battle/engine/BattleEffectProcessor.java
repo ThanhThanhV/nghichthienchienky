@@ -547,7 +547,22 @@ public class BattleEffectProcessor {
                 continue;
             }
 
-            boolean applied = target.getStatusEffectManager()
+            // RESISTANCE dùng thang 0..100: mỗi điểm kháng giảm
+            // một điểm phần trăm xác suất trúng CC. Miễn nhiễm CC vẫn
+            // được kiểm tra riêng ở trên và luôn chặn hiệu ứng.
+            BigDecimal resistance = target.getResistance()
+                    .max(BigDecimal.ZERO)
+                    .min(new BigDecimal("100"));
+            BigDecimal applicationChance = new BigDecimal("100")
+                    .subtract(resistance);
+
+            boolean resisted = applicationChance.signum() <= 0
+                    || BigDecimal.valueOf(
+                            ThreadLocalRandom.current().nextDouble(100)
+                    ).compareTo(applicationChance) >= 0;
+
+            boolean applied = !resisted
+                    && target.getStatusEffectManager()
                     .applyCrowdControl(
                             effect.statusType(),
                             effect.effectCode(),
@@ -562,6 +577,7 @@ public class BattleEffectProcessor {
                     BattleEventType.CC,
                     "CC",
                     applied ? "CC applied: " + effect.statusType()
+                            : resisted ? "CC resisted: " + effect.statusType()
                             : "CC was not applied"
             );
         }
