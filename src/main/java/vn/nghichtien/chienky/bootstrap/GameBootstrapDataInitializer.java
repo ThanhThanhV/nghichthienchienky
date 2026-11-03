@@ -24,8 +24,6 @@ import vn.nghichtien.chienky.hero.repository.HeroGrowthConfigRepository;
 import vn.nghichtien.chienky.hero.repository.HeroInstanceRepository;
 import vn.nghichtien.chienky.hero.repository.HeroInstanceSkillRepository;
 import vn.nghichtien.chienky.hero.repository.HeroSkillDefinitionRepository;
-import vn.nghichtien.chienky.hero.repository.HeroSkillUpgradeConfigRepository;
-import vn.nghichtien.chienky.hero.repository.HeroSkillUpgradeCostRepository;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -44,8 +42,6 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
     private final HeroSkillDefinitionRepository heroSkillDefinitionRepository;
     private final HeroInstanceRepository heroInstanceRepository;
     private final HeroInstanceSkillRepository heroInstanceSkillRepository;
-    private final HeroSkillUpgradeConfigRepository heroSkillUpgradeConfigRepository;
-    private final HeroSkillUpgradeCostRepository heroSkillUpgradeCostRepository;
 
     public GameBootstrapDataInitializer(
             ObjectMapper objectMapper,
@@ -54,9 +50,7 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
             HeroGrowthConfigRepository heroGrowthConfigRepository,
             HeroSkillDefinitionRepository heroSkillDefinitionRepository,
             HeroInstanceRepository heroInstanceRepository,
-            HeroInstanceSkillRepository heroInstanceSkillRepository,
-            HeroSkillUpgradeConfigRepository heroSkillUpgradeConfigRepository,
-            HeroSkillUpgradeCostRepository heroSkillUpgradeCostRepository
+            HeroInstanceSkillRepository heroInstanceSkillRepository
     ) {
         this.objectMapper = objectMapper;
         this.heroDefinitionRepository = heroDefinitionRepository;
@@ -65,8 +59,6 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
         this.heroSkillDefinitionRepository = heroSkillDefinitionRepository;
         this.heroInstanceRepository = heroInstanceRepository;
         this.heroInstanceSkillRepository = heroInstanceSkillRepository;
-        this.heroSkillUpgradeConfigRepository = heroSkillUpgradeConfigRepository;
-        this.heroSkillUpgradeCostRepository = heroSkillUpgradeCostRepository;
     }
 
     @Override
@@ -86,24 +78,6 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
 
         // Gắn lại 5 kỹ năng cấp 1 cho mọi bản sao tướng người chơi đang sở hữu.
         rebuildOwnedHeroSkills(heroCodes);
-    }
-
-    private void resetSeededSkillData(List<String> heroCodes) {
-        // Xóa từ bảng con lên bảng cha để không vi phạm khóa ngoại.
-        heroSkillUpgradeCostRepository
-                .deleteAllByUpgradeConfigSkillDefinitionHeroDefinitionHeroCodeIn(heroCodes);
-        heroSkillUpgradeCostRepository.flush();
-
-        heroSkillUpgradeConfigRepository
-                .deleteAllBySkillDefinitionHeroDefinitionHeroCodeIn(heroCodes);
-        heroSkillUpgradeConfigRepository.flush();
-
-        heroInstanceSkillRepository
-                .deleteAllBySkillDefinitionHeroDefinitionHeroCodeIn(heroCodes);
-        heroInstanceSkillRepository.flush();
-
-        heroSkillDefinitionRepository.deleteAllByHeroDefinitionHeroCodeIn(heroCodes);
-        heroSkillDefinitionRepository.flush();
     }
 
     private void rebuildOwnedHeroSkills(List<String> heroCodes) {
