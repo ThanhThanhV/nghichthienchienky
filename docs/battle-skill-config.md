@@ -8,7 +8,7 @@
 - `BattleEffectProcessor`: thực thi hiệu ứng bằng luật Java hiện có.
 - `BattleTurnProcessor`: tự động gọi nội tại theo vòng đời và sự kiện chiến đấu.
 
-Mỗi nhân vật cần có ít nhất một kỹ năng `BASIC`. Chu kỳ lượt hiện tại là `ACTIVE -> ULTIMATE -> BASIC`. Nếu thiếu kỹ năng ACTIVE hoặc ULTIMATE, lượt đó tự động dùng BASIC. SILENCE cũng chuyển hành động sang BASIC.
+Mỗi nhân vật cần có ít nhất một kỹ năng `BASIC`. Chu kỳ lượt hiện tại là `ACTIVE -> ULTIMATE -> BASIC`. Nếu thiếu kỹ năng ACTIVE hoặc ULTIMATE, hành động tương ứng được bỏ qua; engine không tự đổi một kỹ năng khác thành BASIC. SILENCE chuyển hành động hiện tại sang BASIC. Gojo hiện có một ACTIVE và ba PASSIVE theo cách phân loại runtime đã thống nhất, nên không có lượt ULTIMATE giả.
 
 ## Loại kỹ năng
 
