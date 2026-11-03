@@ -84,6 +84,18 @@ public class BattleTurnProcessor {
 
         executePassivesForAllAlive(battle, BattlePassiveTrigger.ROUND_START);
 
+        // Nội tại đầu round có thể kết liễu đội đối phương; không cho đơn vị
+        // tiếp tục hành động sau khi điều kiện kết thúc đã được thỏa mãn.
+        if (battle.checkFinished()) {
+            collector.record(
+                    BattleEventType.ROUND_END,
+                    null, null, null, null, null, null,
+                    null, null, null, null, null, null, null,
+                    "Round " + round + " finished"
+            );
+            return;
+        }
+
         List<BattleUnitState> actionOrder = battle.getActionOrder();
 
         for (BattleUnitState unit : actionOrder) {
@@ -110,6 +122,18 @@ public class BattleTurnProcessor {
                     battle, unit, BattlePassiveTrigger.BEFORE_ACTION
             );
 
+            if (battle.checkFinished()) {
+                collector.record(
+                        BattleEventType.ACTION_END,
+                        unit.getTeam().name(),
+                        unit.getInstanceId(),
+                        null, null, null, null,
+                        null, null, null, null, null, null, null,
+                        "Action ended because the battle finished"
+                );
+                break;
+            }
+
             var statusManager = unit.getStatusEffectManager();
 
             if (statusManager.shouldSkipAction()) {
@@ -125,6 +149,9 @@ public class BattleTurnProcessor {
                         "Action skipped: "
                                 + statusManager.getCrowdControl().getType()
                 );
+                if (battle.checkFinished()) {
+                    break;
+                }
                 continue;
             }
 
@@ -137,6 +164,18 @@ public class BattleTurnProcessor {
             skillExecutor.executePassives(
                     battle, unit, BattlePassiveTrigger.ON_ATTACK
             );
+
+            if (battle.checkFinished()) {
+                collector.record(
+                        BattleEventType.ACTION_END,
+                        unit.getTeam().name(),
+                        unit.getInstanceId(),
+                        null, null, null, null,
+                        null, null, null, null, null, null, null,
+                        "Action ended because the battle finished"
+                );
+                break;
+            }
 
             int eventStartIndex = collector.getEvents().size();
             skillExecutor.execute(battle, unit, actionType);
@@ -158,6 +197,12 @@ public class BattleTurnProcessor {
                     null, null, null, null, null, null, null,
                     "Character action finished"
             );
+
+            // Chỉ chốt kết quả sau khi toàn bộ effect và passive của hành động
+            // hiện tại đã chạy xong (cho phép REVIVE trong cùng chuỗi effect).
+            if (battle.checkFinished()) {
+                break;
+            }
         }
 
         battle.checkFinished();
