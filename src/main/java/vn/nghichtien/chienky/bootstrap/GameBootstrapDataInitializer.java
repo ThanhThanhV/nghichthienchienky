@@ -249,10 +249,13 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                 );
             }
 
-            if (animations.size() != seed.skills().size()) {
+            long expectedAnimationCount = seed.skills().stream()
+                    .filter(skill -> !"PASSIVE".equalsIgnoreCase(skill.type()))
+                    .count();
+            if (animations.size() != expectedAnimationCount) {
                 throw new IllegalStateException(
                         "Tướng " + seed.code() + " phải có đúng "
-                                + seed.skills().size() + " mapping animation, hiện có "
+                                + expectedAnimationCount + " mapping animation cho kỹ năng chủ động, hiện có "
                                 + animations.size()
                 );
             }
