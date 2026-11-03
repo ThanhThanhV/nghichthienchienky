@@ -6,7 +6,6 @@ import vn.nghichtien.chienky.battle.domain.*;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Objects;
-import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Điều phối thực thi các hiệu ứng của kỹ năng.
@@ -230,42 +229,7 @@ public class BattleEffectProcessor {
                 .filter(unit -> !unit.isAlive())
                 .toList();
 
-        if (deadAllies.isEmpty()) {
-            return List.of();
-        }
-
-        return switch (mode) {
-            case SELF -> List.of();
-            case RANDOM -> List.of(deadAllies.get(
-                    ThreadLocalRandom.current().nextInt(deadAllies.size())
-            ));
-            case FRONT -> {
-                int frontRow = deadAllies.stream()
-                        .mapToInt(BattleUnitState::getRow)
-                        .min()
-                        .orElseThrow();
-                yield deadAllies.stream()
-                        .filter(unit -> unit.getRow() == frontRow)
-                        .sorted(java.util.Comparator.comparingInt(
-                                BattleUnitState::getColumn
-                        ))
-                        .toList();
-            }
-            case LOWEST_HP -> deadAllies.stream()
-                    .min(java.util.Comparator
-                            .comparing(BattleUnitState::getCurrentHp)
-                            .thenComparingInt(BattleUnitState::getRow)
-                            .thenComparingInt(BattleUnitState::getColumn))
-                    .map(List::of)
-                    .orElse(List.of());
-            case HIGHEST_ATK -> deadAllies.stream()
-                    .max(java.util.Comparator.comparing(
-                            BattleUnitState::getAttack
-                    ))
-                    .map(List::of)
-                    .orElse(List.of());
-            case ALL_ENEMIES -> deadAllies;
-        };
+        return targetSelector.selectFromCandidates(deadAllies, mode, source);
     }
 
     /**
@@ -799,41 +763,7 @@ public class BattleEffectProcessor {
                 .filter(unit -> unit.getTeam() == source.getTeam())
                 .toList();
 
-        if (allies.isEmpty()) {
-            return List.of();
-        }
-
-        return switch (mode) {
-            case SELF -> List.of(source);
-            case RANDOM -> List.of(allies.get(
-                    ThreadLocalRandom.current().nextInt(allies.size())
-            ));
-            case FRONT -> {
-                int frontRow = allies.stream()
-                        .mapToInt(BattleUnitState::getRow)
-                        .min()
-                        .orElseThrow();
-                yield allies.stream()
-                        .filter(unit -> unit.getRow() == frontRow)
-                        .sorted(java.util.Comparator.comparingInt(
-                                BattleUnitState::getColumn
-                        ))
-                        .toList();
-            }
-            case LOWEST_HP -> allies.stream()
-                    .min(java.util.Comparator.comparing(
-                            BattleUnitState::getCurrentHp
-                    ))
-                    .map(List::of)
-                    .orElse(List.of());
-            case HIGHEST_ATK -> allies.stream()
-                    .max(java.util.Comparator.comparing(
-                            BattleUnitState::getAttack
-                    ))
-                    .map(List::of)
-                    .orElse(List.of());
-            case ALL_ENEMIES -> allies;
-        };
+        return targetSelector.selectFromCandidates(allies, mode, source);
     }
 
     private void executeShield(
