@@ -51,6 +51,20 @@ public class BattleDamageProcessor {
             BigDecimal skillMultiplier,
             String skillCode
     ) {
+        executeDamage(battle, source, target, skillMultiplier, skillCode, null);
+    }
+
+    /**
+     * Thực thi sát thương có thể gắn nhóm hiệu ứng để nhận diện đòn COUNTER.
+     */
+    public void executeDamage(
+            BattleState battle,
+            BattleUnitState source,
+            BattleUnitState target,
+            BigDecimal skillMultiplier,
+            String skillCode,
+            String damageEffectCategory
+    ) {
         Objects.requireNonNull(battle, "Battle must not be null");
         Objects.requireNonNull(source, "Source must not be null");
         Objects.requireNonNull(target, "Target must not be null");
@@ -264,9 +278,11 @@ public class BattleDamageProcessor {
                 target.getMaxHp(),
                 target.isAlive(),
                 null,
+                damageEffectCategory,
                 null,
-                null,
-                critical ? "Critical damage" : "Damage dealt"
+                damageEffectCategory == null
+                        ? (critical ? "Critical damage" : "Damage dealt")
+                        : damageEffectCategory + " damage"
         );
 
         // 8. Hút máu dựa trên HP thực tế bị mất.
@@ -319,7 +335,7 @@ public class BattleDamageProcessor {
                     target.getMaxHp(),
                     false,
                     null,
-                    null,
+                    damageEffectCategory,
                     null,
                     "Unit defeated"
             );
