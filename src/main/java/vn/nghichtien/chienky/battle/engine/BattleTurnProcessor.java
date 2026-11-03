@@ -272,9 +272,16 @@ public class BattleTurnProcessor {
             if (event.type() == BattleEventType.DAMAGE) {
                 BattleUnitState damaged = battle.findUnit(event.targetInstanceId());
                 if (damaged != null && damaged.isAlive()) {
-                    skillExecutor.executePassives(
-                            battle, damaged, BattlePassiveTrigger.ON_DAMAGED
-                    );
+                    // COUNTER damage không kích hoạt COUNTER tiếp,
+                    // tránh chuỗi phản công vô hạn giữa hai đơn vị.
+                    if (!"COUNTER".equalsIgnoreCase(event.effectCategory())) {
+                        skillExecutor.executePassives(
+                                battle,
+                                damaged,
+                                BattlePassiveTrigger.ON_DAMAGED,
+                                event.sourceInstanceId()
+                        );
+                    }
                 }
             }
 
