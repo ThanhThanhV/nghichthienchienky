@@ -112,7 +112,8 @@ public class BattleTurnProcessor {
             return;
         }
 
-        // Thứ tự hành động dùng chung theo SPEED từ BattleState.
+        // Chụp thứ tự hành động của round theo SPEED từ BattleState.
+        List<BattleUnitState> actionOrder = battle.getActionOrder();
 
         for (BattleUnitState unit : actionOrder) {
             if (battle.checkFinished()) {
