@@ -244,6 +244,29 @@ public class HeroDefinition {
     }
 
     /**
+     * Cập nhật toàn bộ thông tin quản trị của nhân vật.
+     */
+    public void updateManagementInformation(
+            String heroName,
+            String rarity,
+            String role,
+            String faction,
+            String avatarCode,
+            String description,
+            Boolean enabled,
+            Integer sortOrder
+    ) {
+        this.heroName = heroName;
+        this.rarity = rarity;
+        this.role = role;
+        this.faction = faction;
+        this.avatarCode = avatarCode;
+        this.description = description;
+        this.enabled = enabled;
+        this.sortOrder = sortOrder;
+    }
+
+    /**
      * Cập nhật thông tin mô tả nhân vật.
      *
      * @param description Mô tả mới
