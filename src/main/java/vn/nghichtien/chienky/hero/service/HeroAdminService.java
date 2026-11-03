@@ -242,7 +242,7 @@ public class HeroAdminService {
     }
 
     private void validateStats(HeroAdminUpdateRequest.StatsRequest stats, boolean base) {
-        List<BigDecimal> values = List.of(
+        List<BigDecimal> values = Arrays.asList(
                 stats.hp(), stats.atk(), stats.def(), stats.speed(), stats.crit(),
                 stats.critDamage(), stats.accuracy(), stats.resistance(),
                 stats.penFlat(), stats.penPercent(), stats.lifesteal()
