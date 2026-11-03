@@ -16,7 +16,21 @@ document.addEventListener("DOMContentLoaded", () => {
         ["PASSIVE", "Nội tại 2"]
     ];
     const effectOptions = ["DAMAGE", "HEAL", "DOT", "HOT"];
-    const targetOptions = ["SELF", "RANDOM", "FRONT", "LOWEST_HP", "HIGHEST_ATK", "ALL_ENEMIES"];
+    const targetOptions = [
+        ["SELF", "Bản thân người thi triển"],
+        ["RANDOM", "Ngẫu nhiên 1 mục tiêu"],
+        ["RANDOM_2", "Ngẫu nhiên tối đa 2 mục tiêu"],
+        ["RANDOM_3", "Ngẫu nhiên tối đa 3 mục tiêu"],
+        ["FRONT", "Toàn bộ hàng trước"],
+        ["BACK", "Toàn bộ hàng sau"],
+        ["LOWEST_HP", "HP hiện tại thấp nhất"],
+        ["LOWEST_HP_PERCENT", "% HP thấp nhất"],
+        ["HIGHEST_HP_PERCENT", "% HP cao nhất"],
+        ["HIGHEST_ATK", "ATK cao nhất"],
+        ["LOWEST_ATK", "ATK thấp nhất"],
+        ["ALL_ENEMIES", "Toàn bộ mục tiêu theo phe của hiệu ứng"],
+        ["ALL_ALLIES", "Toàn bộ đồng minh"]
+    ];
 
     let manager = null;
     let character = null;
@@ -35,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <label>Tên kỹ năng *<input name="skillName${number}" required maxlength="100" placeholder="Tên kỹ năng"></label>
                     <label>Animation Spine *<select name="skillAnimation${number}" required disabled><option value="">Tải assets trước</option></select></label>
                     <label>Loại hiệu ứng *<select name="skillEffectType${number}" required>${effectOptions.map(value => `<option value="${value}" ${value === defaultEffect ? "selected" : ""}>${value}</option>`).join("")}</select></label>
-                    <label>Mục tiêu *<select name="skillTargetType${number}" required>${targetOptions.map(value => `<option value="${value}" ${value === defaultTarget ? "selected" : ""}>${value}</option>`).join("")}</select></label>
+                    <label>Mục tiêu *<select name="skillTargetType${number}" required>${targetOptions.map(([value, label]) => `<option value="${value}" ${value === defaultTarget ? "selected" : ""}>${label}</option>`).join("")}</select><small class="skill-note">Sát thương chọn địch; hồi máu chọn đồng minh. RANDOM_2/3 chọn tối đa số mục tiêu còn sống.</small></label>
                     <label>Hệ số tác động *<input name="skillMultiplier${number}" type="number" min="0.000001" step="any" value="1" required></label>
                     <label>Xác suất (0–1) *<input name="skillChance${number}" type="number" min="0" max="1" step="0.01" value="1" required></label>
                     <label>Duration hiệu ứng *<input name="skillDuration${number}" type="number" min="0" step="1" value="0" required></label>
