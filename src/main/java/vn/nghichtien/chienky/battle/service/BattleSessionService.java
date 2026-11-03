@@ -18,6 +18,7 @@ import vn.nghichtien.chienky.hero.repository.HeroDefinitionRepository;
 import vn.nghichtien.chienky.hero.service.HeroStatsService;
 import vn.nghichtien.chienky.player.domain.PlayerProfile;
 import vn.nghichtien.chienky.player.repository.PlayerProfileRepository;
+import vn.nghichtien.chienky.player.service.PlayerLevelProgressionService;
 import vn.nghichtien.chienky.pve.domain.PlayerCampaignProgress;
 import vn.nghichtien.chienky.pve.domain.PveCampaignStage;
 import vn.nghichtien.chienky.pve.repository.PlayerCampaignProgressRepository;
@@ -53,6 +54,7 @@ public class BattleSessionService {
     private final PlayerCampaignProgressRepository campaignProgressRepository;
     private final PveCampaignCatalog campaignCatalog;
     private final ResourceTransactionService resourceTransactionService;
+    private final PlayerLevelProgressionService playerLevelProgressionService;
     private final Map<String, BattleSession> sessions = new ConcurrentHashMap<>();
 
     public BattleSessionService(
@@ -64,7 +66,8 @@ public class BattleSessionService {
             BattleTurnProcessor battleTurnProcessor,
             PlayerCampaignProgressRepository campaignProgressRepository,
             PveCampaignCatalog campaignCatalog,
-            ResourceTransactionService resourceTransactionService
+            ResourceTransactionService resourceTransactionService,
+            PlayerLevelProgressionService playerLevelProgressionService
     ) {
         this.playerProfileRepository = playerProfileRepository;
         this.formationSlotRepository = formationSlotRepository;
@@ -75,6 +78,7 @@ public class BattleSessionService {
         this.campaignProgressRepository = campaignProgressRepository;
         this.campaignCatalog = campaignCatalog;
         this.resourceTransactionService = resourceTransactionService;
+        this.playerLevelProgressionService = playerLevelProgressionService;
     }
 
     @Transactional(readOnly = true)
@@ -290,6 +294,9 @@ public class BattleSessionService {
                         rewards
                 )
         );
+
+        // EXP được cộng theo giao dịch tài nguyên; đồng bộ cấp ngay trong cùng transaction.
+        playerLevelProgressionService.refreshLevel(player.getId());
 
         session.campaignFirstClear = true;
         session.campaignRewards = rewards;
