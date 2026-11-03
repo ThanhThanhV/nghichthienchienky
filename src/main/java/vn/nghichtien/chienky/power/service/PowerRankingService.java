@@ -50,11 +50,15 @@ public class PowerRankingService {
         List<RankingCandidate> candidates = playerProfileRepository.findAll().stream()
                 .filter(profile -> profile.getAccount() != null
                         && profile.getAccount().isEnabled())
-                .map(profile -> new RankingCandidate(
-                        profile,
-                        calculateFormation(profile.getId(), false).totalPower(),
-                        formationSlotRepository.countByPlayerProfileId(profile.getId())
-                ))
+                .map(profile -> {
+                    FormationCalculation calculation =
+                            calculateFormation(profile.getId(), false);
+                    return new RankingCandidate(
+                            profile,
+                            calculation.totalPower(),
+                            calculation.teamSize()
+                    );
+                })
                 .filter(candidate -> candidate.teamSize() > 0)
                 .sorted(Comparator
                         .comparing(RankingCandidate::totalPower).reversed()
@@ -127,6 +131,7 @@ public class PowerRankingService {
                 formationSlotRepository.findAllByPlayerProfileIdOrderByRowAscColumnAsc(playerId);
 
         BigDecimal total = BigDecimal.ZERO;
+        int activeTeamSize = 0;
         List<PowerRankingDetailResponse.FormationHero> heroes = new ArrayList<>();
 
         for (PlayerFormationSlot slot : slots) {
@@ -136,6 +141,7 @@ public class PowerRankingService {
                 continue;
             }
 
+            activeTeamSize++;
             HeroStatsResponse response = heroStatsService.calculateStats(instance);
             Map<String, BigDecimal> stats = response.getStats();
             BigDecimal heroPower = calculateHeroPower(stats);
@@ -162,7 +168,8 @@ public class PowerRankingService {
 
         return new FormationCalculation(
                 total.setScale(0, RoundingMode.HALF_UP),
-                List.copyOf(heroes)
+                List.copyOf(heroes),
+                activeTeamSize
         );
     }
 
@@ -190,6 +197,7 @@ public class PowerRankingService {
 
     private record FormationCalculation(
             BigDecimal totalPower,
-            List<PowerRankingDetailResponse.FormationHero> heroes
+            List<PowerRankingDetailResponse.FormationHero> heroes,
+            int teamSize
     ) {}
 }
