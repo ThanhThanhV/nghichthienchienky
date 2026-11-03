@@ -280,6 +280,13 @@ public class BattleSessionService {
         PveCampaignStage stage = session.campaignStage;
         PlayerProfile player = getPlayer(session.ownerUsername);
 
+        // Khóa hồ sơ trước khi kiểm tra first-clear để tuần tự hóa các battle session
+        // khác nhau của cùng người chơi. Lock được giữ đến khi transaction advanceRound commit.
+        player = playerProfileRepository.findByIdForUpdate(player.getId())
+                .orElseThrow(() -> new IllegalStateException(
+                        "Không tìm thấy hồ sơ người chơi"
+                ));
+
         if (campaignProgressRepository.existsByPlayerIdAndStageNumber(
                 player.getId(), stage.stageNumber()
         )) {
