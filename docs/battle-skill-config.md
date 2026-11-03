@@ -42,6 +42,7 @@ Các trigger đều do Java tự kiểm tra; client không gửi yêu cầu kíc
 - `FRONT`: hàng trước.
 - `FRONT_AND_MIDDLE`: hai hàng đầu tiên (hàng trước và hàng giữa).
 - `BACK`: hàng sau.
+- `LOWEST_HP_BACK`: đồng minh có HP thấp nhất trong hàng sau.
 - `RANDOM_2`, `RANDOM_3`: chọn ngẫu nhiên tối đa 2 hoặc 3 mục tiêu.
 - `LOWEST_HP`: mục tiêu có HP hiện tại thấp nhất.
 - `HIGHEST_ATK`: mục tiêu có ATK cao nhất.
