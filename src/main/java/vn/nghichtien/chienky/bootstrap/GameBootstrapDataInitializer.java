@@ -249,17 +249,9 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                 );
             }
 
-            long expectedAnimationCount = seed.skills().stream()
-                    .filter(skill -> !"PASSIVE".equalsIgnoreCase(skill.type()))
-                    .count();
-            if (animations.size() != expectedAnimationCount) {
-                throw new IllegalStateException(
-                        "Tướng " + seed.code() + " phải có đúng "
-                                + expectedAnimationCount + " mapping animation cho kỹ năng chủ động, hiện có "
-                                + animations.size()
-                );
-            }
-
+            // Catalog có thể khai báo animation cho cả PASSIVE để phục vụ
+            // animation/hiển thị trạng thái. Chỉ bắt buộc mapping cho các skill
+            // có hành động trong lượt: BASIC, ACTIVE và ULTIMATE.
             for (int index = 0; index < seed.skills().size(); index++) {
                 int order = index + 1;
                 SkillSeed skill = seed.skills().get(index);
