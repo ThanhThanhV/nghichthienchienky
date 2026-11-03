@@ -199,12 +199,33 @@
             "animation": "animation_0",
             "impactEvent": "qishou_31_1_1",
             "anchor": "source"
+          },
+          "impact": {
+            "code": "gojo_domain_impact",
+            "file": "seffect_52517111014",
+            "animation": "animation_1",
+            "impactEvents": [
+              "hit_31_3_1",
+              "hit_31_3_2",
+              "hit_31_3_3"
+            ],
+            "anchor": "enemy_formation",
+            "impactRatio": 1
           }
         },
         "GOJO_PASSIVE_5": {
           "cast": {
             "code": "gojo_counter_cast",
             "file": "seffect_52517111012",
+            "animation": "animation_0",
+            "impactEvent": "qishou_21_1_1",
+            "anchor": "source"
+          }
+        },
+        "GOJO_ULTIMATE_3": {
+          "cast": {
+            "code": "gojo_chase_cast",
+            "file": "seffect_52517111013",
             "animation": "animation_0",
             "impactEvent": "qishou_21_1_1",
             "anchor": "source"
