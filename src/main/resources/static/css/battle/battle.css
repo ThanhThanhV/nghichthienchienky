@@ -624,3 +624,131 @@ button { font: inherit; cursor: pointer; }
     .unit-visual { width: 30px; }
     .unit-name { font-size: 7px; }
 }
+
+
+/* Fixed portrait game viewport: 9:16 on desktop and mobile alike. */
+html, body {
+    width: 100%;
+    min-width: 320px;
+    min-height: 100%;
+}
+body {
+    min-height: 100dvh;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    background:
+        radial-gradient(ellipse at 50% 35%, rgba(103, 83, 145, .22), transparent 44%),
+        #03050b;
+}
+.battle-page {
+    width: min(100vw, 56.25dvh, 540px);
+    height: min(100dvh, 177.7778vw, 960px);
+    min-height: 0;
+    max-height: 100dvh;
+    aspect-ratio: 9 / 16;
+    margin: 0 auto;
+    padding: 10px clamp(8px, 2.2vw, 14px) calc(12px + env(safe-area-inset-bottom));
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(219,183,111,.35) transparent;
+    border-left: 1px solid rgba(219,183,111,.16);
+    border-right: 1px solid rgba(219,183,111,.16);
+    background:
+        radial-gradient(ellipse at 50% 32%, rgba(103,83,145,.24), transparent 42%),
+        radial-gradient(ellipse at 50% 100%, rgba(156,104,49,.18), transparent 45%),
+        linear-gradient(180deg,#151a2b 0%,#090d18 58%,#060810 100%);
+}
+.battle-page::-webkit-scrollbar { width: 4px; }
+.battle-page::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background: rgba(219,183,111,.35);
+}
+
+/* The two formations are stacked vertically inside the portrait battlefield. */
+.battle-field {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 5px;
+    min-height: 0;
+    margin: 8px auto;
+}
+.battle-team { width: 100%; }
+.battle-team .team-heading { margin-bottom: 4px; }
+.battle-team .team-heading h2 { font-size: 10px; }
+.battle-team .team-formation {
+    width: min(100%, 430px);
+    min-height: 0;
+    height: clamp(172px, 24dvh, 230px);
+    margin-left: auto;
+    margin-right: auto;
+    grid-template-rows: repeat(3, minmax(0, 1fr));
+    gap: 3px;
+    padding: 4px;
+}
+.battle-vs {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 14px;
+    line-height: 1;
+}
+.battle-vs::before, .battle-vs::after {
+    width: 34px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(232,199,126,.42), transparent);
+}
+.battle-spine-active .team-formation {
+    width: min(100%, 430px);
+    min-height: 0;
+    height: clamp(172px, 24dvh, 230px);
+    margin-left: auto;
+    margin-right: auto;
+    grid-template-rows: repeat(3, minmax(0, 1fr));
+}
+.battle-spine-active .unit-slot { min-height: 0; }
+.battle-bottom { grid-template-columns: 1fr; gap: 8px; }
+.battle-log { max-height: 96px; }
+
+@media (min-width: 601px) {
+    .battle-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+        padding: 8px 5px 10px;
+    }
+    .battle-information { width: 100%; gap: 6px; }
+    .info-item { flex: 1; min-width: 0; padding: 6px 5px; }
+    .battle-controls {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 7px;
+        margin: 8px 0;
+        padding: 8px;
+    }
+    .battle-control-left, .battle-control-right {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+    .battle-control-right .control-button { flex: 1; }
+    .turn-order-section {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 7px;
+        padding: 8px;
+    }
+    .turn-order-list { width: 100%; }
+}
+@media (max-height: 760px) {
+    .battle-team .team-formation,
+    .battle-spine-active .team-formation {
+        height: clamp(145px, 21dvh, 190px);
+    }
+    .campaign-panel { padding: 9px; margin: 7px 0; }
+    .campaign-stage { min-height: 58px; }
+}
