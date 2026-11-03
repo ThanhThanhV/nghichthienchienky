@@ -1386,7 +1386,7 @@
         "movement": "DASH"
       },
       "_SKILL_EFFECTS": {
-        "LELOUD_BASIC_1": {
+        "LELOUD_DARK_BASIC_1": {
           "cast": {
             "code": "leloud_dark_basic_cast",
             "file": "seffect_42515121011",
@@ -1405,7 +1405,7 @@
             "anchor": "target"
           }
         },
-        "LELOUD_ACTIVE_2": {
+        "LELOUD_DARK_ACTIVE_2": {
           "cast": {
             "code": "leloud_dark_active_cast",
             "file": "seffect_42515121012",
@@ -1429,7 +1429,7 @@
             "anchor": "enemy_formation"
           }
         },
-        "LELOUD_ULTIMATE_3": {
+        "LELOUD_DARK_ULTIMATE_3": {
           "cast": {
             "code": "leloud_dark_ultimate_cast",
             "file": "seffect_42515121013",
@@ -1864,7 +1864,7 @@
         "movement": "DASH"
       },
       "_SKILL_EFFECTS": {
-        "THOR_BASIC_1": {
+        "THOR_RAK_BASIC_1": {
           "cast": {
             "code": "thor_rak_basic_cast",
             "file": "seffect_43513121011",
@@ -1886,7 +1886,7 @@
             "anchor": "target"
           }
         },
-        "THOR_ACTIVE_2": {
+        "THOR_RAK_ACTIVE_2": {
           "cast": {
             "code": "thor_rak_active_cast",
             "file": "seffect_43513121011",
@@ -1912,7 +1912,7 @@
             "anchor": "enemy_formation"
           }
         },
-        "THOR_ULTIMATE_3": {
+        "THOR_RAK_ULTIMATE_3": {
           "cast": {
             "code": "thor_rak_ultimate_cast",
             "file": "seffect_43513121012",
