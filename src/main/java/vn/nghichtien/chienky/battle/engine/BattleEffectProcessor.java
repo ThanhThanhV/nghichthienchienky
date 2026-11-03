@@ -81,7 +81,9 @@ public class BattleEffectProcessor {
         List<BattleUnitState> targets = targetSelector.selectTargets(battle, source, effect.targetMode());
 
         for (BattleUnitState target : targets) {
-            if (battle.isFinished()) {
+            // REFLECT có thể hạ gục người đang thi triển ngay trong lượt đánh
+            // đầu tiên; không cho nguồn tiếp tục đánh các mục tiêu còn lại.
+            if (battle.isFinished() || !source.isAlive()) {
                 break;
             }
             if (!target.isAlive()) {
