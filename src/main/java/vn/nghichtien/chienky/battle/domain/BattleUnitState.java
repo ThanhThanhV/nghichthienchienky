@@ -145,6 +145,14 @@ public class BattleUnitState {
         if (currentHp.compareTo(BigDecimal.ZERO) <= 0) {
             currentHp = BigDecimal.ZERO;
             alive = false;
+
+            // Khi nhân vật tử trận, toàn bộ hiệu ứng đang gắn trên đơn vị
+            // kết thúc. REVIVE đưa nhân vật trở lại với trạng thái sạch,
+            // tránh mang theo khiên/miễn nhiễm/CC hoặc buff từ trước khi chết.
+            statusEffectManager.clear();
+            immunityManager.clear();
+            shieldManager.clear();
+            defenseEffectManager.clear();
             periodicEffectManager.clear();
         }
 
