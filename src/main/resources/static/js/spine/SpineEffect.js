@@ -53,11 +53,14 @@ class SpineEffect extends SpineCharacter {
         const impactEventName = String(
             this.config.impactEvent || this.impactEvents[0] || ""
         ).trim();
-        const animationEvents = (animationData?.timelines || [])
-            .filter(timeline => Array.isArray(timeline.events))
-            .flatMap(timeline => timeline.events);
+        // Spine 3.5 JSON lưu event trực tiếp trong animation.events,
+        // không nằm trong timelines (cấu trúc này khác một số runtime mới).
+        // Đọc đúng schema để kiểm tra event marker và đồng bộ impact theo mốc thật.
+        const animationEvents = Array.isArray(animationData?.events)
+            ? animationData.events
+            : [];
         const availableEventNames = new Set(
-            animationEvents.map(event => event?.data?.name).filter(Boolean)
+            animationEvents.map(event => event?.name).filter(Boolean)
         );
         const hasImpactEvent = Boolean(
             impactEventName && availableEventNames.has(impactEventName)
