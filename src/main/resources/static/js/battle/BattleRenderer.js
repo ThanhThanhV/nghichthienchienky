@@ -560,22 +560,8 @@ class BattleRenderer {
                     }
                 }
 
-                // Phản kích ON_DAMAGED phải áp sát đúng kẻ vừa đánh Gojo trước
-                // khi phát animation ultimateskill và effect neo theo source.
-                const isCounterReaction =
-                    event.type === "PASSIVE" &&
-                    String(event.effectCategory || "").toUpperCase() === "ON_DAMAGED" &&
-                    event.targetTeam &&
-                    event.targetInstanceId != null;
-
-                if (isCounterReaction) {
-                    await this.animateCounterDash(
-                        event,
-                        this.actionContext,
-                        character
-                    );
-                }
-
+                // Gojo phản kích tại chỗ. Effect thứ hai được tạo thành Spine
+                // instance độc lập tại target bởi GOJO_PASSIVE_4 trong skill mapping.
                 // Không tự chuyển về hold khi animation nhân vật vừa kết thúc.
                 // ACTION_END của action phản ứng sẽ trả Gojo về slot ban đầu.
                 this.playCharacterAnimation(character, animationName, false, false);
@@ -650,78 +636,6 @@ class BattleRenderer {
      * Gojo áp sát đúng kẻ vừa gây sát thương trước khi tung đòn phản kích.
      * Vị trí ban đầu được lưu để ACTION_END khôi phục chính xác slot 3x3.
      */
-    async animateCounterDash(event, action, source) {
-        if (!action || !source?.loaded || !event?.targetTeam ||
-            event.targetInstanceId == null) {
-            return;
-        }
-
-        const target = this.formation?.getCharacter(
-            event.targetTeam,
-            event.targetInstanceId
-        );
-        if (!target?.loaded) {
-            return;
-        }
-
-        action.sourceCharacter = source;
-        action.sourceOriginalPosition = {
-            x: source.positionX,
-            y: source.positionY
-        };
-
-        const startX = source.positionX;
-        const startY = source.positionY;
-        const dx = target.positionX - startX;
-        const dy = target.positionY - startY;
-        const distance = Math.hypot(dx, dy);
-        if (distance < 8) {
-            return;
-        }
-
-        const ratio = distance < 90
-            ? 0.42
-            : Math.min(0.84, Math.max(0.68, 1 - 64 / distance));
-        const endX = startX + dx * ratio;
-        const endY = startY + dy * ratio;
-
-        this.showBasicAttackDashTrail(
-            action.sourceTeam,
-            action.sourceInstanceId,
-            event.targetTeam,
-            event.targetInstanceId
-        );
-
-        const moveAnimation = source.getAnimationNames().includes("move")
-            ? "move"
-            : null;
-        if (moveAnimation) {
-            this.playCharacterAnimation(source, moveAnimation, false, false);
-        }
-
-        const duration = Math.max(140, Math.min(280, distance * 0.58))
-            / Math.max(1, Number(this.speed) || 1);
-        const startedAt = performance.now();
-
-        await new Promise(resolve => {
-            const step = now => {
-                const progress = Math.min(1, (now - startedAt) / duration);
-                const eased = 1 - Math.pow(1 - progress, 3);
-                source.setPosition(
-                    startX + (endX - startX) * eased,
-                    startY + (endY - startY) * eased
-                );
-
-                if (progress >= 1 || this.actionContext !== action) {
-                    resolve();
-                    return;
-                }
-                requestAnimationFrame(step);
-            };
-            requestAnimationFrame(step);
-        });
-    }
-
     /**
      * Cho nhân vật áp sát mục tiêu bằng một cú lướt nhanh trước thời điểm va chạm.
      * Backend vẫn quyết định mục tiêu và sát thương; frontend chỉ nội suy chuyển động.
