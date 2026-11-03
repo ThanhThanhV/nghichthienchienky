@@ -65,7 +65,38 @@
             padding: 10px 18px; color: #aeb8c9; border: 1px solid #465168;
             border-radius: 7px; background: transparent; cursor: pointer;
         }
-    </style>
+    
+        /* Portrait-first game lobby */
+        @media (max-width: 600px) {
+            body { display: block; min-height: 100dvh; padding: 0; overflow-x: hidden; }
+            .container {
+                width: 100%; min-height: 100dvh; margin: 0; padding: 24px 14px 104px;
+                text-align: left; border: 0; border-radius: 0; box-shadow: none;
+                background:
+                    radial-gradient(circle at 50% 0%, rgba(76,100,151,.22), transparent 38%),
+                    rgba(12,18,31,.9);
+            }
+            .eyebrow { font-size: 8px; letter-spacing: .18em; text-align: center; }
+            h1 { font-size: clamp(24px, 8vw, 34px); line-height: 1.15; text-align: center; }
+            .welcome { font-size: 12px; text-align: center; line-height: 1.55; }
+            .actions {
+                position: fixed; z-index: 20; left: 0; right: 0; bottom: 0;
+                display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 5px;
+                margin: 0; padding: 9px 8px calc(9px + env(safe-area-inset-bottom));
+                border-top: 1px solid rgba(212,181,119,.22);
+                background: rgba(6,10,19,.96); backdrop-filter: blur(14px);
+            }
+            .button { min-width: 0; min-height: 48px; padding: 7px 4px; border-radius: 7px; font-size: 8px; letter-spacing: 0; }
+            .actions .button:nth-child(5) { display: none; }
+            .gift-code-panel { margin: 18px 0; padding: 13px; }
+            .gift-code-panel h2 { font-size: 17px; }
+            .gift-code-panel p { font-size: 11px; line-height: 1.55; }
+            .gift-code-row { flex-direction: column; }
+            .gift-code-row button { width: 100%; min-height: 42px; }
+            .gift-code-row input { min-height: 42px; font-size: 12px; }
+            .logout-button { width: 100%; min-height: 40px; }
+        }
+</style>
 </head>
 <body>
 <main class="container">
