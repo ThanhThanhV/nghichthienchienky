@@ -84,6 +84,25 @@ public class PowerRankingService {
         return List.copyOf(result);
     }
 
+
+    @Transactional(readOnly = true)
+    public PowerRankingDetailResponse getMyPower(String username) {
+        PlayerProfile profile = playerProfileRepository.findByAccountUsername(username)
+                .filter(player -> player.getAccount() != null
+                        && player.getAccount().isEnabled())
+                .orElseThrow(() -> new IllegalArgumentException(
+                        "Không tìm thấy hồ sơ người chơi."
+                ));
+        FormationCalculation calculation = calculateFormation(profile.getId(), false);
+        return new PowerRankingDetailResponse(
+                profile.getId(),
+                profile.getNickname(),
+                profile.getPlayerLevel(),
+                calculation.totalPower(),
+                List.of()
+        );
+    }
+
     @Transactional(readOnly = true)
     public PowerRankingDetailResponse getPlayerDetail(Long playerId) {
         PlayerProfile profile = playerProfileRepository.findById(playerId)
