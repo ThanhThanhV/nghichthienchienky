@@ -35,5 +35,6 @@ public enum BattleEventType {
     EXTRA_ACTION,
 
     EVASION,
-    BLOCK
+    BLOCK,
+    REFLECT
 }
