@@ -410,7 +410,10 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
             Iterator<Map.Entry<String, JsonNode>> configuredAnimations = animations.fields();
             while (configuredAnimations.hasNext()) {
                 Map.Entry<String, JsonNode> configured = configuredAnimations.next();
-                String animationName = configured.getValue().asText("");
+                JsonNode animationConfig = configured.getValue();
+                String animationName = animationConfig.isObject()
+                        ? animationConfig.path("animation").asText("")
+                        : animationConfig.asText("");
                 if (animationName.isBlank() || !skeletonAnimations.has(animationName)) {
                     throw new IllegalStateException(
                             "Animation mapping không tồn tại trong Spine skeleton: "
