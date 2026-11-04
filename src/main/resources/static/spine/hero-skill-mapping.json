@@ -49,6 +49,18 @@
               "hit_21_1_1"
             ]
           }
+        },
+        "ASUNA_DARK_BASIC_1": {
+          "impact": {
+            "code": "asuna_dark_basic_impact",
+            "file": "seffect_100110111",
+            "animation": "animation_0",
+            "anchor": "target",
+            "impactEvent": "hit_11_1_1",
+            "impactEvents": [
+              "hit_11_1_1"
+            ]
+          }
         }
       },
       "_SKILL_EFFECT_ALIASES": {},
@@ -1858,14 +1870,14 @@
             "anchor": "source"
           },
           "impact": {
-            "code": "thor_basic_impact",
-            "file": "seffect_43503010111",
-            "animation": "animation_5",
-            "impactEvent": "hit_1_1_1",
+            "code": "thor_basic_tab_impact",
+            "file": "seffect_100110111",
+            "animation": "animation_0",
+            "anchor": "target",
+            "impactEvent": "hit_11_1_1",
             "impactEvents": [
-              "hit_1_1_1"
-            ],
-            "anchor": "target"
+              "hit_11_1_1"
+            ]
           }
         },
         "THOR_ACTIVE_2": {
@@ -1882,16 +1894,14 @@
             "anchor": "source"
           },
           "impact": {
-            "code": "thor_active_impact",
-            "file": "seffect_43513",
+            "code": "thor_active_tab_impact",
+            "file": "seffect_100110111",
             "animation": "animation_0",
+            "anchor": "enemy_formation",
+            "impactEvent": "hit_11_1_1",
             "impactEvents": [
-              "hit_111_4_4",
-              "hit_111_4_3",
-              "hit_111_4_2",
-              "hit_111_4_1"
-            ],
-            "anchor": "enemy_formation"
+              "hit_11_1_1"
+            ]
           }
         },
         "THOR_ULTIMATE_3": {
@@ -1959,6 +1969,9 @@
           "seffect_415141210142.png",
           "seffect_415141210143.png",
           "seffect_415141210144.png"
+        ],
+        "seffect_100110111": [
+          "seffect_100110111.png"
         ]
       },
       "_SPINE_EFFECT_DEFAULTS": {
@@ -2097,14 +2110,14 @@
             "anchor": "source"
           },
           "impact": {
-            "code": "thor_rak_basic_impact",
-            "file": "seffect_43503010111",
-            "animation": "animation_5",
-            "impactEvent": "hit_1_1_1",
+            "code": "thor_rak_basic_tab_impact",
+            "file": "seffect_100110111",
+            "animation": "animation_0",
+            "anchor": "target",
+            "impactEvent": "hit_11_1_1",
             "impactEvents": [
-              "hit_1_1_1"
-            ],
-            "anchor": "target"
+              "hit_11_1_1"
+            ]
           }
         },
         "THOR_RAK_ACTIVE_2": {
@@ -2121,16 +2134,14 @@
             "anchor": "source"
           },
           "impact": {
-            "code": "thor_rak_active_impact",
-            "file": "seffect_43513",
+            "code": "thor_rak_active_tab_impact",
+            "file": "seffect_100110111",
             "animation": "animation_0",
+            "anchor": "enemy_formation",
+            "impactEvent": "hit_11_1_1",
             "impactEvents": [
-              "hit_111_4_4",
-              "hit_111_4_3",
-              "hit_111_4_2",
-              "hit_111_4_1"
-            ],
-            "anchor": "enemy_formation"
+              "hit_11_1_1"
+            ]
           }
         },
         "THOR_RAK_ULTIMATE_3": {
@@ -2198,6 +2209,9 @@
           "seffect_415141210142.png",
           "seffect_415141210143.png",
           "seffect_415141210144.png"
+        ],
+        "seffect_100110111": [
+          "seffect_100110111.png"
         ]
       },
       "_SPINE_EFFECT_DEFAULTS": {
@@ -2342,18 +2356,24 @@
         },
         "TOHKA_DARK_ACTIVE_2": {
           "cast": {
-            "code": "tohka_dark_skill_2_cast",
-            "file": "seffect_41514121012",
+            "code": "tohka_dark_sandalphon_cast",
+            "file": "seffect_41514111012",
             "animation": "animation_0",
+            "anchor": "enemy_formation",
+            "impactEvent": "qishou_11_1_1",
             "impactEvents": [
-              "qishou_11_5_5",
-              "qishou_11_5_4",
-              "qishou_11_5_3",
-              "qishou_11_5_2",
-              "qishou_11_5_1"
-            ],
-            "impactRatio": 0.5,
-            "anchor": "enemy_formation"
+              "qishou_11_1_1"
+            ]
+          },
+          "impact": {
+            "code": "tohka_dark_sandalphon_impact",
+            "file": "seffect_100110111",
+            "animation": "animation_0",
+            "anchor": "enemy_formation",
+            "impactEvent": "hit_11_1_1",
+            "impactEvents": [
+              "hit_11_1_1"
+            ]
           }
         },
         "TOHKA_DARK_ULTIMATE_3": {
@@ -2421,6 +2441,9 @@
           "seffect_415141210142.png",
           "seffect_415141210143.png",
           "seffect_415141210144.png"
+        ],
+        "seffect_100110111": [
+          "seffect_100110111.png"
         ]
       },
       "_SPINE_EFFECT_DEFAULTS": {
