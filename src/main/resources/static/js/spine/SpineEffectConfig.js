@@ -1,6 +1,8 @@
 /**
  * Resolve Spine VFX exclusively from the hero mapping stored in
  * HeroDefinition.spine_skill_animations and delivered by the battle DTO.
+ *
+ * A phase may contain one effect or an ordered array of layered effects.
  */
 window.SPINE_EFFECT_CONFIG = {
     effects: {},
@@ -26,13 +28,19 @@ window.SPINE_EFFECT_CONFIG = {
         ).trim().toUpperCase();
         const heroPrefix = normalizedHeroCode.toUpperCase() + "_";
 
-        let definitionKey = normalizedSkillCode.startsWith(heroPrefix) &&
+        const definitionKey = normalizedSkillCode.startsWith(heroPrefix) &&
                 definitions[normalizedSkillCode]
             ? normalizedSkillCode
             : aliases[normalizedSkillCode] || null;
 
-        const selected = definitions[definitionKey]?.[phase];
-        if (!selected?.file) {
+        const selectedPhase = definitions[definitionKey]?.[phase];
+        const selectedEffects = Array.isArray(selectedPhase)
+            ? selectedPhase
+            : selectedPhase
+                ? [selectedPhase]
+                : [];
+
+        if (!selectedEffects.length) {
             return [];
         }
 
@@ -41,19 +49,26 @@ window.SPINE_EFFECT_CONFIG = {
         );
         const texturePages = skillAnimations._SPINE_EFFECT_TEXTURE_PAGES || {};
         const defaults = skillAnimations._SPINE_EFFECT_DEFAULTS || {};
-        const textures = texturePages[selected.file] || [
-            selected.file + ".png"
-        ];
 
-        return [{
-            ...selected,
-            skeleton: basePath + selected.file + ".json",
-            atlas: basePath + selected.file + ".atlas",
-            textures: textures.map(file => basePath + file),
-            scale: Number(defaults.scale ?? 0.2),
-            displayScale: Number(defaults.displayScale ?? 0.2),
-            layer: defaults.layer || "FRONT",
-            phase
-        }];
+        return selectedEffects
+            .filter(selected => selected && typeof selected === "object" && selected.file)
+            .map(selected => {
+                const textures = texturePages[selected.file] || [
+                    selected.file + ".png"
+                ];
+
+                return {
+                    ...selected,
+                    skeleton: basePath + selected.file + ".json",
+                    atlas: basePath + selected.file + ".atlas",
+                    textures: textures.map(file => basePath + file),
+                    scale: Number(selected.scale ?? defaults.scale ?? 0.2),
+                    displayScale: Number(
+                        selected.displayScale ?? defaults.displayScale ?? 0.2
+                    ),
+                    layer: selected.layer || defaults.layer || "FRONT",
+                    phase
+                };
+            });
     }
 };
