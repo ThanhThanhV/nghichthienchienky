@@ -14,8 +14,10 @@ import vn.nghichtien.chienky.hero.repository.HeroInstanceSkillRepository;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -78,7 +80,8 @@ public class DatabaseSkillExecutor {
             return requestedAction;
         }
 
-        SkillEffectSet effectSet = loadEffectsForCurrentLevel(source, skill);
+        int skillLevel = loadSkillLevels(source).getOrDefault(skill.getId(), 1);
+        SkillEffectSet effectSet = loadEffectsForLevel(skill, skillLevel);
         List<BattleEffectConfig> effects = effectSet.effects().stream()
                 .filter(effect -> Boolean.TRUE.equals(effect.getEnabled()))
                 .sorted(Comparator.comparing(
@@ -129,6 +132,7 @@ public class DatabaseSkillExecutor {
             return;
         }
 
+        Map<Long, Integer> skillLevels = loadSkillLevels(source);
         List<HeroSkillDefinition> passiveSkills = loadSkills(source).stream()
                 .filter(skill -> "PASSIVE".equalsIgnoreCase(skill.getSkillType()))
                 .toList();
@@ -138,7 +142,9 @@ public class DatabaseSkillExecutor {
                 break;
             }
 
-            SkillEffectSet effectSet = loadEffectsForCurrentLevel(source, skill);
+            SkillEffectSet effectSet = loadEffectsForLevel(
+                    skill, skillLevels.getOrDefault(skill.getId(), 1)
+            );
             List<BattleEffectConfig> effects = effectSet.effects().stream()
                     .filter(effect -> Boolean.TRUE.equals(effect.getEnabled()))
                     .sorted(Comparator.comparing(
@@ -178,21 +184,32 @@ public class DatabaseSkillExecutor {
     }
 
     /**
-     * Chọn bộ hiệu ứng theo skill_level của đúng bản sao tướng đang chiến đấu.
+     * Tải cấp độ của toàn bộ kỹ năng thuộc đúng bản sao tướng trong một lần truy vấn.
+     */
+    private Map<Long, Integer> loadSkillLevels(BattleUnitState source) {
+        Map<Long, Integer> levels = new HashMap<>();
+        for (HeroInstanceSkill instanceSkill :
+                instanceSkillRepository
+                        .findAllByHeroInstanceIdOrderBySkillDefinitionSkillOrderAsc(
+                                source.getInstanceId()
+                        )) {
+            levels.put(
+                    instanceSkill.getSkillDefinition().getId(),
+                    instanceSkill.getSkillLevel()
+            );
+        }
+        return levels;
+    }
+
+    /**
+     * Chọn bộ hiệu ứng theo cấp kỹ năng đã tải cho bản sao tướng hiện tại.
      * Nếu TAB level row chưa khai báo battleEffects, giữ tương thích với bộ
      * HeroSkillEffect chung hiện tại thay vì tự suy diễn từ script Lua.
      */
-    private SkillEffectSet loadEffectsForCurrentLevel(
-            BattleUnitState source,
-            HeroSkillDefinition skill
+    private SkillEffectSet loadEffectsForLevel(
+            HeroSkillDefinition skill,
+            int skillLevel
     ) {
-        int skillLevel = instanceSkillRepository
-                .findByHeroInstanceIdAndSkillDefinitionId(
-                        source.getInstanceId(), skill.getId()
-                )
-                .map(HeroInstanceSkill::getSkillLevel)
-                .orElse(1);
-
         JsonNode levelRows = readLevelRows(skill.getLevelRowsJson());
         if (!levelRows.isArray() || levelRows.isEmpty()) {
             return new SkillEffectSet(skillLevel, skill.getEffects());
