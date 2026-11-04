@@ -127,7 +127,8 @@ Spine JSON animation list; asset filenames are never renamed or guessed.
 
 - BASIC uses the hero's explicit `att` mapping; ACTIVE/ULTIMATE use the explicit per-skill mapping in this file.
 - Iori and Iori Dark use `skill` for ACTIVE and `ultimateskill` for ULTIMATE, matching the confirmed action mapping.
-- Gojo ACTIVE field uses `skill`; the counter passive uses `ultimateskill`. The chase passive uses its dedicated VFX and does not force a generic character animation.
+- Gojo ACTIVE field uses `superskill` (`faqi_31`); `GOJO_PASSIVE_3` counter uses `skill` from TAB performance `10000210`; `GOJO_PASSIVE_5` revival chase uses `ultimateskill` from TAB performance `10000310` and its dedicated VFX.
+- TAB `TAB_Sseffect` performance IDs also bind triggered PASSIVE actions: `10000210 -> skill` and `10000310 -> ultimateskill`. This adds `IORI_PASSIVE_5`, `IORI_DARK_PASSIVE_5`, `LELOUD_PASSIVE_5`, and `LELOUD_DARK_PASSIVE_5` as `ultimateskill`; passive slots without a resolved action performance (stat-only or non-attack passives) intentionally have no character action animation.
 - Passive slots without an explicit character animation do not fall back to a generic skill animation. Their VFX continues to resolve independently from `_SKILL_EFFECTS`.
 - `GameBootstrapDataInitializer` validates every configured animation name against the actual hero skeleton JSON before saving the DB mapping. A bad name fails bootstrap with the hero, skill code, and missing animation.
 - The browser renderer accepts both raw string mappings and BE-enriched `{ animation: ... }` objects. A missing or invalid skill mapping is logged and skipped instead of silently playing a generic animation.
