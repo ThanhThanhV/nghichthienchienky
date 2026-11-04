@@ -135,7 +135,6 @@ public class TabLuaCatalogSynchronizer {
             );
         }
 
-        tabHero.deepCopy();
         if (tabHero instanceof ObjectNode tabHeroObject) {
             tabHeroObject.put("raw", heroRow.raw());
         }
