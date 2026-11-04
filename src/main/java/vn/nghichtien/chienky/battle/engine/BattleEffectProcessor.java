@@ -79,6 +79,7 @@ public class BattleEffectProcessor {
             case COUNTER -> executeCounter(
                     battle, source, effect, counterTargetInstanceId
             );
+            case ACTION_LOCK -> executeActionLock(battle, source, effect);
             case EXTRA_ACTION -> executeExtraAction(battle, source, effect);
             default -> throw new UnsupportedOperationException(
                     "Effect type has not been implemented: " + effect.effectType()
@@ -112,8 +113,24 @@ public class BattleEffectProcessor {
                 source,
                 attacker,
                 effect.multiplier(),
-                effect.effectCode(),
-                "COUNTER"
+                effect.eventSkillCode() == null ? effect.effectCode() : effect.eventSkillCode(),
+                "COUNTER",
+                effect.damageType()
+        );
+    }
+
+    private void executeActionLock(
+            BattleState battle, BattleUnitState source, BattleEffectConfig effect
+    ) {
+        source.setActionLockedUntilRound(battle.getCurrentRound() + effect.duration());
+        battle.getEventCollector().record(
+                BattleEventType.CC,
+                source.getTeam().name(), source.getInstanceId(),
+                source.getTeam().name(), source.getInstanceId(),
+                effect.effectCode(), BigDecimal.valueOf(effect.duration()),
+                false, source.getCurrentHp(), source.getMaxHp(), source.isAlive(),
+                effect.effectCode(), "ACTION_LOCK", effect.duration(),
+                "Action locked through round " + (battle.getCurrentRound() + effect.duration())
         );
     }
 
@@ -163,8 +180,18 @@ public class BattleEffectProcessor {
             if (!target.isAlive()) {
                 continue;
             }
+            BigDecimal multiplier = effect.multiplier();
+            if (effect.roleBonusTankSupport() && target.isTankOrSupport()
+                    && effect.roleBonusPercent().signum() > 0) {
+                multiplier = multiplier.multiply(
+                        BigDecimal.ONE.add(effect.roleBonusPercent()
+                                .divide(new BigDecimal("100"), 8, java.math.RoundingMode.HALF_UP))
+                );
+            }
             damageProcessor.executeDamage(
-                    battle, source, target, effect.multiplier(), effect.effectCode()
+                    battle, source, target, multiplier,
+                    effect.eventSkillCode() == null ? effect.effectCode() : effect.eventSkillCode(),
+                    null, effect.damageType()
             );
         }
     }
@@ -479,6 +506,13 @@ public class BattleEffectProcessor {
             BigDecimal amount = source.getAttack()
                     .multiply(effect.multiplier())
                     .add(effect.flatValue());
+            BigDecimal healReceived = target.getHealReceivedPercent();
+            if (healReceived.signum() != 0) {
+                amount = amount.multiply(BigDecimal.ONE.add(
+                        healReceived.divide(new BigDecimal("100"), 8,
+                                java.math.RoundingMode.HALF_UP)
+                ));
+            }
             BigDecimal actualHeal = target.heal(amount);
 
             if (actualHeal.signum() <= 0) {
@@ -545,6 +579,17 @@ public class BattleEffectProcessor {
                 continue;
             }
 
+            if (effect.statType() == BattleStatType.MAX_HP) {
+                target.increaseMaxHpPercent(value);
+                recordStatus(
+                        battle, source, target, effect,
+                        buff ? BattleEventType.BUFF : BattleEventType.DEBUFF,
+                        buff ? "BUFF" : "DEBUFF",
+                        "MAX_HP permanent modifier applied"
+                );
+                continue;
+            }
+
             target.getStatusEffectManager().addModifier(
                     new BattleStatusEffect(
                             effect.effectCode(),
@@ -606,6 +651,16 @@ public class BattleEffectProcessor {
                             ThreadLocalRandom.current().nextDouble(100)
                     ).compareTo(applicationChance) >= 0;
 
+            int effectiveDuration = BigDecimal.valueOf(effect.duration())
+                    .multiply(BigDecimal.ONE.subtract(
+                            target.getControlDurationReductionPercent()
+                                    .divide(new BigDecimal("100"), 8,
+                                            java.math.RoundingMode.HALF_UP)
+                    ))
+                    .setScale(0, java.math.RoundingMode.CEILING)
+                    .intValue();
+            effectiveDuration = Math.max(1, effectiveDuration);
+
             boolean applied = !resisted
                     && target.getStatusEffectManager()
                     .applyCrowdControl(
@@ -613,7 +668,7 @@ public class BattleEffectProcessor {
                             effect.effectCode(),
                             source.getTeam().name(),
                             source.getInstanceId(),
-                            effect.duration(),
+                            effectiveDuration,
                             false
                     );
 
