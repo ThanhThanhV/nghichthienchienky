@@ -193,6 +193,20 @@ public class HeroSkillDefinition {
     }
 
     /**
+     * Thay thế toàn bộ hiệu ứng theo catalog nguồn mà không thay đổi ID kỹ năng.
+     *
+     * @param replacementEffects Danh sách hiệu ứng mới
+     */
+    public void replaceEffects(List<HeroSkillEffect> replacementEffects) {
+        for (HeroSkillEffect existing : new ArrayList<>(this.effects)) {
+            removeEffect(existing);
+        }
+        if (replacementEffects != null) {
+            replacementEffects.forEach(this::addEffect);
+        }
+    }
+
+    /**
      * Lấy ID kỹ năng.
      *
      * @return ID kỹ năng
