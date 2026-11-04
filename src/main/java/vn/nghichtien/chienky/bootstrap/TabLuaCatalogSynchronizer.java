@@ -1,0 +1,598 @@
+package vn.nghichtien.chienky.bootstrap;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.stereotype.Component;
+
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+/**
+ * Đồng bộ phần dữ liệu kỹ năng trong JSON catalog từ các bảng TAB Lua gốc.
+ *
+ * JSON vẫn giữ các metadata runtime được cấu hình riêng (runtimeSkillType,
+ * battleEffects, target và Spine mapping), nhưng ID, tên, mô tả, icon, loại
+ * TAB, script và toàn bộ levelRows luôn được lấy lại từ TAB_Hero/TAB_Skill.
+ */
+@Component
+public class TabLuaCatalogSynchronizer {
+
+    private static final Pattern SCRIPT_REFERENCE = Pattern.compile("\\d{5,}");
+
+    private final ObjectMapper objectMapper;
+
+    public TabLuaCatalogSynchronizer(ObjectMapper objectMapper) {
+        this.objectMapper = objectMapper;
+    }
+
+    public void synchronize(JsonNode catalog) {
+        if (catalog == null || !catalog.path("heroes").isObject()) {
+            throw new IllegalStateException("TAB catalog không có object heroes");
+        }
+
+        Map<Integer, LuaRow> heroRows = readRows(
+                "data/TAB_Hero_1.lua", "TAB_Hero"
+        );
+        Map<Integer, LuaRow> skillRows = new LinkedHashMap<>();
+        mergeRows(skillRows, readRows("data/TAB_Skill_1.lua", "TAB_Skill"));
+        mergeRows(skillRows, readRows("data/TAB_Skill_2.lua", "TAB_Skill"));
+        mergeRows(skillRows, readRows("data/TAB_Skill_3.lua", "TAB_Skill"));
+
+        Map<Integer, List<LuaRow>> skillsByGroup = new HashMap<>();
+        for (LuaRow row : skillRows.values()) {
+            if (row.id() == -1 || row.values().isEmpty()) {
+                continue;
+            }
+            int groupId = numberAt(row, 0);
+            skillsByGroup.computeIfAbsent(groupId, ignored -> new ArrayList<>())
+                    .add(row);
+        }
+        skillsByGroup.values().forEach(rows ->
+                rows.sort(Comparator
+                        .comparingInt((LuaRow row) -> numberAt(row, 4))
+                        .thenComparingInt(LuaRow::id))
+        );
+
+        Map<String, List<LuaRow>> sseByScriptReference = new HashMap<>();
+        for (LuaRow row : readRows(
+                "data/TAB_Sseffect_1.lua", "TAB_Sseffect"
+        ).values()) {
+            if (row.id() == -1 || row.values().size() < 2) {
+                continue;
+            }
+            sseByScriptReference.computeIfAbsent(
+                    stringAt(row, 0), ignored -> new ArrayList<>()
+            ).add(row);
+        }
+
+        Map<Integer, LuaRow> performanceRows = readRows(
+                "data/TAB_EffectPerfor_1.lua", "TAB_EffectPerfor"
+        );
+
+        ObjectNode heroes = (ObjectNode) catalog.path("heroes");
+        Iterator<Map.Entry<String, JsonNode>> heroIterator = heroes.fields();
+        while (heroIterator.hasNext()) {
+            Map.Entry<String, JsonNode> entry = heroIterator.next();
+            if (!(entry.getValue() instanceof ObjectNode heroConfig)) {
+                throw new IllegalStateException(
+                        "TAB hero config không hợp lệ: " + entry.getKey()
+                );
+            }
+            synchronizeHero(
+                    entry.getKey(), heroConfig, heroRows, skillsByGroup,
+                    sseByScriptReference, performanceRows
+            );
+        }
+    }
+
+    private void synchronizeHero(
+            String heroCode,
+            ObjectNode heroConfig,
+            Map<Integer, LuaRow> heroRows,
+            Map<Integer, List<LuaRow>> skillsByGroup,
+            Map<String, List<LuaRow>> sseByScriptReference,
+            Map<Integer, LuaRow> performanceRows
+    ) {
+        JsonNode tabHero = heroConfig.path("tabHero");
+        int tabHeroId = tabHero.path("tabHeroId").asInt(-1);
+        LuaRow heroRow = heroRows.get(tabHeroId);
+        if (tabHeroId <= 0 || heroRow == null) {
+            throw new IllegalStateException(
+                    "Không tìm thấy TAB_Hero[" + tabHeroId + "] cho " + heroCode
+            );
+        }
+
+        Set<Integer> heroSkillGroups = new HashSet<>();
+        heroSkillGroups.add(numberAt(heroRow, 10)); // NormalAttID
+        Object heroSkillIds = valueAt(heroRow, 11); // u_SkillID
+        if (heroSkillIds instanceof List<?> ids) {
+            for (Object id : ids) {
+                if (id instanceof Number number) {
+                    heroSkillGroups.add(number.intValue());
+                }
+            }
+        }
+
+        if (!(heroConfig.path("skills") instanceof ArrayNode skills)
+                || skills.size() != 5) {
+            throw new IllegalStateException(
+                    "TAB catalog phải có đúng 5 slot kỹ năng: " + heroCode
+            );
+        }
+
+        tabHero.deepCopy();
+        if (tabHero instanceof ObjectNode tabHeroObject) {
+            tabHeroObject.put("raw", heroRow.raw());
+        }
+
+        for (int slot = 0; slot < skills.size(); slot++) {
+            if (!(skills.get(slot) instanceof ObjectNode skillConfig)) {
+                throw new IllegalStateException(
+                        "Skill config không hợp lệ: " + heroCode + " slot " + (slot + 1)
+                );
+            }
+
+            int groupId = skillConfig.path("groupId").asInt(-1);
+            int levelOneId = skillConfig.path("levelOneId").asInt(-1);
+            if (groupId <= 0 || levelOneId <= 0
+                    || !heroSkillGroups.contains(groupId)) {
+                throw new IllegalStateException(
+                        "TAB_Hero không tham chiếu group kỹ năng " + groupId
+                                + " của " + heroCode + " slot " + (slot + 1)
+                );
+            }
+
+            List<LuaRow> levelRows = skillsByGroup.get(groupId);
+            if (levelRows == null || levelRows.isEmpty()) {
+                throw new IllegalStateException(
+                        "Không tìm thấy TAB_Skill group " + groupId
+                                + " cho " + heroCode + " slot " + (slot + 1)
+                );
+            }
+
+            LuaRow levelOne = levelRows.stream()
+                    .filter(row -> numberAt(row, 4) == 1)
+                    .findFirst()
+                    .orElseThrow(() -> new IllegalStateException(
+                            "TAB_Skill group " + groupId + " không có level 1"
+                    ));
+            if (levelOne.id() != levelOneId) {
+                throw new IllegalStateException(
+                        "Sai levelOneId tại " + heroCode + " slot " + (slot + 1)
+                                + ": catalog=" + levelOneId
+                                + ", TAB_Skill=" + levelOne.id()
+                );
+            }
+
+            synchronizeSkill(
+                    skillConfig, levelRows, sseByScriptReference, performanceRows
+            );
+        }
+    }
+
+    private void synchronizeSkill(
+            ObjectNode skillConfig,
+            List<LuaRow> sourceRows,
+            Map<String, List<LuaRow>> sseByScriptReference,
+            Map<Integer, LuaRow> performanceRows
+    ) {
+        ArrayNode levelRows = objectMapper.createArrayNode();
+        LinkedHashSet<String> allScriptReferences = new LinkedHashSet<>();
+        LuaRow levelOne = null;
+        int expectedLevel = 1;
+
+        for (LuaRow source : sourceRows) {
+            int level = numberAt(source, 4);
+            if (level != expectedLevel) {
+                throw new IllegalStateException(
+                        "TAB_Skill group " + numberAt(source, 0)
+                                + " thiếu level " + expectedLevel
+                );
+            }
+            expectedLevel++;
+
+            if (level == 1) {
+                levelOne = source;
+            }
+
+            List<String> references = extractScriptReferences(stringAt(source, 12));
+            allScriptReferences.addAll(references);
+            levelRows.add(toLevelJson(source, references));
+        }
+
+        if (levelOne == null) {
+            throw new IllegalStateException(
+                    "Không tìm thấy level 1 của TAB_Skill group " + numberAt(sourceRows.get(0), 0)
+            );
+        }
+
+        skillConfig.put("name", stringAt(levelOne, 18));
+        skillConfig.put("description", stringAt(levelOne, 14));
+        skillConfig.put("icon", numberAt(levelOne, 3));
+        skillConfig.put("tabType", numberAt(levelOne, 5));
+        skillConfig.put("tabSkillType", numberAt(levelOne, 6));
+        skillConfig.put("script", stringAt(levelOne, 12));
+
+        ArrayNode scriptReferences = objectMapper.createArrayNode();
+        allScriptReferences.forEach(scriptReferences::add);
+        skillConfig.set("scriptRefs", scriptReferences);
+        skillConfig.set("levelRows", levelRows);
+        skillConfig.set(
+                "scriptResolution",
+                resolveScriptReferences(
+                        allScriptReferences, sseByScriptReference, performanceRows
+                )
+        );
+    }
+
+    private ObjectNode toLevelJson(LuaRow row, List<String> scriptReferences) {
+        ObjectNode level = objectMapper.createObjectNode();
+        level.put("id", Integer.toString(row.id()));
+        level.put("groupId", numberAt(row, 0));
+        level.put("icon", numberAt(row, 3));
+        level.put("level", numberAt(row, 4));
+        level.put("type", numberAt(row, 5));
+        level.put("skillType", numberAt(row, 6));
+        level.put("hurtType", numberAt(row, 7));
+        level.put("priority", numberAt(row, 8));
+        level.put("startRound", numberAt(row, 9));
+        level.put("cooldown", numberAt(row, 10));
+        level.put("ignoreControl", numberAt(row, 11));
+        level.put("script", stringAt(row, 12));
+        ArrayNode refs = objectMapper.createArrayNode();
+        scriptReferences.forEach(refs::add);
+        level.set("scriptRefs", refs);
+        level.put("attributes", toLuaLiteral(valueAt(row, 13)));
+        level.put("description", stringAt(row, 14));
+        level.put("effectShow", toLuaLiteral(valueAt(row, 15)));
+        level.put("name", stringAt(row, 18));
+        level.put("raw", row.raw());
+        level.put("source", row.source());
+        return level;
+    }
+
+    private ObjectNode resolveScriptReferences(
+            Set<String> references,
+            Map<String, List<LuaRow>> sseByScriptReference,
+            Map<Integer, LuaRow> performanceRows
+    ) {
+        ObjectNode resolution = objectMapper.createObjectNode();
+        ArrayNode sse = objectMapper.createArrayNode();
+        ArrayNode performance = objectMapper.createArrayNode();
+        ArrayNode unresolvedScriptReferences = objectMapper.createArrayNode();
+        ArrayNode unresolvedPerformanceIds = objectMapper.createArrayNode();
+        Set<Integer> addedPerformanceIds = new HashSet<>();
+
+        for (String reference : references) {
+            List<LuaRow> matchingSseRows = sseByScriptReference.get(reference);
+            if (matchingSseRows == null || matchingSseRows.isEmpty()) {
+                unresolvedScriptReferences.add(reference);
+                continue;
+            }
+
+            for (LuaRow sseRow : matchingSseRows) {
+                ObjectNode sseNode = objectMapper.createObjectNode();
+                sseNode.put("id", Integer.toString(sseRow.id()));
+                sseNode.set("fields", objectMapper.valueToTree(sseRow.values()));
+                sseNode.put("raw", sseRow.raw());
+                sse.add(sseNode);
+
+                String performanceIdValue = stringAt(sseRow, 1);
+                try {
+                    int performanceId = Integer.parseInt(performanceIdValue);
+                    LuaRow performanceRow = performanceRows.get(performanceId);
+                    if (performanceRow == null) {
+                        unresolvedPerformanceIds.add(performanceIdValue);
+                    } else if (addedPerformanceIds.add(performanceId)) {
+                        ObjectNode performanceNode = objectMapper.createObjectNode();
+                        performanceNode.put("id", performanceIdValue);
+                        performanceNode.put("raw", performanceRow.raw());
+                        performance.add(performanceNode);
+                    }
+                } catch (NumberFormatException exception) {
+                    unresolvedPerformanceIds.add(performanceIdValue);
+                }
+            }
+        }
+
+        resolution.set("sse", sse);
+        resolution.set("performance", performance);
+        resolution.set("effects", objectMapper.createArrayNode());
+        resolution.set("unresolvedScriptRefs", unresolvedScriptReferences);
+        resolution.set("unresolvedPerformanceIds", unresolvedPerformanceIds);
+        return resolution;
+    }
+
+    private List<String> extractScriptReferences(String script) {
+        LinkedHashSet<String> references = new LinkedHashSet<>();
+        Matcher matcher = SCRIPT_REFERENCE.matcher(script == null ? "" : script);
+        while (matcher.find()) {
+            references.add(matcher.group());
+        }
+        return new ArrayList<>(references);
+    }
+
+    private Map<Integer, LuaRow> readRows(String resourcePath, String tableName) {
+        String source;
+        try (var input = new ClassPathResource(resourcePath).getInputStream()) {
+            source = new String(input.readAllBytes(), StandardCharsets.UTF_8);
+        } catch (IOException exception) {
+            throw new IllegalStateException(
+                    "Không thể đọc TAB Lua: " + resourcePath, exception
+            );
+        }
+
+        Pattern assignment = Pattern.compile(
+                "(?m)^[ \\t]*" + Pattern.quote(tableName)
+                        + "\\s*\\[\\s*(-?\\d+)\\s*\\][ \\t]*=[ \\t]*"
+        );
+        Matcher matcher = assignment.matcher(source);
+        Map<Integer, LuaRow> rows = new LinkedHashMap<>();
+        int searchFrom = 0;
+
+        while (matcher.find(searchFrom)) {
+            int id = Integer.parseInt(matcher.group(1));
+            LuaLiteralParser parser = new LuaLiteralParser(
+                    source, matcher.end(), resourcePath
+            );
+            Object value = parser.parseValue();
+            if (!(value instanceof List<?> values)) {
+                throw new IllegalStateException(
+                        "TAB row phải là Lua table array: " + resourcePath + "[" + id + "]"
+                );
+            }
+
+            LuaRow row = new LuaRow(
+                    id, new ArrayList<>(values),
+                    source.substring(matcher.start(), parser.position()).trim(),
+                    resourcePath.substring(resourcePath.lastIndexOf('/') + 1)
+            );
+            if (rows.putIfAbsent(id, row) != null) {
+                throw new IllegalStateException(
+                        "Trùng TAB ID " + id + " trong " + resourcePath
+                );
+            }
+            searchFrom = parser.position();
+        }
+
+        if (rows.isEmpty()) {
+            throw new IllegalStateException(
+                    "Không tìm thấy dữ liệu " + tableName + " trong " + resourcePath
+            );
+        }
+        return rows;
+    }
+
+    private void mergeRows(Map<Integer, LuaRow> target, Map<Integer, LuaRow> source) {
+        for (Map.Entry<Integer, LuaRow> entry : source.entrySet()) {
+            if (target.putIfAbsent(entry.getKey(), entry.getValue()) != null) {
+                throw new IllegalStateException(
+                        "Trùng TAB_Skill ID giữa các file: " + entry.getKey()
+                );
+            }
+        }
+    }
+
+    private int numberAt(LuaRow row, int index) {
+        Object value = valueAt(row, index);
+        if (value instanceof Number number) {
+            return number.intValue();
+        }
+        try {
+            return Integer.parseInt(String.valueOf(value));
+        } catch (RuntimeException exception) {
+            throw new IllegalStateException(
+                    "TAB row " + row.id() + " thiếu giá trị số tại cột " + index,
+                    exception
+            );
+        }
+    }
+
+    private String stringAt(LuaRow row, int index) {
+        Object value = valueAt(row, index);
+        return value == null ? "" : String.valueOf(value);
+    }
+
+    private Object valueAt(LuaRow row, int index) {
+        if (index < 0 || index >= row.values().size()) {
+            throw new IllegalStateException(
+                    "TAB row " + row.id() + " không có cột " + index
+            );
+        }
+        return row.values().get(index);
+    }
+
+    private String toLuaLiteral(Object value) {
+        if (value == null) {
+            return "nil";
+        }
+        if (value instanceof String string) {
+            return "\"" + string
+                    .replace("\\\\", "\\\\\\\\")
+                    .replace("\"", "\\\\\"")
+                    .replace("\n", "\\\\n")
+                    .replace("\r", "\\\\r") + "\"";
+        }
+        if (value instanceof List<?> values) {
+            List<String> items = new ArrayList<>();
+            for (Object item : values) {
+                items.add(toLuaLiteral(item));
+            }
+            return "{" + String.join(",", items) + "}";
+        }
+        return String.valueOf(value);
+    }
+
+    private record LuaRow(
+            int id,
+            List<Object> values,
+            String raw,
+            String source
+    ) {
+    }
+
+    /**
+     * Parser cho subset Lua table literal được dùng trong các file TAB:
+     * array table lồng nhau, string, number, boolean và nil.
+     * Không thực thi Lua code và chủ động báo lỗi nếu gặp cú pháp ngoài subset.
+     */
+    private static final class LuaLiteralParser {
+        private static final Pattern NUMBER = Pattern.compile(
+                "[-+]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:[eE][-+]?\\d+)?"
+        );
+
+        private final String source;
+        private final String resourcePath;
+        private int position;
+
+        private LuaLiteralParser(String source, int position, String resourcePath) {
+            this.source = source;
+            this.position = position;
+            this.resourcePath = resourcePath;
+        }
+
+        private int position() {
+            return position;
+        }
+
+        private Object parseValue() {
+            skipWhitespace();
+            if (position >= source.length()) {
+                throw error("Thiếu giá trị Lua");
+            }
+
+            char current = source.charAt(position);
+            if (current == '{') {
+                return parseTable();
+            }
+            if (current == '"' || current == '\\'') {
+                return parseString(current);
+            }
+            return parseAtom();
+        }
+
+        private List<Object> parseTable() {
+            expect('{');
+            List<Object> values = new ArrayList<>();
+            skipWhitespace();
+
+            while (position < source.length() && source.charAt(position) != '}') {
+                values.add(parseValue());
+                skipWhitespace();
+
+                if (position < source.length()
+                        && (source.charAt(position) == ','
+                        || source.charAt(position) == ';')) {
+                    position++;
+                    skipWhitespace();
+                } else if (position >= source.length()
+                        || source.charAt(position) != '}') {
+                    throw error("Thiếu dấu phân cách trong Lua table");
+                }
+            }
+
+            expect('}');
+            return values;
+        }
+
+        private String parseString(char quote) {
+            expect(quote);
+            StringBuilder value = new StringBuilder();
+
+            while (position < source.length()) {
+                char current = source.charAt(position++);
+                if (current == quote) {
+                    return value.toString();
+                }
+                if (current != '\\\\') {
+                    value.append(current);
+                    continue;
+                }
+                if (position >= source.length()) {
+                    throw error("Escape string chưa hoàn tất");
+                }
+
+                char escaped = source.charAt(position++);
+                switch (escaped) {
+                    case 'n' -> value.append('\\n');
+                    case 'r' -> value.append('\\r');
+                    case 't' -> value.append('\\t');
+                    case '\\\\' -> value.append('\\\\');
+                    case '"' -> value.append('"');
+                    case '\\'' -> value.append('\'');
+                    default -> value.append(escaped);
+                }
+            }
+            throw error("String Lua chưa đóng");
+        }
+
+        private Object parseAtom() {
+            Matcher matcher = NUMBER.matcher(source.substring(position));
+            if (matcher.lookingAt()) {
+                String number = matcher.group();
+                position += number.length();
+                if (number.contains(".") || number.contains("e") || number.contains("E")) {
+                    return Double.parseDouble(number);
+                }
+                return Long.parseLong(number);
+            }
+
+            int start = position;
+            while (position < source.length()) {
+                char current = source.charAt(position);
+                if (current == ',' || current == ';' || current == '}'
+                        || Character.isWhitespace(current)) {
+                    break;
+                }
+                position++;
+            }
+            if (start == position) {
+                throw error("Không đọc được Lua literal");
+            }
+
+            String atom = source.substring(start, position);
+            return switch (atom) {
+                case "nil", "null" -> null;
+                case "true" -> Boolean.TRUE;
+                case "false" -> Boolean.FALSE;
+                default -> throw error("Lua literal không hỗ trợ: " + atom);
+            };
+        }
+
+        private void skipWhitespace() {
+            while (position < source.length()
+                    && Character.isWhitespace(source.charAt(position))) {
+                position++;
+            }
+        }
+
+        private void expect(char expected) {
+            skipWhitespace();
+            if (position >= source.length() || source.charAt(position) != expected) {
+                throw error("Mong đợi ký tự '" + expected + "'");
+            }
+            position++;
+        }
+
+        private IllegalStateException error(String message) {
+            return new IllegalStateException(
+                    message + " tại " + resourcePath + ":" + position
+            );
+        }
+    }
+}
