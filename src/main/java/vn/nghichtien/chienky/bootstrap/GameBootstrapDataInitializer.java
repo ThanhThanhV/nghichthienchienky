@@ -1036,6 +1036,10 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                     && "GOJO_PASSIVE_5".equalsIgnoreCase(skillCode)) {
                 seedGojoSixEyesEffects(skill);
             }
+            if ("gojo".equalsIgnoreCase(definition.getHeroCode())
+                    && "GOJO_ACTIVE_2".equalsIgnoreCase(skillCode)) {
+                seedGojoDomainEffects(skill);
+            }
 
             skillsToSave.add(skill);
         }
@@ -1054,6 +1058,39 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
     }
 
     
+    /** Triển khai Vô Hạ Hạn: tăng sát thương địch phải nhận theo từng cấp TAB. */
+    private void seedGojoDomainEffects(HeroSkillDefinition skill) {
+        String[] damageTaken = {
+                "0.15", "0.20", "0.25", "0.26",
+                "0.27", "0.28", "0.29", "0.30"
+        };
+        try {
+            JsonNode rowsNode = objectMapper.readTree(skill.getLevelRowsJson());
+            if (rowsNode instanceof ArrayNode rows) {
+                for (JsonNode rowNode : rows) {
+                    if (!(rowNode instanceof ObjectNode row)) continue;
+                    int level = Math.max(1, Math.min(8, row.path("level").asInt(1)));
+                    ArrayNode effects = objectMapper.createArrayNode();
+                    effects.add(createGojoEffectJson(
+                            "DEBUFF", "ALL_ENEMIES", damageTaken[level - 1], 0,
+                            "{\"statType\":\"DAMAGE_TAKEN\",\"permanent\":true}"
+                    ));
+                    row.set("battleEffects", effects);
+                }
+                skill.updateLevelRowsJson(writeJson(rows));
+            }
+        } catch (IOException exception) {
+            throw new IllegalStateException(
+                    "Không thể tạo battleEffects theo level cho GOJO_ACTIVE_2",
+                    exception
+            );
+        }
+        HeroSkillEffect domain = new HeroSkillEffect(1, "DEBUFF", "ALL_ENEMIES");
+        domain.updateParameters(new BigDecimal("0.15"), BigDecimal.ONE, 0);
+        domain.updateConfig("{\"statType\":\"DAMAGE_TAKEN\",\"permanent\":true}");
+        skill.replaceEffects(List.of(domain));
+    }
+
     /**
      * Lục Nhãn: 5 stack giảm 3% sát thương trong 4 round;
      * mỗi lần hạ địch cộng 6% ATK (tối đa 3 stack, vĩnh viễn và không thể tẩy);
