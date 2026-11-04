@@ -1032,13 +1032,23 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                 }
             }
             skill.replaceEffects(synchronizedEffects);
-            if ("gojo".equalsIgnoreCase(definition.getHeroCode())
-                    && "GOJO_PASSIVE_5".equalsIgnoreCase(skillCode)) {
-                seedGojoSixEyesEffects(skill);
+            if ("gojo".equalsIgnoreCase(definition.getHeroCode())) {
+                switch (skillCode) {
+                    case "GOJO_PASSIVE_3" -> seedGojoHachEffects(skill);
+                    case "GOJO_PASSIVE_4" -> seedGojoInfinityEffects(skill);
+                    case "GOJO_PASSIVE_5" -> seedGojoSixEyesEffects(skill);
+                    case "GOJO_ACTIVE_2" -> seedGojoDomainEffects(skill);
+                    default -> { }
+                }
             }
-            if ("gojo".equalsIgnoreCase(definition.getHeroCode())
-                    && "GOJO_ACTIVE_2".equalsIgnoreCase(skillCode)) {
-                seedGojoDomainEffects(skill);
+            if ("tohka_dark".equalsIgnoreCase(definition.getHeroCode())) {
+                switch (skillCode) {
+                    case "TOHKA_DARK_ACTIVE_2" -> seedTohkaSandalphonEffects(skill);
+                    case "TOHKA_DARK_ULTIMATE_3" -> seedTohkaHalvanhelevEffects(skill);
+                    case "TOHKA_DARK_PASSIVE_4" -> seedTohkaAdonaiEffects(skill);
+                    case "TOHKA_DARK_PASSIVE_5" -> seedTohkaMalkuthEffects(skill);
+                    default -> { }
+                }
             }
 
             skillsToSave.add(skill);
@@ -1058,6 +1068,192 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
     }
 
     
+    /** Gojo Hách: khóa hành động 10 round, phản kích phép mỗi lần địch hành động,
+     * sau round 10 phát thêm một đòn đánh thường hệ số 50%. */
+    private void seedGojoHachEffects(HeroSkillDefinition skill) {
+        String[] magicCounter = {"0.97","1.17","1.40","1.45","1.51","1.57","1.62","1.68"};
+        writeLevelEffects(skill, level -> List.of(
+                createGojoEffectJson("ACTION_LOCK","SELF","0",10,
+                        "{\"trigger\":\"BATTLE_START\"}"),
+                createGojoEffectJson("COUNTER","SELF",magicCounter[level - 1],0,
+                        "{\"trigger\":\"ON_ENEMY_ACTION\",\"damageType\":\"MAGIC\","
+                                + "\"untilRound\":10,\"eventSkillCode\":\"GOJO_PASSIVE_3\"}"),
+                createGojoEffectJson("DAMAGE","FRONT","0.5",0,
+                        "{\"trigger\":\"ROUND_START\",\"triggerRound\":11,"
+                                + "\"eventSkillCode\":\"GOJO_BASIC_1\"}")
+        ));
+        HeroSkillEffect lock = new HeroSkillEffect(1,"ACTION_LOCK","SELF");
+        lock.updateParameters(BigDecimal.ZERO,BigDecimal.ONE,10);
+        lock.updateConfig("{\"trigger\":\"BATTLE_START\"}");
+        HeroSkillEffect counter = new HeroSkillEffect(2,"COUNTER","SELF");
+        counter.updateParameters(new BigDecimal("0.97"),BigDecimal.ONE,0);
+        counter.updateConfig("{\"trigger\":\"ON_ENEMY_ACTION\",\"damageType\":\"MAGIC\","
+                + "\"untilRound\":10,\"eventSkillCode\":\"GOJO_PASSIVE_3\"}");
+        HeroSkillEffect followUp = new HeroSkillEffect(3,"DAMAGE","FRONT");
+        followUp.updateParameters(new BigDecimal("0.5"),BigDecimal.ONE,0);
+        followUp.updateConfig("{\"trigger\":\"ROUND_START\",\"triggerRound\":11,"
+                + "\"eventSkillCode\":\"GOJO_BASIC_1\"}");
+        skill.replaceEffects(List.of(lock,counter,followUp));
+    }
+
+    /** Vô Hạ Hạn: ATK/HP/CRIT tăng theo đúng cấp TAB. */
+    private void seedGojoInfinityEffects(HeroSkillDefinition skill) {
+        String[] atk = {"0.20","0.30","0.40","0.40","0.40","0.40","0.40","0.40"};
+        String[] hp = {"0.10","0.15","0.20","0.24","0.28","0.32","0.36","0.40"};
+        String[] crit = {"0.05","0.10","0.15","0.15","0.15","0.15","0.15","0.15"};
+        writeLevelEffects(skill, level -> List.of(
+                createGojoEffectJson("BUFF","SELF",atk[level - 1],0,
+                        "{\"trigger\":\"BATTLE_START\",\"statType\":\"ATK\",\"permanent\":true}"),
+                createGojoEffectJson("BUFF","SELF",hp[level - 1],0,
+                        "{\"trigger\":\"BATTLE_START\",\"statType\":\"MAX_HP\",\"permanent\":true}"),
+                createGojoEffectJson("BUFF","SELF",crit[level - 1],0,
+                        "{\"trigger\":\"BATTLE_START\",\"statType\":\"CRIT\",\"permanent\":true}")
+        ));
+        skill.replaceEffects(List.of(
+                modifierEffect(1,"ATK","0.20",0,true,"BATTLE_START"),
+                modifierEffect(2,"MAX_HP","0.10",0,true,"BATTLE_START"),
+                modifierEffect(3,"CRIT","0.05",0,true,"BATTLE_START")
+        ));
+    }
+
+    /** Sandalphon: damage AOE theo level, buff CRIT cho Tank/Hỗ Trợ trong 2 round. */
+    private void seedTohkaSandalphonEffects(HeroSkillDefinition skill) {
+        String[] damage = {"0.68","0.82","1.00","1.06","1.12","1.18","1.24","1.30"};
+        String[] crit = {"0.05","0.10","0.15","0.15","0.15","0.15","0.15","0.15"};
+        writeLevelEffects(skill, level -> List.of(
+                createGojoEffectJson("BUFF","TANK_SUPPORT",crit[level - 1],2,
+                        "{\"statType\":\"CRIT\",\"purgeable\":false,"
+                                + "\"eventSkillCode\":\"TOHKA_DARK_ACTIVE_2\"}"),
+                createGojoEffectJson("DAMAGE","ALL_ENEMIES",damage[level - 1],0,
+                        "{\"damageType\":\"PHYSICAL\","
+                                + "\"eventSkillCode\":\"TOHKA_DARK_ACTIVE_2\"}")
+        ));
+        skill.replaceEffects(List.of(
+                new HeroSkillEffect(1,"BUFF","TANK_SUPPORT"),
+                new HeroSkillEffect(2,"DAMAGE","ALL_ENEMIES")
+        ));
+    }
+
+    /** Halvanhelev: chọn hàng địch đông nhất, tăng damage riêng với Tank/Hỗ Trợ. */
+    private void seedTohkaHalvanhelevEffects(HeroSkillDefinition skill) {
+        String[] damage = {"1.61","1.92","2.25","2.33","2.41","2.49","2.57","2.63"};
+        String[] bonus = {"10","20","30","30","30","30","30","30"};
+        writeLevelEffects(skill, level -> List.of(
+                createGojoEffectJson("DAMAGE","MOST_POPULATED_ROW",damage[level - 1],0,
+                        "{\"damageType\":\"PHYSICAL\",\"roleBonusTankSupport\":true,"
+                                + "\"roleBonusPercent\":" + bonus[level - 1] + ","
+                                + "\"eventSkillCode\":\"TOHKA_DARK_ULTIMATE_3\"}")
+        ));
+        skill.replaceEffects(List.of(new HeroSkillEffect(1,"DAMAGE","MOST_POPULATED_ROW")));
+    }
+
+    /** Adonai Melekh: chỉ số cơ bản và kháng khống theo level TAB. */
+    private void seedTohkaAdonaiEffects(HeroSkillDefinition skill) {
+        String[] atk = {"0.20","0.30","0.40","0.40","0.40","0.40","0.40","0.40"};
+        String[] hp = {"0.10","0.15","0.20","0.24","0.28","0.32","0.36","0.40"};
+        String[] crit = {"0.05","0.10","0.15","0.15","0.15","0.15","0.15","0.15"};
+        String[] resistance = {"0.10","0.20","0.30","0.30","0.30","0.30","0.30","0.30"};
+        String[] ccReduction = {"0.30","0.40","0.50","0.50","0.50","0.50","0.50","0.50"};
+        writeLevelEffects(skill, level -> {
+            List<ObjectNode> effects = new ArrayList<>(List.of(
+                    createGojoEffectJson("BUFF","SELF",atk[level - 1],0,
+                            "{\"trigger\":\"BATTLE_START\",\"statType\":\"ATK\",\"permanent\":true}"),
+                    createGojoEffectJson("BUFF","SELF",hp[level - 1],0,
+                            "{\"trigger\":\"BATTLE_START\",\"statType\":\"MAX_HP\",\"permanent\":true}"),
+                    createGojoEffectJson("BUFF","SELF",crit[level - 1],0,
+                            "{\"trigger\":\"BATTLE_START\",\"statType\":\"CRIT\",\"permanent\":true}"),
+                    createGojoEffectJson("BUFF","SELF",resistance[level - 1],0,
+                            "{\"trigger\":\"BATTLE_START\",\"statType\":\"RESISTANCE\",\"permanent\":true}"),
+                    createGojoEffectJson("BUFF","SELF",ccReduction[level - 1],0,
+                            "{\"trigger\":\"BATTLE_START\",\"statType\":\"CONTROL_DURATION_REDUCTION\",\"permanent\":true}")
+            ));
+            if (level >= 3) effects.add(createGojoEffectJson("BUFF","SELF","0",0,
+                    "{\"trigger\":\"BATTLE_START\",\"statType\":\"SPEED_FLAT\","
+                            + "\"flatValue\":15,\"permanent\":true}"));
+            return effects;
+        });
+        skill.replaceEffects(List.of(
+                modifierEffect(1,"ATK","0.20",0,true,"BATTLE_START"),
+                modifierEffect(2,"MAX_HP","0.10",0,true,"BATTLE_START"),
+                modifierEffect(3,"CRIT","0.05",0,true,"BATTLE_START"),
+                modifierEffect(4,"RESISTANCE","0.10",0,true,"BATTLE_START"),
+                modifierEffect(5,"CONTROL_DURATION_REDUCTION","0.30",0,true,"BATTLE_START")
+        ));
+    }
+
+    /** Kabala-Malkuth: nếu Tohka nhanh nhất phe mình thì buff cho đòn này;
+     * nếu không, nhận bộ Giải phóng Thần Lực vĩnh viễn, có thể thanh tẩy. */
+    private void seedTohkaMalkuthEffects(HeroSkillDefinition skill) {
+        String[] attack = {"0.15","0.20","0.25","0.25","0.25","0.25","0.25","0.25"};
+        String[] crit = {"0.05","0.10","0.15","0.15","0.15","0.15","0.15","0.15"};
+        String[] physicalResist = {"0.04","0.06","0.08","0.08","0.08","0.08","0.08","0.08"};
+        String[] damageResist = {"0.03","0.05","0.07","0.07","0.07","0.07","0.07","0.07"};
+        String[] resistance = {"0.05","0.07","0.10","0.10","0.10","0.10","0.10","0.10"};
+        String[] lifesteal = {"0.15","0.20","0.25","0.25","0.25","0.25","0.25","0.25"};
+        writeLevelEffects(skill, level -> {
+            List<ObjectNode> effects = new ArrayList<>();
+            effects.add(createGojoEffectJson("BUFF","SELF",attack[level - 1],1,
+                    "{\"trigger\":\"BEFORE_ACTION\",\"condition\":\"SOURCE_IS_FASTEST_ALLY\","
+                            + "\"statType\":\"DAMAGE_DEALT\"}"));
+            effects.add(createGojoEffectJson("BUFF","SELF",crit[level - 1],1,
+                    "{\"trigger\":\"BEFORE_ACTION\",\"condition\":\"SOURCE_IS_FASTEST_ALLY\","
+                            + "\"statType\":\"CRIT\"}"));
+            String[] stats = {"PHYSICAL_DAMAGE_REDUCTION","MAGIC_DAMAGE_REDUCTION","DAMAGE_REDUCTION",
+                    "RESISTANCE","HEAL_RECEIVED","ACCURACY","CRIT_DAMAGE","PHYSICAL_DAMAGE","LIFESTEAL"};
+            String[] values = {physicalResist[level - 1],physicalResist[level - 1],damageResist[level - 1],
+                    resistance[level - 1],resistance[level - 1],resistance[level - 1],resistance[level - 1],
+                    resistance[level - 1],lifesteal[level - 1]};
+            for (int i = 0; i < stats.length; i++) {
+                effects.add(createGojoEffectJson("BUFF","SELF",values[i],0,
+                        "{\"trigger\":\"BEFORE_ACTION\",\"condition\":\"SOURCE_IS_NOT_FASTEST_ALLY\","
+                                + "\"statType\":\"" + stats[i] + "\",\"permanent\":true}"));
+            }
+            return effects;
+        });
+        skill.replaceEffects(List.of(
+                modifierEffect(1,"DAMAGE_DEALT","0.15",1,false,"BEFORE_ACTION"),
+                modifierEffect(2,"CRIT","0.05",1,false,"BEFORE_ACTION")
+        ));
+    }
+
+    private HeroSkillEffect modifierEffect(
+            int order, String stat, String value, int duration,
+            boolean permanent, String trigger
+    ) {
+        HeroSkillEffect effect = new HeroSkillEffect(order, "BUFF", "SELF");
+        effect.updateParameters(new BigDecimal(value), BigDecimal.ONE, duration);
+        effect.updateConfig("{\"trigger\":\"" + trigger + "\",\"statType\":\"" + stat
+                + "\",\"permanent\":" + permanent + "}");
+        return effect;
+    }
+
+    @FunctionalInterface
+    private interface LevelEffectFactory {
+        List<ObjectNode> create(int level);
+    }
+
+    private void writeLevelEffects(HeroSkillDefinition skill, LevelEffectFactory factory) {
+        try {
+            JsonNode rowsNode = objectMapper.readTree(skill.getLevelRowsJson());
+            if (rowsNode instanceof ArrayNode rows) {
+                for (JsonNode rowNode : rows) {
+                    if (rowNode instanceof ObjectNode row) {
+                        int level = Math.max(1, Math.min(8, row.path("level").asInt(1)));
+                        ArrayNode effects = objectMapper.createArrayNode();
+                        factory.create(level).forEach(effects::add);
+                        row.set("battleEffects", effects);
+                    }
+                }
+                skill.updateLevelRowsJson(writeJson(rows));
+            }
+        } catch (IOException exception) {
+            throw new IllegalStateException(
+                    "Không thể tạo battleEffects theo cấp cho " + skill.getSkillCode(),
+                    exception
+            );
+        }
+    }
+
     /** Triển khai Vô Hạ Hạn: tăng sát thương địch phải nhận theo từng cấp TAB. */
     private void seedGojoDomainEffects(HeroSkillDefinition skill) {
         String[] damageTaken = {
@@ -1132,7 +1328,8 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                     ));
                     battleEffects.add(createGojoEffectJson(
                             "COUNTER", "SELF", reviveMagicDamage[level - 1], 0,
-                            "{\"trigger\":\"ON_REVIVE\",\"damageType\":\"MAGIC\"}"
+                            "{\"trigger\":\"ON_REVIVE\",\"damageType\":\"MAGIC\","
+                                    + "\"eventSkillCode\":\"GOJO_PASSIVE_5\"}"
                     ));
                     row.set("battleEffects", battleEffects);
                 }
