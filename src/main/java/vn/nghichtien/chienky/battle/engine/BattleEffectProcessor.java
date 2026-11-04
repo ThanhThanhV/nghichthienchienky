@@ -122,7 +122,7 @@ public class BattleEffectProcessor {
     private void executeActionLock(
             BattleState battle, BattleUnitState source, BattleEffectConfig effect
     ) {
-        source.setActionLockedUntilRound(battle.getCurrentRound() + effect.duration());
+        source.setActionLockedUntilRound(battle.getCurrentRound() + effect.duration() - 1);
         battle.getEventCollector().record(
                 BattleEventType.CC,
                 source.getTeam().name(), source.getInstanceId(),
@@ -130,7 +130,7 @@ public class BattleEffectProcessor {
                 effect.effectCode(), BigDecimal.valueOf(effect.duration()),
                 false, source.getCurrentHp(), source.getMaxHp(), source.isAlive(),
                 effect.effectCode(), "ACTION_LOCK", effect.duration(),
-                "Action locked through round " + (battle.getCurrentRound() + effect.duration())
+                "Action locked through round " + (battle.getCurrentRound() + effect.duration() - 1)
         );
     }
 
