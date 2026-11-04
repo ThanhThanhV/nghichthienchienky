@@ -83,6 +83,13 @@ public class TabLuaCatalogSynchronizer {
         Map<Integer, LuaRow> performanceRows = readRows(
                 "data/TAB_EffectPerfor_1.lua", "TAB_EffectPerfor"
         );
+        Map<Integer, LuaRow> effectRows = new LinkedHashMap<>();
+        mergeRows(effectRows, readRows("data/TAB_Effect_1.lua", "TAB_Effect"));
+        mergeRows(effectRows, readRows("data/TAB_Effect_2.lua", "TAB_Effect"));
+        mergeRows(effectRows, readRows("data/TAB_Effect_3.lua", "TAB_Effect"));
+        Map<Integer, LuaRow> bufferRows = new LinkedHashMap<>();
+        mergeRows(bufferRows, readRows("data/TAB_Buffer_1.lua", "TAB_Buffer"));
+        mergeRows(bufferRows, readRows("data/TAB_Buffer_2.lua", "TAB_Buffer"));
 
         ObjectNode heroes = (ObjectNode) catalog.path("heroes");
         Iterator<Map.Entry<String, JsonNode>> heroIterator = heroes.fields();
@@ -95,7 +102,7 @@ public class TabLuaCatalogSynchronizer {
             }
             synchronizeHero(
                     entry.getKey(), heroConfig, heroRows, skillsByGroup,
-                    sseByScriptReference, performanceRows
+                    sseByScriptReference, performanceRows, effectRows, bufferRows
             );
         }
     }
@@ -106,7 +113,9 @@ public class TabLuaCatalogSynchronizer {
             Map<Integer, LuaRow> heroRows,
             Map<Integer, List<LuaRow>> skillsByGroup,
             Map<String, List<LuaRow>> sseByScriptReference,
-            Map<Integer, LuaRow> performanceRows
+            Map<Integer, LuaRow> performanceRows,
+            Map<Integer, LuaRow> effectRows,
+            Map<Integer, LuaRow> bufferRows
     ) {
         JsonNode tabHero = heroConfig.path("tabHero");
         int tabHeroId = tabHero.path("tabHeroId").asInt(-1);
@@ -179,7 +188,8 @@ public class TabLuaCatalogSynchronizer {
             }
 
             synchronizeSkill(
-                    skillConfig, levelRows, sseByScriptReference, performanceRows
+                    skillConfig, levelRows, sseByScriptReference,
+                    performanceRows, effectRows, bufferRows
             );
         }
     }
@@ -188,7 +198,9 @@ public class TabLuaCatalogSynchronizer {
             ObjectNode skillConfig,
             List<LuaRow> sourceRows,
             Map<String, List<LuaRow>> sseByScriptReference,
-            Map<Integer, LuaRow> performanceRows
+            Map<Integer, LuaRow> performanceRows,
+            Map<Integer, LuaRow> effectRows,
+            Map<Integer, LuaRow> bufferRows
     ) {
         ArrayNode levelRows = objectMapper.createArrayNode();
         LinkedHashSet<String> allScriptReferences = new LinkedHashSet<>();
@@ -234,7 +246,8 @@ public class TabLuaCatalogSynchronizer {
         skillConfig.set(
                 "scriptResolution",
                 resolveScriptReferences(
-                        allScriptReferences, sseByScriptReference, performanceRows
+                        allScriptReferences, sseByScriptReference,
+                        performanceRows, effectRows, bufferRows
                 )
         );
     }
@@ -268,53 +281,143 @@ public class TabLuaCatalogSynchronizer {
     private ObjectNode resolveScriptReferences(
             Set<String> references,
             Map<String, List<LuaRow>> sseByScriptReference,
-            Map<Integer, LuaRow> performanceRows
+            Map<Integer, LuaRow> performanceRows,
+            Map<Integer, LuaRow> effectRows,
+            Map<Integer, LuaRow> bufferRows
     ) {
         ObjectNode resolution = objectMapper.createObjectNode();
         ArrayNode sse = objectMapper.createArrayNode();
         ArrayNode performance = objectMapper.createArrayNode();
+        ArrayNode effects = objectMapper.createArrayNode();
+        ArrayNode buffers = objectMapper.createArrayNode();
         ArrayNode unresolvedScriptReferences = objectMapper.createArrayNode();
         ArrayNode unresolvedPerformanceIds = objectMapper.createArrayNode();
+        ArrayNode unresolvedBufferIds = objectMapper.createArrayNode();
+
+        Set<Integer> addedSseIds = new HashSet<>();
         Set<Integer> addedPerformanceIds = new HashSet<>();
+        Set<Integer> addedEffectIds = new HashSet<>();
+        Set<Integer> addedBufferIds = new HashSet<>();
 
         for (String reference : references) {
+            boolean resolved = false;
+
             List<LuaRow> matchingSseRows = sseByScriptReference.get(reference);
-            if (matchingSseRows == null || matchingSseRows.isEmpty()) {
-                unresolvedScriptReferences.add(reference);
-                continue;
+            if (matchingSseRows != null) {
+                for (LuaRow sseRow : matchingSseRows) {
+                    resolved = true;
+                    if (addedSseIds.add(sseRow.id())) {
+                        ObjectNode sseNode = objectMapper.createObjectNode();
+                        sseNode.put("id", Integer.toString(sseRow.id()));
+                        sseNode.set("fields", objectMapper.valueToTree(sseRow.values()));
+                        sseNode.put("raw", sseRow.raw());
+                        sse.add(sseNode);
+                    }
+                    addPerformance(
+                            stringAt(sseRow, 1), performanceRows, performance,
+                            addedPerformanceIds, unresolvedPerformanceIds
+                    );
+                }
             }
 
-            for (LuaRow sseRow : matchingSseRows) {
-                ObjectNode sseNode = objectMapper.createObjectNode();
-                sseNode.put("id", Integer.toString(sseRow.id()));
-                sseNode.set("fields", objectMapper.valueToTree(sseRow.values()));
-                sseNode.put("raw", sseRow.raw());
-                sse.add(sseNode);
-
-                String performanceIdValue = stringAt(sseRow, 1);
-                try {
-                    int performanceId = Integer.parseInt(performanceIdValue);
-                    LuaRow performanceRow = performanceRows.get(performanceId);
-                    if (performanceRow == null) {
-                        unresolvedPerformanceIds.add(performanceIdValue);
-                    } else if (addedPerformanceIds.add(performanceId)) {
-                        ObjectNode performanceNode = objectMapper.createObjectNode();
-                        performanceNode.put("id", performanceIdValue);
-                        performanceNode.put("raw", performanceRow.raw());
-                        performance.add(performanceNode);
+            try {
+                int referenceId = Integer.parseInt(reference);
+                LuaRow effectRow = effectRows.get(referenceId);
+                if (effectRow != null) {
+                    resolved = true;
+                    if (addedEffectIds.add(effectRow.id())) {
+                        ObjectNode effectNode = objectMapper.createObjectNode();
+                        effectNode.put("id", Integer.toString(effectRow.id()));
+                        effectNode.set("fields", objectMapper.valueToTree(effectRow.values()));
+                        effectNode.put("raw", effectRow.raw());
+                        effects.add(effectNode);
                     }
-                } catch (NumberFormatException exception) {
-                    unresolvedPerformanceIds.add(performanceIdValue);
+
+                    int performanceId = numberAt(effectRow, 10);
+                    if (performanceId > 0) {
+                        addPerformance(
+                                Integer.toString(performanceId), performanceRows,
+                                performance, addedPerformanceIds,
+                                unresolvedPerformanceIds
+                        );
+                    }
+
+                    int bufferId = numberAt(effectRow, 11);
+                    if (bufferId > 0) {
+                        addBuffer(
+                                bufferId, bufferRows, buffers,
+                                addedBufferIds, unresolvedBufferIds
+                        );
+                    }
                 }
+
+                LuaRow bufferRow = bufferRows.get(referenceId);
+                if (bufferRow != null) {
+                    resolved = true;
+                    addBuffer(
+                            referenceId, bufferRows, buffers,
+                            addedBufferIds, unresolvedBufferIds
+                    );
+                }
+            } catch (NumberFormatException exception) {
+                // A non-numeric script token is reported below as unresolved.
+            }
+
+            if (!resolved) {
+                unresolvedScriptReferences.add(reference);
             }
         }
 
         resolution.set("sse", sse);
         resolution.set("performance", performance);
-        resolution.set("effects", objectMapper.createArrayNode());
+        resolution.set("effects", effects);
+        resolution.set("buffers", buffers);
         resolution.set("unresolvedScriptRefs", unresolvedScriptReferences);
         resolution.set("unresolvedPerformanceIds", unresolvedPerformanceIds);
+        resolution.set("unresolvedBufferIds", unresolvedBufferIds);
         return resolution;
+    }
+
+    private void addPerformance(
+            String idValue,
+            Map<Integer, LuaRow> performanceRows,
+            ArrayNode performance,
+            Set<Integer> addedPerformanceIds,
+            ArrayNode unresolvedPerformanceIds
+    ) {
+        try {
+            int id = Integer.parseInt(idValue);
+            LuaRow row = performanceRows.get(id);
+            if (row == null) {
+                unresolvedPerformanceIds.add(idValue);
+            } else if (addedPerformanceIds.add(id)) {
+                ObjectNode node = objectMapper.createObjectNode();
+                node.put("id", idValue);
+                node.put("raw", row.raw());
+                performance.add(node);
+            }
+        } catch (NumberFormatException exception) {
+            unresolvedPerformanceIds.add(idValue);
+        }
+    }
+
+    private void addBuffer(
+            int id,
+            Map<Integer, LuaRow> bufferRows,
+            ArrayNode buffers,
+            Set<Integer> addedBufferIds,
+            ArrayNode unresolvedBufferIds
+    ) {
+        LuaRow row = bufferRows.get(id);
+        if (row == null) {
+            unresolvedBufferIds.add(Integer.toString(id));
+        } else if (addedBufferIds.add(id)) {
+            ObjectNode node = objectMapper.createObjectNode();
+            node.put("id", Integer.toString(id));
+            node.set("fields", objectMapper.valueToTree(row.values()));
+            node.put("raw", row.raw());
+            buffers.add(node);
+        }
     }
 
     private List<String> extractScriptReferences(String script) {
