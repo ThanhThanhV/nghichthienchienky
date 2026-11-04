@@ -159,6 +159,19 @@ public class HeroSkillDefinition {
     }
 
     /**
+     * Đổi mã định danh kỹ năng trong migration có chủ đích.
+     * Giữ nguyên ID entity để không làm đứt liên kết cấp kỹ năng của người chơi.
+     *
+     * @param skillCode Mã kỹ năng mới
+     */
+    public void changeSkillCode(String skillCode) {
+        if (skillCode == null || skillCode.isBlank()) {
+            throw new IllegalArgumentException("Skill code không được để trống");
+        }
+        this.skillCode = skillCode.trim().toUpperCase(java.util.Locale.ROOT);
+    }
+
+    /**
      * Thay đổi trạng thái kích hoạt kỹ năng.
      *
      * @param enabled Trạng thái kích hoạt
