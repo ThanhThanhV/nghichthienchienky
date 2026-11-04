@@ -38,5 +38,7 @@ public enum BattleEffectType {
 
     DOT,
 
-    HOT
+    HOT,
+
+    ACTION_LOCK
 }
