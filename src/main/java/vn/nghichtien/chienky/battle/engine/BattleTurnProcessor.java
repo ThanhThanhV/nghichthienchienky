@@ -327,6 +327,17 @@ public class BattleTurnProcessor {
             return;
         }
 
+        if (unit.isActionLocked(battle.getCurrentRound())) {
+            skillExecutor.executePassives(battle, unit, BattlePassiveTrigger.AFTER_ACTION);
+            collector.record(
+                    BattleEventType.ACTION_END,
+                    unit.getTeam().name(), unit.getInstanceId(),
+                    null, null, null, null, null, null, null, null, null, null, null,
+                    "Extra action locked by passive"
+            );
+            return;
+        }
+
         var statusManager = unit.getStatusEffectManager();
         if (statusManager.shouldSkipAction()) {
             String crowdControlType =
@@ -377,19 +388,35 @@ public class BattleTurnProcessor {
 
         if (!actionEvents.isEmpty()) {
             dispatchActionEventPassives(battle, actionEvents);
-            dispatchEnemyActionPassives(battle, unit);
         }
+        dispatchEnemyActionPassives(battle, unit);
     }
 
     private void dispatchEnemyActionPassives(BattleState battle, BattleUnitState actor) {
         if (battle.isFinished() || actor == null) return;
         for (BattleUnitState observer : battle.getUnits()) {
             if (battle.isFinished()) return;
-            if (observer.isAlive() && observer.getTeam() != actor.getTeam()) {
-                skillExecutor.executePassives(
-                        battle, observer, BattlePassiveTrigger.ON_ENEMY_ACTION,
-                        actor.getInstanceId()
-                );
+            if (!observer.isAlive() || observer.getTeam() == actor.getTeam()) continue;
+            int eventStart = battle.getEventCollector().getEvents().size();
+            skillExecutor.executePassives(
+                    battle, observer, BattlePassiveTrigger.ON_ENEMY_ACTION,
+                    actor.getInstanceId()
+            );
+            // Hách có thể kết liễu kẻ vừa hành động; chuyển tiếp DEATH để Lục Nhãn
+            // nhận stack ON_KILL mà không phát lại ON_ENEMY_ACTION.
+            List<BattleEventDTO> reactionEvents = List.copyOf(
+                    battle.getEventCollector().getEvents().subList(
+                            eventStart, battle.getEventCollector().getEvents().size()
+                    )
+            );
+            for (BattleEventDTO event : reactionEvents) {
+                if (event.type() != BattleEventType.DEATH) continue;
+                BattleUnitState killer = battle.findUnit(event.sourceInstanceId());
+                if (killer != null && killer.isAlive()) {
+                    skillExecutor.executePassives(
+                            battle, killer, BattlePassiveTrigger.ON_KILL
+                    );
+                }
             }
         }
     }
