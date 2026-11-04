@@ -97,15 +97,35 @@ animation and VFX choices.
 
 ## Effect execution scope
 
-Direct damage targets, selected target counts/rows, supported permanent stat
-passives, Gojo's approved 20-round defensive active, and the supported counter /
-shield triggers are represented using the existing Java battle-effect handlers.
+The following mechanics are represented by Java battle-effect handlers and
+are written into each skill's eight TAB level rows before database persistence:
+
+- `dark_tohka`: Sandalphon damages all enemies and grants the non-purgeable
+  Kingdom Blessing marker/role-specific CRIT bonus for two rounds; Halvanhelev
+  attacks the enemy row with the most living units and applies the TAB Tank /
+  Support damage bonus; Adonai Melekh applies its level-scaled ATK, MAX HP,
+  CRIT, RESISTANCE, control-duration reduction and SPEED bonuses; Kabala-Malkuth
+  selects the fastest-ally branch for the current attack or grants its
+  non-stacking persistent stat bundle when Tohka is not the fastest ally.
+- `gojo`: the Domain debuffs all enemies' damage taken at battle start;
+  Hách locks Gojo for rounds 1-10, deals level-scaled MAGIC damage after each
+  enemy action during those rounds, then performs a 50% BASIC follow-up at
+  round 11; Vô Hạ Hạn applies its TAB stat bonuses; Lục Nhãn grants five
+  non-purgeable damage-reduction stacks, up to three permanent ATK stacks on
+  kills, and a MAGIC chase against the exact enemy instance that revives.
+
+Gojo MAGIC damage uses ATK multiplied by the configured coefficient and does
+not use the physical DEF formula (the current unit model has no separate
+MAGIC_DEF attribute). It still passes through the shared damage pipeline,
+including CRIT, magic-specific / generic damage reduction, immunity, BLOCK,
+SHIELD, lifesteal, and death events. Round-start passive damage is dispatched
+through the same `ON_DAMAGED` / `ON_KILL` reaction pipeline as normal actions.
+
 TAB script references and their `TAB_Sseffect`, `TAB_Effect`,
-`TAB_EffectPerfor`, and `TAB_Buffer` resolutions are retained for audit. Complex source mechanics that the current engine
-cannot represent exactly (for example conditional role-specific bonuses,
-stacking, revival chase, and some max-HP-based effects) are not silently
-converted into generic damage. They remain visible in the TAB source catalog
-until their corresponding Java handlers are implemented.
+`TAB_EffectPerfor`, and `TAB_Buffer` resolutions remain preserved for audit.
+The other eight heroes' source mechanics are not inferred from generic
+placeholders; any behavior not yet implemented remains visible in the TAB
+catalog until its dedicated Java handler is added.
 
 ## Spine VFX validation
 
