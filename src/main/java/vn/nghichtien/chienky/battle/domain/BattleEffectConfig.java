@@ -10,7 +10,7 @@ public record BattleEffectConfig(
         BattleStatType statType, BattleStatusType statusType,
         BattleImmunityType immunityType, BattleDispelType dispelType,
         boolean permanent, int initialStacks, int maxStacks, boolean purgeable,
-        BattleDamageType damageType, BigDecimal roleBonusPercent,
+        boolean ignoreImmunity, BattleDamageType damageType, BigDecimal roleBonusPercent,
         boolean roleBonusTankSupport, String condition, Integer triggerRound,
         Integer untilRound, String eventSkillCode
 ) {
@@ -21,7 +21,7 @@ public record BattleEffectConfig(
             BattleDispelType dispelType) {
         this(effectCode, effectType, targetMode, multiplier, flatValue, duration,
                 priority, statType, statusType, immunityType, dispelType,
-                false, 1, 1, true, BattleDamageType.PHYSICAL,
+                false, 1, 1, true, false, BattleDamageType.PHYSICAL,
                 BigDecimal.ZERO, false, null, null, null, null);
     }
 
@@ -32,7 +32,7 @@ public record BattleEffectConfig(
             BattleDispelType dispelType, boolean permanent) {
         this(effectCode, effectType, targetMode, multiplier, flatValue, duration,
                 priority, statType, statusType, immunityType, dispelType,
-                permanent, 1, 1, true, BattleDamageType.PHYSICAL,
+                permanent, 1, 1, true, false, BattleDamageType.PHYSICAL,
                 BigDecimal.ZERO, false, null, null, null, null);
     }
 
@@ -45,7 +45,7 @@ public record BattleEffectConfig(
             int maxStacks, boolean purgeable) {
         this(effectCode, effectType, targetMode, multiplier, flatValue, duration,
                 priority, statType, statusType, immunityType, dispelType,
-                permanent, initialStacks, maxStacks, purgeable,
+                permanent, initialStacks, maxStacks, purgeable, false,
                 BattleDamageType.PHYSICAL, BigDecimal.ZERO, false,
                 null, null, null, null);
     }
