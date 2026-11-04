@@ -98,7 +98,17 @@ public class BattleTurnProcessor {
             return;
         }
 
+        // Một số nội tại ROUND_START có thể gây sát thương trực tiếp
+        // (ví dụ đòn đánh thường phụ của Gojo ở round 11). Chụp snapshot
+        // và dispatch qua cùng pipeline ON_DAMAGED/ON_KILL như action thường.
+        int roundStartEventStartIndex = collector.getEvents().size();
         executePassivesForAllAlive(battle, BattlePassiveTrigger.ROUND_START);
+        List<BattleEventDTO> roundStartEvents = List.copyOf(
+                collector.getEvents().subList(
+                        roundStartEventStartIndex, collector.getEvents().size()
+                )
+        );
+        dispatchActionEventPassives(battle, roundStartEvents);
 
         // Nội tại đầu round có thể kết liễu đội đối phương; không cho đơn vị
         // tiếp tục hành động sau khi điều kiện kết thúc đã được thỏa mãn.
