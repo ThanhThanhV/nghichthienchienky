@@ -75,10 +75,8 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
         );
         List<String> heroCodes = seeds.stream().map(HeroSeed::code).toList();
 
-        // DatabaseResetInitializer đã xóa toàn bộ dữ liệu ứng dụng ở Order(0);
-        // resource catalog được seed ở Order(1), sau đó mới seed toàn bộ hero.
-        resetHeroSkillSeed(heroCodes);
-
+        // Đồng bộ định nghĩa kỹ năng theo skillCode hiện có, không xóa bản ghi.
+        // Nhờ giữ nguyên skill ID, cấp kỹ năng của từng HeroInstance vẫn được bảo toàn.
         for (int i = 0; i < seeds.size(); i++) {
             HeroSeed seed = seeds.get(i);
             seedHero(
@@ -89,24 +87,6 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
 
         // Gắn lại 5 kỹ năng cấp 1 cho mọi bản sao tướng người chơi đang sở hữu.
         rebuildOwnedHeroSkills(heroCodes);
-    }
-
-    private void resetHeroSkillSeed(List<String> heroCodes) {
-        heroInstanceSkillRepository
-                .deleteAllBySkillDefinitionHeroDefinitionHeroCodeIn(heroCodes);
-        heroInstanceSkillRepository.flush();
-
-        List<HeroSkillDefinition> oldSkills = new ArrayList<>();
-        for (String heroCode : heroCodes) {
-            oldSkills.addAll(
-                    heroSkillDefinitionRepository
-                            .findAllByHeroDefinitionHeroCodeOrderBySkillOrderAsc(heroCode)
-            );
-        }
-        if (!oldSkills.isEmpty()) {
-            heroSkillDefinitionRepository.deleteAll(oldSkills);
-            heroSkillDefinitionRepository.flush();
-        }
     }
 
     private void rebuildOwnedHeroSkills(List<String> heroCodes) {
@@ -543,7 +523,14 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
             );
         }
 
+        // Lấy cả kỹ năng đang tắt để có thể bật lại mà không tạo ID mới.
+        List<HeroSkillDefinition> existingSkills =
+                heroSkillDefinitionRepository
+                        .findAllByHeroDefinitionHeroCodeOrderBySkillOrderAsc(seed.code());
+
         List<HeroSkillDefinition> skillsToSave = new ArrayList<>();
+        List<String> synchronizedSkillCodes = new ArrayList<>();
+
         for (int i = 0; i < tabSkills.size(); i++) {
             JsonNode tabSkill = tabSkills.get(i);
             int order = i + 1;
@@ -562,13 +549,39 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                 );
             }
 
-            HeroSkillDefinition skill = new HeroSkillDefinition(
-                    definition, skillCode, skillName, skillType, order
-            );
+            HeroSkillDefinition skill = existingSkills.stream()
+                    .filter(existing -> skillCode.equals(existing.getSkillCode()))
+                    .findFirst()
+                    .orElse(null);
+
+            if (skill == null) {
+                HeroSkillDefinition occupiedSlot = existingSkills.stream()
+                        .filter(existing -> order == existing.getSkillOrder())
+                        .findFirst()
+                        .orElse(null);
+                if (occupiedSlot != null) {
+                    throw new IllegalStateException(
+                            "Không thể tự động đổi định danh kỹ năng tại "
+                                    + seed.code() + " slot " + order
+                                    + ": DB=" + occupiedSlot.getSkillCode()
+                                    + ", TAB=" + skillCode
+                                    + ". Cần migration định danh rõ ràng để giữ cấp kỹ năng."
+                    );
+                }
+                skill = new HeroSkillDefinition(
+                        definition, skillCode, skillName, skillType, order
+                );
+            }
+
             skill.updateInformation(
                     skillName, description, tabSkill.path("icon").asText("")
             );
+            skill.changeSkillType(skillType);
+            skill.changeEnabled(true);
 
+            // Thay thế hiệu ứng theo catalog TAB mới nhưng giữ nguyên skill ID.
+            // HeroInstanceSkill tham chiếu skill ID này nên cấp kỹ năng không bị reset.
+            List<HeroSkillEffect> synchronizedEffects = new ArrayList<>();
             JsonNode effects = tabSkill.path("battleEffects");
             if (effects.isArray()) {
                 for (int effectIndex = 0; effectIndex < effects.size(); effectIndex++) {
@@ -599,10 +612,23 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                     effect.updateConfig(
                             configJson.isObject() ? writeJson(configJson) : "{}"
                     );
-                    skill.addEffect(effect);
+                    synchronizedEffects.add(effect);
                 }
             }
+            skill.replaceEffects(synchronizedEffects);
+
+            synchronizedSkillCodes.add(skillCode);
             skillsToSave.add(skill);
+        }
+
+        // Không xóa kỹ năng cũ để tránh làm mất liên kết/cấp kỹ năng người chơi.
+        // Các slot không còn trong catalog được vô hiệu hóa thay vì DELETE.
+        for (HeroSkillDefinition existing : existingSkills) {
+            if (existing.getSkillOrder() != null
+                    && existing.getSkillOrder() > tabSkills.size()) {
+                existing.changeEnabled(false);
+                skillsToSave.add(existing);
+            }
         }
 
         heroSkillDefinitionRepository.saveAllAndFlush(skillsToSave);
