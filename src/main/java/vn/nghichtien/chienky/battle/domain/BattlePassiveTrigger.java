@@ -10,5 +10,6 @@ public enum BattlePassiveTrigger {
     AFTER_ACTION,
     ON_ATTACK,
     ON_DAMAGED,
-    ON_KILL
+    ON_KILL,
+    ON_REVIVE
 }
