@@ -1065,6 +1065,11 @@ class BattleRenderer {
                 }
 
                 const config = this.getSkillAnimationConfig(character, event);
+                const configuredTrigger = String(config?.trigger || "").trim().toUpperCase();
+                const eventTrigger = String(event.effectCategory || "").trim().toUpperCase();
+                if (configuredTrigger && configuredTrigger !== eventTrigger) {
+                    return null;
+                }
                 const configuredAnimation = config?.animation;
                 if (!character) {
                     console.error(
