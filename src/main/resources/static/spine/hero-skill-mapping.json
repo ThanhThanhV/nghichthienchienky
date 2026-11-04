@@ -230,7 +230,10 @@
       "skillAnimations": {
         "GOJO_BASIC_1": "att",
         "GOJO_ACTIVE_2": "superskill",
-        "GOJO_PASSIVE_3": "skill",
+        "GOJO_PASSIVE_3": {
+          "animation": "skill",
+          "trigger": "ON_ENEMY_ACTION"
+        },
         "GOJO_PASSIVE_5": {
           "animation": "ultimateskill",
           "trigger": "ON_REVIVE"
@@ -358,7 +361,8 @@
             "file": "seffect_52517111012",
             "animation": "animation_0",
             "impactEvent": "qishou_21_1_1",
-            "anchor": "source"
+            "anchor": "source",
+            "trigger": "ON_ENEMY_ACTION"
           },
           "impact": {
             "code": "gojo_counter_impact",
@@ -368,7 +372,8 @@
             "impactEvent": "hit_11_1_1",
             "impactEvents": [
               "hit_11_1_1"
-            ]
+            ],
+            "trigger": "COUNTER"
           }
         }
       },
