@@ -1060,31 +1060,89 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
      * khi địch hồi sinh, truy kích đúng mục tiêu vừa hồi sinh.
      */
     private void seedGojoSixEyesEffects(HeroSkillDefinition skill) {
-        List<HeroSkillEffect> effects = new ArrayList<>();
+        // Giá trị lấy theo mô tả từng level trong TAB_Skill, không dùng cố định level 1.
+        String[] reductionPerStack = {
+                "0.03", "0.04", "0.05", "0.052",
+                "0.054", "0.056", "0.058", "0.06"
+        };
+        String[] attackPerKill = {
+                "0.06", "0.08", "0.10", "0.104",
+                "0.108", "0.112", "0.116", "0.12"
+        };
+        String[] reviveMagicDamage = {
+                "0.10", "0.15", "0.20", "0.20",
+                "0.20", "0.20", "0.20", "0.20"
+        };
 
-        HeroSkillEffect openingReduction = new HeroSkillEffect(1, "BUFF", "SELF");
-        openingReduction.updateParameters(new BigDecimal("0.03"), BigDecimal.ONE, 4);
-        openingReduction.updateConfig(
-                "{\"trigger\":\"BATTLE_START\",\"statType\":\"DAMAGE_REDUCTION\","
-                        + "\"stacks\":5,\"maxStacks\":5,\"purgeable\":false}"
-        );
-        effects.add(openingReduction);
+        try {
+            JsonNode rowsNode = objectMapper.readTree(skill.getLevelRowsJson());
+            if (rowsNode instanceof ArrayNode rows) {
+                for (JsonNode rowNode : rows) {
+                    if (!(rowNode instanceof ObjectNode row)) continue;
+                    int level = Math.max(1, Math.min(8, row.path("level").asInt(1)));
+                    ArrayNode battleEffects = objectMapper.createArrayNode();
 
-        HeroSkillEffect killAttack = new HeroSkillEffect(2, "BUFF", "SELF");
-        killAttack.updateParameters(new BigDecimal("0.06"), BigDecimal.ONE, 0);
-        killAttack.updateConfig(
-                "{\"trigger\":\"ON_KILL\",\"statType\":\"ATK\","
-                        + "\"permanent\":true,\"stacks\":1,\"maxStacks\":3,"
-                        + "\"purgeable\":false}"
-        );
-        effects.add(killAttack);
+                    battleEffects.add(createGojoEffectJson(
+                            "BUFF", "SELF", reductionPerStack[level - 1], 4,
+                            "{\"trigger\":\"BATTLE_START\",\"statType\":\"DAMAGE_REDUCTION\","
+                                    + "\"stacks\":5,\"maxStacks\":5,\"purgeable\":false}"
+                    ));
+                    battleEffects.add(createGojoEffectJson(
+                            "BUFF", "SELF", attackPerKill[level - 1], 0,
+                            "{\"trigger\":\"ON_KILL\",\"statType\":\"ATK\","
+                                    + "\"permanent\":true,\"stacks\":1,\"maxStacks\":3,"
+                                    + "\"purgeable\":false}"
+                    ));
+                    battleEffects.add(createGojoEffectJson(
+                            "COUNTER", "SELF", reviveMagicDamage[level - 1], 0,
+                            "{\"trigger\":\"ON_REVIVE\",\"damageType\":\"MAGIC\"}"
+                    ));
+                    row.set("battleEffects", battleEffects);
+                }
+                skill.updateLevelRowsJson(writeJson(rows));
+            }
+        } catch (IOException exception) {
+            throw new IllegalStateException(
+                    "Không thể tạo battleEffects theo level cho GOJO_PASSIVE_5",
+                    exception
+            );
+        }
 
-        HeroSkillEffect reviveChase = new HeroSkillEffect(3, "COUNTER", "SELF");
-        reviveChase.updateParameters(new BigDecimal("0.10"), BigDecimal.ONE, 0);
-        reviveChase.updateConfig("{\"trigger\":\"ON_REVIVE\"}");
-        effects.add(reviveChase);
+        // Fallback tương thích với dữ liệu kỹ năng chưa có levelRows.
+        List<HeroSkillEffect> fallback = new ArrayList<>();
+        HeroSkillEffect reduction = new HeroSkillEffect(1, "BUFF", "SELF");
+        reduction.updateParameters(new BigDecimal("0.03"), BigDecimal.ONE, 4);
+        reduction.updateConfig("{\"trigger\":\"BATTLE_START\",\"statType\":\"DAMAGE_REDUCTION\","
+                + "\"stacks\":5,\"maxStacks\":5,\"purgeable\":false}");
+        fallback.add(reduction);
+        HeroSkillEffect attack = new HeroSkillEffect(2, "BUFF", "SELF");
+        attack.updateParameters(new BigDecimal("0.06"), BigDecimal.ONE, 0);
+        attack.updateConfig("{\"trigger\":\"ON_KILL\",\"statType\":\"ATK\","
+                + "\"permanent\":true,\"maxStacks\":3,\"purgeable\":false}");
+        fallback.add(attack);
+        HeroSkillEffect chase = new HeroSkillEffect(3, "COUNTER", "SELF");
+        chase.updateParameters(new BigDecimal("0.10"), BigDecimal.ONE, 0);
+        chase.updateConfig("{\"trigger\":\"ON_REVIVE\",\"damageType\":\"MAGIC\"}");
+        fallback.add(chase);
+        skill.replaceEffects(fallback);
+    }
 
-        skill.replaceEffects(effects);
+    private ObjectNode createGojoEffectJson(
+            String effectType, String targetType, String multiplier,
+            int duration, String configJson
+    ) {
+        ObjectNode effect = objectMapper.createObjectNode();
+        effect.put("effectType", effectType);
+        effect.put("targetType", targetType);
+        effect.put("multiplier", multiplier);
+        effect.put("chance", "1");
+        effect.put("duration", duration);
+        try {
+            effect.set("configJson", objectMapper.readTree(configJson));
+        } catch (IOException exception) {
+            throw new IllegalArgumentException("Gojo effect config JSON không hợp lệ", exception);
+        }
+        return effect;
     }
 
     /**
