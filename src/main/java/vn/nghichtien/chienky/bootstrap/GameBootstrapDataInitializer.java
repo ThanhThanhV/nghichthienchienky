@@ -1279,7 +1279,8 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                     ArrayNode effects = objectMapper.createArrayNode();
                     effects.add(createGojoEffectJson(
                             "DEBUFF", "ALL_ENEMIES", damageTaken[level - 1], 0,
-                            "{\"statType\":\"DAMAGE_TAKEN\",\"permanent\":true}"
+                            "{\"trigger\":\"BATTLE_START\",\"statType\":\"DAMAGE_TAKEN\","
+                                    + "\"permanent\":true,\"ignoreImmunity\":true,\"eventSkillCode\":\"GOJO_ACTIVE_2\"}"
                     ));
                     row.set("battleEffects", effects);
                 }
@@ -1293,7 +1294,8 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
         }
         HeroSkillEffect domain = new HeroSkillEffect(1, "DEBUFF", "ALL_ENEMIES");
         domain.updateParameters(new BigDecimal("0.15"), BigDecimal.ONE, 0);
-        domain.updateConfig("{\"statType\":\"DAMAGE_TAKEN\",\"permanent\":true}");
+        domain.updateConfig("{\"trigger\":\"BATTLE_START\",\"statType\":\"DAMAGE_TAKEN\","
+                + "\"permanent\":true,\"ignoreImmunity\":true,\"eventSkillCode\":\"GOJO_ACTIVE_2\"}");
         skill.replaceEffects(List.of(domain));
     }
 
