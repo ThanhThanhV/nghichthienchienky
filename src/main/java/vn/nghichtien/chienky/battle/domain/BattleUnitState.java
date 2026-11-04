@@ -437,6 +437,13 @@ public class BattleUnitState {
         );
     }
 
+    /** Phần trăm sát thương bị giảm từ các hiệu ứng đang còn hiệu lực. */
+    public BigDecimal getDamageReductionPercent() {
+        return statusEffectManager.getModifierPercent(BattleStatType.DAMAGE_REDUCTION)
+                .max(BigDecimal.ZERO)
+                .min(new BigDecimal("100"));
+    }
+
     /**
      * Cập nhật các chỉ số chiến đấu bổ sung.
      *
