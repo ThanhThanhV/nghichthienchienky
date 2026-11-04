@@ -343,7 +343,7 @@ public class TabLuaCatalogSynchronizer {
                         effects.add(effectNode);
                     }
 
-                    int performanceId = numberAt(effectRow, 10);
+                    int performanceId = optionalNumberAt(effectRow, 10);
                     if (performanceId > 0) {
                         addPerformance(
                                 Integer.toString(performanceId), performanceRows,
@@ -352,7 +352,7 @@ public class TabLuaCatalogSynchronizer {
                         );
                     }
 
-                    int bufferId = numberAt(effectRow, 11);
+                    int bufferId = optionalNumberAt(effectRow, 11);
                     if (bufferId > 0) {
                         addBuffer(
                                 bufferId, bufferRows, buffers,
@@ -494,7 +494,7 @@ public class TabLuaCatalogSynchronizer {
         for (Map.Entry<Integer, LuaRow> entry : source.entrySet()) {
             if (target.putIfAbsent(entry.getKey(), entry.getValue()) != null) {
                 throw new IllegalStateException(
-                        "Trùng TAB_Skill ID giữa các file: " + entry.getKey()
+                        "Trùng TAB ID giữa các file: " + entry.getKey()
                 );
             }
         }
@@ -510,6 +510,24 @@ public class TabLuaCatalogSynchronizer {
         } catch (RuntimeException exception) {
             throw new IllegalStateException(
                     "TAB row " + row.id() + " thiếu giá trị số tại cột " + index,
+                    exception
+            );
+        }
+    }
+
+    private int optionalNumberAt(LuaRow row, int index) {
+        Object value = valueAt(row, index);
+        if (value == null || String.valueOf(value).isBlank()) {
+            return 0;
+        }
+        if (value instanceof Number number) {
+            return number.intValue();
+        }
+        try {
+            return Integer.parseInt(String.valueOf(value));
+        } catch (NumberFormatException exception) {
+            throw new IllegalStateException(
+                    "TAB row " + row.id() + " có giá trị không phải số tại cột " + index,
                     exception
             );
         }
