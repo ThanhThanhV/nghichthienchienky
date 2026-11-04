@@ -571,11 +571,15 @@ class BattleRenderer {
                     }
                 }
 
-                // Gojo phản kích tại chỗ. Effect thứ hai được tạo thành Spine
-                // instance độc lập tại target bởi GOJO_PASSIVE_3 trong skill mapping.
-                // Không tự chuyển về hold khi animation nhân vật vừa kết thúc.
-                // ACTION_END của action phản ứng sẽ trả Gojo về slot ban đầu.
-                this.playCharacterAnimation(character, animationName, false, false);
+                // PASSIVE phản ứng không có ACTION_START/ACTION_END riêng trong event stream.
+                // Vì vậy animation phản ứng phải tự trở về idle khi phát xong;
+                // VFX cast/impact vẫn được quản lý độc lập theo source/target.
+                this.playCharacterAnimation(
+                    character,
+                    animationName,
+                    false,
+                    event.type === "PASSIVE"
+                );
             }
         }
 
