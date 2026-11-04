@@ -41,10 +41,12 @@ public class BattleStatusEffectManager {
 
         // Cùng một effectCode không được cộng dồn khi ACTIVE được gọi lại
         // trong chu kỳ ACTIVE -> ULTIMATE -> BASIC.
-        boolean alreadyApplied = modifiers.stream()
-                .anyMatch(existing -> existing.getEffectCode()
-                        .equals(effect.getEffectCode()));
-        if (alreadyApplied) {
+        BattleStatusEffect existing = modifiers.stream()
+                .filter(item -> item.getEffectCode().equals(effect.getEffectCode()))
+                .findFirst()
+                .orElse(null);
+        if (existing != null) {
+            existing.addStacks(effect.getStackCount());
             return;
         }
 
@@ -168,7 +170,7 @@ public class BattleStatusEffectManager {
     }
 
     public void dispelModifiers(boolean buff) {
-        modifiers.removeIf(effect -> effect.isBuff() == buff);
+        modifiers.removeIf(effect -> effect.isBuff() == buff && effect.isPurgeable());
     }
 
     /**
