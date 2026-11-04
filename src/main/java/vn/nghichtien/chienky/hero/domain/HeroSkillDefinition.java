@@ -193,16 +193,61 @@ public class HeroSkillDefinition {
     }
 
     /**
-     * Thay thế toàn bộ hiệu ứng theo catalog nguồn mà không thay đổi ID kỹ năng.
+     * Đồng bộ hiệu ứng theo catalog nguồn mà không thay đổi ID của các hiệu ứng
+     * đã tồn tại ở cùng effectOrder.
      *
-     * @param replacementEffects Danh sách hiệu ứng mới
+     * Cập nhật entity hiện có thay vì orphan-delete rồi INSERT entity mới.
+     * Điều này tránh xung đột unique key (skill_id, effect_order) khi Hibernate
+     * thực hiện flush theo thứ tự INSERT trước DELETE.
+     *
+     * @param replacementEffects Danh sách hiệu ứng theo catalog mới
      */
     public void replaceEffects(List<HeroSkillEffect> replacementEffects) {
-        for (HeroSkillEffect existing : new ArrayList<>(this.effects)) {
-            removeEffect(existing);
-        }
+        List<HeroSkillEffect> currentEffects = new ArrayList<>(this.effects);
+        List<HeroSkillEffect> retainedEffects = new ArrayList<>();
+
         if (replacementEffects != null) {
-            replacementEffects.forEach(this::addEffect);
+            for (HeroSkillEffect replacement : replacementEffects) {
+                if (replacement == null) {
+                    throw new IllegalArgumentException(
+                            "Hiệu ứng kỹ năng không được null"
+                    );
+                }
+
+                HeroSkillEffect existing = currentEffects.stream()
+                        .filter(effect -> effect.getEffectOrder() != null
+                                && effect.getEffectOrder().equals(
+                                        replacement.getEffectOrder()
+                                ))
+                        .findFirst()
+                        .orElse(null);
+
+                if (existing == null) {
+                    addEffect(replacement);
+                    retainedEffects.add(replacement);
+                    continue;
+                }
+
+                existing.updateDefinition(
+                        replacement.getEffectOrder(),
+                        replacement.getEffectType(),
+                        replacement.getTargetType()
+                );
+                existing.updateParameters(
+                        replacement.getMultiplier(),
+                        replacement.getChance(),
+                        replacement.getDuration()
+                );
+                existing.updateConfig(replacement.getConfigJson());
+                existing.changeEnabled(replacement.getEnabled());
+                retainedEffects.add(existing);
+            }
+        }
+
+        for (HeroSkillEffect existing : currentEffects) {
+            if (!retainedEffects.contains(existing)) {
+                removeEffect(existing);
+            }
         }
     }
 
