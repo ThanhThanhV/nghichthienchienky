@@ -282,6 +282,9 @@ public class BattleTurnProcessor {
             }
             if (unit.isAlive()) {
                 skillExecutor.executePassives(battle, unit, trigger);
+                if (trigger == BattlePassiveTrigger.BATTLE_START) {
+                    skillExecutor.executeNonPassiveBattleStartEffects(battle, unit);
+                }
             }
         }
     }
