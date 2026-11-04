@@ -129,7 +129,14 @@ public class TabLuaCatalogSynchronizer {
             Map<Integer, LuaRow> bufferRows
     ) {
         JsonNode tabHero = heroConfig.path("tabHero");
-        int tabHeroId = tabHero.path("tabHeroId").asInt(-1);
+        // hero-tab-skill-config.json lưu tabHeroId/sourceHeroCode ở cấp hero,
+        // còn các metadata mô tả nằm trong object tabHero.
+        int tabHeroId = heroConfig.path("tabHeroId")
+                .asInt(tabHero.path("tabHeroId").asInt(-1));
+        String sourceHeroCode = heroConfig.path("sourceHeroCode")
+                .asText(tabHero.path("sourceHeroCode").asText(""));
+        String variantSourceHeroCode = heroConfig.path("variantSourceHeroCode")
+                .asText(tabHero.path("variantSourceHeroCode").asText(""));
         LuaRow heroRow = heroRows.get(tabHeroId);
         if (tabHeroId <= 0 || heroRow == null) {
             throw new IllegalStateException(
@@ -208,11 +215,12 @@ public class TabLuaCatalogSynchronizer {
         // duy trì một bản sao thủ công trong hero-skill-mapping.json.
         ObjectNode tabHeroSource = objectMapper.createObjectNode();
         tabHeroSource.put("tabHeroId", tabHeroId);
-        tabHeroSource.put("sourceHeroCode", tabHero.path("sourceHeroCode").asText(""));
-        tabHeroSource.put(
-                "variantSourceHeroCode",
-                tabHero.path("variantSourceHeroCode").asText("")
-        );
+        tabHeroSource.put("sourceHeroCode", sourceHeroCode);
+        if (variantSourceHeroCode.isBlank()) {
+            tabHeroSource.putNull("variantSourceHeroCode");
+        } else {
+            tabHeroSource.put("variantSourceHeroCode", variantSourceHeroCode);
+        }
         heroMapping.set("_TAB_HERO_SOURCE", tabHeroSource);
 
         ObjectNode generatedBindings = objectMapper.createObjectNode();
@@ -226,7 +234,7 @@ public class TabLuaCatalogSynchronizer {
             binding.put("tabGroupId", skill.path("groupId").asText(""));
             binding.put("tabSkillId", skill.path("levelOneId").asText(""));
             binding.put("sourceHeroId", tabHeroId);
-            binding.put("sourceHeroCode", tabHero.path("sourceHeroCode").asText(""));
+            binding.put("sourceHeroCode", sourceHeroCode);
             binding.put("runtimeSkillType", runtimeSkillType);
             binding.put("name", skill.path("name").asText(""));
             generatedBindings.set(skillCode, binding);
