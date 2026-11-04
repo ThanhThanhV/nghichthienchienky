@@ -24,5 +24,6 @@ public enum BattleStatType {
 
     PEN_PERCENT,
 
-    LIFESTEAL
+    LIFESTEAL,
+    DAMAGE_REDUCTION
 }
