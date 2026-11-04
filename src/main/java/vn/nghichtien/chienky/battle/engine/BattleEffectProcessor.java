@@ -554,7 +554,10 @@ public class BattleEffectProcessor {
                             value,
                             buff,
                             effect.duration(),
-                            effect.permanent()
+                            effect.permanent(),
+                            effect.initialStacks(),
+                            effect.maxStacks(),
+                            effect.purgeable()
                     )
             );
 
