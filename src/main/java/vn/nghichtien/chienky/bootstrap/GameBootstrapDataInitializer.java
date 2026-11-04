@@ -75,7 +75,7 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
         JsonNode tabSkillCatalog = loadTabSkillConfigCatalog();
         // Dữ liệu ID/tên/mô tả/script/level được hydrate trực tiếp từ TAB Lua
         // trước khi validate và ghi xuống database; JSON chỉ giữ runtime metadata.
-        tabLuaCatalogSynchronizer.synchronize(tabSkillCatalog);
+        tabLuaCatalogSynchronizer.synchronize(tabSkillCatalog, spineCatalog);
         validateSkillAnimationCatalog(
                 seeds, spineCatalog, animationConfigCatalog, tabSkillCatalog
         );
