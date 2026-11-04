@@ -38,6 +38,7 @@ import java.util.Map;
 @Order(2)
 public class GameBootstrapDataInitializer implements ApplicationRunner {
     private final ObjectMapper objectMapper;
+    private final TabLuaCatalogSynchronizer tabLuaCatalogSynchronizer;
     private final HeroDefinitionRepository heroDefinitionRepository;
     private final HeroBaseStatsRepository heroBaseStatsRepository;
     private final HeroGrowthConfigRepository heroGrowthConfigRepository;
@@ -47,6 +48,7 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
 
     public GameBootstrapDataInitializer(
             ObjectMapper objectMapper,
+            TabLuaCatalogSynchronizer tabLuaCatalogSynchronizer,
             HeroDefinitionRepository heroDefinitionRepository,
             HeroBaseStatsRepository heroBaseStatsRepository,
             HeroGrowthConfigRepository heroGrowthConfigRepository,
@@ -55,6 +57,7 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
             HeroInstanceSkillRepository heroInstanceSkillRepository
     ) {
         this.objectMapper = objectMapper;
+        this.tabLuaCatalogSynchronizer = tabLuaCatalogSynchronizer;
         this.heroDefinitionRepository = heroDefinitionRepository;
         this.heroBaseStatsRepository = heroBaseStatsRepository;
         this.heroGrowthConfigRepository = heroGrowthConfigRepository;
@@ -70,6 +73,9 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
         JsonNode spineCatalog = loadSpineMappingCatalog();
         JsonNode animationConfigCatalog = loadAnimationConfigCatalog();
         JsonNode tabSkillCatalog = loadTabSkillConfigCatalog();
+        // Dữ liệu ID/tên/mô tả/script/level được hydrate trực tiếp từ TAB Lua
+        // trước khi validate và ghi xuống database; JSON chỉ giữ runtime metadata.
+        tabLuaCatalogSynchronizer.synchronize(tabSkillCatalog);
         validateSkillAnimationCatalog(
                 seeds, spineCatalog, animationConfigCatalog, tabSkillCatalog
         );
