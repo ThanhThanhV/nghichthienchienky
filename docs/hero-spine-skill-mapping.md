@@ -123,6 +123,44 @@ Spine JSON animation list; asset filenames are never renamed or guessed.
    the hero.
 
 
+## Complete skill-to-animation mapping
+
+The current ten runtime heroes contain 50 skill slots. The 35 slots below have
+an explicit character action animation; the other 15 are passive effects without
+a TAB action-performance binding and intentionally do not play a character
+attack animation.
+
+| Hero | BASIC | ACTIVE | ULTIMATE | PASSIVE slot 4 | PASSIVE slot 5 |
+|---|---|---|---|---|---|
+| `asuna_dark` | `att` | `skill` | `ultimateskill` | — | — |
+| `gojo` | `att` | `superskill` | — | — | `ultimateskill`* |
+| `iori` | `att` | `skill` | `ultimateskill` | — | `ultimateskill`* |
+| `iori_dark` | `att` | `skill` | `ultimateskill` | — | `ultimateskill`* |
+| `kirito` | `att` | `skill` | `ultimateskill` | — | — |
+| `leloud` | `att` | `skill` | `ultimateskill` | — | `ultimateskill`* |
+| `leloud_dark` | `att` | `skill` | `ultimateskill` | — | `ultimateskill`* |
+| `thor` | `att` | `skill` | `ultimateskill` | — | — |
+| `thor_rak` | `att` | `skill` | `ultimateskill` | — | — |
+| `tohka_dark` | `att` | `skill` | `ultimateskill` | — | — |
+
+`10000110 -> att`, `10000210 -> skill`, and `10000310 -> ultimateskill`
+are derived from the performance IDs resolved through
+`TAB_Sseffect_1.lua` / `TAB_EffectPerfor_1.lua`. Gojo ACTIVE is the special
+case: it uses `superskill`, matching the `faqi_31` event family in Gojo's
+skeleton and the domain cast event in its VFX asset.
+
+`*` marks a passive-triggered action, not a continuously playing passive
+animation. The runtime plays it only when that skill's PASSIVE action event is
+emitted. A dash means the passive has no TAB action-performance binding and
+must not receive a fabricated attack animation.
+
+All configured names were checked against the ten actual hero skeleton JSON
+files. The Lua anchor table is not equally complete for every hero: the
+Asuna Dark and base Thor entries do not define `att` / `skill` /
+`ultimateskill` anchor blocks, although those animation names exist in their
+Spine skeletons. In those cases the character animation still plays; no
+nonexistent Lua anchor metadata is fabricated.
+
 ## Runtime animation validation and event mapping
 
 - BASIC uses the hero's explicit `att` mapping; ACTIVE/ULTIMATE use the explicit per-skill mapping in this file.
