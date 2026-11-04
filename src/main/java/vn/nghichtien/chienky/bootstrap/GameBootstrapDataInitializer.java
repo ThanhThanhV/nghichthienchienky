@@ -245,6 +245,16 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
         for (HeroSeed seed : seeds) {
             JsonNode heroMapping = heroes.path(seed.code());
             JsonNode tabHero = tabSkillCatalog.path("heroes").path(seed.code());
+
+            validateTabHeroSource(seed.code(), heroMapping, tabHero);
+
+            JsonNode tabBindings = heroMapping.path("_TAB_SKILL_BINDINGS");
+            if (!tabBindings.isObject()) {
+                throw new IllegalStateException(
+                        "Thiếu _TAB_SKILL_BINDINGS cho tướng " + seed.code()
+                );
+            }
+
             if (!tabHero.path("skills").isArray()
                     || tabHero.path("skills").size() != 5
                     || tabHero.path("skills").size() != seed.skills().size()) {
@@ -263,7 +273,19 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                                     + ", TAB=" + tabRuntimeType
                     );
                 }
+
+                JsonNode tabSkill = tabHero.path("skills").get(slot);
+                String skillCode = seed.code().toUpperCase(java.util.Locale.ROOT)
+                        + "_" + tabRuntimeType.toUpperCase(java.util.Locale.ROOT)
+                        + "_" + (slot + 1);
+                JsonNode binding = tabBindings.path(skillCode);
+                validateTabSkillBinding(
+                        seed.code(), skillCode, tabHero, tabSkill, binding
+                );
             }
+            validateSkillEffectBindings(seed.code(), heroMapping, tabBindings);
+            validateSkillEffectAssets(seed.code(), heroMapping);
+
             String assetBase = heroMapping.path("asset").path("base").asText("");
             String configId = assetBase.replaceFirst("^sanim_", "").replaceFirst("_1$", "");
             if (configId.isBlank() || !animationConfigCatalog.path(configId).isObject()) {
@@ -316,6 +338,170 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                     );
                 }
             }
+        }
+    }
+
+    /**
+     * Đối chiếu metadata hero TAB với metadata được đóng gói trong Spine catalog.
+     * Các biến thể dùng chung hàng TAB gốc phải khai báo sourceHeroCode/variant
+     * nhất quán; runtime heroCode vẫn là namespace riêng của từng biến thể.
+     */
+    private void validateTabHeroSource(
+            String runtimeHeroCode,
+            JsonNode heroMapping,
+            JsonNode tabHero
+    ) {
+        JsonNode source = heroMapping.path("_TAB_HERO_SOURCE");
+        if (!source.isObject()) {
+            throw new IllegalStateException(
+                    "Thiếu _TAB_HERO_SOURCE cho tướng " + runtimeHeroCode
+            );
+        }
+
+        String tabHeroId = tabHero.path("tabHeroId").asText("");
+        String tabSourceHeroCode = tabHero.path("sourceHeroCode").asText("");
+        String tabVariantSourceHeroCode =
+                tabHero.path("variantSourceHeroCode").asText("");
+
+        if (tabHeroId.isBlank()
+                || !tabHeroId.equals(source.path("tabHeroId").asText(""))
+                || tabSourceHeroCode.isBlank()
+                || !tabSourceHeroCode.equals(source.path("sourceHeroCode").asText(""))
+                || !tabVariantSourceHeroCode.equals(
+                        source.path("variantSourceHeroCode").asText("")
+                )) {
+            throw new IllegalStateException(
+                    "TAB hero source không đồng bộ với Spine mapping: "
+                            + runtimeHeroCode
+            );
+        }
+    }
+
+    /**
+     * Đảm bảo mỗi runtime skill slot trỏ đúng group/level-one skill của TAB.
+     */
+    private void validateTabSkillBinding(
+            String runtimeHeroCode,
+            String skillCode,
+            JsonNode tabHero,
+            JsonNode tabSkill,
+            JsonNode binding
+    ) {
+        String tabHeroId = tabHero.path("tabHeroId").asText("");
+        String sourceHeroCode = tabHero.path("sourceHeroCode").asText("");
+
+        if (!binding.isObject()
+                || !tabSkill.path("groupId").asText("")
+                        .equals(binding.path("tabGroupId").asText(""))
+                || !tabSkill.path("levelOneId").asText("")
+                        .equals(binding.path("tabSkillId").asText(""))
+                || !tabHeroId.equals(binding.path("sourceHeroId").asText(""))
+                || !sourceHeroCode.equals(binding.path("sourceHeroCode").asText(""))
+                || !tabSkill.path("runtimeSkillType").asText("")
+                        .equalsIgnoreCase(binding.path("runtimeSkillType").asText(""))
+                || !tabSkill.path("name").asText("")
+                        .equals(binding.path("name").asText(""))) {
+            throw new IllegalStateException(
+                    "TAB skill binding không đồng bộ: hero=" + runtimeHeroCode
+                            + ", skillCode=" + skillCode
+                            + ", tabSkillId=" + tabSkill.path("levelOneId").asText("")
+            );
+        }
+    }
+
+    /**
+     * Mọi VFX được gắn vào kỹ năng phải có TAB binding tương ứng.
+     */
+    private void validateSkillEffectBindings(
+            String heroCode,
+            JsonNode heroMapping,
+            JsonNode tabBindings
+    ) {
+        JsonNode skillEffects = heroMapping.path("_SKILL_EFFECTS");
+        if (skillEffects.isMissingNode() || skillEffects.isNull()) {
+            return;
+        }
+        if (!skillEffects.isObject()) {
+            throw new IllegalStateException(
+                    "_SKILL_EFFECTS không hợp lệ cho tướng " + heroCode
+            );
+        }
+
+        Iterator<String> skillCodes = skillEffects.fieldNames();
+        while (skillCodes.hasNext()) {
+            String skillCode = skillCodes.next();
+            if (!tabBindings.path(skillCode).isObject()) {
+                throw new IllegalStateException(
+                        "VFX đang trỏ tới skillCode không có TAB binding: "
+                                + heroCode + " / " + skillCode
+                );
+            }
+        }
+    }
+
+    /**
+     * Kiểm tra file skeleton, atlas và toàn bộ texture page của từng VFX.
+     * Không cho phép lưu mapping có đường dẫn tài nguyên không tồn tại.
+     */
+    private void validateSkillEffectAssets(String heroCode, JsonNode heroMapping) {
+        JsonNode skillEffects = heroMapping.path("_SKILL_EFFECTS");
+        if (!skillEffects.isObject()) {
+            return;
+        }
+
+        JsonNode texturePages = heroMapping.path("_SPINE_EFFECT_TEXTURE_PAGES");
+        Iterator<Map.Entry<String, JsonNode>> skills = skillEffects.fields();
+        while (skills.hasNext()) {
+            Map.Entry<String, JsonNode> skill = skills.next();
+            if (!skill.getValue().isObject()) {
+                throw new IllegalStateException(
+                        "Cấu hình VFX không hợp lệ: " + heroCode + " / " + skill.getKey()
+                );
+            }
+
+            Iterator<Map.Entry<String, JsonNode>> phases = skill.getValue().fields();
+            while (phases.hasNext()) {
+                Map.Entry<String, JsonNode> phase = phases.next();
+                JsonNode effect = phase.getValue();
+                String file = effect.path("file").asText("");
+                String animation = effect.path("animation").asText("");
+                if (file.isBlank() || animation.isBlank()) {
+                    throw new IllegalStateException(
+                            "VFX thiếu file/animation: " + heroCode + " / "
+                                    + skill.getKey() + " / " + phase.getKey()
+                    );
+                }
+
+                String basePath = "static/assets/spine/seffects/";
+                requireClasspathAsset(basePath + file + ".json", heroCode, skill.getKey());
+                requireClasspathAsset(basePath + file + ".atlas", heroCode, skill.getKey());
+
+                JsonNode configuredTextures = texturePages.path(file);
+                if (!configuredTextures.isArray() || configuredTextures.isEmpty()) {
+                    requireClasspathAsset(
+                            basePath + file + ".png", heroCode, skill.getKey()
+                    );
+                } else {
+                    for (JsonNode texture : configuredTextures) {
+                        requireClasspathAsset(
+                                basePath + texture.asText(), heroCode, skill.getKey()
+                        );
+                    }
+                }
+            }
+        }
+    }
+
+    private void requireClasspathAsset(
+            String resourcePath,
+            String heroCode,
+            String skillCode
+    ) {
+        if (!new ClassPathResource(resourcePath).exists()) {
+            throw new IllegalStateException(
+                    "Thiếu Spine VFX asset: hero=" + heroCode
+                            + ", skill=" + skillCode + ", path=" + resourcePath
+            );
         }
     }
 
