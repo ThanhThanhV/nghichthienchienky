@@ -2,6 +2,7 @@ package vn.nghichtien.chienky.bootstrap;
 
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
@@ -14,13 +15,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Development bootstrap: clear all application data before resource and game
- * seeders run. The schema itself is retained and managed by Hibernate.
+ * Optional development-only database reset.
  *
- * Migration metadata tables are deliberately preserved so a future migration
- * runner does not replay already-applied migrations.
+ * This initializer is disabled by default. It must only be enabled explicitly
+ * with game.bootstrap.reset-database.enabled=true (or
+ * GAME_BOOTSTRAP_RESET_DATABASE=true). Normal application startup must never
+ * delete player accounts, owned heroes, formations, progress, or other game data.
+ *
+ * Migration metadata tables are deliberately preserved when the reset is enabled.
  */
 @Component
+@ConditionalOnProperty(
+        prefix = "game.bootstrap.reset-database",
+        name = "enabled",
+        havingValue = "true"
+)
 @Order(0)
 public class DatabaseResetInitializer implements ApplicationRunner {
 
