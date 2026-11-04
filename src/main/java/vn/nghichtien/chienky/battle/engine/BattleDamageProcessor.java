@@ -65,10 +65,25 @@ public class BattleDamageProcessor {
             String skillCode,
             String damageEffectCategory
     ) {
+        executeDamage(battle, source, target, skillMultiplier, skillCode,
+                damageEffectCategory, BattleDamageType.PHYSICAL);
+    }
+
+    /** Thực thi sát thương theo loại vật lý/ma pháp. */
+    public void executeDamage(
+            BattleState battle,
+            BattleUnitState source,
+            BattleUnitState target,
+            BigDecimal skillMultiplier,
+            String skillCode,
+            String damageEffectCategory,
+            BattleDamageType damageType
+    ) {
         Objects.requireNonNull(battle, "Battle must not be null");
         Objects.requireNonNull(source, "Source must not be null");
         Objects.requireNonNull(target, "Target must not be null");
         Objects.requireNonNull(skillMultiplier, "Skill multiplier must not be null");
+        Objects.requireNonNull(damageType, "Damage type must not be null");
 
         if (skillMultiplier.signum() < 0) {
             throw new IllegalArgumentException("Skill multiplier must not be negative");
@@ -86,9 +101,7 @@ public class BattleDamageProcessor {
 
         // 1. Tính sát thương sau xuyên giáp.
         BigDecimal baseDamage = calculateBaseDamage(
-                source,
-                target,
-                skillMultiplier
+                source, target, skillMultiplier, damageType
         );
 
         if (baseDamage.signum() <= 0) {
@@ -103,6 +116,12 @@ public class BattleDamageProcessor {
                 .setScale(6, RoundingMode.HALF_UP)
                 : baseDamage;
 
+        BigDecimal dealtBonus = source.getDamageDealtPercent(damageType);
+        if (dealtBonus.signum() != 0) {
+            calculatedDamage = calculatedDamage.multiply(BigDecimal.ONE.add(
+                    dealtBonus.divide(BigDecimal.valueOf(100), 8, RoundingMode.HALF_UP)
+            )).setScale(DAMAGE_SCALE, RoundingMode.HALF_UP);
+        }
         if (calculatedDamage.signum() <= 0) {
             return;
         }
@@ -152,7 +171,7 @@ public class BattleDamageProcessor {
         }
 
         // 5. Giảm sát thương theo modifier (ví dụ Lục Nhãn của Gojo).
-        BigDecimal reductionPercent = target.getDamageReductionPercent();
+        BigDecimal reductionPercent = target.getDamageReductionPercent(damageType);
         if (reductionPercent.signum() > 0) {
             calculatedDamage = calculatedDamage.multiply(
                     BigDecimal.ONE.subtract(
@@ -390,8 +409,16 @@ public class BattleDamageProcessor {
     private BigDecimal calculateBaseDamage(
             BattleUnitState source,
             BattleUnitState target,
-            BigDecimal skillMultiplier
+            BigDecimal skillMultiplier,
+            BattleDamageType damageType
     ) {
+        // BattleUnitState hiện chỉ có DEF vật lý; sát thương MAGIC dùng ATK
+        // trực tiếp và vẫn chịu DAMAGE_REDUCTION/MAGIC_DAMAGE_REDUCTION, khiên và miễn nhiễm.
+        if (damageType == BattleDamageType.MAGIC) {
+            return source.getAttack().multiply(skillMultiplier)
+                    .setScale(6, RoundingMode.HALF_UP);
+        }
+
         BigDecimal penPercent = source.getPenPercent()
                 .divide(BigDecimal.valueOf(100), 6, RoundingMode.HALF_UP)
                 .max(BigDecimal.ZERO)
