@@ -3,76 +3,71 @@ package vn.nghichtien.chienky.battle.domain;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-/**
- * Đại diện cho một hiệu ứng trạng thái đang tồn tại trên nhân vật.
- */
+/** Đại diện cho một modifier chỉ số đang tồn tại trên nhân vật. */
 public class BattleStatusEffect {
-
     private final String effectCode;
     private final String sourceTeam;
     private final Long sourceInstanceId;
     private final BattleStatType statType;
-    private final BigDecimal valuePercent;
+    private final BigDecimal valuePerStack;
+    private BigDecimal valuePercent;
     private final boolean buff;
     private final int duration;
     private final boolean permanent;
+    private final boolean purgeable;
+    private final int maxStacks;
+    private int stackCount;
     private int remainingDuration;
 
-    public BattleStatusEffect(
-            String effectCode,
-            String sourceTeam,
-            Long sourceInstanceId,
-            BattleStatType statType,
-            BigDecimal valuePercent,
-            boolean buff,
-            int duration
-    ) {
-        this(effectCode, sourceTeam, sourceInstanceId, statType,
-                valuePercent, buff, duration, false);
+    public BattleStatusEffect(String effectCode, String sourceTeam, Long sourceInstanceId,
+            BattleStatType statType, BigDecimal valuePercent, boolean buff, int duration) {
+        this(effectCode, sourceTeam, sourceInstanceId, statType, valuePercent, buff,
+                duration, false, 1, 1, true);
     }
 
-    /**
-     * duration = 0 chỉ hợp lệ khi permanent = true.
-     */
-    public BattleStatusEffect(
-            String effectCode,
-            String sourceTeam,
-            Long sourceInstanceId,
-            BattleStatType statType,
-            BigDecimal valuePercent,
-            boolean buff,
-            int duration,
-            boolean permanent
-    ) {
+    public BattleStatusEffect(String effectCode, String sourceTeam, Long sourceInstanceId,
+            BattleStatType statType, BigDecimal valuePercent, boolean buff,
+            int duration, boolean permanent) {
+        this(effectCode, sourceTeam, sourceInstanceId, statType, valuePercent, buff,
+                duration, permanent, 1, 1, true);
+    }
+
+    public BattleStatusEffect(String effectCode, String sourceTeam, Long sourceInstanceId,
+            BattleStatType statType, BigDecimal valuePerStack, boolean buff,
+            int duration, boolean permanent, int initialStacks,
+            int maxStacks, boolean purgeable) {
         this.effectCode = Objects.requireNonNull(effectCode);
         this.sourceTeam = sourceTeam;
         this.sourceInstanceId = sourceInstanceId;
         this.statType = Objects.requireNonNull(statType);
-        this.valuePercent = Objects.requireNonNull(valuePercent);
+        this.valuePerStack = Objects.requireNonNull(valuePerStack);
         this.buff = buff;
         this.permanent = permanent;
-
-        if (valuePercent.signum() < 0) {
-            throw new IllegalArgumentException("Modifier value must not be negative");
-        }
-        if (permanent ? duration != 0 : duration <= 0) {
-            throw new IllegalArgumentException(
-                    permanent ? "Permanent modifier duration must be zero"
-                            : "Duration must be positive"
-            );
-        }
-
+        this.purgeable = purgeable;
+        if (valuePerStack.signum() < 0) throw new IllegalArgumentException("Modifier value must not be negative");
+        if (permanent ? duration != 0 : duration <= 0) throw new IllegalArgumentException(
+                permanent ? "Permanent modifier duration must be zero" : "Duration must be positive");
+        if (maxStacks < 1 || initialStacks < 1 || initialStacks > maxStacks)
+            throw new IllegalArgumentException("Invalid modifier stack configuration");
         this.duration = duration;
         this.remainingDuration = duration;
+        this.maxStacks = maxStacks;
+        this.stackCount = initialStacks;
+        this.valuePercent = valuePerStack.multiply(BigDecimal.valueOf(initialStacks));
+    }
+
+    /** Cộng thêm stack nhưng không vượt giới hạn đã khai báo. */
+    public boolean addStacks(int amount) {
+        if (amount <= 0 || stackCount >= maxStacks) return false;
+        int added = Math.min(amount, maxStacks - stackCount);
+        stackCount += added;
+        valuePercent = valuePerStack.multiply(BigDecimal.valueOf(stackCount));
+        return added > 0;
     }
 
     public boolean decreaseDuration() {
-        if (permanent) {
-            return false;
-        }
-        if (remainingDuration > 0) {
-            remainingDuration--;
-        }
+        if (permanent) return false;
+        if (remainingDuration > 0) remainingDuration--;
         return remainingDuration <= 0;
     }
 
@@ -85,4 +80,7 @@ public class BattleStatusEffect {
     public int getDuration() { return duration; }
     public int getRemainingDuration() { return remainingDuration; }
     public boolean isPermanent() { return permanent; }
+    public boolean isPurgeable() { return purgeable; }
+    public int getStackCount() { return stackCount; }
+    public int getMaxStacks() { return maxStacks; }
 }
