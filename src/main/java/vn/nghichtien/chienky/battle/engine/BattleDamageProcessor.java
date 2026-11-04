@@ -160,6 +160,15 @@ public class BattleDamageProcessor {
                     )
             ).setScale(DAMAGE_SCALE, RoundingMode.HALF_UP);
         }
+        BigDecimal damageTakenModifier = target.getDamageTakenModifierPercent();
+        if (damageTakenModifier.signum() != 0) {
+            // DEBUFF DAMAGE_TAKEN có modifier âm: -15% => nhận thêm 15% sát thương.
+            calculatedDamage = calculatedDamage.multiply(
+                    BigDecimal.ONE.subtract(
+                            damageTakenModifier.divide(BigDecimal.valueOf(100), 8, RoundingMode.HALF_UP)
+                    )
+            ).setScale(DAMAGE_SCALE, RoundingMode.HALF_UP);
+        }
         if (calculatedDamage.signum() <= 0) return;
 
         // 6. Áp dụng BLOCK.
