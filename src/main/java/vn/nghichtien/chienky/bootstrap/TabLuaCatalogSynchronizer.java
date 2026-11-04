@@ -188,13 +188,15 @@ public class TabLuaCatalogSynchronizer {
             }
 
             synchronizeSkill(
-                    skillConfig, levelRows, sseByScriptReference,
-                    performanceRows, effectRows, bufferRows
+                    heroCode, slot + 1, skillConfig, levelRows,
+                    sseByScriptReference, performanceRows, effectRows, bufferRows
             );
         }
     }
 
     private void synchronizeSkill(
+            String heroCode,
+            int slot,
             ObjectNode skillConfig,
             List<LuaRow> sourceRows,
             Map<String, List<LuaRow>> sseByScriptReference,
@@ -243,13 +245,21 @@ public class TabLuaCatalogSynchronizer {
         allScriptReferences.forEach(scriptReferences::add);
         skillConfig.set("scriptRefs", scriptReferences);
         skillConfig.set("levelRows", levelRows);
-        skillConfig.set(
-                "scriptResolution",
-                resolveScriptReferences(
-                        allScriptReferences, sseByScriptReference,
-                        performanceRows, effectRows, bufferRows
-                )
+        ObjectNode scriptResolution = resolveScriptReferences(
+                allScriptReferences, sseByScriptReference,
+                performanceRows, effectRows, bufferRows
         );
+        if (scriptResolution.path("unresolvedScriptRefs").size() > 0
+                || scriptResolution.path("unresolvedPerformanceIds").size() > 0
+                || scriptResolution.path("unresolvedBufferIds").size() > 0) {
+            throw new IllegalStateException(
+                    "TAB script reference không resolve đầy đủ: hero=" + heroCode
+                            + ", slot=" + slot
+                            + ", groupId=" + numberAt(levelOne, 0)
+                            + ", unresolved=" + scriptResolution
+            );
+        }
+        skillConfig.set("scriptResolution", scriptResolution);
     }
 
     private ObjectNode toLevelJson(LuaRow row, List<String> scriptReferences) {
@@ -644,7 +654,8 @@ public class TabLuaCatalogSynchronizer {
         }
 
         private Object parseAtom() {
-            Matcher matcher = NUMBER.matcher(source.substring(position));
+            Matcher matcher = NUMBER.matcher(source);
+            matcher.region(position, source.length());
             if (matcher.lookingAt()) {
                 String number = matcher.group();
                 position += number.length();
