@@ -399,7 +399,15 @@ public class BattleUnitState {
      * @return tỷ lệ chí mạng.
      */
     public BigDecimal getCrit() {
-        return calculateEffectiveStat(crit, BattleStatType.CRIT);
+        BigDecimal effectiveCrit = calculateEffectiveStat(crit, BattleStatType.CRIT);
+        if (isTankOrSupport()
+                && statusEffectManager.getModifierPercent(BattleStatType.KINGDOM_BLESSING)
+                .signum() > 0) {
+            effectiveCrit = effectiveCrit.add(
+                    statusEffectManager.getModifierPercent(BattleStatType.KINGDOM_BLESSING_CRIT)
+            );
+        }
+        return effectiveCrit;
     }
 
     /**
