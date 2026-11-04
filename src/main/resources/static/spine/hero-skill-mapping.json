@@ -203,7 +203,7 @@
       },
       "skillAnimations": {
         "GOJO_BASIC_1": "att",
-        "GOJO_ACTIVE_2": "skill",
+        "GOJO_ACTIVE_2": "superskill",
         "GOJO_PASSIVE_3": "ultimateskill"
       },
       "_BASIC_ATTACK": {
