@@ -298,7 +298,8 @@ public class BattleEffectProcessor {
                 continue;
             }
 
-            if (target.getImmunityManager().isImmune(immunityType)) {
+            if (!effect.ignoreImmunity()
+                    && target.getImmunityManager().isImmune(immunityType)) {
                 recordImmune(battle, source, target, effect);
                 continue;
             }
