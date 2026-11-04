@@ -151,6 +151,20 @@ public class BattleTurnProcessor {
                 break;
             }
 
+            if (unit.isActionLocked(battle.getCurrentRound())) {
+                skillExecutor.executePassives(
+                        battle, unit, BattlePassiveTrigger.AFTER_ACTION
+                );
+                collector.record(
+                        BattleEventType.ACTION_END,
+                        unit.getTeam().name(), unit.getInstanceId(),
+                        null, null, null, null, null, null, null, null, null, null, null,
+                        "Action locked by passive"
+                );
+                executePendingExtraAction(battle, unit);
+                continue;
+            }
+
             var statusManager = unit.getStatusEffectManager();
 
             if (statusManager.shouldSkipAction()) {
@@ -221,6 +235,7 @@ public class BattleTurnProcessor {
             );
 
             dispatchActionEventPassives(battle, actionEvents);
+            dispatchEnemyActionPassives(battle, unit);
 
             // EXTRA_ACTION phát sinh từ AFTER_ACTION hoặc nội tại đầu round.
             executePendingExtraAction(battle, unit);
@@ -362,6 +377,20 @@ public class BattleTurnProcessor {
 
         if (!actionEvents.isEmpty()) {
             dispatchActionEventPassives(battle, actionEvents);
+            dispatchEnemyActionPassives(battle, unit);
+        }
+    }
+
+    private void dispatchEnemyActionPassives(BattleState battle, BattleUnitState actor) {
+        if (battle.isFinished() || actor == null) return;
+        for (BattleUnitState observer : battle.getUnits()) {
+            if (battle.isFinished()) return;
+            if (observer.isAlive() && observer.getTeam() != actor.getTeam()) {
+                skillExecutor.executePassives(
+                        battle, observer, BattlePassiveTrigger.ON_ENEMY_ACTION,
+                        actor.getInstanceId()
+                );
+            }
         }
     }
 
