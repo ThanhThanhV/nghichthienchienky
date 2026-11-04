@@ -236,6 +236,99 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
     }
 
     /**
+     * Ưu tiên đúng animation_config ID lấy từ tên skeleton.
+     * Chỉ fallback về asset gốc khi Lua không khai báo cấu hình riêng cho biến thể.
+     */
+    private String resolveAnimationConfigId(
+            String assetBase,
+            JsonNode animationConfigCatalog
+    ) {
+        String exactId = assetBase.replaceFirst("^sanim_", "");
+        if (exactId.isBlank()) {
+            return "";
+        }
+        if (animationConfigCatalog.path(exactId).isObject()) {
+            return exactId;
+        }
+
+        String fallbackId = exactId.replaceFirst("_1$", "");
+        if (!fallbackId.equals(exactId)
+                && animationConfigCatalog.path(fallbackId).isObject()) {
+            return fallbackId;
+        }
+        return exactId;
+    }
+
+    /**
+     * Đối chiếu skill với TAB_Sseffect -> TAB_EffectPerfor.
+     * Các performance ID của bộ hero hiện tại xác định trực tiếp action family:
+     * 10000110 = đánh thường, 10000210 = skill, 10000310 = ultimate.
+     * Những passive không có Sseffect không bị ép phát animation.
+     */
+    private void validateTabSkillAnimationBinding(
+            String heroCode,
+            String skillCode,
+            JsonNode tabSkill,
+            JsonNode skillAnimations
+    ) {
+        JsonNode sseRows = tabSkill.path("scriptResolution").path("sse");
+        if (!sseRows.isArray() || sseRows.isEmpty()) {
+            return;
+        }
+
+        java.util.LinkedHashSet<String> expectedAnimations =
+                new java.util.LinkedHashSet<>();
+        java.util.LinkedHashSet<String> performanceIds =
+                new java.util.LinkedHashSet<>();
+
+        for (JsonNode sseRow : sseRows) {
+            String performanceId = sseRow.path("fields").path(1).asText("");
+            if (performanceId.isBlank()) {
+                continue;
+            }
+            performanceIds.add(performanceId);
+            String animation = switch (performanceId) {
+                case "10000110" -> "att";
+                case "10000210" -> "skill";
+                case "10000310" -> "ultimateskill";
+                default -> throw new IllegalStateException(
+                        "Chưa có quy tắc animation cho TAB_EffectPerfor "
+                                + performanceId + " tại " + heroCode
+                                + " / " + skillCode
+                );
+            };
+            expectedAnimations.add(animation);
+        }
+
+        if (expectedAnimations.isEmpty()) {
+            return;
+        }
+        if (expectedAnimations.size() != 1) {
+            throw new IllegalStateException(
+                    "Một skill có nhiều action animation từ TAB: "
+                            + heroCode + " / " + skillCode
+                            + " / performance=" + performanceIds
+            );
+        }
+
+        String expected = expectedAnimations.iterator().next();
+        JsonNode configured = skillAnimations.path(skillCode);
+        String actual = configured.isObject()
+                ? configured.path("animation").asText("")
+                : configured.asText("");
+
+        if (!expected.equals(actual)) {
+            throw new IllegalStateException(
+                    "Sai animation mapping theo TAB Lua tại "
+                            + heroCode + " / " + skillCode
+                            + ": TAB=" + expected
+                            + ", catalog=" + actual
+                            + ", performance=" + performanceIds
+            );
+        }
+    }
+
+    /**
      * Kiểm tra catalog animation phải khớp chính xác skillCode mà seedSkills tạo ra.
      * Kỹ năng chủ động phải có mapping animation; PASSIVE không cần animation cast.
      * Nếu mapping lệch, dừng khởi động thay vì lưu cấu hình thiếu.
@@ -288,12 +381,16 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                 validateTabSkillBinding(
                         seed.code(), skillCode, tabHero, tabSkill, binding
                 );
+                validateTabSkillAnimationBinding(
+                        seed.code(), skillCode, tabSkill,
+                        heroMapping.path("skillAnimations")
+                );
             }
             validateSkillEffectBindings(seed.code(), heroMapping, tabBindings);
             validateSkillEffectAssets(seed.code(), heroMapping);
 
             String assetBase = heroMapping.path("asset").path("base").asText("");
-            String configId = assetBase.replaceFirst("^sanim_", "").replaceFirst("_1$", "");
+            String configId = resolveAnimationConfigId(assetBase, animationConfigCatalog);
             if (configId.isBlank() || !animationConfigCatalog.path(configId).isObject()) {
                 throw new IllegalStateException(
                         "Không tìm thấy animation_config.lua cho " + seed.code()
@@ -623,7 +720,7 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                 writeJson(textureUrls)
         );
 
-        String configId = base.replaceFirst("^sanim_", "").replaceFirst("_1$", "");
+        String configId = resolveAnimationConfigId(base, animationConfigCatalog);
         JsonNode heroAnimationConfig = animationConfigCatalog.path(configId);
         if (!heroAnimationConfig.isObject()) {
             throw new IllegalStateException(
