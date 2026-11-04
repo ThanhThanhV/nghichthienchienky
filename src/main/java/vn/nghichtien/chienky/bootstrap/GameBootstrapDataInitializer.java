@@ -567,48 +567,90 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
             Iterator<Map.Entry<String, JsonNode>> phases = skill.getValue().fields();
             while (phases.hasNext()) {
                 Map.Entry<String, JsonNode> phase = phases.next();
-                JsonNode effect = phase.getValue();
-                String file = effect.path("file").asText("");
-                String animation = effect.path("animation").asText("");
-                if (file.isBlank() || animation.isBlank()) {
-                    throw new IllegalStateException(
-                            "VFX thiếu file/animation: " + heroCode + " / "
-                                    + skill.getKey() + " / " + phase.getKey()
-                    );
-                }
+                JsonNode configuredEffects = phase.getValue();
 
-                String basePath = "static/assets/spine/seffects/";
-                String skeletonPath = basePath + file + ".json";
-                requireClasspathAsset(skeletonPath, heroCode, skill.getKey());
-                requireClasspathAsset(basePath + file + ".atlas", heroCode, skill.getKey());
-
-                JsonNode skeletonAnimations = animationsByEffectFile.computeIfAbsent(
-                        file,
-                        ignored -> loadEffectSkeletonAnimations(
-                                skeletonPath, heroCode, skill.getKey()
-                        )
-                );
-                if (!skeletonAnimations.has(animation)) {
-                    throw new IllegalStateException(
-                            "VFX animation không tồn tại trong Spine skeleton: hero="
-                                    + heroCode + ", skill=" + skill.getKey()
-                                    + ", phase=" + phase.getKey()
-                                    + ", file=" + file + ", animation=" + animation
-                    );
-                }
-
-                JsonNode configuredTextures = texturePages.path(file);
-                if (!configuredTextures.isArray() || configuredTextures.isEmpty()) {
-                    requireClasspathAsset(
-                            basePath + file + ".png", heroCode, skill.getKey()
-                    );
-                } else {
-                    for (JsonNode texture : configuredTextures) {
-                        requireClasspathAsset(
-                                basePath + texture.asText(), heroCode, skill.getKey()
+                if (configuredEffects.isArray()) {
+                    if (configuredEffects.isEmpty()) {
+                        throw new IllegalStateException(
+                                "Danh sách VFX rỗng: " + heroCode + " / "
+                                        + skill.getKey() + " / " + phase.getKey()
                         );
                     }
+                    for (JsonNode effect : configuredEffects) {
+                        validateSkillEffectAsset(
+                                heroCode,
+                                skill.getKey(),
+                                phase.getKey(),
+                                effect,
+                                texturePages,
+                                animationsByEffectFile
+                        );
+                    }
+                } else {
+                    validateSkillEffectAsset(
+                            heroCode,
+                            skill.getKey(),
+                            phase.getKey(),
+                            configuredEffects,
+                            texturePages,
+                            animationsByEffectFile
+                    );
                 }
+            }
+        }
+    }
+
+    /**
+     * Validate một Spine VFX instance. Một phase có thể chứa nhiều instance
+     * để phát đồng thời các lớp FRONT/BACK hoặc nhiều nhịp impact.
+     */
+    private void validateSkillEffectAsset(
+            String heroCode,
+            String skillCode,
+            String phase,
+            JsonNode effect,
+            JsonNode texturePages,
+            Map<String, JsonNode> animationsByEffectFile
+    ) {
+        String file = effect.path("file").asText("");
+        String animation = effect.path("animation").asText("");
+        if (!effect.isObject() || file.isBlank() || animation.isBlank()) {
+            throw new IllegalStateException(
+                    "VFX thiếu file/animation: " + heroCode + " / "
+                            + skillCode + " / " + phase
+            );
+        }
+
+        String basePath = "static/assets/spine/seffects/";
+        String skeletonPath = basePath + file + ".json";
+        requireClasspathAsset(skeletonPath, heroCode, skillCode);
+        requireClasspathAsset(basePath + file + ".atlas", heroCode, skillCode);
+
+        JsonNode skeletonAnimations = animationsByEffectFile.computeIfAbsent(
+                file,
+                ignored -> loadEffectSkeletonAnimations(
+                        skeletonPath, heroCode, skillCode
+                )
+        );
+        if (!skeletonAnimations.has(animation)) {
+            throw new IllegalStateException(
+                    "VFX animation không tồn tại trong Spine skeleton: hero="
+                            + heroCode + ", skill=" + skillCode
+                            + ", phase=" + phase
+                            + ", file=" + file + ", animation=" + animation
+            );
+        }
+
+        JsonNode configuredTextures = texturePages.path(file);
+        if (!configuredTextures.isArray() || configuredTextures.isEmpty()) {
+            requireClasspathAsset(
+                    basePath + file + ".png", heroCode, skillCode
+            );
+        } else {
+            for (JsonNode texture : configuredTextures) {
+                requireClasspathAsset(
+                        basePath + texture.asText(), heroCode, skillCode
+                );
             }
         }
     }
