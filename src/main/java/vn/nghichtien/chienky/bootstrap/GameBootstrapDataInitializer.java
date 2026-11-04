@@ -1041,12 +1041,12 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                     default -> { }
                 }
             }
-            if ("tohka_dark".equalsIgnoreCase(definition.getHeroCode())) {
+            if ("dark_tohka".equalsIgnoreCase(definition.getHeroCode())) {
                 switch (skillCode) {
-                    case "TOHKA_DARK_ACTIVE_2" -> seedTohkaSandalphonEffects(skill);
-                    case "TOHKA_DARK_ULTIMATE_3" -> seedTohkaHalvanhelevEffects(skill);
-                    case "TOHKA_DARK_PASSIVE_4" -> seedTohkaAdonaiEffects(skill);
-                    case "TOHKA_DARK_PASSIVE_5" -> seedTohkaMalkuthEffects(skill);
+                    case "DARK_TOHKA_ACTIVE_2" -> seedTohkaSandalphonEffects(skill);
+                    case "DARK_TOHKA_ULTIMATE_3" -> seedTohkaHalvanhelevEffects(skill);
+                    case "DARK_TOHKA_PASSIVE_4" -> seedTohkaAdonaiEffects(skill);
+                    case "DARK_TOHKA_PASSIVE_5" -> seedTohkaMalkuthEffects(skill);
                     default -> { }
                 }
             }
@@ -1123,13 +1123,13 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
         writeLevelEffects(skill, level -> List.of(
                 createGojoEffectJson("BUFF","ALL_ALLIES","0.01",2,
                         "{\"statType\":\"KINGDOM_BLESSING\",\"purgeable\":false,"
-                                + "\"eventSkillCode\":\"TOHKA_DARK_ACTIVE_2\"}"),
+                                + "\"eventSkillCode\":\"DARK_TOHKA_ACTIVE_2\"}"),
                 createGojoEffectJson("BUFF","ALL_ALLIES",crit[level - 1],2,
                         "{\"statType\":\"KINGDOM_BLESSING_CRIT\",\"purgeable\":false,"
-                                + "\"eventSkillCode\":\"TOHKA_DARK_ACTIVE_2\"}"),
+                                + "\"eventSkillCode\":\"DARK_TOHKA_ACTIVE_2\"}"),
                 createGojoEffectJson("DAMAGE","ALL_ENEMIES",damage[level - 1],0,
                         "{\"damageType\":\"PHYSICAL\","
-                                + "\"eventSkillCode\":\"TOHKA_DARK_ACTIVE_2\"}")
+                                + "\"eventSkillCode\":\"DARK_TOHKA_ACTIVE_2\"}")
         ));
         skill.replaceEffects(List.of(
                 new HeroSkillEffect(1,"BUFF","ALL_ALLIES"),
@@ -1146,7 +1146,7 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                 createGojoEffectJson("DAMAGE","MOST_POPULATED_ROW",damage[level - 1],0,
                         "{\"damageType\":\"PHYSICAL\",\"roleBonusTankSupport\":true,"
                                 + "\"roleBonusPercent\":" + bonus[level - 1] + ","
-                                + "\"eventSkillCode\":\"TOHKA_DARK_ULTIMATE_3\"}")
+                                + "\"eventSkillCode\":\"DARK_TOHKA_ULTIMATE_3\"}")
         ));
         skill.replaceEffects(List.of(new HeroSkillEffect(1,"DAMAGE","MOST_POPULATED_ROW")));
     }
@@ -1462,7 +1462,7 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
 
     private List<HeroSeed> heroSeeds() {
         return List.of(
-                new HeroSeed("tohka_dark", "Tohka Hắc Ám", "LEGENDARY", "WARRIOR",
+                new HeroSeed("dark_tohka", "Tohka Hắc Ám", "LEGENDARY", "WARRIOR",
                         skills("Kiếm chém", "Kiếm khí", "Thiên thần giáng thế", "Ý chí chiến đấu", "Linh lực hộ thể")),
                 new HeroSeed("asuna_dark", "Asuna Hắc Ám", "LEGENDARY", "ASSASSIN",
                         skills("Kiếm tốc ảnh", "Liên kích", "Tuyệt kỹ kiếm vũ", "Tốc độ phản xạ", "Kiếm ý")),
