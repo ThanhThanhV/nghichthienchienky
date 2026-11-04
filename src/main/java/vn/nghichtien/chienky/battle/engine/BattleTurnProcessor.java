@@ -439,6 +439,23 @@ public class BattleTurnProcessor {
                     }
                 }
             }
+
+            if (event.type() == BattleEventType.REVIVE) {
+                BattleUnitState revived = battle.findUnit(event.targetInstanceId());
+                if (revived != null && revived.isAlive()) {
+                    // Chỉ kích hoạt sau khi revive thành công; nội tại phe đối phương
+                    // nhận đúng instance vừa hồi sinh làm mục tiêu.
+                    for (BattleUnitState observer : battle.getUnits()) {
+                        if (battle.isFinished()) return;
+                        if (observer.isAlive() && observer.getTeam() != revived.getTeam()) {
+                            skillExecutor.executePassives(
+                                    battle, observer, BattlePassiveTrigger.ON_REVIVE,
+                                    revived.getInstanceId()
+                            );
+                        }
+                    }
+                }
+            }
         }
 
         // Chỉ chạy hành động bổ sung sau khi duyệt xong snapshot sự kiện,
