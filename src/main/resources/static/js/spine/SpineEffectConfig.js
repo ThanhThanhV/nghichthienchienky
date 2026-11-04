@@ -52,6 +52,11 @@ window.SPINE_EFFECT_CONFIG = {
 
         return selectedEffects
             .filter(selected => selected && typeof selected === "object" && selected.file)
+            // Passive có nhiều trigger nhưng chỉ một số trigger có animation trong TAB.
+            // Ví dụ Lục Nhãn chỉ có VFX truy kích khi ON_REVIVE, không phát khi BATTLE_START/ON_KILL.
+            .filter(selected => !selected.trigger ||
+                String(selected.trigger).trim().toUpperCase() ===
+                    String(event?.effectCategory || "").trim().toUpperCase())
             .map(selected => {
                 const textures = texturePages[selected.file] || [
                     selected.file + ".png"
