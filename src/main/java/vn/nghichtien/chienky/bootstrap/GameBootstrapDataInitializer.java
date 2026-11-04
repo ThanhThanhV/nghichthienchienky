@@ -456,6 +456,7 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
         }
 
         JsonNode texturePages = heroMapping.path("_SPINE_EFFECT_TEXTURE_PAGES");
+        Map<String, JsonNode> animationsByEffectFile = new HashMap<>();
         Iterator<Map.Entry<String, JsonNode>> skills = skillEffects.fields();
         while (skills.hasNext()) {
             Map.Entry<String, JsonNode> skill = skills.next();
@@ -479,8 +480,24 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                 }
 
                 String basePath = "static/assets/spine/seffects/";
-                requireClasspathAsset(basePath + file + ".json", heroCode, skill.getKey());
+                String skeletonPath = basePath + file + ".json";
+                requireClasspathAsset(skeletonPath, heroCode, skill.getKey());
                 requireClasspathAsset(basePath + file + ".atlas", heroCode, skill.getKey());
+
+                JsonNode skeletonAnimations = animationsByEffectFile.computeIfAbsent(
+                        file,
+                        ignored -> loadEffectSkeletonAnimations(
+                                skeletonPath, heroCode, skill.getKey()
+                        )
+                );
+                if (!skeletonAnimations.has(animation)) {
+                    throw new IllegalStateException(
+                            "VFX animation không tồn tại trong Spine skeleton: hero="
+                                    + heroCode + ", skill=" + skill.getKey()
+                                    + ", phase=" + phase.getKey()
+                                    + ", file=" + file + ", animation=" + animation
+                    );
+                }
 
                 JsonNode configuredTextures = texturePages.path(file);
                 if (!configuredTextures.isArray() || configuredTextures.isEmpty()) {
@@ -495,6 +512,35 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                     }
                 }
             }
+        }
+    }
+
+    /**
+     * Đọc danh sách animation trực tiếp từ skeleton JSON của VFX.
+     * Cache được giữ trong lần validate hiện tại để không parse lặp một file
+     * khi nhiều skill/phase cùng sử dụng chung hiệu ứng.
+     */
+    private JsonNode loadEffectSkeletonAnimations(
+            String resourcePath,
+            String heroCode,
+            String skillCode
+    ) {
+        try (var input = new ClassPathResource(resourcePath).getInputStream()) {
+            JsonNode skeleton = objectMapper.readTree(input);
+            JsonNode animations = skeleton == null ? null : skeleton.path("animations");
+            if (animations == null || !animations.isObject()) {
+                throw new IllegalStateException(
+                        "VFX skeleton không có danh sách animations: hero="
+                                + heroCode + ", skill=" + skillCode
+                                + ", path=" + resourcePath
+                );
+            }
+            return animations;
+        } catch (IOException exception) {
+            throw new IllegalStateException(
+                    "Không thể đọc Spine VFX skeleton: " + resourcePath,
+                    exception
+            );
         }
     }
 
