@@ -2339,15 +2339,8 @@
       },
       "_SKILL_EFFECTS": {
         "TOHKA_DARK_BASIC_1": {
-          "cast": {
-            "code": "tohka_dark_skill_1_cast",
-            "file": "seffect_41514111011",
-            "animation": "animation_0",
-            "impactRatio": 0.48,
-            "anchor": "source"
-          },
           "impact": {
-            "code": "tohka_dark_skill_1_impact",
+            "code": "tohka_dark_skin_basic_impact",
             "file": "seffect_41514121011",
             "animation": "animation_0",
             "impactRatio": 0.45,
@@ -2356,40 +2349,26 @@
         },
         "TOHKA_DARK_ACTIVE_2": {
           "cast": {
-            "code": "tohka_dark_sandalphon_cast",
-            "file": "seffect_41514111012",
+            "code": "tohka_dark_skin_sandalphon_cast",
+            "file": "seffect_41514121012",
             "animation": "animation_0",
-            "anchor": "enemy_formation",
-            "impactEvent": "qishou_11_1_1",
-            "impactEvents": [
-              "qishou_11_1_1"
-            ]
+            "anchor": "enemy_formation"
           },
           "impact": {
-            "code": "tohka_dark_sandalphon_impact",
-            "file": "seffect_100110111",
+            "code": "tohka_dark_skin_sandalphon_impact",
+            "file": "seffect_41514121013",
             "animation": "animation_0",
-            "anchor": "enemy_formation",
-            "impactEvent": "hit_11_1_1",
-            "impactEvents": [
-              "hit_11_1_1"
-            ]
+            "impactRatio": 0.45,
+            "anchor": "enemy_formation"
           }
         },
         "TOHKA_DARK_ULTIMATE_3": {
           "cast": {
-            "code": "tohka_dark_skill_3_cast",
-            "file": "seffect_41514111013",
-            "animation": "animation_0",
-            "impactRatio": 0.62,
-            "anchor": "source"
-          },
-          "impact": {
-            "code": "tohka_dark_skill_3_impact",
+            "code": "tohka_dark_skin_halvanhelev_cast",
             "file": "seffect_41514121014",
             "animation": "animation_0",
             "impactRatio": 0.62,
-            "anchor": "target"
+            "anchor": "enemy_formation"
           }
         }
       },
@@ -2444,6 +2423,12 @@
         ],
         "seffect_100110111": [
           "seffect_100110111.png"
+        ],
+        "seffect_41514121011": [
+          "seffect_41514121011.png"
+        ],
+        "seffect_41514121013": [
+          "seffect_41514121013.png"
         ]
       },
       "_SPINE_EFFECT_DEFAULTS": {
