@@ -82,10 +82,16 @@ Before seeding, `TabLuaCatalogSynchronizer` parses the raw Lua tables directly:
   their linked performance and buffer IDs.
 
 The synchronizer hydrates the in-memory TAB catalog from these source tables
-before validation and database writes. Therefore changing a raw TAB row takes
-effect on the next application startup without manually editing copied skill
-text or level rows in the JSON file. The JSON still must contain the runtime
-hero/slot metadata and correct group/level-one IDs.
+before validation and database writes. It also regenerates `_TAB_HERO_SOURCE`
+and all `_TAB_SKILL_BINDINGS` in the in-memory Spine catalog from the TAB hero
+and runtime slot metadata. Those duplicated binding objects are no longer
+independent sources of truth.
+
+Therefore changing a raw TAB row takes effect on the next application startup
+without manually editing copied skill text, level rows, or TAB binding names in
+either JSON file. The TAB JSON still must contain the runtime hero/slot metadata
+and correct group/level-one IDs; the Spine JSON remains the source for explicit
+animation and VFX choices.
 
 ## Effect execution scope
 
