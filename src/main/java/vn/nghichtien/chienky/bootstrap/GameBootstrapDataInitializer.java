@@ -529,7 +529,6 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                         .findAllByHeroDefinitionHeroCodeOrderBySkillOrderAsc(seed.code());
 
         List<HeroSkillDefinition> skillsToSave = new ArrayList<>();
-        List<String> synchronizedSkillCodes = new ArrayList<>();
 
         for (int i = 0; i < tabSkills.size(); i++) {
             JsonNode tabSkill = tabSkills.get(i);
@@ -617,7 +616,6 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
             }
             skill.replaceEffects(synchronizedEffects);
 
-            synchronizedSkillCodes.add(skillCode);
             skillsToSave.add(skill);
         }
 
