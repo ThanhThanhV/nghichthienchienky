@@ -444,6 +444,11 @@ public class BattleUnitState {
                 .min(new BigDecimal("100"));
     }
 
+    /** Modifier sát thương nhận: DEBUFF -15% tương ứng chịu thêm 15% sát thương. */
+    public BigDecimal getDamageTakenModifierPercent() {
+        return statusEffectManager.getModifierPercent(BattleStatType.DAMAGE_TAKEN);
+    }
+
     /**
      * Cập nhật các chỉ số chiến đấu bổ sung.
      *
