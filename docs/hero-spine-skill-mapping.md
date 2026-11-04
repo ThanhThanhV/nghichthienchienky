@@ -130,18 +130,18 @@ an explicit character action animation; the other 15 are passive effects without
 a TAB action-performance binding and intentionally do not play a character
 attack animation.
 
-| Hero | BASIC | ACTIVE | ULTIMATE | PASSIVE slot 4 | PASSIVE slot 5 |
+| Hero | Slot 1 | Slot 2 | Slot 3 | Slot 4 | Slot 5 |
 |---|---|---|---|---|---|
-| `asuna_dark` | `att` | `skill` | `ultimateskill` | — | — |
-| `gojo` | `att` | `superskill` | — | — | `ultimateskill`* |
-| `iori` | `att` | `skill` | `ultimateskill` | — | `ultimateskill`* |
-| `iori_dark` | `att` | `skill` | `ultimateskill` | — | `ultimateskill`* |
-| `kirito` | `att` | `skill` | `ultimateskill` | — | — |
-| `leloud` | `att` | `skill` | `ultimateskill` | — | `ultimateskill`* |
-| `leloud_dark` | `att` | `skill` | `ultimateskill` | — | `ultimateskill`* |
-| `thor` | `att` | `skill` | `ultimateskill` | — | — |
-| `thor_rak` | `att` | `skill` | `ultimateskill` | — | — |
-| `tohka_dark` | `att` | `skill` | `ultimateskill` | — | — |
+| `asuna_dark` | BASIC `att` | ACTIVE `skill` | ULTIMATE `ultimateskill` | PASSIVE — | PASSIVE — |
+| `gojo` | BASIC `att` | ACTIVE `superskill` | PASSIVE `skill` | PASSIVE — | PASSIVE `ultimateskill`* |
+| `iori` | BASIC `att` | ACTIVE `skill` | ULTIMATE `ultimateskill` | PASSIVE — | PASSIVE `ultimateskill`* |
+| `iori_dark` | BASIC `att` | ACTIVE `skill` | ULTIMATE `ultimateskill` | PASSIVE — | PASSIVE `ultimateskill`* |
+| `kirito` | BASIC `att` | ACTIVE `skill` | ULTIMATE `ultimateskill` | PASSIVE — | PASSIVE — |
+| `leloud` | BASIC `att` | ACTIVE `skill` | ULTIMATE `ultimateskill` | PASSIVE — | PASSIVE `ultimateskill`* |
+| `leloud_dark` | BASIC `att` | ACTIVE `skill` | ULTIMATE `ultimateskill` | PASSIVE — | PASSIVE `ultimateskill`* |
+| `thor` | BASIC `att` | ACTIVE `skill` | ULTIMATE `ultimateskill` | PASSIVE — | PASSIVE — |
+| `thor_rak` | BASIC `att` | ACTIVE `skill` | ULTIMATE `ultimateskill` | PASSIVE — | PASSIVE — |
+| `tohka_dark` | BASIC `att` | ACTIVE `skill` | ULTIMATE `ultimateskill` | PASSIVE — | PASSIVE — |
 
 `10000110 -> att`, `10000210 -> skill`, and `10000310 -> ultimateskill`
 are derived from the performance IDs resolved through
