@@ -3,96 +3,59 @@ package vn.nghichtien.chienky.battle.domain;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-/**
- * Cấu hình một hiệu ứng được thực thi trong trận chiến.
- */
+/** Cấu hình một hiệu ứng được thực thi trong trận chiến. */
 public record BattleEffectConfig(
-        String effectCode,
-        BattleEffectType effectType,
-        BattleTargetMode targetMode,
-        BigDecimal multiplier,
-        BigDecimal flatValue,
-        Integer duration,
-        Integer priority,
-        BattleStatType statType,
-        BattleStatusType statusType,
-        BattleImmunityType immunityType,
-        BattleDispelType dispelType,
-        boolean permanent
+        String effectCode, BattleEffectType effectType, BattleTargetMode targetMode,
+        BigDecimal multiplier, BigDecimal flatValue, Integer duration, Integer priority,
+        BattleStatType statType, BattleStatusType statusType,
+        BattleImmunityType immunityType, BattleDispelType dispelType,
+        boolean permanent, int initialStacks, int maxStacks, boolean purgeable
 ) {
+    public BattleEffectConfig(String effectCode, BattleEffectType effectType,
+            BattleTargetMode targetMode, BigDecimal multiplier, BigDecimal flatValue,
+            Integer duration, Integer priority, BattleStatType statType,
+            BattleStatusType statusType, BattleImmunityType immunityType,
+            BattleDispelType dispelType) {
+        this(effectCode, effectType, targetMode, multiplier, flatValue, duration,
+                priority, statType, statusType, immunityType, dispelType, false, 1, 1, true);
+    }
 
-    /**
-     * Constructor tương thích với các vị trí gọi cũ.
-     */
-    public BattleEffectConfig(
-            String effectCode,
-            BattleEffectType effectType,
-            BattleTargetMode targetMode,
-            BigDecimal multiplier,
-            BigDecimal flatValue,
-            Integer duration,
-            Integer priority,
-            BattleStatType statType,
-            BattleStatusType statusType,
-            BattleImmunityType immunityType,
-            BattleDispelType dispelType
-    ) {
-        this(effectCode, effectType, targetMode, multiplier, flatValue,
-                duration, priority, statType, statusType, immunityType,
-                dispelType, false);
+    public BattleEffectConfig(String effectCode, BattleEffectType effectType,
+            BattleTargetMode targetMode, BigDecimal multiplier, BigDecimal flatValue,
+            Integer duration, Integer priority, BattleStatType statType,
+            BattleStatusType statusType, BattleImmunityType immunityType,
+            BattleDispelType dispelType, boolean permanent) {
+        this(effectCode, effectType, targetMode, multiplier, flatValue, duration,
+                priority, statType, statusType, immunityType, dispelType, permanent, 1, 1, true);
     }
 
     public BattleEffectConfig {
         Objects.requireNonNull(effectCode);
         Objects.requireNonNull(effectType);
         Objects.requireNonNull(targetMode);
-
         multiplier = multiplier == null ? BigDecimal.ZERO : multiplier;
         flatValue = flatValue == null ? BigDecimal.ZERO : flatValue;
         duration = duration == null ? 0 : duration;
         priority = priority == null ? 0 : priority;
-
-        if (multiplier.signum() < 0 || flatValue.signum() < 0) {
+        if (multiplier.signum() < 0 || flatValue.signum() < 0)
             throw new IllegalArgumentException("Effect values must not be negative");
-        }
-        if (duration < 0) {
-            throw new IllegalArgumentException("Duration must not be negative");
-        }
-        if (permanent
-                && effectType != BattleEffectType.BUFF
-                && effectType != BattleEffectType.DEBUFF) {
-            throw new IllegalArgumentException(
-                    "Permanent mode is supported only for BUFF/DEBUFF"
-            );
-        }
-        if ((effectType == BattleEffectType.BUFF
-                || effectType == BattleEffectType.DEBUFF)
-                && statType == null) {
-            throw new IllegalArgumentException("BUFF/DEBUFF requires statType");
-        }
-        if (effectType == BattleEffectType.CC && statusType == null) {
+        if (duration < 0) throw new IllegalArgumentException("Duration must not be negative");
+        if (initialStacks < 1 || maxStacks < 1 || initialStacks > maxStacks)
+            throw new IllegalArgumentException("Invalid effect stack configuration");
+        if (permanent && effectType != BattleEffectType.BUFF && effectType != BattleEffectType.DEBUFF)
+            throw new IllegalArgumentException("Permanent mode is supported only for BUFF/DEBUFF");
+        if ((effectType == BattleEffectType.BUFF || effectType == BattleEffectType.DEBUFF)
+                && statType == null) throw new IllegalArgumentException("BUFF/DEBUFF requires statType");
+        if (effectType == BattleEffectType.CC && statusType == null)
             throw new IllegalArgumentException("CC requires statusType");
-        }
-        if (effectType == BattleEffectType.IMMUNITY && immunityType == null) {
+        if (effectType == BattleEffectType.IMMUNITY && immunityType == null)
             throw new IllegalArgumentException("IMMUNITY requires immunityType");
-        }
-        if (effectType == BattleEffectType.DISPEL && dispelType == null) {
+        if (effectType == BattleEffectType.DISPEL && dispelType == null)
             throw new IllegalArgumentException("DISPEL requires dispelType");
-        }
-        if ((effectType == BattleEffectType.DOT
-                || effectType == BattleEffectType.HOT)
-                && duration <= 0) {
-            throw new IllegalArgumentException(
-                    "DOT/HOT requires a positive duration"
-            );
-        }
-        if ((effectType == BattleEffectType.DOT
-                || effectType == BattleEffectType.HOT)
-                && multiplier.signum() == 0
-                && flatValue.signum() == 0) {
-            throw new IllegalArgumentException(
-                    "DOT/HOT requires a positive periodic amount"
-            );
-        }
+        if ((effectType == BattleEffectType.DOT || effectType == BattleEffectType.HOT) && duration <= 0)
+            throw new IllegalArgumentException("DOT/HOT requires a positive duration");
+        if ((effectType == BattleEffectType.DOT || effectType == BattleEffectType.HOT)
+                && multiplier.signum() == 0 && flatValue.signum() == 0)
+            throw new IllegalArgumentException("DOT/HOT requires a positive periodic amount");
     }
 }
