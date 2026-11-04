@@ -28,6 +28,8 @@ hero row, `_TAB_HERO_SOURCE.variantSourceHeroCode` explicitly records the source
 row used; it does not pretend that the source contains a second independent TAB
 hero definition.
 
+**Tohka asset identity:** the runtime hero code is `dark_tohka`, while the existing physical asset directory remains `static/assets/spine/heroes/tohka_dark/`. It contains `sanim_415141_1` plus its two texture pages. The exact `animation_config.lua` key is `415141_1`; do not strip `_1` or rename the physical directory as part of the runtime-code correction. This is the Tohka skin/variant asset currently used by the `dark_tohka` runtime hero.
+
 ## Runtime skill slots
 
 For the nine heroes with two active TAB skill groups, the runtime slots are
