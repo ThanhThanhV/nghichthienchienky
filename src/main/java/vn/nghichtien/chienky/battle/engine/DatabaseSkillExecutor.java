@@ -7,7 +7,9 @@ import org.springframework.transaction.annotation.Transactional;
 import vn.nghichtien.chienky.battle.domain.*;
 import vn.nghichtien.chienky.hero.domain.HeroSkillDefinition;
 import vn.nghichtien.chienky.hero.domain.HeroSkillEffect;
+import vn.nghichtien.chienky.hero.domain.HeroInstanceSkill;
 import vn.nghichtien.chienky.hero.repository.HeroSkillDefinitionRepository;
+import vn.nghichtien.chienky.hero.repository.HeroInstanceSkillRepository;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -26,15 +28,18 @@ public class DatabaseSkillExecutor {
     private static final BigDecimal ONE = BigDecimal.ONE;
 
     private final HeroSkillDefinitionRepository skillRepository;
+    private final HeroInstanceSkillRepository instanceSkillRepository;
     private final BattleEffectProcessor effectProcessor;
     private final ObjectMapper objectMapper;
 
     public DatabaseSkillExecutor(
             HeroSkillDefinitionRepository skillRepository,
+            HeroInstanceSkillRepository instanceSkillRepository,
             BattleEffectProcessor effectProcessor,
             ObjectMapper objectMapper
     ) {
         this.skillRepository = skillRepository;
+        this.instanceSkillRepository = instanceSkillRepository;
         this.effectProcessor = effectProcessor;
         this.objectMapper = objectMapper;
     }
@@ -73,14 +78,17 @@ public class DatabaseSkillExecutor {
             return requestedAction;
         }
 
-        List<BattleEffectConfig> effects = skill.getEffects().stream()
+        SkillEffectSet effectSet = loadEffectsForCurrentLevel(source, skill);
+        List<BattleEffectConfig> effects = effectSet.effects().stream()
                 .filter(effect -> Boolean.TRUE.equals(effect.getEnabled()))
                 .sorted(Comparator.comparing(
                         HeroSkillEffect::getEffectOrder,
                         Comparator.nullsLast(Integer::compareTo)
                 ))
                 .filter(this::passesChance)
-                .map(this::toEffectConfig)
+                .map(effect -> toEffectConfig(
+                        effect, effectCode(skill, effectSet.level(), effect)
+                ))
                 .toList();
 
         recordSkillActivation(battle, source, skill, requestedAction);
@@ -130,7 +138,8 @@ public class DatabaseSkillExecutor {
                 break;
             }
 
-            List<BattleEffectConfig> effects = skill.getEffects().stream()
+            SkillEffectSet effectSet = loadEffectsForCurrentLevel(source, skill);
+            List<BattleEffectConfig> effects = effectSet.effects().stream()
                     .filter(effect -> Boolean.TRUE.equals(effect.getEnabled()))
                     .sorted(Comparator.comparing(
                             HeroSkillEffect::getEffectOrder,
@@ -138,7 +147,9 @@ public class DatabaseSkillExecutor {
                     ))
                     .filter(effect -> getPassiveTrigger(effect) == trigger)
                     .filter(this::passesChance)
-                    .map(this::toEffectConfig)
+                    .map(effect -> toEffectConfig(
+                            effect, effectCode(skill, effectSet.level(), effect)
+                    ))
                     .toList();
 
             if (effects.isEmpty()) {
@@ -164,6 +175,126 @@ public class DatabaseSkillExecutor {
                 .findAllByHeroDefinitionHeroCodeAndEnabledTrueOrderBySkillOrderAsc(
                         source.getHeroCode()
                 );
+    }
+
+    /**
+     * Chọn bộ hiệu ứng theo skill_level của đúng bản sao tướng đang chiến đấu.
+     * Nếu TAB level row chưa khai báo battleEffects, giữ tương thích với bộ
+     * HeroSkillEffect chung hiện tại thay vì tự suy diễn từ script Lua.
+     */
+    private SkillEffectSet loadEffectsForCurrentLevel(
+            BattleUnitState source,
+            HeroSkillDefinition skill
+    ) {
+        int skillLevel = instanceSkillRepository
+                .findByHeroInstanceIdAndSkillDefinitionId(
+                        source.getInstanceId(), skill.getId()
+                )
+                .map(HeroInstanceSkill::getSkillLevel)
+                .orElse(1);
+
+        JsonNode levelRows = readLevelRows(skill.getLevelRowsJson());
+        if (!levelRows.isArray() || levelRows.isEmpty()) {
+            return new SkillEffectSet(skillLevel, skill.getEffects());
+        }
+
+        JsonNode selectedLevel = null;
+        int selectedLevelNumber = 0;
+        for (JsonNode row : levelRows) {
+            int rowLevel = row.path("level").asInt(-1);
+            if (rowLevel <= skillLevel && rowLevel > selectedLevelNumber) {
+                selectedLevel = row;
+                selectedLevelNumber = rowLevel;
+            }
+        }
+        if (selectedLevel == null) {
+            selectedLevel = levelRows.get(0);
+            selectedLevelNumber = selectedLevel.path("level").asInt(1);
+        }
+
+        JsonNode levelEffects = selectedLevel.path("battleEffects");
+        if (!levelEffects.isArray()) {
+            return new SkillEffectSet(selectedLevelNumber, skill.getEffects());
+        }
+
+        List<HeroSkillEffect> effects = new java.util.ArrayList<>();
+        for (int index = 0; index < levelEffects.size(); index++) {
+            JsonNode config = levelEffects.get(index);
+            String effectType = config.path("effectType").asText("");
+            String targetType = config.path("targetType").asText("");
+            if (effectType.isBlank() || targetType.isBlank()) {
+                throw new IllegalStateException(
+                        "TAB level battleEffect thiếu effectType/targetType: "
+                                + skill.getSkillCode() + " level " + selectedLevelNumber
+                                + " effect " + (index + 1)
+                );
+            }
+
+            HeroSkillEffect effect = new HeroSkillEffect(
+                    index + 1, effectType, targetType
+            );
+            BigDecimal multiplier = config.hasNonNull("multiplier")
+                    ? config.path("multiplier").decimalValue()
+                    : BigDecimal.ZERO;
+            BigDecimal chance = config.hasNonNull("chance")
+                    ? config.path("chance").decimalValue()
+                    : BigDecimal.ONE;
+            Integer duration = config.hasNonNull("duration")
+                    ? config.path("duration").asInt()
+                    : null;
+            effect.updateParameters(multiplier, chance, duration);
+            effect.updateConfig(writeJson(config.path("configJson")));
+            effects.add(effect);
+        }
+
+        return new SkillEffectSet(selectedLevelNumber, effects);
+    }
+
+    private JsonNode readLevelRows(String json) {
+        if (json == null || json.isBlank()) {
+            return objectMapper.createArrayNode();
+        }
+        try {
+            JsonNode rows = objectMapper.readTree(json);
+            if (rows == null || !rows.isArray()) {
+                throw new IllegalArgumentException(
+                        "levelRowsJson phải là JSON array"
+                );
+            }
+            return rows;
+        } catch (IOException exception) {
+            throw new IllegalArgumentException(
+                    "levelRowsJson của kỹ năng không hợp lệ", exception
+            );
+        }
+    }
+
+    private String writeJson(JsonNode node) {
+        if (node == null || node.isMissingNode() || node.isNull()) {
+            return "{}";
+        }
+        try {
+            return objectMapper.writeValueAsString(node);
+        } catch (IOException exception) {
+            throw new IllegalArgumentException(
+                    "Không thể serialize battleEffect configJson", exception
+            );
+        }
+    }
+
+    private String effectCode(
+            HeroSkillDefinition skill,
+            int skillLevel,
+            HeroSkillEffect effect
+    ) {
+        if (effect.getId() != null) {
+            return "SKILL_EFFECT_" + effect.getId();
+        }
+        return "SKILL_LEVEL_" + skill.getId()
+                + "_" + skillLevel + "_E" + effect.getEffectOrder();
+    }
+
+    private record SkillEffectSet(int level, List<HeroSkillEffect> effects) {
     }
 
     private BattlePassiveTrigger getPassiveTrigger(HeroSkillEffect effect) {
@@ -220,6 +351,13 @@ public class DatabaseSkillExecutor {
     }
 
     private BattleEffectConfig toEffectConfig(HeroSkillEffect effect) {
+        return toEffectConfig(effect, "SKILL_EFFECT_" + effect.getId());
+    }
+
+    private BattleEffectConfig toEffectConfig(
+            HeroSkillEffect effect,
+            String effectCode
+    ) {
         BattleEffectType effectType = parseEnum(
                 BattleEffectType.class, effect.getEffectType(), "effectType"
         );
@@ -229,7 +367,7 @@ public class DatabaseSkillExecutor {
         JsonNode config = readConfig(effect.getConfigJson());
 
         return new BattleEffectConfig(
-                "SKILL_EFFECT_" + effect.getId(),
+                effectCode,
                 effectType,
                 targetMode,
                 effect.getMultiplier(),
