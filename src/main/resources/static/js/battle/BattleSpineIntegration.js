@@ -386,6 +386,11 @@ class BattleSpineIntegration {
             "PASSIVE",
             "DAMAGE",
             "HEAL",
+            "BUFF",
+            "DEBUFF",
+            "CC",
+            "DISPEL",
+            "IMMUNITY",
             "DEATH",
             "REVIVE",
             "MOVE"
