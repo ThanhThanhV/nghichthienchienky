@@ -330,8 +330,9 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
 
     /**
      * Kiểm tra catalog animation phải khớp chính xác skillCode mà seedSkills tạo ra.
-     * Kỹ năng chủ động phải có mapping animation; PASSIVE không cần animation cast.
-     * Nếu mapping lệch, dừng khởi động thay vì lưu cấu hình thiếu.
+     * BASIC/ACTIVE/ULTIMATE phải có mapping; PASSIVE chỉ cần mapping khi
+     * TAB_Sseffect xác định một action performance. Mọi mapping đều được
+     * kiểm tra với skeleton thật trước khi ghi database.
      */
     private void validateSkillAnimationCatalog(
             List<HeroSeed> seeds,
@@ -419,9 +420,9 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                 }
             }
 
-            // BASIC/ACTIVE/ULTIMATE bắt buộc phải có mapping theo đúng skillCode.
-            // PASSIVE chỉ phát animation nhân vật khi có mapping tường minh;
-            // VFX của passive được resolve độc lập từ _SKILL_EFFECTS.
+            // BASIC/ACTIVE/ULTIMATE bắt buộc có mapping theo skillCode.
+            // PASSIVE chỉ có animation khi TAB_Sseffect chỉ ra action performance;
+            // passive chỉ số/hiệu ứng nền không bị ép phát animation.
             for (int index = 0; index < seed.skills().size(); index++) {
                 int order = index + 1;
                 SkillSeed skill = seed.skills().get(index);
