@@ -151,7 +151,18 @@ public class BattleDamageProcessor {
             return;
         }
 
-        // 5. Áp dụng BLOCK.
+        // 5. Giảm sát thương theo modifier (ví dụ Lục Nhãn của Gojo).
+        BigDecimal reductionPercent = target.getDamageReductionPercent();
+        if (reductionPercent.signum() > 0) {
+            calculatedDamage = calculatedDamage.multiply(
+                    BigDecimal.ONE.subtract(
+                            reductionPercent.divide(BigDecimal.valueOf(100), 8, RoundingMode.HALF_UP)
+                    )
+            ).setScale(DAMAGE_SCALE, RoundingMode.HALF_UP);
+        }
+        if (calculatedDamage.signum() <= 0) return;
+
+        // 6. Áp dụng BLOCK.
         BigDecimal remainingDamage =
                 target.getDefenseEffectManager().applyBlock(calculatedDamage);
 
