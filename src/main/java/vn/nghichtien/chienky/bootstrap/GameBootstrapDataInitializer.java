@@ -749,6 +749,46 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
         };
     }
 
+    /**
+     * Migration định danh có chủ đích cho các skillCode legacy đã biết.
+     *
+     * Chỉ đổi mã trên cùng HeroSkillDefinition, không tạo/xóa entity:
+     * ID kỹ năng và FK hero_instance_skills.skill_id vì vậy được giữ nguyên,
+     * bao gồm skill_level của từng bản sao tướng.
+     */
+    private void migrateSkillCodeIfDeclared(
+            String heroCode,
+            int skillOrder,
+            HeroSkillDefinition occupiedSlot,
+            String targetSkillCode,
+            List<HeroSkillDefinition> existingSkills
+    ) {
+        if ("gojo".equals(heroCode)
+                && skillOrder == 1
+                && "GOJO_PASSIVE_1".equals(occupiedSlot.getSkillCode())
+                && "GOJO_BASIC_1".equals(targetSkillCode)) {
+            boolean targetAlreadyExists = existingSkills.stream()
+                    .anyMatch(existing -> existing != occupiedSlot
+                            && targetSkillCode.equals(existing.getSkillCode()));
+            if (targetAlreadyExists) {
+                throw new IllegalStateException(
+                        "Không thể migration GOJO_PASSIVE_1 -> GOJO_BASIC_1: "
+                                + "GOJO_BASIC_1 đã tồn tại trong DB"
+                );
+            }
+
+            occupiedSlot.changeSkillCode(targetSkillCode);
+            return;
+        }
+
+        throw new IllegalStateException(
+                "Không có migration định danh kỹ năng được khai báo tại "
+                        + heroCode + " slot " + skillOrder
+                        + ": DB=" + occupiedSlot.getSkillCode()
+                        + ", TAB=" + targetSkillCode
+        );
+    }
+
     private void seedSkills(
             HeroDefinition definition,
             HeroSeed seed,
@@ -797,17 +837,15 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                         .findFirst()
                         .orElse(null);
                 if (occupiedSlot != null) {
-                    throw new IllegalStateException(
-                            "Không thể tự động đổi định danh kỹ năng tại "
-                                    + seed.code() + " slot " + order
-                                    + ": DB=" + occupiedSlot.getSkillCode()
-                                    + ", TAB=" + skillCode
-                                    + ". Cần migration định danh rõ ràng để giữ cấp kỹ năng."
+                    migrateSkillCodeIfDeclared(
+                            seed.code(), order, occupiedSlot, skillCode, existingSkills
+                    );
+                    skill = occupiedSlot;
+                } else {
+                    skill = new HeroSkillDefinition(
+                            definition, skillCode, skillName, skillType, order
                     );
                 }
-                skill = new HeroSkillDefinition(
-                        definition, skillCode, skillName, skillType, order
-                );
             }
 
             skill.updateInformation(
