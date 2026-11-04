@@ -18,7 +18,7 @@ public class BattleUnitState {
     private final Long instanceId;
     private final BattleTeam team;
     private final String heroCode;
-    private final BigDecimal maxHp;
+    private BigDecimal maxHp;
     private BigDecimal currentHp;
 
     private final BigDecimal attack;
@@ -51,6 +51,8 @@ public class BattleUnitState {
     private boolean extraActionPending;
     private boolean extraActionUsedThisRound;
     private boolean alive;
+    private String role = "";
+    private int actionLockedUntilRound;
 
     /**
      * Khởi tạo nhân vật có vị trí trong đội hình 3x3.
@@ -257,6 +259,41 @@ public class BattleUnitState {
         return maxHp;
     }
 
+    public void setRole(String role) {
+        this.role = role == null ? "" : role;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public boolean isTankOrSupport() {
+        String normalized = role.toLowerCase(java.util.Locale.ROOT);
+        return normalized.contains("tank") || normalized.contains("support")
+                || normalized.contains("hỗ trợ") || normalized.contains("ho tro");
+    }
+
+    public void setActionLockedUntilRound(int round) {
+        actionLockedUntilRound = Math.max(actionLockedUntilRound, round);
+    }
+
+    public boolean isActionLocked(int round) {
+        return round > 0 && round <= actionLockedUntilRound;
+    }
+
+    /** Tăng HP tối đa vĩnh viễn và giữ nguyên tỷ lệ HP hiện tại. */
+    public void increaseMaxHpPercent(BigDecimal percent) {
+        if (percent == null || percent.signum() <= 0) return;
+        BigDecimal oldMax = maxHp;
+        BigDecimal increase = oldMax.multiply(percent)
+                .divide(BigDecimal.valueOf(100), 6, java.math.RoundingMode.HALF_UP);
+        if (increase.signum() <= 0) return;
+        BigDecimal currentRatio = currentHp.divide(oldMax, 8, java.math.RoundingMode.HALF_UP);
+        maxHp = oldMax.add(increase);
+        currentHp = maxHp.multiply(currentRatio).setScale(6, java.math.RoundingMode.HALF_UP)
+                .min(maxHp);
+    }
+
     public BigDecimal getCurrentHp() {
         return currentHp;
     }
@@ -439,9 +476,34 @@ public class BattleUnitState {
 
     /** Phần trăm sát thương bị giảm từ các hiệu ứng đang còn hiệu lực. */
     public BigDecimal getDamageReductionPercent() {
-        return statusEffectManager.getModifierPercent(BattleStatType.DAMAGE_REDUCTION)
-                .max(BigDecimal.ZERO)
-                .min(new BigDecimal("100"));
+        return getDamageReductionPercent(BattleDamageType.PHYSICAL);
+    }
+
+    public BigDecimal getDamageReductionPercent(BattleDamageType damageType) {
+        BigDecimal reduction = statusEffectManager.getModifierPercent(BattleStatType.DAMAGE_REDUCTION);
+        reduction = reduction.add(statusEffectManager.getModifierPercent(
+                damageType == BattleDamageType.MAGIC
+                        ? BattleStatType.MAGIC_DAMAGE_REDUCTION
+                        : BattleStatType.PHYSICAL_DAMAGE_REDUCTION
+        ));
+        return reduction.max(BigDecimal.ZERO).min(new BigDecimal("100"));
+    }
+
+    public BigDecimal getDamageDealtPercent(BattleDamageType damageType) {
+        BigDecimal bonus = statusEffectManager.getModifierPercent(BattleStatType.DAMAGE_DEALT);
+        if (damageType == BattleDamageType.PHYSICAL) {
+            bonus = bonus.add(statusEffectManager.getModifierPercent(BattleStatType.PHYSICAL_DAMAGE));
+        }
+        return bonus;
+    }
+
+    public BigDecimal getHealReceivedPercent() {
+        return statusEffectManager.getModifierPercent(BattleStatType.HEAL_RECEIVED);
+    }
+
+    public BigDecimal getControlDurationReductionPercent() {
+        return statusEffectManager.getModifierPercent(BattleStatType.CONTROL_DURATION_REDUCTION)
+                .max(BigDecimal.ZERO).min(new BigDecimal("100"));
     }
 
     /** Modifier sát thương nhận: DEBUFF -15% tương ứng chịu thêm 15% sát thương. */
