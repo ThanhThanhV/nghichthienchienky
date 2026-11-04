@@ -204,7 +204,8 @@
       "skillAnimations": {
         "GOJO_BASIC_1": "att",
         "GOJO_ACTIVE_2": "superskill",
-        "GOJO_PASSIVE_3": "ultimateskill"
+        "GOJO_PASSIVE_3": "skill",
+        "GOJO_PASSIVE_5": "ultimateskill"
       },
       "_BASIC_ATTACK": {
         "movement": "DASH"
@@ -431,7 +432,8 @@
       "skillAnimations": {
         "IORI_BASIC_1": "att",
         "IORI_ACTIVE_2": "skill",
-        "IORI_ULTIMATE_3": "ultimateskill"
+        "IORI_ULTIMATE_3": "ultimateskill",
+        "IORI_PASSIVE_5": "ultimateskill"
       },
       "_BASIC_ATTACK": {
         "movement": "DASH"
@@ -674,7 +676,8 @@
       "skillAnimations": {
         "IORI_DARK_BASIC_1": "att",
         "IORI_DARK_ACTIVE_2": "skill",
-        "IORI_DARK_ULTIMATE_3": "ultimateskill"
+        "IORI_DARK_ULTIMATE_3": "ultimateskill",
+        "IORI_DARK_PASSIVE_5": "ultimateskill"
       },
       "_BASIC_ATTACK": {
         "movement": "DASH"
@@ -1123,7 +1126,8 @@
       "skillAnimations": {
         "LELOUD_BASIC_1": "att",
         "LELOUD_ACTIVE_2": "skill",
-        "LELOUD_ULTIMATE_3": "ultimateskill"
+        "LELOUD_ULTIMATE_3": "ultimateskill",
+        "LELOUD_PASSIVE_5": "ultimateskill"
       },
       "_BASIC_ATTACK": {
         "movement": "DASH"
@@ -1357,7 +1361,8 @@
       "skillAnimations": {
         "LELOUD_DARK_BASIC_1": "att",
         "LELOUD_DARK_ACTIVE_2": "skill",
-        "LELOUD_DARK_ULTIMATE_3": "ultimateskill"
+        "LELOUD_DARK_ULTIMATE_3": "ultimateskill",
+        "LELOUD_DARK_PASSIVE_5": "ultimateskill"
       },
       "_BASIC_ATTACK": {
         "movement": "DASH"
