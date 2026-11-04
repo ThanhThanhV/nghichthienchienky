@@ -20,7 +20,7 @@
 | `leloud_dark` | Lelouch | 42515 | `leloud_dark` |
 | `thor` | Thần Sấm Thor | 43513 | `thor` |
 | `thor_rak` | Thần Sấm Thor | 43513 | `thor_rak` |
-| `tohka_dark` | Yatogami Tohka | 41514 | `tohka_dark` |
+| `dark_tohka` | Yatogami Tohka | 41514 | `tohka_dark` |
 
 The dark/awakened variants have separate runtime hero codes, skill-code namespaces,
 Spine folders, and VFX mapping entries. Where the TAB files contain only one base
@@ -141,7 +141,7 @@ attack animation.
 | `leloud_dark` | BASIC `att` | ACTIVE `skill` | ULTIMATE `ultimateskill` | PASSIVE — | PASSIVE `ultimateskill`* |
 | `thor` | BASIC `att` | ACTIVE `skill` | ULTIMATE `ultimateskill` | PASSIVE — | PASSIVE — |
 | `thor_rak` | BASIC `att` | ACTIVE `skill` | ULTIMATE `ultimateskill` | PASSIVE — | PASSIVE — |
-| `tohka_dark` | BASIC `att` | ACTIVE `skill` | ULTIMATE `ultimateskill` | PASSIVE — | PASSIVE — |
+| `dark_tohka` | BASIC `att` | ACTIVE `skill` | ULTIMATE `ultimateskill` | PASSIVE — | PASSIVE — |
 
 `10000110 -> att`, `10000210 -> skill`, and `10000310 -> ultimateskill`
 are derived from the performance IDs resolved through
