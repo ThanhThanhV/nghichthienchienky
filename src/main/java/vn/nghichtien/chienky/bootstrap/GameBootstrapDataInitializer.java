@@ -852,6 +852,7 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                     skillName, description, tabSkill.path("icon").asText("")
             );
             skill.changeSkillType(skillType);
+            skill.updateLevelRowsJson(writeJson(tabSkill.path("levelRows")));
             skill.changeEnabled(true);
 
             // Thay thế hiệu ứng theo catalog TAB mới nhưng giữ nguyên skill ID.
