@@ -64,6 +64,7 @@ public class HeroBattleUnitFactory {
                 column
         );
 
+        unit.setRole(instance.getHeroDefinition().getRole());
         unit.setCombatStats(
                 statOrZero(stats, "CRIT"),
                 statOrZero(stats, "CRIT_DAMAGE"),
