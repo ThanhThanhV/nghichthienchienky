@@ -2,6 +2,7 @@
 package vn.nghichtien.chienky.battle.engine;
 
 import org.springframework.stereotype.Component;
+import vn.nghichtien.chienky.battle.domain.BattleDamageType;
 import vn.nghichtien.chienky.battle.domain.BattleEventType;
 import vn.nghichtien.chienky.battle.domain.BattleImmunityType;
 import vn.nghichtien.chienky.battle.domain.BattleState;
