@@ -337,7 +337,7 @@ public class BattleUnitState {
         return statusEffectManager.calculateEffectiveStat(
                 BattleStatType.SPEED,
                 speed
-        );
+        ).add(statusEffectManager.getModifierPercent(BattleStatType.SPEED_FLAT));
     }
 
     public int getRow() {
