@@ -84,6 +84,7 @@ public class DatabaseSkillExecutor {
         SkillEffectSet effectSet = loadEffectsForLevel(skill, skillLevel);
         List<BattleEffectConfig> effects = effectSet.effects().stream()
                 .filter(effect -> Boolean.TRUE.equals(effect.getEnabled()))
+                .filter(effect -> !hasExplicitTrigger(effect))
                 .sorted(Comparator.comparing(
                         HeroSkillEffect::getEffectOrder,
                         Comparator.nullsLast(Integer::compareTo)
@@ -98,6 +99,42 @@ public class DatabaseSkillExecutor {
         effectProcessor.executeEffects(battle, source, effects);
 
         return requestedAction;
+    }
+
+    /**
+     * Thực thi trigger BATTLE_START được khai báo tường minh trên kỹ năng
+     * ACTIVE/ULTIMATE/BASIC. Dùng cho field/domain được kích hoạt ngay đầu trận.
+     */
+    @Transactional(readOnly = true)
+    public void executeNonPassiveBattleStartEffects(BattleState battle, BattleUnitState source) {
+        if (battle == null || source == null || battle.isFinished() || !source.isAlive()) return;
+        Map<Long, Integer> skillLevels = loadSkillLevels(source);
+        for (HeroSkillDefinition skill : loadSkills(source)) {
+            if ("PASSIVE".equalsIgnoreCase(skill.getSkillType())) continue;
+            SkillEffectSet effectSet = loadEffectsForLevel(
+                    skill, skillLevels.getOrDefault(skill.getId(), 1)
+            );
+            List<BattleEffectConfig> effects = effectSet.effects().stream()
+                    .filter(effect -> Boolean.TRUE.equals(effect.getEnabled()))
+                    .filter(this::hasExplicitTrigger)
+                    .filter(effect -> getPassiveTrigger(effect) == BattlePassiveTrigger.BATTLE_START)
+                    .filter(effect -> passesTriggerWindow(effect, battle))
+                    .filter(this::passesChance)
+                    .map(effect -> toEffectConfig(
+                            effect, effectCode(skill, effectSet.level(), effect)
+                    ))
+                    .toList();
+            if (effects.isEmpty()) continue;
+            recordPassiveActivation(
+                    battle, source, skill, BattlePassiveTrigger.BATTLE_START, null
+            );
+            effectProcessor.executeEffects(battle, source, effects);
+        }
+    }
+
+    private boolean hasExplicitTrigger(HeroSkillEffect effect) {
+        JsonNode trigger = readConfig(effect.getConfigJson()).get("trigger");
+        return trigger != null && !trigger.isNull() && !trigger.asText().isBlank();
     }
 
     /**
@@ -431,6 +468,7 @@ public class DatabaseSkillExecutor {
                 integerFromJson(config, "stacks", 1),
                 integerFromJson(config, "maxStacks", 1),
                 booleanFromJson(config, "purgeable", true),
+                booleanFromJson(config, "ignoreImmunity"),
                 enumFromJson(config, "damageType", BattleDamageType.class),
                 decimalFromJson(config, "roleBonusPercent"),
                 booleanFromJson(config, "roleBonusTankSupport"),
