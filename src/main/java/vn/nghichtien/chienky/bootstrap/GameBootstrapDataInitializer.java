@@ -1366,7 +1366,8 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
         fallback.add(attack);
         HeroSkillEffect chase = new HeroSkillEffect(3, "COUNTER", "SELF");
         chase.updateParameters(new BigDecimal("0.10"), BigDecimal.ONE, 0);
-        chase.updateConfig("{\"trigger\":\"ON_REVIVE\",\"damageType\":\"MAGIC\"}");
+        chase.updateConfig("{\"trigger\":\"ON_REVIVE\",\"damageType\":\"MAGIC\","
+                + "\"eventSkillCode\":\"GOJO_PASSIVE_5\"}");
         fallback.add(chase);
         skill.replaceEffects(fallback);
     }
