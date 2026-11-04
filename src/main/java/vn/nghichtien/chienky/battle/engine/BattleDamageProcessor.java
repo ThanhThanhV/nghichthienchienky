@@ -336,6 +336,12 @@ public class BattleDamageProcessor {
             );
 
             if (healAmount.signum() > 0) {
+                BigDecimal healReceived = source.getHealReceivedPercent();
+                if (healReceived.signum() != 0) {
+                    healAmount = healAmount.multiply(BigDecimal.ONE.add(
+                            healReceived.divide(BigDecimal.valueOf(100), 8, RoundingMode.HALF_UP)
+                    ));
+                }
                 BigDecimal actualHeal = source.heal(healAmount);
 
                 if (actualHeal.signum() > 0) {
