@@ -315,7 +315,7 @@
             "file": "seffect_52517111012",
             "animation": "animation_0",
             "impactEvent": "qishou_21_1_1",
-            "anchor": "source"
+            "anchor": "target"
           }
         }
       },
