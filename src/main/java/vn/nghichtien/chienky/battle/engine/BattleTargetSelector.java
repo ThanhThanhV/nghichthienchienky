@@ -79,6 +79,7 @@ public class BattleTargetSelector {
             case LOWEST_ATK -> selectOne(candidates,
                     Comparator.comparing(BattleUnitState::getAttack));
             case ALL_ENEMIES, ALL_ALLIES -> List.copyOf(candidates);
+            case TANK_SUPPORT -> candidates.stream().filter(BattleUnitState::isTankOrSupport).toList();
         };
     }
 
