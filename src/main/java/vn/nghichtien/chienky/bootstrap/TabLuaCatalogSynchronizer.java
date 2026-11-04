@@ -650,7 +650,7 @@ public class TabLuaCatalogSynchronizer {
             if (current == '{') {
                 return parseTable();
             }
-            if (current == '"' || current == '\\'') {
+            if (current == '"' || current == '\'') {
                 return parseString(current);
             }
             return parseAtom();
@@ -689,7 +689,7 @@ public class TabLuaCatalogSynchronizer {
                 if (current == quote) {
                     return value.toString();
                 }
-                if (current != '\\\\') {
+                if (current != '\\') {
                     value.append(current);
                     continue;
                 }
@@ -699,12 +699,12 @@ public class TabLuaCatalogSynchronizer {
 
                 char escaped = source.charAt(position++);
                 switch (escaped) {
-                    case 'n' -> value.append('\\n');
-                    case 'r' -> value.append('\\r');
-                    case 't' -> value.append('\\t');
-                    case '\\\\' -> value.append('\\\\');
+                    case 'n' -> value.append('\n');
+                    case 'r' -> value.append('\r');
+                    case 't' -> value.append('\t');
+                    case '\\' -> value.append('\\');
                     case '"' -> value.append('"');
-                    case '\\'' -> value.append('\'');
+                    case '\'' -> value.append('\'');
                     default -> value.append(escaped);
                 }
             }
