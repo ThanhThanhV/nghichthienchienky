@@ -252,6 +252,7 @@ public class BattleSessionService {
                         position[0],
                         position[1]
                 );
+                enemy.setRole(definition.getRole());
                 enemy.setCombatStats(
                         statOrZero(stats, "CRIT"),
                         statOrZero(stats, "CRIT_DAMAGE"),
