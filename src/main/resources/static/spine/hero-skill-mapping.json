@@ -2320,7 +2320,7 @@
         }
       }
     },
-    "tohka_dark": {
+    "dark_tohka": {
       "asset": {
         "folder": "tohka_dark",
         "base": "sanim_415141_1",
@@ -2330,15 +2330,15 @@
         ]
       },
       "skillAnimations": {
-        "TOHKA_DARK_BASIC_1": "att",
-        "TOHKA_DARK_ACTIVE_2": "skill",
-        "TOHKA_DARK_ULTIMATE_3": "ultimateskill"
+        "DARK_TOHKA_BASIC_1": "att",
+        "DARK_TOHKA_ACTIVE_2": "skill",
+        "DARK_TOHKA_ULTIMATE_3": "ultimateskill"
       },
       "_BASIC_ATTACK": {
         "movement": "DASH"
       },
       "_SKILL_EFFECTS": {
-        "TOHKA_DARK_BASIC_1": {
+        "DARK_TOHKA_BASIC_1": {
           "impact": {
             "code": "tohka_dark_skin_basic_impact",
             "file": "seffect_41514121011",
@@ -2350,7 +2350,7 @@
             "anchor": "target"
           }
         },
-        "TOHKA_DARK_ACTIVE_2": {
+        "DARK_TOHKA_ACTIVE_2": {
           "cast": [
             {
               "code": "tohka_dark_skin_sandalphon_cast_back",
@@ -2382,7 +2382,7 @@
             "anchor": "enemy_formation"
           }
         },
-        "TOHKA_DARK_ULTIMATE_3": {
+        "DARK_TOHKA_ULTIMATE_3": {
           "cast": [
             {
               "code": "tohka_dark_skin_halvanhelev_cast_back",
@@ -2403,8 +2403,8 @@
         }
       },
       "_SKILL_EFFECT_ALIASES": {
-        "TOHKA_ACTIVE": "TOHKA_DARK_ACTIVE_2",
-        "SKILL_EFFECT_2": "TOHKA_DARK_ACTIVE_2"
+        "TOHKA_ACTIVE": "DARK_TOHKA_ACTIVE_2",
+        "SKILL_EFFECT_2": "DARK_TOHKA_ACTIVE_2"
       },
       "_SPINE_EFFECT_BASE_PATH": "/assets/spine/seffects/",
       "_SPINE_EFFECT_TEXTURE_PAGES": {
@@ -2500,7 +2500,7 @@
         }
       },
       "_TAB_SKILL_BINDINGS": {
-        "TOHKA_DARK_BASIC_1": {
+        "DARK_TOHKA_BASIC_1": {
           "tabGroupId": "415140",
           "tabSkillId": "4151401",
           "sourceHeroId": "41514",
@@ -2513,7 +2513,7 @@
           "icon": 10002,
           "script": "$2#41514010"
         },
-        "TOHKA_DARK_ACTIVE_2": {
+        "DARK_TOHKA_ACTIVE_2": {
           "tabGroupId": "415141",
           "tabSkillId": "4151411",
           "sourceHeroId": "41514",
@@ -2526,7 +2526,7 @@
           "icon": 4151411,
           "script": "($37|?41514110)($19#41514110)"
         },
-        "TOHKA_DARK_ULTIMATE_3": {
+        "DARK_TOHKA_ULTIMATE_3": {
           "tabGroupId": "415143",
           "tabSkillId": "4151431",
           "sourceHeroId": "41514",
@@ -2539,7 +2539,7 @@
           "icon": 4151431,
           "script": "$76#41514310&41514310"
         },
-        "TOHKA_DARK_PASSIVE_4": {
+        "DARK_TOHKA_PASSIVE_4": {
           "tabGroupId": "415142",
           "tabSkillId": "4151421",
           "sourceHeroId": "41514",
@@ -2552,7 +2552,7 @@
           "icon": 4151421,
           "script": "($32?41514210)($37|?41514211)"
         },
-        "TOHKA_DARK_PASSIVE_5": {
+        "DARK_TOHKA_PASSIVE_5": {
           "tabGroupId": "415144",
           "tabSkillId": "4151441",
           "sourceHeroId": "41514",
