@@ -67,20 +67,33 @@ The reset initializer remains available for intentional disposable development
 databases only. Enabling it deletes application data and must never be used on
 a database whose player accounts or game progress need to be preserved.
 
-**Catalog input note:** the runtime currently consumes
-`static/spine/hero-tab-skill-config.json` and
-`static/spine/hero-skill-mapping.json`. The raw Lua TAB files are retained as
-source material and are listed in the TAB catalog, but the application does not
-parse those TAB Lua files directly during startup. When a raw TAB file changes,
-the JSON catalog must also be regenerated/updated before the next startup.
+**Catalog input note:** `static/spine/hero-skill-mapping.json` remains the
+explicit source for runtime Spine animation/VFX assignments. The TAB JSON file
+provides runtime slot metadata (runtime skill type, battle handlers, and the
+mapping from each runtime slot to its TAB group/level-one ID), but its copied
+skill text and level rows are not trusted as source data.
+
+Before seeding, `TabLuaCatalogSynchronizer` parses the raw Lua tables directly:
+- `TAB_Hero_1.lua` validates the hero ID and the skill groups referenced by the hero.
+- `TAB_Skill_1.lua`, `TAB_Skill_2.lua`, and `TAB_Skill_3.lua` supply every level row, name, description, icon, TAB type, script and attribute.
+- `TAB_Sseffect_1.lua` resolves script references through `TAB_EffectPerfor_1.lua`.
+- `TAB_Effect_1.lua` through `TAB_Effect_3.lua` and `TAB_Buffer_1.lua` /
+  `TAB_Buffer_2.lua` resolve direct effect and buffer references, including
+  their linked performance and buffer IDs.
+
+The synchronizer hydrates the in-memory TAB catalog from these source tables
+before validation and database writes. Therefore changing a raw TAB row takes
+effect on the next application startup without manually editing copied skill
+text or level rows in the JSON file. The JSON still must contain the runtime
+hero/slot metadata and correct group/level-one IDs.
 
 ## Effect execution scope
 
 Direct damage targets, selected target counts/rows, supported permanent stat
 passives, Gojo's approved 20-round defensive active, and the supported counter /
 shield triggers are represented using the existing Java battle-effect handlers.
-TAB script references and their `TAB_Sseffect` / `TAB_EffectPerfor` chain are
-retained verbatim for audit. Complex source mechanics that the current engine
+TAB script references and their `TAB_Sseffect`, `TAB_Effect`,
+`TAB_EffectPerfor`, and `TAB_Buffer` resolutions are retained for audit. Complex source mechanics that the current engine
 cannot represent exactly (for example conditional role-specific bonuses,
 stacking, revival chase, and some max-HP-based effects) are not silently
 converted into generic damage. They remain visible in the TAB source catalog
@@ -94,7 +107,9 @@ Spine JSON animation list; asset filenames are never renamed or guessed.
 
 ## Adding a future hero
 
-1. Add the TAB hero and skill groups to `hero-tab-skill-config.json`.
+1. Add the TAB hero and skill rows to the raw Lua source files, then add the
+   hero's runtime slot metadata and exact TAB group/level-one IDs to
+   `hero-tab-skill-config.json`.
 2. Add its skeleton, atlas, textures, animation names, and skill VFX to
    `hero-skill-mapping.json`.
 3. Add the runtime hero seed with an explicit skill-slot mapping.
