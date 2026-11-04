@@ -64,6 +64,9 @@ public class HeroSkillDefinition {
     @Column(name = "icon_code", length = 50)
     private String iconCode;
 
+    @Column(name = "level_rows_json", columnDefinition = "LONGTEXT")
+    private String levelRowsJson;
+
     @Column(name = "enabled", nullable = false)
     private Boolean enabled = true;
 
@@ -169,6 +172,24 @@ public class HeroSkillDefinition {
             throw new IllegalArgumentException("Skill code không được để trống");
         }
         this.skillCode = skillCode.trim().toUpperCase(java.util.Locale.ROOT);
+    }
+
+    /**
+     * Lưu toàn bộ levelRows TAB để runtime chọn đúng hiệu ứng theo cấp kỹ năng.
+     *
+     * @param levelRowsJson JSON array chứa dữ liệu các cấp kỹ năng
+     */
+    public void updateLevelRowsJson(String levelRowsJson) {
+        this.levelRowsJson = levelRowsJson;
+    }
+
+    /**
+     * Lấy dữ liệu các cấp kỹ năng đã đồng bộ từ TAB.
+     *
+     * @return JSON array hoặc null nếu chưa có dữ liệu
+     */
+    public String getLevelRowsJson() {
+        return levelRowsJson;
     }
 
     /**
