@@ -624,8 +624,12 @@ public class DatabaseSkillExecutor {
             BattlePassiveTrigger trigger,
             Long counterTargetInstanceId
     ) {
+        // Các trigger phản ứng theo một đơn vị cụ thể phải giữ đúng instance
+        // làm mục tiêu. Với Gojo, ON_ENEMY_ACTION truyền actor địch vừa hành động;
+        // không được để FE mất targetInstanceId của event PASSIVE.
         BattleUnitState counterTarget = (trigger == BattlePassiveTrigger.ON_DAMAGED
-                || trigger == BattlePassiveTrigger.ON_REVIVE)
+                || trigger == BattlePassiveTrigger.ON_REVIVE
+                || trigger == BattlePassiveTrigger.ON_ENEMY_ACTION)
                 && counterTargetInstanceId != null
                 ? battle.findUnit(counterTargetInstanceId)
                 : null;
