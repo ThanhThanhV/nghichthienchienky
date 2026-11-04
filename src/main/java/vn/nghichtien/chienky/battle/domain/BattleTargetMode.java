@@ -23,5 +23,6 @@ public enum BattleTargetMode {
     HIGHEST_ATK,
     LOWEST_ATK,
     ALL_ENEMIES,
-    ALL_ALLIES
+    ALL_ALLIES,
+    TANK_SUPPORT
 }
