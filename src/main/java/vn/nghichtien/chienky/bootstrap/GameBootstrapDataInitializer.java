@@ -1121,16 +1121,20 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
         String[] damage = {"0.68","0.82","1.00","1.06","1.12","1.18","1.24","1.30"};
         String[] crit = {"0.05","0.10","0.15","0.15","0.15","0.15","0.15","0.15"};
         writeLevelEffects(skill, level -> List.of(
-                createGojoEffectJson("BUFF","TANK_SUPPORT",crit[level - 1],2,
-                        "{\"statType\":\"CRIT\",\"purgeable\":false,"
+                createGojoEffectJson("BUFF","ALL_ALLIES","0.01",2,
+                        "{\"statType\":\"KINGDOM_BLESSING\",\"purgeable\":false,"
+                                + "\"eventSkillCode\":\"TOHKA_DARK_ACTIVE_2\"}"),
+                createGojoEffectJson("BUFF","ALL_ALLIES",crit[level - 1],2,
+                        "{\"statType\":\"KINGDOM_BLESSING_CRIT\",\"purgeable\":false,"
                                 + "\"eventSkillCode\":\"TOHKA_DARK_ACTIVE_2\"}"),
                 createGojoEffectJson("DAMAGE","ALL_ENEMIES",damage[level - 1],0,
                         "{\"damageType\":\"PHYSICAL\","
                                 + "\"eventSkillCode\":\"TOHKA_DARK_ACTIVE_2\"}")
         ));
         skill.replaceEffects(List.of(
-                new HeroSkillEffect(1,"BUFF","TANK_SUPPORT"),
-                new HeroSkillEffect(2,"DAMAGE","ALL_ENEMIES")
+                new HeroSkillEffect(1,"BUFF","ALL_ALLIES"),
+                new HeroSkillEffect(2,"BUFF","ALL_ALLIES"),
+                new HeroSkillEffect(3,"DAMAGE","ALL_ENEMIES")
         ));
     }
 
@@ -1192,6 +1196,12 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
         String[] lifesteal = {"0.15","0.20","0.25","0.25","0.25","0.25","0.25","0.25"};
         writeLevelEffects(skill, level -> {
             List<ObjectNode> effects = new ArrayList<>();
+            if (level >= 4) {
+                String[] basePhysicalDamage = {"0","0","0","0.01","0.02","0.03","0.04","0.05"};
+                effects.add(createGojoEffectJson("BUFF","SELF",basePhysicalDamage[level - 1],0,
+                        "{\"trigger\":\"BATTLE_START\",\"statType\":\"PHYSICAL_DAMAGE\","
+                                + "\"permanent\":true}"));
+            }
             effects.add(createGojoEffectJson("BUFF","SELF",attack[level - 1],1,
                     "{\"trigger\":\"BEFORE_ACTION\",\"condition\":\"SOURCE_IS_FASTEST_ALLY\","
                             + "\"statType\":\"DAMAGE_DEALT\"}"));
