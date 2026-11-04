@@ -517,6 +517,17 @@ class BattleRenderer {
         this.actionContext.actionType = event.type || this.actionContext.actionType || null;
 
         const character = this.getCharacter(event);
+        const animationConfig = this.getSkillAnimationConfig(character, event);
+        const animationTrigger = String(animationConfig?.trigger || "")
+            .trim().toUpperCase();
+        const eventTrigger = String(event.effectCategory || "")
+            .trim().toUpperCase();
+
+        // Trigger không có visual trong TAB (ví dụ Lục Nhãn BATTLE_START/ON_KILL)
+        // thì bỏ qua hẳn event animation, không tạo delay giả như một đòn đánh.
+        if (animationTrigger && animationTrigger !== eventTrigger) {
+            return;
+        }
 
         if (character) {
             const animationName = this.getAnimation(event);
