@@ -2343,33 +2343,63 @@
             "code": "tohka_dark_skin_basic_impact",
             "file": "seffect_41514121011",
             "animation": "animation_0",
-            "impactRatio": 0.45,
+            "impactEvents": [
+              "hit_1_2_1",
+              "hit_1_2_2"
+            ],
             "anchor": "target"
           }
         },
         "TOHKA_DARK_ACTIVE_2": {
-          "cast": {
-            "code": "tohka_dark_skin_sandalphon_cast",
-            "file": "seffect_41514121012",
-            "animation": "animation_0",
-            "anchor": "enemy_formation"
-          },
+          "cast": [
+            {
+              "code": "tohka_dark_skin_sandalphon_cast_back",
+              "file": "seffect_41514121012",
+              "animation": "animation_0",
+              "impactEvents": [
+                "qishou_11_5_1",
+                "qishou_11_5_2",
+                "qishou_11_5_3",
+                "qishou_11_5_4",
+                "qishou_11_5_5"
+              ],
+              "anchor": "enemy_formation",
+              "layer": "BACK"
+            },
+            {
+              "code": "tohka_dark_skin_sandalphon_cast_front",
+              "file": "seffect_41514121012",
+              "animation": "animation_1",
+              "anchor": "enemy_formation",
+              "layer": "FRONT"
+            }
+          ],
           "impact": {
             "code": "tohka_dark_skin_sandalphon_impact",
             "file": "seffect_41514121013",
             "animation": "animation_0",
-            "impactRatio": 0.45,
+            "impactEvent": "hit_11_1_1",
             "anchor": "enemy_formation"
           }
         },
         "TOHKA_DARK_ULTIMATE_3": {
-          "cast": {
-            "code": "tohka_dark_skin_halvanhelev_cast",
-            "file": "seffect_41514121014",
-            "animation": "animation_0",
-            "impactRatio": 0.62,
-            "anchor": "enemy_formation"
-          }
+          "cast": [
+            {
+              "code": "tohka_dark_skin_halvanhelev_cast_back",
+              "file": "seffect_41514121014",
+              "animation": "animation_0",
+              "impactEvent": "qishou_21_1_1",
+              "anchor": "enemy_formation",
+              "layer": "BACK"
+            },
+            {
+              "code": "tohka_dark_skin_halvanhelev_cast_front",
+              "file": "seffect_41514121014",
+              "animation": "animation_1",
+              "anchor": "enemy_formation",
+              "layer": "FRONT"
+            }
+          ]
         }
       },
       "_SKILL_EFFECT_ALIASES": {
