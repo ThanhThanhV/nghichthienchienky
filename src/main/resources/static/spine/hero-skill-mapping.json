@@ -231,7 +231,10 @@
         "GOJO_BASIC_1": "att",
         "GOJO_ACTIVE_2": "superskill",
         "GOJO_PASSIVE_3": "skill",
-        "GOJO_PASSIVE_5": "ultimateskill"
+        "GOJO_PASSIVE_5": {
+          "animation": "ultimateskill",
+          "trigger": "ON_REVIVE"
+        }
       },
       "_BASIC_ATTACK": {
         "movement": "DASH"
@@ -345,7 +348,8 @@
             "impactEvents": [
               "qishou_21_1_1"
             ],
-            "anchor": "source"
+            "anchor": "source",
+            "trigger": "ON_REVIVE"
           }
         },
         "GOJO_PASSIVE_3": {
