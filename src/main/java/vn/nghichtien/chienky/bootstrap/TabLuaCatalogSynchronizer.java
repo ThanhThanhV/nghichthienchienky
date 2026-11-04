@@ -40,9 +40,12 @@ public class TabLuaCatalogSynchronizer {
         this.objectMapper = objectMapper;
     }
 
-    public void synchronize(JsonNode catalog) {
+    public void synchronize(JsonNode catalog, JsonNode spineCatalog) {
         if (catalog == null || !catalog.path("heroes").isObject()) {
             throw new IllegalStateException("TAB catalog không có object heroes");
+        }
+        if (spineCatalog == null || !spineCatalog.path("heroes").isObject()) {
+            throw new IllegalStateException("Spine catalog không có object heroes");
         }
 
         Map<Integer, LuaRow> heroRows = readRows(
@@ -92,6 +95,7 @@ public class TabLuaCatalogSynchronizer {
         mergeRows(bufferRows, readRows("data/TAB_Buffer_2.lua", "TAB_Buffer"));
 
         ObjectNode heroes = (ObjectNode) catalog.path("heroes");
+        ObjectNode spineHeroes = (ObjectNode) spineCatalog.path("heroes");
         Iterator<Map.Entry<String, JsonNode>> heroIterator = heroes.fields();
         while (heroIterator.hasNext()) {
             Map.Entry<String, JsonNode> entry = heroIterator.next();
@@ -100,8 +104,14 @@ public class TabLuaCatalogSynchronizer {
                         "TAB hero config không hợp lệ: " + entry.getKey()
                 );
             }
+            JsonNode mappingNode = spineHeroes.get(entry.getKey());
+            if (!(mappingNode instanceof ObjectNode heroMapping)) {
+                throw new IllegalStateException(
+                        "Thiếu Spine mapping cho TAB hero " + entry.getKey()
+                );
+            }
             synchronizeHero(
-                    entry.getKey(), heroConfig, heroRows, skillsByGroup,
+                    entry.getKey(), heroConfig, heroMapping, heroRows, skillsByGroup,
                     sseByScriptReference, performanceRows, effectRows, bufferRows
             );
         }
@@ -110,6 +120,7 @@ public class TabLuaCatalogSynchronizer {
     private void synchronizeHero(
             String heroCode,
             ObjectNode heroConfig,
+            ObjectNode heroMapping,
             Map<Integer, LuaRow> heroRows,
             Map<Integer, List<LuaRow>> skillsByGroup,
             Map<String, List<LuaRow>> sseByScriptReference,
@@ -192,6 +203,35 @@ public class TabLuaCatalogSynchronizer {
                     sseByScriptReference, performanceRows, effectRows, bufferRows
             );
         }
+
+        // Binding được sinh từ TAB source + runtime slot metadata; không cần
+        // duy trì một bản sao thủ công trong hero-skill-mapping.json.
+        ObjectNode tabHeroSource = objectMapper.createObjectNode();
+        tabHeroSource.put("tabHeroId", tabHeroId);
+        tabHeroSource.put("sourceHeroCode", tabHero.path("sourceHeroCode").asText(""));
+        tabHeroSource.put(
+                "variantSourceHeroCode",
+                tabHero.path("variantSourceHeroCode").asText("")
+        );
+        heroMapping.set("_TAB_HERO_SOURCE", tabHeroSource);
+
+        ObjectNode generatedBindings = objectMapper.createObjectNode();
+        for (int slot = 0; slot < skills.size(); slot++) {
+            JsonNode skill = skills.get(slot);
+            String runtimeSkillType = skill.path("runtimeSkillType").asText("");
+            String skillCode = heroCode.toUpperCase(java.util.Locale.ROOT)
+                    + "_" + runtimeSkillType.toUpperCase(java.util.Locale.ROOT)
+                    + "_" + (slot + 1);
+            ObjectNode binding = objectMapper.createObjectNode();
+            binding.put("tabGroupId", skill.path("groupId").asText(""));
+            binding.put("tabSkillId", skill.path("levelOneId").asText(""));
+            binding.put("sourceHeroId", tabHeroId);
+            binding.put("sourceHeroCode", tabHero.path("sourceHeroCode").asText(""));
+            binding.put("runtimeSkillType", runtimeSkillType);
+            binding.put("name", skill.path("name").asText(""));
+            generatedBindings.set(skillCode, binding);
+        }
+        heroMapping.set("_TAB_SKILL_BINDINGS", generatedBindings);
     }
 
     private void synchronizeSkill(
