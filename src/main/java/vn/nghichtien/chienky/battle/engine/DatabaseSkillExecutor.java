@@ -204,16 +204,57 @@ public class DatabaseSkillExecutor {
             recordPassiveActivation(
                     battle, source, skill, trigger, counterTargetInstanceId
             );
-            effectProcessor.executeEffects(
-                    battle,
-                    source,
-                    effects,
-                    trigger == BattlePassiveTrigger.ON_DAMAGED
-                            || trigger == BattlePassiveTrigger.ON_REVIVE
-                            || trigger == BattlePassiveTrigger.ON_ENEMY_ACTION
-                            ? counterTargetInstanceId
-                            : null
-            );
+
+            // Hách có một đòn đánh thường phụ ở ROUND_START của round 11.
+            // Phải phát đủ ACTION_START -> BASIC_ATTACK -> DAMAGE -> ACTION_END
+            // để FE chạy animation att/cast/impact và đưa Gojo về idle đúng lúc.
+            boolean gojoHachFollowUp = "gojo".equalsIgnoreCase(source.getHeroCode())
+                    && "GOJO_PASSIVE_3".equalsIgnoreCase(skill.getSkillCode())
+                    && trigger == BattlePassiveTrigger.ROUND_START
+                    && effects.stream().anyMatch(effect ->
+                            "GOJO_BASIC_1".equalsIgnoreCase(effect.eventSkillCode()));
+
+            if (gojoHachFollowUp) {
+                battle.getEventCollector().record(
+                        BattleEventType.ACTION_START,
+                        source.getTeam().name(), source.getInstanceId(),
+                        null, null, null, null,
+                        null, null, null, null, null, null, null,
+                        "Gojo Hach follow-up action started"
+                );
+                battle.getEventCollector().record(
+                        BattleEventType.BASIC_ATTACK,
+                        source.getTeam().name(), source.getInstanceId(),
+                        null, null, "GOJO_BASIC_1",
+                        null, false,
+                        source.getCurrentHp(), source.getMaxHp(), source.isAlive(),
+                        null, null, null,
+                        "Gojo Hach follow-up basic attack"
+                );
+            }
+
+            try {
+                effectProcessor.executeEffects(
+                        battle,
+                        source,
+                        effects,
+                        trigger == BattlePassiveTrigger.ON_DAMAGED
+                                || trigger == BattlePassiveTrigger.ON_REVIVE
+                                || trigger == BattlePassiveTrigger.ON_ENEMY_ACTION
+                                ? counterTargetInstanceId
+                                : null
+                );
+            } finally {
+                if (gojoHachFollowUp) {
+                    battle.getEventCollector().record(
+                            BattleEventType.ACTION_END,
+                            source.getTeam().name(), source.getInstanceId(),
+                            null, null, null, null,
+                            null, null, null, null, null, null, null,
+                            "Gojo Hach follow-up action finished"
+                    );
+                }
+            }
         }
     }
 
