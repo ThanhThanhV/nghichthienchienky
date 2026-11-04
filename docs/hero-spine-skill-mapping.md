@@ -43,18 +43,36 @@ the ULTIMATE action for Gojo rather than relabeling a TAB passive as an ultimate
 
 ## Startup synchronization
 
-On each application startup, the ordered bootstrap pipeline:
+On normal application startup, the ordered bootstrap pipeline:
 
-1. `DatabaseResetInitializer` deletes all rows from every application table with foreign-key checks temporarily disabled, then resets auto-increment counters. Migration metadata tables are preserved.
-2. `ResourceBootstrapDataInitializer` recreates resource definitions and player-level configs.
-3. `GameBootstrapDataInitializer` loads and validates the TAB skill catalog, Spine mapping, and animation config.
-4. It creates the ten hero definitions, base stats, growth defaults, and all five skill definitions/effects per hero.
-5. It persists TAB skill bindings and animation/VFX metadata with each hero definition.
+1. `DatabaseResetInitializer` is disabled by default. It only runs when
+   `game.bootstrap.reset-database.enabled=true` (or
+   `GAME_BOOTSTRAP_RESET_DATABASE=true`) is explicitly configured.
+2. `ResourceBootstrapDataInitializer` initializes shared resource definitions
+   and player-level configs without requiring a full database reset.
+3. `GameBootstrapDataInitializer` loads the TAB-derived JSON catalog, the
+   per-hero Spine mapping, and `animation_config.lua`.
+4. Before writing, it validates TAB hero source IDs, variant source IDs, all
+   five skill-slot bindings, skill group IDs, level-one skill IDs, runtime
+   skill types, and skill names.
+5. It validates that every VFX mapping references a TAB skill binding and that
+   the referenced VFX skeleton JSON, atlas, and texture pages exist.
+6. It updates existing hero skill definitions in place. Existing skill IDs and
+   `HeroInstanceSkill` links are retained; only the effect children are
+   replaced from the current catalog. This preserves player skill levels.
+7. It stores the resolved animation, TAB binding, and VFX mapping on
+   `HeroDefinition.spineSkillAnimations`, which is returned to the battle API.
 
-**This is a destructive development reset.** Account records, player profiles,
-owned hero instances, formations, campaign progress, inventory, and other
-application data are cleared on every startup. Do not point this configuration
-at a database whose data must be retained.
+The reset initializer remains available for intentional disposable development
+databases only. Enabling it deletes application data and must never be used on
+a database whose player accounts or game progress need to be preserved.
+
+**Catalog input note:** the runtime currently consumes
+`static/spine/hero-tab-skill-config.json` and
+`static/spine/hero-skill-mapping.json`. The raw Lua TAB files are retained as
+source material and are listed in the TAB catalog, but the application does not
+parse those TAB Lua files directly during startup. When a raw TAB file changes,
+the JSON catalog must also be regenerated/updated before the next startup.
 
 ## Effect execution scope
 
