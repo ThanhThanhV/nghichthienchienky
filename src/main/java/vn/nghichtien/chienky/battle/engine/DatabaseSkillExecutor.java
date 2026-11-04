@@ -152,6 +152,8 @@ public class DatabaseSkillExecutor {
                             Comparator.nullsLast(Integer::compareTo)
                     ))
                     .filter(effect -> getPassiveTrigger(effect) == trigger)
+                    .filter(effect -> passesTriggerWindow(effect, battle))
+                    .filter(effect -> passesCondition(effect, battle, source))
                     .filter(this::passesChance)
                     .map(effect -> toEffectConfig(
                             effect, effectCode(skill, effectSet.level(), effect)
@@ -171,6 +173,7 @@ public class DatabaseSkillExecutor {
                     effects,
                     trigger == BattlePassiveTrigger.ON_DAMAGED
                             || trigger == BattlePassiveTrigger.ON_REVIVE
+                            || trigger == BattlePassiveTrigger.ON_ENEMY_ACTION
                             ? counterTargetInstanceId
                             : null
             );
@@ -315,6 +318,34 @@ public class DatabaseSkillExecutor {
     private record SkillEffectSet(int level, List<HeroSkillEffect> effects) {
     }
 
+    private boolean passesTriggerWindow(HeroSkillEffect effect, BattleState battle) {
+        JsonNode config = readConfig(effect.getConfigJson());
+        Integer triggerRound = optionalIntegerFromJson(config, "triggerRound");
+        Integer untilRound = optionalIntegerFromJson(config, "untilRound");
+        return (triggerRound == null || battle.getCurrentRound() == triggerRound)
+                && (untilRound == null || battle.getCurrentRound() <= untilRound);
+    }
+
+    private boolean passesCondition(
+            HeroSkillEffect effect, BattleState battle, BattleUnitState source
+    ) {
+        String condition = textFromJson(readConfig(effect.getConfigJson()), "condition");
+        if (condition == null) return true;
+        BigDecimal fastestSpeed = battle.getUnits().stream()
+                .filter(BattleUnitState::isAlive)
+                .filter(unit -> unit.getTeam() == source.getTeam())
+                .map(BattleUnitState::getSpeed)
+                .max(BigDecimal::compareTo)
+                .orElse(source.getSpeed());
+        boolean fastest = source.getSpeed().compareTo(fastestSpeed) >= 0;
+        return switch (condition) {
+            case "SOURCE_IS_FASTEST_ALLY" -> fastest;
+            case "SOURCE_IS_NOT_FASTEST_ALLY" -> !fastest;
+            default -> throw new IllegalArgumentException(
+                    "Unsupported passive condition: " + condition);
+        };
+    }
+
     private BattlePassiveTrigger getPassiveTrigger(HeroSkillEffect effect) {
         JsonNode config = readConfig(effect.getConfigJson());
         JsonNode triggerNode = config.get("trigger");
@@ -399,7 +430,14 @@ public class DatabaseSkillExecutor {
                 booleanFromJson(config, "permanent"),
                 integerFromJson(config, "stacks", 1),
                 integerFromJson(config, "maxStacks", 1),
-                booleanFromJson(config, "purgeable", true)
+                booleanFromJson(config, "purgeable", true),
+                enumFromJson(config, "damageType", BattleDamageType.class),
+                decimalFromJson(config, "roleBonusPercent"),
+                booleanFromJson(config, "roleBonusTankSupport"),
+                textFromJson(config, "condition"),
+                optionalIntegerFromJson(config, "triggerRound"),
+                optionalIntegerFromJson(config, "untilRound"),
+                textFromJson(config, "eventSkillCode")
         );
     }
 
@@ -442,6 +480,20 @@ public class DatabaseSkillExecutor {
             );
         }
         return result;
+    }
+
+    private String textFromJson(JsonNode config, String field) {
+        JsonNode value = config.get(field);
+        return value == null || value.isNull() || value.asText().isBlank()
+                ? null : value.asText();
+    }
+
+    private Integer optionalIntegerFromJson(JsonNode config, String field) {
+        JsonNode value = config.get(field);
+        if (value == null || value.isNull()) return null;
+        if (!value.isIntegralNumber() || value.intValue() < 1)
+            throw new IllegalArgumentException("configJson." + field + " phải là số nguyên dương");
+        return value.intValue();
     }
 
     private boolean booleanFromJson(JsonNode config, String field) {
