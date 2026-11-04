@@ -9534,9 +9534,9 @@
       ],
       "variantSourceHeroCode": "thor"
     },
-    "tohka_dark": {
+    "dark_tohka": {
       "tabHeroId": "41514",
-      "sourceHeroCode": "tohka_dark",
+      "sourceHeroCode": "dark_tohka",
       "tabHero": {
         "name": "Yatogami Tohka",
         "role": "Chiến Binh",
