@@ -1381,31 +1381,17 @@
           },
           "battleEffects": [
             {
-              "effectType": "BUFF",
-              "targetType": "SELF",
-              "multiplier": 0.3,
+              "effectType": "DEBUFF",
+              "targetType": "ALL_ENEMIES",
+              "multiplier": 0.15,
               "chance": 1,
-              "duration": 20,
+              "duration": 0,
               "configJson": {
-                "statType": "DEF"
-              }
-            },
-            {
-              "effectType": "BLOCK",
-              "targetType": "SELF",
-              "multiplier": 0.3,
-              "chance": 1,
-              "duration": 20,
-              "configJson": {}
-            },
-            {
-              "effectType": "IMMUNITY",
-              "targetType": "SELF",
-              "multiplier": 0,
-              "chance": 1,
-              "duration": 20,
-              "configJson": {
-                "immunityType": "CC"
+                "trigger": "BATTLE_START",
+                "statType": "DAMAGE_TAKEN",
+                "permanent": true,
+                "ignoreImmunity": true,
+                "eventSkillCode": "GOJO_ACTIVE_2"
               }
             }
           ]
@@ -1640,13 +1626,38 @@
           },
           "battleEffects": [
             {
+              "effectType": "ACTION_LOCK",
+              "targetType": "SELF",
+              "multiplier": 0,
+              "chance": 1,
+              "duration": 10,
+              "configJson": {
+                "trigger": "BATTLE_START"
+              }
+            },
+            {
               "effectType": "COUNTER",
               "targetType": "SELF",
+              "multiplier": 0.97,
+              "chance": 1,
+              "duration": 0,
+              "configJson": {
+                "trigger": "ON_ENEMY_ACTION",
+                "damageType": "MAGIC",
+                "untilRound": 10,
+                "eventSkillCode": "GOJO_PASSIVE_3"
+              }
+            },
+            {
+              "effectType": "DAMAGE",
+              "targetType": "FRONT",
               "multiplier": 0.5,
               "chance": 1,
               "duration": 0,
               "configJson": {
-                "trigger": "ON_DAMAGED"
+                "trigger": "ROUND_START",
+                "triggerRound": 11,
+                "eventSkillCode": "GOJO_BASIC_1"
               }
             }
           ]
@@ -1846,9 +1857,21 @@
               "chance": 1,
               "duration": 0,
               "configJson": {
+                "trigger": "BATTLE_START",
                 "statType": "ATK",
-                "permanent": true,
-                "trigger": "BATTLE_START"
+                "permanent": true
+              }
+            },
+            {
+              "effectType": "BUFF",
+              "targetType": "SELF",
+              "multiplier": 0.1,
+              "chance": 1,
+              "duration": 0,
+              "configJson": {
+                "trigger": "BATTLE_START",
+                "statType": "MAX_HP",
+                "permanent": true
               }
             },
             {
@@ -1858,9 +1881,9 @@
               "chance": 1,
               "duration": 0,
               "configJson": {
+                "trigger": "BATTLE_START",
                 "statType": "CRIT",
-                "permanent": true,
-                "trigger": "BATTLE_START"
+                "permanent": true
               }
             }
           ]
@@ -2108,7 +2131,50 @@
               }
             ],
             "effects": []
-          }
+          },
+          "battleEffects": [
+            {
+              "effectType": "BUFF",
+              "targetType": "SELF",
+              "multiplier": 0.03,
+              "chance": 1,
+              "duration": 4,
+              "configJson": {
+                "trigger": "BATTLE_START",
+                "statType": "DAMAGE_REDUCTION",
+                "stacks": 5,
+                "maxStacks": 5,
+                "purgeable": false
+              }
+            },
+            {
+              "effectType": "BUFF",
+              "targetType": "SELF",
+              "multiplier": 0.06,
+              "chance": 1,
+              "duration": 0,
+              "configJson": {
+                "trigger": "ON_KILL",
+                "statType": "ATK",
+                "permanent": true,
+                "stacks": 1,
+                "maxStacks": 3,
+                "purgeable": false
+              }
+            },
+            {
+              "effectType": "COUNTER",
+              "targetType": "SELF",
+              "multiplier": 0.1,
+              "chance": 1,
+              "duration": 0,
+              "configJson": {
+                "trigger": "ON_REVIVE",
+                "damageType": "MAGIC",
+                "eventSkillCode": "GOJO_PASSIVE_5"
+              }
+            }
+          ]
         }
       ]
     },
@@ -9887,12 +9953,39 @@
           },
           "battleEffects": [
             {
+              "effectType": "BUFF",
+              "targetType": "ALL_ALLIES",
+              "multiplier": 0.01,
+              "chance": 1,
+              "duration": 2,
+              "configJson": {
+                "statType": "KINGDOM_BLESSING",
+                "purgeable": false,
+                "eventSkillCode": "DARK_TOHKA_ACTIVE_2"
+              }
+            },
+            {
+              "effectType": "BUFF",
+              "targetType": "ALL_ALLIES",
+              "multiplier": 0.05,
+              "chance": 1,
+              "duration": 2,
+              "configJson": {
+                "statType": "KINGDOM_BLESSING_CRIT",
+                "purgeable": false,
+                "eventSkillCode": "DARK_TOHKA_ACTIVE_2"
+              }
+            },
+            {
               "effectType": "DAMAGE",
               "targetType": "ALL_ENEMIES",
               "multiplier": 0.68,
               "chance": 1,
-              "duration": null,
-              "configJson": {}
+              "duration": 0,
+              "configJson": {
+                "damageType": "PHYSICAL",
+                "eventSkillCode": "DARK_TOHKA_ACTIVE_2"
+              }
             }
           ]
         },
@@ -10145,8 +10238,13 @@
               "targetType": "MOST_POPULATED_ROW",
               "multiplier": 1.61,
               "chance": 1,
-              "duration": null,
-              "configJson": {}
+              "duration": 0,
+              "configJson": {
+                "damageType": "PHYSICAL",
+                "roleBonusTankSupport": true,
+                "roleBonusPercent": 10,
+                "eventSkillCode": "DARK_TOHKA_ULTIMATE_3"
+              }
             }
           ]
         },
@@ -10374,21 +10472,9 @@
               "chance": 1,
               "duration": 0,
               "configJson": {
+                "trigger": "BATTLE_START",
                 "statType": "ATK",
-                "permanent": true,
-                "trigger": "BATTLE_START"
-              }
-            },
-            {
-              "effectType": "BUFF",
-              "targetType": "SELF",
-              "multiplier": 0.05,
-              "chance": 1,
-              "duration": 0,
-              "configJson": {
-                "statType": "CRIT",
-                "permanent": true,
-                "trigger": "BATTLE_START"
+                "permanent": true
               }
             },
             {
@@ -10398,9 +10484,45 @@
               "chance": 1,
               "duration": 0,
               "configJson": {
+                "trigger": "BATTLE_START",
+                "statType": "MAX_HP",
+                "permanent": true
+              }
+            },
+            {
+              "effectType": "BUFF",
+              "targetType": "SELF",
+              "multiplier": 0.05,
+              "chance": 1,
+              "duration": 0,
+              "configJson": {
+                "trigger": "BATTLE_START",
+                "statType": "CRIT",
+                "permanent": true
+              }
+            },
+            {
+              "effectType": "BUFF",
+              "targetType": "SELF",
+              "multiplier": 0.1,
+              "chance": 1,
+              "duration": 0,
+              "configJson": {
+                "trigger": "BATTLE_START",
                 "statType": "RESISTANCE",
-                "permanent": true,
-                "trigger": "BATTLE_START"
+                "permanent": true
+              }
+            },
+            {
+              "effectType": "BUFF",
+              "targetType": "SELF",
+              "multiplier": 0.3,
+              "chance": 1,
+              "duration": 0,
+              "configJson": {
+                "trigger": "BATTLE_START",
+                "statType": "CONTROL_DURATION_REDUCTION",
+                "permanent": true
               }
             }
           ]
@@ -10611,7 +10733,150 @@
             "sse": [],
             "performance": [],
             "effects": []
-          }
+          },
+          "battleEffects": [
+            {
+              "effectType": "BUFF",
+              "targetType": "SELF",
+              "multiplier": 0.15,
+              "chance": 1,
+              "duration": 1,
+              "configJson": {
+                "trigger": "BEFORE_ACTION",
+                "condition": "SOURCE_IS_FASTEST_ALLY",
+                "statType": "DAMAGE_DEALT"
+              }
+            },
+            {
+              "effectType": "BUFF",
+              "targetType": "SELF",
+              "multiplier": 0.05,
+              "chance": 1,
+              "duration": 1,
+              "configJson": {
+                "trigger": "BEFORE_ACTION",
+                "condition": "SOURCE_IS_FASTEST_ALLY",
+                "statType": "CRIT"
+              }
+            },
+            {
+              "effectType": "BUFF",
+              "targetType": "SELF",
+              "multiplier": 0.04,
+              "chance": 1,
+              "duration": 0,
+              "configJson": {
+                "trigger": "BEFORE_ACTION",
+                "condition": "SOURCE_IS_NOT_FASTEST_ALLY",
+                "statType": "PHYSICAL_DAMAGE_REDUCTION",
+                "permanent": true
+              }
+            },
+            {
+              "effectType": "BUFF",
+              "targetType": "SELF",
+              "multiplier": 0.04,
+              "chance": 1,
+              "duration": 0,
+              "configJson": {
+                "trigger": "BEFORE_ACTION",
+                "condition": "SOURCE_IS_NOT_FASTEST_ALLY",
+                "statType": "MAGIC_DAMAGE_REDUCTION",
+                "permanent": true
+              }
+            },
+            {
+              "effectType": "BUFF",
+              "targetType": "SELF",
+              "multiplier": 0.03,
+              "chance": 1,
+              "duration": 0,
+              "configJson": {
+                "trigger": "BEFORE_ACTION",
+                "condition": "SOURCE_IS_NOT_FASTEST_ALLY",
+                "statType": "DAMAGE_REDUCTION",
+                "permanent": true
+              }
+            },
+            {
+              "effectType": "BUFF",
+              "targetType": "SELF",
+              "multiplier": 0.05,
+              "chance": 1,
+              "duration": 0,
+              "configJson": {
+                "trigger": "BEFORE_ACTION",
+                "condition": "SOURCE_IS_NOT_FASTEST_ALLY",
+                "statType": "RESISTANCE",
+                "permanent": true
+              }
+            },
+            {
+              "effectType": "BUFF",
+              "targetType": "SELF",
+              "multiplier": 0.05,
+              "chance": 1,
+              "duration": 0,
+              "configJson": {
+                "trigger": "BEFORE_ACTION",
+                "condition": "SOURCE_IS_NOT_FASTEST_ALLY",
+                "statType": "HEAL_RECEIVED",
+                "permanent": true
+              }
+            },
+            {
+              "effectType": "BUFF",
+              "targetType": "SELF",
+              "multiplier": 0.05,
+              "chance": 1,
+              "duration": 0,
+              "configJson": {
+                "trigger": "BEFORE_ACTION",
+                "condition": "SOURCE_IS_NOT_FASTEST_ALLY",
+                "statType": "ACCURACY",
+                "permanent": true
+              }
+            },
+            {
+              "effectType": "BUFF",
+              "targetType": "SELF",
+              "multiplier": 0.05,
+              "chance": 1,
+              "duration": 0,
+              "configJson": {
+                "trigger": "BEFORE_ACTION",
+                "condition": "SOURCE_IS_NOT_FASTEST_ALLY",
+                "statType": "CRIT_DAMAGE",
+                "permanent": true
+              }
+            },
+            {
+              "effectType": "BUFF",
+              "targetType": "SELF",
+              "multiplier": 0.05,
+              "chance": 1,
+              "duration": 0,
+              "configJson": {
+                "trigger": "BEFORE_ACTION",
+                "condition": "SOURCE_IS_NOT_FASTEST_ALLY",
+                "statType": "PHYSICAL_DAMAGE",
+                "permanent": true
+              }
+            },
+            {
+              "effectType": "BUFF",
+              "targetType": "SELF",
+              "multiplier": 0.15,
+              "chance": 1,
+              "duration": 0,
+              "configJson": {
+                "trigger": "BEFORE_ACTION",
+                "condition": "SOURCE_IS_NOT_FASTEST_ALLY",
+                "statType": "LIFESTEAL",
+                "permanent": true
+              }
+            }
+          ]
         }
       ]
     }
