@@ -170,6 +170,7 @@ public class DatabaseSkillExecutor {
                     source,
                     effects,
                     trigger == BattlePassiveTrigger.ON_DAMAGED
+                            || trigger == BattlePassiveTrigger.ON_REVIVE
                             ? counterTargetInstanceId
                             : null
             );
@@ -395,7 +396,10 @@ public class DatabaseSkillExecutor {
                 enumFromJson(config, "statusType", BattleStatusType.class),
                 enumFromJson(config, "immunityType", BattleImmunityType.class),
                 enumFromJson(config, "dispelType", BattleDispelType.class),
-                booleanFromJson(config, "permanent")
+                booleanFromJson(config, "permanent"),
+                integerFromJson(config, "stacks", 1),
+                integerFromJson(config, "maxStacks", 1),
+                booleanFromJson(config, "purgeable", true)
         );
     }
 
@@ -441,16 +445,23 @@ public class DatabaseSkillExecutor {
     }
 
     private boolean booleanFromJson(JsonNode config, String field) {
+        return booleanFromJson(config, field, false);
+    }
+
+    private boolean booleanFromJson(JsonNode config, String field, boolean defaultValue) {
         JsonNode value = config.get(field);
-        if (value == null || value.isNull()) {
-            return false;
-        }
-        if (!value.isBoolean()) {
-            throw new IllegalArgumentException(
-                    "configJson." + field + " phải là boolean"
-            );
-        }
+        if (value == null || value.isNull()) return defaultValue;
+        if (!value.isBoolean()) throw new IllegalArgumentException(
+                "configJson." + field + " phải là boolean");
         return value.booleanValue();
+    }
+
+    private int integerFromJson(JsonNode config, String field, int defaultValue) {
+        JsonNode value = config.get(field);
+        if (value == null || value.isNull()) return defaultValue;
+        if (!value.isIntegralNumber() || value.intValue() < 1)
+            throw new IllegalArgumentException("configJson." + field + " phải là số nguyên dương");
+        return value.intValue();
     }
 
     private <E extends Enum<E>> E enumFromJson(
@@ -523,7 +534,8 @@ public class DatabaseSkillExecutor {
             BattlePassiveTrigger trigger,
             Long counterTargetInstanceId
     ) {
-        BattleUnitState counterTarget = trigger == BattlePassiveTrigger.ON_DAMAGED
+        BattleUnitState counterTarget = (trigger == BattlePassiveTrigger.ON_DAMAGED
+                || trigger == BattlePassiveTrigger.ON_REVIVE)
                 && counterTargetInstanceId != null
                 ? battle.findUnit(counterTargetInstanceId)
                 : null;
