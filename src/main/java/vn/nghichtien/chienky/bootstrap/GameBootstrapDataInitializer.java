@@ -1032,6 +1032,10 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                 }
             }
             skill.replaceEffects(synchronizedEffects);
+            if ("gojo".equalsIgnoreCase(definition.getHeroCode())
+                    && "GOJO_PASSIVE_5".equalsIgnoreCase(skillCode)) {
+                seedGojoSixEyesEffects(skill);
+            }
 
             skillsToSave.add(skill);
         }
@@ -1050,6 +1054,39 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
     }
 
     
+    /**
+     * Lục Nhãn: 5 stack giảm 3% sát thương trong 4 round;
+     * mỗi lần hạ địch cộng 6% ATK (tối đa 3 stack, vĩnh viễn và không thể tẩy);
+     * khi địch hồi sinh, truy kích đúng mục tiêu vừa hồi sinh.
+     */
+    private void seedGojoSixEyesEffects(HeroSkillDefinition skill) {
+        List<HeroSkillEffect> effects = new ArrayList<>();
+
+        HeroSkillEffect openingReduction = new HeroSkillEffect(1, "BUFF", "SELF");
+        openingReduction.updateParameters(new BigDecimal("0.03"), BigDecimal.ONE, 4);
+        openingReduction.updateConfig(
+                "{\"trigger\":\"BATTLE_START\",\"statType\":\"DAMAGE_REDUCTION\","
+                        + "\"stacks\":5,\"maxStacks\":5,\"purgeable\":false}"
+        );
+        effects.add(openingReduction);
+
+        HeroSkillEffect killAttack = new HeroSkillEffect(2, "BUFF", "SELF");
+        killAttack.updateParameters(new BigDecimal("0.06"), BigDecimal.ONE, 0);
+        killAttack.updateConfig(
+                "{\"trigger\":\"ON_KILL\",\"statType\":\"ATK\","
+                        + "\"permanent\":true,\"stacks\":1,\"maxStacks\":3,"
+                        + "\"purgeable\":false}"
+        );
+        effects.add(killAttack);
+
+        HeroSkillEffect reviveChase = new HeroSkillEffect(3, "COUNTER", "SELF");
+        reviveChase.updateParameters(new BigDecimal("0.10"), BigDecimal.ONE, 0);
+        reviveChase.updateConfig("{\"trigger\":\"ON_REVIVE\"}");
+        effects.add(reviveChase);
+
+        skill.replaceEffects(effects);
+    }
+
     /**
      * Cấu hình kỹ năng Gojo bằng cùng hệ thống HeroSkillEffect/DatabaseSkillExecutor.
      * Vô Hạ Hạn tồn tại tối đa 20 round; nội tại phản công chỉ kích hoạt ON_DAMAGED.
