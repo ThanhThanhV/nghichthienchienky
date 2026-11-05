@@ -308,72 +308,206 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
             );
         }
 
-        validateGojoGeneratedVfxShape(skillEffects);
+        validateGojoGeneratedVfxShape(skills, skillEffects);
         gojoMapping.set("skillAnimations", skillAnimations);
         gojoMapping.set("_SKILL_EFFECTS", skillEffects);
         gojoMapping.set("_TAB_EFFECT_PERFORMANCE", performanceAudit);
     }
 
     /**
-     * Chốt đúng hình dạng VFX của 4 action groups theo TAB_EffectPerfor Gojo:
-     * BASIC cast-only; Hách cast+impact; Vô Hạ Hạn không VFX;
-     * Lục Nhãn cast-only; Domain cast+3 hit markers.
+     * Validate mapping được sinh từ chính các tuple VFX trong TAB_EffectPerfor.
+     *
+     * Lua quyết định:
+     * - Có phase cast/impact hay không.
+     * - VFX file nào phải được nạp.
+     * Spine JSON quyết định danh sách event thực tế trong animation.
+     *
+     * Không hard-code số lượng skill, phase hoặc hit event của từng Gojo slot.
      */
-    private void validateGojoGeneratedVfxShape(JsonNode skillEffects) {
-        if (skillEffects.size() != 4) {
-            throw new IllegalStateException(
-                    "Gojo phải có đúng 4 skill groups có VFX theo TAB_EffectPerfor: "
-                            + skillEffects
+    private void validateGojoGeneratedVfxShape(
+            JsonNode skills,
+            JsonNode skillEffects
+    ) {
+        if (!skills.isArray()) {
+            throw new IllegalStateException("TAB Gojo skills không phải array");
+        }
+
+        java.util.Set<String> expectedSkillCodes = new java.util.LinkedHashSet<>();
+        for (JsonNode skill : skills) {
+            int order = skill.path("order").asInt(-1);
+            String runtimeType = skill.path("runtimeSkillType").asText("");
+            if (order <= 0 || runtimeType.isBlank()) {
+                throw new IllegalStateException(
+                        "TAB Gojo có slot không hợp lệ khi validate VFX: " + skill
+                );
+            }
+
+            String skillCode = "GOJO_" + runtimeType.toUpperCase(java.util.Locale.ROOT)
+                    + "_" + order;
+            expectedSkillCodes.add(skillCode);
+
+            JsonNode performance = skill.path("tabPerformance");
+            if (!performance.isObject()) {
+                if (skillEffects.has(skillCode)) {
+                    throw new IllegalStateException(
+                            "Gojo có VFX mapping nhưng TAB_EffectPerfor không định nghĩa: "
+                                    + skillCode
+                    );
+                }
+                continue;
+            }
+
+            validateGojoVfxPhaseAgainstLua(
+                    skillCode, "cast", "animation_0", "qishou_",
+                    performance.path("fields").path(10), skillEffects
+            );
+            validateGojoVfxPhaseAgainstLua(
+                    skillCode, "impact", "animation_1", "hit_",
+                    performance.path("fields").path(17), skillEffects
             );
         }
 
-        requireGojoVfxPhase(skillEffects, "GOJO_BASIC_1", "cast", 1);
-        requireNoGojoVfxPhase(skillEffects, "GOJO_BASIC_1", "impact");
-
-        requireGojoVfxPhase(skillEffects, "GOJO_PASSIVE_2", "cast", 1);
-        requireGojoVfxPhase(skillEffects, "GOJO_PASSIVE_2", "impact", 1);
-
-        requireNoGojoVfxPhase(skillEffects, "GOJO_PASSIVE_3", "cast");
-        requireNoGojoVfxPhase(skillEffects, "GOJO_PASSIVE_3", "impact");
-
-        requireGojoVfxPhase(skillEffects, "GOJO_PASSIVE_4", "cast", 1);
-        requireNoGojoVfxPhase(skillEffects, "GOJO_PASSIVE_4", "impact");
-
-        requireGojoVfxPhase(skillEffects, "GOJO_PASSIVE_5", "cast", 1);
-        requireGojoVfxPhase(skillEffects, "GOJO_PASSIVE_5", "impact", 3);
+        java.util.Iterator<String> generatedSkills = skillEffects.fieldNames();
+        while (generatedSkills.hasNext()) {
+            String skillCode = generatedSkills.next();
+            if (!expectedSkillCodes.contains(skillCode)) {
+                throw new IllegalStateException(
+                        "Gojo có VFX mapping không được TAB_Hero/TAB_Skill tham chiếu: "
+                                + skillCode
+                );
+            }
+        }
     }
 
-    private void requireGojoVfxPhase(
-            JsonNode skillEffects,
+    private void validateGojoVfxPhaseAgainstLua(
             String skillCode,
             String phase,
-            int expectedEventCount
+            String expectedAnimation,
+            String expectedEventPrefix,
+            JsonNode luaVfxRows,
+            JsonNode skillEffects
     ) {
-        JsonNode effect = skillEffects.path(skillCode).path(phase);
-        JsonNode events = effect.path("impactEvents");
-        if (!effect.isObject()
-                || !events.isArray()
-                || events.size() != expectedEventCount) {
+        List<JsonNode> expectedRows = normalizeGojoVfxRows(
+                luaVfxRows, skillCode, phase
+        );
+        JsonNode generatedPhase = skillEffects.path(skillCode).path(phase);
+
+        if (expectedRows.isEmpty()) {
+            if (!generatedPhase.isMissingNode()) {
+                throw new IllegalStateException(
+                        "Gojo có VFX " + phase + " nhưng Lua không khai báo: "
+                                + skillCode + ", generated=" + generatedPhase
+                );
+            }
+            return;
+        }
+
+        List<JsonNode> generatedEffects = new ArrayList<>();
+        if (generatedPhase.isArray()) {
+            generatedPhase.forEach(generatedEffects::add);
+        } else if (generatedPhase.isObject()) {
+            generatedEffects.add(generatedPhase);
+        }
+
+        if (generatedEffects.size() != expectedRows.size()) {
             throw new IllegalStateException(
-                    "Sai số lượng Gojo VFX event theo Lua: "
+                    "Sai số lượng VFX row so với TAB_EffectPerfor: "
                             + skillCode + "/" + phase
-                            + ", expected=" + expectedEventCount
-                            + ", actual=" + effect
+                            + ", luaRows=" + expectedRows.size()
+                            + ", generated=" + generatedEffects.size()
             );
+        }
+
+        for (int i = 0; i < expectedRows.size(); i++) {
+            JsonNode luaRow = expectedRows.get(i);
+            JsonNode generated = generatedEffects.get(i);
+            String expectedFile = "seffect_" + luaRow.get(0).asText();
+
+            if (!expectedFile.equals(generated.path("file").asText(""))
+                    || !expectedAnimation.equals(generated.path("animation").asText(""))) {
+                throw new IllegalStateException(
+                        "Sai Spine VFX mapping so với Lua: " + skillCode + "/" + phase
+                                + ", expected=" + expectedFile + "/" + expectedAnimation
+                                + ", actual=" + generated
+                );
+            }
+
+            JsonNode events = generated.path("impactEvents");
+            if (!events.isArray() || events.isEmpty()) {
+                throw new IllegalStateException(
+                        "Spine VFX không có event phù hợp: "
+                                + skillCode + "/" + phase + "/" + expectedFile
+                );
+            }
+            for (JsonNode event : events) {
+                if (!event.isTextual()
+                        || !event.asText().startsWith(expectedEventPrefix)) {
+                    throw new IllegalStateException(
+                            "Spine event không đúng phase " + phase + ": "
+                                    + skillCode + ", event=" + event
+                    );
+                }
+            }
+            if (!generated.path("impactEvent").asText("")
+                    .equals(events.get(0).asText())) {
+                throw new IllegalStateException(
+                        "impactEvent không khớp event đầu tiên: "
+                                + skillCode + "/" + phase
+                );
+            }
         }
     }
 
-    private void requireNoGojoVfxPhase(
-            JsonNode skillEffects,
+    /**
+     * TAB_EffectPerfor có hai kiểu biểu diễn:
+     * - Danh sách nhiều VFX row: {{effectId, ...}, {effectId, ...}}.
+     * - Một VFX row duy nhất: {effectId, ...}.
+     *
+     * Không được coi từng scalar trong tuple là một row riêng.
+     */
+    private List<JsonNode> normalizeGojoVfxRows(
+            JsonNode vfxRows,
             String skillCode,
             String phase
     ) {
-        if (!skillEffects.path(skillCode).path(phase).isMissingNode()) {
+        List<JsonNode> rows = new ArrayList<>();
+        if (vfxRows == null || vfxRows.isMissingNode() || vfxRows.isNull()) {
+            return rows;
+        }
+        if (!vfxRows.isArray()) {
             throw new IllegalStateException(
-                    "Gojo không có VFX " + phase + " theo TAB_EffectPerfor: "
-                            + skillCode
+                    "TAB_EffectPerfor VFX column không phải Lua table: "
+                            + skillCode + "/" + phase + ", value=" + vfxRows
             );
         }
+        if (vfxRows.isEmpty()) {
+            return rows;
+        }
+
+        if (vfxRows.get(0).isArray()) {
+            for (JsonNode row : vfxRows) {
+                if (!row.isArray()) {
+                    throw new IllegalStateException(
+                            "TAB_EffectPerfor có VFX row trộn kiểu: "
+                                    + skillCode + "/" + phase + ", value=" + vfxRows
+                    );
+                }
+                rows.add(row);
+            }
+        } else {
+            rows.add(vfxRows);
+        }
+
+        for (JsonNode row : rows) {
+            if (row.isEmpty() || !row.get(0).canConvertToInt()
+                    || row.get(0).asInt() <= 0) {
+                throw new IllegalStateException(
+                        "TAB_EffectPerfor có effect ID không hợp lệ: "
+                                + skillCode + "/" + phase + ", row=" + row
+                );
+            }
+        }
+        return rows;
     }
 
     /**
@@ -390,15 +524,11 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
             String trigger
     ) {
         ArrayNode result = objectMapper.createArrayNode();
-        if (!vfxRows.isArray()) {
-            return result;
-        }
+        List<JsonNode> normalizedVfxRows = normalizeGojoVfxRows(
+                vfxRows, skillCode, phase
+        );
 
-        for (JsonNode vfxRow : vfxRows) {
-            if (!vfxRow.isArray() || vfxRow.isEmpty()) {
-                continue;
-            }
-
+        for (JsonNode vfxRow : normalizedVfxRows) {
             String effectFile = "seffect_" + vfxRow.get(0).asText();
             String resourcePath = "static/assets/spine/seffects/"
                     + effectFile + ".json";
