@@ -204,6 +204,56 @@ class BattleEffectManager {
         };
     }
 
+    /**
+     * Neo VFX vào phía trước mặt mục tiêu theo hướng nhân vật đang nhìn.
+     * ENEMY nhìn trái nên VFX nằm ngoài mép trái slot; PLAYER nhìn phải nên
+     * VFX nằm ngoài mép phải slot. Tọa độ đổi sang hệ world canvas.
+     */
+    getTargetFrontPosition(team, instanceId, target) {
+        const normalizedTeam = String(team || "").toUpperCase();
+        if (!["PLAYER", "ENEMY"].includes(normalizedTeam) || !this.canvas) {
+            return target ? {
+                x: target.positionX + (normalizedTeam === "ENEMY" ? -36 : 36),
+                y: target.positionY
+            } : null;
+        }
+
+        const container = document.getElementById(
+            normalizedTeam === "PLAYER" ? "player-formation" : "enemy-formation"
+        );
+        const slot = [...(container?.querySelectorAll(".unit-slot") || [])]
+            .find(element => element.dataset.instanceId === String(instanceId));
+
+        if (!slot) {
+            const fallbackOffset = this.canvas.width * 0.035;
+            return target ? {
+                x: target.positionX + (normalizedTeam === "ENEMY" ? -fallbackOffset : fallbackOffset),
+                y: target.positionY
+            } : null;
+        }
+
+        const canvasRect = this.canvas.getBoundingClientRect();
+        const slotRect = slot.getBoundingClientRect();
+        if (!canvasRect.width || !slotRect.width || !slotRect.height) {
+            return target ? {
+                x: target.positionX,
+                y: target.positionY
+            } : null;
+        }
+
+        const canvasCenterX = canvasRect.left + canvasRect.width / 2;
+        const canvasCenterY = canvasRect.top + canvasRect.height / 2;
+        const frontX = normalizedTeam === "ENEMY"
+            ? slotRect.left - Math.max(8, slotRect.width * 0.08)
+            : slotRect.right + Math.max(8, slotRect.width * 0.08);
+        const groundY = slotRect.bottom - Math.max(5, slotRect.height * 0.04);
+
+        return {
+            x: frontX - canvasCenterX,
+            y: canvasCenterY - groundY
+        };
+    }
+
     async playEffect(config, event) {
         const generation = this.generation;
 
@@ -228,7 +278,13 @@ class BattleEffectManager {
 
         let basePosition;
 
-        if (anchor === "enemy_formation" || anchor === "target_formation" || anchor === "formation") {
+        if (anchor === "target_front") {
+            basePosition = this.getTargetFrontPosition(
+                event.targetTeam,
+                event.targetInstanceId,
+                target
+            );
+        } else if (anchor === "enemy_formation" || anchor === "target_formation" || anchor === "formation") {
             basePosition = this.getFormationCenter(
                 anchor === "formation" ? (config.team || enemyTeam) : enemyTeam
             );
