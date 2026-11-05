@@ -646,9 +646,13 @@ class BattleRenderer {
                         x: character.positionX,
                         y: character.positionY
                     };
+                    // Spine character positions are anchored at the root/feet,
+                    // not at the visual center of the rendered body. Put the
+                    // anchor 80 world units below canvas center so Iori's body
+                    // (rather than its ground anchor) is visually centered.
                     await this.animateCharacterToPosition(
                         character,
-                        { x: 0, y: 0 },
+                        { x: 0, y: -80 },
                         320
                     );
                 }
