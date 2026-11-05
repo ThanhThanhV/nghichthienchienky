@@ -80,7 +80,7 @@ public class DatabaseSkillExecutor {
             return requestedAction;
         }
 
-        int skillLevel = loadSkillLevels(source).getOrDefault(skill.getId(), 1);
+        int skillLevel = loadSkillLevels(source).getOrDefault(skill.getSkillCode(), 1);
         SkillEffectSet effectSet = loadEffectsForLevel(skill, skillLevel);
         List<BattleEffectConfig> effects = effectSet.effects().stream()
                 .filter(effect -> Boolean.TRUE.equals(effect.getEnabled()))
@@ -108,11 +108,11 @@ public class DatabaseSkillExecutor {
     @Transactional(readOnly = true)
     public void executeNonPassiveBattleStartEffects(BattleState battle, BattleUnitState source) {
         if (battle == null || source == null || battle.isFinished() || !source.isAlive()) return;
-        Map<Long, Integer> skillLevels = loadSkillLevels(source);
+        Map<String, Integer> skillLevels = loadSkillLevels(source);
         for (HeroSkillDefinition skill : loadSkills(source)) {
             if ("PASSIVE".equalsIgnoreCase(skill.getSkillType())) continue;
             SkillEffectSet effectSet = loadEffectsForLevel(
-                    skill, skillLevels.getOrDefault(skill.getId(), 1)
+                    skill, skillLevels.getOrDefault(skill.getSkillCode(), 1)
             );
             List<BattleEffectConfig> effects = effectSet.effects().stream()
                     .filter(effect -> Boolean.TRUE.equals(effect.getEnabled()))
@@ -268,15 +268,15 @@ public class DatabaseSkillExecutor {
     /**
      * Tải cấp độ của toàn bộ kỹ năng thuộc đúng bản sao tướng trong một lần truy vấn.
      */
-    private Map<Long, Integer> loadSkillLevels(BattleUnitState source) {
-        Map<Long, Integer> levels = new HashMap<>();
+    private Map<String, Integer> loadSkillLevels(BattleUnitState source) {
+        Map<String, Integer> levels = new HashMap<>();
         for (HeroInstanceSkill instanceSkill :
                 instanceSkillRepository
                         .findAllByHeroInstanceIdOrderBySkillDefinitionSkillOrderAsc(
                                 source.getInstanceId()
                         )) {
             levels.put(
-                    instanceSkill.getSkillDefinition().getId(),
+                    instanceSkill.getSkillCode(),
                     instanceSkill.getSkillLevel()
             );
         }
@@ -381,16 +381,23 @@ public class DatabaseSkillExecutor {
         }
     }
 
+    /**
+     * Tạo mã effect ổn định theo heroCode/skillCode, không dựa vào ID tự tăng.
+     * Cùng một effect ở các lần seed hoặc battle sẽ giữ nguyên định danh.
+     */
     private String effectCode(
             HeroSkillDefinition skill,
             int skillLevel,
             HeroSkillEffect effect
     ) {
-        if (effect.getId() != null) {
-            return "SKILL_EFFECT_" + effect.getId();
-        }
-        return "SKILL_LEVEL_" + skill.getId()
-                + "_" + skillLevel + "_E" + effect.getEffectOrder();
+        return "SKILL_EFFECT_"
+                + skill.getHeroDefinition().getHeroCode().toUpperCase(Locale.ROOT)
+                + "_"
+                + skill.getSkillCode().toUpperCase(Locale.ROOT)
+                + "_L"
+                + skillLevel
+                + "_E"
+                + effect.getEffectOrder();
     }
 
     private record SkillEffectSet(int level, List<HeroSkillEffect> effects) {
