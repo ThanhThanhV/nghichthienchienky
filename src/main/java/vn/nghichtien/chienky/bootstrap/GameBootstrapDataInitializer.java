@@ -362,8 +362,11 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                 default -> null;
             };
             String castAnchor = groupId == 525173 ? "target" : "source";
-            String impactAnchor = groupId == 525174
-                    ? "enemy_formation" : "target";
+            String impactAnchor = switch (groupId) {
+                case 525171 -> "target_front";
+                case 525174 -> "enemy_formation";
+                default -> "target";
+            };
 
             ObjectNode phases = objectMapper.createObjectNode();
             ArrayNode castEffects = buildGojoVfxPhase(
