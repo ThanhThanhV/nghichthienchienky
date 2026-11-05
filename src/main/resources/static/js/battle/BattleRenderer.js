@@ -644,29 +644,22 @@ class BattleRenderer {
                     const enemyTeam = this.actionContext.sourceTeam === "PLAYER"
                         ? "ENEMY"
                         : "PLAYER";
-                    const enemyContainer = document.getElementById(
-                        enemyTeam === "PLAYER" ? "player-formation" : "enemy-formation"
-                    );
-                    const middleSlot = enemyContainer?.querySelectorAll(".unit-slot")?.[4];
-                    const frontPosition = middleSlot
-                        ? this.effectManager?.getTargetFrontPosition?.(
-                            enemyTeam,
-                            middleSlot.dataset.instanceId,
-                            null
-                        )
-                        : null;
+                    const enemyCenter = this.effectManager?.getFormationCenter?.(enemyTeam);
 
-                    if (frontPosition) {
+                    if (enemyCenter) {
                         this.actionContext.sourceCharacter = character;
                         this.actionContext.sourceOriginalPosition = {
                             x: character.positionX,
                             y: character.positionY
                         };
 
-                        // Lấy trực tiếp mép trước của ô giữa từ DOM, cùng phép
-                        // đổi tọa độ mà VFX target-front đang sử dụng. Không dùng
-                        // khoảng cách cố định tính từ tâm đội hình vì độ rộng slot
-                        // thay đổi theo kích thước màn hình.
+                        // Iori lướt đúng vào tâm màn hình theo trục X.
+                        // Giữ nguyên cao độ hàng giữa của đội hình đối phương.
+                        const frontPosition = {
+                            x: 0,
+                            y: enemyCenter.y
+                        };
+
                         await this.animateCharacterToPosition(
                             character,
                             frontPosition,
