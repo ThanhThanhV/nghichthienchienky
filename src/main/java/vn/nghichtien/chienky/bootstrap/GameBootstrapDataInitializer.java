@@ -218,6 +218,7 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
 
         ObjectNode skillAnimations = objectMapper.createObjectNode();
         ObjectNode skillEffects = objectMapper.createObjectNode();
+        ObjectNode performanceAudit = objectMapper.createObjectNode();
 
         for (JsonNode skill : skills) {
             int order = skill.path("order").asInt(-1);
@@ -236,6 +237,7 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                 // Vô Hạ Hạn là passive chỉ số, không có TAB_EffectPerfor/VFX action.
                 continue;
             }
+            performanceAudit.set(skillCode, performance.deepCopy());
 
             int actionFamily = performance.path("fields").path(7).asInt(-1);
             String animation = switch (actionFamily) {
@@ -309,6 +311,7 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
         validateGojoGeneratedVfxShape(skillEffects);
         gojoMapping.set("skillAnimations", skillAnimations);
         gojoMapping.set("_SKILL_EFFECTS", skillEffects);
+        gojoMapping.set("_TAB_EFFECT_PERFORMANCE", performanceAudit);
     }
 
     /**
@@ -1213,6 +1216,7 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                 "_SKILL_EFFECT_ALIASES",
                 "_TAB_HERO_SOURCE",
                 "_TAB_SKILL_BINDINGS",
+                "_TAB_EFFECT_PERFORMANCE",
                 "_SPINE_EFFECT_BASE_PATH",
                 "_SPINE_EFFECT_TEXTURE_PAGES",
                 "_SPINE_EFFECT_DEFAULTS"
