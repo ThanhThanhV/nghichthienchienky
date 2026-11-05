@@ -1327,3 +1327,22 @@ body {
         max-width: 100%;
     }
 }
+
+
+/* Wider battle viewport and a taller battlefield without scaling formation cells. */
+@media (min-width: 601px) {
+    .battle-page {
+        width: min(100vw, 62dvh, 594px);
+        max-width: 594px;
+    }
+}
+
+.battle-field {
+    min-height: clamp(380px, 60dvh, 540px);
+}
+
+@media (max-height: 760px) {
+    .battle-field {
+        min-height: clamp(320px, 50dvh, 420px);
+    }
+}
