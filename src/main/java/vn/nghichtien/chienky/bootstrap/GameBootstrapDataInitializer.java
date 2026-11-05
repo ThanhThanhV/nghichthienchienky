@@ -1799,22 +1799,70 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
     }
 
     /** Khoảng Trống Vô Tận: tăng sát thương địch phải nhận theo từng cấp TAB. */
+    /**
+     * Khoảng Trống Vô Tận:
+     * - Effect 43: áp trạng thái lĩnh vực lên toàn bộ địch.
+     * - Effect 57: tăng DAMAGE_TAKEN theo cấp kỹ năng.
+     * - Buffer 0/1/2: field, passive marker và damage amplification.
+     *
+     * Runtime biểu diễn trạng thái lĩnh vực bằng modifier DAMAGE_TAKEN gắn
+     * lên toàn bộ địch; các ID/quan hệ Lua được giữ trong config để truy vết
+     * và đồng bộ VFX/UI, không tự suy diễn thêm một hiệu ứng khống chế.
+     */
     private void seedGojoDomainEffects(HeroSkillDefinition skill) {
         String[] damageTaken = {
                 "0.15", "0.20", "0.25", "0.26",
                 "0.27", "0.28", "0.29", "0.30"
         };
+
         try {
             JsonNode rowsNode = objectMapper.readTree(skill.getLevelRowsJson());
             if (rowsNode instanceof ArrayNode rows) {
                 for (JsonNode rowNode : rows) {
                     if (!(rowNode instanceof ObjectNode row)) continue;
                     int level = Math.max(1, Math.min(8, row.path("level").asInt(1)));
+                    int levelSuffix = level * 10;
+                    int fieldEffectId = 52517400 + levelSuffix;
+                    int damageEffectId = fieldEffectId + 1;
+                    int fieldBufferId = fieldEffectId;
+                    int passiveBufferId = fieldEffectId + 1;
+                    int damageBufferId = fieldEffectId + 2;
+
+                    ObjectNode config = objectMapper.createObjectNode();
+                    config.put("trigger", "BATTLE_START");
+                    config.put("statType", "DAMAGE_TAKEN");
+                    config.put("permanent", true);
+                    config.put("ignoreImmunity", true);
+                    config.put("eventSkillCode", "GOJO_PASSIVE_5");
+                    config.put("domain", true);
+                    config.put("domainEffectType", 43);
+                    config.put("damageAmplificationEffectType", 57);
+                    config.put("luaSkillGroupId", 525174);
+                    config.put("luaLevel", level);
+                    config.put("luaFieldEffectId", Integer.toString(fieldEffectId));
+                    config.put("luaDamageEffectId", Integer.toString(damageEffectId));
+                    config.put("luaFieldBufferId", Integer.toString(fieldBufferId));
+                    config.put("luaPassiveBufferId", Integer.toString(passiveBufferId));
+                    config.put("luaDamageBufferId", Integer.toString(damageBufferId));
+                    ArrayNode effectIds = objectMapper.createArrayNode();
+                    effectIds.add(Integer.toString(fieldEffectId));
+                    effectIds.add(Integer.toString(damageEffectId));
+                    config.set("luaEffectIds", effectIds);
+                    ArrayNode bufferIds = objectMapper.createArrayNode();
+                    bufferIds.add(Integer.toString(fieldBufferId));
+                    bufferIds.add(Integer.toString(passiveBufferId));
+                    bufferIds.add(Integer.toString(damageBufferId));
+                    config.set("luaBufferIds", bufferIds);
+                    ArrayNode bufferLinks = objectMapper.createArrayNode();
+                    bufferLinks.add("#43&" + fieldBufferId);
+                    bufferLinks.add("#" + passiveBufferId);
+                    bufferLinks.add("#" + damageBufferId);
+                    config.set("luaBufferLinks", bufferLinks);
+
                     ArrayNode effects = objectMapper.createArrayNode();
                     effects.add(createGojoEffectJson(
                             "DEBUFF", "ALL_ENEMIES", damageTaken[level - 1], 0,
-                            "{\"trigger\":\"BATTLE_START\",\"statType\":\"DAMAGE_TAKEN\","
-                                    + "\"permanent\":true,\"ignoreImmunity\":true,\"eventSkillCode\":\"GOJO_PASSIVE_5\"}"
+                            writeJson(config)
                     ));
                     row.set("battleEffects", effects);
                 }
@@ -1826,10 +1874,41 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                     exception
             );
         }
+
+        ObjectNode fallbackConfig = objectMapper.createObjectNode();
+        fallbackConfig.put("trigger", "BATTLE_START");
+        fallbackConfig.put("statType", "DAMAGE_TAKEN");
+        fallbackConfig.put("permanent", true);
+        fallbackConfig.put("ignoreImmunity", true);
+        fallbackConfig.put("eventSkillCode", "GOJO_PASSIVE_5");
+        fallbackConfig.put("domain", true);
+        fallbackConfig.put("domainEffectType", 43);
+        fallbackConfig.put("damageAmplificationEffectType", 57);
+        fallbackConfig.put("luaSkillGroupId", 525174);
+        fallbackConfig.put("luaLevel", 1);
+        fallbackConfig.put("luaFieldEffectId", "52517410");
+        fallbackConfig.put("luaDamageEffectId", "52517411");
+        fallbackConfig.put("luaFieldBufferId", "52517410");
+        fallbackConfig.put("luaPassiveBufferId", "52517411");
+        fallbackConfig.put("luaDamageBufferId", "52517412");
+        ArrayNode fallbackEffectIds = objectMapper.createArrayNode();
+        fallbackEffectIds.add("52517410");
+        fallbackEffectIds.add("52517411");
+        fallbackConfig.set("luaEffectIds", fallbackEffectIds);
+        ArrayNode fallbackBufferIds = objectMapper.createArrayNode();
+        fallbackBufferIds.add("52517410");
+        fallbackBufferIds.add("52517411");
+        fallbackBufferIds.add("52517412");
+        fallbackConfig.set("luaBufferIds", fallbackBufferIds);
+        ArrayNode fallbackLinks = objectMapper.createArrayNode();
+        fallbackLinks.add("#43&52517410");
+        fallbackLinks.add("#52517411");
+        fallbackLinks.add("#52517412");
+        fallbackConfig.set("luaBufferLinks", fallbackLinks);
+
         HeroSkillEffect domain = new HeroSkillEffect(1, "DEBUFF", "ALL_ENEMIES");
         domain.updateParameters(new BigDecimal("0.15"), BigDecimal.ONE, 0);
-        domain.updateConfig("{\"trigger\":\"BATTLE_START\",\"statType\":\"DAMAGE_TAKEN\","
-                + "\"permanent\":true,\"ignoreImmunity\":true,\"eventSkillCode\":\"GOJO_PASSIVE_5\"}");
+        domain.updateConfig(writeJson(fallbackConfig));
         skill.replaceEffects(List.of(domain));
     }
 
