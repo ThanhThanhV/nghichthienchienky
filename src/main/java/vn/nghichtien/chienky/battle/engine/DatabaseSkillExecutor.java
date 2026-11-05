@@ -213,6 +213,40 @@ public class DatabaseSkillExecutor {
                     ))
                     .toList();
 
+            // Domain là chiêu mở màn bắt buộc của Gojo theo TAB Lua
+            // (group 525174, slot 4, runtime code GOJO_PASSIVE_5).
+            // Không để một levelRowsJson cũ/rỗng làm mất hoàn toàn trigger BATTLE_START.
+            if (effects.isEmpty()
+                    && "gojo".equalsIgnoreCase(source.getHeroCode())
+                    && "GOJO_PASSIVE_5".equalsIgnoreCase(skill.getSkillCode())
+                    && trigger == BattlePassiveTrigger.BATTLE_START) {
+                String[] domainDamageTaken = {
+                        "0.15", "0.20", "0.25", "0.26",
+                        "0.27", "0.28", "0.29", "0.30"
+                };
+                int level = Math.max(1, Math.min(8, effectSet.level()));
+                HeroSkillEffect domainFallback =
+                        new HeroSkillEffect(1, "DEBUFF", "ALL_ENEMIES");
+                domainFallback.updateParameters(
+                        new BigDecimal(domainDamageTaken[level - 1]),
+                        ONE,
+                        0
+                );
+                domainFallback.updateConfig(
+                        "{\\"trigger\\":\\"BATTLE_START\\","
+                                + "\\"statType\\":\\"DAMAGE_TAKEN\\","
+                                + "\\"permanent\\":true,"
+                                + "\\"ignoreImmunity\\":true,"
+                                + "\\"eventSkillCode\\":\\"GOJO_PASSIVE_5\\","
+                                + "\\"domain\\":true,"
+                                + "\\"luaSkillGroupId\\":525174}"
+                );
+                effects = List.of(toEffectConfig(
+                        domainFallback,
+                        effectCode(skill, level, domainFallback)
+                ));
+            }
+
             if (effects.isEmpty()) {
                 continue;
             }
