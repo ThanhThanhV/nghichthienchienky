@@ -151,6 +151,7 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
         List<HeroSkillUpgradeConfig> upgradeConfigs =
                 heroSkillUpgradeConfigRepository.findAllByHeroCode("gojo");
         Map<String, HeroSkillUpgradeConfig> uniqueUpgradeTargets = new HashMap<>();
+        Map<HeroSkillUpgradeConfig, String> targetSkillCodes = new HashMap<>();
         for (HeroSkillUpgradeConfig config : upgradeConfigs) {
             String newSkillCode = switch (config.getSkillCode()) {
                 case "GOJO_PASSIVE_3" -> "GOJO_PASSIVE_2"; // Hách
@@ -166,9 +167,17 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                                 + uniqueKey
                 );
             }
-            config.changeSkillCode(newSkillCode);
+            targetSkillCodes.put(config, newSkillCode);
+            if (!newSkillCode.equals(config.getSkillCode())) {
+                // Tạm chuyển mã cũ để tránh va chạm unique khi hoán đổi nhiều slot.
+                config.changeSkillCode("__GOJO_LUA_REMAP__" + config.getSkillCode());
+            }
         }
         if (!upgradeConfigs.isEmpty()) {
+            heroSkillUpgradeConfigRepository.saveAllAndFlush(upgradeConfigs);
+            for (HeroSkillUpgradeConfig config : upgradeConfigs) {
+                config.changeSkillCode(targetSkillCodes.get(config));
+            }
             heroSkillUpgradeConfigRepository.saveAllAndFlush(upgradeConfigs);
         }
 
