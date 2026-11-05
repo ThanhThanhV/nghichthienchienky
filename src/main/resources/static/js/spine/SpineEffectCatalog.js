@@ -1796,89 +1796,81 @@ window.SPINE_EFFECT_CATALOG = [
   {
     "id": "seffect_51515110111",
     "family": "515151",
-    "familyLabel": "Iori / Iori Dark",
+    "familyLabel": "Iori Dark",
     "heroes": [
-      "iori",
       "iori_dark"
     ],
-    "ambiguous": true,
+    "ambiguous": false,
     "size": 22376
   },
   {
     "id": "seffect_51515110211",
     "family": "515151",
-    "familyLabel": "Iori / Iori Dark",
+    "familyLabel": "Iori Dark",
     "heroes": [
-      "iori",
       "iori_dark"
     ],
-    "ambiguous": true,
+    "ambiguous": false,
     "size": 12579
   },
   {
     "id": "seffect_51515121011",
     "family": "515151",
-    "familyLabel": "Iori / Iori Dark",
+    "familyLabel": "Iori",
     "heroes": [
-      "iori",
-      "iori_dark"
+      "iori"
     ],
-    "ambiguous": true,
+    "ambiguous": false,
     "size": 6337
   },
   {
     "id": "seffect_51515121012",
     "family": "515151",
-    "familyLabel": "Iori / Iori Dark",
+    "familyLabel": "Iori",
     "heroes": [
-      "iori",
-      "iori_dark"
+      "iori"
     ],
-    "ambiguous": true,
+    "ambiguous": false,
     "size": 23566
   },
   {
     "id": "seffect_51515121013",
     "family": "515151",
-    "familyLabel": "Iori / Iori Dark",
+    "familyLabel": "Iori",
     "heroes": [
-      "iori",
-      "iori_dark"
+      "iori"
     ],
-    "ambiguous": true,
+    "ambiguous": false,
     "size": 1605
   },
   {
     "id": "seffect_51515121014",
     "family": "515151",
-    "familyLabel": "Iori / Iori Dark",
+    "familyLabel": "Iori",
     "heroes": [
-      "iori",
-      "iori_dark"
+      "iori"
     ],
-    "ambiguous": true,
+    "ambiguous": false,
     "size": 21536
   },
   {
     "id": "seffect_51515121015",
     "family": "515151",
-    "familyLabel": "Iori / Iori Dark",
+    "familyLabel": "Iori",
     "heroes": [
-      "iori",
-      "iori_dark"
+      "iori"
     ],
-    "ambiguous": true,
+    "ambiguous": false,
     "size": 2349
   },
   {
     "id": "seffect_51515121016",
     "family": "515151",
-    "familyLabel": "Iori / Iori Dark",
+    "familyLabel": "Iori",
     "heroes": [
-      "iori",
-      "iori_dark"
+      "iori"
     ],
-    "ambiguous": true,
+    "ambiguous": false,
     "size": 29707
   },
   {
