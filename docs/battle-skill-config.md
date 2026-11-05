@@ -31,9 +31,11 @@ Trigger được khai báo trong `config_json` của từng effect. Nếu không
 | `AFTER_ACTION` | Sau khi nhân vật sở hữu nội tại thực hiện hành động |
 | `ON_ATTACK` | Khi nhân vật sở hữu nội tại bắt đầu một đòn đánh/kỹ năng |
 | `ON_DAMAGED` | Khi nhân vật sở hữu nội tại nhận sát thương HP thực tế và còn sống |
-| `ON_KILL` | Khi nhân vật sở hữu nội tại hạ gục mục tiêu |
+| `ON_ENEMY_ACTION` | Sau mỗi hành động thực sự được phe đối phương thực hiện (đánh, buff, debuff, hồi máu...); không kích hoạt khi bị khóa hoặc bỏ lượt |
+| `ON_REVIVE` | Ngay sau khi một đơn vị phe đối phương hồi sinh thành công; event giữ đúng instance vừa hồi sinh làm mục tiêu |
+| `ON_KILL` | Khi nhân vật sở hữu nội tại hạ gục mục tiêu, kể cả mục tiêu bị hạ bởi counter reaction được engine chuyển tiếp |
 
-Các trigger đều do Java tự kiểm tra; client không gửi yêu cầu kích hoạt. Event phát sinh từ một passive hiện không tự kích hoạt dây chuyền passive khác trong cùng lần dispatch, nhằm tránh vòng lặp phản ứng vô hạn. Nếu cần chuỗi phản kích/counter, nên triển khai bằng cơ chế reaction có giới hạn riêng.
+Các trigger đều do Java tự kiểm tra; client không gửi yêu cầu kích hoạt. Passive reaction không tự kích hoạt dây chuyền `ON_ENEMY_ACTION` hoặc `ON_REVIVE` lần nữa. Riêng event `DEATH` phát sinh trực tiếp từ counter reaction được chuyển tiếp một lần sang `ON_KILL`, để các nội tại cộng dồn khi hạ gục (như Lục Nhãn của Gojo) vẫn nhận đúng kết quả mà không tạo vòng lặp phản kích.
 
 ## Target type
 
