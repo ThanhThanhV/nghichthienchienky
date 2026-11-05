@@ -1825,19 +1825,6 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
         );
     }
 
-    private List<SkillSeed> skillsWithoutUltimate(
-            String basic, String active, String passiveOne,
-            String passiveTwo, String passiveThree
-    ) {
-        return List.of(
-                new SkillSeed(basic, "BASIC"),
-                new SkillSeed(active, "ACTIVE"),
-                new SkillSeed(passiveOne, "PASSIVE"),
-                new SkillSeed(passiveTwo, "PASSIVE"),
-                new SkillSeed(passiveThree, "PASSIVE")
-        );
-    }
-
     private List<SkillSeed> skills(String basic, String active, String ultimate,
                                    String passiveOne, String passiveTwo) {
         return List.of(
