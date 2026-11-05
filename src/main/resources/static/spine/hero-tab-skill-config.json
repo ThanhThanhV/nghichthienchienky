@@ -1155,17 +1155,7 @@
               }
             ],
             "effects": []
-          },
-          "battleEffects": [
-            {
-              "effectType": "DAMAGE",
-              "targetType": "FRONT",
-              "multiplier": 1,
-              "chance": 1,
-              "duration": null,
-              "configJson": {}
-            }
-          ]
+          }
         },
         {
           "order": 2,
@@ -1210,44 +1200,7 @@
               "effectShow": "{0}",
               "name": "Thuật thức Phản Chuyển-Hách",
               "raw": "TAB_Skill[5251711] = {525171,2,{{}},5251711,1,3,3,0,1,0,0,0,\"$32?52517110\",{},\"10 lượt đầu tiên, bản thân không hành động, nhưng khi địch hành động tăng sát thương ma pháp bằng 97% lực công cho địch; sau 10 lượt dùng thêm đánh thường (hệ số sát thương 50%) để tấn công\",{0},0,0,\"Thuật thức Phản Chuyển-Hách\",{0,6},1,0,10000}",
-              "source": "TAB_Skill_3.lua",
-              "battleEffects": [
-                {
-                  "effectType": "ACTION_LOCK",
-                  "targetType": "SELF",
-                  "multiplier": 0,
-                  "chance": 1,
-                  "duration": 10,
-                  "configJson": {
-                    "trigger": "BATTLE_START"
-                  }
-                },
-                {
-                  "effectType": "COUNTER",
-                  "targetType": "SELF",
-                  "multiplier": 0.97,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "ON_ENEMY_ACTION",
-                    "damageType": "MAGIC",
-                    "untilRound": 10,
-                    "eventSkillCode": "GOJO_PASSIVE_3"
-                  }
-                },
-                {
-                  "effectType": "DAMAGE",
-                  "targetType": "FRONT",
-                  "multiplier": 0.5,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "ROUND_START",
-                    "triggerRound": 11,
-                    "eventSkillCode": "GOJO_BASIC_1"
-                  }
-                }
-              ]
+              "source": "TAB_Skill_3.lua"
             },
             {
               "id": "5251712",
@@ -1270,44 +1223,7 @@
               "effectShow": "{0}",
               "name": "Thuật thức Phản Chuyển-Hách",
               "raw": "TAB_Skill[5251712] = {525171,2,{{}},5251711,2,3,3,0,1,0,0,0,\"$32?52517120\",{},\"10 lượt đầu tiên, bản thân không hành động, nhưng khi địch hành động tăng sát thương ma pháp bằng 117% lực công cho địch; sau 10 lượt dùng thêm đánh thường (hệ số sát thương 50%) để tấn công\",{0},0,0,\"Thuật thức Phản Chuyển-Hách\",{0,7},1,0,10000}",
-              "source": "TAB_Skill_3.lua",
-              "battleEffects": [
-                {
-                  "effectType": "ACTION_LOCK",
-                  "targetType": "SELF",
-                  "multiplier": 0,
-                  "chance": 1,
-                  "duration": 10,
-                  "configJson": {
-                    "trigger": "BATTLE_START"
-                  }
-                },
-                {
-                  "effectType": "COUNTER",
-                  "targetType": "SELF",
-                  "multiplier": 1.17,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "ON_ENEMY_ACTION",
-                    "damageType": "MAGIC",
-                    "untilRound": 10,
-                    "eventSkillCode": "GOJO_PASSIVE_3"
-                  }
-                },
-                {
-                  "effectType": "DAMAGE",
-                  "targetType": "FRONT",
-                  "multiplier": 0.5,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "ROUND_START",
-                    "triggerRound": 11,
-                    "eventSkillCode": "GOJO_BASIC_1"
-                  }
-                }
-              ]
+              "source": "TAB_Skill_3.lua"
             },
             {
               "id": "5251713",
@@ -1330,44 +1246,7 @@
               "effectShow": "{0}",
               "name": "Thuật thức Phản Chuyển-Hách",
               "raw": "TAB_Skill[5251713] = {525171,2,{{}},5251711,3,3,3,0,1,0,0,0,\"$32?52517130\",{},\"10 lượt đầu tiên, bản thân không hành động, nhưng khi địch hành động tăng sát thương ma pháp bằng 140% lực công cho địch; sau 10 lượt dùng thêm đánh thường (hệ số sát thương 50%) để tấn công\",{0},0,0,\"Thuật thức Phản Chuyển-Hách\",{0,101},1,0,10000}",
-              "source": "TAB_Skill_3.lua",
-              "battleEffects": [
-                {
-                  "effectType": "ACTION_LOCK",
-                  "targetType": "SELF",
-                  "multiplier": 0,
-                  "chance": 1,
-                  "duration": 10,
-                  "configJson": {
-                    "trigger": "BATTLE_START"
-                  }
-                },
-                {
-                  "effectType": "COUNTER",
-                  "targetType": "SELF",
-                  "multiplier": 1.4,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "ON_ENEMY_ACTION",
-                    "damageType": "MAGIC",
-                    "untilRound": 10,
-                    "eventSkillCode": "GOJO_PASSIVE_3"
-                  }
-                },
-                {
-                  "effectType": "DAMAGE",
-                  "targetType": "FRONT",
-                  "multiplier": 0.5,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "ROUND_START",
-                    "triggerRound": 11,
-                    "eventSkillCode": "GOJO_BASIC_1"
-                  }
-                }
-              ]
+              "source": "TAB_Skill_3.lua"
             },
             {
               "id": "5251714",
@@ -1390,44 +1269,7 @@
               "effectShow": "{0}",
               "name": "Thuật thức Phản Chuyển-Hách",
               "raw": "TAB_Skill[5251714] = {525171,2,{{}},5251711,4,3,3,0,1,0,0,0,\"$32?52517140\",{},\"10 lượt đầu tiên, bản thân không hành động, nhưng khi địch hành động tăng sát thương ma pháp bằng 145% lực công cho địch; sau 10 lượt dùng thêm đánh thường (hệ số sát thương 50%) để tấn công\",{0},0,0,\"Thuật thức Phản Chuyển-Hách\",{0,102},1,0,10000}",
-              "source": "TAB_Skill_3.lua",
-              "battleEffects": [
-                {
-                  "effectType": "ACTION_LOCK",
-                  "targetType": "SELF",
-                  "multiplier": 0,
-                  "chance": 1,
-                  "duration": 10,
-                  "configJson": {
-                    "trigger": "BATTLE_START"
-                  }
-                },
-                {
-                  "effectType": "COUNTER",
-                  "targetType": "SELF",
-                  "multiplier": 1.45,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "ON_ENEMY_ACTION",
-                    "damageType": "MAGIC",
-                    "untilRound": 10,
-                    "eventSkillCode": "GOJO_PASSIVE_3"
-                  }
-                },
-                {
-                  "effectType": "DAMAGE",
-                  "targetType": "FRONT",
-                  "multiplier": 0.5,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "ROUND_START",
-                    "triggerRound": 11,
-                    "eventSkillCode": "GOJO_BASIC_1"
-                  }
-                }
-              ]
+              "source": "TAB_Skill_3.lua"
             },
             {
               "id": "5251715",
@@ -1450,44 +1292,7 @@
               "effectShow": "{0}",
               "name": "Thuật thức Phản Chuyển-Hách",
               "raw": "TAB_Skill[5251715] = {525171,2,{{}},5251711,5,3,3,0,1,0,0,0,\"$32?52517150\",{},\"10 lượt đầu tiên, bản thân không hành động, nhưng khi địch hành động tăng sát thương ma pháp bằng 151% lực công cho địch; sau 10 lượt dùng thêm đánh thường (hệ số sát thương 50%) để tấn công\",{0},0,0,\"Thuật thức Phản Chuyển-Hách\",{0,103},1,0,10000}",
-              "source": "TAB_Skill_3.lua",
-              "battleEffects": [
-                {
-                  "effectType": "ACTION_LOCK",
-                  "targetType": "SELF",
-                  "multiplier": 0,
-                  "chance": 1,
-                  "duration": 10,
-                  "configJson": {
-                    "trigger": "BATTLE_START"
-                  }
-                },
-                {
-                  "effectType": "COUNTER",
-                  "targetType": "SELF",
-                  "multiplier": 1.51,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "ON_ENEMY_ACTION",
-                    "damageType": "MAGIC",
-                    "untilRound": 10,
-                    "eventSkillCode": "GOJO_PASSIVE_3"
-                  }
-                },
-                {
-                  "effectType": "DAMAGE",
-                  "targetType": "FRONT",
-                  "multiplier": 0.5,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "ROUND_START",
-                    "triggerRound": 11,
-                    "eventSkillCode": "GOJO_BASIC_1"
-                  }
-                }
-              ]
+              "source": "TAB_Skill_3.lua"
             },
             {
               "id": "5251716",
@@ -1510,44 +1315,7 @@
               "effectShow": "{0}",
               "name": "Thuật thức Phản Chuyển-Hách",
               "raw": "TAB_Skill[5251716] = {525171,2,{{}},5251711,6,3,3,0,1,0,0,0,\"$32?52517160\",{},\"10 lượt đầu tiên, bản thân không hành động, nhưng khi địch hành động tăng sát thương ma pháp bằng 157% lực công cho địch; sau 10 lượt dùng thêm đánh thường (hệ số sát thương 50%) để tấn công\",{0},0,0,\"Thuật thức Phản Chuyển-Hách\",{0,104},1,0,10000}",
-              "source": "TAB_Skill_3.lua",
-              "battleEffects": [
-                {
-                  "effectType": "ACTION_LOCK",
-                  "targetType": "SELF",
-                  "multiplier": 0,
-                  "chance": 1,
-                  "duration": 10,
-                  "configJson": {
-                    "trigger": "BATTLE_START"
-                  }
-                },
-                {
-                  "effectType": "COUNTER",
-                  "targetType": "SELF",
-                  "multiplier": 1.57,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "ON_ENEMY_ACTION",
-                    "damageType": "MAGIC",
-                    "untilRound": 10,
-                    "eventSkillCode": "GOJO_PASSIVE_3"
-                  }
-                },
-                {
-                  "effectType": "DAMAGE",
-                  "targetType": "FRONT",
-                  "multiplier": 0.5,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "ROUND_START",
-                    "triggerRound": 11,
-                    "eventSkillCode": "GOJO_BASIC_1"
-                  }
-                }
-              ]
+              "source": "TAB_Skill_3.lua"
             },
             {
               "id": "5251717",
@@ -1570,44 +1338,7 @@
               "effectShow": "{0}",
               "name": "Thuật thức Phản Chuyển-Hách",
               "raw": "TAB_Skill[5251717] = {525171,2,{{}},5251711,7,3,3,0,1,0,0,0,\"$32?52517170\",{},\"10 lượt đầu tiên, bản thân không hành động, nhưng khi địch hành động tăng sát thương ma pháp bằng 162% lực công cho địch; sau 10 lượt dùng thêm đánh thường (hệ số sát thương 50%) để tấn công\",{0},0,0,\"Thuật thức Phản Chuyển-Hách\",{0,105},1,0,10000}",
-              "source": "TAB_Skill_3.lua",
-              "battleEffects": [
-                {
-                  "effectType": "ACTION_LOCK",
-                  "targetType": "SELF",
-                  "multiplier": 0,
-                  "chance": 1,
-                  "duration": 10,
-                  "configJson": {
-                    "trigger": "BATTLE_START"
-                  }
-                },
-                {
-                  "effectType": "COUNTER",
-                  "targetType": "SELF",
-                  "multiplier": 1.62,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "ON_ENEMY_ACTION",
-                    "damageType": "MAGIC",
-                    "untilRound": 10,
-                    "eventSkillCode": "GOJO_PASSIVE_3"
-                  }
-                },
-                {
-                  "effectType": "DAMAGE",
-                  "targetType": "FRONT",
-                  "multiplier": 0.5,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "ROUND_START",
-                    "triggerRound": 11,
-                    "eventSkillCode": "GOJO_BASIC_1"
-                  }
-                }
-              ]
+              "source": "TAB_Skill_3.lua"
             },
             {
               "id": "5251718",
@@ -1630,44 +1361,7 @@
               "effectShow": "{0}",
               "name": "Thuật thức Phản Chuyển-Hách",
               "raw": "TAB_Skill[5251718] = {525171,2,{{}},5251711,8,3,3,0,1,0,0,0,\"$32?52517180\",{},\"10 lượt đầu tiên, bản thân không hành động, nhưng khi địch hành động tăng sát thương ma pháp bằng 168% lực công cho địch; sau 10 lượt dùng thêm đánh thường (hệ số sát thương 50%) để tấn công\",{0},0,0,\"Thuật thức Phản Chuyển-Hách\",{0,0},1,0,10000}",
-              "source": "TAB_Skill_3.lua",
-              "battleEffects": [
-                {
-                  "effectType": "ACTION_LOCK",
-                  "targetType": "SELF",
-                  "multiplier": 0,
-                  "chance": 1,
-                  "duration": 10,
-                  "configJson": {
-                    "trigger": "BATTLE_START"
-                  }
-                },
-                {
-                  "effectType": "COUNTER",
-                  "targetType": "SELF",
-                  "multiplier": 1.68,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "ON_ENEMY_ACTION",
-                    "damageType": "MAGIC",
-                    "untilRound": 10,
-                    "eventSkillCode": "GOJO_PASSIVE_3"
-                  }
-                },
-                {
-                  "effectType": "DAMAGE",
-                  "targetType": "FRONT",
-                  "multiplier": 0.5,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "ROUND_START",
-                    "triggerRound": 11,
-                    "eventSkillCode": "GOJO_BASIC_1"
-                  }
-                }
-              ]
+              "source": "TAB_Skill_3.lua"
             }
           ],
           "scriptResolution": {
@@ -1690,44 +1384,7 @@
               }
             ],
             "effects": []
-          },
-          "battleEffects": [
-            {
-              "effectType": "ACTION_LOCK",
-              "targetType": "SELF",
-              "multiplier": 0,
-              "chance": 1,
-              "duration": 10,
-              "configJson": {
-                "trigger": "BATTLE_START"
-              }
-            },
-            {
-              "effectType": "COUNTER",
-              "targetType": "SELF",
-              "multiplier": 0.97,
-              "chance": 1,
-              "duration": 0,
-              "configJson": {
-                "trigger": "ON_ENEMY_ACTION",
-                "damageType": "MAGIC",
-                "untilRound": 10,
-                "eventSkillCode": "GOJO_PASSIVE_3"
-              }
-            },
-            {
-              "effectType": "DAMAGE",
-              "targetType": "FRONT",
-              "multiplier": 0.5,
-              "chance": 1,
-              "duration": 0,
-              "configJson": {
-                "trigger": "ROUND_START",
-                "triggerRound": 11,
-                "eventSkillCode": "GOJO_BASIC_1"
-              }
-            }
-          ]
+          }
         },
         {
           "order": 3,
@@ -1761,45 +1418,7 @@
               "effectShow": "{0}",
               "name": "Chú thuật Vô Hạ Hạn",
               "raw": "TAB_Skill[5251721] = {525172,2,{{}},5251721,1,3,3,0,0,0,0,0,\"null\",{{11,2000},{10,1000},{102,500}},\"Thuật thức tương truyền của gia tộc Gojo; tấn công tăng 20%, HP tăng 10%, bạo kích tăng 5%\",{0},0,0,\"Chú thuật Vô Hạ Hạn\",{1,6},2,0,10000}",
-              "source": "TAB_Skill_3.lua",
-              "battleEffects": [
-                {
-                  "effectType": "BUFF",
-                  "targetType": "SELF",
-                  "multiplier": 0.2,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "BATTLE_START",
-                    "statType": "ATK",
-                    "permanent": true
-                  }
-                },
-                {
-                  "effectType": "BUFF",
-                  "targetType": "SELF",
-                  "multiplier": 0.1,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "BATTLE_START",
-                    "statType": "MAX_HP",
-                    "permanent": true
-                  }
-                },
-                {
-                  "effectType": "BUFF",
-                  "targetType": "SELF",
-                  "multiplier": 0.05,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "BATTLE_START",
-                    "statType": "CRIT",
-                    "permanent": true
-                  }
-                }
-              ]
+              "source": "TAB_Skill_3.lua"
             },
             {
               "id": "5251722",
@@ -1820,45 +1439,7 @@
               "effectShow": "{0}",
               "name": "Chú thuật Vô Hạ Hạn",
               "raw": "TAB_Skill[5251722] = {525172,2,{{}},5251721,2,3,3,0,0,0,0,0,\"null\",{{11,3000},{10,1500},{102,1000}},\"Thuật thức tương truyền của gia tộc Gojo; tấn công tăng 30%, HP tăng 15%, bạo kích tăng 10%\",{0},0,0,\"Chú thuật Vô Hạ Hạn\",{1,8},2,0,10000}",
-              "source": "TAB_Skill_3.lua",
-              "battleEffects": [
-                {
-                  "effectType": "BUFF",
-                  "targetType": "SELF",
-                  "multiplier": 0.3,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "BATTLE_START",
-                    "statType": "ATK",
-                    "permanent": true
-                  }
-                },
-                {
-                  "effectType": "BUFF",
-                  "targetType": "SELF",
-                  "multiplier": 0.15,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "BATTLE_START",
-                    "statType": "MAX_HP",
-                    "permanent": true
-                  }
-                },
-                {
-                  "effectType": "BUFF",
-                  "targetType": "SELF",
-                  "multiplier": 0.1,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "BATTLE_START",
-                    "statType": "CRIT",
-                    "permanent": true
-                  }
-                }
-              ]
+              "source": "TAB_Skill_3.lua"
             },
             {
               "id": "5251723",
@@ -1879,45 +1460,7 @@
               "effectShow": "{0}",
               "name": "Chú thuật Vô Hạ Hạn",
               "raw": "TAB_Skill[5251723] = {525172,2,{{}},5251721,3,3,3,0,0,0,0,0,\"null\",{{11,4000},{10,2000},{102,1500}},\"Thuật thức tương truyền của gia tộc Gojo; tấn công tăng 40%, HP tăng 20%, bạo kích tăng 15%\",{0},0,0,\"Chú thuật Vô Hạ Hạn\",{1,101},2,0,10000}",
-              "source": "TAB_Skill_3.lua",
-              "battleEffects": [
-                {
-                  "effectType": "BUFF",
-                  "targetType": "SELF",
-                  "multiplier": 0.4,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "BATTLE_START",
-                    "statType": "ATK",
-                    "permanent": true
-                  }
-                },
-                {
-                  "effectType": "BUFF",
-                  "targetType": "SELF",
-                  "multiplier": 0.2,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "BATTLE_START",
-                    "statType": "MAX_HP",
-                    "permanent": true
-                  }
-                },
-                {
-                  "effectType": "BUFF",
-                  "targetType": "SELF",
-                  "multiplier": 0.15,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "BATTLE_START",
-                    "statType": "CRIT",
-                    "permanent": true
-                  }
-                }
-              ]
+              "source": "TAB_Skill_3.lua"
             },
             {
               "id": "5251724",
@@ -1938,45 +1481,7 @@
               "effectShow": "{0}",
               "name": "Chú thuật Vô Hạ Hạn",
               "raw": "TAB_Skill[5251724] = {525172,2,{{}},5251721,4,3,3,0,0,0,0,0,\"null\",{{11,4000},{10,2400},{102,1500}},\"Thuật thức tương truyền của gia tộc Gojo; tấn công tăng 40%, HP tăng 24%, bạo kích tăng 15%\",{0},0,0,\"Chú thuật Vô Hạ Hạn\",{1,102},2,0,10000}",
-              "source": "TAB_Skill_3.lua",
-              "battleEffects": [
-                {
-                  "effectType": "BUFF",
-                  "targetType": "SELF",
-                  "multiplier": 0.4,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "BATTLE_START",
-                    "statType": "ATK",
-                    "permanent": true
-                  }
-                },
-                {
-                  "effectType": "BUFF",
-                  "targetType": "SELF",
-                  "multiplier": 0.24,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "BATTLE_START",
-                    "statType": "MAX_HP",
-                    "permanent": true
-                  }
-                },
-                {
-                  "effectType": "BUFF",
-                  "targetType": "SELF",
-                  "multiplier": 0.15,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "BATTLE_START",
-                    "statType": "CRIT",
-                    "permanent": true
-                  }
-                }
-              ]
+              "source": "TAB_Skill_3.lua"
             },
             {
               "id": "5251725",
@@ -1997,45 +1502,7 @@
               "effectShow": "{0}",
               "name": "Chú thuật Vô Hạ Hạn",
               "raw": "TAB_Skill[5251725] = {525172,2,{{}},5251721,5,3,3,0,0,0,0,0,\"null\",{{11,4000},{10,2800},{102,1500}},\"Thuật thức tương truyền của gia tộc Gojo; tấn công tăng 40%, HP tăng 28%, bạo kích tăng 15%\",{0},0,0,\"Chú thuật Vô Hạ Hạn\",{1,103},2,0,10000}",
-              "source": "TAB_Skill_3.lua",
-              "battleEffects": [
-                {
-                  "effectType": "BUFF",
-                  "targetType": "SELF",
-                  "multiplier": 0.4,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "BATTLE_START",
-                    "statType": "ATK",
-                    "permanent": true
-                  }
-                },
-                {
-                  "effectType": "BUFF",
-                  "targetType": "SELF",
-                  "multiplier": 0.28,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "BATTLE_START",
-                    "statType": "MAX_HP",
-                    "permanent": true
-                  }
-                },
-                {
-                  "effectType": "BUFF",
-                  "targetType": "SELF",
-                  "multiplier": 0.15,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "BATTLE_START",
-                    "statType": "CRIT",
-                    "permanent": true
-                  }
-                }
-              ]
+              "source": "TAB_Skill_3.lua"
             },
             {
               "id": "5251726",
@@ -2056,45 +1523,7 @@
               "effectShow": "{0}",
               "name": "Chú thuật Vô Hạ Hạn",
               "raw": "TAB_Skill[5251726] = {525172,2,{{}},5251721,6,3,3,0,0,0,0,0,\"null\",{{11,4000},{10,3200},{102,1500}},\"Thuật thức tương truyền của gia tộc Gojo; tấn công tăng 40%, HP tăng 32%, bạo kích tăng 15%\",{0},0,0,\"Chú thuật Vô Hạ Hạn\",{1,104},2,0,10000}",
-              "source": "TAB_Skill_3.lua",
-              "battleEffects": [
-                {
-                  "effectType": "BUFF",
-                  "targetType": "SELF",
-                  "multiplier": 0.4,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "BATTLE_START",
-                    "statType": "ATK",
-                    "permanent": true
-                  }
-                },
-                {
-                  "effectType": "BUFF",
-                  "targetType": "SELF",
-                  "multiplier": 0.32,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "BATTLE_START",
-                    "statType": "MAX_HP",
-                    "permanent": true
-                  }
-                },
-                {
-                  "effectType": "BUFF",
-                  "targetType": "SELF",
-                  "multiplier": 0.15,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "BATTLE_START",
-                    "statType": "CRIT",
-                    "permanent": true
-                  }
-                }
-              ]
+              "source": "TAB_Skill_3.lua"
             },
             {
               "id": "5251727",
@@ -2115,45 +1544,7 @@
               "effectShow": "{0}",
               "name": "Chú thuật Vô Hạ Hạn",
               "raw": "TAB_Skill[5251727] = {525172,2,{{}},5251721,7,3,3,0,0,0,0,0,\"null\",{{11,4000},{10,3600},{102,1500}},\"Thuật thức tương truyền của gia tộc Gojo; tấn công tăng 40%, HP tăng 36%, bạo kích tăng 15%\",{0},0,0,\"Chú thuật Vô Hạ Hạn\",{1,105},2,0,10000}",
-              "source": "TAB_Skill_3.lua",
-              "battleEffects": [
-                {
-                  "effectType": "BUFF",
-                  "targetType": "SELF",
-                  "multiplier": 0.4,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "BATTLE_START",
-                    "statType": "ATK",
-                    "permanent": true
-                  }
-                },
-                {
-                  "effectType": "BUFF",
-                  "targetType": "SELF",
-                  "multiplier": 0.36,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "BATTLE_START",
-                    "statType": "MAX_HP",
-                    "permanent": true
-                  }
-                },
-                {
-                  "effectType": "BUFF",
-                  "targetType": "SELF",
-                  "multiplier": 0.15,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "BATTLE_START",
-                    "statType": "CRIT",
-                    "permanent": true
-                  }
-                }
-              ]
+              "source": "TAB_Skill_3.lua"
             },
             {
               "id": "5251728",
@@ -2174,90 +1565,14 @@
               "effectShow": "{0}",
               "name": "Chú thuật Vô Hạ Hạn",
               "raw": "TAB_Skill[5251728] = {525172,2,{{}},5251721,8,3,3,0,0,0,0,0,\"null\",{{11,4000},{10,4000},{102,1500}},\"Thuật thức tương truyền của gia tộc Gojo; tấn công tăng 40%, HP tăng 40%, bạo kích tăng 15%\",{0},0,0,\"Chú thuật Vô Hạ Hạn\",{1,0},2,0,10000}",
-              "source": "TAB_Skill_3.lua",
-              "battleEffects": [
-                {
-                  "effectType": "BUFF",
-                  "targetType": "SELF",
-                  "multiplier": 0.4,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "BATTLE_START",
-                    "statType": "ATK",
-                    "permanent": true
-                  }
-                },
-                {
-                  "effectType": "BUFF",
-                  "targetType": "SELF",
-                  "multiplier": 0.4,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "BATTLE_START",
-                    "statType": "MAX_HP",
-                    "permanent": true
-                  }
-                },
-                {
-                  "effectType": "BUFF",
-                  "targetType": "SELF",
-                  "multiplier": 0.15,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "BATTLE_START",
-                    "statType": "CRIT",
-                    "permanent": true
-                  }
-                }
-              ]
+              "source": "TAB_Skill_3.lua"
             }
           ],
           "scriptResolution": {
             "sse": [],
             "performance": [],
             "effects": []
-          },
-          "battleEffects": [
-            {
-              "effectType": "BUFF",
-              "targetType": "SELF",
-              "multiplier": 0.2,
-              "chance": 1,
-              "duration": 0,
-              "configJson": {
-                "trigger": "BATTLE_START",
-                "statType": "ATK",
-                "permanent": true
-              }
-            },
-            {
-              "effectType": "BUFF",
-              "targetType": "SELF",
-              "multiplier": 0.1,
-              "chance": 1,
-              "duration": 0,
-              "configJson": {
-                "trigger": "BATTLE_START",
-                "statType": "MAX_HP",
-                "permanent": true
-              }
-            },
-            {
-              "effectType": "BUFF",
-              "targetType": "SELF",
-              "multiplier": 0.05,
-              "chance": 1,
-              "duration": 0,
-              "configJson": {
-                "trigger": "BATTLE_START",
-                "statType": "CRIT",
-                "permanent": true
-              }
-            }
-          ]
+          }
         },
         {
           "order": 4,
@@ -2311,50 +1626,7 @@
               "effectShow": "{0}",
               "name": "Lục Nhãn",
               "raw": "TAB_Skill[5251731] = {525173,2,{{}},5251731,1,3,3,0,2,0,0,0,\"$32?52517311?52517311?52517311?52517311?52517311?52517310\",{},\"Khi bắt đầu chiến đấu, tăng cho bản thân 5 tầng miễn sát thương 3%, duy trì 4 lượt; khi địch tử vong, tăng cho bản thân 6% công, tối đa cộng dồn 3 tầng, tất cả trạng thái buff đều không thể thanh tẩy; khi đơn thể địch hồi sinh, truy sát mục tiêu, gây ra 10% sát thương ma pháp\",{0},0,0,\"Lục Nhãn\",{3,6},3,0,10000}",
-              "source": "TAB_Skill_3.lua",
-              "battleEffects": [
-                {
-                  "effectType": "BUFF",
-                  "targetType": "SELF",
-                  "multiplier": 0.03,
-                  "chance": 1,
-                  "duration": 4,
-                  "configJson": {
-                    "trigger": "BATTLE_START",
-                    "statType": "DAMAGE_REDUCTION",
-                    "stacks": 5,
-                    "maxStacks": 5,
-                    "purgeable": false
-                  }
-                },
-                {
-                  "effectType": "BUFF",
-                  "targetType": "SELF",
-                  "multiplier": 0.06,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "ON_KILL",
-                    "statType": "ATK",
-                    "permanent": true,
-                    "stacks": 1,
-                    "maxStacks": 3,
-                    "purgeable": false
-                  }
-                },
-                {
-                  "effectType": "COUNTER",
-                  "targetType": "SELF",
-                  "multiplier": 0.1,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "ON_REVIVE",
-                    "damageType": "MAGIC",
-                    "eventSkillCode": "GOJO_PASSIVE_5"
-                  }
-                }
-              ]
+              "source": "TAB_Skill_3.lua"
             },
             {
               "id": "5251732",
@@ -2378,50 +1650,7 @@
               "effectShow": "{0}",
               "name": "Lục Nhãn",
               "raw": "TAB_Skill[5251732] = {525173,2,{{}},5251731,2,3,3,0,2,0,0,0,\"$32?52517321?52517321?52517321?52517321?52517321?52517320\",{},\"Khi bắt đầu chiến đấu, tăng cho bản thân 5 tầng miễn sát thương 4%, duy trì 4 lượt; khi địch tử vong, tăng cho bản thân 8% công, tối đa cộng dồn 3 tầng, tất cả trạng thái buff đều không thể thanh tẩy; khi đơn thể địch hồi sinh, truy sát mục tiêu, gây ra 15% sát thương ma pháp\",{0},0,0,\"Lục Nhãn\",{3,9},3,0,10000}",
-              "source": "TAB_Skill_3.lua",
-              "battleEffects": [
-                {
-                  "effectType": "BUFF",
-                  "targetType": "SELF",
-                  "multiplier": 0.04,
-                  "chance": 1,
-                  "duration": 4,
-                  "configJson": {
-                    "trigger": "BATTLE_START",
-                    "statType": "DAMAGE_REDUCTION",
-                    "stacks": 5,
-                    "maxStacks": 5,
-                    "purgeable": false
-                  }
-                },
-                {
-                  "effectType": "BUFF",
-                  "targetType": "SELF",
-                  "multiplier": 0.08,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "ON_KILL",
-                    "statType": "ATK",
-                    "permanent": true,
-                    "stacks": 1,
-                    "maxStacks": 3,
-                    "purgeable": false
-                  }
-                },
-                {
-                  "effectType": "COUNTER",
-                  "targetType": "SELF",
-                  "multiplier": 0.15,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "ON_REVIVE",
-                    "damageType": "MAGIC",
-                    "eventSkillCode": "GOJO_PASSIVE_5"
-                  }
-                }
-              ]
+              "source": "TAB_Skill_3.lua"
             },
             {
               "id": "5251733",
@@ -2445,50 +1674,7 @@
               "effectShow": "{0}",
               "name": "Lục Nhãn",
               "raw": "TAB_Skill[5251733] = {525173,2,{{}},5251731,3,3,3,0,2,0,0,0,\"$32?52517331?52517331?52517331?52517331?52517331?52517330\",{},\"Khi bắt đầu chiến đấu, tăng cho bản thân 5 tầng miễn sát thương 5%, duy trì 4 lượt; khi địch tử vong, tăng cho bản thân 10% công, tối đa cộng dồn 3 tầng, tất cả trạng thái buff đều không thể thanh tẩy; khi đơn thể địch hồi sinh, truy sát mục tiêu, gây ra 20% sát thương ma pháp\",{0},0,0,\"Lục Nhãn\",{3,101},3,0,10000}",
-              "source": "TAB_Skill_3.lua",
-              "battleEffects": [
-                {
-                  "effectType": "BUFF",
-                  "targetType": "SELF",
-                  "multiplier": 0.05,
-                  "chance": 1,
-                  "duration": 4,
-                  "configJson": {
-                    "trigger": "BATTLE_START",
-                    "statType": "DAMAGE_REDUCTION",
-                    "stacks": 5,
-                    "maxStacks": 5,
-                    "purgeable": false
-                  }
-                },
-                {
-                  "effectType": "BUFF",
-                  "targetType": "SELF",
-                  "multiplier": 0.1,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "ON_KILL",
-                    "statType": "ATK",
-                    "permanent": true,
-                    "stacks": 1,
-                    "maxStacks": 3,
-                    "purgeable": false
-                  }
-                },
-                {
-                  "effectType": "COUNTER",
-                  "targetType": "SELF",
-                  "multiplier": 0.2,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "ON_REVIVE",
-                    "damageType": "MAGIC",
-                    "eventSkillCode": "GOJO_PASSIVE_5"
-                  }
-                }
-              ]
+              "source": "TAB_Skill_3.lua"
             },
             {
               "id": "5251734",
@@ -2512,50 +1698,7 @@
               "effectShow": "{0}",
               "name": "Lục Nhãn",
               "raw": "TAB_Skill[5251734] = {525173,2,{{}},5251731,4,3,3,0,2,0,0,0,\"$32?52517341?52517341?52517341?52517341?52517341?52517340\",{},\"Khi bắt đầu chiến đấu, tăng cho bản thân 5 tầng miễn sát thương 5.2%, duy trì 4 lượt; khi địch tử vong, tăng cho bản thân 10.4% công, tối đa cộng dồn 3 tầng, tất cả trạng thái buff đều không thể thanh tẩy; khi đơn thể địch hồi sinh, truy sát mục tiêu, gây ra 20% sát thương ma pháp\",{0},0,0,\"Lục Nhãn\",{3,102},3,0,10000}",
-              "source": "TAB_Skill_3.lua",
-              "battleEffects": [
-                {
-                  "effectType": "BUFF",
-                  "targetType": "SELF",
-                  "multiplier": 0.052,
-                  "chance": 1,
-                  "duration": 4,
-                  "configJson": {
-                    "trigger": "BATTLE_START",
-                    "statType": "DAMAGE_REDUCTION",
-                    "stacks": 5,
-                    "maxStacks": 5,
-                    "purgeable": false
-                  }
-                },
-                {
-                  "effectType": "BUFF",
-                  "targetType": "SELF",
-                  "multiplier": 0.104,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "ON_KILL",
-                    "statType": "ATK",
-                    "permanent": true,
-                    "stacks": 1,
-                    "maxStacks": 3,
-                    "purgeable": false
-                  }
-                },
-                {
-                  "effectType": "COUNTER",
-                  "targetType": "SELF",
-                  "multiplier": 0.2,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "ON_REVIVE",
-                    "damageType": "MAGIC",
-                    "eventSkillCode": "GOJO_PASSIVE_5"
-                  }
-                }
-              ]
+              "source": "TAB_Skill_3.lua"
             },
             {
               "id": "5251735",
@@ -2579,50 +1722,7 @@
               "effectShow": "{0}",
               "name": "Lục Nhãn",
               "raw": "TAB_Skill[5251735] = {525173,2,{{}},5251731,5,3,3,0,2,0,0,0,\"$32?52517351?52517351?52517351?52517351?52517351?52517350\",{},\"Khi bắt đầu chiến đấu, tăng cho bản thân 5 tầng miễn sát thương 5.4%, duy trì 4 lượt; khi địch tử vong, tăng cho bản thân 10.8% công, tối đa cộng dồn 3 tầng, tất cả trạng thái buff đều không thể thanh tẩy; khi đơn thể địch hồi sinh, truy sát mục tiêu, gây ra 20% sát thương ma pháp\",{0},0,0,\"Lục Nhãn\",{3,103},3,0,10000}",
-              "source": "TAB_Skill_3.lua",
-              "battleEffects": [
-                {
-                  "effectType": "BUFF",
-                  "targetType": "SELF",
-                  "multiplier": 0.054,
-                  "chance": 1,
-                  "duration": 4,
-                  "configJson": {
-                    "trigger": "BATTLE_START",
-                    "statType": "DAMAGE_REDUCTION",
-                    "stacks": 5,
-                    "maxStacks": 5,
-                    "purgeable": false
-                  }
-                },
-                {
-                  "effectType": "BUFF",
-                  "targetType": "SELF",
-                  "multiplier": 0.108,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "ON_KILL",
-                    "statType": "ATK",
-                    "permanent": true,
-                    "stacks": 1,
-                    "maxStacks": 3,
-                    "purgeable": false
-                  }
-                },
-                {
-                  "effectType": "COUNTER",
-                  "targetType": "SELF",
-                  "multiplier": 0.2,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "ON_REVIVE",
-                    "damageType": "MAGIC",
-                    "eventSkillCode": "GOJO_PASSIVE_5"
-                  }
-                }
-              ]
+              "source": "TAB_Skill_3.lua"
             },
             {
               "id": "5251736",
@@ -2646,50 +1746,7 @@
               "effectShow": "{0}",
               "name": "Lục Nhãn",
               "raw": "TAB_Skill[5251736] = {525173,2,{{}},5251731,6,3,3,0,2,0,0,0,\"$32?52517361?52517361?52517361?52517361?52517361?52517360\",{},\"Khi bắt đầu chiến đấu, tăng cho bản thân 5 tầng miễn sát thương 5.6%, duy trì 4 lượt; khi địch tử vong, tăng cho bản thân 11.2% công, tối đa cộng dồn 3 tầng, tất cả trạng thái buff đều không thể thanh tẩy; khi đơn thể địch hồi sinh, truy sát mục tiêu, gây ra 20% sát thương ma pháp\",{0},0,0,\"Lục Nhãn\",{3,104},3,0,10000}",
-              "source": "TAB_Skill_3.lua",
-              "battleEffects": [
-                {
-                  "effectType": "BUFF",
-                  "targetType": "SELF",
-                  "multiplier": 0.056,
-                  "chance": 1,
-                  "duration": 4,
-                  "configJson": {
-                    "trigger": "BATTLE_START",
-                    "statType": "DAMAGE_REDUCTION",
-                    "stacks": 5,
-                    "maxStacks": 5,
-                    "purgeable": false
-                  }
-                },
-                {
-                  "effectType": "BUFF",
-                  "targetType": "SELF",
-                  "multiplier": 0.112,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "ON_KILL",
-                    "statType": "ATK",
-                    "permanent": true,
-                    "stacks": 1,
-                    "maxStacks": 3,
-                    "purgeable": false
-                  }
-                },
-                {
-                  "effectType": "COUNTER",
-                  "targetType": "SELF",
-                  "multiplier": 0.2,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "ON_REVIVE",
-                    "damageType": "MAGIC",
-                    "eventSkillCode": "GOJO_PASSIVE_5"
-                  }
-                }
-              ]
+              "source": "TAB_Skill_3.lua"
             },
             {
               "id": "5251737",
@@ -2713,50 +1770,7 @@
               "effectShow": "{0}",
               "name": "Lục Nhãn",
               "raw": "TAB_Skill[5251737] = {525173,2,{{}},5251731,7,3,3,0,2,0,0,0,\"$32?52517371?52517371?52517371?52517371?52517371?52517370\",{},\"Khi bắt đầu chiến đấu, tăng cho bản thân 5 tầng miễn sát thương 5.8%, duy trì 4 lượt; khi địch tử vong, tăng cho bản thân 11.6% công, tối đa cộng dồn 3 tầng, tất cả trạng thái buff đều không thể thanh tẩy; khi đơn thể địch hồi sinh, truy sát mục tiêu, gây ra 20% sát thương ma pháp\",{0},0,0,\"Lục Nhãn\",{3,105},3,0,10000}",
-              "source": "TAB_Skill_3.lua",
-              "battleEffects": [
-                {
-                  "effectType": "BUFF",
-                  "targetType": "SELF",
-                  "multiplier": 0.058,
-                  "chance": 1,
-                  "duration": 4,
-                  "configJson": {
-                    "trigger": "BATTLE_START",
-                    "statType": "DAMAGE_REDUCTION",
-                    "stacks": 5,
-                    "maxStacks": 5,
-                    "purgeable": false
-                  }
-                },
-                {
-                  "effectType": "BUFF",
-                  "targetType": "SELF",
-                  "multiplier": 0.116,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "ON_KILL",
-                    "statType": "ATK",
-                    "permanent": true,
-                    "stacks": 1,
-                    "maxStacks": 3,
-                    "purgeable": false
-                  }
-                },
-                {
-                  "effectType": "COUNTER",
-                  "targetType": "SELF",
-                  "multiplier": 0.2,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "ON_REVIVE",
-                    "damageType": "MAGIC",
-                    "eventSkillCode": "GOJO_PASSIVE_5"
-                  }
-                }
-              ]
+              "source": "TAB_Skill_3.lua"
             },
             {
               "id": "5251738",
@@ -2780,50 +1794,7 @@
               "effectShow": "{0}",
               "name": "Lục Nhãn",
               "raw": "TAB_Skill[5251738] = {525173,2,{{}},5251731,8,3,3,0,2,0,0,0,\"$32?52517381?52517381?52517381?52517381?52517381?52517380\",{},\"Khi bắt đầu chiến đấu, tăng cho bản thân 5 tầng miễn sát thương 6%, duy trì 4 lượt; khi địch tử vong, tăng cho bản thân 12% công, tối đa cộng dồn 3 tầng, tất cả trạng thái buff đều không thể thanh tẩy; khi đơn thể địch hồi sinh, truy sát mục tiêu, gây ra 20% sát thương ma pháp\",{0},0,0,\"Lục Nhãn\",{3,0},3,0,10000}",
-              "source": "TAB_Skill_3.lua",
-              "battleEffects": [
-                {
-                  "effectType": "BUFF",
-                  "targetType": "SELF",
-                  "multiplier": 0.06,
-                  "chance": 1,
-                  "duration": 4,
-                  "configJson": {
-                    "trigger": "BATTLE_START",
-                    "statType": "DAMAGE_REDUCTION",
-                    "stacks": 5,
-                    "maxStacks": 5,
-                    "purgeable": false
-                  }
-                },
-                {
-                  "effectType": "BUFF",
-                  "targetType": "SELF",
-                  "multiplier": 0.12,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "ON_KILL",
-                    "statType": "ATK",
-                    "permanent": true,
-                    "stacks": 1,
-                    "maxStacks": 3,
-                    "purgeable": false
-                  }
-                },
-                {
-                  "effectType": "COUNTER",
-                  "targetType": "SELF",
-                  "multiplier": 0.2,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "ON_REVIVE",
-                    "damageType": "MAGIC",
-                    "eventSkillCode": "GOJO_PASSIVE_5"
-                  }
-                }
-              ]
+              "source": "TAB_Skill_3.lua"
             }
           ],
           "scriptResolution": {
@@ -2846,50 +1817,7 @@
               }
             ],
             "effects": []
-          },
-          "battleEffects": [
-            {
-              "effectType": "BUFF",
-              "targetType": "SELF",
-              "multiplier": 0.03,
-              "chance": 1,
-              "duration": 4,
-              "configJson": {
-                "trigger": "BATTLE_START",
-                "statType": "DAMAGE_REDUCTION",
-                "stacks": 5,
-                "maxStacks": 5,
-                "purgeable": false
-              }
-            },
-            {
-              "effectType": "BUFF",
-              "targetType": "SELF",
-              "multiplier": 0.06,
-              "chance": 1,
-              "duration": 0,
-              "configJson": {
-                "trigger": "ON_KILL",
-                "statType": "ATK",
-                "permanent": true,
-                "stacks": 1,
-                "maxStacks": 3,
-                "purgeable": false
-              }
-            },
-            {
-              "effectType": "COUNTER",
-              "targetType": "SELF",
-              "multiplier": 0.1,
-              "chance": 1,
-              "duration": 0,
-              "configJson": {
-                "trigger": "ON_REVIVE",
-                "damageType": "MAGIC",
-                "eventSkillCode": "GOJO_PASSIVE_5"
-              }
-            }
-          ]
+          }
         },
         {
           "order": 5,
@@ -2934,23 +1862,7 @@
               "effectShow": "{0}",
               "name": "Triển khai {Khoảng Trống Vô Tận}",
               "raw": "TAB_Skill[5251741] = {525174,2,{{}},5251741,1,3,3,0,0,0,0,0,\"$32?52517411\",{},\"Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 15%\",{0},0,0,\"Triển khai {Khoảng Trống Vô Tận}\",{5,6},4,0,10000}",
-              "source": "TAB_Skill_3.lua",
-              "battleEffects": [
-                {
-                  "effectType": "DEBUFF",
-                  "targetType": "ALL_ENEMIES",
-                  "multiplier": 0.15,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "BATTLE_START",
-                    "statType": "DAMAGE_TAKEN",
-                    "permanent": true,
-                    "ignoreImmunity": true,
-                    "eventSkillCode": "GOJO_ACTIVE_2"
-                  }
-                }
-              ]
+              "source": "TAB_Skill_3.lua"
             },
             {
               "id": "5251742",
@@ -2973,23 +1885,7 @@
               "effectShow": "{0}",
               "name": "Triển khai {Khoảng Trống Vô Tận}",
               "raw": "TAB_Skill[5251742] = {525174,2,{{}},5251741,2,3,3,0,0,0,0,0,\"$32?52517421\",{},\"Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 20%\",{0},0,0,\"Triển khai {Khoảng Trống Vô Tận}\",{5,10},4,0,10000}",
-              "source": "TAB_Skill_3.lua",
-              "battleEffects": [
-                {
-                  "effectType": "DEBUFF",
-                  "targetType": "ALL_ENEMIES",
-                  "multiplier": 0.2,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "BATTLE_START",
-                    "statType": "DAMAGE_TAKEN",
-                    "permanent": true,
-                    "ignoreImmunity": true,
-                    "eventSkillCode": "GOJO_ACTIVE_2"
-                  }
-                }
-              ]
+              "source": "TAB_Skill_3.lua"
             },
             {
               "id": "5251743",
@@ -3012,23 +1908,7 @@
               "effectShow": "{0}",
               "name": "Triển khai {Khoảng Trống Vô Tận}",
               "raw": "TAB_Skill[5251743] = {525174,2,{{}},5251741,3,3,3,0,0,0,0,0,\"$32?52517431\",{},\"Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 25%\",{0},0,0,\"Triển khai {Khoảng Trống Vô Tận}\",{5,101},4,0,10000}",
-              "source": "TAB_Skill_3.lua",
-              "battleEffects": [
-                {
-                  "effectType": "DEBUFF",
-                  "targetType": "ALL_ENEMIES",
-                  "multiplier": 0.25,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "BATTLE_START",
-                    "statType": "DAMAGE_TAKEN",
-                    "permanent": true,
-                    "ignoreImmunity": true,
-                    "eventSkillCode": "GOJO_ACTIVE_2"
-                  }
-                }
-              ]
+              "source": "TAB_Skill_3.lua"
             },
             {
               "id": "5251744",
@@ -3051,23 +1931,7 @@
               "effectShow": "{0}",
               "name": "Triển khai {Khoảng Trống Vô Tận}",
               "raw": "TAB_Skill[5251744] = {525174,2,{{}},5251741,4,3,3,0,0,0,0,0,\"$32?52517441\",{},\"Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 26%\",{0},0,0,\"Triển khai {Khoảng Trống Vô Tận}\",{5,102},4,0,10000}",
-              "source": "TAB_Skill_3.lua",
-              "battleEffects": [
-                {
-                  "effectType": "DEBUFF",
-                  "targetType": "ALL_ENEMIES",
-                  "multiplier": 0.26,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "BATTLE_START",
-                    "statType": "DAMAGE_TAKEN",
-                    "permanent": true,
-                    "ignoreImmunity": true,
-                    "eventSkillCode": "GOJO_ACTIVE_2"
-                  }
-                }
-              ]
+              "source": "TAB_Skill_3.lua"
             },
             {
               "id": "5251745",
@@ -3090,23 +1954,7 @@
               "effectShow": "{0}",
               "name": "Triển khai {Khoảng Trống Vô Tận}",
               "raw": "TAB_Skill[5251745] = {525174,2,{{}},5251741,5,3,3,0,0,0,0,0,\"$32?52517451\",{},\"Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 27%\",{0},0,0,\"Triển khai {Khoảng Trống Vô Tận}\",{5,103},4,0,10000}",
-              "source": "TAB_Skill_3.lua",
-              "battleEffects": [
-                {
-                  "effectType": "DEBUFF",
-                  "targetType": "ALL_ENEMIES",
-                  "multiplier": 0.27,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "BATTLE_START",
-                    "statType": "DAMAGE_TAKEN",
-                    "permanent": true,
-                    "ignoreImmunity": true,
-                    "eventSkillCode": "GOJO_ACTIVE_2"
-                  }
-                }
-              ]
+              "source": "TAB_Skill_3.lua"
             },
             {
               "id": "5251746",
@@ -3129,23 +1977,7 @@
               "effectShow": "{0}",
               "name": "Triển khai {Khoảng Trống Vô Tận}",
               "raw": "TAB_Skill[5251746] = {525174,2,{{}},5251741,6,3,3,0,0,0,0,0,\"$32?52517461\",{},\"Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 28%\",{0},0,0,\"Triển khai {Khoảng Trống Vô Tận}\",{5,104},4,0,10000}",
-              "source": "TAB_Skill_3.lua",
-              "battleEffects": [
-                {
-                  "effectType": "DEBUFF",
-                  "targetType": "ALL_ENEMIES",
-                  "multiplier": 0.28,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "BATTLE_START",
-                    "statType": "DAMAGE_TAKEN",
-                    "permanent": true,
-                    "ignoreImmunity": true,
-                    "eventSkillCode": "GOJO_ACTIVE_2"
-                  }
-                }
-              ]
+              "source": "TAB_Skill_3.lua"
             },
             {
               "id": "5251747",
@@ -3168,23 +2000,7 @@
               "effectShow": "{0}",
               "name": "Triển khai {Khoảng Trống Vô Tận}",
               "raw": "TAB_Skill[5251747] = {525174,2,{{}},5251741,7,3,3,0,0,0,0,0,\"$32?52517471\",{},\"Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 29%\",{0},0,0,\"Triển khai {Khoảng Trống Vô Tận}\",{5,105},4,0,10000}",
-              "source": "TAB_Skill_3.lua",
-              "battleEffects": [
-                {
-                  "effectType": "DEBUFF",
-                  "targetType": "ALL_ENEMIES",
-                  "multiplier": 0.29,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "BATTLE_START",
-                    "statType": "DAMAGE_TAKEN",
-                    "permanent": true,
-                    "ignoreImmunity": true,
-                    "eventSkillCode": "GOJO_ACTIVE_2"
-                  }
-                }
-              ]
+              "source": "TAB_Skill_3.lua"
             },
             {
               "id": "5251748",
@@ -3207,46 +2023,14 @@
               "effectShow": "{0}",
               "name": "Triển khai {Khoảng Trống Vô Tận}",
               "raw": "TAB_Skill[5251748] = {525174,2,{{}},5251741,8,3,3,0,0,0,0,0,\"$32?52517481\",{},\"Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 30%\",{0},0,0,\"Triển khai {Khoảng Trống Vô Tận}\",{5,0},4,0,10000}",
-              "source": "TAB_Skill_3.lua",
-              "battleEffects": [
-                {
-                  "effectType": "DEBUFF",
-                  "targetType": "ALL_ENEMIES",
-                  "multiplier": 0.3,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "BATTLE_START",
-                    "statType": "DAMAGE_TAKEN",
-                    "permanent": true,
-                    "ignoreImmunity": true,
-                    "eventSkillCode": "GOJO_ACTIVE_2"
-                  }
-                }
-              ]
+              "source": "TAB_Skill_3.lua"
             }
           ],
           "scriptResolution": {
             "sse": [],
             "performance": [],
             "effects": []
-          },
-          "battleEffects": [
-            {
-              "effectType": "DEBUFF",
-              "targetType": "ALL_ENEMIES",
-              "multiplier": 0.15,
-              "chance": 1,
-              "duration": 0,
-              "configJson": {
-                "trigger": "BATTLE_START",
-                "statType": "DAMAGE_TAKEN",
-                "permanent": true,
-                "ignoreImmunity": true,
-                "eventSkillCode": "GOJO_ACTIVE_2"
-              }
-            }
-          ]
+          }
         }
       ]
     },
