@@ -139,6 +139,15 @@ public class DatabaseResetInitializer implements ApplicationRunner {
             }
         }
 
+        if (existingTables.contains("hero_skill_effects")) {
+            try (PreparedStatement statement = connection.prepareStatement(
+                    "DELETE FROM hero_skill_effects WHERE hero_code = ?"
+            )) {
+                statement.setString(1, "gojo");
+                statement.executeUpdate();
+            }
+        }
+
         try (PreparedStatement statement = connection.prepareStatement(
                 "DELETE FROM hero_skill_definitions WHERE hero_code = ?"
         )) {
