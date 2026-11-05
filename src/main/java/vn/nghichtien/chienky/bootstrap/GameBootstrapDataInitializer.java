@@ -260,10 +260,10 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
         }
 
         if (!skillAnimations.has("GOJO_BASIC_1")
-                || !skillAnimations.has("GOJO_ACTIVE_2")
-                || !skillAnimations.has("GOJO_PASSIVE_3")
-                || !skillAnimations.has("GOJO_PASSIVE_5")
-                || skillAnimations.has("GOJO_PASSIVE_4")) {
+                || !skillAnimations.has("GOJO_ACTIVE_5")
+                || !skillAnimations.has("GOJO_PASSIVE_2")
+                || !skillAnimations.has("GOJO_PASSIVE_4")
+                || skillAnimations.has("GOJO_PASSIVE_3")) {
             throw new IllegalStateException(
                     "Mapping animation Gojo sinh từ Lua không đúng tập skill action: "
                             + skillAnimations
@@ -1347,10 +1347,10 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
             if ("gojo".equalsIgnoreCase(definition.getHeroCode())) {
                 switch (skillCode) {
                     case "GOJO_BASIC_1" -> seedGojoSkillEffects(skill, 1);
-                    case "GOJO_PASSIVE_3" -> seedGojoHachEffects(skill);
-                    case "GOJO_PASSIVE_4" -> seedGojoInfinityEffects(skill);
-                    case "GOJO_PASSIVE_5" -> seedGojoSixEyesEffects(skill);
-                    case "GOJO_ACTIVE_2" -> seedGojoDomainEffects(skill);
+                    case "GOJO_PASSIVE_2" -> seedGojoHachEffects(skill);
+                    case "GOJO_PASSIVE_3" -> seedGojoInfinityEffects(skill);
+                    case "GOJO_PASSIVE_4" -> seedGojoSixEyesEffects(skill);
+                    case "GOJO_ACTIVE_5" -> seedGojoDomainEffects(skill);
                     default -> { }
                 }
             }
@@ -1391,7 +1391,7 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                         "{\"trigger\":\"BATTLE_START\"}"),
                 createGojoEffectJson("COUNTER","SELF",magicCounter[level - 1],0,
                         "{\"trigger\":\"ON_ENEMY_ACTION\",\"damageType\":\"MAGIC\","
-                                + "\"untilRound\":10,\"eventSkillCode\":\"GOJO_PASSIVE_3\"}"),
+                                + "\"untilRound\":10,\"eventSkillCode\":\"GOJO_PASSIVE_2\"}"),
                 createGojoEffectJson("DAMAGE","FRONT","0.5",0,
                         "{\"trigger\":\"ROUND_START\",\"triggerRound\":11,"
                                 + "\"eventSkillCode\":\"GOJO_BASIC_1\"}")
@@ -1402,7 +1402,7 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
         HeroSkillEffect counter = new HeroSkillEffect(2,"COUNTER","SELF");
         counter.updateParameters(new BigDecimal("0.97"),BigDecimal.ONE,0);
         counter.updateConfig("{\"trigger\":\"ON_ENEMY_ACTION\",\"damageType\":\"MAGIC\","
-                + "\"untilRound\":10,\"eventSkillCode\":\"GOJO_PASSIVE_3\"}");
+                + "\"untilRound\":10,\"eventSkillCode\":\"GOJO_PASSIVE_2\"}");
         HeroSkillEffect followUp = new HeroSkillEffect(3,"DAMAGE","FRONT");
         followUp.updateParameters(new BigDecimal("0.5"),BigDecimal.ONE,0);
         followUp.updateConfig("{\"trigger\":\"ROUND_START\",\"triggerRound\":11,"
@@ -1594,7 +1594,7 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                     effects.add(createGojoEffectJson(
                             "DEBUFF", "ALL_ENEMIES", damageTaken[level - 1], 0,
                             "{\"trigger\":\"BATTLE_START\",\"statType\":\"DAMAGE_TAKEN\","
-                                    + "\"permanent\":true,\"ignoreImmunity\":true,\"eventSkillCode\":\"GOJO_ACTIVE_2\"}"
+                                    + "\"permanent\":true,\"ignoreImmunity\":true,\"eventSkillCode\":\"GOJO_ACTIVE_5\"}"
                     ));
                     row.set("battleEffects", effects);
                 }
@@ -1602,14 +1602,14 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
             }
         } catch (IOException exception) {
             throw new IllegalStateException(
-                    "Không thể tạo battleEffects theo level cho GOJO_ACTIVE_2",
+                    "Không thể tạo battleEffects theo level cho GOJO_ACTIVE_5",
                     exception
             );
         }
         HeroSkillEffect domain = new HeroSkillEffect(1, "DEBUFF", "ALL_ENEMIES");
         domain.updateParameters(new BigDecimal("0.15"), BigDecimal.ONE, 0);
         domain.updateConfig("{\"trigger\":\"BATTLE_START\",\"statType\":\"DAMAGE_TAKEN\","
-                + "\"permanent\":true,\"ignoreImmunity\":true,\"eventSkillCode\":\"GOJO_ACTIVE_2\"}");
+                + "\"permanent\":true,\"ignoreImmunity\":true,\"eventSkillCode\":\"GOJO_ACTIVE_5\"}");
         skill.replaceEffects(List.of(domain));
     }
 
@@ -1655,7 +1655,7 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                     battleEffects.add(createGojoEffectJson(
                             "COUNTER", "SELF", reviveMagicDamage[level - 1], 0,
                             "{\"trigger\":\"ON_REVIVE\",\"damageType\":\"MAGIC\","
-                                    + "\"eventSkillCode\":\"GOJO_PASSIVE_5\"}"
+                                    + "\"eventSkillCode\":\"GOJO_PASSIVE_4\"}"
                     ));
                     row.set("battleEffects", battleEffects);
                 }
@@ -1663,7 +1663,7 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
             }
         } catch (IOException exception) {
             throw new IllegalStateException(
-                    "Không thể tạo battleEffects theo level cho GOJO_PASSIVE_5",
+                    "Không thể tạo battleEffects theo level cho GOJO_PASSIVE_4",
                     exception
             );
         }
@@ -1683,7 +1683,7 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
         HeroSkillEffect chase = new HeroSkillEffect(3, "COUNTER", "SELF");
         chase.updateParameters(new BigDecimal("0.10"), BigDecimal.ONE, 0);
         chase.updateConfig("{\"trigger\":\"ON_REVIVE\",\"damageType\":\"MAGIC\","
-                + "\"eventSkillCode\":\"GOJO_PASSIVE_5\"}");
+                + "\"eventSkillCode\":\"GOJO_PASSIVE_4\"}");
         fallback.add(chase);
         skill.replaceEffects(fallback);
     }
@@ -1807,10 +1807,12 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                 new HeroSeed("asuna_dark", "Asuna Hắc Ám", "LEGENDARY", "ASSASSIN",
                         skills("Kiếm tốc ảnh", "Liên kích", "Tuyệt kỹ kiếm vũ", "Tốc độ phản xạ", "Kiếm ý")),
                 new HeroSeed("gojo", "Gojo Satoru", "MYTHIC", "MAGE",
-                        skillsWithoutUltimate(
-                                "Đánh Thường", "Vô Hạ Hạn",
-                                "Thuật thức Phản Chuyển-Hách",
-                                "Chú thuật Vô Hạ Hạn", "Lục Nhãn"
+                        List.of(
+                                new SkillSeed("Đánh Thường", "BASIC"),
+                                new SkillSeed("Thuật thức Phản Chuyển-Hách", "PASSIVE"),
+                                new SkillSeed("Chú thuật Vô Hạ Hạn", "PASSIVE"),
+                                new SkillSeed("Lục Nhãn", "PASSIVE"),
+                                new SkillSeed("Triển khai {Khoảng Trống Vô Tận}", "ACTIVE")
                         )),
                 new HeroSeed("iori", "Iori", "LEGENDARY", "ASSASSIN",
                         skills("Hỏa quyền", "Bạo liệt", "Quỷ thiêu", "Cuồng chiến", "Huyết thống")),
