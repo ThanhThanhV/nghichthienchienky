@@ -27,6 +27,9 @@ spring:
 
 
 game:
+  bootstrap:
+    reset-hero-data:
+      enabled: ${RESET_HERO_DATA:true}
   assets:
     spine-heroes-path: ${SPINE_HEROES_PATH:src/main/resources/static/assets/spine/heroes}
 
