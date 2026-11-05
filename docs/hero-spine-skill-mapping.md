@@ -39,9 +39,9 @@ catalog. The full level rows remain available for future level-up synchronizatio
 
 Gojo's runtime slots follow the exact order in `TAB_Hero[52517]`: BASIC
 `525170`, then groups `525171`, `525172`, `525173`, and `525174`.
-Their runtime types are BASIC, PASSIVE, PASSIVE, PASSIVE, ACTIVE respectively.
-Hách, Vô Hạ Hạn, and Lục Nhãn remain PASSIVE; Domain is an ACTIVE slot whose
-TAB effects are triggered at battle start. No ULTIMATE slot is fabricated.
+Their runtime types are BASIC, PASSIVE, PASSIVE, PASSIVE, PASSIVE respectively.
+Hách, Vô Hạ Hạn, Lục Nhãn, and Domain are all PASSIVE by TAB type; Domain's
+passive is triggered at battle start. No ACTIVE or ULTIMATE slot is fabricated.
 
 ## Startup synchronization
 
@@ -113,7 +113,7 @@ are written into each skill's eight TAB level rows before database persistence:
   (`GOJO_PASSIVE_3`) applies its TAB stat bonuses; Lục Nhãn
   (`GOJO_PASSIVE_4`) grants five non-purgeable damage-reduction stacks, up to
   three permanent ATK stacks on kills, and a MAGIC chase against the exact
-  enemy instance that revives; Domain (`GOJO_ACTIVE_5`) debuffs all enemies'
+  enemy instance that revives; Domain (`GOJO_PASSIVE_5`) debuffs all enemies'
   damage taken at battle start.
 
 Gojo MAGIC damage uses ATK multiplied by the configured coefficient and does
@@ -157,7 +157,7 @@ attack animation.
 | Hero | Slot 1 | Slot 2 | Slot 3 | Slot 4 | Slot 5 |
 |---|---|---|---|---|---|
 | `asuna_dark` | BASIC `att` | ACTIVE `skill` | ULTIMATE `ultimateskill` | PASSIVE — | PASSIVE — |
-| `gojo` | BASIC `att` | PASSIVE `skill`* | PASSIVE — | PASSIVE `ultimateskill`* | ACTIVE `superskill`* |
+| `gojo` | BASIC `att` | PASSIVE `skill`* | PASSIVE — | PASSIVE `ultimateskill`* | PASSIVE `superskill`* |
 | `iori` | BASIC `att` | ACTIVE `skill` | ULTIMATE `ultimateskill` | PASSIVE — | PASSIVE `ultimateskill`* |
 | `iori_dark` | BASIC `att` | ACTIVE `skill` | ULTIMATE `ultimateskill` | PASSIVE — | PASSIVE `ultimateskill`* |
 | `kirito` | BASIC `att` | ACTIVE `skill` | ULTIMATE `ultimateskill` | PASSIVE — | PASSIVE — |
@@ -193,7 +193,7 @@ nonexistent Lua anchor metadata is fabricated.
 - Iori and Iori Dark use `skill` for ACTIVE and `ultimateskill` for ULTIMATE, matching the confirmed action mapping.
 - Gojo follows the Lua slot codes: `GOJO_PASSIVE_2` Hách uses `skill`
   (`faqi_11`), `GOJO_PASSIVE_4` Lục Nhãn uses `ultimateskill`
-  (`faqi_21`), and `GOJO_ACTIVE_5` Domain uses `superskill`
+  (`faqi_21`), and `GOJO_PASSIVE_5` Domain uses `superskill`
   (`faqi_31`). Vô Hạ Hạn (`GOJO_PASSIVE_3`) has no character action animation.
 - TAB `TAB_Sseffect` performance IDs also bind triggered PASSIVE actions: `10000210 -> skill` and `10000310 -> ultimateskill`. This adds `IORI_PASSIVE_5`, `IORI_DARK_PASSIVE_5`, `LELOUD_PASSIVE_5`, and `LELOUD_DARK_PASSIVE_5` as `ultimateskill`; passive slots without a resolved action performance (stat-only or non-attack passives) intentionally have no character action animation.
 - Passive slots without an explicit character animation do not fall back to a generic skill animation. Their VFX continues to resolve independently from `_SKILL_EFFECTS`.
