@@ -12,20 +12,22 @@ window.SPINE_EFFECT_CONFIG = {
             .trim()
             .toLowerCase();
         const skillAnimations = sourceCharacter?.config?.skillAnimations;
-
-        if (
-            !skillAnimations ||
-            typeof skillAnimations !== "object" ||
-            Array.isArray(skillAnimations)
-        ) {
-            return [];
-        }
-
-        const definitions = skillAnimations._SKILL_EFFECTS || {};
-        const aliases = skillAnimations._SKILL_EFFECT_ALIASES || {};
         const normalizedSkillCode = String(
             skillCode || event?.skillCode || ""
         ).trim().toUpperCase();
+        const isGojoDomainBattleStart =
+            normalizedHeroCode === "gojo" &&
+            normalizedSkillCode === "GOJO_PASSIVE_5" &&
+            String(event?.effectCategory || "").trim().toUpperCase() === "BATTLE_START";
+
+        const safeSkillAnimations =
+            skillAnimations &&
+            typeof skillAnimations === "object" &&
+            !Array.isArray(skillAnimations)
+                ? skillAnimations
+                : {};
+        const definitions = safeSkillAnimations._SKILL_EFFECTS || {};
+        const aliases = safeSkillAnimations._SKILL_EFFECT_ALIASES || {};
         const heroPrefix = normalizedHeroCode.toUpperCase() + "_";
 
         const definitionKey = normalizedSkillCode.startsWith(heroPrefix) &&
@@ -34,21 +36,58 @@ window.SPINE_EFFECT_CONFIG = {
             : aliases[normalizedSkillCode] || null;
 
         const selectedPhase = definitions[definitionKey]?.[phase];
-        const selectedEffects = Array.isArray(selectedPhase)
+        let selectedEffects = Array.isArray(selectedPhase)
             ? selectedPhase
             : selectedPhase
                 ? [selectedPhase]
                 : [];
+
+        // Fallback theo đúng TAB_EffectPerfor 52517410 + Spine sanim/effect:
+        // C4 phải phát cast superskill rồi impact toàn đội địch ở BATTLE_START.
+        // Mapping DB vẫn được ưu tiên; fallback chỉ chạy khi mapping phase bị thiếu.
+        if (!selectedEffects.length && isGojoDomainBattleStart) {
+            selectedEffects = phase === "cast"
+                ? [{
+                    code: "gojo_domain_cast",
+                    file: "seffect_52517111014",
+                    animation: "animation_0",
+                    anchor: "source",
+                    impactEvent: "qishou_31_1_1",
+                    impactEvents: ["qishou_31_1_1"],
+                    trigger: "BATTLE_START"
+                }]
+                : phase === "impact"
+                    ? [{
+                        code: "gojo_domain_impact",
+                        file: "seffect_52517111014",
+                        animation: "animation_1",
+                        anchor: "enemy_formation",
+                        impactEvent: "hit_31_3_3",
+                        impactEvents: [
+                            "hit_31_3_3",
+                            "hit_31_3_2",
+                            "hit_31_3_1"
+                        ],
+                        trigger: "BATTLE_START"
+                    }]
+                    : [];
+        }
 
         if (!selectedEffects.length) {
             return [];
         }
 
         const basePath = String(
-            skillAnimations._SPINE_EFFECT_BASE_PATH || "/assets/spine/seffects/"
+            safeSkillAnimations._SPINE_EFFECT_BASE_PATH || "/assets/spine/seffects/"
         );
-        const texturePages = skillAnimations._SPINE_EFFECT_TEXTURE_PAGES || {};
-        const defaults = skillAnimations._SPINE_EFFECT_DEFAULTS || {};
+        const texturePages = {
+            ...(safeSkillAnimations._SPINE_EFFECT_TEXTURE_PAGES || {})
+        };
+        texturePages.seffect_52517111014 ||= [
+            "seffect_52517111014.png",
+            "seffect_525171110142.png"
+        ];
+        const defaults = safeSkillAnimations._SPINE_EFFECT_DEFAULTS || {};
 
         return selectedEffects
             .filter(selected => selected && typeof selected === "object" && selected.file)
