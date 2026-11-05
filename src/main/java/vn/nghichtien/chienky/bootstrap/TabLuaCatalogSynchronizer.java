@@ -336,6 +336,23 @@ public class TabLuaCatalogSynchronizer {
             );
         }
         skillConfig.set("scriptResolution", scriptResolution);
+
+        // Performance row của từng group được tra trực tiếp theo TAB_EffectPerfor:
+        // <TAB skill group><10>. Trường action ở index 7 quyết định att/skill/
+        // ultimateskill/superskill; không suy luận chỉ từ performance ID 10000xxx.
+        int groupId = numberAt(levelOne, 0);
+        int performanceRowId = Math.addExact(Math.multiplyExact(groupId, 100), 10);
+        LuaRow directPerformance = performanceRows.get(performanceRowId);
+        if (directPerformance == null) {
+            skillConfig.remove("tabPerformance");
+        } else {
+            ObjectNode performance = objectMapper.createObjectNode();
+            performance.put("id", Integer.toString(directPerformance.id()));
+            performance.set("fields", objectMapper.valueToTree(directPerformance.values()));
+            performance.put("raw", directPerformance.raw());
+            performance.put("source", directPerformance.source());
+            skillConfig.set("tabPerformance", performance);
+        }
     }
 
     private ObjectNode toLevelJson(LuaRow row, List<String> scriptReferences) {
