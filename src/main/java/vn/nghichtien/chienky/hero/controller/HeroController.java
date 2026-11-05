@@ -199,21 +199,21 @@ public class HeroController {
      *
      * @param authentication thông tin tài khoản đăng nhập
      * @param instanceId ID tướng
-     * @param skillId ID kỹ năng
+     * @param skillCode Mã kỹ năng ổn định
      * @param request thông tin transactionKey
      * @return thông tin tướng sau khi nâng cấp kỹ năng
      */
-    @PostMapping("/{instanceId}/skills/{skillId}/upgrade")
+    @PostMapping("/{instanceId}/skills/{skillCode}/upgrade")
     public HeroResponse upgradeSkill(
             Authentication authentication,
             @PathVariable Long instanceId,
-            @PathVariable Long skillId,
+            @PathVariable String skillCode,
             @Valid @RequestBody UpgradeHeroSkillRequest request
     ) {
         return heroService.upgradeHeroSkill(
                 authentication.getName(),
                 instanceId,
-                skillId,
+                skillCode,
                 request
         );
     }
