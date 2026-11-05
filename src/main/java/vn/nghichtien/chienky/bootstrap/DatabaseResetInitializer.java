@@ -43,10 +43,6 @@ public class DatabaseResetInitializer implements ApplicationRunner {
      * chỉ riêng liên kết skill Gojo được xóa vì skillCode đã đổi theo Lua.
      */
     private static final List<String> HERO_TABLES_DELETE_ORDER = List.of(
-            // Seeded hero base/growth configuration; re-created from current seed.
-            "hero_skill_effects",
-            "hero_skill_definitions",
-
             // Hero stats are keyed by hero_code and are re-seeded at startup.
             "hero_base_stats",
             "hero_growth_configs"
