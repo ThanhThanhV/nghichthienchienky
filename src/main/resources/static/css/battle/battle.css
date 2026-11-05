@@ -1291,3 +1291,39 @@ body {
         max-width: none;
     }
 }
+
+
+/* Keep both teams visually separated while reserving a safe margin at the canvas edges. */
+.battle-field {
+    box-sizing: border-box;
+    padding-left: 10px;
+    padding-right: 10px;
+    grid-template-columns: minmax(0, 1fr) 48px minmax(0, 1fr);
+    column-gap: 10px;
+}
+
+.battle-team,
+.battle-team .team-formation {
+    min-width: 0;
+}
+
+@media (max-width: 600px) {
+    .battle-field {
+        width: 100%;
+        padding-left: 8px;
+        padding-right: 8px;
+        grid-template-columns: minmax(0, 1fr) 34px minmax(0, 1fr);
+        column-gap: 5px;
+    }
+
+    .battle-team .team-formation,
+    .battle-spine-active .battle-team .team-formation {
+        width: 100%;
+        max-width: none;
+        min-width: 0;
+    }
+
+    .battle-spine-canvas {
+        max-width: 100%;
+    }
+}
