@@ -94,6 +94,18 @@ ALTER TABLE hero_skill_upgrade_configs
             REFERENCES hero_definitions(hero_code)
             ON DELETE CASCADE;
 
+-- Explicit legacy code migration. Do not overwrite a target config that already
+-- exists for the same skill level.
+UPDATE hero_skill_upgrade_configs legacy_config
+LEFT JOIN hero_skill_upgrade_configs current_config
+    ON current_config.hero_code = 'gojo'
+   AND current_config.skill_code = 'GOJO_BASIC_1'
+   AND current_config.target_skill_level = legacy_config.target_skill_level
+SET legacy_config.skill_code = 'GOJO_BASIC_1'
+WHERE legacy_config.hero_code = 'gojo'
+  AND legacy_config.skill_code = 'GOJO_PASSIVE_1'
+  AND current_config.id IS NULL;
+
 
 -- =========================================================
 -- 4. Data model notes
