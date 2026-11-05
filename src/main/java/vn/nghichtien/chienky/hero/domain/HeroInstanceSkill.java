@@ -7,6 +7,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinColumns;
+import jakarta.persistence.ForeignKey;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
@@ -34,8 +36,30 @@ public class HeroInstanceSkill {
     @JoinColumn(name = "hero_instance_id", nullable = false)
     private HeroInstance heroInstance;
 
+    @Column(name = "hero_code", nullable = false, length = 50)
+    private String heroCode;
+
+    @Column(name = "skill_code", nullable = false, length = 50)
+    private String skillCode;
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "skill_id", nullable = false)
+    @JoinColumns(
+            value = {
+                    @JoinColumn(
+                            name = "hero_code",
+                            referencedColumnName = "hero_code",
+                            insertable = false,
+                            updatable = false
+                    ),
+                    @JoinColumn(
+                            name = "skill_code",
+                            referencedColumnName = "skill_code",
+                            insertable = false,
+                            updatable = false
+                    )
+            },
+            foreignKey = @ForeignKey(name = "fk_instance_skill_definition_code")
+    )
     private HeroSkillDefinition skillDefinition;
 
     @Column(name = "skill_level", nullable = false)
@@ -65,6 +89,8 @@ public class HeroInstanceSkill {
     ) {
         this.heroInstance = heroInstance;
         this.skillDefinition = skillDefinition;
+        this.heroCode = heroInstance.getHeroCode();
+        this.skillCode = skillDefinition.getSkillCode();
         this.skillLevel = 1;
     }
 
@@ -133,6 +159,14 @@ public class HeroInstanceSkill {
      */
     public HeroSkillDefinition getSkillDefinition() {
         return skillDefinition;
+    }
+
+    public String getHeroCode() {
+        return heroCode;
+    }
+
+    public String getSkillCode() {
+        return skillCode;
     }
 
     /**
