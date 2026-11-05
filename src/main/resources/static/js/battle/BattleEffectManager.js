@@ -66,7 +66,8 @@ class BattleEffectManager {
             });
 
             return (Array.isArray(resolved) ? resolved : resolved ? [resolved] : [])
-                .filter(config => !config.phase || config.phase === phase);
+                .filter(config => !config.phase || config.phase === phase)
+                .filter(config => this.matchesTrigger(config, event, phase));
         }
 
         const candidates = [
@@ -87,7 +88,8 @@ class BattleEffectManager {
             });
             if (resolved) {
                 return (Array.isArray(resolved) ? resolved : [resolved])
-                    .filter(config => !config.phase || config.phase === phase);
+                    .filter(config => !config.phase || config.phase === phase)
+                    .filter(config => this.matchesTrigger(config, event, phase));
             }
         }
 
@@ -97,13 +99,36 @@ class BattleEffectManager {
         }
 
         return (Array.isArray(selected) ? selected : [selected])
-            .filter(config => !config.phase || config.phase === phase);
+            .filter(config => !config.phase || config.phase === phase)
+            .filter(config => this.matchesTrigger(config, event, phase));
     }
 
     /**
      * Kiểm tra impact của event có phải effect neo vào đội hình hay không.
      * Các effect này phải chờ ACTION_END để tránh lặp trên từng DAMAGE.
      */
+    /**
+     * Chỉ phát VFX đúng trigger mà backend ghi trên event.
+     * Ví dụ Hách cast dùng ON_ENEMY_ACTION, còn impact chỉ dùng COUNTER.
+     * AFTER_CAST được dành riêng cho nhánh hậu cast của BattleRenderer.
+     */
+    matchesTrigger(config, event, phase) {
+        const trigger = String(config?.trigger || "").trim().toUpperCase();
+        if (!trigger) {
+            return true;
+        }
+
+        if (trigger === "AFTER_CAST") {
+            return phase === "impact" &&
+                ["ATTACK", "BASIC_ATTACK", "ACTIVE_SKILL", "ULTIMATE_SKILL", "PASSIVE"]
+                    .includes(String(event?.type || "").toUpperCase());
+        }
+
+        const eventTrigger = String(event?.effectCategory || "")
+            .trim().toUpperCase();
+        return trigger === eventTrigger;
+    }
+
     shouldDeferImpact(event) {
         return this.resolveEffectConfigs(event, "impact")
             .some(config => {
