@@ -1402,6 +1402,10 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
      * Vô Hạ Hạn tồn tại tối đa 20 round; nội tại phản công chỉ kích hoạt ON_DAMAGED.
      */
     private void seedGojoSkillEffects(HeroSkillDefinition skill, int order) {
+        if (order == 1) {
+            seedGojoBasicAttackEffects(skill);
+            return;
+        }
         if (!skill.getEffects().isEmpty()) {
             return;
         }
@@ -1434,6 +1438,24 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                 // Các passive khác chưa có hiệu ứng riêng được giữ nguyên.
             }
         }
+    }
+
+    /**
+     * Đòn đánh thường Gojo phải giữ runtime skillCode để FE resolve đúng
+     * cast/impact Spine; không dùng SKILL_EFFECT_<id> làm mã kỹ năng.
+     */
+    private void seedGojoBasicAttackEffects(HeroSkillDefinition skill) {
+        writeLevelEffects(skill, level -> List.of(
+                createGojoEffectJson("DAMAGE", "FRONT", "1.0", 0,
+                        "{\"damageType\":\"PHYSICAL\","
+                                + "\"eventSkillCode\":\"GOJO_BASIC_1\"}")
+        ));
+
+        HeroSkillEffect basic = new HeroSkillEffect(1, "DAMAGE", "FRONT");
+        basic.updateParameters(BigDecimal.ONE, BigDecimal.ONE, null);
+        basic.updateConfig("{\"damageType\":\"PHYSICAL\","
+                + "\"eventSkillCode\":\"GOJO_BASIC_1\"}");
+        skill.replaceEffects(List.of(basic));
     }
 
     private void addGojoEffect(
