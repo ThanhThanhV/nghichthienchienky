@@ -12,6 +12,7 @@ import vn.nghichtien.chienky.battle.dto.BattleEventDTO;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -405,8 +406,30 @@ public class BattleTurnProcessor {
         dispatchEnemyActionPassives(battle, unit);
     }
 
-    private void dispatchEnemyActionPassives(BattleState battle, BattleUnitState actor) {
-        if (battle.isFinished() || actor == null) return;
+    /**
+     * Chỉ phát trigger ON_ENEMY_ACTION nếu actor thực sự gây sát thương trong
+     * action vừa kết thúc. Các action không gây damage (buff, domain setup,
+     * skip, evade/block-only) không được kích hoạt phản kích của Gojo.
+     *
+     * Snapshot actionEvents chỉ chứa event của action gốc; counter/reflect
+     * reaction được phát sau đó không được xem là một action tấn công mới.
+     */
+    private void dispatchEnemyActionPassives(
+            BattleState battle,
+            BattleUnitState actor,
+            List<BattleEventDTO> actionEvents
+    ) {
+        if (battle.isFinished() || actor == null || actionEvents == null) return;
+
+        boolean causedDamage = actionEvents.stream()
+                .anyMatch(event -> event.type() == BattleEventType.DAMAGE
+                        && Objects.equals(event.sourceInstanceId(), actor.getInstanceId())
+                        && !"COUNTER".equalsIgnoreCase(event.effectCategory())
+                        && !"DEFENSE".equalsIgnoreCase(event.effectCategory()));
+        if (!causedDamage) {
+            return;
+        }
+
         for (BattleUnitState observer : battle.getUnits()) {
             if (battle.isFinished()) return;
             if (!observer.isAlive() || observer.getTeam() == actor.getTeam()) continue;
