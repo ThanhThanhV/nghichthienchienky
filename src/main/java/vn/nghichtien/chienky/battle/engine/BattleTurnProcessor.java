@@ -544,7 +544,8 @@ public class BattleTurnProcessor {
                     // Chỉ kích hoạt sau khi revive thành công; nội tại phe đối phương
                     // nhận đúng instance vừa hồi sinh làm mục tiêu.
                     for (BattleUnitState observer : battle.getUnits()) {
-                        if (battle.isFinished() || !revived.isAlive()) return;
+                        if (battle.isFinished()) return;
+                        if (!revived.isAlive()) break;
                         if (!observer.isAlive() || observer.getTeam() == revived.getTeam()) {
                             continue;
                         }
