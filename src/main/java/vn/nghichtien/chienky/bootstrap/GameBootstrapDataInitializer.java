@@ -558,10 +558,10 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
     }
 
     /**
-     * Đối chiếu skill với TAB_Sseffect -> TAB_EffectPerfor.
-     * Các performance ID của bộ hero hiện tại xác định trực tiếp action family:
-     * 10000110 = đánh thường, 10000210 = skill, 10000310 = ultimate.
-     * Những passive không có Sseffect không bị ép phát animation.
+     * Đối chiếu action animation với TAB Lua.
+     * Hero thông thường dùng TAB_Sseffect performance ID; Gojo dùng trực tiếp
+     * action family tại TAB_EffectPerfor.fields[7] để phân biệt đủ 4 action.
+     * Passive không có action performance không bị ép phát animation.
      */
     private void validateTabSkillAnimationBinding(
             String heroCode,
