@@ -20,10 +20,10 @@ import java.util.Set;
  * Reset catalog cấu hình tướng trước mỗi lần chạy.
  *
  * Reset chỉ số gốc và tăng trưởng của toàn bộ hero để seed lại từ TAB.
- * Skill catalog/effect của các hero được đồng bộ tại chỗ bởi GameBootstrapDataInitializer;
- * riêng catalog Gojo được làm mới do mã skill đã được chuẩn hóa lại theo Lua.
+ * Skill catalog/effect của tất cả hero được đồng bộ bởi GameBootstrapDataInitializer
+ * trong transaction seed. Chỉ số gốc và tăng trưởng được nạp lại từ TAB.
  * Account, profile, hero instances, đội hình, trang bị, tài nguyên và cấp skill
- * của các hero khác được giữ nguyên.
+ * hiện có được giữ nguyên; Gojo được remap skill trong transaction seed riêng.
  */
 @Component
 @ConditionalOnProperty(
@@ -39,8 +39,8 @@ public class DatabaseResetInitializer implements ApplicationRunner {
             System.getLogger(DatabaseResetInitializer.class.getName());
 
     /**
-     * Xóa cấu hình chỉ số để seed lại. Các skill khác được cập nhật tại chỗ;
-     * chỉ riêng liên kết skill Gojo được xóa vì skillCode đã đổi theo Lua.
+     * Xóa cấu hình chỉ số để seed lại. Skill catalog được đồng bộ trong
+     * transaction của GameBootstrapDataInitializer.
      */
     private static final List<String> HERO_TABLES_DELETE_ORDER = List.of(
             // Hero stats are keyed by hero_code and are re-seeded at startup.
@@ -70,11 +70,6 @@ public class DatabaseResetInitializer implements ApplicationRunner {
                                 + "trước khi bật reset hero data."
                 );
             }
-
-            // Gojo skillCode đã được chuẩn hóa theo TAB Lua. Chỉ xóa liên kết
-            // kỹ năng Gojo để tránh FK trỏ vào catalog cũ; các hero khác giữ nguyên
-            // cấp kỹ năng và được seed cập nhật định nghĩa/effect tại chỗ.
-            resetGojoSkillCatalog(connection, existingTables);
 
             int clearedTables = 0;
 
@@ -114,45 +109,6 @@ public class DatabaseResetInitializer implements ApplicationRunner {
                     "Không thể reset trạng thái hero sở hữu trước khi seed game",
                     exception
             );
-        }
-    }
-
-    /**
-     * Xóa catalog skill Gojo cũ sau khi Lua xác nhận lại thứ tự/mã kỹ năng.
-     * Các bản sao Gojo vẫn được giữ; liên kết skill được GameBootstrap tạo lại
-     * theo 5 skillCode mới. Các hero khác không bị ảnh hưởng.
-     */
-    private void resetGojoSkillCatalog(
-            Connection connection,
-            Set<String> existingTables
-    ) throws SQLException {
-        if (!existingTables.contains("hero_skill_definitions")) {
-            return;
-        }
-
-        if (existingTables.contains("hero_instance_skills")) {
-            try (PreparedStatement statement = connection.prepareStatement(
-                    "DELETE FROM hero_instance_skills WHERE hero_code = ?"
-            )) {
-                statement.setString(1, "gojo");
-                statement.executeUpdate();
-            }
-        }
-
-        if (existingTables.contains("hero_skill_effects")) {
-            try (PreparedStatement statement = connection.prepareStatement(
-                    "DELETE FROM hero_skill_effects WHERE hero_code = ?"
-            )) {
-                statement.setString(1, "gojo");
-                statement.executeUpdate();
-            }
-        }
-
-        try (PreparedStatement statement = connection.prepareStatement(
-                "DELETE FROM hero_skill_definitions WHERE hero_code = ?"
-        )) {
-            statement.setString(1, "gojo");
-            statement.executeUpdate();
         }
     }
 
