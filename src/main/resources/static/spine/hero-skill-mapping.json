@@ -303,7 +303,7 @@
         "IORI_BASIC_1": "att",
         "IORI_ACTIVE_2": "skill",
         "IORI_ULTIMATE_3": "ultimateskill",
-        "IORI_PASSIVE_5": "ultimateskill"
+        "IORI_PASSIVE_5": "superskill"
       },
       "_BASIC_ATTACK": {
         "movement": "DASH"
@@ -312,17 +312,33 @@
         "IORI_BASIC_1": {
           "cast": {
             "code": "iori_basic_cast",
-            "file": "seffect_51515110111",
+            "file": "seffect_51515121011",
             "animation": "animation_0",
             "anchor": "source",
             "impactEvent": "qishou_1_1_1",
             "impactEvents": [
               "qishou_1_1_1"
             ]
+          }
+        },
+        "IORI_ACTIVE_2": {
+          "cast": {
+            "code": "iori_viem_au_cast",
+            "file": "seffect_51515121012",
+            "animation": "animation_0",
+            "anchor": "source",
+            "impactEvent": "qishou_11_5_5",
+            "impactEvents": [
+              "qishou_11_5_5",
+              "qishou_11_5_4",
+              "qishou_11_5_3",
+              "qishou_11_5_2",
+              "qishou_11_5_1"
+            ]
           },
           "impact": {
-            "code": "iori_basic_impact",
-            "file": "seffect_100110111",
+            "code": "iori_viem_au_impact",
+            "file": "seffect_51515121013",
             "animation": "animation_0",
             "anchor": "target",
             "impactEvent": "hit_11_1_1",
@@ -331,62 +347,42 @@
             ]
           }
         },
-        "IORI_ACTIVE_2": {
-          "cast": {
-            "code": "iori_active_cast",
-            "file": "seffect_51515110111",
-            "animation": "animation_1",
-            "anchor": "source",
-            "impactEvent": "qishou_11_3_3",
-            "impactEvents": [
-              "qishou_11_3_3",
-              "qishou_11_3_2",
-              "qishou_11_3_1"
-            ]
-          },
-          "impact": {
-            "code": "iori_active_impact",
-            "file": "seffect_100110111",
-            "animation": "animation_0",
-            "anchor": "enemy_formation",
-            "impactEvent": "hit_11_1_1",
-            "impactEvents": [
-              "hit_11_1_1"
-            ]
-          }
-        },
         "IORI_ULTIMATE_3": {
           "cast": {
-            "code": "iori_ultimate_cast",
-            "file": "seffect_51515110111",
-            "animation": "animation_2",
+            "code": "iori_yatagarasu_cast",
+            "file": "seffect_51515121014",
+            "animation": "animation_0",
             "anchor": "source",
-            "impactEvent": "qishou_21_2_2",
+            "impactEvent": "qishou_21_1_1",
             "impactEvents": [
-              "qishou_21_2_2",
-              "qishou_21_2_1"
+              "qishou_21_1_1"
             ]
           },
           "impact": {
-            "code": "iori_ultimate_impact",
-            "file": "seffect_100110111",
+            "code": "iori_yatagarasu_impact",
+            "file": "seffect_51515121015",
             "animation": "animation_0",
             "anchor": "enemy_formation",
-            "impactEvent": "hit_11_1_1",
+            "impactEvent": "hit_21_3_3",
             "impactEvents": [
-              "hit_11_1_1"
+              "hit_21_3_3",
+              "hit_21_3_2",
+              "hit_21_3_1"
             ]
           }
         },
         "IORI_PASSIVE_5": {
           "cast": {
             "code": "iori_banned_cast",
-            "file": "seffect_51515110111",
-            "animation": "animation_3",
+            "file": "seffect_51515121016",
+            "animation": "animation_0",
             "anchor": "source",
-            "impactEvent": "qishou_31_1_1",
+            "impactEvent": "qishou_31_4_4",
             "impactEvents": [
-              "qishou_31_1_1"
+              "qishou_31_4_4",
+              "qishou_31_4_3",
+              "qishou_31_4_2",
+              "qishou_31_4_1"
             ]
           },
           "impact": {
