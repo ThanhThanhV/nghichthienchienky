@@ -22,8 +22,8 @@ import java.time.LocalDateTime;
 @Table(
         name = "hero_instance_skills",
         uniqueConstraints = @UniqueConstraint(
-                name = "uk_hero_instance_skill",
-                columnNames = {"hero_instance_id", "skill_id"}
+                name = "uk_hero_instance_skill_code",
+                columnNames = {"hero_instance_id", "skill_code"}
         )
 )
 public class HeroInstanceSkill {
