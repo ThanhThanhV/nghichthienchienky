@@ -303,7 +303,7 @@
         "IORI_BASIC_1": "att",
         "IORI_ACTIVE_2": "skill",
         "IORI_ULTIMATE_3": "ultimateskill",
-        "IORI_PASSIVE_5": "ultimateskill"
+        "IORI_PASSIVE_5": "superskill"
       },
       "_BASIC_ATTACK": {
         "movement": "DASH"
@@ -572,7 +572,7 @@
         "IORI_DARK_BASIC_1": "att",
         "IORI_DARK_ACTIVE_2": "skill",
         "IORI_DARK_ULTIMATE_3": "ultimateskill",
-        "IORI_DARK_PASSIVE_5": "ultimateskill"
+        "IORI_DARK_PASSIVE_5": "superskill"
       },
       "_BASIC_ATTACK": {
         "movement": "DASH"
@@ -616,7 +616,7 @@
           "impact": {
             "code": "iori_dark_active_impact",
             "file": "seffect_100110111",
-            "animation": "animation_0",
+            "animation": "animation_1",
             "anchor": "enemy_formation",
             "impactEvent": "hit_11_1_1",
             "impactEvents": [
@@ -639,7 +639,7 @@
           "impact": {
             "code": "iori_dark_ultimate_impact",
             "file": "seffect_100110111",
-            "animation": "animation_0",
+            "animation": "animation_2",
             "anchor": "enemy_formation",
             "impactEvent": "hit_11_1_1",
             "impactEvents": [
@@ -661,7 +661,7 @@
           "impact": {
             "code": "iori_dark_banned_impact",
             "file": "seffect_51515110211",
-            "animation": "animation_0",
+            "animation": "animation_3",
             "anchor": "enemy_formation",
             "impactEvent": "hit_31_5_5",
             "impactEvents": [
