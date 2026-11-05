@@ -641,20 +641,37 @@ class BattleRenderer {
                     (isIoriFirstSkill || isIoriSecondSkill) &&
                     !this.actionContext.sourceOriginalPosition
                 ) {
-                    this.actionContext.sourceCharacter = character;
-                    this.actionContext.sourceOriginalPosition = {
-                        x: character.positionX,
-                        y: character.positionY
-                    };
-                    // Spine character positions are anchored at the root/feet,
-                    // not at the visual center of the rendered body. Put the
-                    // anchor 80 world units below canvas center so Iori's body
-                    // (rather than its ground anchor) is visually centered.
-                    await this.animateCharacterToPosition(
-                        character,
-                        { x: 0, y: -80 },
-                        320
-                    );
+                    const enemyTeam = this.actionContext.sourceTeam === "PLAYER"
+                        ? "ENEMY"
+                        : "PLAYER";
+                    const enemyCenter = this.effectManager?.getFormationCenter?.(enemyTeam);
+
+                    if (enemyCenter) {
+                        this.actionContext.sourceCharacter = character;
+                        this.actionContext.sourceOriginalPosition = {
+                            x: character.positionX,
+                            y: character.positionY
+                        };
+
+                        // Đứng ngay phía trước ô giữa của đội hình đối phương,
+                        // cùng cao độ hàng giữa; không chạy về tâm canvas hoặc
+                        // chồng trực tiếp lên vị trí của tướng địch.
+                        const frontOffset = 90;
+                        const frontPosition = {
+                            x: enemyCenter.x + (
+                                this.actionContext.sourceTeam === "PLAYER"
+                                    ? -frontOffset
+                                    : frontOffset
+                            ),
+                            y: enemyCenter.y
+                        };
+
+                        await this.animateCharacterToPosition(
+                            character,
+                            frontPosition,
+                            320
+                        );
+                    }
                 }
 
                 // PASSIVE phản ứng không có ACTION_START/ACTION_END riêng trong event stream.
