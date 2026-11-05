@@ -159,42 +159,47 @@ public class TabLuaCatalogSynchronizer {
             }
         }
 
-        JsonNode configuredSkills = heroConfig.path("skills");
-        if (!configuredSkills.isArray() || configuredSkills.size() != 5) {
-            throw new IllegalStateException(
-                    "TAB catalog phải có đúng 5 slot kỹ năng: " + heroCode
-            );
-        }
-        ArrayNode skills = (ArrayNode) configuredSkills;
-
+        ArrayNode skills;
         if ("gojo".equalsIgnoreCase(heroCode)) {
-            // Với Gojo, thứ tự slot không lấy từ JSON: lấy NormalAttID rồi
-            // u_SkillID theo đúng thứ tự TAB_Hero[52517].
+            // Gojo không lấy skill group/order/levelOneId từ JSON cũ.
+            // Tạo mới 5 slot trực tiếp từ NormalAttID + u_SkillID trong TAB_Hero.
             if (luaSkillGroupOrder.size() != 5) {
                 throw new IllegalStateException(
                         "TAB_Hero Gojo phải có 1 NormalAttID và 4 u_SkillID: "
                                 + luaSkillGroupOrder
                 );
             }
-            ArrayNode orderedSkills = objectMapper.createArrayNode();
-            for (Integer luaGroupId : luaSkillGroupOrder) {
-                JsonNode matchingSkill = null;
-                for (JsonNode configuredSkill : skills) {
-                    if (configuredSkill.path("groupId").asInt(-1) == luaGroupId) {
-                        matchingSkill = configuredSkill;
-                        break;
-                    }
-                }
-                if (matchingSkill == null) {
+            skills = objectMapper.createArrayNode();
+            for (int slot = 0; slot < luaSkillGroupOrder.size(); slot++) {
+                Integer luaGroupId = luaSkillGroupOrder.get(slot);
+                List<LuaRow> sourceRows = skillsByGroup.get(luaGroupId);
+                if (sourceRows == null || sourceRows.isEmpty()) {
                     throw new IllegalStateException(
-                            "Thiếu cấu hình runtime slot cho Gojo TAB group "
-                                    + luaGroupId
+                            "Không tìm thấy TAB_Skill group Gojo " + luaGroupId
                     );
                 }
-                orderedSkills.add(matchingSkill.deepCopy());
+                LuaRow levelOne = sourceRows.stream()
+                        .filter(row -> numberAt(row, 4) == 1)
+                        .findFirst()
+                        .orElseThrow(() -> new IllegalStateException(
+                                "TAB_Skill group Gojo " + luaGroupId
+                                        + " không có level 1"
+                        ));
+                ObjectNode skillConfig = objectMapper.createObjectNode();
+                skillConfig.put("groupId", luaGroupId);
+                skillConfig.put("levelOneId", levelOne.id());
+                skillConfig.put("order", slot + 1);
+                skills.add(skillConfig);
             }
-            skills = orderedSkills;
             heroConfig.set("skills", skills);
+        } else {
+            JsonNode configuredSkills = heroConfig.path("skills");
+            if (!configuredSkills.isArray() || configuredSkills.size() != 5) {
+                throw new IllegalStateException(
+                        "TAB catalog phải có đúng 5 slot kỹ năng: " + heroCode
+                );
+            }
+            skills = (ArrayNode) configuredSkills;
         }
 
         if (tabHero instanceof ObjectNode tabHeroObject) {
