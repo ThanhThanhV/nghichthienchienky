@@ -575,6 +575,8 @@ class BattleRenderer {
             }
         }
 
+        let gojoBattleStartReturnAction = null;
+
         if (character) {
             const animationName = this.getAnimation(event);
 
@@ -668,6 +670,9 @@ class BattleRenderer {
                             x: character.positionX,
                             y: character.positionY
                         };
+                        if (isGojoFourthSkill) {
+                            gojoBattleStartReturnAction = this.actionContext;
+                        }
 
                         // Gojo chiêu 4, Tohka Dark ultimate và hai chiêu lướt
                         // của Iori đều phải di chuyển tới trục giữa battlefield
@@ -709,6 +714,9 @@ class BattleRenderer {
             await Promise.all(effects.map(effect => effect.impactPromise));
             await this.playFormationImpact(event);
             await this.playAfterCastImpact(event);
+            if (gojoBattleStartReturnAction) {
+                await this.returnGojoBattleStartToFormation(gojoBattleStartReturnAction, character);
+            }
             return;
         }
 
@@ -716,6 +724,9 @@ class BattleRenderer {
         const formationImpactPlayed = await this.playFormationImpact(event);
         const postCastImpactPlayed = await this.playAfterCastImpact(event);
         if (formationImpactPlayed || postCastImpactPlayed) {
+            if (gojoBattleStartReturnAction) {
+                await this.returnGojoBattleStartToFormation(gojoBattleStartReturnAction, character);
+            }
             return;
         }
 
@@ -749,6 +760,33 @@ class BattleRenderer {
             this.delayScaled(durationMs)
         ]);
         await this.delayScaled(impactMs);
+        if (gojoBattleStartReturnAction) {
+            await this.returnGojoBattleStartToFormation(gojoBattleStartReturnAction, character);
+        }
+    }
+
+    /**
+     * Gojo BATTLE_START passive không có ACTION_END riêng. Chờ toàn bộ cast/impact
+     * kết thúc rồi tween skeleton về slot gốc ngay trong luồng render PASSIVE.
+     */
+    async returnGojoBattleStartToFormation(action, character) {
+        const returnPosition = action?.sourceOriginalPosition;
+        if (!character?.loaded || !returnPosition) {
+            return;
+        }
+
+        const completions = (action.completionPromises || []).filter(Boolean);
+        if (completions.length) {
+            await Promise.all(completions.map(promise =>
+                Promise.resolve(promise).catch(error => {
+                    console.warn("[BattleRenderer] Gojo BATTLE_START effect completion failed:", error);
+                })
+            ));
+        }
+
+        await this.animateCharacterToPosition(character, returnPosition, 320);
+        action.sourceOriginalPosition = null;
+        action.sourceCharacter = null;
     }
 
     /**
