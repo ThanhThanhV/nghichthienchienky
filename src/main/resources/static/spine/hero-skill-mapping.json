@@ -661,7 +661,7 @@
           "impact": {
             "code": "iori_dark_banned_impact",
             "file": "seffect_51515110211",
-            "animation": "animation_3",
+            "animation": "animation_0",
             "anchor": "enemy_formation",
             "impactEvent": "hit_31_5_5",
             "impactEvents": [
