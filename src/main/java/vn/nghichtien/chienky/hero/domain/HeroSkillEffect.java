@@ -9,7 +9,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinColumns;
 import jakarta.persistence.ForeignKey;
-import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -50,7 +49,7 @@ public class HeroSkillEffect {
                     updatable = false
             )
             },
-            foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT)
+            foreignKey = @ForeignKey(name = "fk_hero_skill_effect_skill_code")
     )
     private HeroSkillDefinition skillDefinition;
 
