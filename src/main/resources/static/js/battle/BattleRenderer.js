@@ -815,9 +815,16 @@ class BattleRenderer {
             String(event.targetInstanceId ?? "") === String(action.sourceInstanceId ?? "");
         const impactEvent = {
             ...event,
-            sourceTeam: event.sourceTeam || action.sourceTeam,
-            sourceInstanceId: event.sourceInstanceId ?? action.sourceInstanceId,
+            sourceTeam: isGojoHachCounterDamage
+                ? action.sourceTeam
+                : (event.sourceTeam || action.sourceTeam),
+            sourceInstanceId: isGojoHachCounterDamage
+                ? action.sourceInstanceId
+                : (event.sourceInstanceId ?? action.sourceInstanceId),
             heroCode: event.heroCode || action.heroCode,
+            effectCategory: isGojoHachCounterDamage
+                ? (event.effectCategory || "COUNTER")
+                : event.effectCategory,
             // REFLECT không thuộc đòn gốc, nhưng Hách là một đòn phản kích có
             // mapping/VFX riêng nên phải giữ skillCode GOJO_PASSIVE_2.
             skillCode: belongsToCurrentAttack
