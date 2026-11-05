@@ -1169,363 +1169,6 @@
         },
         {
           "order": 2,
-          "runtimeSkillType": "ACTIVE",
-          "groupId": "525174",
-          "levelOneId": "5251741",
-          "name": "Triển khai {Khoảng Trống Vô Tận}",
-          "description": "Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 15%",
-          "icon": 5251741,
-          "tabType": 3,
-          "tabSkillType": 3,
-          "script": "$32?52517411",
-          "scriptRefs": [
-            "52517411",
-            "52517421",
-            "52517431",
-            "52517441",
-            "52517451",
-            "52517461",
-            "52517471",
-            "52517481"
-          ],
-          "levelRows": [
-            {
-              "id": "5251741",
-              "groupId": 525174,
-              "icon": 5251741,
-              "level": 1,
-              "type": 3,
-              "skillType": 3,
-              "hurtType": 0,
-              "priority": 0,
-              "startRound": 0,
-              "cooldown": 0,
-              "ignoreControl": 0,
-              "script": "$32?52517411",
-              "scriptRefs": [
-                "52517411"
-              ],
-              "attributes": "{}",
-              "description": "Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 15%",
-              "effectShow": "{0}",
-              "name": "Triển khai {Khoảng Trống Vô Tận}",
-              "raw": "TAB_Skill[5251741] = {525174,2,{{}},5251741,1,3,3,0,0,0,0,0,\"$32?52517411\",{},\"Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 15%\",{0},0,0,\"Triển khai {Khoảng Trống Vô Tận}\",{5,6},4,0,10000}",
-              "source": "TAB_Skill_3.lua",
-              "battleEffects": [
-                {
-                  "effectType": "DEBUFF",
-                  "targetType": "ALL_ENEMIES",
-                  "multiplier": 0.15,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "BATTLE_START",
-                    "statType": "DAMAGE_TAKEN",
-                    "permanent": true,
-                    "ignoreImmunity": true,
-                    "eventSkillCode": "GOJO_ACTIVE_2"
-                  }
-                }
-              ]
-            },
-            {
-              "id": "5251742",
-              "groupId": 525174,
-              "icon": 5251741,
-              "level": 2,
-              "type": 3,
-              "skillType": 3,
-              "hurtType": 0,
-              "priority": 0,
-              "startRound": 0,
-              "cooldown": 0,
-              "ignoreControl": 0,
-              "script": "$32?52517421",
-              "scriptRefs": [
-                "52517421"
-              ],
-              "attributes": "{}",
-              "description": "Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 20%",
-              "effectShow": "{0}",
-              "name": "Triển khai {Khoảng Trống Vô Tận}",
-              "raw": "TAB_Skill[5251742] = {525174,2,{{}},5251741,2,3,3,0,0,0,0,0,\"$32?52517421\",{},\"Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 20%\",{0},0,0,\"Triển khai {Khoảng Trống Vô Tận}\",{5,10},4,0,10000}",
-              "source": "TAB_Skill_3.lua",
-              "battleEffects": [
-                {
-                  "effectType": "DEBUFF",
-                  "targetType": "ALL_ENEMIES",
-                  "multiplier": 0.2,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "BATTLE_START",
-                    "statType": "DAMAGE_TAKEN",
-                    "permanent": true,
-                    "ignoreImmunity": true,
-                    "eventSkillCode": "GOJO_ACTIVE_2"
-                  }
-                }
-              ]
-            },
-            {
-              "id": "5251743",
-              "groupId": 525174,
-              "icon": 5251741,
-              "level": 3,
-              "type": 3,
-              "skillType": 3,
-              "hurtType": 0,
-              "priority": 0,
-              "startRound": 0,
-              "cooldown": 0,
-              "ignoreControl": 0,
-              "script": "$32?52517431",
-              "scriptRefs": [
-                "52517431"
-              ],
-              "attributes": "{}",
-              "description": "Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 25%",
-              "effectShow": "{0}",
-              "name": "Triển khai {Khoảng Trống Vô Tận}",
-              "raw": "TAB_Skill[5251743] = {525174,2,{{}},5251741,3,3,3,0,0,0,0,0,\"$32?52517431\",{},\"Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 25%\",{0},0,0,\"Triển khai {Khoảng Trống Vô Tận}\",{5,101},4,0,10000}",
-              "source": "TAB_Skill_3.lua",
-              "battleEffects": [
-                {
-                  "effectType": "DEBUFF",
-                  "targetType": "ALL_ENEMIES",
-                  "multiplier": 0.25,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "BATTLE_START",
-                    "statType": "DAMAGE_TAKEN",
-                    "permanent": true,
-                    "ignoreImmunity": true,
-                    "eventSkillCode": "GOJO_ACTIVE_2"
-                  }
-                }
-              ]
-            },
-            {
-              "id": "5251744",
-              "groupId": 525174,
-              "icon": 5251741,
-              "level": 4,
-              "type": 3,
-              "skillType": 3,
-              "hurtType": 0,
-              "priority": 0,
-              "startRound": 0,
-              "cooldown": 0,
-              "ignoreControl": 0,
-              "script": "$32?52517441",
-              "scriptRefs": [
-                "52517441"
-              ],
-              "attributes": "{}",
-              "description": "Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 26%",
-              "effectShow": "{0}",
-              "name": "Triển khai {Khoảng Trống Vô Tận}",
-              "raw": "TAB_Skill[5251744] = {525174,2,{{}},5251741,4,3,3,0,0,0,0,0,\"$32?52517441\",{},\"Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 26%\",{0},0,0,\"Triển khai {Khoảng Trống Vô Tận}\",{5,102},4,0,10000}",
-              "source": "TAB_Skill_3.lua",
-              "battleEffects": [
-                {
-                  "effectType": "DEBUFF",
-                  "targetType": "ALL_ENEMIES",
-                  "multiplier": 0.26,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "BATTLE_START",
-                    "statType": "DAMAGE_TAKEN",
-                    "permanent": true,
-                    "ignoreImmunity": true,
-                    "eventSkillCode": "GOJO_ACTIVE_2"
-                  }
-                }
-              ]
-            },
-            {
-              "id": "5251745",
-              "groupId": 525174,
-              "icon": 5251741,
-              "level": 5,
-              "type": 3,
-              "skillType": 3,
-              "hurtType": 0,
-              "priority": 0,
-              "startRound": 0,
-              "cooldown": 0,
-              "ignoreControl": 0,
-              "script": "$32?52517451",
-              "scriptRefs": [
-                "52517451"
-              ],
-              "attributes": "{}",
-              "description": "Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 27%",
-              "effectShow": "{0}",
-              "name": "Triển khai {Khoảng Trống Vô Tận}",
-              "raw": "TAB_Skill[5251745] = {525174,2,{{}},5251741,5,3,3,0,0,0,0,0,\"$32?52517451\",{},\"Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 27%\",{0},0,0,\"Triển khai {Khoảng Trống Vô Tận}\",{5,103},4,0,10000}",
-              "source": "TAB_Skill_3.lua",
-              "battleEffects": [
-                {
-                  "effectType": "DEBUFF",
-                  "targetType": "ALL_ENEMIES",
-                  "multiplier": 0.27,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "BATTLE_START",
-                    "statType": "DAMAGE_TAKEN",
-                    "permanent": true,
-                    "ignoreImmunity": true,
-                    "eventSkillCode": "GOJO_ACTIVE_2"
-                  }
-                }
-              ]
-            },
-            {
-              "id": "5251746",
-              "groupId": 525174,
-              "icon": 5251741,
-              "level": 6,
-              "type": 3,
-              "skillType": 3,
-              "hurtType": 0,
-              "priority": 0,
-              "startRound": 0,
-              "cooldown": 0,
-              "ignoreControl": 0,
-              "script": "$32?52517461",
-              "scriptRefs": [
-                "52517461"
-              ],
-              "attributes": "{}",
-              "description": "Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 28%",
-              "effectShow": "{0}",
-              "name": "Triển khai {Khoảng Trống Vô Tận}",
-              "raw": "TAB_Skill[5251746] = {525174,2,{{}},5251741,6,3,3,0,0,0,0,0,\"$32?52517461\",{},\"Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 28%\",{0},0,0,\"Triển khai {Khoảng Trống Vô Tận}\",{5,104},4,0,10000}",
-              "source": "TAB_Skill_3.lua",
-              "battleEffects": [
-                {
-                  "effectType": "DEBUFF",
-                  "targetType": "ALL_ENEMIES",
-                  "multiplier": 0.28,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "BATTLE_START",
-                    "statType": "DAMAGE_TAKEN",
-                    "permanent": true,
-                    "ignoreImmunity": true,
-                    "eventSkillCode": "GOJO_ACTIVE_2"
-                  }
-                }
-              ]
-            },
-            {
-              "id": "5251747",
-              "groupId": 525174,
-              "icon": 5251741,
-              "level": 7,
-              "type": 3,
-              "skillType": 3,
-              "hurtType": 0,
-              "priority": 0,
-              "startRound": 0,
-              "cooldown": 0,
-              "ignoreControl": 0,
-              "script": "$32?52517471",
-              "scriptRefs": [
-                "52517471"
-              ],
-              "attributes": "{}",
-              "description": "Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 29%",
-              "effectShow": "{0}",
-              "name": "Triển khai {Khoảng Trống Vô Tận}",
-              "raw": "TAB_Skill[5251747] = {525174,2,{{}},5251741,7,3,3,0,0,0,0,0,\"$32?52517471\",{},\"Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 29%\",{0},0,0,\"Triển khai {Khoảng Trống Vô Tận}\",{5,105},4,0,10000}",
-              "source": "TAB_Skill_3.lua",
-              "battleEffects": [
-                {
-                  "effectType": "DEBUFF",
-                  "targetType": "ALL_ENEMIES",
-                  "multiplier": 0.29,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "BATTLE_START",
-                    "statType": "DAMAGE_TAKEN",
-                    "permanent": true,
-                    "ignoreImmunity": true,
-                    "eventSkillCode": "GOJO_ACTIVE_2"
-                  }
-                }
-              ]
-            },
-            {
-              "id": "5251748",
-              "groupId": 525174,
-              "icon": 5251741,
-              "level": 8,
-              "type": 3,
-              "skillType": 3,
-              "hurtType": 0,
-              "priority": 0,
-              "startRound": 0,
-              "cooldown": 0,
-              "ignoreControl": 0,
-              "script": "$32?52517481",
-              "scriptRefs": [
-                "52517481"
-              ],
-              "attributes": "{}",
-              "description": "Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 30%",
-              "effectShow": "{0}",
-              "name": "Triển khai {Khoảng Trống Vô Tận}",
-              "raw": "TAB_Skill[5251748] = {525174,2,{{}},5251741,8,3,3,0,0,0,0,0,\"$32?52517481\",{},\"Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 30%\",{0},0,0,\"Triển khai {Khoảng Trống Vô Tận}\",{5,0},4,0,10000}",
-              "source": "TAB_Skill_3.lua",
-              "battleEffects": [
-                {
-                  "effectType": "DEBUFF",
-                  "targetType": "ALL_ENEMIES",
-                  "multiplier": 0.3,
-                  "chance": 1,
-                  "duration": 0,
-                  "configJson": {
-                    "trigger": "BATTLE_START",
-                    "statType": "DAMAGE_TAKEN",
-                    "permanent": true,
-                    "ignoreImmunity": true,
-                    "eventSkillCode": "GOJO_ACTIVE_2"
-                  }
-                }
-              ]
-            }
-          ],
-          "scriptResolution": {
-            "sse": [],
-            "performance": [],
-            "effects": []
-          },
-          "battleEffects": [
-            {
-              "effectType": "DEBUFF",
-              "targetType": "ALL_ENEMIES",
-              "multiplier": 0.15,
-              "chance": 1,
-              "duration": 0,
-              "configJson": {
-                "trigger": "BATTLE_START",
-                "statType": "DAMAGE_TAKEN",
-                "permanent": true,
-                "ignoreImmunity": true,
-                "eventSkillCode": "GOJO_ACTIVE_2"
-              }
-            }
-          ]
-        },
-        {
-          "order": 3,
           "runtimeSkillType": "PASSIVE",
           "groupId": "525171",
           "levelOneId": "5251711",
@@ -2087,7 +1730,7 @@
           ]
         },
         {
-          "order": 4,
+          "order": 3,
           "runtimeSkillType": "PASSIVE",
           "groupId": "525172",
           "levelOneId": "5251721",
@@ -2617,7 +2260,7 @@
           ]
         },
         {
-          "order": 5,
+          "order": 4,
           "runtimeSkillType": "PASSIVE",
           "groupId": "525173",
           "levelOneId": "5251731",
@@ -3244,6 +2887,363 @@
                 "trigger": "ON_REVIVE",
                 "damageType": "MAGIC",
                 "eventSkillCode": "GOJO_PASSIVE_5"
+              }
+            }
+          ]
+        },
+        {
+          "order": 5,
+          "runtimeSkillType": "ACTIVE",
+          "groupId": "525174",
+          "levelOneId": "5251741",
+          "name": "Triển khai {Khoảng Trống Vô Tận}",
+          "description": "Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 15%",
+          "icon": 5251741,
+          "tabType": 3,
+          "tabSkillType": 3,
+          "script": "$32?52517411",
+          "scriptRefs": [
+            "52517411",
+            "52517421",
+            "52517431",
+            "52517441",
+            "52517451",
+            "52517461",
+            "52517471",
+            "52517481"
+          ],
+          "levelRows": [
+            {
+              "id": "5251741",
+              "groupId": 525174,
+              "icon": 5251741,
+              "level": 1,
+              "type": 3,
+              "skillType": 3,
+              "hurtType": 0,
+              "priority": 0,
+              "startRound": 0,
+              "cooldown": 0,
+              "ignoreControl": 0,
+              "script": "$32?52517411",
+              "scriptRefs": [
+                "52517411"
+              ],
+              "attributes": "{}",
+              "description": "Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 15%",
+              "effectShow": "{0}",
+              "name": "Triển khai {Khoảng Trống Vô Tận}",
+              "raw": "TAB_Skill[5251741] = {525174,2,{{}},5251741,1,3,3,0,0,0,0,0,\"$32?52517411\",{},\"Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 15%\",{0},0,0,\"Triển khai {Khoảng Trống Vô Tận}\",{5,6},4,0,10000}",
+              "source": "TAB_Skill_3.lua",
+              "battleEffects": [
+                {
+                  "effectType": "DEBUFF",
+                  "targetType": "ALL_ENEMIES",
+                  "multiplier": 0.15,
+                  "chance": 1,
+                  "duration": 0,
+                  "configJson": {
+                    "trigger": "BATTLE_START",
+                    "statType": "DAMAGE_TAKEN",
+                    "permanent": true,
+                    "ignoreImmunity": true,
+                    "eventSkillCode": "GOJO_ACTIVE_2"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "5251742",
+              "groupId": 525174,
+              "icon": 5251741,
+              "level": 2,
+              "type": 3,
+              "skillType": 3,
+              "hurtType": 0,
+              "priority": 0,
+              "startRound": 0,
+              "cooldown": 0,
+              "ignoreControl": 0,
+              "script": "$32?52517421",
+              "scriptRefs": [
+                "52517421"
+              ],
+              "attributes": "{}",
+              "description": "Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 20%",
+              "effectShow": "{0}",
+              "name": "Triển khai {Khoảng Trống Vô Tận}",
+              "raw": "TAB_Skill[5251742] = {525174,2,{{}},5251741,2,3,3,0,0,0,0,0,\"$32?52517421\",{},\"Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 20%\",{0},0,0,\"Triển khai {Khoảng Trống Vô Tận}\",{5,10},4,0,10000}",
+              "source": "TAB_Skill_3.lua",
+              "battleEffects": [
+                {
+                  "effectType": "DEBUFF",
+                  "targetType": "ALL_ENEMIES",
+                  "multiplier": 0.2,
+                  "chance": 1,
+                  "duration": 0,
+                  "configJson": {
+                    "trigger": "BATTLE_START",
+                    "statType": "DAMAGE_TAKEN",
+                    "permanent": true,
+                    "ignoreImmunity": true,
+                    "eventSkillCode": "GOJO_ACTIVE_2"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "5251743",
+              "groupId": 525174,
+              "icon": 5251741,
+              "level": 3,
+              "type": 3,
+              "skillType": 3,
+              "hurtType": 0,
+              "priority": 0,
+              "startRound": 0,
+              "cooldown": 0,
+              "ignoreControl": 0,
+              "script": "$32?52517431",
+              "scriptRefs": [
+                "52517431"
+              ],
+              "attributes": "{}",
+              "description": "Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 25%",
+              "effectShow": "{0}",
+              "name": "Triển khai {Khoảng Trống Vô Tận}",
+              "raw": "TAB_Skill[5251743] = {525174,2,{{}},5251741,3,3,3,0,0,0,0,0,\"$32?52517431\",{},\"Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 25%\",{0},0,0,\"Triển khai {Khoảng Trống Vô Tận}\",{5,101},4,0,10000}",
+              "source": "TAB_Skill_3.lua",
+              "battleEffects": [
+                {
+                  "effectType": "DEBUFF",
+                  "targetType": "ALL_ENEMIES",
+                  "multiplier": 0.25,
+                  "chance": 1,
+                  "duration": 0,
+                  "configJson": {
+                    "trigger": "BATTLE_START",
+                    "statType": "DAMAGE_TAKEN",
+                    "permanent": true,
+                    "ignoreImmunity": true,
+                    "eventSkillCode": "GOJO_ACTIVE_2"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "5251744",
+              "groupId": 525174,
+              "icon": 5251741,
+              "level": 4,
+              "type": 3,
+              "skillType": 3,
+              "hurtType": 0,
+              "priority": 0,
+              "startRound": 0,
+              "cooldown": 0,
+              "ignoreControl": 0,
+              "script": "$32?52517441",
+              "scriptRefs": [
+                "52517441"
+              ],
+              "attributes": "{}",
+              "description": "Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 26%",
+              "effectShow": "{0}",
+              "name": "Triển khai {Khoảng Trống Vô Tận}",
+              "raw": "TAB_Skill[5251744] = {525174,2,{{}},5251741,4,3,3,0,0,0,0,0,\"$32?52517441\",{},\"Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 26%\",{0},0,0,\"Triển khai {Khoảng Trống Vô Tận}\",{5,102},4,0,10000}",
+              "source": "TAB_Skill_3.lua",
+              "battleEffects": [
+                {
+                  "effectType": "DEBUFF",
+                  "targetType": "ALL_ENEMIES",
+                  "multiplier": 0.26,
+                  "chance": 1,
+                  "duration": 0,
+                  "configJson": {
+                    "trigger": "BATTLE_START",
+                    "statType": "DAMAGE_TAKEN",
+                    "permanent": true,
+                    "ignoreImmunity": true,
+                    "eventSkillCode": "GOJO_ACTIVE_2"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "5251745",
+              "groupId": 525174,
+              "icon": 5251741,
+              "level": 5,
+              "type": 3,
+              "skillType": 3,
+              "hurtType": 0,
+              "priority": 0,
+              "startRound": 0,
+              "cooldown": 0,
+              "ignoreControl": 0,
+              "script": "$32?52517451",
+              "scriptRefs": [
+                "52517451"
+              ],
+              "attributes": "{}",
+              "description": "Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 27%",
+              "effectShow": "{0}",
+              "name": "Triển khai {Khoảng Trống Vô Tận}",
+              "raw": "TAB_Skill[5251745] = {525174,2,{{}},5251741,5,3,3,0,0,0,0,0,\"$32?52517451\",{},\"Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 27%\",{0},0,0,\"Triển khai {Khoảng Trống Vô Tận}\",{5,103},4,0,10000}",
+              "source": "TAB_Skill_3.lua",
+              "battleEffects": [
+                {
+                  "effectType": "DEBUFF",
+                  "targetType": "ALL_ENEMIES",
+                  "multiplier": 0.27,
+                  "chance": 1,
+                  "duration": 0,
+                  "configJson": {
+                    "trigger": "BATTLE_START",
+                    "statType": "DAMAGE_TAKEN",
+                    "permanent": true,
+                    "ignoreImmunity": true,
+                    "eventSkillCode": "GOJO_ACTIVE_2"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "5251746",
+              "groupId": 525174,
+              "icon": 5251741,
+              "level": 6,
+              "type": 3,
+              "skillType": 3,
+              "hurtType": 0,
+              "priority": 0,
+              "startRound": 0,
+              "cooldown": 0,
+              "ignoreControl": 0,
+              "script": "$32?52517461",
+              "scriptRefs": [
+                "52517461"
+              ],
+              "attributes": "{}",
+              "description": "Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 28%",
+              "effectShow": "{0}",
+              "name": "Triển khai {Khoảng Trống Vô Tận}",
+              "raw": "TAB_Skill[5251746] = {525174,2,{{}},5251741,6,3,3,0,0,0,0,0,\"$32?52517461\",{},\"Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 28%\",{0},0,0,\"Triển khai {Khoảng Trống Vô Tận}\",{5,104},4,0,10000}",
+              "source": "TAB_Skill_3.lua",
+              "battleEffects": [
+                {
+                  "effectType": "DEBUFF",
+                  "targetType": "ALL_ENEMIES",
+                  "multiplier": 0.28,
+                  "chance": 1,
+                  "duration": 0,
+                  "configJson": {
+                    "trigger": "BATTLE_START",
+                    "statType": "DAMAGE_TAKEN",
+                    "permanent": true,
+                    "ignoreImmunity": true,
+                    "eventSkillCode": "GOJO_ACTIVE_2"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "5251747",
+              "groupId": 525174,
+              "icon": 5251741,
+              "level": 7,
+              "type": 3,
+              "skillType": 3,
+              "hurtType": 0,
+              "priority": 0,
+              "startRound": 0,
+              "cooldown": 0,
+              "ignoreControl": 0,
+              "script": "$32?52517471",
+              "scriptRefs": [
+                "52517471"
+              ],
+              "attributes": "{}",
+              "description": "Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 29%",
+              "effectShow": "{0}",
+              "name": "Triển khai {Khoảng Trống Vô Tận}",
+              "raw": "TAB_Skill[5251747] = {525174,2,{{}},5251741,7,3,3,0,0,0,0,0,\"$32?52517471\",{},\"Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 29%\",{0},0,0,\"Triển khai {Khoảng Trống Vô Tận}\",{5,105},4,0,10000}",
+              "source": "TAB_Skill_3.lua",
+              "battleEffects": [
+                {
+                  "effectType": "DEBUFF",
+                  "targetType": "ALL_ENEMIES",
+                  "multiplier": 0.29,
+                  "chance": 1,
+                  "duration": 0,
+                  "configJson": {
+                    "trigger": "BATTLE_START",
+                    "statType": "DAMAGE_TAKEN",
+                    "permanent": true,
+                    "ignoreImmunity": true,
+                    "eventSkillCode": "GOJO_ACTIVE_2"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "5251748",
+              "groupId": 525174,
+              "icon": 5251741,
+              "level": 8,
+              "type": 3,
+              "skillType": 3,
+              "hurtType": 0,
+              "priority": 0,
+              "startRound": 0,
+              "cooldown": 0,
+              "ignoreControl": 0,
+              "script": "$32?52517481",
+              "scriptRefs": [
+                "52517481"
+              ],
+              "attributes": "{}",
+              "description": "Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 30%",
+              "effectShow": "{0}",
+              "name": "Triển khai {Khoảng Trống Vô Tận}",
+              "raw": "TAB_Skill[5251748] = {525174,2,{{}},5251741,8,3,3,0,0,0,0,0,\"$32?52517481\",{},\"Cưỡng chế đối tượng nhận tình báo mà không thể phản kháng; bắt đầu chiến đấu, khiến tất cả địch rơi vào trong lĩnh vực, sát thương gây cho địch trong lĩnh vực tăng 30%\",{0},0,0,\"Triển khai {Khoảng Trống Vô Tận}\",{5,0},4,0,10000}",
+              "source": "TAB_Skill_3.lua",
+              "battleEffects": [
+                {
+                  "effectType": "DEBUFF",
+                  "targetType": "ALL_ENEMIES",
+                  "multiplier": 0.3,
+                  "chance": 1,
+                  "duration": 0,
+                  "configJson": {
+                    "trigger": "BATTLE_START",
+                    "statType": "DAMAGE_TAKEN",
+                    "permanent": true,
+                    "ignoreImmunity": true,
+                    "eventSkillCode": "GOJO_ACTIVE_2"
+                  }
+                }
+              ]
+            }
+          ],
+          "scriptResolution": {
+            "sse": [],
+            "performance": [],
+            "effects": []
+          },
+          "battleEffects": [
+            {
+              "effectType": "DEBUFF",
+              "targetType": "ALL_ENEMIES",
+              "multiplier": 0.15,
+              "chance": 1,
+              "duration": 0,
+              "configJson": {
+                "trigger": "BATTLE_START",
+                "statType": "DAMAGE_TAKEN",
+                "permanent": true,
+                "ignoreImmunity": true,
+                "eventSkillCode": "GOJO_ACTIVE_2"
               }
             }
           ]
