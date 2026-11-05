@@ -254,6 +254,25 @@ public class TabLuaCatalogSynchronizer {
     ) {
         ArrayNode levelRows = objectMapper.createArrayNode();
         LinkedHashSet<String> allScriptReferences = new LinkedHashSet<>();
+
+        // TAB Lua là nguồn cho level rows, nhưng battleEffects là metadata
+        // runtime do game cấu hình. Giữ lại cấu hình theo đúng level trước
+        // khi tái tạo row từ Lua để các hiệu ứng theo cấp không bị mất startup.
+        Map<Integer, JsonNode> runtimeBattleEffectsByLevel = new HashMap<>();
+        JsonNode configuredLevelRows = skillConfig.path("levelRows");
+        if (configuredLevelRows.isArray()) {
+            for (JsonNode configuredLevel : configuredLevelRows) {
+                int configuredLevelNumber = configuredLevel.path("level").asInt(-1);
+                JsonNode configuredBattleEffects = configuredLevel.path("battleEffects");
+                if (configuredLevelNumber > 0 && configuredBattleEffects.isArray()) {
+                    runtimeBattleEffectsByLevel.put(
+                            configuredLevelNumber,
+                            configuredBattleEffects.deepCopy()
+                    );
+                }
+            }
+        }
+
         LuaRow levelOne = null;
         int expectedLevel = 1;
 
@@ -273,7 +292,16 @@ public class TabLuaCatalogSynchronizer {
 
             List<String> references = extractScriptReferences(stringAt(source, 12));
             allScriptReferences.addAll(references);
-            levelRows.add(toLevelJson(source, references));
+
+            ObjectNode synchronizedLevel = toLevelJson(source, references);
+            JsonNode runtimeBattleEffects = runtimeBattleEffectsByLevel.get(level);
+            if (runtimeBattleEffects != null) {
+                synchronizedLevel.set(
+                        "battleEffects",
+                        runtimeBattleEffects.deepCopy()
+                );
+            }
+            levelRows.add(synchronizedLevel);
         }
 
         if (levelOne == null) {
