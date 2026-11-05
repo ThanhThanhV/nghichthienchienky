@@ -609,6 +609,10 @@ class BattleRenderer {
                     heroCode === "iori" &&
                     event.type === "ACTIVE_SKILL" &&
                     skillCode === "IORI_ACTIVE_2";
+                const isIoriSecondSkill =
+                    heroCode === "iori" &&
+                    event.type === "ULTIMATE_SKILL" &&
+                    skillCode === "IORI_ULTIMATE_3";
 
                 if (
                     (isTohkaDarkFirstSkill || isIoriDarkFirstSkill) &&
@@ -629,10 +633,14 @@ class BattleRenderer {
                     }
                 }
 
-                // Iori thường phải lướt vào chính giữa battlefield trước khi
-                // bắt đầu animation skill và phát cast VFX. Không teleport:
+                // Cả chiêu 1 (ACTIVE) và chiêu 2 (ULTIMATE) của Iori thường
+                // đều lướt vào chính giữa battlefield trước khi bắt đầu animation
+                // nhân vật và phát cast VFX. Không teleport:
                 // tween vị trí xong mới gọi playCharacterAnimation bên dưới.
-                if (isIoriFirstSkill && !this.actionContext.sourceOriginalPosition) {
+                if (
+                    (isIoriFirstSkill || isIoriSecondSkill) &&
+                    !this.actionContext.sourceOriginalPosition
+                ) {
                     this.actionContext.sourceCharacter = character;
                     this.actionContext.sourceOriginalPosition = {
                         x: character.positionX,
