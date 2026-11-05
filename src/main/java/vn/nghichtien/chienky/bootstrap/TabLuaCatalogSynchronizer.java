@@ -25,9 +25,10 @@ import java.util.regex.Pattern;
 /**
  * Đồng bộ phần dữ liệu kỹ năng trong JSON catalog từ các bảng TAB Lua gốc.
  *
- * JSON vẫn giữ các metadata runtime được cấu hình riêng (runtimeSkillType,
- * battleEffects, target và Spine mapping), nhưng ID, tên, mô tả, icon, loại
- * TAB, script và toàn bộ levelRows luôn được lấy lại từ TAB_Hero/TAB_Skill.
+ * Các hero thông thường giữ runtime metadata được cấu hình riêng trong JSON.
+ * Riêng Gojo, slot order/type và skill groups được tạo trực tiếp từ TAB_Hero /
+ * TAB_Skill; action/VFX mapping được tạo từ TAB_EffectPerfor và Spine assets.
+ * ID, tên, mô tả, icon, loại TAB, script và toàn bộ levelRows luôn lấy từ Lua.
  */
 @Component
 public class TabLuaCatalogSynchronizer {
