@@ -375,9 +375,9 @@ public class HeroService {
                                 instance.getId()
                         );
 
-        Map<Long, Integer> skillLevels = instanceSkills.stream()
+        Map<String, Integer> skillLevels = instanceSkills.stream()
                 .collect(Collectors.toMap(
-                        skill -> skill.getSkillDefinition().getId(),
+                        HeroInstanceSkill::getSkillCode,
                         HeroInstanceSkill::getSkillLevel,
                         (first, second) -> first
                 ));
@@ -385,7 +385,7 @@ public class HeroService {
         List<HeroSkillResponse> skills = skillDefinitions.stream()
                 .map(skill -> toSkillResponse(
                         skill,
-                        skillLevels.getOrDefault(skill.getId(), 1)
+                        skillLevels.getOrDefault(skill.getSkillCode(), 1)
                 ))
                 .toList();
 
@@ -929,7 +929,7 @@ public class HeroService {
                 .orElseThrow(() -> new IllegalArgumentException("Hero not found."));
 
         HeroInstanceSkill instanceSkill = heroInstanceSkillRepository
-                .findByHeroInstanceIdAndSkillDefinitionSkillCode(instanceId, skillCode)
+                .findByHeroInstanceIdAndSkillCode(instanceId, skillCode)
                 .orElseThrow(() -> new IllegalArgumentException("Hero skill not found."));
 
         int targetLevel = instanceSkill.getSkillLevel() + 1;
