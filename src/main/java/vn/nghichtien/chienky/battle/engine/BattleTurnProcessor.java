@@ -42,8 +42,8 @@ public class BattleTurnProcessor {
 
     /**
      * Gojo dùng BASIC ở các lượt thường sau khi hết khóa hành động.
-     * ACTIVE (Khoảng Trống Vô Tận) chỉ kích hoạt từ BATTLE_START; không được
-     * lặp lại theo chu kỳ ACTIVE -> ULTIMATE -> BASIC.
+     * Domain (Khoảng Trống Vô Tận) là PASSIVE theo TAB Lua, chỉ kích hoạt
+     * từ BATTLE_START; không được lặp lại theo chu kỳ ACTIVE -> ULTIMATE -> BASIC.
      */
     private BattleActionType getNextActionType(
             BattleState battle,
