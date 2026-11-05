@@ -360,7 +360,7 @@
             "code": "iori_yatagarasu_cast",
             "file": "seffect_51515110111",
             "animation": "animation_2",
-            "anchor": "source",
+            "anchor": "screen_center",
             "impactEvent": "qishou_21_2_2",
             "impactEvents": [
               "qishou_21_2_2",
@@ -625,7 +625,7 @@
             "code": "iori_dark_ultimate_cast",
             "file": "seffect_51515121014",
             "animation": "animation_0",
-            "anchor": "source",
+            "anchor": "screen_center",
             "impactEvent": "qishou_21_1_1",
             "impactEvents": [
               "qishou_21_1_1"
