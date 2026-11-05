@@ -12,7 +12,7 @@ public interface HeroSkillUpgradeCostRepository
     /**
      * Xóa chi phí trước khi xóa cấu hình nâng cấp của các kỹ năng seed.
      */
-    long deleteAllByUpgradeConfigSkillDefinitionHeroDefinitionHeroCodeIn(
+    long deleteAllByUpgradeConfigHeroCodeIn(
             java.util.List<String> heroCodes
     );
 }
