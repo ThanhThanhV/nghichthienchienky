@@ -157,7 +157,7 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                 case "GOJO_PASSIVE_3" -> "GOJO_PASSIVE_2"; // Hách
                 case "GOJO_PASSIVE_4" -> "GOJO_PASSIVE_3"; // Vô Hạ Hạn
                 case "GOJO_PASSIVE_5" -> "GOJO_PASSIVE_4"; // Lục Nhãn
-                case "GOJO_ACTIVE_2" -> "GOJO_ACTIVE_5";   // Khoảng Trống Vô Tận
+                case "GOJO_ACTIVE_2" -> "GOJO_PASSIVE_5";   // Khoảng Trống Vô Tận
                 default -> config.getSkillCode();
             };
             String uniqueKey = newSkillCode + "#" + config.getTargetSkillLevel();
@@ -296,7 +296,7 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
         }
 
         if (!skillAnimations.has("GOJO_BASIC_1")
-                || !skillAnimations.has("GOJO_ACTIVE_5")
+                || !skillAnimations.has("GOJO_PASSIVE_5")
                 || !skillAnimations.has("GOJO_PASSIVE_2")
                 || !skillAnimations.has("GOJO_PASSIVE_4")
                 || skillAnimations.has("GOJO_PASSIVE_3")) {
@@ -1386,7 +1386,7 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                     case "GOJO_PASSIVE_2" -> seedGojoHachEffects(skill);
                     case "GOJO_PASSIVE_3" -> seedGojoInfinityEffects(skill);
                     case "GOJO_PASSIVE_4" -> seedGojoSixEyesEffects(skill);
-                    case "GOJO_ACTIVE_5" -> seedGojoDomainEffects(skill);
+                    case "GOJO_PASSIVE_5" -> seedGojoDomainEffects(skill);
                     default -> { }
                 }
             }
@@ -1630,7 +1630,7 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                     effects.add(createGojoEffectJson(
                             "DEBUFF", "ALL_ENEMIES", damageTaken[level - 1], 0,
                             "{\"trigger\":\"BATTLE_START\",\"statType\":\"DAMAGE_TAKEN\","
-                                    + "\"permanent\":true,\"ignoreImmunity\":true,\"eventSkillCode\":\"GOJO_ACTIVE_5\"}"
+                                    + "\"permanent\":true,\"ignoreImmunity\":true,\"eventSkillCode\":\"GOJO_PASSIVE_5\"}"
                     ));
                     row.set("battleEffects", effects);
                 }
@@ -1638,14 +1638,14 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
             }
         } catch (IOException exception) {
             throw new IllegalStateException(
-                    "Không thể tạo battleEffects theo level cho GOJO_ACTIVE_5",
+                    "Không thể tạo battleEffects theo level cho GOJO_PASSIVE_5",
                     exception
             );
         }
         HeroSkillEffect domain = new HeroSkillEffect(1, "DEBUFF", "ALL_ENEMIES");
         domain.updateParameters(new BigDecimal("0.15"), BigDecimal.ONE, 0);
         domain.updateConfig("{\"trigger\":\"BATTLE_START\",\"statType\":\"DAMAGE_TAKEN\","
-                + "\"permanent\":true,\"ignoreImmunity\":true,\"eventSkillCode\":\"GOJO_ACTIVE_5\"}");
+                + "\"permanent\":true,\"ignoreImmunity\":true,\"eventSkillCode\":\"GOJO_PASSIVE_5\"}");
         skill.replaceEffects(List.of(domain));
     }
 
@@ -1848,7 +1848,7 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                                 new SkillSeed("Thuật thức Phản Chuyển-Hách", "PASSIVE"),
                                 new SkillSeed("Chú thuật Vô Hạ Hạn", "PASSIVE"),
                                 new SkillSeed("Lục Nhãn", "PASSIVE"),
-                                new SkillSeed("Triển khai {Khoảng Trống Vô Tận}", "ACTIVE")
+                                new SkillSeed("Triển khai {Khoảng Trống Vô Tận}", "PASSIVE")
                         )),
                 new HeroSeed("iori", "Iori", "LEGENDARY", "ASSASSIN",
                         skills("Hỏa quyền", "Bạo liệt", "Quỷ thiêu", "Cuồng chiến", "Huyết thống")),
