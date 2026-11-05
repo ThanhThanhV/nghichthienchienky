@@ -1057,6 +1057,16 @@ class BattleRenderer {
             ) {
                 return { animation: "superskill", trigger: "BATTLE_START" };
             }
+            // Hách là phản kích PASSIVE theo Lua, dùng animation "skill"
+            // tại thời điểm địch hành động; không đổi thành action của Gojo.
+            if (
+                heroCode === "gojo" &&
+                requestedCode === "GOJO_PASSIVE_2" &&
+                trigger === "ON_ENEMY_ACTION" &&
+                character.getAnimationNames().includes("skill")
+            ) {
+                return { animation: "skill", trigger: "ON_ENEMY_ACTION" };
+            }
             return null;
         }
 
