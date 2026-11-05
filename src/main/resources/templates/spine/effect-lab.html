@@ -20,6 +20,19 @@
         Danh mục toàn bộ effect Spine trong thư mục seffects. Chọn nhóm tướng hoặc tìm theo mã,
         sau đó phát từng animation để quan sát hiệu ứng và event marker. Tên asset gốc được giữ nguyên.
     </p>
+    <section class="skill-mapping-toolbar">
+        <div class="mapping-toolbar-heading">
+            <div><h2>Mapping hiệu ứng theo kỹ năng · 10 Hero</h2>
+                <p>Chọn tướng và từng chiêu để xem dữ liệu gameplay, animation và VFX đang có. Mapping mới được lưu thành bản nháp riêng, không tự ghi đè DB.</p></div>
+            <button id="exportEffectDraft" type="button" disabled>Xuất bản nháp JSON</button>
+        </div>
+        <div class="mapping-selectors">
+            <label>Hero<select id="mappingHero"><option value="">Đang tải danh sách tướng...</option></select></label>
+            <label>Kỹ năng<select id="mappingSkill" disabled><option value="">Chọn hero trước</option></select></label>
+            <span id="mappingProgress" class="mapping-progress">Đang tải dữ liệu...</span>
+        </div>
+        <div id="mappingSkillInfo" class="mapping-skill-info">Chọn hero và kỹ năng để bắt đầu rà soát.</div>
+    </section>
     <div class="effect-layout">
         <aside class="effect-sidebar">
             <div class="effect-filter">
@@ -56,6 +69,20 @@
             </section>
         </section>
     </div>
+    <section class="skill-mapping-workbench">
+        <div class="mapping-workbench-heading"><h2>Gán Spine effect cho chiêu đang chọn</h2>
+            <span id="selectedAssetLabel">Chưa chọn effect asset</span></div>
+        <div class="mapping-editor">
+            <label>Phase<select id="mappingPhase"><option value="cast">CAST · Hiệu ứng thi triển</option><option value="impact">IMPACT · Hiệu ứng trúng đích</option><option value="loop">LOOP · Hiệu ứng duy trì</option></select></label>
+            <label>Animation<select id="mappingEffectAnimation" disabled><option value="">Chọn effect asset trước</option></select></label>
+            <label>Anchor<select id="mappingAnchor"><option value="source">Source · Người thi triển</option><option value="target">Target · Mục tiêu</option><option value="enemy_formation">Enemy formation · Đội hình địch</option><option value="ally_formation">Ally formation · Đội hình ta</option><option value="self">Self · Bản thân</option></select></label>
+            <label>Trigger<select id="mappingTrigger"><option value="">Không giới hạn</option><option value="BATTLE_START">BATTLE_START</option><option value="ROUND_START">ROUND_START</option><option value="BEFORE_ACTION">BEFORE_ACTION</option><option value="AFTER_ACTION">AFTER_ACTION</option><option value="ON_ATTACK">ON_ATTACK</option><option value="ON_DAMAGED">ON_DAMAGED</option><option value="ON_KILL">ON_KILL</option><option value="ON_REVIVE">ON_REVIVE</option><option value="ON_ENEMY_ACTION">ON_ENEMY_ACTION</option><option value="COUNTER">COUNTER</option></select></label>
+            <label>Event marker (cách nhau bằng dấu phẩy)<input id="mappingEvents" type="text" placeholder="hit_11_1_1, hit_11_1_2"></label>
+            <button id="addEffectMapping" type="button" disabled>＋ Thêm vào bản nháp</button>
+        </div>
+        <div class="mapping-current"><h3>Mapping hiện có trong DB</h3><div id="currentSkillMappings">Chọn kỹ năng để tải mapping hiện tại.</div></div>
+        <div class="mapping-draft"><h3>Bản nháp mapping của mày</h3><div id="draftSkillMappings">Chưa có mapping nháp cho chiêu này.</div></div>
+    </section>
 </main>
 </body>
 </html>
