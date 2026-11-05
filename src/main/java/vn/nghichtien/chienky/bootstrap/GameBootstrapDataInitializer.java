@@ -25,6 +25,7 @@ import vn.nghichtien.chienky.hero.repository.HeroGrowthConfigRepository;
 import vn.nghichtien.chienky.hero.repository.HeroInstanceRepository;
 import vn.nghichtien.chienky.hero.repository.HeroInstanceSkillRepository;
 import vn.nghichtien.chienky.hero.repository.HeroSkillDefinitionRepository;
+import vn.nghichtien.chienky.hero.repository.HeroSkillUpgradeConfigRepository;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -43,6 +44,7 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
     private final HeroBaseStatsRepository heroBaseStatsRepository;
     private final HeroGrowthConfigRepository heroGrowthConfigRepository;
     private final HeroSkillDefinitionRepository heroSkillDefinitionRepository;
+    private final HeroSkillUpgradeConfigRepository heroSkillUpgradeConfigRepository;
     private final HeroInstanceRepository heroInstanceRepository;
     private final HeroInstanceSkillRepository heroInstanceSkillRepository;
 
@@ -53,6 +55,7 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
             HeroBaseStatsRepository heroBaseStatsRepository,
             HeroGrowthConfigRepository heroGrowthConfigRepository,
             HeroSkillDefinitionRepository heroSkillDefinitionRepository,
+            HeroSkillUpgradeConfigRepository heroSkillUpgradeConfigRepository,
             HeroInstanceRepository heroInstanceRepository,
             HeroInstanceSkillRepository heroInstanceSkillRepository
     ) {
@@ -62,6 +65,7 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
         this.heroBaseStatsRepository = heroBaseStatsRepository;
         this.heroGrowthConfigRepository = heroGrowthConfigRepository;
         this.heroSkillDefinitionRepository = heroSkillDefinitionRepository;
+        this.heroSkillUpgradeConfigRepository = heroSkillUpgradeConfigRepository;
         this.heroInstanceRepository = heroInstanceRepository;
         this.heroInstanceSkillRepository = heroInstanceSkillRepository;
     }
@@ -95,6 +99,25 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                     seed, i + 1, spineCatalog, animationConfigCatalog,
                     tabSkillCatalog.path("heroes").path(seed.code())
             );
+        }
+
+        // Cấu hình nâng cấp được giữ theo code, nhưng dọn các skillCode đã bị
+        // loại khỏi TAB catalog để tránh config mồ côi sau lần seed mới.
+        for (String heroCode : heroCodes) {
+            List<String> currentSkillCodes = heroSkillDefinitionRepository
+                    .findAllByHeroDefinitionHeroCodeOrderBySkillOrderAsc(heroCode)
+                    .stream()
+                    .map(HeroSkillDefinition::getSkillCode)
+                    .toList();
+            if (currentSkillCodes.size() != 5) {
+                throw new IllegalStateException(
+                        "Catalog skill phải có đúng 5 mã cho hero " + heroCode
+                );
+            }
+            heroSkillUpgradeConfigRepository
+                    .deleteAllByHeroCodeAndSkillCodeNotIn(
+                            heroCode, currentSkillCodes
+                    );
         }
 
         // Gắn lại 5 kỹ năng cấp 1 cho mọi bản sao tướng người chơi đang sở hữu.
