@@ -1277,7 +1277,7 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
         // Validate trực tiếp event timeline của animation JSON để tránh trường
         // hợp tên animation đúng nhưng impactEvent/impactEvents sai, khiến
         // frontend phải fallback timing hoặc không đồng bộ DAMAGE với VFX.
-        if ("iori".equalsIgnoreCase(heroCode)) {
+        if ("iori".equalsIgnoreCase(heroCode) || "iori_dark".equalsIgnoreCase(heroCode)) {
             JsonNode animationEvents = skeletonAnimations.path(animation).path("events");
             java.util.Set<String> availableEventNames = new java.util.HashSet<>();
             if (animationEvents.isArray()) {
