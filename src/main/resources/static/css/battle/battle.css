@@ -1110,22 +1110,31 @@ body {
 }
 
 
-/* Expanded battlefield shared by every Spine hero (Iori and Dark Iori included). */
-@media (min-width: 601px) {
-    .battle-page {
-        overflow-x: visible;
-    }
+/* Expanded battlefield screen: double the page viewport height, not the formation cards. */
+body {
+    min-height: 200dvh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
 
+.battle-page {
+    height: 200dvh;
+    min-height: 200dvh;
+    max-height: none;
+    aspect-ratio: auto;
+    overflow-x: hidden;
+    overflow-y: visible;
+}
+
+@media (min-width: 601px) {
     .battle-field {
         width: 120%;
         margin-left: -10%;
         column-gap: 3.3px;
         grid-template-columns: minmax(0, 1fr) 26.4px minmax(0, 1fr);
-    }
-
-    .battle-team .team-formation,
-    .battle-spine-active .battle-team .team-formation {
-        height: clamp(380px, 60dvh, 540px);
     }
 }
 
@@ -1135,17 +1144,5 @@ body {
         margin-left: 0;
         column-gap: 3.3px;
         grid-template-columns: minmax(0, 1fr) 26.4px minmax(0, 1fr);
-    }
-
-    .battle-team .team-formation,
-    .battle-spine-active .battle-team .team-formation {
-        height: clamp(380px, 60dvh, 540px);
-    }
-}
-
-@media (max-height: 760px) {
-    .battle-team .team-formation,
-    .battle-spine-active .battle-team .team-formation {
-        height: clamp(320px, 50dvh, 420px);
     }
 }
