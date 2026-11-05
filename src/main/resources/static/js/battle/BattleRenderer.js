@@ -613,6 +613,16 @@ class BattleRenderer {
                     heroCode === "iori" &&
                     event.type === "ULTIMATE_SKILL" &&
                     skillCode === "IORI_ULTIMATE_3";
+                // Gojo's fourth skill is identified by its explicit skill code,
+                // while requiring a resolved character animation prevents a
+                // stat-only PASSIVE_4 from triggering a movement.
+                const isGojoFourthSkill =
+                    heroCode === "gojo" &&
+                    /(?:^|_)4$/.test(skillCode) &&
+                    Boolean(animationName);
+                const isTohkaDarkUltimate =
+                    ["dark_tohka", "tohka_dark"].includes(heroCode) &&
+                    event.type === "ULTIMATE_SKILL";
 
                 if (
                     (isTohkaDarkFirstSkill || isIoriDarkFirstSkill) &&
@@ -638,7 +648,12 @@ class BattleRenderer {
                 // nhân vật và phát cast VFX. Không teleport:
                 // tween vị trí xong mới gọi playCharacterAnimation bên dưới.
                 if (
-                    (isIoriFirstSkill || isIoriSecondSkill) &&
+                    (
+                        isIoriFirstSkill ||
+                        isIoriSecondSkill ||
+                        isGojoFourthSkill ||
+                        isTohkaDarkUltimate
+                    ) &&
                     !this.actionContext.sourceOriginalPosition
                 ) {
                     const enemyTeam = this.actionContext.sourceTeam === "PLAYER"
@@ -653,8 +668,10 @@ class BattleRenderer {
                             y: character.positionY
                         };
 
-                        // Iori lướt đúng vào tâm màn hình theo trục X.
-                        // Giữ nguyên cao độ hàng giữa của đội hình đối phương.
+                        // Gojo chiêu 4, Tohka Dark ultimate và hai chiêu lướt
+                        // của Iori đều phải di chuyển tới trục giữa battlefield
+                        // trước khi bắt đầu animation nhân vật/cast VFX.
+                        // Giữ cao độ hàng giữa đối phương để không lệch hàng.
                         const frontPosition = {
                             x: 0,
                             y: enemyCenter.y
