@@ -19,10 +19,10 @@ import java.util.Set;
 /**
  * Reset dữ liệu sở hữu hero và catalog skill/effect trước mỗi lần chạy.
  *
- * Hero definitions và các cấu hình progression được giữ theo heroCode.
- * Skill definitions/effects được xóa rồi seed lại từ TAB/Spine theo
- * heroCode + skillCode. Cấu hình nâng cấp kỹ năng vẫn được giữ vì đã chuyển
- * sang định danh code, không còn phụ thuộc ID tự tăng của skill.
+ * Các hero đang có trong seed được đồng bộ theo heroCode; hero đã bị loại
+ * khỏi seed và cấu hình riêng của chúng được xóa. Skill definitions/effects
+ * được nạp lại từ TAB/Spine theo heroCode + skillCode. Cấu hình progression
+ * của các hero còn seed được giữ vì là dữ liệu nghiệp vụ có thể chỉnh trong DB.
  *
  * Accounts, player profiles, resources, resource transactions và dữ liệu
  * không thuộc hero luôn được giữ nguyên.
