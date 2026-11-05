@@ -360,7 +360,7 @@
             "code": "iori_yatagarasu_cast",
             "file": "seffect_51515110111",
             "animation": "animation_2",
-            "anchor": "screen_center",
+            "anchor": "source",
             "impactEvent": "qishou_21_2_2",
             "impactEvents": [
               "qishou_21_2_2",
