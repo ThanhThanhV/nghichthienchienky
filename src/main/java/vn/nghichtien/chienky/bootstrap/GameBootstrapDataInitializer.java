@@ -1304,8 +1304,8 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                         .findFirst()
                         .orElse(null);
                 if (occupiedSlot != null) {
-                    migrateSkillCodeIfDeclared(
-                            seed.code(), order, occupiedSlot, skillCode, existingSkills
+                    rejectLegacySkillCodeMismatch(
+                            seed.code(), order, occupiedSlot, skillCode
                     );
                     skill = occupiedSlot;
                 } else {
