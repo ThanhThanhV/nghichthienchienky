@@ -407,9 +407,9 @@ public class BattleTurnProcessor {
     }
 
     /**
-     * Chỉ phát trigger ON_ENEMY_ACTION nếu actor thực sự gây sát thương trong
-     * action vừa kết thúc. Các action không gây damage (buff, domain setup,
-     * skip, evade/block-only) không được kích hoạt phản kích của Gojo.
+     * Chỉ phát trigger ON_ENEMY_ACTION khi actor vừa thực hiện một action có
+     * hit-resolution event. Buff, domain setup hoặc skip không kích hoạt phản kích;
+     * hit bị né, miễn nhiễm, chặn hoặc hấp thụ bởi khiên vẫn được tính.
      *
      * Snapshot actionEvents chỉ chứa event của action gốc; counter/reflect
      * reaction được phát sau đó không được xem là một action tấn công mới.
@@ -430,8 +430,7 @@ public class BattleTurnProcessor {
                                 || event.type() == BattleEventType.BLOCK
                 )
                         && Objects.equals(event.sourceInstanceId(), actor.getInstanceId())
-                        && !"COUNTER".equalsIgnoreCase(event.effectCategory())
-                        && !"DEFENSE".equalsIgnoreCase(event.effectCategory()));
+                        && !"COUNTER".equalsIgnoreCase(event.effectCategory()));
         if (!resolvedDamagingHit) {
             return;
         }
