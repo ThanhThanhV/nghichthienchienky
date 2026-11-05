@@ -13,6 +13,8 @@ import java.util.Optional;
 public interface HeroSkillUpgradeConfigRepository
         extends JpaRepository<HeroSkillUpgradeConfig, Long> {
 
+    List<HeroSkillUpgradeConfig> findAllByHeroCode(String heroCode);
+
     @EntityGraph(attributePaths = "costs")
     Optional<HeroSkillUpgradeConfig>
     findByHeroCodeAndSkillCodeAndTargetSkillLevelAndEnabled(
