@@ -73,7 +73,8 @@ public class DatabaseResetInitializer implements ApplicationRunner {
 
             // Refuse to delete skill catalog while legacy ID foreign keys still exist.
             // Apply V11__use_hero_and_skill_codes_for_effects_and_upgrades.txt once first.
-            if (hasColumn(connection, "hero_skill_effects", "skill_id")
+            if (hasColumn(connection, "hero_instance_skills", "skill_id")
+                    || hasColumn(connection, "hero_skill_effects", "skill_id")
                     || hasColumn(connection, "hero_skill_upgrade_configs", "skill_id")) {
                 throw new IllegalStateException(
                         "Hero schema vẫn còn skill_id. Hãy chạy migration V11 "
