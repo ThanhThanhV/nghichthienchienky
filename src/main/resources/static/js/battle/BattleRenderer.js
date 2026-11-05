@@ -547,9 +547,10 @@ class BattleRenderer {
                     ""
                 ).trim().toUpperCase();
                 const isTohkaDarkFirstSkill =
-                    heroCode === "tohka_dark" &&
+                    ["dark_tohka", "tohka_dark"].includes(heroCode) &&
                     event.type === "ACTIVE_SKILL" &&
                     [
+                        "DARK_TOHKA_ACTIVE_2",
                         "TOHKA_DARK_ACTIVE_2",
                         "TOHKA_ACTIVE",
                         "SKILL_EFFECT_2"
