@@ -288,7 +288,7 @@ class HeroManagementScreen {
             if (effects.childElementCount) card.append(effects);
 
             const upgrade = this.skillUpgradeOptions.find(
-                option => Number(option.skillId) === Number(skill.skillId)
+                option => option.skillCode === skill.skillCode
             );
             if (upgrade) {
                 const upgradeInfo = document.createElement("div");
@@ -309,7 +309,7 @@ class HeroManagementScreen {
                     this.busy || !upgrade.configured || !upgrade.canUpgrade || !canAfford,
                     () => this.submitUpgrade(
                         "/api/player/heroes/" + this.selectedHero.instanceId +
-                        "/skills/" + upgrade.skillId + "/upgrade",
+                        "/skills/" + encodeURIComponent(skill.skillCode) + "/upgrade",
                         "Đã nâng kỹ năng " + (skill.skillName || skill.skillCode) + "."
                     )
                 );
