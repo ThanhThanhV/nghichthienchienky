@@ -589,6 +589,27 @@ public class TabLuaCatalogSynchronizer {
             node.set("fields", objectMapper.valueToTree(row.values()));
             node.put("raw", row.raw());
             buffers.add(node);
+
+            // TAB_Buffer[9] chứa liên kết buffer/effect dạng "#<id>" hoặc
+            // "#<effectType>&<bufferId>". Theo tiếp các buffer phụ thuộc để
+            // catalog không chỉ giữ buffer đầu tiên được script tham chiếu.
+            String linkedReferences = stringAt(row, 8);
+            Matcher linkedMatcher = Pattern.compile("\\d{5,}").matcher(
+                    linkedReferences == null ? "" : linkedReferences
+            );
+            while (linkedMatcher.find()) {
+                try {
+                    int linkedId = Integer.parseInt(linkedMatcher.group());
+                    if (bufferRows.containsKey(linkedId)) {
+                        addBuffer(
+                                linkedId, bufferRows, buffers,
+                                addedBufferIds, unresolvedBufferIds
+                        );
+                    }
+                } catch (NumberFormatException ignored) {
+                    // Bỏ qua token không thể chuyển thành ID.
+                }
+            }
         }
     }
 
