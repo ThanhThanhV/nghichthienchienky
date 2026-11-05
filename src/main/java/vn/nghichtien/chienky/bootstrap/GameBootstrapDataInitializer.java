@@ -1218,7 +1218,7 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                     resistance[level - 1],lifesteal[level - 1]};
             for (int i = 0; i < stats.length; i++) {
                 effects.add(createGojoEffectJson("BUFF","SELF",values[i],0,
-                        "{\"trigger\":\"BEFORE_ACTION\",\"condition\":\"SOURCE_IS_NOT_FASTEST_ALLY\","
+                        "{\"trigger\":\"BATTLE_START\",\"condition\":\"SOURCE_IS_NOT_FASTEST_ALLY\","
                                 + "\"statType\":\"" + stats[i] + "\",\"permanent\":true}"));
             }
             return effects;
