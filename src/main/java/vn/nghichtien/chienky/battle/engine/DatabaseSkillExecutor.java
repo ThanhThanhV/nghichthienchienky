@@ -213,6 +213,56 @@ public class DatabaseSkillExecutor {
                     ))
                     .toList();
 
+            // Hách (TAB_Skill group 525171, runtime GOJO_PASSIVE_2) là một
+            // passive hai pha: khóa hành động 10 lượt ở BATTLE_START, sau đó
+            // phản kích phép vào đúng actor mỗi khi phe địch hành động.
+            // Không phụ thuộc levelRowsJson/hero_skill_effects cũ vì mapping DB
+            // từng bị seed sai; TAB Lua là nguồn dữ liệu chuẩn.
+            if ("gojo".equalsIgnoreCase(source.getHeroCode())
+                    && "GOJO_PASSIVE_2".equalsIgnoreCase(skill.getSkillCode())) {
+                String[] hachDamageByLevel = {
+                        "0.97", "1.17", "1.40", "1.45",
+                        "1.51", "1.57", "1.62", "1.68"
+                };
+                int hachLevel = Math.max(1, Math.min(8, effectSet.level()));
+
+                if (trigger == BattlePassiveTrigger.BATTLE_START) {
+                    HeroSkillEffect hachLock = new HeroSkillEffect(
+                            1, "ACTION_LOCK", "SELF"
+                    );
+                    hachLock.updateParameters(BigDecimal.ZERO, ONE, 10);
+                    hachLock.updateConfig(
+                            "{\"trigger\":\"BATTLE_START\","
+                                    + "\"eventSkillCode\":\"GOJO_PASSIVE_2\","
+                                    + "\"luaSkillGroupId\":525171,"
+                                    + "\"untilRound\":10}"
+                    );
+                    effects = List.of(toEffectConfig(
+                            hachLock,
+                            effectCode(skill, hachLevel, hachLock)
+                    ));
+                } else if (trigger == BattlePassiveTrigger.ON_ENEMY_ACTION) {
+                    HeroSkillEffect hachCounter = new HeroSkillEffect(
+                            1, "COUNTER", "SELF"
+                    );
+                    hachCounter.updateParameters(
+                            new BigDecimal(hachDamageByLevel[hachLevel - 1]),
+                            ONE,
+                            0
+                    );
+                    hachCounter.updateConfig(
+                            "{\"trigger\":\"ON_ENEMY_ACTION\","
+                                    + "\"damageType\":\"MAGIC\","
+                                    + "\"eventSkillCode\":\"GOJO_PASSIVE_2\","
+                                    + "\"luaSkillGroupId\":525171}"
+                    );
+                    effects = List.of(toEffectConfig(
+                            hachCounter,
+                            effectCode(skill, hachLevel, hachCounter)
+                    ));
+                }
+            }
+
             // Domain là chiêu mở màn bắt buộc của Gojo theo TAB Lua
             // (group 525174, slot 4, runtime code GOJO_PASSIVE_5).
             // Không để một levelRowsJson cũ/rỗng làm mất hoàn toàn trigger BATTLE_START.
