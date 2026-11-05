@@ -466,7 +466,8 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
 
     /**
      * Đọc catalog Spine được lưu cùng static resources.
-     * Catalog là nguồn seed duy nhất cho mapping animation và VFX của 10 tướng.
+     * Catalog cung cấp asset manifest và mapping của các hero dùng cấu hình tĩnh.
+     * Riêng Gojo, action/VFX mapping được tạo mới trực tiếp từ TAB Lua bên dưới.
      */
     private JsonNode loadSpineMappingCatalog() {
         try (var input = new ClassPathResource(
