@@ -599,7 +599,7 @@
             "code": "iori_dark_active_cast",
             "file": "seffect_51515121012",
             "animation": "animation_0",
-            "anchor": "source",
+            "anchor": "enemy_formation",
             "impactEvent": "qishou_11_5_5",
             "impactEvents": [
               "qishou_11_5_5",
@@ -613,7 +613,7 @@
             "code": "iori_dark_active_impact",
             "file": "seffect_51515121013",
             "animation": "animation_0",
-            "anchor": "target",
+            "anchor": "enemy_formation",
             "impactEvent": "hit_11_1_1",
             "impactEvents": [
               "hit_11_1_1"
