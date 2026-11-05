@@ -303,7 +303,7 @@
         "IORI_BASIC_1": "att",
         "IORI_ACTIVE_2": "skill",
         "IORI_ULTIMATE_3": "ultimateskill",
-        "IORI_PASSIVE_5": "superskill"
+        "IORI_PASSIVE_5": "ultimateskill"
       },
       "_BASIC_ATTACK": {
         "movement": "DASH"
@@ -572,7 +572,7 @@
         "IORI_DARK_BASIC_1": "att",
         "IORI_DARK_ACTIVE_2": "skill",
         "IORI_DARK_ULTIMATE_3": "ultimateskill",
-        "IORI_DARK_PASSIVE_5": "superskill"
+        "IORI_DARK_PASSIVE_5": "ultimateskill"
       },
       "_BASIC_ATTACK": {
         "movement": "DASH"
