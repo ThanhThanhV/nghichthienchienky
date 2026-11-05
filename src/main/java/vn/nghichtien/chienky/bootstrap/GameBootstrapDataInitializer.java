@@ -95,6 +95,9 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
             );
         }
 
+        // Lưu cấp skill Gojo theo mã Lua mới trước khi thay catalog.
+        Map<Long, Map<String, Integer>> gojoSkillLevels = captureGojoSkillLevels();
+
         // Làm mới riêng catalog Gojo vì các skillCode cũ đã sai slot.
         // Nằm trong transaction của runner: nếu seed/validate lỗi thì rollback.
         resetGojoSkillCatalogInDatabase();
@@ -135,6 +138,77 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
         // Bổ sung các liên kết skill còn thiếu sau khi Gojo được đổi skillCode;
         // các hero khác giữ nguyên cấp kỹ năng đã sở hữu.
         rebuildOwnedHeroSkills(heroCodes);
+        restoreGojoSkillLevels(gojoSkillLevels);
+    }
+
+    /**
+     * Chụp cấp kỹ năng Gojo trước khi thay catalog. SkillCode cũ được chuyển
+     * sang skillCode mới theo mapping đã xác nhận từ TAB Lua.
+     */
+    private Map<Long, Map<String, Integer>> captureGojoSkillLevels() {
+        Map<Long, Map<String, Integer>> levelsByInstance = new HashMap<>();
+        List<HeroInstance> gojoInstances =
+                heroInstanceRepository.findAllByHeroDefinitionHeroCodeIn(
+                        List.of("gojo")
+                );
+
+        for (HeroInstance instance : gojoInstances) {
+            Map<String, Integer> levelsBySkill = new HashMap<>();
+            List<HeroInstanceSkill> skills =
+                    heroInstanceSkillRepository
+                            .findAllByHeroInstanceIdOrderBySkillDefinitionSkillOrderAsc(
+                                    instance.getId()
+                            );
+            for (HeroInstanceSkill skill : skills) {
+                levelsBySkill.put(
+                        normalizeGojoSkillCode(skill.getSkillCode()),
+                        skill.getSkillLevel()
+                );
+            }
+            levelsByInstance.put(instance.getId(), levelsBySkill);
+        }
+        return levelsByInstance;
+    }
+
+    /**
+     * Khôi phục cấp skill sau khi catalog Gojo mới đã được seed và liên kết lại.
+     */
+    private void restoreGojoSkillLevels(
+            Map<Long, Map<String, Integer>> levelsByInstance
+    ) {
+        if (levelsByInstance == null || levelsByInstance.isEmpty()) {
+            return;
+        }
+
+        List<HeroInstanceSkill> updates = new ArrayList<>();
+        for (Map.Entry<Long, Map<String, Integer>> entry : levelsByInstance.entrySet()) {
+            List<HeroInstanceSkill> skills =
+                    heroInstanceSkillRepository
+                            .findAllByHeroInstanceIdOrderBySkillDefinitionSkillOrderAsc(
+                                    entry.getKey()
+                            );
+            for (HeroInstanceSkill skill : skills) {
+                Integer oldLevel = entry.getValue().get(skill.getSkillCode());
+                if (oldLevel != null && oldLevel > 1) {
+                    skill.changeLevel(oldLevel);
+                    updates.add(skill);
+                }
+            }
+        }
+        if (!updates.isEmpty()) {
+            heroInstanceSkillRepository.saveAll(updates);
+            heroInstanceSkillRepository.flush();
+        }
+    }
+
+    private String normalizeGojoSkillCode(String oldSkillCode) {
+        return switch (oldSkillCode) {
+            case "GOJO_PASSIVE_3" -> "GOJO_PASSIVE_2";
+            case "GOJO_PASSIVE_4" -> "GOJO_PASSIVE_3";
+            case "GOJO_PASSIVE_5" -> "GOJO_PASSIVE_4";
+            case "GOJO_ACTIVE_2" -> "GOJO_PASSIVE_5";
+            default -> oldSkillCode;
+        };
     }
 
     /**
