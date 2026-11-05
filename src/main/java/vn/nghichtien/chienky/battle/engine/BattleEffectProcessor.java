@@ -575,7 +575,8 @@ public class BattleEffectProcessor {
                     ? BattleImmunityType.BUFF
                     : BattleImmunityType.DEBUFF;
 
-            if (target.getImmunityManager().isImmune(immunityType)) {
+            if (!effect.ignoreImmunity()
+                    && target.getImmunityManager().isImmune(immunityType)) {
                 recordImmune(battle, source, target, effect);
                 continue;
             }
