@@ -1484,7 +1484,11 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                 1, BattleEffectType.DAMAGE.name(), BattleTargetMode.valueOf(targetType).name()
         );
         effect.updateParameters(new BigDecimal(multiplier), BigDecimal.ONE, null);
-        skill.addEffect(effect);
+
+        // TAB synchronization may already have created effect_order=1.
+        // Replace by order instead of blindly appending a second row with the
+        // same (skill_id, effect_order) unique key.
+        skill.replaceEffects(List.of(effect));
     }
 
     private List<HeroSeed> heroSeeds() {
