@@ -1239,39 +1239,17 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
     }
 
     /**
-     * Migration định danh có chủ đích cho các skillCode legacy đã biết.
-     *
-     * Chỉ đổi mã trên cùng HeroSkillDefinition, không tạo/xóa entity.
-     * Đây là nhánh tương thích khi reset hero data bị tắt; mặc định reset
-     * được thực hiện trước bootstrap nên catalog cũ không còn được giữ.
+     * Không migration tại chỗ các skillCode Gojo cũ.
+     * Catalog Gojo luôn được xóa và seed lại từ TAB Lua trước bước này.
      */
-    private void migrateSkillCodeIfDeclared(
+    private void rejectLegacySkillCodeMismatch(
             String heroCode,
             int skillOrder,
             HeroSkillDefinition occupiedSlot,
-            String targetSkillCode,
-            List<HeroSkillDefinition> existingSkills
+            String targetSkillCode
     ) {
-        if ("gojo".equals(heroCode)
-                && skillOrder == 1
-                && "GOJO_PASSIVE_1".equals(occupiedSlot.getSkillCode())
-                && "GOJO_BASIC_1".equals(targetSkillCode)) {
-            boolean targetAlreadyExists = existingSkills.stream()
-                    .anyMatch(existing -> existing != occupiedSlot
-                            && targetSkillCode.equals(existing.getSkillCode()));
-            if (targetAlreadyExists) {
-                throw new IllegalStateException(
-                        "Không thể migration GOJO_PASSIVE_1 -> GOJO_BASIC_1: "
-                                + "GOJO_BASIC_1 đã tồn tại trong DB"
-                );
-            }
-
-            occupiedSlot.changeSkillCode(targetSkillCode);
-            return;
-        }
-
         throw new IllegalStateException(
-                "Không có migration định danh kỹ năng được khai báo tại "
+                "SkillCode DB không khớp catalog Lua sau reset tại "
                         + heroCode + " slot " + skillOrder
                         + ": DB=" + occupiedSlot.getSkillCode()
                         + ", TAB=" + targetSkillCode
