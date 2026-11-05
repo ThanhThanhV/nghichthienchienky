@@ -613,13 +613,14 @@ class BattleRenderer {
                     heroCode === "iori" &&
                     event.type === "ULTIMATE_SKILL" &&
                     skillCode === "IORI_ULTIMATE_3";
-                // Gojo's fourth skill is identified by its explicit skill code,
-                // while requiring a resolved character animation prevents a
-                // stat-only PASSIVE_4 from triggering a movement.
+                // Gojo's fourth skill is the Lua BATTLE_START passive
+                // GOJO_PASSIVE_5, mapped to the character's "superskill"
+                // animation. It is not a skill code ending in "_4".
                 const isGojoFourthSkill =
                     heroCode === "gojo" &&
-                    /(?:^|_)4$/.test(skillCode) &&
-                    Boolean(animationName);
+                    skillCode === "GOJO_PASSIVE_5" &&
+                    String(event.effectCategory || "").trim().toUpperCase() === "BATTLE_START" &&
+                    animationName === "superskill";
                 const isTohkaDarkUltimate =
                     ["dark_tohka", "tohka_dark"].includes(heroCode) &&
                     event.type === "ULTIMATE_SKILL";
