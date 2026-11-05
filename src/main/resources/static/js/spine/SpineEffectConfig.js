@@ -110,6 +110,16 @@ window.SPINE_EFFECT_CONFIG = {
             return [];
         }
 
+        // Mapping trong DB có thể còn giữ anchor cũ từ lần seed trước.
+        // Với Hách, impact luôn phải bám vào kẻ vừa hành động, không bám
+        // source Gojo hoặc một tọa độ cố định.
+        if (isGojoHachCounter && phase === "impact") {
+            selectedEffects = selectedEffects.map(effect => ({
+                ...effect,
+                anchor: "target"
+            }));
+        }
+
         const basePath = String(
             safeSkillAnimations._SPINE_EFFECT_BASE_PATH || "/assets/spine/seffects/"
         );
