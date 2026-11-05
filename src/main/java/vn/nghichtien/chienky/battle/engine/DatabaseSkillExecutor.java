@@ -49,7 +49,7 @@ public class DatabaseSkillExecutor {
     /**
      * Thực thi kỹ năng tương ứng với lượt trong chu kỳ chiến đấu.
      * Nếu nhân vật không có kỹ năng thuộc nhóm hành động được yêu cầu
-     * (ví dụ Gojo không có BASIC/ULTIMATE), lượt đó được bỏ qua.
+     * (ví dụ Gojo không có ULTIMATE), lượt đó được bỏ qua.
      *
      * @return loại hành động được yêu cầu; không tự fallback sang BASIC.
      */
