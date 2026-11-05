@@ -579,9 +579,9 @@ class BattleRenderer {
             const animationName = this.getAnimation(event);
 
             if (animationName) {
-                // Tohka Dark chiêu ACTIVE (chiêu 1): chuyển chính skeleton
-                // đang phát animation tới tâm đội hình địch, không chỉ đặt effect ở đó.
-                // Lưu tọa độ slot để finishAction khôi phục sau khi chiêu hoàn tất.
+                // Tohka Dark và Iori Dark: chiêu 1 chuyển chính skeleton
+                // đang phát animation tới tâm đội hình địch (không chỉ chuyển VFX).
+                // Lưu slot gốc để finishAction khôi phục sau khi toàn bộ action kết thúc.
                 const heroCode = String(
                     event.heroCode ||
                     character.config?.heroCode ||
@@ -601,8 +601,15 @@ class BattleRenderer {
                         "TOHKA_ACTIVE",
                         "SKILL_EFFECT_2"
                     ].includes(skillCode);
+                const isIoriDarkFirstSkill =
+                    heroCode === "iori_dark" &&
+                    event.type === "ACTIVE_SKILL" &&
+                    skillCode === "IORI_DARK_ACTIVE_2";
 
-                if (isTohkaDarkFirstSkill && !this.actionContext.sourceOriginalPosition) {
+                if (
+                    (isTohkaDarkFirstSkill || isIoriDarkFirstSkill) &&
+                    !this.actionContext.sourceOriginalPosition
+                ) {
                     const enemyTeam = this.actionContext.sourceTeam === "PLAYER"
                         ? "ENEMY"
                         : "PLAYER";
