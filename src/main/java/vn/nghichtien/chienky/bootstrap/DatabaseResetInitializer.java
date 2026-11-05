@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -99,12 +100,20 @@ public class DatabaseResetInitializer implements ApplicationRunner {
                 clearedTables++;
             }
 
+            int staleHeroCount = deleteStaleHeroCatalog(
+                    connection,
+                    existingTables,
+                    HeroSeedCodes.current()
+            );
+
             LOGGER.log(
                     System.Logger.Level.INFO,
-                    "Hero reset completed. Cleared {0} hero tables. "
-                            + "Hero/skill/effect catalog will be re-seeded by heroCode/skillCode. "
-                            + "Accounts, player profiles, resources and code-based progression configs were preserved.",
-                    clearedTables
+                    "Hero reset completed. Cleared {0} hero tables and removed {1} "
+                            + "obsolete hero definitions. Current hero catalog will be re-seeded "
+                            + "by heroCode/skillCode. Accounts, player profiles, resources and "
+                            + "progression configs for current hero codes were preserved.",
+                    clearedTables,
+                    staleHeroCount
             );
         } catch (SQLException exception) {
             throw new IllegalStateException(
@@ -112,6 +121,75 @@ public class DatabaseResetInitializer implements ApplicationRunner {
                     exception
             );
         }
+    }
+
+    /**
+     * Xóa cấu hình và catalog chỉ thuộc hero đã bị loại khỏi seed hiện tại.
+     * Config của các hero còn seed được giữ lại vì đây là dữ liệu nghiệp vụ
+     * (chi phí nâng sao/đột phá và stat bonus), không phải dữ liệu sở hữu.
+     */
+    private int deleteStaleHeroCatalog(
+            Connection connection,
+            Set<String> existingTables,
+            List<String> currentHeroCodes
+    ) throws SQLException {
+        if (currentHeroCodes == null || currentHeroCodes.isEmpty()) {
+            throw new IllegalStateException(
+                    "Danh sách hero seed không được rỗng; từ chối xóa catalog"
+            );
+        }
+
+        Set<String> staleHeroCodes = new java.util.LinkedHashSet<>();
+        try (Statement statement = connection.createStatement();
+             ResultSet rows = statement.executeQuery(
+                     "SELECT hero_code FROM hero_definitions"
+             )) {
+            while (rows.next()) {
+                String heroCode = rows.getString("hero_code");
+                if (heroCode != null && !currentHeroCodes.contains(heroCode)) {
+                    staleHeroCodes.add(heroCode);
+                }
+            }
+        }
+
+        if (staleHeroCodes.isEmpty()) {
+            return 0;
+        }
+
+        // Xóa các bảng không cascade trước khi xóa hero_definitions.
+        // Chi phí của config được xóa bằng ON DELETE CASCADE trên bảng cost.
+        List<String> staleCatalogTables = List.of(
+                "hero_skill_upgrade_configs",
+                "hero_stat_progression_bonuses",
+                "hero_progression_configs",
+                "hero_base_stats",
+                "hero_growth_configs",
+                "hero_skill_effects",
+                "hero_skill_definitions",
+                "hero_definitions"
+        );
+
+        for (String table : staleCatalogTables) {
+            if (!existingTables.contains(table)
+                    || !hasColumn(connection, table, "hero_code")) {
+                continue;
+            }
+
+            String placeholders = String.join(
+                    ",", java.util.Collections.nCopies(staleHeroCodes.size(), "?")
+            );
+            String sql = "DELETE FROM " + quoteIdentifier(table)
+                    + " WHERE hero_code IN (" + placeholders + ")";
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                int parameter = 1;
+                for (String heroCode : staleHeroCodes) {
+                    statement.setString(parameter++, heroCode);
+                }
+                statement.executeUpdate();
+            }
+        }
+
+        return staleHeroCodes.size();
     }
 
     private Set<String> findApplicationTables(Connection connection)
