@@ -110,7 +110,7 @@ WHERE legacy_config.hero_code = 'gojo'
 -- =========================================================
 -- 4. Data model notes
 -- =========================================================
--- hero_skill_effects and hero_skill_upgrade_configs intentionally use
--- application-level code references rather than generated skill IDs.
--- hero_skill_definitions still has an internal generated ID for JPA identity,
--- but owned skill links, effects and upgrade mappings use stable codes.
+-- hero_instance_skills and hero_skill_effects use composite code foreign keys.
+-- hero_skill_upgrade_configs is keyed by hero_code + skill_code; hero_code has
+-- a database FK and skill_code is reconciled against the seeded catalog.
+-- hero_skill_definitions keeps its generated ID only as an internal JPA key.
