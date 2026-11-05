@@ -1355,137 +1355,82 @@ class StatusEffectRenderer {
     constructor(options = {}) {
         this.formation = options.formation;
         this.container = options.container;
-
         this.activeEffects = new Map();
+        this.characterElements = new Map();
 
         this.effectLabels = {
-            ATK_UP: "ATK ↑",
-            DEF_UP: "DEF ↑",
-            SPEED_UP: "SPD ↑",
-            CRIT_UP: "CRIT ↑",
-            CRIT_DAMAGE_UP: "CRIT DMG ↑",
-            ACCURACY_UP: "ACC ↑",
-            RESISTANCE_UP: "RES ↑",
-            PEN_UP: "PEN ↑",
-            LIFESTEAL_UP: "LIFESTEAL ↑",
-
-            ATK_DOWN: "ATK ↓",
-            DEF_DOWN: "DEF ↓",
-            SPEED_DOWN: "SPD ↓",
-            CRIT_DOWN: "CRIT ↓",
-            CRIT_DAMAGE_DOWN: "CRIT DMG ↓",
-            ACCURACY_DOWN: "ACC ↓",
-            RESISTANCE_DOWN: "RES ↓",
-            PEN_DOWN: "PEN ↓",
-            LIFESTEAL_DOWN: "LIFESTEAL ↓",
-
-            STUN: "STUN",
-            FREEZE: "FREEZE",
-            SILENCE: "SILENCE",
-            TAUNT: "TAUNT",
-
-            IMMUNITY_BUFF: "BUFF IMMUNE",
-            IMMUNITY_DEBUFF: "DEBUFF IMMUNE",
-            IMMUNITY_CC: "CC IMMUNE"
+            ATK_UP: "ATK ↑", DEF_UP: "DEF ↑", SPEED_UP: "SPD ↑",
+            CRIT_UP: "CRIT ↑", CRIT_DAMAGE_UP: "CRIT DMG ↑",
+            ACCURACY_UP: "ACC ↑", RESISTANCE_UP: "RES ↑",
+            PEN_UP: "PEN ↑", LIFESTEAL_UP: "LIFESTEAL ↑",
+            ATK_DOWN: "ATK ↓", DEF_DOWN: "DEF ↓", SPEED_DOWN: "SPD ↓",
+            CRIT_DOWN: "CRIT ↓", CRIT_DAMAGE_DOWN: "CRIT DMG ↓",
+            ACCURACY_DOWN: "ACC ↓", RESISTANCE_DOWN: "RES ↓",
+            PEN_DOWN: "PEN ↓", LIFESTEAL_DOWN: "LIFESTEAL ↓",
+            STUN: "STUN", FREEZE: "FREEZE", SILENCE: "SILENCE",
+            TAUNT: "TAUNT", IMMUNITY_BUFF: "BUFF IMMUNE",
+            IMMUNITY_DEBUFF: "DEBUFF IMMUNE", IMMUNITY_CC: "CC IMMUNE"
         };
+
+        if (this.container) {
+            this.container.style.position =
+                this.container.style.position || "absolute";
+            this.container.style.pointerEvents = "none";
+        }
     }
 
-    /**
-     * Điều phối hiển thị hiệu ứng trạng thái.
-     *
-     * @param {Object} event Sự kiện hiệu ứng từ backend.
-     * @returns {Promise<void>}
-     */
     async render(event) {
-        switch (event.type) {
+        switch (String(event?.type || "").toUpperCase()) {
             case "BUFF":
-                this.addEffect(event, "buff");
-                break;
-
             case "DEBUFF":
-                this.addEffect(event, "debuff");
+                this.addEffect(event);
                 break;
-
             case "CC":
                 this.addCrowdControl(event);
                 break;
-
             case "IMMUNITY":
                 this.handleImmunity(event);
                 break;
-
             case "DISPEL":
                 this.dispelByCategory(event);
                 break;
-
             default:
                 break;
         }
     }
 
-    /**
-     * Thêm hoặc cập nhật hiệu ứng trên nhân vật.
-     *
-     * @param {Object} event Sự kiện hiệu ứng từ backend.
-     */
     addEffect(event) {
-        const {
-            targetTeam,
-            targetInstanceId,
-            effectCode,
-            effectCategory,
-            duration
-        } = event;
-
-        if (!targetTeam || targetInstanceId == null || !effectCode) {
-            return;
-        }
+        const { targetTeam, targetInstanceId, effectCode } = event || {};
+        if (!targetTeam || targetInstanceId == null || !effectCode) return;
 
         const characterKey = `${targetTeam}_${targetInstanceId}`;
-
         if (!this.activeEffects.has(characterKey)) {
             this.activeEffects.set(characterKey, new Map());
         }
 
         const effects = this.activeEffects.get(characterKey);
-
+        const effectCategory = String(event.effectCategory || event.type || "BUFF").toUpperCase();
         const effectKey = `${effectCategory}_${effectCode}`;
+        const previous = effects.get(effectKey);
 
-        const effect = {
-            effectCode,
+        effects.set(effectKey, {
+            effectCode: String(effectCode),
             effectCategory,
-            duration: Number(duration) || 0,
-            remainingDuration: Number(duration) || 0,
+            duration: Math.max(0, Number(event.duration) || 0),
+            remainingDuration: Math.max(0, Number(event.duration) || 0),
             event,
-            linkedCcCode: event.linkedCcCode || null
-        };
+            linkedCcCode: event.linkedCcCode || null,
+            element: previous?.element || null
+        });
 
-        // Cùng loại hiệu ứng trên cùng nhân vật: cập nhật hiệu ứng.
-        effects.set(effectKey, effect);
-
-        // Cập nhật giao diện.
         this.updateCharacterEffects(characterKey);
     }
 
-    /**
-     * Thêm CC theo quy tắc thay thế và gia hạn.
-     *
-     * @param {Object} event Sự kiện CC.
-     */
     addCrowdControl(event) {
-        const {
-            targetTeam,
-            targetInstanceId,
-            effectCode,
-            duration
-        } = event;
-
-        if (!targetTeam || targetInstanceId == null || !effectCode) {
-            return;
-        }
+        const { targetTeam, targetInstanceId, effectCode } = event || {};
+        if (!targetTeam || targetInstanceId == null || !effectCode) return;
 
         const characterKey = `${targetTeam}_${targetInstanceId}`;
-
         if (!this.activeEffects.has(characterKey)) {
             this.activeEffects.set(characterKey, new Map());
         }
@@ -1494,270 +1439,231 @@ class StatusEffectRenderer {
         const currentCC = [...effects.entries()].find(
             ([, effect]) => effect.effectCategory === "CC"
         );
+        const duration = Math.max(0, Number(event.duration) || 0);
 
-        const newDuration = Number(duration) || 0;
-
-        // Cùng CC: giữ thời hạn dài hơn.
         if (currentCC && currentCC[1].effectCode === effectCode) {
-            const oldEffect = currentCC[1];
-
-            oldEffect.remainingDuration = Math.max(
-                oldEffect.remainingDuration,
-                newDuration
+            currentCC[1].duration = Math.max(currentCC[1].duration, duration);
+            currentCC[1].remainingDuration = Math.max(
+                currentCC[1].remainingDuration, duration
             );
-
-            oldEffect.duration = Math.max(
-                oldEffect.duration,
-                newDuration
-            );
-
             this.updateCharacterEffects(characterKey);
             return;
         }
 
-        // CC khác: xóa CC cũ và hiệu ứng phụ liên kết.
         if (currentCC) {
             const [oldKey, oldEffect] = currentCC;
-
-            effects.delete(oldKey);
-
-            for (const [key, effect] of effects) {
+            this.removeEffectElement(characterKey, oldKey);
+            for (const [key, effect] of [...effects.entries()]) {
                 if (effect.linkedCcCode === oldEffect.effectCode) {
-                    effects.delete(key);
+                    this.removeEffectElement(characterKey, key);
                 }
             }
         }
 
         const effectKey = `CC_${effectCode}`;
-
         effects.set(effectKey, {
-            effectCode,
+            effectCode: String(effectCode),
             effectCategory: "CC",
-            duration: newDuration,
-            remainingDuration: newDuration,
+            duration,
+            remainingDuration: duration,
             event,
-            linkedCcCode: null
+            linkedCcCode: null,
+            element: null
         });
-
         this.updateCharacterEffects(characterKey);
     }
 
-    /**
-     * Giải trừ hiệu ứng theo nhóm.
-     *
-     * @param {Object} event Sự kiện giải trừ.
-     */
     dispelByCategory(event) {
-        const characterKey =
-            `${event.targetTeam}_${event.targetInstanceId}`;
-
+        const characterKey = `${event.targetTeam}_${event.targetInstanceId}`;
         const effects = this.activeEffects.get(characterKey);
-
-        if (!effects) {
-            return;
-        }
+        if (!effects) return;
 
         const categoryMap = {
             DISPEL_BUFF: "BUFF",
             DISPEL_DEBUFF: "DEBUFF",
             DISPEL_CC: "CC"
         };
+        const category = categoryMap[String(event.effectCode || "").toUpperCase()];
+        if (!category) return;
 
-        const category = categoryMap[event.effectCode];
+        for (const [key, effect] of [...effects.entries()]) {
+            if (effect.effectCategory !== category) continue;
+            const removedCode = effect.effectCode;
+            this.removeEffectElement(characterKey, key);
 
-        if (!category) {
-            return;
-        }
-
-        for (const [key, effect] of effects) {
-            if (effect.effectCategory === category) {
-                effects.delete(key);
-
-                // Khi xóa CC, xóa luôn hiệu ứng phụ liên kết.
-                if (category === "CC") {
-                    for (const [linkedKey, linkedEffect] of effects) {
-                        if (linkedEffect.linkedCcCode === effect.effectCode) {
-                            effects.delete(linkedKey);
-                        }
+            if (category === "CC") {
+                for (const [linkedKey, linkedEffect] of [...effects.entries()]) {
+                    if (linkedEffect.linkedCcCode === removedCode) {
+                        this.removeEffectElement(characterKey, linkedKey);
                     }
                 }
             }
         }
-
-        if (effects.size === 0) {
-            this.activeEffects.delete(characterKey);
-        }
-
         this.updateCharacterEffects(characterKey);
     }
 
-    /**
-     * Xử lý hiệu ứng miễn nhiễm.
-     *
-     * IMMUNITY_CC sẽ loại bỏ CC hiện tại và các hiệu ứng phụ liên kết.
-     * IMMUNITY_BUFF và IMMUNITY_DEBUFF chỉ ghi nhận trạng thái miễn nhiễm,
-     * không xóa những hiệu ứng đã tồn tại.
-     *
-     * @param {Object} event Sự kiện miễn nhiễm từ backend.
-     */
     handleImmunity(event) {
-        const characterKey =
-            `${event.targetTeam}_${event.targetInstanceId}`;
-
+        const characterKey = `${event.targetTeam}_${event.targetInstanceId}`;
         const effects = this.activeEffects.get(characterKey);
 
-        // Miễn nhiễm CC loại bỏ CC hiện tại và hiệu ứng phụ.
-        if (event.effectCode === "IMMUNITY_CC" && effects) {
+        if (String(event.effectCode).toUpperCase() === "IMMUNITY_CC" && effects) {
             const currentCC = [...effects.entries()].find(
                 ([, effect]) => effect.effectCategory === "CC"
             );
-
             if (currentCC) {
-                const oldCCCode = currentCC[1].effectCode;
-
-                effects.delete(currentCC[0]);
-
-                for (const [key, effect] of effects) {
-                    if (effect.linkedCcCode === oldCCCode) {
-                        effects.delete(key);
+                const oldCode = currentCC[1].effectCode;
+                this.removeEffectElement(characterKey, currentCC[0]);
+                for (const [key, effect] of [...effects.entries()]) {
+                    if (effect.linkedCcCode === oldCode) {
+                        this.removeEffectElement(characterKey, key);
                     }
                 }
             }
-
-            if (effects.size === 0) {
-                this.activeEffects.delete(characterKey);
-            }
-
-            this.updateCharacterEffects(characterKey);
         }
-
-        // Hiển thị trạng thái miễn nhiễm.
-        this.addEffect(event, "immunity");
-    }
-
-    /**
-     * Cập nhật danh sách hiệu ứng đang hiển thị của nhân vật.
-     *
-     * @param {string} characterKey Khóa nhân vật.
-     */
-    updateCharacterEffects(characterKey) {
-        const effects = this.activeEffects.get(characterKey);
-
-        if (!effects) {
-            return;
-        }
-
-        // Tái sử dụng hàm hiển thị hiệu ứng hiện có.
-        effects.forEach(effect => {
-            this.addEffectElement(characterKey, effect);
+        this.addEffect({
+            ...event,
+            effectCategory: "IMMUNITY",
+            effectCode: event.effectCode || "IMMUNITY"
         });
     }
 
-    /**
-     * Giảm thời gian tồn tại của tất cả hiệu ứng theo số round.
-     *
-     * @param {number} rounds Số round đã trôi qua.
-     */
+    getCharacterEntry(characterKey) {
+        if (!this.formation) return null;
+        const separator = characterKey.indexOf("_");
+        const team = characterKey.slice(0, separator);
+        const instanceId = characterKey.slice(separator + 1);
+        return this.formation.getTeamCharacters(team).find(
+            entry => String(entry.instanceId) === instanceId
+        ) || null;
+    }
+
+    updateCharacterEffects(characterKey) {
+        if (!this.container) return;
+        const effects = this.activeEffects.get(characterKey);
+        if (!effects || effects.size === 0) {
+            this.characterElements.get(characterKey)?.remove();
+            this.characterElements.delete(characterKey);
+            return;
+        }
+
+        let characterElement = this.characterElements.get(characterKey);
+        if (!characterElement) {
+            characterElement = document.createElement("div");
+            characterElement.className = "battle-status-character";
+            characterElement.dataset.characterKey = characterKey;
+            Object.assign(characterElement.style, {
+                position: "absolute",
+                display: "flex",
+                flexWrap: "wrap",
+                justifyContent: "center",
+                gap: "3px",
+                transform: "translate(-50%, -100%)",
+                pointerEvents: "none",
+                zIndex: "20"
+            });
+            this.container.appendChild(characterElement);
+            this.characterElements.set(characterKey, characterElement);
+        }
+
+        const entry = this.getCharacterEntry(characterKey);
+        if (entry) {
+            const position = this.calculatePosition(entry.team, entry.slotIndex);
+            characterElement.style.left = `${position.x}%`;
+            characterElement.style.top = `${position.y}%`;
+        }
+
+        const visibleElements = new Set();
+        effects.forEach(effect => {
+            let element = effect.element;
+            if (!element) {
+                element = document.createElement("span");
+                element.className = "battle-status-effect";
+                Object.assign(element.style, {
+                    display: "inline-block",
+                    padding: "2px 5px",
+                    borderRadius: "8px",
+                    background: effect.effectCategory === "DEBUFF" ||
+                        effect.effectCategory === "CC" ? "#8f2634" : "#245b42",
+                    color: "#fff",
+                    fontSize: "10px",
+                    lineHeight: "14px",
+                    whiteSpace: "nowrap",
+                    border: "1px solid rgba(255,255,255,.35)"
+                });
+                effect.element = element;
+            }
+
+            const label = this.effectLabels[effect.effectCode] || effect.effectCode;
+            const duration = effect.remainingDuration > 0
+                ? ` · ${effect.remainingDuration}`
+                : "";
+            element.textContent = label + duration;
+            if (element.parentElement !== characterElement) {
+                characterElement.appendChild(element);
+            }
+            visibleElements.add(element);
+        });
+
+        for (const child of [...characterElement.children]) {
+            if (!visibleElements.has(child)) child.remove();
+        }
+    }
+
+    removeEffectElement(characterKey, effectKey) {
+        const effects = this.activeEffects.get(characterKey);
+        if (!effects) return;
+
+        const effect = effects.get(effectKey);
+        effect?.element?.remove();
+        effects.delete(effectKey);
+
+        if (effects.size === 0) {
+            this.activeEffects.delete(characterKey);
+            this.characterElements.get(characterKey)?.remove();
+            this.characterElements.delete(characterKey);
+        }
+    }
+
     tick(rounds = 1) {
-        for (const [characterKey, effects] of this.activeEffects) {
-            for (const [effectKey, effect] of effects) {
+        const elapsed = Math.max(0, Number(rounds) || 0);
+        for (const [characterKey, effects] of [...this.activeEffects.entries()]) {
+            for (const [effectKey, effect] of [...effects.entries()]) {
+                if (effect.remainingDuration <= 0) continue;
+                effect.remainingDuration -= elapsed;
                 if (effect.remainingDuration <= 0) {
-                    continue;
-                }
-
-                effect.remainingDuration -= rounds;
-
-                if (effect.remainingDuration <= 0) {
-                    effects.delete(effectKey);
                     this.removeEffectElement(characterKey, effectKey);
                 }
             }
-
-            if (effects.size === 0) {
-                this.activeEffects.delete(characterKey);
-            } else {
-                this.updateCharacterEffects(characterKey);
-            }
+            this.updateCharacterEffects(characterKey);
         }
     }
 
-    /**
-     * Gỡ hiệu ứng theo mã hoặc gỡ toàn bộ hiệu ứng của nhân vật.
-     *
-     * @param {Object} event dữ liệu dispel
-     */
     dispel(event) {
-        const team = event.targetTeam;
-        const instanceId = String(event.targetInstanceId ?? "");
-        const effectCategory = event.effectCategory;
+        const characterKey = `${event.targetTeam}_${event.targetInstanceId}`;
+        const effects = this.activeEffects.get(characterKey);
+        if (!effects) return;
 
-        if (!team || !instanceId) {
-            return;
-        }
-
-        for (const [key, effect] of this.activeEffects.entries()) {
-            if (
-                effect.team !== team ||
-                effect.instanceId !== instanceId
-            ) {
-                continue;
+        for (const [key, effect] of [...effects.entries()]) {
+            if (!event.effectCategory ||
+                effect.effectCategory === String(event.effectCategory).toUpperCase()) {
+                this.removeEffectElement(characterKey, key);
             }
-
-            if (
-                effectCategory &&
-                effect.category !== effectCategory
-            ) {
-                continue;
-            }
-
-            this.removeEffectElement(key);
         }
+        this.updateCharacterEffects(characterKey);
     }
 
-    /**
-     * Xóa một hiệu ứng khỏi giao diện.
-     *
-     * @param {string} key khóa hiệu ứng
-     */
-    removeEffectElement(key) {
-        const effect = this.activeEffects.get(key);
-
-        if (!effect) {
-            return;
-        }
-
-        effect.element.remove();
-        this.activeEffects.delete(key);
-    }
-
-    /**
-     * Tính vị trí hiển thị hiệu ứng theo slot.
-     *
-     * @param {string} team đội hình
-     * @param {number} slotIndex slot nhân vật
-     * @returns {{x:number,y:number}} tọa độ
-     */
     calculatePosition(team, slotIndex) {
         const row = Math.floor(slotIndex / 3);
         const col = slotIndex % 3;
-
         return {
-            x: team === "PLAYER"
-                ? 18 + col * 12
-                : 82 - col * 12,
-
+            x: team === "PLAYER" ? 18 + col * 12 : 82 - col * 12,
             y: 15 + row * 22
         };
     }
 
-    /**
-     * Xóa toàn bộ hiệu ứng đang hiển thị.
-     */
     clear() {
-        for (const effect of this.activeEffects.values()) {
-            effect.element.remove();
-        }
-
+        this.characterElements.forEach(element => element.remove());
+        this.characterElements.clear();
         this.activeEffects.clear();
     }
 }
