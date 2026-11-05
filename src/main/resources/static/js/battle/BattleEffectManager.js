@@ -334,9 +334,11 @@ class BattleEffectManager {
                     y: target.positionY
                 };
             }
+        } else if (anchor === "screen_center") {
+            // Gốc tọa độ world của canvas là tâm màn hình.
+            basePosition = { x: 0, y: 0 };
         } else if (anchor === "center") {
-            // Tọa độ world (0, 0) không phải tâm màn hình đáng tin cậy.
-            // Với anchor center, dùng tâm đội hình địch nếu xác định được.
+            // Anchor center giữ nguyên hành vi cũ: tâm đội hình địch.
             basePosition = this.getFormationCenter(enemyTeam) || { x: 0, y: 0 };
         } else {
             const anchorCharacter = anchor === "target" ? target : source;
