@@ -246,7 +246,7 @@ public class BattleTurnProcessor {
             );
 
             dispatchActionEventPassives(battle, actionEvents);
-            dispatchEnemyActionPassives(battle, unit);
+            dispatchEnemyActionPassives(battle, unit, actionEvents);
 
             // EXTRA_ACTION phát sinh từ AFTER_ACTION hoặc nội tại đầu round.
             executePendingExtraAction(battle, unit);
@@ -403,7 +403,7 @@ public class BattleTurnProcessor {
         if (!actionEvents.isEmpty()) {
             dispatchActionEventPassives(battle, actionEvents);
         }
-        dispatchEnemyActionPassives(battle, unit);
+        dispatchEnemyActionPassives(battle, unit, actionEvents);
     }
 
     /**
