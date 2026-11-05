@@ -306,10 +306,9 @@ class BattleEffectManager {
                 return;
             }
 
-            // Dùng cùng hệ tọa độ world mà BattleSpineIntegration đã đặt
-            // cho nhân vật. Đây là cách anchor target đã hoạt động trước đây.
-            // rootBone.worldX/Y không được dùng làm tọa độ canvas độc lập:
-            // nó thuộc transform nội bộ của skeleton và có thể lệch hệ tọa độ.
+            // positionX/Y là anchor ổn định của slot do BattleSpineIntegration
+            // gán cho nhân vật. Không lấy root bone đang chạy animation làm
+            // anchor vì root motion có thể làm VFX lệch khỏi tâm slot/overlay.
             basePosition = {
                 x: anchorCharacter.positionX,
                 y: anchorCharacter.positionY
