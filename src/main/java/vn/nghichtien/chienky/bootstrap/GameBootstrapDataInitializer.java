@@ -148,10 +148,21 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
 
         String avatarCode = definition.getAvatarCode();
         String spineSkeleton = definition.getSpineSkeleton();
-        definition.updateAssets(
-                avatarCode == null || avatarCode.isBlank() ? seed.code() : avatarCode,
-                spineSkeleton == null || spineSkeleton.isBlank() ? seed.code() : spineSkeleton
+        avatarCode = avatarCode == null || avatarCode.isBlank() ? seed.code() : avatarCode;
+        spineSkeleton = spineSkeleton == null || spineSkeleton.isBlank() ? seed.code() : spineSkeleton;
+
+        // Catalog được đồng bộ bằng heroCode, không giữ metadata cũ chỉ vì row đã tồn tại.
+        definition.updateManagementInformation(
+                seed.name(),
+                seed.rarity(),
+                seed.role(),
+                definition.getFaction(),
+                avatarCode,
+                definition.getDescription(),
+                true,
+                sortOrder
         );
+        definition.updateAssets(avatarCode, spineSkeleton);
         applySpineMapping(
                 definition,
                 spineCatalog.path("heroes").path(seed.code()),
@@ -870,9 +881,11 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
     }
 
     private void seedGrowthConfig(HeroDefinition definition) {
-        if (heroGrowthConfigRepository.existsById(definition.getHeroCode())) return;
         StatSeed stats = statsForRole(definition.getRole());
-        HeroGrowthConfig growth = new HeroGrowthConfig(definition);
+        HeroGrowthConfig growth = heroGrowthConfigRepository
+                .findById(definition.getHeroCode())
+                .orElseGet(() -> new HeroGrowthConfig(definition));
+        // Ghi đè theo seed mỗi lần khởi động; không phụ thuộc dữ liệu cũ trong DB.
         growth.updateGrowth(
                 stats.hpGrowth(), stats.atkGrowth(), stats.defGrowth(),
                 BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO,
