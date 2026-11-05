@@ -3,10 +3,9 @@ package vn.nghichtien.chienky.hero.dto;
 import java.util.List;
 
 /**
- * Điều kiện và chi phí nâng cấp cấp độ tiếp theo của một kỹ năng.
+ * Điều kiện và chi phí nâng cấp cấp độ tiếp theo của kỹ năng, định danh bằng skillCode.
  */
 public record HeroSkillUpgradeOptionResponse(
-        Long skillId,
         String skillCode,
         String skillName,
         Integer currentSkillLevel,
