@@ -283,6 +283,18 @@ public class BattleTurnProcessor {
         );
     }
 
+    /**
+     * Khởi tạo nội tại BATTLE_START ngay khi tạo battle session,
+     * trước khi trả trạng thái trận đầu tiên cho frontend.
+     */
+    public void initializeBattle(BattleState battle) {
+        if (battle == null) {
+            throw new IllegalArgumentException("Battle must not be null");
+        }
+        initializeBattlePassives(battle);
+        battle.checkFinished();
+    }
+
     private void initializeBattlePassives(BattleState battle) {
         if (!battle.beginPassiveInitialization()) {
             return;
