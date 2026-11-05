@@ -16,12 +16,15 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * Xóa riêng dữ liệu catalog và trạng thái sở hữu hero trước mỗi lần seed.
+ * Reset trạng thái hero do người chơi sở hữu trước mỗi lần chạy.
  *
- * Tuyệt đối không xóa accounts, player_profiles, số dư/giao dịch tài nguyên,
- * túi trang bị của người chơi hoặc metadata migration.
+ * Catalog hero/skill/effect được đồng bộ lại theo heroCode/skillCode bởi
+ * GameBootstrapDataInitializer. Không xóa catalog vì các bảng progression,
+ * skill-upgrade và level config hiện có dữ liệu quản trị riêng, chưa có nguồn
+ * seed đầy đủ để tái tạo an toàn.
  *
- * Có thể tắt bằng game.bootstrap.reset-hero-data.enabled=false.
+ * Accounts, player profiles, resources, resource transactions và túi trang bị
+ * của người chơi luôn được giữ nguyên.
  */
 @Component
 @ConditionalOnProperty(
@@ -37,26 +40,14 @@ public class DatabaseResetInitializer implements ApplicationRunner {
             System.getLogger(DatabaseResetInitializer.class.getName());
 
     /**
-     * Thứ tự xóa từ bảng phụ thuộc đến bảng gốc.
-     * Chỉ các bảng trong allowlist này mới có thể bị xóa.
+     * Chỉ xóa dữ liệu phụ thuộc vào ID của hero instance.
+     * Catalog và cấu hình quản trị được giữ lại, sau đó seed đồng bộ theo code.
      */
-    private static final List<String> HERO_TABLES_DELETE_ORDER = List.of(
+    private static final List<String> HERO_OWNERSHIP_TABLES_DELETE_ORDER = List.of(
             "hero_equipment_slots",
             "player_formation_slots",
             "hero_instance_skills",
-            "hero_instances",
-            "hero_skill_upgrade_costs",
-            "hero_skill_upgrade_configs",
-            "hero_skill_effects",
-            "hero_skill_definitions",
-            "hero_progression_costs",
-            "hero_progression_configs",
-            "hero_stat_progression_bonuses",
-            "hero_base_stats",
-            "hero_growth_configs",
-            "hero_level_configs",
-            "hero_exp_items",
-            "hero_definitions"
+            "hero_instances"
     );
 
     private final DataSource dataSource;
@@ -72,8 +63,7 @@ public class DatabaseResetInitializer implements ApplicationRunner {
             Set<String> existingTables = findApplicationTables(connection);
             int clearedTables = 0;
 
-            // Không tắt FK checks: thứ tự allowlist phải tuân thủ quan hệ thật.
-            for (String table : HERO_TABLES_DELETE_ORDER) {
+            for (String table : HERO_OWNERSHIP_TABLES_DELETE_ORDER) {
                 if (!existingTables.contains(table)) {
                     continue;
                 }
@@ -90,13 +80,14 @@ public class DatabaseResetInitializer implements ApplicationRunner {
 
             LOGGER.log(
                     System.Logger.Level.INFO,
-                    "Hero data reset completed. Cleared {0} hero tables; "
-                            + "accounts, player profiles, resources and player equipment were preserved.",
+                    "Hero ownership reset completed. Cleared {0} tables. "
+                            + "Hero catalog will be synchronized by heroCode/skillCode; "
+                            + "accounts and player data were preserved.",
                     clearedTables
             );
         } catch (SQLException exception) {
             throw new IllegalStateException(
-                    "Không thể xóa dữ liệu hero trước khi nạp seed mới",
+                    "Không thể reset trạng thái hero sở hữu trước khi seed game",
                     exception
             );
         }
