@@ -430,24 +430,22 @@ public class BattleTurnProcessor {
      * Snapshot actionEvents chỉ chứa event của action gốc; counter/reflect
      * reaction được phát sau đó không được xem là một action tấn công mới.
      */
+    /**
+     * TAB của Gojo ghi rõ Hách kích hoạt khi kẻ địch hành động, không chỉ khi
+     * đòn đánh gây DAMAGE. Vì vậy mọi action đã được thực thi (đánh, buff,
+     * debuff, hồi máu...) đều dispatch ON_ENEMY_ACTION đúng actor vừa hành động.
+     *
+     * Action bị khóa hoặc bị khống chế bỏ lượt không đi vào nhánh này.
+     * Snapshot actionEvents chỉ chứa action gốc; phản kích không tạo chuỗi
+     * ON_ENEMY_ACTION đệ quy.
+     */
     private void dispatchEnemyActionPassives(
             BattleState battle,
             BattleUnitState actor,
             List<BattleEventDTO> actionEvents
     ) {
-        if (battle.isFinished() || actor == null || actionEvents == null) return;
-
-        boolean resolvedDamagingHit = actionEvents.stream()
-                .anyMatch(event -> (
-                        event.type() == BattleEventType.DAMAGE
-                                || event.type() == BattleEventType.EVASION
-                                || event.type() == BattleEventType.IMMUNITY
-                                || event.type() == BattleEventType.SHIELD
-                                || event.type() == BattleEventType.BLOCK
-                )
-                        && Objects.equals(event.sourceInstanceId(), actor.getInstanceId())
-                        && !"COUNTER".equalsIgnoreCase(event.effectCategory()));
-        if (!resolvedDamagingHit) {
+        if (battle.isFinished() || actor == null || !actor.isAlive()
+                || actionEvents == null || actionEvents.isEmpty()) {
             return;
         }
 
