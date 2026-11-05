@@ -17,13 +17,12 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * Reset catalog cấu hình tướng trước mỗi lần chạy.
+ * Xóa dữ liệu cấu hình hero/skill cũ trước khi GameBootstrapDataInitializer
+ * đồng bộ và seed lại từ TAB Lua + Spine catalog.
  *
- * Reset chỉ số gốc và tăng trưởng của toàn bộ hero để seed lại từ TAB.
- * Skill catalog/effect của tất cả hero được đồng bộ bởi GameBootstrapDataInitializer
- * trong transaction seed. Chỉ số gốc và tăng trưởng được nạp lại từ TAB.
- * Account, profile, hero instances, đội hình, trang bị, tài nguyên và cấp skill
- * hiện có được giữ nguyên; Gojo được remap skill trong transaction seed riêng.
+ * Chỉ xóa dữ liệu catalog dùng chung: chỉ số, skill effects và các JSON mapping
+ * được sinh lại khi bootstrap. Không xóa hero definitions, hero instances,
+ * skill levels, account, profile, formation, equipment hoặc tài nguyên.
  */
 @Component
 @ConditionalOnProperty(
@@ -39,11 +38,11 @@ public class DatabaseResetInitializer implements ApplicationRunner {
             System.getLogger(DatabaseResetInitializer.class.getName());
 
     /**
-     * Xóa cấu hình chỉ số để seed lại. Skill catalog được đồng bộ trong
-     * transaction của GameBootstrapDataInitializer.
+     * Xóa effect trước khi seedSkills() tái tạo từ TAB.
+     * Các bảng stats được seed lại theo dữ liệu TAB/role trong bootstrap.
      */
     private static final List<String> HERO_TABLES_DELETE_ORDER = List.of(
-            // Hero stats are keyed by hero_code and are re-seeded at startup.
+            "hero_skill_effects",
             "hero_base_stats",
             "hero_growth_configs"
     );
@@ -60,8 +59,7 @@ public class DatabaseResetInitializer implements ApplicationRunner {
              Statement statement = connection.createStatement()) {
             Set<String> existingTables = findApplicationTables(connection);
 
-            // Refuse to delete skill catalog while legacy ID foreign keys still exist.
-            // Apply V11__use_hero_and_skill_codes_for_effects_and_upgrades.txt once first.
+            // Không cho phép reset nếu DB chưa chạy migration đổi skill_id sang code.
             if (hasColumn(connection, "hero_instance_skills", "skill_id")
                     || hasColumn(connection, "hero_skill_effects", "skill_id")
                     || hasColumn(connection, "hero_skill_upgrade_configs", "skill_id")) {
@@ -72,7 +70,6 @@ public class DatabaseResetInitializer implements ApplicationRunner {
             }
 
             int clearedTables = 0;
-
             for (String table : HERO_TABLES_DELETE_ORDER) {
                 if (!existingTables.contains(table)) {
                     continue;
@@ -88,6 +85,26 @@ public class DatabaseResetInitializer implements ApplicationRunner {
                 clearedTables++;
             }
 
+            // Xóa mapping runtime cũ. GameBootstrapDataInitializer sẽ tạo lại
+            // từ hero-skill-mapping.json, TAB Lua và Spine assets trước khi app phục vụ request.
+            int clearedSpineMappings = 0;
+            if (existingTables.contains("hero_definitions")
+                    && hasColumn(connection, "hero_definitions", "spine_skill_animations")) {
+                clearedSpineMappings = statement.executeUpdate(
+                        "UPDATE hero_definitions SET spine_skill_animations = NULL"
+                );
+            }
+
+            // level_rows_json chứa bản hydrate TAB của từng skill; buộc bootstrap
+            // ghi lại toàn bộ để không giữ JSON level/effect từ lần seed cũ.
+            int clearedSkillRows = 0;
+            if (existingTables.contains("hero_skill_definitions")
+                    && hasColumn(connection, "hero_skill_definitions", "level_rows_json")) {
+                clearedSkillRows = statement.executeUpdate(
+                        "UPDATE hero_skill_definitions SET level_rows_json = NULL"
+                );
+            }
+
             int staleHeroCount = deleteStaleHeroCatalog(
                     connection,
                     existingTables,
@@ -96,17 +113,20 @@ public class DatabaseResetInitializer implements ApplicationRunner {
 
             LOGGER.log(
                     System.Logger.Level.INFO,
-                    "Hero reset completed. Cleared {0} hero tables and removed {1} "
-                            + "obsolete hero definitions. Current hero catalog will be re-seeded "
-                            + "by heroCode/skillCode. Accounts, profiles, hero instances, "
-                            + "formations, equipment, resources and existing skill levels "
-                            + "for non-Gojo heroes were preserved.",
+                    "Hero config reset completed: cleared {0} catalog tables, "
+                            + "{1} Spine mappings, {2} TAB skill row payloads, "
+                            + "and removed {3} obsolete hero definitions. "
+                            + "The next bootstrap runner rebuilds these configurations. "
+                            + "Accounts, profiles, owned heroes, skill levels, formations, "
+                            + "equipment and player resources were preserved.",
                     clearedTables,
+                    clearedSpineMappings,
+                    clearedSkillRows,
                     staleHeroCount
             );
         } catch (SQLException exception) {
             throw new IllegalStateException(
-                    "Không thể reset trạng thái hero sở hữu trước khi seed game",
+                    "Không thể reset cấu hình hero/skill trước khi seed game",
                     exception
             );
         }
@@ -128,6 +148,10 @@ public class DatabaseResetInitializer implements ApplicationRunner {
         }
 
         Set<String> staleHeroCodes = new java.util.LinkedHashSet<>();
+        if (!existingTables.contains("hero_definitions")) {
+            return 0;
+        }
+
         try (Statement statement = connection.createStatement();
              ResultSet rows = statement.executeQuery(
                      "SELECT hero_code FROM hero_definitions"
@@ -144,8 +168,7 @@ public class DatabaseResetInitializer implements ApplicationRunner {
             return 0;
         }
 
-        // Xóa các bảng không cascade trước khi xóa hero_definitions.
-        // Chi phí của config được xóa bằng ON DELETE CASCADE trên bảng cost.
+        // Xóa bảng con trước bảng cha để không vi phạm khóa ngoại.
         List<String> staleCatalogTables = List.of(
                 "hero_skill_upgrade_configs",
                 "hero_stat_progression_bonuses",
@@ -168,12 +191,12 @@ public class DatabaseResetInitializer implements ApplicationRunner {
             );
             String sql = "DELETE FROM " + quoteIdentifier(table)
                     + " WHERE hero_code IN (" + placeholders + ")";
-            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            try (PreparedStatement delete = connection.prepareStatement(sql)) {
                 int parameter = 1;
                 for (String heroCode : staleHeroCodes) {
-                    statement.setString(parameter++, heroCode);
+                    delete.setString(parameter++, heroCode);
                 }
-                statement.executeUpdate();
+                delete.executeUpdate();
             }
         }
 
