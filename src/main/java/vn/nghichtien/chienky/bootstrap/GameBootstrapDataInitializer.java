@@ -80,9 +80,15 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                 seeds, spineCatalog, animationConfigCatalog, tabSkillCatalog
         );
         List<String> heroCodes = seeds.stream().map(HeroSeed::code).toList();
+        if (!heroCodes.equals(HeroSeedCodes.current())) {
+            throw new IllegalStateException(
+                    "HeroSeedCodes phải khớp chính xác thứ tự heroSeeds(): "
+                            + heroCodes
+            );
+        }
 
-        // Đồng bộ định nghĩa kỹ năng theo skillCode hiện có, không xóa bản ghi.
-        // Nhờ giữ nguyên skill ID, cấp kỹ năng của từng HeroInstance vẫn được bảo toàn.
+        // Đồng bộ catalog theo heroCode + skillCode. ID tự tăng chỉ còn là
+        // khóa nội bộ của JPA, không dùng để liên kết cấp kỹ năng người chơi.
         for (int i = 0; i < seeds.size(); i++) {
             HeroSeed seed = seeds.get(i);
             seedHero(
@@ -1011,8 +1017,8 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
             skill.updateLevelRowsJson(writeJson(tabSkill.path("levelRows")));
             skill.changeEnabled(true);
 
-            // Thay thế hiệu ứng theo catalog TAB mới nhưng giữ nguyên skill ID.
-            // HeroInstanceSkill tham chiếu skill ID này nên cấp kỹ năng không bị reset.
+            // Thay thế hiệu ứng theo catalog TAB mới. Các liên kết HeroInstanceSkill
+            // được truy vấn và đồng bộ bằng skillCode, không bằng skill ID.
             List<HeroSkillEffect> synchronizedEffects = new ArrayList<>();
             JsonNode effects = tabSkill.path("battleEffects");
             if (effects.isArray()) {
@@ -1072,8 +1078,8 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
             skillsToSave.add(skill);
         }
 
-        // Không xóa kỹ năng cũ để tránh làm mất liên kết/cấp kỹ năng người chơi.
-        // Các slot không còn trong catalog được vô hiệu hóa thay vì DELETE.
+        // Các slot không còn trong catalog được vô hiệu hóa thay vì DELETE;
+        // dữ liệu kỹ năng người chơi hiện liên kết bằng code ổn định.
         for (HeroSkillDefinition existing : existingSkills) {
             if (existing.getSkillOrder() != null
                     && existing.getSkillOrder() > tabSkills.size()) {
