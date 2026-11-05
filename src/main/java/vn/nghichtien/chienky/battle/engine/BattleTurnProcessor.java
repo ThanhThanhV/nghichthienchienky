@@ -41,6 +41,22 @@ public class BattleTurnProcessor {
         };
     }
 
+    /**
+     * Gojo dùng BASIC ở các lượt thường sau khi hết khóa hành động.
+     * ACTIVE (Khoảng Trống Vô Tận) chỉ kích hoạt từ BATTLE_START; không được
+     * lặp lại theo chu kỳ ACTIVE -> ULTIMATE -> BASIC.
+     */
+    private BattleActionType getNextActionType(
+            BattleState battle,
+            BattleUnitState unit
+    ) {
+        if ("gojo".equalsIgnoreCase(unit.getHeroCode())
+                && !unit.isActionLocked(battle.getCurrentRound())) {
+            return BattleActionType.BASIC_ATTACK;
+        }
+        return getNextActionType(unit.getActionCount());
+    }
+
     public void processRound(BattleState battle) {
         if (battle == null) {
             throw new IllegalArgumentException("Battle must not be null");
@@ -134,7 +150,7 @@ public class BattleTurnProcessor {
                 continue;
             }
 
-            BattleActionType actionType = getNextActionType(unit.getActionCount());
+            BattleActionType actionType = getNextActionType(battle, unit);
             unit.incrementActionCount();
 
             collector.record(
@@ -312,7 +328,7 @@ public class BattleTurnProcessor {
             return;
         }
 
-        BattleActionType actionType = getNextActionType(unit.getActionCount());
+        BattleActionType actionType = getNextActionType(battle, unit);
         unit.incrementActionCount();
 
         var collector = battle.getEventCollector();
