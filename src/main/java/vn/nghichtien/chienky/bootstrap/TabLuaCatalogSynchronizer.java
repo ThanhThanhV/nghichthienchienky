@@ -610,6 +610,22 @@ public class TabLuaCatalogSynchronizer {
                     // Bỏ qua token không thể chuyển thành ID.
                 }
             }
+
+            // Lấy cả buffer con trỏ ngược về buffer hiện tại. TAB Gojo dùng
+            // chuỗi field -> passive marker -> damage marker; nếu chỉ đi xuôi
+            // từ passive marker sẽ bỏ sót damage marker là buffer cùng cấp.
+            int bufferFamily = id / 10;
+            for (LuaRow candidate : bufferRows.values()) {
+                if (candidate.id() / 10 != bufferFamily) continue;
+                String candidateLinks = stringAt(candidate, 8);
+                if (candidateLinks != null
+                        && candidateLinks.matches("(?s).*\\\\b" + id + "\\\\b.*")) {
+                    addBuffer(
+                            candidate.id(), bufferRows, buffers,
+                            addedBufferIds, unresolvedBufferIds
+                    );
+                }
+            }
         }
     }
 
