@@ -128,7 +128,8 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                     );
         }
 
-        // Gắn lại 5 kỹ năng cấp 1 cho mọi bản sao tướng người chơi đang sở hữu.
+        // Bổ sung các liên kết skill còn thiếu sau khi Gojo được đổi skillCode;
+        // các hero khác giữ nguyên cấp kỹ năng đã sở hữu.
         rebuildOwnedHeroSkills(heroCodes);
     }
 
