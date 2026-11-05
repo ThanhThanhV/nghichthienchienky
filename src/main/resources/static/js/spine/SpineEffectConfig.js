@@ -116,10 +116,7 @@ window.SPINE_EFFECT_CONFIG = {
         if (isGojoHachCounter && phase === "impact") {
             selectedEffects = selectedEffects.map(effect => ({
                 ...effect,
-                anchor: "target",
-                // Không để offset cũ trong DB/catalog đẩy impact khỏi root mục tiêu.
-                offsetX: 0,
-                offsetY: 0
+                anchor: "target"
             }));
         }
 
