@@ -605,6 +605,10 @@ class BattleRenderer {
                     heroCode === "iori_dark" &&
                     event.type === "ACTIVE_SKILL" &&
                     skillCode === "IORI_DARK_ACTIVE_2";
+                const isIoriFirstSkill =
+                    heroCode === "iori" &&
+                    event.type === "ACTIVE_SKILL" &&
+                    skillCode === "IORI_ACTIVE_2";
 
                 if (
                     (isTohkaDarkFirstSkill || isIoriDarkFirstSkill) &&
@@ -623,6 +627,22 @@ class BattleRenderer {
                         };
                         character.setPosition(center.x, center.y);
                     }
+                }
+
+                // Iori thường phải lướt vào chính giữa battlefield trước khi
+                // bắt đầu animation skill và phát cast VFX. Không teleport:
+                // tween vị trí xong mới gọi playCharacterAnimation bên dưới.
+                if (isIoriFirstSkill && !this.actionContext.sourceOriginalPosition) {
+                    this.actionContext.sourceCharacter = character;
+                    this.actionContext.sourceOriginalPosition = {
+                        x: character.positionX,
+                        y: character.positionY
+                    };
+                    await this.animateCharacterToPosition(
+                        character,
+                        { x: 0, y: 0 },
+                        320
+                    );
                 }
 
                 // PASSIVE phản ứng không có ACTION_START/ACTION_END riêng trong event stream.
@@ -759,6 +779,51 @@ class BattleRenderer {
                     startY + (endY - startY) * eased
                 );
                 if (progress >= 1 || this.actionContext !== action) {
+                    resolve();
+                    return;
+                }
+                requestAnimationFrame(step);
+            };
+            requestAnimationFrame(step);
+        });
+    }
+
+    /**
+     * Lướt skeleton tới một tọa độ world trước khi bắt đầu animation kỹ năng.
+     * Tọa độ (0, 0) là tâm canvas/battlefield.
+     */
+    async animateCharacterToPosition(character, destination, baseDuration = 320) {
+        if (!character?.loaded || !destination ||
+            !Number.isFinite(destination.x) || !Number.isFinite(destination.y)) {
+            return;
+        }
+
+        const startX = Number(character.positionX) || 0;
+        const startY = Number(character.positionY) || 0;
+        const dx = destination.x - startX;
+        const dy = destination.y - startY;
+        const distance = Math.hypot(dx, dy);
+        if (distance < 2) {
+            character.setPosition(destination.x, destination.y);
+            return;
+        }
+
+        const duration = Math.max(120, baseDuration) /
+            Math.max(1, Number(this.speed) || 1);
+        const startedAt = performance.now();
+
+        await new Promise(resolve => {
+            const step = now => {
+                const progress = Math.min(1, (now - startedAt) / duration);
+                // Ease-out cubic: tăng tốc nhanh lúc xuất phát, hãm nhẹ khi tới tâm.
+                const eased = 1 - Math.pow(1 - progress, 3);
+                character.setPosition(
+                    startX + dx * eased,
+                    startY + dy * eased
+                );
+
+                if (progress >= 1) {
+                    character.setPosition(destination.x, destination.y);
                     resolve();
                     return;
                 }
