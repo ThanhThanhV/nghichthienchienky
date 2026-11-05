@@ -213,14 +213,19 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                                 + ", action=" + actionFamily
                 );
             };
-            skillAnimations.put(skillCode, animation);
-
             String castTrigger = switch (groupId) {
                 case 525171 -> "ON_ENEMY_ACTION";
                 case 525173 -> "ON_REVIVE";
                 case 525174 -> "BATTLE_START";
                 default -> null;
             };
+            ObjectNode actionMapping = objectMapper.createObjectNode()
+                    .put("animation", animation);
+            if (castTrigger != null) {
+                actionMapping.put("trigger", castTrigger);
+            }
+            skillAnimations.set(skillCode, actionMapping);
+
             String impactTrigger = switch (groupId) {
                 case 525171 -> "COUNTER";
                 case 525174 -> "BATTLE_START";
@@ -1073,9 +1078,25 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                 animationMappings.fields();
         while (animationFields.hasNext()) {
             Map.Entry<String, JsonNode> field = animationFields.next();
-            String actionName = field.getValue().asText();
+            JsonNode configuredAction = field.getValue();
+            String actionName = configuredAction.isObject()
+                    ? configuredAction.path("animation").asText("")
+                    : configuredAction.asText("");
+            if (actionName.isBlank()) {
+                throw new IllegalStateException(
+                        "Animation action rỗng trong mapping của "
+                                + definition.getHeroCode() + " / " + field.getKey()
+                );
+            }
             ObjectNode skillAnimation = objectMapper.createObjectNode()
                     .put("animation", actionName);
+            if (configuredAction.isObject()
+                    && configuredAction.hasNonNull("trigger")) {
+                skillAnimation.put(
+                        "trigger",
+                        configuredAction.path("trigger").asText()
+                );
+            }
             JsonNode actionConfig = heroAnimationConfig.path(actionName);
             if (actionConfig.isObject()) {
                 skillAnimation.set("animationConfig", actionConfig.deepCopy());
