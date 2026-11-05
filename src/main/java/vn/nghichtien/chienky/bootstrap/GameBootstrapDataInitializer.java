@@ -1037,6 +1037,7 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
             skill.replaceEffects(synchronizedEffects);
             if ("gojo".equalsIgnoreCase(definition.getHeroCode())) {
                 switch (skillCode) {
+                    case "GOJO_BASIC_1" -> seedGojoSkillEffects(skill, 1);
                     case "GOJO_PASSIVE_3" -> seedGojoHachEffects(skill);
                     case "GOJO_PASSIVE_4" -> seedGojoInfinityEffects(skill);
                     case "GOJO_PASSIVE_5" -> seedGojoSixEyesEffects(skill);
@@ -1046,6 +1047,7 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
             }
             if ("dark_tohka".equalsIgnoreCase(definition.getHeroCode())) {
                 switch (skillCode) {
+                    case "DARK_TOHKA_BASIC_1" -> addDamageEffect(skill, "FRONT", "1.0");
                     case "DARK_TOHKA_ACTIVE_2" -> seedTohkaSandalphonEffects(skill);
                     case "DARK_TOHKA_ULTIMATE_3" -> seedTohkaHalvanhelevEffects(skill);
                     case "DARK_TOHKA_PASSIVE_4" -> seedTohkaAdonaiEffects(skill);
