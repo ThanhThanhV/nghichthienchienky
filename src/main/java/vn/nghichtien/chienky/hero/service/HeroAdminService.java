@@ -131,17 +131,24 @@ public class HeroAdminService {
             throw badRequest("Mỗi tướng phải giữ đúng 5 kỹ năng theo cấu trúc hiện tại");
         }
 
-        Map<Long, HeroSkillDefinition> skillById = currentSkills.stream()
-                .collect(Collectors.toMap(HeroSkillDefinition::getId, skill -> skill));
+        Map<String, HeroSkillDefinition> skillByCode = currentSkills.stream()
+                .collect(Collectors.toMap(HeroSkillDefinition::getSkillCode, skill -> skill));
         Map<String, Object> animationMapping = new LinkedHashMap<>();
         String basicAttackMovement = request.basicAttackMovement() == null
                 ? "DASH"
                 : request.basicAttackMovement().trim().toUpperCase(Locale.ROOT);
         animationMapping.put("_BASIC_ATTACK", Map.of("movement", basicAttackMovement));
 
+        Set<String> retainedSkillCodes = new HashSet<>();
         for (HeroAdminUpdateRequest.SkillRequest skillRequest : request.skills()) {
-            HeroSkillDefinition skill = skillById.get(skillRequest.id());
-            if (skill == null || !Objects.equals(skill.getSkillOrder(), skillRequest.skillOrder())) {
+            if (skillRequest.skillCode() == null
+                    || !retainedSkillCodes.add(skillRequest.skillCode())) {
+                throw badRequest("skillCode bị thiếu hoặc bị lặp trong payload");
+            }
+
+            HeroSkillDefinition skill = skillByCode.get(skillRequest.skillCode());
+            if (skill == null
+                    || !Objects.equals(skill.getSkillOrder(), skillRequest.skillOrder())) {
                 throw badRequest("Kỹ năng gửi lên không thuộc tướng hoặc sai thứ tự");
             }
             if (skillRequest.skillName() == null || skillRequest.skillName().isBlank()) {
@@ -157,10 +164,10 @@ public class HeroAdminService {
                     || skillRequest.enabled());
 
             List<HeroSkillEffect> existingEffects = new ArrayList<>(skill.getEffects());
-            Map<Long, HeroSkillEffect> effectById = existingEffects.stream()
-                    .filter(effect -> effect.getId() != null)
-                    .collect(Collectors.toMap(HeroSkillEffect::getId, effect -> effect));
-            Set<Long> retainedIds = new HashSet<>();
+            Map<Integer, HeroSkillEffect> effectByOrder = existingEffects.stream()
+                    .filter(effect -> effect.getEffectOrder() != null)
+                    .collect(Collectors.toMap(HeroSkillEffect::getEffectOrder, effect -> effect));
+            Set<Integer> retainedEffectOrders = new HashSet<>();
 
             if (skillRequest.effects() == null || skillRequest.effects().isEmpty()) {
                 throw badRequest("Kỹ năng " + skill.getSkillName() + " phải có ít nhất một hiệu ứng");
@@ -168,8 +175,12 @@ public class HeroAdminService {
 
             for (HeroAdminUpdateRequest.EffectRequest effectRequest : skillRequest.effects()) {
                 validateEffect(effectRequest);
-                HeroSkillEffect effect;
-                if (effectRequest.id() == null) {
+                if (!retainedEffectOrders.add(effectRequest.effectOrder())) {
+                    throw badRequest("effectOrder bị lặp trong kỹ năng " + skill.getSkillName());
+                }
+
+                HeroSkillEffect effect = effectByOrder.get(effectRequest.effectOrder());
+                if (effect == null) {
                     effect = new HeroSkillEffect(
                             effectRequest.effectOrder(),
                             effectRequest.effectType().trim().toUpperCase(Locale.ROOT),
@@ -177,16 +188,13 @@ public class HeroAdminService {
                     );
                     skill.addEffect(effect);
                 } else {
-                    effect = effectById.get(effectRequest.id());
-                    if (effect == null || !retainedIds.add(effectRequest.id())) {
-                        throw badRequest("Hiệu ứng không thuộc kỹ năng " + skill.getSkillName());
-                    }
                     effect.updateDefinition(
                             effectRequest.effectOrder(),
                             effectRequest.effectType().trim().toUpperCase(Locale.ROOT),
                             effectRequest.targetType().trim().toUpperCase(Locale.ROOT)
                     );
                 }
+
                 effect.updateParameters(
                         effectRequest.multiplier(),
                         effectRequest.chance(),
@@ -198,7 +206,8 @@ public class HeroAdminService {
             }
 
             for (HeroSkillEffect oldEffect : existingEffects) {
-                if (oldEffect.getId() != null && !retainedIds.contains(oldEffect.getId())) {
+                if (oldEffect.getEffectOrder() == null
+                        || !retainedEffectOrders.contains(oldEffect.getEffectOrder())) {
                     skill.removeEffect(oldEffect);
                 }
             }
@@ -434,7 +443,6 @@ public class HeroAdminService {
 
     private Map<String, Object> skillMap(HeroSkillDefinition skill) {
         Map<String, Object> result = new LinkedHashMap<>();
-        result.put("id", skill.getId());
         result.put("skillCode", skill.getSkillCode());
         result.put("skillName", skill.getSkillName());
         result.put("skillType", skill.getSkillType());
@@ -450,7 +458,6 @@ public class HeroAdminService {
 
     private Map<String, Object> effectMap(HeroSkillEffect effect) {
         Map<String, Object> result = new LinkedHashMap<>();
-        result.put("id", effect.getId());
         result.put("effectOrder", effect.getEffectOrder());
         result.put("effectType", effect.getEffectType());
         result.put("targetType", effect.getTargetType());
