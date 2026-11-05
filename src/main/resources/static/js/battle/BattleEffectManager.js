@@ -205,6 +205,44 @@ class BattleEffectManager {
     }
 
     /**
+     * Lấy tọa độ neo trực tiếp từ DOM slot đang hiển thị trên battlefield.
+     * DOM là nguồn tọa độ cuối cùng vì BattleSpineIntegration cũng đặt nhân vật
+     * theo chính slot này; positionX/Y có thể cũ nếu layout vừa thay đổi.
+     */
+    getTargetSlotPosition(team, instanceId) {
+        const normalizedTeam = String(team || "").toUpperCase();
+        if (!["PLAYER", "ENEMY"].includes(normalizedTeam) ||
+            instanceId == null || !this.canvas) {
+            return null;
+        }
+
+        const container = document.getElementById(
+            normalizedTeam === "PLAYER" ? "player-formation" : "enemy-formation"
+        );
+        const slot = [...(container?.querySelectorAll(".unit-slot") || [])]
+            .find(element => element.dataset.instanceId === String(instanceId));
+        if (!slot) {
+            return null;
+        }
+
+        const canvasRect = this.canvas.getBoundingClientRect();
+        const slotRect = slot.getBoundingClientRect();
+        if (!canvasRect.width || !canvasRect.height ||
+            !slotRect.width || !slotRect.height) {
+            return null;
+        }
+
+        const canvasCenterX = canvasRect.left + canvasRect.width / 2;
+        const canvasCenterY = canvasRect.top + canvasRect.height / 2;
+        const groundY = slotRect.bottom - Math.max(5, slotRect.height * 0.04);
+
+        return {
+            x: slotRect.left + slotRect.width / 2 - canvasCenterX,
+            y: canvasCenterY - groundY
+        };
+    }
+
+    /**
      * Neo VFX vào phía trước mặt mục tiêu theo hướng nhân vật đang nhìn.
      * ENEMY nhìn trái nên VFX nằm ngoài mép trái slot; PLAYER nhìn phải nên
      * VFX nằm ngoài mép phải slot. Tọa độ đổi sang hệ world canvas.
@@ -302,17 +340,35 @@ class BattleEffectManager {
             basePosition = this.getFormationCenter(enemyTeam) || { x: 0, y: 0 };
         } else {
             const anchorCharacter = anchor === "target" ? target : source;
-            if (!anchorCharacter) {
-                return;
+
+            if (anchor === "target") {
+                // Luôn ưu tiên slot DOM hiện tại cho impact target. Đây là cùng
+                // phép đổi hệ tọa độ mà BattleSpineIntegration dùng để đặt rig,
+                // nên không phụ thuộc positionX/Y có bị stale sau layout/reflow.
+                basePosition = this.getTargetSlotPosition(
+                    event.targetTeam,
+                    event.targetInstanceId
+                );
             }
 
-            // positionX/Y là anchor ổn định của slot do BattleSpineIntegration
-            // gán cho nhân vật. Không lấy root bone đang chạy animation làm
-            // anchor vì root motion có thể làm VFX lệch khỏi tâm slot/overlay.
-            basePosition = {
-                x: anchorCharacter.positionX,
-                y: anchorCharacter.positionY
-            };
+            // Fallback cho màn test không có DOM slot hoặc anchor source.
+            if (!basePosition && anchorCharacter) {
+                basePosition = {
+                    x: anchorCharacter.positionX,
+                    y: anchorCharacter.positionY
+                };
+            }
+
+            if (!basePosition) {
+                console.warn("[BattleEffectManager] Không tìm được tọa độ anchor:", {
+                    anchor,
+                    targetTeam: event.targetTeam,
+                    targetInstanceId: event.targetInstanceId,
+                    targetFound: Boolean(target),
+                    sourceFound: Boolean(source)
+                });
+                return;
+            }
         }
 
         if (!basePosition) {
