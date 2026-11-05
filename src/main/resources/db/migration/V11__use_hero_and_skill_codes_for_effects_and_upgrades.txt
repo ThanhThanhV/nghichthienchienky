@@ -88,7 +88,11 @@ ALTER TABLE hero_skill_upgrade_configs
     ADD CONSTRAINT uk_hero_skill_upgrade_code_level
         UNIQUE (hero_code, skill_code, target_skill_level),
     ADD INDEX idx_hero_skill_upgrade_lookup
-        (hero_code, skill_code, target_skill_level, enabled);
+        (hero_code, skill_code, target_skill_level, enabled),
+    ADD CONSTRAINT fk_hero_skill_upgrade_config_hero
+        FOREIGN KEY (hero_code)
+            REFERENCES hero_definitions(hero_code)
+            ON DELETE CASCADE;
 
 
 -- =========================================================
