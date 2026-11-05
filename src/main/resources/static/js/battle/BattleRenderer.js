@@ -490,6 +490,31 @@ class BattleRenderer {
             event.sourceInstanceId ?? event.instanceId;
         const incomingSkillCode = event.skillCode || null;
         const currentAction = this.actionContext;
+        const incomingSourceCharacter = this.getCharacter({
+            team: incomingSourceTeam,
+            instanceId: incomingSourceInstanceId
+        });
+        const incomingHeroCode = String(
+            event.heroCode || incomingSourceCharacter?.config?.heroCode || ""
+        ).trim().toLowerCase();
+        const isGojoHachCounterCast =
+            incomingHeroCode === "gojo" &&
+            String(incomingSkillCode || "").trim().toUpperCase() === "GOJO_PASSIVE_2" &&
+            String(event.effectCategory || "").trim().toUpperCase() === "ON_ENEMY_ACTION";
+
+        // Lưu lại kẻ vừa hành động TRƯỚC khi PASSIVE của Gojo thay source
+        // trong actionContext. Đây chính là mục tiêu phản kích của Hách.
+        if (
+            isGojoHachCounterCast &&
+            currentAction &&
+            currentAction.sourceTeam &&
+            currentAction.sourceInstanceId != null &&
+            String(currentAction.sourceTeam) !== String(incomingSourceTeam)
+        ) {
+            currentAction.counterTargetTeam = currentAction.sourceTeam;
+            currentAction.counterTargetInstanceId = currentAction.sourceInstanceId;
+        }
+
         const startsDifferentAttack = Boolean(currentAction.actionType) &&
             (
                 currentAction.actionType !== event.type ||
@@ -514,6 +539,8 @@ class BattleRenderer {
             incomingSourceInstanceId ?? this.actionContext.sourceInstanceId;
         this.actionContext.skillCode =
             incomingSkillCode || this.actionContext.skillCode || null;
+        this.actionContext.heroCode =
+            incomingHeroCode || this.actionContext.heroCode || null;
         this.actionContext.actionType = event.type || this.actionContext.actionType || null;
 
         const character = this.getCharacter(event);
@@ -774,21 +801,36 @@ class BattleRenderer {
         const isReflectDamage =
             String(event.effectCode || "").toUpperCase() === "REFLECT" ||
             String(event.message || "").toLowerCase().includes("reflected damage");
+        const isGojoHachCounterDamage =
+            String(action.heroCode || "").trim().toLowerCase() === "gojo" &&
+            String(action.skillCode || "").trim().toUpperCase() === "GOJO_PASSIVE_2";
         const belongsToCurrentAttack =
             this.isCurrentAttackDamage(event, action);
         if (belongsToCurrentAttack && action.actionType === "BASIC_ATTACK") {
             await this.animateBasicAttackDash(event, action);
         }
 
+        const counterTargetIsGojo =
+            String(event.targetTeam || "") === String(action.sourceTeam || "") &&
+            String(event.targetInstanceId ?? "") === String(action.sourceInstanceId ?? "");
         const impactEvent = {
             ...event,
             sourceTeam: event.sourceTeam || action.sourceTeam,
             sourceInstanceId: event.sourceInstanceId ?? action.sourceInstanceId,
-            // Chỉ dùng skillCode của ACTION khi DAMAGE thực sự do đúng nguồn
-            // của action gây ra. REFLECT và đòn phản kích phải giữ metadata riêng.
+            heroCode: event.heroCode || action.heroCode,
+            // REFLECT không thuộc đòn gốc, nhưng Hách là một đòn phản kích có
+            // mapping/VFX riêng nên phải giữ skillCode GOJO_PASSIVE_2.
             skillCode: belongsToCurrentAttack
                 ? (action.skillCode || event.skillCode)
-                : event.skillCode,
+                : (event.skillCode || (isGojoHachCounterDamage ? action.skillCode : null)),
+            // Một số backend REFLECT event chỉ mô tả người nhận damage là Gojo.
+            // Khi đó target VFX phải là kẻ vừa hành động đã lưu ở ACTION_START.
+            targetTeam: isGojoHachCounterDamage && (
+                event.targetTeam == null || counterTargetIsGojo
+            ) ? action.counterTargetTeam : event.targetTeam,
+            targetInstanceId: isGojoHachCounterDamage && (
+                event.targetInstanceId == null || counterTargetIsGojo
+            ) ? action.counterTargetInstanceId : event.targetInstanceId,
             actionType: belongsToCurrentAttack ? action.actionType : null
         };
 
@@ -817,7 +859,9 @@ class BattleRenderer {
 
         // REFLECT là sát thương phản lại, không được phát effect của kỹ năng
         // mà nó vừa phản. Các impact khác vẫn resolve theo đúng nguồn gây damage.
-        if (!isReflectDamage &&
+        // Không phát VFX của đòn gốc cho REFLECT; ngoại lệ duy nhất là
+        // Hách của Gojo: REFLECT chính là damage event của đòn phản kích này.
+        if ((!isReflectDamage || isGojoHachCounterDamage) &&
             !this.effectManager?.shouldDeferImpact?.(impactEvent)) {
             const impactEffectPromise = this.effectManager?.playForEvent(impactEvent, "impact");
             impactEffectPromise?.catch(error => {
