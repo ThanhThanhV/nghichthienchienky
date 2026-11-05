@@ -122,7 +122,7 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
             }
             for (HeroSkillDefinition skill : skills) {
                 boolean exists = heroInstanceSkillRepository
-                        .findByHeroInstanceIdAndSkillDefinitionId(instance.getId(), skill.getId())
+                        .findByHeroInstanceIdAndSkillCode(instance.getId(), skill.getSkillCode())
                         .isPresent();
                 if (!exists) {
                     links.add(new HeroInstanceSkill(instance, skill));
