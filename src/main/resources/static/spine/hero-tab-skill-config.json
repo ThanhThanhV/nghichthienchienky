@@ -1821,7 +1821,7 @@
         },
         {
           "order": 5,
-          "runtimeSkillType": "ACTIVE",
+          "runtimeSkillType": "PASSIVE",
           "groupId": "525174",
           "levelOneId": "5251741",
           "name": "Triển khai {Khoảng Trống Vô Tận}",
