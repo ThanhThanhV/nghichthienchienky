@@ -208,6 +208,20 @@
             this.battleId = payload.screen.battleId;
             this.activeEffects.clear();
             this.applyScreen(payload.screen, true);
+
+            // startBattle trả về các event BATTLE_START đã được backend thực thi
+            // ngay khi tạo BattleState. Phải chờ Spine formation đồng bộ xong rồi
+            // phát tuần tự các event này; nếu bỏ qua payload.events thì Domain
+            // (GOJO_PASSIVE_5 / TAB group 525174) có hiệu ứng trong engine nhưng
+            // animation superskill + VFX BATTLE_START không bao giờ được render.
+            if (this.spineSyncPromise) {
+                await this.spineSyncPromise;
+            }
+            const initialEvents = Array.isArray(payload.events) ? payload.events : [];
+            for (const event of initialEvents) {
+                await this.playEvent(event);
+            }
+
             this.setStatus("SẴN SÀNG");
             if (this.mode === "PVP") {
                 this.addLog("Khai chiến với " + this.pvpOpponentName + "!", "skill");
