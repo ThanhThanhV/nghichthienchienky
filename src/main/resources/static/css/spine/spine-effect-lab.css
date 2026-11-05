@@ -68,3 +68,34 @@ body {
     #effectCanvas { height: 340px; }
 }
 @media (max-width: 520px) { .effect-lab { padding: 12px; } .effect-stage { min-height: 300px; } #effectCanvas { height: 280px; } }
+
+/* Skill-to-effect mapping workbench */
+.skill-mapping-toolbar,.skill-mapping-workbench{margin:0 0 18px;padding:16px;border:1px solid #46546d;border-radius:12px;background:rgba(15,23,39,.96)}
+.mapping-toolbar-heading,.mapping-workbench-heading{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.mapping-toolbar-heading h2,.mapping-workbench-heading h2{margin:0 0 6px;color:#f3d69b;font:700 18px Georgia,serif}
+.mapping-toolbar-heading p{margin:0;color:#9eacc2;font-size:12px;line-height:1.6}
+.mapping-toolbar-heading button,.mapping-editor button{padding:10px 14px;color:#101827;font-weight:800;border:0;border-radius:7px;background:#d9b875;cursor:pointer}
+.mapping-toolbar-heading button:disabled,.mapping-editor button:disabled{opacity:.45;cursor:not-allowed}
+.mapping-selectors{display:grid;grid-template-columns:minmax(220px,1fr) minmax(280px,1.4fr) auto;align-items:end;gap:12px;margin-top:16px}
+.mapping-selectors label,.mapping-editor label{display:grid;gap:6px;color:#c8d2e1;font-size:11px;font-weight:700}
+.mapping-selectors select,.mapping-editor select,.mapping-editor input{width:100%;min-width:0;padding:10px;color:#e7edf7;border:1px solid #46546d;border-radius:7px;background:#0b1322}
+.mapping-progress{padding:10px;color:#d9c49e;font-size:11px}
+.mapping-skill-info{display:grid;gap:8px;margin-top:14px;padding:12px;border-radius:8px;background:#0b1322;color:#aebbd0;font-size:12px;line-height:1.6}
+.mapping-skill-info strong{color:#f3d69b;font-size:13px}
+.mapping-skill-info p{margin:0}
+.gameplay-effect-list{display:flex;flex-wrap:wrap;gap:6px}
+.gameplay-effect-list span{padding:6px 8px;border:1px solid #35435a;border-radius:6px;color:#cbd5e1;font:10px Consolas,monospace;overflow-wrap:anywhere}
+.skill-mapping-workbench{margin-top:18px}
+.mapping-workbench-heading{margin-bottom:14px}
+.mapping-workbench-heading span{color:#d9c49e;font:11px Consolas,monospace}
+.mapping-editor{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;align-items:end}
+.mapping-editor label:last-of-type{grid-column:span 2}
+.mapping-current,.mapping-draft{margin-top:18px}
+.mapping-current h3,.mapping-draft h3{margin:0 0 9px;color:#e7d1a5;font-size:13px}
+.mapping-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:9px 10px;margin:5px 0;border:1px solid #35435a;border-radius:7px;background:#0b1322}
+.mapping-row strong{color:#f3d69b;font:11px Consolas,monospace}
+.mapping-row span{flex:1;color:#9eacc2;font-size:10px;overflow-wrap:anywhere}
+.mapping-row button{padding:5px 9px;color:#fecaca;border:1px solid #7f3d48;border-radius:5px;background:#351b26;cursor:pointer}
+#selectedAssetLabel{color:#d9c49e;font:11px Consolas,monospace}
+@media(max-width:900px){.mapping-selectors{grid-template-columns:1fr 1fr}.mapping-progress{grid-column:1/-1}.mapping-editor{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.mapping-toolbar-heading,.mapping-workbench-heading{align-items:flex-start;flex-direction:column}.mapping-selectors,.mapping-editor{grid-template-columns:1fr}.mapping-editor label:last-of-type{grid-column:auto}.mapping-row{align-items:flex-start;flex-direction:column}}
