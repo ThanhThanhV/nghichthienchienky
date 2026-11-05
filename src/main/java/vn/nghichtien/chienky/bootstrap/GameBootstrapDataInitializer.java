@@ -306,8 +306,71 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
             );
         }
 
+        validateGojoGeneratedVfxShape(skillEffects);
         gojoMapping.set("skillAnimations", skillAnimations);
         gojoMapping.set("_SKILL_EFFECTS", skillEffects);
+    }
+
+    /**
+     * Chốt đúng hình dạng VFX của 4 action groups theo TAB_EffectPerfor Gojo:
+     * BASIC cast-only; Hách cast+impact; Vô Hạ Hạn không VFX;
+     * Lục Nhãn cast-only; Domain cast+3 hit markers.
+     */
+    private void validateGojoGeneratedVfxShape(JsonNode skillEffects) {
+        if (skillEffects.size() != 4) {
+            throw new IllegalStateException(
+                    "Gojo phải có đúng 4 skill groups có VFX theo TAB_EffectPerfor: "
+                            + skillEffects
+            );
+        }
+
+        requireGojoVfxPhase(skillEffects, "GOJO_BASIC_1", "cast", 1);
+        requireNoGojoVfxPhase(skillEffects, "GOJO_BASIC_1", "impact");
+
+        requireGojoVfxPhase(skillEffects, "GOJO_PASSIVE_2", "cast", 1);
+        requireGojoVfxPhase(skillEffects, "GOJO_PASSIVE_2", "impact", 1);
+
+        requireNoGojoVfxPhase(skillEffects, "GOJO_PASSIVE_3", "cast");
+        requireNoGojoVfxPhase(skillEffects, "GOJO_PASSIVE_3", "impact");
+
+        requireGojoVfxPhase(skillEffects, "GOJO_PASSIVE_4", "cast", 1);
+        requireNoGojoVfxPhase(skillEffects, "GOJO_PASSIVE_4", "impact");
+
+        requireGojoVfxPhase(skillEffects, "GOJO_PASSIVE_5", "cast", 1);
+        requireGojoVfxPhase(skillEffects, "GOJO_PASSIVE_5", "impact", 3);
+    }
+
+    private void requireGojoVfxPhase(
+            JsonNode skillEffects,
+            String skillCode,
+            String phase,
+            int expectedEventCount
+    ) {
+        JsonNode effect = skillEffects.path(skillCode).path(phase);
+        JsonNode events = effect.path("impactEvents");
+        if (!effect.isObject()
+                || !events.isArray()
+                || events.size() != expectedEventCount) {
+            throw new IllegalStateException(
+                    "Sai số lượng Gojo VFX event theo Lua: "
+                            + skillCode + "/" + phase
+                            + ", expected=" + expectedEventCount
+                            + ", actual=" + effect
+            );
+        }
+    }
+
+    private void requireNoGojoVfxPhase(
+            JsonNode skillEffects,
+            String skillCode,
+            String phase
+    ) {
+        if (!skillEffects.path(skillCode).path(phase).isMissingNode()) {
+            throw new IllegalStateException(
+                    "Gojo không có VFX " + phase + " theo TAB_EffectPerfor: "
+                            + skillCode
+            );
+        }
     }
 
     /**
