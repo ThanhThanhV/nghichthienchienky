@@ -962,9 +962,15 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                 String skillCode = seed.code().toUpperCase(java.util.Locale.ROOT)
                         + "_" + skillType + "_" + order;
                 JsonNode animation = animations.get(skillCode);
+                // Mapping có thể là chuỗi animation cũ ("att") hoặc object
+                // sinh từ Lua ("animation":"att", kèm trigger/metadata).
+                String animationName = animation == null
+                        ? ""
+                        : animation.isObject()
+                                ? animation.path("animation").asText("")
+                                : animation.asText("");
 
-                if (animation == null || !animation.isTextual()
-                        || animation.asText().isBlank()) {
+                if (animationName.isBlank()) {
                     throw new IllegalStateException(
                             "Thiếu mapping animation cho skillCode "
                                     + skillCode + " của tướng " + seed.code()
