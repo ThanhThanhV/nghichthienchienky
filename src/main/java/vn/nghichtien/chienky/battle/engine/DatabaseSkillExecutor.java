@@ -169,7 +169,7 @@ public class DatabaseSkillExecutor {
             return;
         }
 
-        Map<Long, Integer> skillLevels = loadSkillLevels(source);
+        Map<String, Integer> skillLevels = loadSkillLevels(source);
         List<HeroSkillDefinition> passiveSkills = loadSkills(source).stream()
                 .filter(skill -> "PASSIVE".equalsIgnoreCase(skill.getSkillType()))
                 .toList();
@@ -180,7 +180,7 @@ public class DatabaseSkillExecutor {
             }
 
             SkillEffectSet effectSet = loadEffectsForLevel(
-                    skill, skillLevels.getOrDefault(skill.getId(), 1)
+                    skill, skillLevels.getOrDefault(skill.getSkillCode(), 1)
             );
             List<BattleEffectConfig> effects = effectSet.effects().stream()
                     .filter(effect -> Boolean.TRUE.equals(effect.getEnabled()))
@@ -482,10 +482,6 @@ public class DatabaseSkillExecutor {
 
         return chance.compareTo(ONE) == 0
                 || ThreadLocalRandom.current().nextDouble() < chance.doubleValue();
-    }
-
-    private BattleEffectConfig toEffectConfig(HeroSkillEffect effect) {
-        return toEffectConfig(effect, "SKILL_EFFECT_" + effect.getId());
     }
 
     private BattleEffectConfig toEffectConfig(
