@@ -17,15 +17,12 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * Reset dữ liệu sở hữu hero và catalog skill/effect trước mỗi lần chạy.
+ * Reset catalog cấu hình tướng trước mỗi lần chạy.
  *
- * Các hero đang có trong seed được đồng bộ theo heroCode; hero đã bị loại
- * khỏi seed và cấu hình riêng của chúng được xóa. Skill definitions/effects
- * được nạp lại từ TAB/Spine theo heroCode + skillCode. Cấu hình progression
- * của các hero còn seed được giữ vì là dữ liệu nghiệp vụ có thể chỉnh trong DB.
- *
- * Accounts, player profiles, resources, resource transactions và dữ liệu
- * không thuộc hero luôn được giữ nguyên.
+ * Chỉ xóa các liên kết skill instance cần tạo lại và catalog skill/effect,
+ * chỉ số gốc, tăng trưởng để GameBootstrapDataInitializer seed lại từ TAB/Spine.
+ * Hero instances, đội hình, trang bị, account, player profile, tài nguyên,
+ * tiến trình và các cấu hình nâng cấp/progression được giữ nguyên.
  */
 @Component
 @ConditionalOnProperty(
@@ -41,17 +38,15 @@ public class DatabaseResetInitializer implements ApplicationRunner {
             System.getLogger(DatabaseResetInitializer.class.getName());
 
     /**
-     * Xóa từ các bảng phụ thuộc đến catalog skill.
-     * Các cấu hình nghiệp vụ được giữ lại khi đã định danh bằng code.
+     * Xóa liên kết skill trước, sau đó xóa catalog cấu hình để seed lại.
+     * Không xóa bản sao tướng, đội hình, trang bị hay dữ liệu tài khoản.
      */
     private static final List<String> HERO_TABLES_DELETE_ORDER = List.of(
-            // Player-owned hero references first.
-            "hero_equipment_slots",
-            "player_formation_slots",
+            // Chỉ xóa liên kết kỹ năng để gắn lại với catalog mới.
+            // Bản sao tướng và cấp kỹ năng sẽ được tạo lại ở cấp 1.
             "hero_instance_skills",
-            "hero_instances",
 
-            // Seeded skill catalog. Upgrade configs remain because they now use codes.
+            // Seeded hero configuration catalog. Player-owned hero data is preserved.
             "hero_skill_effects",
             "hero_skill_definitions",
 
@@ -110,8 +105,8 @@ public class DatabaseResetInitializer implements ApplicationRunner {
                     System.Logger.Level.INFO,
                     "Hero reset completed. Cleared {0} hero tables and removed {1} "
                             + "obsolete hero definitions. Current hero catalog will be re-seeded "
-                            + "by heroCode/skillCode. Accounts, player profiles, resources and "
-                            + "progression configs for current hero codes were preserved.",
+                            + "by heroCode/skillCode. Accounts, profiles, hero instances, "
+                            + "formations, equipment, resources and progression configs were preserved.",
                     clearedTables,
                     staleHeroCount
             );
@@ -124,9 +119,8 @@ public class DatabaseResetInitializer implements ApplicationRunner {
     }
 
     /**
-     * Xóa cấu hình và catalog chỉ thuộc hero đã bị loại khỏi seed hiện tại.
-     * Config của các hero còn seed được giữ lại vì đây là dữ liệu nghiệp vụ
-     * (chi phí nâng sao/đột phá và stat bonus), không phải dữ liệu sở hữu.
+     * Xóa catalog và cấu hình chỉ thuộc hero đã bị loại khỏi seed hiện tại.
+     * Không xóa dữ liệu sở hữu tướng của người chơi.
      */
     private int deleteStaleHeroCatalog(
             Connection connection,
