@@ -529,6 +529,18 @@ class BattleRenderer {
             return;
         }
 
+        // Passive chỉ số như Vô Hạ Hạn không có character animation/VFX.
+        // Bỏ qua event visual hoàn toàn, không chạy fallback timing giả như đòn đánh.
+        if (event.type === "PASSIVE" && !animationConfig?.animation) {
+            const castConfigs =
+                this.effectManager?.resolveEffectConfigs?.(event, "cast") || [];
+            const impactConfigs =
+                this.effectManager?.resolveEffectConfigs?.(event, "impact") || [];
+            if (castConfigs.length === 0 && impactConfigs.length === 0) {
+                return;
+            }
+        }
+
         if (character) {
             const animationName = this.getAnimation(event);
 
