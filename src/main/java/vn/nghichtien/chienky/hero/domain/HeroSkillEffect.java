@@ -7,6 +7,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinColumns;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -25,8 +26,27 @@ public class HeroSkillEffect {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "skill_id", nullable = false)
+    @Column(name = "hero_code", length = 50, nullable = false)
+    private String heroCode;
+
+    @Column(name = "skill_code", length = 50, nullable = false)
+    private String skillCode;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumns({
+            @JoinColumn(
+                    name = "hero_code",
+                    referencedColumnName = "hero_code",
+                    insertable = false,
+                    updatable = false
+            ),
+            @JoinColumn(
+                    name = "skill_code",
+                    referencedColumnName = "skill_code",
+                    insertable = false,
+                    updatable = false
+            )
+    })
     private HeroSkillDefinition skillDefinition;
 
     @Column(name = "effect_order", nullable = false)
@@ -87,6 +107,10 @@ public class HeroSkillEffect {
      */
     void setSkillDefinition(HeroSkillDefinition skillDefinition) {
         this.skillDefinition = skillDefinition;
+        this.heroCode = skillDefinition == null
+                ? null : skillDefinition.getHeroDefinition().getHeroCode();
+        this.skillCode = skillDefinition == null
+                ? null : skillDefinition.getSkillCode();
     }
 
     /**
