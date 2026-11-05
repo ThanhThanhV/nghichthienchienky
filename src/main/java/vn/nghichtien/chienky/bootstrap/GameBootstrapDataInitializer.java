@@ -363,7 +363,9 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
             };
             String castAnchor = groupId == 525173 ? "target" : "source";
             String impactAnchor = switch (groupId) {
-                case 525171 -> "target_front";
+                // Hach impact bam dung root position cua instance vua hanh dong.
+                // Khong neo vao mep DOM slot vi se day VFX khoi diem dat Spine.
+                case 525171 -> "target";
                 case 525174 -> "enemy_formation";
                 default -> "target";
             };
