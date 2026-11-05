@@ -1806,11 +1806,12 @@ window.SPINE_EFFECT_CATALOG = [
   {
     "id": "seffect_51515110211",
     "family": "515151",
-    "familyLabel": "Iori Dark",
+    "familyLabel": "Iori / Iori Dark",
     "heroes": [
+      "iori",
       "iori_dark"
     ],
-    "ambiguous": false,
+    "ambiguous": true,
     "size": 12579
   },
   {
