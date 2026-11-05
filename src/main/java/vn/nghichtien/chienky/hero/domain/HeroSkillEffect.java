@@ -111,10 +111,10 @@ public class HeroSkillEffect {
      */
     void setSkillDefinition(HeroSkillDefinition skillDefinition) {
         this.skillDefinition = skillDefinition;
-        this.heroCode = skillDefinition == null
-                ? null : skillDefinition.getHeroDefinition().getHeroCode();
-        this.skillCode = skillDefinition == null
-                ? null : skillDefinition.getSkillCode();
+        if (skillDefinition != null) {
+            this.heroCode = skillDefinition.getHeroDefinition().getHeroCode();
+            this.skillCode = skillDefinition.getSkillCode();
+        }
     }
 
     /**
