@@ -16,15 +16,15 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * Reset trạng thái hero do người chơi sở hữu trước mỗi lần chạy.
+ * Reset dữ liệu sở hữu hero và catalog skill/effect trước mỗi lần chạy.
  *
- * Catalog hero/skill/effect được đồng bộ lại theo heroCode/skillCode bởi
- * GameBootstrapDataInitializer. Không xóa catalog vì các bảng progression,
- * skill-upgrade và level config hiện có dữ liệu quản trị riêng, chưa có nguồn
- * seed đầy đủ để tái tạo an toàn.
+ * Hero definitions và các cấu hình progression được giữ theo heroCode.
+ * Skill definitions/effects được xóa rồi seed lại từ TAB/Spine theo
+ * heroCode + skillCode. Cấu hình nâng cấp kỹ năng vẫn được giữ vì đã chuyển
+ * sang định danh code, không còn phụ thuộc ID tự tăng của skill.
  *
- * Accounts, player profiles, resources, resource transactions và túi trang bị
- * của người chơi luôn được giữ nguyên.
+ * Accounts, player profiles, resources, resource transactions và dữ liệu
+ * không thuộc hero luôn được giữ nguyên.
  */
 @Component
 @ConditionalOnProperty(
@@ -40,8 +40,8 @@ public class DatabaseResetInitializer implements ApplicationRunner {
             System.getLogger(DatabaseResetInitializer.class.getName());
 
     /**
-     * Chỉ xóa dữ liệu phụ thuộc vào ID của hero instance.
-     * Catalog và cấu hình quản trị được giữ lại, sau đó seed đồng bộ theo code.
+     * Xóa từ các bảng phụ thuộc đến catalog skill.
+     * Các cấu hình nghiệp vụ được giữ lại khi đã định danh bằng code.
      */
     private static final List<String> HERO_TABLES_DELETE_ORDER = List.of(
             // Player-owned hero references first.
