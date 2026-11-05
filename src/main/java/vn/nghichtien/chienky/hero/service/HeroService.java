@@ -242,8 +242,9 @@ public class HeroService {
         int targetLevel = currentLevel + 1;
 
         HeroSkillUpgradeConfig config = heroSkillUpgradeConfigRepository
-                .findBySkillDefinitionIdAndTargetSkillLevelAndEnabled(
-                        skill.getId(),
+                .findByHeroCodeAndSkillCodeAndTargetSkillLevelAndEnabled(
+                        skill.getHeroDefinition().getHeroCode(),
+                        skill.getSkillCode(),
                         targetLevel,
                         true
                 )
@@ -917,7 +918,7 @@ public class HeroService {
     public HeroResponse upgradeHeroSkill(
             String username,
             Long instanceId,
-            Long skillId,
+            String skillCode,
             UpgradeHeroSkillRequest request
     ) {
         if (request == null || request.getTransactionKey() == null
@@ -932,14 +933,17 @@ public class HeroService {
                 .orElseThrow(() -> new IllegalArgumentException("Hero not found."));
 
         HeroInstanceSkill instanceSkill = heroInstanceSkillRepository
-                .findByHeroInstanceIdAndSkillDefinitionId(instanceId, skillId)
+                .findByHeroInstanceIdAndSkillDefinitionSkillCode(instanceId, skillCode)
                 .orElseThrow(() -> new IllegalArgumentException("Hero skill not found."));
 
         int targetLevel = instanceSkill.getSkillLevel() + 1;
 
         HeroSkillUpgradeConfig config = heroSkillUpgradeConfigRepository
-                .findBySkillDefinitionIdAndTargetSkillLevelAndEnabled(
-                        skillId, targetLevel, true
+                .findByHeroCodeAndSkillCodeAndTargetSkillLevelAndEnabled(
+                        instance.getHeroCode(),
+                        skillCode,
+                        targetLevel,
+                        true
                 )
                 .orElseThrow(() -> new IllegalArgumentException(
                         "Skill upgrade configuration not found."
@@ -963,8 +967,9 @@ public class HeroService {
         }
 
         String sourceType = "HERO_SKILL_UPGRADE";
-        String description = "Hero " + instanceId
-                + " skill " + skillId + " to level " + targetLevel;
+        String description = "Hero " + instance.getHeroCode()
+                + " instance " + instanceId
+                + " skill " + skillCode + " to level " + targetLevel;
 
         ResourceChangeRequest resourceRequest = new ResourceChangeRequest(
                 request.getTransactionKey(),
