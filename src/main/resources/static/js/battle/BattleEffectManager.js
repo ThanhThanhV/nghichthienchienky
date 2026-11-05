@@ -305,10 +305,36 @@ class BattleEffectManager {
             if (!anchorCharacter) {
                 return;
             }
-            basePosition = {
-                x: anchorCharacter.positionX,
-                y: anchorCharacter.positionY
-            };
+
+            const isGojoHachCounterImpact =
+                anchor === "target" &&
+                String(event.skillCode || "").trim().toUpperCase() === "GOJO_PASSIVE_2" &&
+                String(event.effectCategory || "").trim().toUpperCase() === "COUNTER" &&
+                String(config.phase || "").trim().toLowerCase() === "impact";
+
+            if (isGojoHachCounterImpact && anchorCharacter.skeleton) {
+                // Hách phải bám theo root bone đang render của đúng enemy instance.
+                // positionX/Y chỉ là slot base; rootBone.worldX/Y còn phản ánh
+                // root motion nếu animation của mục tiêu có dịch chuyển.
+                anchorCharacter.skeleton.updateWorldTransform();
+                const targetRoot = anchorCharacter.skeleton.rootBone;
+                basePosition = targetRoot &&
+                    Number.isFinite(Number(targetRoot.worldX)) &&
+                    Number.isFinite(Number(targetRoot.worldY))
+                    ? {
+                        x: Number(targetRoot.worldX),
+                        y: Number(targetRoot.worldY)
+                    }
+                    : {
+                        x: anchorCharacter.positionX,
+                        y: anchorCharacter.positionY
+                    };
+            } else {
+                basePosition = {
+                    x: anchorCharacter.positionX,
+                    y: anchorCharacter.positionY
+                };
+            }
         }
 
         if (!basePosition) {
