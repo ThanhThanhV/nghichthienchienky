@@ -75,6 +75,16 @@ public class HeroSkillUpgradeConfig {
         return skillCode;
     }
 
+    /**
+     * Đồng bộ mã kỹ năng khi thứ tự slot được chuẩn hóa theo TAB Lua.
+     */
+    public void changeSkillCode(String skillCode) {
+        if (skillCode == null || skillCode.isBlank()) {
+            throw new IllegalArgumentException("Skill code không được để trống");
+        }
+        this.skillCode = skillCode.trim().toUpperCase(java.util.Locale.ROOT);
+    }
+
     public Integer getTargetSkillLevel() {
         return targetSkillLevel;
     }
