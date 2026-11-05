@@ -37,11 +37,11 @@ For the nine heroes with two active TAB skill groups, the runtime slots are
 level-one skill IDs are bound in `_TAB_SKILL_BINDINGS` and mirrored in the TAB
 catalog. The full level rows remain available for future level-up synchronization.
 
-Gojo's TAB row has one normal attack and four special groups that are all marked
-as TAB passive-type skills. The game-specific runtime mapping preserves the
-previously agreed active `Vô Hạ Hạn` slot and keeps the other three as PASSIVE;
-there is no fabricated ULTIMATE slot for Gojo. The battle cycle therefore skips
-the ULTIMATE action for Gojo rather than relabeling a TAB passive as an ultimate.
+Gojo's runtime slots follow the exact order in `TAB_Hero[52517]`: BASIC
+`525170`, then groups `525171`, `525172`, `525173`, and `525174`.
+Their runtime types are BASIC, PASSIVE, PASSIVE, PASSIVE, ACTIVE respectively.
+Hách, Vô Hạ Hạn, and Lục Nhãn remain PASSIVE; Domain is an ACTIVE slot whose
+TAB effects are triggered at battle start. No ULTIMATE slot is fabricated.
 
 ## Startup synchronization
 
@@ -107,12 +107,14 @@ are written into each skill's eight TAB level rows before database persistence:
   CRIT, RESISTANCE, control-duration reduction and SPEED bonuses; Kabala-Malkuth
   selects the fastest-ally branch for the current attack or grants its
   non-stacking persistent stat bundle when Tohka is not the fastest ally.
-- `gojo`: the Domain debuffs all enemies' damage taken at battle start;
-  Hách locks Gojo for rounds 1-10, deals level-scaled MAGIC damage after each
-  enemy action during those rounds, then performs a 50% BASIC follow-up at
-  round 11; Vô Hạ Hạn applies its TAB stat bonuses; Lục Nhãn grants five
-  non-purgeable damage-reduction stacks, up to three permanent ATK stacks on
-  kills, and a MAGIC chase against the exact enemy instance that revives.
+- `gojo`: Hách (`GOJO_PASSIVE_2`) locks Gojo for rounds 1-10, deals
+  level-scaled MAGIC damage after each enemy action during those rounds, then
+  performs a 50% BASIC follow-up at round 11; Vô Hạ Hạn
+  (`GOJO_PASSIVE_3`) applies its TAB stat bonuses; Lục Nhãn
+  (`GOJO_PASSIVE_4`) grants five non-purgeable damage-reduction stacks, up to
+  three permanent ATK stacks on kills, and a MAGIC chase against the exact
+  enemy instance that revives; Domain (`GOJO_ACTIVE_5`) debuffs all enemies'
+  damage taken at battle start.
 
 Gojo MAGIC damage uses ATK multiplied by the configured coefficient and does
 not use the physical DEF formula (the current unit model has no separate
@@ -155,7 +157,7 @@ attack animation.
 | Hero | Slot 1 | Slot 2 | Slot 3 | Slot 4 | Slot 5 |
 |---|---|---|---|---|---|
 | `asuna_dark` | BASIC `att` | ACTIVE `skill` | ULTIMATE `ultimateskill` | PASSIVE — | PASSIVE — |
-| `gojo` | BASIC `att` | ACTIVE `superskill` | PASSIVE `skill` | PASSIVE — | PASSIVE `ultimateskill`* |
+| `gojo` | BASIC `att` | PASSIVE `skill`* | PASSIVE — | PASSIVE `ultimateskill`* | ACTIVE `superskill`* |
 | `iori` | BASIC `att` | ACTIVE `skill` | ULTIMATE `ultimateskill` | PASSIVE — | PASSIVE `ultimateskill`* |
 | `iori_dark` | BASIC `att` | ACTIVE `skill` | ULTIMATE `ultimateskill` | PASSIVE — | PASSIVE `ultimateskill`* |
 | `kirito` | BASIC `att` | ACTIVE `skill` | ULTIMATE `ultimateskill` | PASSIVE — | PASSIVE — |
@@ -165,11 +167,13 @@ attack animation.
 | `thor_rak` | BASIC `att` | ACTIVE `skill` | ULTIMATE `ultimateskill` | PASSIVE — | PASSIVE — |
 | `dark_tohka` | BASIC `att` | ACTIVE `skill` | ULTIMATE `ultimateskill` | PASSIVE — | PASSIVE — |
 
-`10000110 -> att`, `10000210 -> skill`, and `10000310 -> ultimateskill`
-are derived from the performance IDs resolved through
-`TAB_Sseffect_1.lua` / `TAB_EffectPerfor_1.lua`. Gojo ACTIVE is the special
-case: it uses `superskill`, matching the `faqi_31` event family in Gojo's
-skeleton and the domain cast event in its VFX asset.
+For Gojo, action names are derived from the action-family field
+(`TAB_EffectPerfor.fields[7]`): `1 -> att`, `11 -> skill`,
+`21 -> ultimateskill`, and `31 -> superskill`. This is required because
+Lục Nhãn and Domain share the same `TAB_Sseffect` performance ID family but
+use different Spine action families. Cast and impact VFX IDs are read from
+`TAB_EffectPerfor.fields[10]` and `fields[17]`; event markers are then read
+from the referenced Spine effect skeletons.
 
 `*` marks a passive-triggered action, not a continuously playing passive
 animation. The runtime plays it only when that skill's PASSIVE action event is
@@ -187,7 +191,10 @@ nonexistent Lua anchor metadata is fabricated.
 
 - BASIC uses the hero's explicit `att` mapping; ACTIVE/ULTIMATE use the explicit per-skill mapping in this file.
 - Iori and Iori Dark use `skill` for ACTIVE and `ultimateskill` for ULTIMATE, matching the confirmed action mapping.
-- Gojo ACTIVE field uses `superskill` (`faqi_31`); `GOJO_PASSIVE_3` counter uses `skill` from TAB performance `10000210`; `GOJO_PASSIVE_5` revival chase uses `ultimateskill` from TAB performance `10000310` and its dedicated VFX.
+- Gojo follows the Lua slot codes: `GOJO_PASSIVE_2` Hách uses `skill`
+  (`faqi_11`), `GOJO_PASSIVE_4` Lục Nhãn uses `ultimateskill`
+  (`faqi_21`), and `GOJO_ACTIVE_5` Domain uses `superskill`
+  (`faqi_31`). Vô Hạ Hạn (`GOJO_PASSIVE_3`) has no character action animation.
 - TAB `TAB_Sseffect` performance IDs also bind triggered PASSIVE actions: `10000210 -> skill` and `10000310 -> ultimateskill`. This adds `IORI_PASSIVE_5`, `IORI_DARK_PASSIVE_5`, `LELOUD_PASSIVE_5`, and `LELOUD_DARK_PASSIVE_5` as `ultimateskill`; passive slots without a resolved action performance (stat-only or non-attack passives) intentionally have no character action animation.
 - Passive slots without an explicit character animation do not fall back to a generic skill animation. Their VFX continues to resolve independently from `_SKILL_EFFECTS`.
 - The animation config ID is resolved from the exact `sanim_<id>` asset first (including `_1` variants); only if that exact Lua key is absent does bootstrap fall back to the base ID. This prevents Dark/Awakened variants from silently borrowing another variant's anchors.
