@@ -80,6 +80,9 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
         // Dữ liệu ID/tên/mô tả/script/level được hydrate trực tiếp từ TAB Lua
         // trước khi validate và ghi xuống database; JSON chỉ giữ runtime metadata.
         tabLuaCatalogSynchronizer.synchronize(tabSkillCatalog, spineCatalog);
+        // Gojo không đọc skillAnimations/_SKILL_EFFECTS cũ trong JSON.
+        // Tái tạo toàn bộ action/VFX trực tiếp từ TAB_EffectPerfor + Spine asset events.
+        generateGojoSpineMappingFromLua(tabSkillCatalog, spineCatalog);
         validateSkillAnimationCatalog(
                 seeds, spineCatalog, animationConfigCatalog, tabSkillCatalog
         );
@@ -90,6 +93,12 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
                             + heroCodes
             );
         }
+
+        // Xóa mapping Gojo cũ trong DB trước khi seed mapping mới.
+        // Chỉ xóa skill links/definitions/effects và JSON Spine của Gojo;
+        // không xóa account, hero instance, formation hay dữ liệu tướng khác.
+        // Toàn bộ thao tác nằm trong transaction bootstrap: nếu seed lỗi thì rollback.
+        resetGojoSkillMappingInDatabase();
 
         // Đồng bộ catalog theo heroCode + skillCode. ID tự tăng chỉ còn là
         // khóa nội bộ của JPA, không dùng để liên kết cấp kỹ năng người chơi.
@@ -122,6 +131,213 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
 
         // Gắn lại 5 kỹ năng cấp 1 cho mọi bản sao tướng người chơi đang sở hữu.
         rebuildOwnedHeroSkills(heroCodes);
+    }
+
+    /**
+     * Xóa riêng mapping Gojo đã seed ở các lần chạy trước.
+     * Skill instance được tạo lại ở cấp 1 sau khi catalog mới được seed.
+     */
+    private void resetGojoSkillMappingInDatabase() {
+        List<String> gojoOnly = List.of("gojo");
+
+        heroDefinitionRepository.findById("gojo").ifPresent(definition -> {
+            definition.updateSpineSkillAnimations("{}");
+            heroDefinitionRepository.saveAndFlush(definition);
+        });
+
+        heroInstanceSkillRepository
+                .deleteAllBySkillDefinitionHeroDefinitionHeroCodeIn(gojoOnly);
+        heroInstanceSkillRepository.flush();
+
+        // Cascade ALL xóa hero_skill_effects cùng các skill definitions cũ.
+        heroSkillDefinitionRepository
+                .deleteAllByHeroDefinitionHeroCodeIn(gojoOnly);
+        heroSkillDefinitionRepository.flush();
+    }
+
+    /**
+     * Sinh mapping Gojo từ TAB_EffectPerfor.
+     *
+     * TAB_EffectPerfor.<groupId>10:
+     * - fields[7]: action family 1/11/21/31 -> att/skill/ultimateskill/superskill
+     * - fields[10]: VFX cast
+     * - fields[17]: VFX impact
+     *
+     * Event marker và tên animation_0/animation_1 được đọc từ Spine JSON thực tế,
+     * không hard-code theo mapping cũ.
+     */
+    private void generateGojoSpineMappingFromLua(
+            JsonNode tabSkillCatalog,
+            JsonNode spineCatalog
+    ) {
+        JsonNode gojoTab = tabSkillCatalog.path("heroes").path("gojo");
+        JsonNode skills = gojoTab.path("skills");
+        JsonNode gojoMappingNode = spineCatalog.path("heroes").path("gojo");
+        if (!(gojoMappingNode instanceof ObjectNode gojoMapping)
+                || !skills.isArray() || skills.isEmpty()) {
+            throw new IllegalStateException(
+                    "Không thể tạo mapping Gojo từ TAB Lua: thiếu hero/skills"
+            );
+        }
+
+        ObjectNode skillAnimations = objectMapper.createObjectNode();
+        ObjectNode skillEffects = objectMapper.createObjectNode();
+
+        for (JsonNode skill : skills) {
+            int order = skill.path("order").asInt(-1);
+            int groupId = skill.path("groupId").asInt(-1);
+            String runtimeType = skill.path("runtimeSkillType").asText("");
+            if (order <= 0 || groupId <= 0 || runtimeType.isBlank()) {
+                throw new IllegalStateException(
+                        "TAB Gojo có slot kỹ năng không hợp lệ: " + skill
+                );
+            }
+
+            String skillCode = "GOJO_" + runtimeType.toUpperCase(java.util.Locale.ROOT)
+                    + "_" + order;
+            JsonNode performance = skill.path("tabPerformance");
+            if (!performance.isObject()) {
+                // Vô Hạ Hạn là passive chỉ số, không có TAB_EffectPerfor/VFX action.
+                continue;
+            }
+
+            int actionFamily = performance.path("fields").path(7).asInt(-1);
+            String animation = switch (actionFamily) {
+                case 1 -> "att";
+                case 11 -> "skill";
+                case 21 -> "ultimateskill";
+                case 31 -> "superskill";
+                default -> throw new IllegalStateException(
+                        "TAB_EffectPerfor action chưa được hỗ trợ cho Gojo: "
+                                + performance.path("id").asText("")
+                                + ", action=" + actionFamily
+                );
+            };
+            skillAnimations.put(skillCode, animation);
+
+            String castTrigger = switch (groupId) {
+                case 525171 -> "ON_ENEMY_ACTION";
+                case 525173 -> "ON_REVIVE";
+                case 525174 -> "BATTLE_START";
+                default -> null;
+            };
+            String impactTrigger = switch (groupId) {
+                case 525171 -> "COUNTER";
+                case 525174 -> "BATTLE_START";
+                default -> null;
+            };
+            String castAnchor = groupId == 525173 ? "target" : "source";
+            String impactAnchor = groupId == 525174
+                    ? "enemy_formation" : "target";
+
+            ObjectNode phases = objectMapper.createObjectNode();
+            ArrayNode castEffects = buildGojoVfxPhase(
+                    skillCode, "cast",
+                    performance.path("fields").path(10),
+                    "animation_0", "qishou_", castAnchor, castTrigger
+            );
+            ArrayNode impactEffects = buildGojoVfxPhase(
+                    skillCode, "impact",
+                    performance.path("fields").path(17),
+                    "animation_1", "hit_", impactAnchor, impactTrigger
+            );
+            if (!castEffects.isEmpty()) {
+                phases.set("cast", castEffects.size() == 1
+                        ? castEffects.get(0) : castEffects);
+            }
+            if (!impactEffects.isEmpty()) {
+                phases.set("impact", impactEffects.size() == 1
+                        ? impactEffects.get(0) : impactEffects);
+            }
+            if (!phases.isEmpty()) {
+                skillEffects.set(skillCode, phases);
+            }
+        }
+
+        if (!skillAnimations.has("GOJO_BASIC_1")
+                || !skillAnimations.has("GOJO_ACTIVE_2")
+                || !skillAnimations.has("GOJO_PASSIVE_3")
+                || !skillAnimations.has("GOJO_PASSIVE_5")
+                || skillAnimations.has("GOJO_PASSIVE_4")) {
+            throw new IllegalStateException(
+                    "Mapping animation Gojo sinh từ Lua không đúng tập skill action: "
+                            + skillAnimations
+            );
+        }
+
+        gojoMapping.set("skillAnimations", skillAnimations);
+        gojoMapping.set("_SKILL_EFFECTS", skillEffects);
+    }
+
+    /**
+     * Đọc VFX ID từ đúng cột cast/impact của TAB_EffectPerfor và lấy event
+     * marker từ animation thực tế của từng seffect JSON.
+     */
+    private ArrayNode buildGojoVfxPhase(
+            String skillCode,
+            String phase,
+            JsonNode vfxRows,
+            String animationName,
+            String eventPrefix,
+            String anchor,
+            String trigger
+    ) {
+        ArrayNode result = objectMapper.createArrayNode();
+        if (!vfxRows.isArray()) {
+            return result;
+        }
+
+        for (JsonNode vfxRow : vfxRows) {
+            if (!vfxRow.isArray() || vfxRow.isEmpty()) {
+                continue;
+            }
+
+            String effectFile = "seffect_" + vfxRow.get(0).asText();
+            String resourcePath = "static/assets/spine/seffects/"
+                    + effectFile + ".json";
+            JsonNode animations = loadEffectSkeletonAnimations(
+                    resourcePath, "gojo", skillCode
+            );
+            JsonNode animation = animations.path(animationName);
+            if (!animation.isObject()) {
+                throw new IllegalStateException(
+                        "TAB Gojo yêu cầu VFX animation không tồn tại: "
+                                + effectFile + "/" + animationName
+                );
+            }
+
+            String expectedPrefix = eventPrefix;
+            ArrayNode impactEvents = objectMapper.createArrayNode();
+            JsonNode sourceEvents = animation.path("events");
+            if (sourceEvents.isArray()) {
+                for (JsonNode event : sourceEvents) {
+                    String eventName = event.path("name").asText("");
+                    if (eventName.startsWith(expectedPrefix)) {
+                        impactEvents.add(eventName);
+                    }
+                }
+            }
+            if (impactEvents.isEmpty()) {
+                throw new IllegalStateException(
+                        "Không tìm thấy Spine event " + expectedPrefix
+                                + " trong " + effectFile + "/" + animationName
+                );
+            }
+
+            ObjectNode effect = objectMapper.createObjectNode();
+            effect.put("code", "gojo_" + skillCode.toLowerCase(java.util.Locale.ROOT)
+                    + "_" + phase + "_" + effectFile);
+            effect.put("file", effectFile);
+            effect.put("animation", animationName);
+            effect.put("anchor", anchor);
+            effect.put("impactEvent", impactEvents.get(0).asText());
+            effect.set("impactEvents", impactEvents);
+            if (trigger != null && !trigger.isBlank()) {
+                effect.put("trigger", trigger);
+            }
+            result.add(effect);
+        }
+        return result;
     }
 
     private void rebuildOwnedHeroSkills(List<String> heroCodes) {
@@ -311,6 +527,36 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
             JsonNode tabSkill,
             JsonNode skillAnimations
     ) {
+        // Gojo action family được khai báo trực tiếp ở TAB_EffectPerfor.fields[7].
+        // 10000310 dùng chung cho Lục Nhãn và Domain, nên không thể dùng riêng
+        // performance ID để phân biệt ultimateskill với superskill.
+        if ("gojo".equalsIgnoreCase(heroCode)
+                && tabSkill.path("tabPerformance").isObject()) {
+            int actionFamily = tabSkill.path("tabPerformance")
+                    .path("fields").path(7).asInt(-1);
+            String expected = switch (actionFamily) {
+                case 1 -> "att";
+                case 11 -> "skill";
+                case 21 -> "ultimateskill";
+                case 31 -> "superskill";
+                default -> throw new IllegalStateException(
+                        "TAB_EffectPerfor action Gojo không hợp lệ: "
+                                + actionFamily + " / " + skillCode
+                );
+            };
+            JsonNode configured = skillAnimations.path(skillCode);
+            String actual = configured.isObject()
+                    ? configured.path("animation").asText("")
+                    : configured.asText("");
+            if (!expected.equals(actual)) {
+                throw new IllegalStateException(
+                        "Sai Gojo animation mapping theo TAB_EffectPerfor: "
+                                + skillCode + ", TAB=" + expected + ", mapping=" + actual
+                );
+            }
+            return;
+        }
+
         JsonNode sseRows = tabSkill.path("scriptResolution").path("sse");
         if (!sseRows.isArray() || sseRows.isEmpty()) {
             return;
