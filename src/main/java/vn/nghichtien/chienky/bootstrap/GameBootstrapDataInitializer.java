@@ -95,6 +95,10 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
             );
         }
 
+        // Làm mới riêng catalog Gojo vì các skillCode cũ đã sai slot.
+        // Nằm trong transaction của runner: nếu seed/validate lỗi thì rollback.
+        resetGojoSkillCatalogInDatabase();
+
         // Chuẩn hóa mã cấu hình nâng cấp Gojo theo slot skill đã xác nhận từ Lua.
         remapGojoSkillUpgradeConfigs();
 
@@ -131,6 +135,22 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
         // Bổ sung các liên kết skill còn thiếu sau khi Gojo được đổi skillCode;
         // các hero khác giữ nguyên cấp kỹ năng đã sở hữu.
         rebuildOwnedHeroSkills(heroCodes);
+    }
+
+    /**
+     * Xóa skill links và definitions Gojo cũ để seed lại đúng skillCode theo Lua.
+     * Các hero khác được cập nhật tại chỗ, giữ nguyên cấp kỹ năng người chơi.
+     */
+    private void resetGojoSkillCatalogInDatabase() {
+        List<String> gojoOnly = List.of("gojo");
+
+        heroInstanceSkillRepository
+                .deleteAllBySkillDefinitionHeroDefinitionHeroCodeIn(gojoOnly);
+        heroInstanceSkillRepository.flush();
+
+        heroSkillDefinitionRepository
+                .deleteAllByHeroDefinitionHeroCodeIn(gojoOnly);
+        heroSkillDefinitionRepository.flush();
     }
 
     /**
