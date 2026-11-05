@@ -43,11 +43,20 @@ public class DatabaseResetInitializer implements ApplicationRunner {
      * Chỉ xóa dữ liệu phụ thuộc vào ID của hero instance.
      * Catalog và cấu hình quản trị được giữ lại, sau đó seed đồng bộ theo code.
      */
-    private static final List<String> HERO_OWNERSHIP_TABLES_DELETE_ORDER = List.of(
+    private static final List<String> HERO_TABLES_DELETE_ORDER = List.of(
+            // Player-owned hero references first.
             "hero_equipment_slots",
             "player_formation_slots",
             "hero_instance_skills",
-            "hero_instances"
+            "hero_instances",
+
+            // Seeded skill catalog. Upgrade configs remain because they now use codes.
+            "hero_skill_effects",
+            "hero_skill_definitions",
+
+            // Hero stats are keyed by hero_code and are re-seeded at startup.
+            "hero_base_stats",
+            "hero_growth_configs"
     );
 
     private final DataSource dataSource;
@@ -63,7 +72,7 @@ public class DatabaseResetInitializer implements ApplicationRunner {
             Set<String> existingTables = findApplicationTables(connection);
             int clearedTables = 0;
 
-            for (String table : HERO_OWNERSHIP_TABLES_DELETE_ORDER) {
+            for (String table : HERO_TABLES_DELETE_ORDER) {
                 if (!existingTables.contains(table)) {
                     continue;
                 }
@@ -80,9 +89,9 @@ public class DatabaseResetInitializer implements ApplicationRunner {
 
             LOGGER.log(
                     System.Logger.Level.INFO,
-                    "Hero ownership reset completed. Cleared {0} tables. "
-                            + "Hero catalog will be synchronized by heroCode/skillCode; "
-                            + "accounts and player data were preserved.",
+                    "Hero reset completed. Cleared {0} hero tables. "
+                            + "Hero/skill/effect catalog will be re-seeded by heroCode/skillCode. "
+                            + "Accounts, player profiles, resources and code-based progression configs were preserved.",
                     clearedTables
             );
         } catch (SQLException exception) {
