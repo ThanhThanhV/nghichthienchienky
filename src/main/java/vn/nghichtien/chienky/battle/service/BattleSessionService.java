@@ -270,6 +270,14 @@ public class BattleSessionService {
         }
 
         BattleState battle = new BattleState(units);
+
+        // BATTLE_START phải chạy ở round 0 ngay khi trận được tạo,
+        // không đợi request advanceRound đầu tiên.
+        battleTurnProcessor.initializeBattle(battle);
+        List<BattleEventDTO> initialEvents = List.copyOf(
+                battle.getEventCollector().getEvents()
+        );
+
         BattleSession session = new BattleSession(
                 battle,
                 Map.copyOf(definitions),
@@ -277,8 +285,11 @@ public class BattleSessionService {
                 username,
                 campaignStage
         );
+        // Đánh dấu event khởi tạo đã được gửi trong response startBattle,
+        // tránh phát lặp lại ở lần advanceRound tiếp theo.
+        session.emittedEventCount = initialEvents.size();
         sessions.put(battle.getBattleId(), session);
-        return toPlayback(session, List.of());
+        return toPlayback(session, initialEvents);
     }
 
     public void closeBattle(String battleId, String username) {
