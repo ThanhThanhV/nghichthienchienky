@@ -476,7 +476,8 @@ public class DatabaseSkillExecutor {
         }
         if (chance.signum() < 0 || chance.compareTo(ONE) > 0) {
             throw new IllegalArgumentException(
-                    "Effect chance must be between 0 and 1: " + effect.getId()
+                    "Effect chance must be between 0 and 1 at effect order: "
+                            + effect.getEffectOrder()
             );
         }
 
