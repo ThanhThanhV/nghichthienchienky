@@ -398,9 +398,14 @@ public class TabLuaCatalogSynchronizer {
         // Performance row của từng group được tra trực tiếp theo TAB_EffectPerfor:
         // <TAB skill group><10>. Trường action ở index 7 quyết định att/skill/
         // ultimateskill/superskill; không suy luận chỉ từ performance ID 10000xxx.
-        int groupId = numberAt(levelOne, 0);
-        int performanceRowId = Math.addExact(Math.multiplyExact(groupId, 100), 10);
-        LuaRow directPerformance = performanceRows.get(performanceRowId);
+        LuaRow directPerformance = null;
+        if ("gojo".equalsIgnoreCase(heroCode)) {
+            int groupId = numberAt(levelOne, 0);
+            long performanceRowId = (long) groupId * 100L + 10L;
+            if (performanceRowId <= Integer.MAX_VALUE) {
+                directPerformance = performanceRows.get((int) performanceRowId);
+            }
+        }
         if (directPerformance == null) {
             skillConfig.remove("tabPerformance");
         } else {
