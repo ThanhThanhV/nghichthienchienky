@@ -145,21 +145,56 @@ public class TabLuaCatalogSynchronizer {
         }
 
         Set<Integer> heroSkillGroups = new HashSet<>();
-        heroSkillGroups.add(numberAt(heroRow, 10)); // NormalAttID
+        int normalAttackGroupId = numberAt(heroRow, 10); // NormalAttID
+        heroSkillGroups.add(normalAttackGroupId);
         Object heroSkillIds = valueAt(heroRow, 11); // u_SkillID
+        List<Integer> luaSkillGroupOrder = new ArrayList<>();
+        luaSkillGroupOrder.add(normalAttackGroupId);
         if (heroSkillIds instanceof List<?> ids) {
             for (Object id : ids) {
                 if (id instanceof Number number) {
                     heroSkillGroups.add(number.intValue());
+                    luaSkillGroupOrder.add(number.intValue());
                 }
             }
         }
 
-        if (!(heroConfig.path("skills") instanceof ArrayNode skills)
-                || skills.size() != 5) {
+        JsonNode configuredSkills = heroConfig.path("skills");
+        if (!configuredSkills.isArray() || configuredSkills.size() != 5) {
             throw new IllegalStateException(
                     "TAB catalog phải có đúng 5 slot kỹ năng: " + heroCode
             );
+        }
+        ArrayNode skills = (ArrayNode) configuredSkills;
+
+        if ("gojo".equalsIgnoreCase(heroCode)) {
+            // Với Gojo, thứ tự slot không lấy từ JSON: lấy NormalAttID rồi
+            // u_SkillID theo đúng thứ tự TAB_Hero[52517].
+            if (luaSkillGroupOrder.size() != 5) {
+                throw new IllegalStateException(
+                        "TAB_Hero Gojo phải có 1 NormalAttID và 4 u_SkillID: "
+                                + luaSkillGroupOrder
+                );
+            }
+            ArrayNode orderedSkills = objectMapper.createArrayNode();
+            for (Integer luaGroupId : luaSkillGroupOrder) {
+                JsonNode matchingSkill = null;
+                for (JsonNode configuredSkill : skills) {
+                    if (configuredSkill.path("groupId").asInt(-1) == luaGroupId) {
+                        matchingSkill = configuredSkill;
+                        break;
+                    }
+                }
+                if (matchingSkill == null) {
+                    throw new IllegalStateException(
+                            "Thiếu cấu hình runtime slot cho Gojo TAB group "
+                                    + luaGroupId
+                    );
+                }
+                orderedSkills.add(matchingSkill.deepCopy());
+            }
+            skills = orderedSkills;
+            heroConfig.set("skills", skills);
         }
 
         if (tabHero instanceof ObjectNode tabHeroObject) {
@@ -203,6 +238,29 @@ public class TabLuaCatalogSynchronizer {
                                 + ": catalog=" + levelOneId
                                 + ", TAB_Skill=" + levelOne.id()
                 );
+            }
+
+            if ("gojo".equalsIgnoreCase(heroCode)) {
+                // TAB_Skill type/skillType 1/1 là đánh thường; 3/3 là PASSIVE.
+                // Domain cũng là PASSIVE theo Lua dù phát superskill ở BATTLE_START.
+                String runtimeSkillType;
+                if (groupId == normalAttackGroupId
+                        && numberAt(levelOne, 5) == 1
+                        && numberAt(levelOne, 6) == 1) {
+                    runtimeSkillType = "BASIC";
+                } else if (numberAt(levelOne, 5) == 3
+                        && numberAt(levelOne, 6) == 3) {
+                    runtimeSkillType = "PASSIVE";
+                } else {
+                    throw new IllegalStateException(
+                            "Không thể suy ra runtimeSkillType Gojo từ TAB_Skill["
+                                    + levelOne.id() + "]: type="
+                                    + numberAt(levelOne, 5) + ", skillType="
+                                    + numberAt(levelOne, 6)
+                    );
+                }
+                skillConfig.put("order", slot + 1);
+                skillConfig.put("runtimeSkillType", runtimeSkillType);
             }
 
             synchronizeSkill(
