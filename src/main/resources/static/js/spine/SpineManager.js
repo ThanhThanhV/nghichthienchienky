@@ -320,25 +320,62 @@ class SpineManager {
             gl.clearColor(0, 0, 0, 0);
             gl.clear(gl.COLOR_BUFFER_BIT);
 
-            const effects = this.effects.slice();
-            effects.forEach(effect => effect.update(delta));
+            // Loại bỏ effect đã dispose hoặc chưa còn skeleton hợp lệ trước
+            // khi đưa vào vòng update/draw. Không để một effect lỗi làm chết RAF.
+            this.effects.slice().forEach(effect => {
+                if (!effect || !effect.loaded ||
+                    !effect.skeleton || !effect.animationState) {
+                    this.removeEffect(effect);
+                    return;
+                }
+
+                try {
+                    effect.update(delta);
+                } catch (error) {
+                    console.error("[SpineManager] Effect update failed; removing effect:", error);
+                    this.removeEffect(effect);
+                }
+            });
+
+            const effects = this.effects.filter(effect =>
+                effect?.loaded && effect.skeleton && effect.animationState
+            );
 
             this.renderer.begin();
 
             // Hiệu ứng nền nằm dưới toàn bộ nhân vật.
             effects
                 .filter(effect => effect.layer !== "FRONT")
-                .forEach(effect => effect.draw(this.debug));
+                .forEach(effect => {
+                    if (effect.loaded && effect.skeleton) {
+                        effect.draw(this.debug);
+                    }
+                });
 
-            this.characters.forEach(character => {
-                character.update(delta);
-                character.draw(this.debug);
+            this.characters.slice().forEach(character => {
+                if (!character?.loaded ||
+                    !character.skeleton ||
+                    !character.animationState ||
+                    !character.animationController) {
+                    return;
+                }
+
+                try {
+                    character.update(delta);
+                    character.draw(this.debug);
+                } catch (error) {
+                    console.error("[SpineManager] Character update failed:", error);
+                }
             });
 
             // Hiệu ứng tiền cảnh nằm trên nhân vật.
             effects
                 .filter(effect => effect.layer === "FRONT")
-                .forEach(effect => effect.draw(this.debug));
+                .forEach(effect => {
+                    if (effect.loaded && effect.skeleton) {
+                        effect.draw(this.debug);
+                    }
+                });
 
             this.renderer.end();
         };
