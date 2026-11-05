@@ -59,9 +59,10 @@ On normal application startup, the ordered bootstrap pipeline:
    skill types, and skill names.
 5. It validates that every VFX mapping references a TAB skill binding and that
    the referenced VFX skeleton JSON, atlas, and texture pages exist.
-6. It updates existing hero skill definitions in place. Existing skill IDs and
-   `HeroInstanceSkill` links are retained; only the effect children are
-   replaced from the current catalog. This preserves player skill levels.
+6. For Gojo only, it first clears the old `spineSkillAnimations`, skill
+   definitions/effects, and owned-skill links, then seeds the Lua-derived catalog.
+   Owned Gojo skill links are rebuilt at level 1; accounts, hero instances, and
+   formations are retained. Other heroes keep their existing skill IDs/links.
 7. It stores the resolved animation, TAB binding, and VFX mapping on
    `HeroDefinition.spineSkillAnimations`, which is returned to the battle API.
 
@@ -70,10 +71,13 @@ databases only. Enabling it deletes application data and must never be used on
 a database whose player accounts or game progress need to be preserved.
 
 **Catalog input note:** `static/spine/hero-skill-mapping.json` remains the
-explicit source for runtime Spine animation/VFX assignments. The TAB JSON file
-provides runtime slot metadata (runtime skill type, battle handlers, and the
-mapping from each runtime slot to its TAB group/level-one ID), but its copied
-skill text and level rows are not trusted as source data.
+asset manifest and the explicit animation/VFX source for other heroes. Gojo's
+skill animation and VFX mapping is generated at startup from
+`TAB_EffectPerfor_1.lua` and the referenced Spine effect skeletons; the old
+Gojo `skillAnimations` and `_SKILL_EFFECTS` entries have been removed.
+Gojo's slot order is rebuilt from `TAB_Hero[52517]` (NormalAttID followed by
+the ordered `u_SkillID` list), and its runtime types are derived from the
+`TAB_Skill` type/skillType columns.
 
 Before seeding, `TabLuaCatalogSynchronizer` parses the raw Lua tables directly:
 - `TAB_Hero_1.lua` validates the hero ID and the skill groups referenced by the hero.
@@ -91,9 +95,10 @@ independent sources of truth.
 
 Therefore changing a raw TAB row takes effect on the next application startup
 without manually editing copied skill text, level rows, or TAB binding names in
-either JSON file. The TAB JSON still must contain the runtime hero/slot metadata
+either JSON file. For other heroes, the TAB JSON still contains runtime hero/slot metadata
 and correct group/level-one IDs; the Spine JSON remains the source for explicit
-animation and VFX choices.
+animation and VFX choices. Gojo's runtime slot order/types and action/VFX mapping
+are rebuilt from Lua on every startup.
 
 ## Effect execution scope
 
