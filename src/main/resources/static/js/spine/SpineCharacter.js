@@ -128,20 +128,33 @@ class SpineCharacter {
      * @param {number} delta thời gian giữa hai frame
      */
     update(delta) {
-        if (!this.loaded) {
+        // Keep local references: a one-shot effect can be disposed by an
+        // animation listener while AnimationState is being advanced.
+        if (!this.loaded || !this.animationController ||
+            !this.animationState || !this.skeleton) {
             return;
         }
 
-        this.animationController.update(delta);
+        const animationController = this.animationController;
+        const animationState = this.animationState;
+        const skeleton = this.skeleton;
 
-        // A one-shot SpineEffect may dispose itself from an animation-complete
-        // listener during update; do not access its released state afterwards.
-        if (!this.loaded || !this.animationState || !this.skeleton) {
+        animationController.update(delta);
+
+        // Re-check both ownership and object identity after callbacks.
+        if (!this.loaded ||
+            this.animationState !== animationState ||
+            this.skeleton !== skeleton ||
+            !animationState || !skeleton) {
             return;
         }
 
-        this.animationState.apply(this.skeleton);
-        this.skeleton.updateWorldTransform();
+        animationState.apply(skeleton);
+
+        // Applying an animation may synchronously invoke user listeners.
+        if (this.loaded && this.skeleton === skeleton) {
+            skeleton.updateWorldTransform();
+        }
     }
 
     /**
