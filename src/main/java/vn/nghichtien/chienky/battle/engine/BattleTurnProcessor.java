@@ -421,12 +421,18 @@ public class BattleTurnProcessor {
     ) {
         if (battle.isFinished() || actor == null || actionEvents == null) return;
 
-        boolean causedDamage = actionEvents.stream()
-                .anyMatch(event -> event.type() == BattleEventType.DAMAGE
+        boolean resolvedDamagingHit = actionEvents.stream()
+                .anyMatch(event -> (
+                        event.type() == BattleEventType.DAMAGE
+                                || event.type() == BattleEventType.EVASION
+                                || event.type() == BattleEventType.IMMUNITY
+                                || event.type() == BattleEventType.SHIELD
+                                || event.type() == BattleEventType.BLOCK
+                )
                         && Objects.equals(event.sourceInstanceId(), actor.getInstanceId())
                         && !"COUNTER".equalsIgnoreCase(event.effectCategory())
                         && !"DEFENSE".equalsIgnoreCase(event.effectCategory()));
-        if (!causedDamage) {
+        if (!resolvedDamagingHit) {
             return;
         }
 
