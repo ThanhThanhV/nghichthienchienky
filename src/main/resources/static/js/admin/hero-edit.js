@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded",()=>{
   const c=configOf(e.configJson);
   const advanced={...c};["animation","animationDurationMs","impactTimeMs","flatValue","statType","statusType","immunityType","dispelType","permanent","trigger"].forEach(k=>delete advanced[k]);
   return `<article class="effect-card"><div class="effect-heading"><span>HIỆU ỨNG #${i+1}</span><label class="check-label"><input type="checkbox" data-enabled ${e.enabled===false?"":"checked"}> Kích hoạt</label></div>
-  <input type="hidden" data-id value="${esc(e.id??"")}"><div class="effect-fields">
+  <div class="effect-fields">
   <label>Thứ tự<input data-order type="number" min="1" value="${esc(e.effectOrder??i+1)}"></label>
   <label>Loại hiệu ứng<select data-type>${effectTypes.map(x=>`<option ${x===e.effectType?"selected":""}>${x}</option>`).join("")}</select></label>
   <label>Mục tiêu<select data-target>${targets.map(([value,label])=>`<option value="${value}" ${value===e.targetType?"selected":""}>${label}</option>`).join("")}</select><small class="target-help">Phe mục tiêu được xác định theo loại hiệu ứng: sát thương/giảm chỉ số chọn địch; hồi máu/tăng chỉ số/chắn chọn đồng minh. COUNTER luôn đánh kẻ vừa gây sát thương.</small></label>
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded",()=>{
   <label class="wide">Cấu hình nâng cao (JSON)<textarea data-config rows="4" spellcheck="false">${esc(JSON.stringify(advanced,null,2))}</textarea></label></div>
   <div class="effect-actions"><button type="button" class="small-button danger" data-remove>XÓA HIỆU ỨNG</button></div></article>`;
  }
- function skills(items){editor.innerHTML=items.map(s=>`<article class="skill-card" data-id="${s.id}" data-order="${s.skillOrder}">
+ function skills(items){editor.innerHTML=items.map(s=>`<article class="skill-card" data-skill-code="${esc(s.skillCode)}" data-order="${s.skillOrder}">
   <div class="skill-heading"><h3>${String(s.skillOrder).padStart(2,"0")} · ${esc(s.skillName)}</h3><span>${esc(s.skillType)} · ${esc(s.skillCode)}</span></div>
   <div class="skill-fields"><label>Tên kỹ năng<input data-name required value="${esc(s.skillName)}"></label><label>Mã icon<input data-icon value="${esc(s.iconCode)}"></label><label class="check-label"><input type="checkbox" data-skill-enabled ${s.enabled===false?"":"checked"}> Kích hoạt</label><label class="wide">Mô tả<textarea data-description rows="2">${esc(s.description)}</textarea></label></div>
   <div class="effect-list">${(s.effects||[]).map(effectHtml).join("")}</div><button type="button" class="small-button add-effect" data-add>＋ THÊM HIỆU ỨNG</button></article>`).join("");}
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded",()=>{
  }
  function collectStats(prefix){const o={};document.querySelectorAll('[data-prefix="'+prefix+'"]').forEach(x=>o[x.dataset.key]=Number(x.value));return o;}
  function collect(){
-  return {heroName:$("hero-name").value.trim(),rarity:$("hero-rarity").value,role:$("hero-role").value,faction:$("hero-faction").value.trim(),avatarCode:$("hero-avatar").value.trim(),description:$("hero-description").value,enabled:$("hero-enabled").checked,sortOrder:Number($("hero-sort").value||0),basicAttackMovement:$("basic-attack-movement").value,baseStats:collectStats("base"),growthStats:collectStats("growth"),skills:[...editor.querySelectorAll(".skill-card")].map(s=>({id:Number(s.dataset.id),skillOrder:Number(s.dataset.order),skillName:s.querySelector("[data-name]").value.trim(),description:s.querySelector("[data-description]").value,iconCode:s.querySelector("[data-icon]").value,enabled:s.querySelector("[data-skill-enabled]").checked,effects:[...s.querySelectorAll(".effect-card")].map(e=>{
+  return {heroName:$("hero-name").value.trim(),rarity:$("hero-rarity").value,role:$("hero-role").value,faction:$("hero-faction").value.trim(),avatarCode:$("hero-avatar").value.trim(),description:$("hero-description").value,enabled:$("hero-enabled").checked,sortOrder:Number($("hero-sort").value||0),basicAttackMovement:$("basic-attack-movement").value,baseStats:collectStats("base"),growthStats:collectStats("growth"),skills:[...editor.querySelectorAll(".skill-card")].map(s=>({skillCode:s.dataset.skillCode,skillOrder:Number(s.dataset.order),skillName:s.querySelector("[data-name]").value.trim(),description:s.querySelector("[data-description]").value,iconCode:s.querySelector("[data-icon]").value,enabled:s.querySelector("[data-skill-enabled]").checked,effects:[...s.querySelectorAll(".effect-card")].map(e=>{
    let c;try{c=JSON.parse(e.querySelector("[data-config]").value||"{}");}catch(_){throw Error("JSON cấu hình hiệu ứng không hợp lệ ở kỹ năng "+s.dataset.order);}
    if(!c||typeof c!=="object"||Array.isArray(c))throw Error("Cấu hình hiệu ứng phải là JSON object.");
    const a=e.querySelector("[data-animation]").value.trim();if(a)c.animation=a;else delete c.animation;
@@ -67,8 +67,8 @@ document.addEventListener("DOMContentLoaded",()=>{
    c.flatValue=Number(e.querySelector("[data-flat-value]").value||0);
    for(const [selector,key] of [["[data-stat-type]","statType"],["[data-status-type]","statusType"],["[data-immunity-type]","immunityType"],["[data-dispel-type]","dispelType"],["[data-trigger]","trigger"]]){const v=e.querySelector(selector).value.trim();if(v)c[key]=v;else delete c[key];}
    c.permanent=e.querySelector("[data-permanent]").checked;
-   const id=e.querySelector("[data-id]").value,ch=e.querySelector("[data-chance]").value;
-   return {id:id?Number(id):null,effectOrder:Number(e.querySelector("[data-order]").value),effectType:e.querySelector("[data-type]").value,targetType:e.querySelector("[data-target]").value,multiplier:Number(e.querySelector("[data-mult]").value),chance:ch===""?null:Number(ch),duration:Number(e.querySelector("[data-duration]").value),configJson:JSON.stringify(c),enabled:e.querySelector("[data-enabled]").checked};
+   const ch=e.querySelector("[data-chance]").value;
+   return {effectOrder:Number(e.querySelector("[data-order]").value),effectType:e.querySelector("[data-type]").value,targetType:e.querySelector("[data-target]").value,multiplier:Number(e.querySelector("[data-mult]").value),chance:ch===""?null:Number(ch),duration:Number(e.querySelector("[data-duration]").value),configJson:JSON.stringify(c),enabled:e.querySelector("[data-enabled]").checked};
   })}))};
  }
  async function load(){try{const r=await fetch("/admin/api/heroes/"+encodeURIComponent(code));const d=await r.json();if(!r.ok)throw Error(d.detail||d.message||"Không tải được dữ liệu.");fill(d);}catch(e){message(e.message);save.disabled=true;}}
