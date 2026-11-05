@@ -70,6 +70,17 @@ public class DatabaseResetInitializer implements ApplicationRunner {
         try (Connection connection = dataSource.getConnection();
              Statement statement = connection.createStatement()) {
             Set<String> existingTables = findApplicationTables(connection);
+
+            // Refuse to delete skill catalog while legacy ID foreign keys still exist.
+            // Apply V11__use_hero_and_skill_codes_for_effects_and_upgrades.txt once first.
+            if (hasColumn(connection, "hero_skill_effects", "skill_id")
+                    || hasColumn(connection, "hero_skill_upgrade_configs", "skill_id")) {
+                throw new IllegalStateException(
+                        "Hero schema vẫn còn skill_id. Hãy chạy migration V11 "
+                                + "trước khi bật reset hero data."
+                );
+            }
+
             int clearedTables = 0;
 
             for (String table : HERO_TABLES_DELETE_ORDER) {
@@ -113,6 +124,21 @@ public class DatabaseResetInitializer implements ApplicationRunner {
             }
         }
         return tables;
+    }
+
+    private boolean hasColumn(
+            Connection connection,
+            String table,
+            String column
+    ) throws SQLException {
+        if (table == null || column == null) {
+            return false;
+        }
+        try (ResultSet columns = connection.getMetaData().getColumns(
+                connection.getCatalog(), null, table, column
+        )) {
+            return columns.next();
+        }
     }
 
     private boolean hasAutoIncrementColumn(
