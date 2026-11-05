@@ -504,15 +504,22 @@ class BattleRenderer {
 
         // Lưu lại kẻ vừa hành động TRƯỚC khi PASSIVE của Gojo thay source
         // trong actionContext. Đây chính là mục tiêu phản kích của Hách.
-        if (
-            isGojoHachCounterCast &&
-            currentAction &&
-            currentAction.sourceTeam &&
-            currentAction.sourceInstanceId != null &&
-            String(currentAction.sourceTeam) !== String(incomingSourceTeam)
-        ) {
-            currentAction.counterTargetTeam = currentAction.sourceTeam;
-            currentAction.counterTargetInstanceId = currentAction.sourceInstanceId;
+        if (isGojoHachCounterCast) {
+            // Backend PASSIVE event đã mang đúng targetTeam/targetInstanceId
+            // từ dispatchEnemyActionPassives. Đây là nguồn chuẩn vì event này
+            // được phát SAU ACTION_END của kẻ địch, lúc actionContext cũ đã null.
+            if (event.targetTeam && event.targetInstanceId != null) {
+                currentAction.counterTargetTeam = event.targetTeam;
+                currentAction.counterTargetInstanceId = event.targetInstanceId;
+            } else if (
+                currentAction.sourceTeam &&
+                currentAction.sourceInstanceId != null &&
+                String(currentAction.sourceTeam) !== String(incomingSourceTeam)
+            ) {
+                // Fallback cho event stream cũ chưa serialize target của PASSIVE.
+                currentAction.counterTargetTeam = currentAction.sourceTeam;
+                currentAction.counterTargetInstanceId = currentAction.sourceInstanceId;
+            }
         }
 
         const startsDifferentAttack = Boolean(currentAction.actionType) &&
@@ -813,6 +820,15 @@ class BattleRenderer {
         const counterTargetIsGojo =
             String(event.targetTeam || "") === String(action.sourceTeam || "") &&
             String(event.targetInstanceId ?? "") === String(action.sourceInstanceId ?? "");
+        const shouldUseStoredCounterTarget =
+            isGojoHachCounterDamage &&
+            action.counterTargetTeam &&
+            action.counterTargetInstanceId != null &&
+            (
+                event.targetTeam == null ||
+                event.targetInstanceId == null ||
+                counterTargetIsGojo
+            );
         const impactEvent = {
             ...event,
             sourceTeam: isGojoHachCounterDamage
@@ -832,12 +848,12 @@ class BattleRenderer {
                 : (event.skillCode || (isGojoHachCounterDamage ? action.skillCode : null)),
             // Một số backend REFLECT event chỉ mô tả người nhận damage là Gojo.
             // Khi đó target VFX phải là kẻ vừa hành động đã lưu ở ACTION_START.
-            targetTeam: isGojoHachCounterDamage && (
-                event.targetTeam == null || counterTargetIsGojo
-            ) ? action.counterTargetTeam : event.targetTeam,
-            targetInstanceId: isGojoHachCounterDamage && (
-                event.targetInstanceId == null || counterTargetIsGojo
-            ) ? action.counterTargetInstanceId : event.targetInstanceId,
+            targetTeam: shouldUseStoredCounterTarget
+                ? action.counterTargetTeam
+                : event.targetTeam,
+            targetInstanceId: shouldUseStoredCounterTarget
+                ? action.counterTargetInstanceId
+                : event.targetInstanceId,
             actionType: belongsToCurrentAttack ? action.actionType : null
         };
 
