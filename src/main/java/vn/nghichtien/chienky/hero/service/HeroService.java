@@ -906,7 +906,7 @@ public class HeroService {
      *
      * @param username tên tài khoản người chơi
      * @param instanceId ID tướng thuộc sở hữu người chơi
-     * @param skillId ID định nghĩa kỹ năng cần nâng cấp
+     * @param skillCode Mã định danh ổn định của kỹ năng cần nâng cấp
      * @param request thông tin transactionKey
      * @return thông tin tướng sau khi nâng cấp
      */
