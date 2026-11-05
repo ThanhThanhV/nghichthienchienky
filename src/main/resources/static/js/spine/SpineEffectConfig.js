@@ -15,10 +15,17 @@ window.SPINE_EFFECT_CONFIG = {
         const normalizedSkillCode = String(
             skillCode || event?.skillCode || ""
         ).trim().toUpperCase();
+        const normalizedTrigger = String(
+            event?.effectCategory || ""
+        ).trim().toUpperCase();
         const isGojoDomainBattleStart =
             normalizedHeroCode === "gojo" &&
             normalizedSkillCode === "GOJO_PASSIVE_5" &&
-            String(event?.effectCategory || "").trim().toUpperCase() === "BATTLE_START";
+            normalizedTrigger === "BATTLE_START";
+        const isGojoHachCounter =
+            normalizedHeroCode === "gojo" &&
+            normalizedSkillCode === "GOJO_PASSIVE_2" &&
+            ["ON_ENEMY_ACTION", "COUNTER"].includes(normalizedTrigger);
 
         const safeSkillAnimations =
             skillAnimations &&
@@ -69,6 +76,32 @@ window.SPINE_EFFECT_CONFIG = {
                             "hit_31_3_1"
                         ],
                         trigger: "BATTLE_START"
+                    }]
+                    : [];
+        }
+
+        // Hách (Lua group 525171): cast khi địch hành động,
+        // impact chỉ phát khi backend xác nhận DAMAGE category COUNTER.
+        if (!selectedEffects.length && isGojoHachCounter) {
+            selectedEffects = phase === "cast" && normalizedTrigger === "ON_ENEMY_ACTION"
+                ? [{
+                    code: "gojo_hach_counter_cast",
+                    file: "seffect_52517111012",
+                    animation: "animation_0",
+                    anchor: "source",
+                    impactEvent: "qishou_21_1_1",
+                    impactEvents: ["qishou_21_1_1"],
+                    trigger: "ON_ENEMY_ACTION"
+                }]
+                : phase === "impact" && normalizedTrigger === "COUNTER"
+                    ? [{
+                        code: "gojo_hach_counter_impact",
+                        file: "seffect_52517111011",
+                        animation: "animation_1",
+                        anchor: "target",
+                        impactEvent: "hit_11_1_1",
+                        impactEvents: ["hit_11_1_1"],
+                        trigger: "COUNTER"
                     }]
                     : [];
         }
