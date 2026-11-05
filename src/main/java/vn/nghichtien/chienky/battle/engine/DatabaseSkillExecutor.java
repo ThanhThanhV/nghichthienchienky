@@ -241,6 +241,19 @@ public class DatabaseSkillExecutor {
                                 + "\"domain\":true,"
                                 + "\"luaSkillGroupId\":525174}"
                 );
+                effects = List.of(toEffectConfig(
+                        domainFallback,
+                        effectCode(skill, level, domainFallback)
+                ));
+            }
+
+            if (effects.isEmpty()) {
+                continue;
+            }
+
+            recordPassiveActivation(
+                    battle, source, skill, trigger, counterTargetInstanceId
+            );
 
             // Hách có một đòn đánh thường phụ ở ROUND_START của round 11.
             // Phải phát đủ ACTION_START -> BASIC_ATTACK -> DAMAGE -> ACTION_END
