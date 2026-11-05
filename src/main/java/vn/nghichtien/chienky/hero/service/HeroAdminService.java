@@ -92,6 +92,7 @@ public class HeroAdminService {
         result.put("sortOrder", hero.getSortOrder());
         result.put("basicAttackMovement", readConfig(hero.getSpineSkillAnimations())
                 .path("_BASIC_ATTACK").path("movement").asText("DASH"));
+        result.put("spineSkillAnimations", readConfig(hero.getSpineSkillAnimations()));
         result.put("spineSkeleton", hero.getSpineSkeleton());
         result.put("spineAtlas", hero.getSpineAtlas());
         result.put("spineTextures", parseJsonArray(hero.getSpineTextures()));
