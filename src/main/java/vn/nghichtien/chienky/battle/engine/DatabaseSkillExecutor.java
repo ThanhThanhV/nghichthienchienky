@@ -209,7 +209,7 @@ public class DatabaseSkillExecutor {
             // Phải phát đủ ACTION_START -> BASIC_ATTACK -> DAMAGE -> ACTION_END
             // để FE chạy animation att/cast/impact và đưa Gojo về idle đúng lúc.
             boolean gojoHachFollowUp = "gojo".equalsIgnoreCase(source.getHeroCode())
-                    && "GOJO_PASSIVE_3".equalsIgnoreCase(skill.getSkillCode())
+                    && "GOJO_PASSIVE_2".equalsIgnoreCase(skill.getSkillCode())
                     && trigger == BattlePassiveTrigger.ROUND_START
                     && effects.stream().anyMatch(effect ->
                             "GOJO_BASIC_1".equalsIgnoreCase(effect.eventSkillCode()));
