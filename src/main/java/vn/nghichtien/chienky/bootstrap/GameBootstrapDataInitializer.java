@@ -937,9 +937,9 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
     /**
      * Migration định danh có chủ đích cho các skillCode legacy đã biết.
      *
-     * Chỉ đổi mã trên cùng HeroSkillDefinition, không tạo/xóa entity:
-     * ID kỹ năng và FK hero_instance_skills.skill_id vì vậy được giữ nguyên,
-     * bao gồm skill_level của từng bản sao tướng.
+     * Chỉ đổi mã trên cùng HeroSkillDefinition, không tạo/xóa entity.
+     * Đây là nhánh tương thích khi reset hero data bị tắt; mặc định reset
+     * được thực hiện trước bootstrap nên catalog cũ không còn được giữ.
      */
     private void migrateSkillCodeIfDeclared(
             String heroCode,
@@ -1528,8 +1528,8 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
         effect.updateParameters(new BigDecimal(multiplier), BigDecimal.ONE, null);
 
         // TAB synchronization may already have created effect_order=1.
-        // Replace by order instead of blindly appending a second row with the
-        // same (skill_id, effect_order) unique key.
+        // Replace by order instead of appending a duplicate
+        // (hero_code, skill_code, effect_order) unique key.
         skill.replaceEffects(List.of(effect));
     }
 
