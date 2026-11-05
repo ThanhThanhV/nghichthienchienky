@@ -1383,7 +1383,7 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
             skill.replaceEffects(synchronizedEffects);
             if ("gojo".equalsIgnoreCase(definition.getHeroCode())) {
                 switch (skillCode) {
-                    case "GOJO_BASIC_1" -> seedGojoSkillEffects(skill, 1);
+                    case "GOJO_BASIC_1" -> seedGojoBasicAttackEffects(skill);
                     case "GOJO_PASSIVE_2" -> seedGojoHachEffects(skill);
                     case "GOJO_PASSIVE_3" -> seedGojoInfinityEffects(skill);
                     case "GOJO_PASSIVE_4" -> seedGojoSixEyesEffects(skill);
@@ -1615,7 +1615,7 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
         }
     }
 
-    /** Triển khai Vô Hạ Hạn: tăng sát thương địch phải nhận theo từng cấp TAB. */
+    /** Khoảng Trống Vô Tận: tăng sát thương địch phải nhận theo từng cấp TAB. */
     private void seedGojoDomainEffects(HeroSkillDefinition skill) {
         String[] damageTaken = {
                 "0.15", "0.20", "0.25", "0.26",
@@ -1741,49 +1741,6 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
             throw new IllegalArgumentException("Gojo effect config JSON không hợp lệ", exception);
         }
         return effect;
-    }
-
-    /**
-     * Cấu hình kỹ năng Gojo bằng cùng hệ thống HeroSkillEffect/DatabaseSkillExecutor.
-     * Vô Hạ Hạn tồn tại tối đa 20 round; nội tại phản công chỉ kích hoạt ON_DAMAGED.
-     */
-    private void seedGojoSkillEffects(HeroSkillDefinition skill, int order) {
-        if (order == 1) {
-            seedGojoBasicAttackEffects(skill);
-            return;
-        }
-        if (!skill.getEffects().isEmpty()) {
-            return;
-        }
-
-        switch (order) {
-            case 1 -> addDamageEffect(skill, "FRONT", "1.0");
-            case 2 -> {
-                addGojoEffect(
-                        skill, 1, "BUFF", "SELF", "0.30", 20,
-                        "{\"statType\":\"DEF\"}"
-                );
-                addGojoEffect(
-                        skill, 2, "BLOCK", "SELF", "0.30", 20, "{}"
-                );
-                addGojoEffect(
-                        skill, 3, "IMMUNITY", "SELF", "0", 20,
-                        "{\"immunityType\":\"CC\"}"
-                );
-            }
-            case 3 -> addDamageEffect(skill, "ALL_ENEMIES", "2.5");
-            case 4 -> addGojoEffect(
-                    skill, 1, "BUFF", "SELF", "0.20", 20,
-                    "{\"statType\":\"CRIT\"}"
-            );
-            case 5 -> addGojoEffect(
-                    skill, 1, "COUNTER", "SELF", "0.50", 0,
-                    "{\"trigger\":\"ON_DAMAGED\"}"
-            );
-            default -> {
-                // Các passive khác chưa có hiệu ứng riêng được giữ nguyên.
-            }
-        }
     }
 
     /**
