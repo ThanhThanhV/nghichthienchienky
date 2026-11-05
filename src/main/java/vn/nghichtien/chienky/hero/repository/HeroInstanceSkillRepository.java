@@ -33,7 +33,7 @@ public interface HeroInstanceSkillRepository
     /**
      * Tìm cấp độ kỹ năng theo mã ổn định thay vì ID tự tăng của catalog.
      */
-    Optional<HeroInstanceSkill> findByHeroInstanceIdAndSkillDefinitionSkillCode(
+    Optional<HeroInstanceSkill> findByHeroInstanceIdAndSkillCode(
             Long heroInstanceId,
             String skillCode
     );
