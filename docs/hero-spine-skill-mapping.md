@@ -175,10 +175,10 @@ use different Spine action families. Cast and impact VFX IDs are read from
 `TAB_EffectPerfor.fields[10]` and `fields[17]`; event markers are then read
 from the referenced Spine effect skeletons.
 
-`*` marks a passive-triggered action, not a continuously playing passive
-animation. The runtime plays it only when that skill's PASSIVE action event is
-emitted. A dash means the passive has no TAB action-performance binding and
-must not receive a fabricated attack animation.
+`*` marks a trigger-driven action, not a continuously playing animation.
+Hách and Lục Nhãn play only on their Lua passive triggers; Domain plays at
+`BATTLE_START`. A dash means the skill has no TAB action-performance binding
+and must not receive a fabricated attack animation.
 
 All configured names were checked against the ten actual hero skeleton JSON
 files. The Lua anchor table is not equally complete for every hero: the
