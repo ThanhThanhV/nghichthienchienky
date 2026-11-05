@@ -231,7 +231,8 @@ public class HeroSkillDefinition {
      * đã tồn tại ở cùng effectOrder.
      *
      * Cập nhật entity hiện có thay vì orphan-delete rồi INSERT entity mới.
-     * Điều này tránh xung đột unique key (skill_id, effect_order) khi Hibernate
+     * Điều này tránh xung đột unique key
+     * (hero_code, skill_code, effect_order) khi Hibernate
      * thực hiện flush theo thứ tự INSERT trước DELETE.
      *
      * @param replacementEffects Danh sách hiệu ứng theo catalog mới
@@ -286,9 +287,9 @@ public class HeroSkillDefinition {
     }
 
     /**
-     * Lấy ID kỹ năng.
+     * Lấy khóa tự tăng nội bộ của kỹ năng (không dùng để mapping nghiệp vụ).
      *
-     * @return ID kỹ năng
+     * @return ID nội bộ JPA
      */
     public Long getId() {
         return id;
