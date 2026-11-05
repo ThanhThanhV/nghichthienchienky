@@ -817,9 +817,6 @@ class BattleRenderer {
             await this.animateBasicAttackDash(event, action);
         }
 
-        const counterTargetIsGojo =
-            String(event.targetTeam || "") === String(action.sourceTeam || "") &&
-            String(event.targetInstanceId ?? "") === String(action.sourceInstanceId ?? "");
         // PASSIVE của Hách được backend ghi nhận ngay sau ACTION_END của
         // kẻ vừa hành động. Target trong PASSIVE là nguồn chuẩn cho phản kích;
         // không để DAMAGE event hoặc một REFLECT event chen giữa ghi đè tọa độ.
