@@ -252,7 +252,6 @@ public class HeroService {
 
         if (config == null) {
             return new HeroSkillUpgradeOptionResponse(
-                    skill.getId(),
                     skill.getSkillCode(),
                     skill.getSkillName(),
                     currentLevel,
@@ -280,7 +279,6 @@ public class HeroService {
         }
 
         return new HeroSkillUpgradeOptionResponse(
-                skill.getId(),
                 skill.getSkillCode(),
                 skill.getSkillName(),
                 currentLevel,
@@ -432,7 +430,6 @@ public class HeroService {
                         .toList();
 
         return new HeroSkillResponse(
-                skill.getId(),
                 skill.getSkillCode(),
                 skill.getSkillName(),
                 skill.getSkillType(),
@@ -454,7 +451,6 @@ public class HeroService {
             HeroSkillEffect effect
     ) {
         return new HeroSkillResponse.EffectResponse(
-                effect.getId(),
                 effect.getEffectOrder(),
                 effect.getEffectType(),
                 effect.getTargetType(),
