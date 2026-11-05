@@ -122,7 +122,12 @@ public class BattleEffectProcessor {
     private void executeActionLock(
             BattleState battle, BattleUnitState source, BattleEffectConfig effect
     ) {
-        source.setActionLockedUntilRound(battle.getCurrentRound() + effect.duration() - 1);
+        // BATTLE_START được chạy khi currentRound = 0. Duration 10 phải
+        // khóa đủ round 1..10, không bị hụt round đầu do tính từ round 0.
+        int firstLockedRound = Math.max(1, battle.getCurrentRound());
+        source.setActionLockedUntilRound(
+                firstLockedRound + effect.duration() - 1
+        );
         battle.getEventCollector().record(
                 BattleEventType.CC,
                 source.getTeam().name(), source.getInstanceId(),
