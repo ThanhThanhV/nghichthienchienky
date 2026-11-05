@@ -18,7 +18,6 @@ import vn.nghichtien.chienky.hero.domain.HeroGrowthConfig;
 import vn.nghichtien.chienky.hero.domain.HeroInstance;
 import vn.nghichtien.chienky.hero.domain.HeroInstanceSkill;
 import vn.nghichtien.chienky.hero.domain.HeroSkillDefinition;
-import vn.nghichtien.chienky.hero.domain.HeroSkillUpgradeConfig;
 import vn.nghichtien.chienky.hero.domain.HeroSkillEffect;
 import vn.nghichtien.chienky.hero.repository.HeroBaseStatsRepository;
 import vn.nghichtien.chienky.hero.repository.HeroDefinitionRepository;
@@ -95,12 +94,8 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
             );
         }
 
-        // Xóa mapping Gojo cũ trong DB trước khi seed mapping mới.
-        // Chỉ xóa skill links/definitions/effects và JSON Spine của Gojo;
-        // không xóa account, hero instance, formation hay dữ liệu tướng khác.
-        // Toàn bộ thao tác nằm trong transaction bootstrap: nếu seed lỗi thì rollback.
-        resetGojoSkillMappingInDatabase();
-
+        // DatabaseResetInitializer đã reset catalog skill/effect của toàn bộ hero
+        // trước runner này. Từ đây seed lại thống nhất theo TAB Lua + Spine.
         // Đồng bộ catalog theo heroCode + skillCode. ID tự tăng chỉ còn là
         // khóa nội bộ của JPA, không dùng để liên kết cấp kỹ năng người chơi.
         for (int i = 0; i < seeds.size(); i++) {
@@ -132,63 +127,6 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
 
         // Gắn lại 5 kỹ năng cấp 1 cho mọi bản sao tướng người chơi đang sở hữu.
         rebuildOwnedHeroSkills(heroCodes);
-    }
-
-    /**
-     * Xóa riêng mapping Gojo đã seed ở các lần chạy trước.
-     * Skill instance được tạo lại ở cấp 1 sau khi catalog mới được seed.
-     */
-    private void resetGojoSkillMappingInDatabase() {
-        List<String> gojoOnly = List.of("gojo");
-
-        heroDefinitionRepository.findById("gojo").ifPresent(definition -> {
-            definition.updateSpineSkillAnimations("{}");
-            heroDefinitionRepository.saveAndFlush(definition);
-        });
-
-        // Skill code cũ được tạo theo slot sai. Chuyển cấu hình nâng cấp theo
-        // đúng kỹ năng gốc, giữ nguyên level requirement và các dòng chi phí.
-        List<HeroSkillUpgradeConfig> upgradeConfigs =
-                heroSkillUpgradeConfigRepository.findAllByHeroCode("gojo");
-        Map<String, HeroSkillUpgradeConfig> uniqueUpgradeTargets = new HashMap<>();
-        Map<HeroSkillUpgradeConfig, String> targetSkillCodes = new HashMap<>();
-        for (HeroSkillUpgradeConfig config : upgradeConfigs) {
-            String newSkillCode = switch (config.getSkillCode()) {
-                case "GOJO_PASSIVE_3" -> "GOJO_PASSIVE_2"; // Hách
-                case "GOJO_PASSIVE_4" -> "GOJO_PASSIVE_3"; // Vô Hạ Hạn
-                case "GOJO_PASSIVE_5" -> "GOJO_PASSIVE_4"; // Lục Nhãn
-                case "GOJO_ACTIVE_2" -> "GOJO_PASSIVE_5";   // Khoảng Trống Vô Tận
-                default -> config.getSkillCode();
-            };
-            String uniqueKey = newSkillCode + "#" + config.getTargetSkillLevel();
-            if (uniqueUpgradeTargets.putIfAbsent(uniqueKey, config) != null) {
-                throw new IllegalStateException(
-                        "Trùng cấu hình nâng cấp Gojo sau khi chuẩn hóa Lua: "
-                                + uniqueKey
-                );
-            }
-            targetSkillCodes.put(config, newSkillCode);
-            if (!newSkillCode.equals(config.getSkillCode())) {
-                // Tạm chuyển mã cũ để tránh va chạm unique khi hoán đổi nhiều slot.
-                config.changeSkillCode("__GOJO_LUA_REMAP__" + config.getSkillCode());
-            }
-        }
-        if (!upgradeConfigs.isEmpty()) {
-            heroSkillUpgradeConfigRepository.saveAllAndFlush(upgradeConfigs);
-            for (HeroSkillUpgradeConfig config : upgradeConfigs) {
-                config.changeSkillCode(targetSkillCodes.get(config));
-            }
-            heroSkillUpgradeConfigRepository.saveAllAndFlush(upgradeConfigs);
-        }
-
-        heroInstanceSkillRepository
-                .deleteAllBySkillDefinitionHeroDefinitionHeroCodeIn(gojoOnly);
-        heroInstanceSkillRepository.flush();
-
-        // Cascade ALL xóa hero_skill_effects cùng các skill definitions cũ.
-        heroSkillDefinitionRepository
-                .deleteAllByHeroDefinitionHeroCodeIn(gojoOnly);
-        heroSkillDefinitionRepository.flush();
     }
 
     /**
