@@ -644,28 +644,29 @@ class BattleRenderer {
                     const enemyTeam = this.actionContext.sourceTeam === "PLAYER"
                         ? "ENEMY"
                         : "PLAYER";
-                    const enemyCenter = this.effectManager?.getFormationCenter?.(enemyTeam);
+                    const enemyContainer = document.getElementById(
+                        enemyTeam === "PLAYER" ? "player-formation" : "enemy-formation"
+                    );
+                    const middleSlot = enemyContainer?.querySelectorAll(".unit-slot")?.[4];
+                    const frontPosition = middleSlot
+                        ? this.effectManager?.getTargetFrontPosition?.(
+                            enemyTeam,
+                            middleSlot.dataset.instanceId,
+                            null
+                        )
+                        : null;
 
-                    if (enemyCenter) {
+                    if (frontPosition) {
                         this.actionContext.sourceCharacter = character;
                         this.actionContext.sourceOriginalPosition = {
                             x: character.positionX,
                             y: character.positionY
                         };
 
-                        // Đứng ngay phía trước ô giữa của đội hình đối phương,
-                        // cùng cao độ hàng giữa; không chạy về tâm canvas hoặc
-                        // chồng trực tiếp lên vị trí của tướng địch.
-                        const frontOffset = 90;
-                        const frontPosition = {
-                            x: enemyCenter.x + (
-                                this.actionContext.sourceTeam === "PLAYER"
-                                    ? -frontOffset
-                                    : frontOffset
-                            ),
-                            y: enemyCenter.y
-                        };
-
+                        // Lấy trực tiếp mép trước của ô giữa từ DOM, cùng phép
+                        // đổi tọa độ mà VFX target-front đang sử dụng. Không dùng
+                        // khoảng cách cố định tính từ tâm đội hình vì độ rộng slot
+                        // thay đổi theo kích thước màn hình.
                         await this.animateCharacterToPosition(
                             character,
                             frontPosition,
