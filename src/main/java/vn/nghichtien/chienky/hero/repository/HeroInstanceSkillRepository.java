@@ -31,14 +31,10 @@ public interface HeroInstanceSkillRepository
     );
 
     /**
-     * Tìm cấp độ một kỹ năng của bản sao nhân vật.
-     *
-     * @param heroInstanceId ID bản sao nhân vật
-     * @param skillId ID định nghĩa kỹ năng
-     * @return Bản ghi cấp độ kỹ năng
+     * Tìm cấp độ kỹ năng theo mã ổn định thay vì ID tự tăng của catalog.
      */
-    Optional<HeroInstanceSkill> findByHeroInstanceIdAndSkillDefinitionId(
+    Optional<HeroInstanceSkill> findByHeroInstanceIdAndSkillDefinitionSkillCode(
             Long heroInstanceId,
-            Long skillId
+            String skillCode
     );
 }
