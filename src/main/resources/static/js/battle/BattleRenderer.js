@@ -1042,6 +1042,21 @@ class BattleRenderer {
             key => String(key).trim().toUpperCase() === requestedCode
         );
         if (!mappingKey) {
+            // Gojo C4 là PASSIVE nhưng phải phát superskill ngay BATTLE_START.
+            // Fallback này chỉ áp dụng đúng code + đúng trigger, không ảnh hưởng
+            // mapping hoặc animation của các passive khác.
+            const heroCode = String(
+                character.config?.heroCode || character.config?.code || ""
+            ).trim().toLowerCase();
+            const trigger = String(event.effectCategory || "").trim().toUpperCase();
+            if (
+                heroCode === "gojo" &&
+                requestedCode === "GOJO_PASSIVE_5" &&
+                trigger === "BATTLE_START" &&
+                character.getAnimationNames().includes("superskill")
+            ) {
+                return { animation: "superskill", trigger: "BATTLE_START" };
+            }
             return null;
         }
 
