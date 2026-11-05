@@ -21,11 +21,51 @@ ALTER TABLE hero_skill_effects
     ADD CONSTRAINT uk_hero_skill_effect_code_order
         UNIQUE (hero_code, skill_code, effect_order),
     ADD INDEX idx_hero_skill_effect_lookup
-        (hero_code, skill_code, enabled);
+        (hero_code, skill_code, enabled),
+    ADD CONSTRAINT fk_hero_skill_effect_skill_code
+        FOREIGN KEY (hero_code, skill_code)
+            REFERENCES hero_skill_definitions(hero_code, skill_code)
+            ON DELETE CASCADE;
 
 
 -- =========================================================
--- 2. Hero skill upgrade configs: replace skill_id with stable codes
+-- 2. Owned hero skills: replace skill_id with hero_code + skill_code
+-- =========================================================
+
+ALTER TABLE hero_instances
+    ADD CONSTRAINT uk_hero_instance_id_code
+        UNIQUE (id, hero_code);
+
+ALTER TABLE hero_instance_skills
+    ADD COLUMN hero_code VARCHAR(50) NULL AFTER hero_instance_id,
+    ADD COLUMN skill_code VARCHAR(50) NULL AFTER hero_code;
+
+UPDATE hero_instance_skills instance_skill
+JOIN hero_skill_definitions skill
+    ON skill.id = instance_skill.skill_id
+SET instance_skill.hero_code = skill.hero_code,
+    instance_skill.skill_code = skill.skill_code;
+
+ALTER TABLE hero_instance_skills
+    MODIFY COLUMN hero_code VARCHAR(50) NOT NULL,
+    MODIFY COLUMN skill_code VARCHAR(50) NOT NULL,
+    DROP FOREIGN KEY fk_instance_skill_definition,
+    DROP INDEX uk_hero_instance_skill,
+    DROP COLUMN skill_id,
+    ADD CONSTRAINT uk_hero_instance_skill_code
+        UNIQUE (hero_instance_id, skill_code),
+    ADD CONSTRAINT fk_instance_skill_definition_code
+        FOREIGN KEY (hero_code, skill_code)
+            REFERENCES hero_skill_definitions(hero_code, skill_code)
+            ON DELETE CASCADE,
+    ADD CONSTRAINT fk_instance_skill_hero_code
+        FOREIGN KEY (hero_instance_id, hero_code)
+            REFERENCES hero_instances(id, hero_code)
+            ON DELETE CASCADE;
+
+
+-- =========================================================
+-- 3. Hero skill upgrade configs: replace skill_id with stable codes
 -- =========================================================
 
 ALTER TABLE hero_skill_upgrade_configs
@@ -52,9 +92,9 @@ ALTER TABLE hero_skill_upgrade_configs
 
 
 -- =========================================================
--- 3. Data model notes
+-- 4. Data model notes
 -- =========================================================
 -- hero_skill_effects and hero_skill_upgrade_configs intentionally use
 -- application-level code references rather than generated skill IDs.
 -- hero_skill_definitions still has an internal generated ID for JPA identity,
--- but no effect/upgrade mapping depends on that ID anymore.
+-- but owned skill links, effects and upgrade mappings use stable codes.
