@@ -19,6 +19,7 @@ import vn.nghichtien.chienky.hero.domain.HeroInstance;
 import vn.nghichtien.chienky.hero.domain.HeroInstanceSkill;
 import vn.nghichtien.chienky.hero.domain.HeroSkillDefinition;
 import vn.nghichtien.chienky.hero.domain.HeroSkillEffect;
+import vn.nghichtien.chienky.hero.domain.HeroSkillUpgradeConfig;
 import vn.nghichtien.chienky.hero.repository.HeroBaseStatsRepository;
 import vn.nghichtien.chienky.hero.repository.HeroDefinitionRepository;
 import vn.nghichtien.chienky.hero.repository.HeroGrowthConfigRepository;
@@ -94,9 +95,11 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
             );
         }
 
-        // DatabaseResetInitializer đã reset catalog skill/effect của toàn bộ hero
-        // trước runner này. Từ đây seed lại thống nhất theo TAB Lua + Spine.
-        // Đồng bộ catalog theo heroCode + skillCode. ID tự tăng chỉ còn là
+        // Chuẩn hóa mã cấu hình nâng cấp Gojo theo slot skill đã xác nhận từ Lua.
+        remapGojoSkillUpgradeConfigs();
+
+        // Đồng bộ catalog skill/effect/action/VFX của toàn bộ hero theo TAB Lua + Spine.
+        // ID tự tăng chỉ còn là
         // khóa nội bộ của JPA, không dùng để liên kết cấp kỹ năng người chơi.
         for (int i = 0; i < seeds.size(); i++) {
             HeroSeed seed = seeds.get(i);
@@ -127,6 +130,62 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
 
         // Gắn lại 5 kỹ năng cấp 1 cho mọi bản sao tướng người chơi đang sở hữu.
         rebuildOwnedHeroSkills(heroCodes);
+    }
+
+    /**
+     * Chuyển cấu hình nâng cấp Gojo từ các skillCode cũ sang mã đã chuẩn hóa
+     * theo TAB Lua. Dùng mã tạm ở lượt đầu để tránh va chạm unique key khi
+     * hoán đổi nhiều skillCode trong cùng một hero.
+     */
+    private void remapGojoSkillUpgradeConfigs() {
+        List<HeroSkillUpgradeConfig> configs =
+                heroSkillUpgradeConfigRepository.findAllByHeroCode("gojo");
+        if (configs.isEmpty()) {
+            return;
+        }
+
+        Map<String, HeroSkillUpgradeConfig> targets = new HashMap<>();
+        Map<HeroSkillUpgradeConfig, String> newCodes = new HashMap<>();
+
+        for (HeroSkillUpgradeConfig config : configs) {
+            String newCode = switch (config.getSkillCode()) {
+                case "GOJO_PASSIVE_3" -> "GOJO_PASSIVE_2";
+                case "GOJO_PASSIVE_4" -> "GOJO_PASSIVE_3";
+                case "GOJO_PASSIVE_5" -> "GOJO_PASSIVE_4";
+                case "GOJO_ACTIVE_2" -> "GOJO_PASSIVE_5";
+                default -> config.getSkillCode();
+            };
+
+            String uniqueKey = newCode + "#" + config.getTargetSkillLevel();
+            if (targets.putIfAbsent(uniqueKey, config) != null) {
+                throw new IllegalStateException(
+                        "Trùng cấu hình nâng cấp Gojo sau khi chuẩn hóa Lua: "
+                                + uniqueKey
+                );
+            }
+            newCodes.put(config, newCode);
+        }
+
+        boolean hasChanges = configs.stream().anyMatch(config ->
+                !config.getSkillCode().equals(newCodes.get(config))
+        );
+        if (!hasChanges) {
+            return;
+        }
+
+        for (HeroSkillUpgradeConfig config : configs) {
+            if (!config.getSkillCode().equals(newCodes.get(config))) {
+                config.changeSkillCode(
+                        "__GOJO_LUA_REMAP__" + config.getSkillCode()
+                );
+            }
+        }
+        heroSkillUpgradeConfigRepository.saveAllAndFlush(configs);
+
+        for (HeroSkillUpgradeConfig config : configs) {
+            config.changeSkillCode(newCodes.get(config));
+        }
+        heroSkillUpgradeConfigRepository.saveAllAndFlush(configs);
     }
 
     /**
