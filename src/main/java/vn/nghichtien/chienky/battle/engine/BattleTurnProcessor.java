@@ -459,20 +459,7 @@ public class BattleTurnProcessor {
             );
             // Hách có thể kết liễu kẻ vừa hành động; chuyển tiếp DEATH để Lục Nhãn
             // nhận stack ON_KILL mà không phát lại ON_ENEMY_ACTION.
-            List<BattleEventDTO> reactionEvents = List.copyOf(
-                    battle.getEventCollector().getEvents().subList(
-                            eventStart, battle.getEventCollector().getEvents().size()
-                    )
-            );
-            for (BattleEventDTO event : reactionEvents) {
-                if (event.type() != BattleEventType.DEATH) continue;
-                BattleUnitState killer = battle.findUnit(event.sourceInstanceId());
-                if (killer != null && killer.isAlive()) {
-                    skillExecutor.executePassives(
-                            battle, killer, BattlePassiveTrigger.ON_KILL
-                    );
-                }
-            }
+            dispatchReactionKillPassives(battle, eventStart);
         }
     }
 
@@ -557,13 +544,20 @@ public class BattleTurnProcessor {
                     // Chỉ kích hoạt sau khi revive thành công; nội tại phe đối phương
                     // nhận đúng instance vừa hồi sinh làm mục tiêu.
                     for (BattleUnitState observer : battle.getUnits()) {
-                        if (battle.isFinished()) return;
-                        if (observer.isAlive() && observer.getTeam() != revived.getTeam()) {
-                            skillExecutor.executePassives(
-                                    battle, observer, BattlePassiveTrigger.ON_REVIVE,
-                                    revived.getInstanceId()
-                            );
+                        if (battle.isFinished() || !revived.isAlive()) return;
+                        if (!observer.isAlive() || observer.getTeam() == revived.getTeam()) {
+                            continue;
                         }
+
+                        int reactionStart = battle.getEventCollector().getEvents().size();
+                        skillExecutor.executePassives(
+                                battle, observer, BattlePassiveTrigger.ON_REVIVE,
+                                revived.getInstanceId()
+                        );
+
+                        // Nếu đòn truy sát ON_REVIVE kết liễu mục tiêu vừa hồi sinh,
+                        // chuyển tiếp đúng DEATH sang ON_KILL (Lục Nhãn cộng ATK).
+                        dispatchReactionKillPassives(battle, reactionStart);
                     }
                 }
             }
@@ -576,6 +570,30 @@ public class BattleTurnProcessor {
                 return;
             }
             executePendingExtraAction(battle, unit);
+        }
+    }
+
+    /**
+     * Chỉ chuyển tiếp DEATH phát sinh trực tiếp trong một passive reaction.
+     * Không dispatch lại ON_ENEMY_ACTION/ON_REVIVE, tránh vòng lặp phản ứng.
+     */
+    private void dispatchReactionKillPassives(
+            BattleState battle,
+            int eventStart
+    ) {
+        List<BattleEventDTO> reactionEvents = List.copyOf(
+                battle.getEventCollector().getEvents().subList(
+                        eventStart, battle.getEventCollector().getEvents().size()
+                )
+        );
+        for (BattleEventDTO event : reactionEvents) {
+            if (event.type() != BattleEventType.DEATH) continue;
+            BattleUnitState killer = battle.findUnit(event.sourceInstanceId());
+            if (killer != null && killer.isAlive()) {
+                skillExecutor.executePassives(
+                        battle, killer, BattlePassiveTrigger.ON_KILL
+                );
+            }
         }
     }
 
