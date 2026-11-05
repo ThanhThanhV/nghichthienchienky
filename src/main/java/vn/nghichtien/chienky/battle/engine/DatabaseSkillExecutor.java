@@ -174,6 +174,22 @@ public class DatabaseSkillExecutor {
                 .filter(skill -> "PASSIVE".equalsIgnoreCase(skill.getSkillType()))
                 .toList();
 
+        // Gojo's first battle-start resolution follows the Lua combat order,
+        // not the declaration/slot order: Domain -> Six Eyes -> Limitless -> Hach setup.
+        // Hach's counter itself remains bound to ON_ENEMY_ACTION below.
+        if ("gojo".equalsIgnoreCase(source.getHeroCode())
+                && trigger == BattlePassiveTrigger.BATTLE_START) {
+            passiveSkills = passiveSkills.stream()
+                    .sorted(Comparator.comparingInt(skill -> switch (skill.getSkillCode()) {
+                        case "GOJO_PASSIVE_5" -> 0; // Skill 4: Unlimited Void
+                        case "GOJO_PASSIVE_4" -> 1; // Skill 3: Six Eyes
+                        case "GOJO_PASSIVE_3" -> 2; // Skill 2: Limitless
+                        case "GOJO_PASSIVE_2" -> 3; // Skill 1: Hach's action lock setup
+                        default -> 100;
+                    }))
+                    .toList();
+        }
+
         for (HeroSkillDefinition skill : passiveSkills) {
             if (battle.isFinished() || !source.isAlive()) {
                 break;
