@@ -879,7 +879,11 @@ class BattleRenderer {
         // mà nó vừa phản. Các impact khác vẫn resolve theo đúng nguồn gây damage.
         // Không phát VFX của đòn gốc cho REFLECT; ngoại lệ duy nhất là
         // Hách của Gojo: REFLECT chính là damage event của đòn phản kích này.
-        if ((!isReflectDamage || isGojoHachCounterDamage) &&
+        // REFLECT chỉ là event phòng thủ: target của backend là Gojo,
+        // không phải mục tiêu bị Hách phản kích. Backend phát DAMAGE/COUNTER
+        // riêng ngay sau đó với đúng target địch; chỉ event này mới được tạo
+        // impact VFX để tránh rơi về mapping DEFENSE neo tại source Gojo.
+        if (!isReflectDamage &&
             !this.effectManager?.shouldDeferImpact?.(impactEvent)) {
             const impactEffectPromise = this.effectManager?.playForEvent(impactEvent, "impact");
             impactEffectPromise?.catch(error => {
