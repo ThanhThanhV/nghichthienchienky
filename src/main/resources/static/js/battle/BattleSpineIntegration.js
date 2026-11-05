@@ -162,8 +162,9 @@ class BattleSpineIntegration {
                     rect.width / 140,
                     rect.height / 116
                 );
-                // Thu nhỏ thêm 20% so với tỷ lệ đã fit theo slot hiện tại.
-                entry.character.setScale(baseScale * Math.max(0.01, slotFit));
+                // Khôi phục kích thước 100%: trước đó nhân vật được thu nhỏ còn 80%.
+                // 1 / 0.8 = 1.25 để trả về đúng tỷ lệ fit đầy đủ của ô 3x3.
+                entry.character.setScale(baseScale * Math.max(0.01, slotFit) * 1.25);
 
                 // Character placement is anchored to the bottom of its slot.
                 // HP UI is an independent overlay above the character and must
