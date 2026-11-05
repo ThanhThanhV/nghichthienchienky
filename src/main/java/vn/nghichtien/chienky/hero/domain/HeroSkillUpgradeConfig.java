@@ -6,17 +6,29 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Cấu hình nâng cấp kỹ năng được định danh bằng heroCode + skillCode.
+ * Không phụ thuộc ID tự tăng của hero_skill_definitions.
+ */
 @Entity
-@Table(name = "hero_skill_upgrade_configs")
+@Table(
+        name = "hero_skill_upgrade_configs",
+        uniqueConstraints = @UniqueConstraint(
+                name = "uk_hero_skill_upgrade_code_level",
+                columnNames = {"hero_code", "skill_code", "target_skill_level"}
+        )
+)
 public class HeroSkillUpgradeConfig {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "skill_id", nullable = false)
-    private HeroSkillDefinition skillDefinition;
+    @Column(name = "hero_code", nullable = false, length = 50)
+    private String heroCode;
+
+    @Column(name = "skill_code", nullable = false, length = 50)
+    private String skillCode;
 
     @Column(name = "target_skill_level", nullable = false)
     private Integer targetSkillLevel;
@@ -55,8 +67,12 @@ public class HeroSkillUpgradeConfig {
         return id;
     }
 
-    public HeroSkillDefinition getSkillDefinition() {
-        return skillDefinition;
+    public String getHeroCode() {
+        return heroCode;
+    }
+
+    public String getSkillCode() {
+        return skillCode;
     }
 
     public Integer getTargetSkillLevel() {
