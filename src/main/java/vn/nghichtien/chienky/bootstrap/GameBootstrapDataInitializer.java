@@ -18,6 +18,7 @@ import vn.nghichtien.chienky.hero.domain.HeroGrowthConfig;
 import vn.nghichtien.chienky.hero.domain.HeroInstance;
 import vn.nghichtien.chienky.hero.domain.HeroInstanceSkill;
 import vn.nghichtien.chienky.hero.domain.HeroSkillDefinition;
+import vn.nghichtien.chienky.hero.domain.HeroSkillUpgradeConfig;
 import vn.nghichtien.chienky.hero.domain.HeroSkillEffect;
 import vn.nghichtien.chienky.hero.repository.HeroBaseStatsRepository;
 import vn.nghichtien.chienky.hero.repository.HeroDefinitionRepository;
@@ -144,6 +145,32 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
             definition.updateSpineSkillAnimations("{}");
             heroDefinitionRepository.saveAndFlush(definition);
         });
+
+        // Skill code cũ được tạo theo slot sai. Chuyển cấu hình nâng cấp theo
+        // đúng kỹ năng gốc, giữ nguyên level requirement và các dòng chi phí.
+        List<HeroSkillUpgradeConfig> upgradeConfigs =
+                heroSkillUpgradeConfigRepository.findAllByHeroCode("gojo");
+        Map<String, HeroSkillUpgradeConfig> uniqueUpgradeTargets = new HashMap<>();
+        for (HeroSkillUpgradeConfig config : upgradeConfigs) {
+            String newSkillCode = switch (config.getSkillCode()) {
+                case "GOJO_PASSIVE_3" -> "GOJO_PASSIVE_2"; // Hách
+                case "GOJO_PASSIVE_4" -> "GOJO_PASSIVE_3"; // Vô Hạ Hạn
+                case "GOJO_PASSIVE_5" -> "GOJO_PASSIVE_4"; // Lục Nhãn
+                case "GOJO_ACTIVE_2" -> "GOJO_ACTIVE_5";   // Khoảng Trống Vô Tận
+                default -> config.getSkillCode();
+            };
+            String uniqueKey = newSkillCode + "#" + config.getTargetSkillLevel();
+            if (uniqueUpgradeTargets.putIfAbsent(uniqueKey, config) != null) {
+                throw new IllegalStateException(
+                        "Trùng cấu hình nâng cấp Gojo sau khi chuẩn hóa Lua: "
+                                + uniqueKey
+                );
+            }
+            config.changeSkillCode(newSkillCode);
+        }
+        if (!upgradeConfigs.isEmpty()) {
+            heroSkillUpgradeConfigRepository.saveAllAndFlush(upgradeConfigs);
+        }
 
         heroInstanceSkillRepository
                 .deleteAllBySkillDefinitionHeroDefinitionHeroCodeIn(gojoOnly);
