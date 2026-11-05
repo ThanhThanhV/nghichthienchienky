@@ -499,8 +499,10 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
         }
 
         for (JsonNode row : rows) {
-            if (row.isEmpty() || !row.get(0).canConvertToInt()
-                    || row.get(0).asInt() <= 0) {
+            // Effect ID trong Lua có thể vượt Integer.MAX_VALUE (ví dụ 52517111011).
+            // Phải validate bằng long; không ép về int vì sẽ loại nhầm ID hợp lệ.
+            if (row.isEmpty() || !row.get(0).canConvertToLong()
+                    || row.get(0).asLong() <= 0L) {
                 throw new IllegalStateException(
                         "TAB_EffectPerfor có effect ID không hợp lệ: "
                                 + skillCode + "/" + phase + ", row=" + row
