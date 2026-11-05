@@ -23,4 +23,12 @@ public interface HeroSkillUpgradeConfigRepository
     );
 
     long deleteAllByHeroCodeIn(List<String> heroCodes);
+
+    /**
+     * Loại bỏ cấu hình nâng cấp trỏ tới skillCode không còn thuộc catalog hero.
+     */
+    long deleteAllByHeroCodeAndSkillCodeNotIn(
+            String heroCode,
+            List<String> currentSkillCodes
+    );
 }
