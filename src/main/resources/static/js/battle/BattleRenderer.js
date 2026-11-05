@@ -875,10 +875,8 @@ class BattleRenderer {
             action.damageImpactIndex = impactIndex + 1;
         }
 
-        // REFLECT là sát thương phản lại, không được phát effect của kỹ năng
-        // mà nó vừa phản. Các impact khác vẫn resolve theo đúng nguồn gây damage.
-        // Không phát VFX của đòn gốc cho REFLECT; ngoại lệ duy nhất là
-        // Hách của Gojo: REFLECT chính là damage event của đòn phản kích này.
+        // REFLECT chỉ cập nhật HP của Gojo; không phát VFX tại đây.
+        // Đòn phản kích thật được backend ghi thành DAMAGE/COUNTER riêng.
         // REFLECT chỉ là event phòng thủ: target của backend là Gojo,
         // không phải mục tiêu bị Hách phản kích. Backend phát DAMAGE/COUNTER
         // riêng ngay sau đó với đúng target địch; chỉ event này mới được tạo
