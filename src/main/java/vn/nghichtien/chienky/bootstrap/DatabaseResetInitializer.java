@@ -19,10 +19,11 @@ import java.util.Set;
 /**
  * Reset catalog cấu hình tướng trước mỗi lần chạy.
  *
- * Chỉ xóa các liên kết skill instance cần tạo lại và catalog skill/effect,
- * chỉ số gốc, tăng trưởng để GameBootstrapDataInitializer seed lại từ TAB/Spine.
- * Hero instances, đội hình, trang bị, account, player profile, tài nguyên,
- * tiến trình và các cấu hình nâng cấp/progression được giữ nguyên.
+ * Reset chỉ số gốc và tăng trưởng của toàn bộ hero để seed lại từ TAB.
+ * Skill catalog/effect của các hero được đồng bộ tại chỗ bởi GameBootstrapDataInitializer;
+ * riêng catalog Gojo được làm mới do mã skill đã được chuẩn hóa lại theo Lua.
+ * Account, profile, hero instances, đội hình, trang bị, tài nguyên và cấp skill
+ * của các hero khác được giữ nguyên.
  */
 @Component
 @ConditionalOnProperty(
@@ -38,15 +39,11 @@ public class DatabaseResetInitializer implements ApplicationRunner {
             System.getLogger(DatabaseResetInitializer.class.getName());
 
     /**
-     * Xóa liên kết skill trước, sau đó xóa catalog cấu hình để seed lại.
-     * Không xóa bản sao tướng, đội hình, trang bị hay dữ liệu tài khoản.
+     * Xóa cấu hình chỉ số để seed lại. Các skill khác được cập nhật tại chỗ;
+     * chỉ riêng liên kết skill Gojo được xóa vì skillCode đã đổi theo Lua.
      */
     private static final List<String> HERO_TABLES_DELETE_ORDER = List.of(
-            // Chỉ xóa liên kết kỹ năng để gắn lại với catalog mới.
-            // Bản sao tướng và cấp kỹ năng sẽ được tạo lại ở cấp 1.
-            "hero_instance_skills",
-
-            // Seeded hero configuration catalog. Player-owned hero data is preserved.
+            // Seeded hero base/growth configuration; re-created from current seed.
             "hero_skill_effects",
             "hero_skill_definitions",
 
@@ -78,6 +75,11 @@ public class DatabaseResetInitializer implements ApplicationRunner {
                 );
             }
 
+            // Gojo skillCode đã được chuẩn hóa theo TAB Lua. Chỉ xóa liên kết
+            // kỹ năng Gojo để tránh FK trỏ vào catalog cũ; các hero khác giữ nguyên
+            // cấp kỹ năng và được seed cập nhật định nghĩa/effect tại chỗ.
+            resetGojoSkillCatalog(connection, existingTables);
+
             int clearedTables = 0;
 
             for (String table : HERO_TABLES_DELETE_ORDER) {
@@ -106,7 +108,8 @@ public class DatabaseResetInitializer implements ApplicationRunner {
                     "Hero reset completed. Cleared {0} hero tables and removed {1} "
                             + "obsolete hero definitions. Current hero catalog will be re-seeded "
                             + "by heroCode/skillCode. Accounts, profiles, hero instances, "
-                            + "formations, equipment, resources and progression configs were preserved.",
+                            + "formations, equipment, resources and existing skill levels "
+                            + "for non-Gojo heroes were preserved.",
                     clearedTables,
                     staleHeroCount
             );
@@ -115,6 +118,36 @@ public class DatabaseResetInitializer implements ApplicationRunner {
                     "Không thể reset trạng thái hero sở hữu trước khi seed game",
                     exception
             );
+        }
+    }
+
+    /**
+     * Xóa catalog skill Gojo cũ sau khi Lua xác nhận lại thứ tự/mã kỹ năng.
+     * Các bản sao Gojo vẫn được giữ; liên kết skill được GameBootstrap tạo lại
+     * theo 5 skillCode mới. Các hero khác không bị ảnh hưởng.
+     */
+    private void resetGojoSkillCatalog(
+            Connection connection,
+            Set<String> existingTables
+    ) throws SQLException {
+        if (!existingTables.contains("hero_skill_definitions")) {
+            return;
+        }
+
+        if (existingTables.contains("hero_instance_skills")) {
+            try (PreparedStatement statement = connection.prepareStatement(
+                    "DELETE FROM hero_instance_skills WHERE hero_code = ?"
+            )) {
+                statement.setString(1, "gojo");
+                statement.executeUpdate();
+            }
+        }
+
+        try (PreparedStatement statement = connection.prepareStatement(
+                "DELETE FROM hero_skill_definitions WHERE hero_code = ?"
+        )) {
+            statement.setString(1, "gojo");
+            statement.executeUpdate();
         }
     }
 
