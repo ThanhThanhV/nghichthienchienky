@@ -8,6 +8,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinColumns;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.ConstraintMode;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -33,7 +35,8 @@ public class HeroSkillEffect {
     private String skillCode;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumns({
+    @JoinColumns(
+            value = {
             @JoinColumn(
                     name = "hero_code",
                     referencedColumnName = "hero_code",
@@ -46,7 +49,9 @@ public class HeroSkillEffect {
                     insertable = false,
                     updatable = false
             )
-    })
+            },
+            foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT)
+    )
     private HeroSkillDefinition skillDefinition;
 
     @Column(name = "effect_order", nullable = false)
