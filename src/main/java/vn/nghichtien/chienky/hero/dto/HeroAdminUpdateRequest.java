@@ -36,7 +36,7 @@ public record HeroAdminUpdateRequest(
     }
 
     public record SkillRequest(
-            Long id,
+            String skillCode,
             Integer skillOrder,
             String skillName,
             String description,
@@ -47,7 +47,6 @@ public record HeroAdminUpdateRequest(
     }
 
     public record EffectRequest(
-            Long id,
             Integer effectOrder,
             String effectType,
             String targetType,
