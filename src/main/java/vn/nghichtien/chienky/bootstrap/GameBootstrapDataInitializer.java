@@ -1273,44 +1273,41 @@ public class GameBootstrapDataInitializer implements ApplicationRunner {
             );
         }
 
-        // Iori dùng nhiều event marker theo từng nhịp đánh trong một VFX.
-        // Validate trực tiếp event timeline của animation JSON để tránh trường
-        // hợp tên animation đúng nhưng impactEvent/impactEvents sai, khiến
-        // frontend phải fallback timing hoặc không đồng bộ DAMAGE với VFX.
-        if ("iori".equalsIgnoreCase(heroCode) || "iori_dark".equalsIgnoreCase(heroCode)) {
-            JsonNode animationEvents = skeletonAnimations.path(animation).path("events");
-            java.util.Set<String> availableEventNames = new java.util.HashSet<>();
-            if (animationEvents.isArray()) {
-                for (JsonNode animationEvent : animationEvents) {
-                    String eventName = animationEvent.path("name").asText("");
-                    if (!eventName.isBlank()) {
-                        availableEventNames.add(eventName);
-                    }
+        // Validate event marker cho tất cả hero.
+        // Cả cast marker (qishou_*) và impact marker (hit_*) đều phải tồn tại
+        // trong timeline của animation Spine tương ứng.
+        JsonNode animationEvents = skeletonAnimations.path(animation).path("events");
+        java.util.Set<String> availableEventNames = new java.util.HashSet<>();
+        if (animationEvents.isArray()) {
+            for (JsonNode animationEvent : animationEvents) {
+                String eventName = animationEvent.path("name").asText("");
+                if (!eventName.isBlank()) {
+                    availableEventNames.add(eventName);
                 }
             }
+        }
 
-            String impactEvent = effect.path("impactEvent").asText("");
-            if (!impactEvent.isBlank() && !availableEventNames.contains(impactEvent)) {
-                throw new IllegalStateException(
-                        "VFX impactEvent không tồn tại trong Spine animation: hero="
-                                + heroCode + ", skill=" + skillCode
-                                + ", phase=" + phase + ", file=" + file
-                                + ", animation=" + animation + ", event=" + impactEvent
-                );
-            }
+        String impactEvent = effect.path("impactEvent").asText("");
+        if (!impactEvent.isBlank() && !availableEventNames.contains(impactEvent)) {
+            throw new IllegalStateException(
+                    "VFX impactEvent không tồn tại trong Spine animation: hero="
+                            + heroCode + ", skill=" + skillCode
+                            + ", phase=" + phase + ", file=" + file
+                            + ", animation=" + animation + ", event=" + impactEvent
+            );
+        }
 
-            JsonNode impactEvents = effect.path("impactEvents");
-            if (impactEvents.isArray()) {
-                for (JsonNode configuredEvent : impactEvents) {
-                    String eventName = configuredEvent.asText("");
-                    if (!eventName.isBlank() && !availableEventNames.contains(eventName)) {
-                        throw new IllegalStateException(
-                                "VFX impactEvents không tồn tại trong Spine animation: hero="
-                                        + heroCode + ", skill=" + skillCode
-                                        + ", phase=" + phase + ", file=" + file
-                                        + ", animation=" + animation + ", event=" + eventName
-                        );
-                    }
+        JsonNode impactEvents = effect.path("impactEvents");
+        if (impactEvents.isArray()) {
+            for (JsonNode configuredEvent : impactEvents) {
+                String eventName = configuredEvent.asText("");
+                if (!eventName.isBlank() && !availableEventNames.contains(eventName)) {
+                    throw new IllegalStateException(
+                            "VFX impactEvents không tồn tại trong Spine animation: hero="
+                                    + heroCode + ", skill=" + skillCode
+                                    + ", phase=" + phase + ", file=" + file
+                                    + ", animation=" + animation + ", event=" + eventName
+                    );
                 }
             }
         }
