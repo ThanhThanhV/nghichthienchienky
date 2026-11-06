@@ -99,3 +99,12 @@ body {
 #selectedAssetLabel{color:#d9c49e;font:11px Consolas,monospace}
 @media(max-width:900px){.mapping-selectors{grid-template-columns:1fr 1fr}.mapping-progress{grid-column:1/-1}.mapping-editor{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){.mapping-toolbar-heading,.mapping-workbench-heading{align-items:flex-start;flex-direction:column}.mapping-selectors,.mapping-editor{grid-template-columns:1fr}.mapping-editor label:last-of-type{grid-column:auto}.mapping-row{align-items:flex-start;flex-direction:column}}
+
+
+/* Effect Lab coordinate diagnostics: overlay only, no impact on Spine rendering. */
+.effect-coordinate-overlay{position:absolute;inset:12px;z-index:5;pointer-events:none;color:#f8e7bd;font:11px/1.45 Consolas,monospace;text-shadow:0 1px 3px #000}
+.effect-coordinate-overlay[hidden]{display:none}
+.effect-coordinate-crosshair{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:rgba(255,92,92,.9);box-shadow:0 0 5px rgba(255,92,92,.8)}
+.effect-coordinate-crosshair-x{width:34px;height:1px}
+.effect-coordinate-crosshair-y{width:1px;height:34px}
+.effect-coordinate-readout{position:absolute;left:8px;top:8px;max-width:min(360px,90%);margin:0;padding:8px 10px;white-space:pre-wrap;overflow-wrap:anywhere;border:1px solid rgba(255,190,120,.55);border-radius:6px;background:rgba(4,9,18,.82);color:#ffe6b4}
