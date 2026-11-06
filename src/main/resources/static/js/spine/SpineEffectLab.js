@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "ROOT WORLD: x=" + number(root?.worldX) + " y=" + number(root?.worldY),
             "ANIMATION: " + (entry?.animation?.name || "none"),
             "TRACK TIME: " + number(entry?.trackTime)
-        ].join("\\n");
+        ].join("\n");
     }
     function startCoordinateDiagnostics() {
         if (diagnosticFrame != null) return;
