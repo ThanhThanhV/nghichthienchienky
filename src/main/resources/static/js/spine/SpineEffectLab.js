@@ -11,6 +11,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const debugInput = $("effectDebug"), pauseButton = $("effectPause");
     const resumeButton = $("effectResume"), restartButton = $("effectRestart");
     const centerButton = $("effectCenter");
+    const coordinateDebugInput = $("effectCoordinateDebug");
+    const stage = canvas.closest(".effect-stage");
+    const diagnosticOverlay = document.createElement("div");
+    diagnosticOverlay.className = "effect-coordinate-overlay";
+    diagnosticOverlay.hidden = true;
+    diagnosticOverlay.innerHTML = '<div class="effect-coordinate-crosshair effect-coordinate-crosshair-x"></div><div class="effect-coordinate-crosshair effect-coordinate-crosshair-y"></div><pre class="effect-coordinate-readout"></pre>';
+    stage.appendChild(diagnosticOverlay);
+    const diagnosticReadout = diagnosticOverlay.querySelector(".effect-coordinate-readout");
+    let diagnosticFrame = null;
     const heroSelect = $("mappingHero"), skillSelect = $("mappingSkill");
     const progress = $("mappingProgress"), skillInfo = $("mappingSkillInfo");
     const selectedAssetLabel = $("selectedAssetLabel");
@@ -44,7 +53,36 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     function setControls(enabled) {
         [pauseButton, resumeButton, restartButton, centerButton, speedInput,
-            scaleInput, loopInput, debugInput].forEach(element => element.disabled = !enabled);
+            scaleInput, loopInput, debugInput, coordinateDebugInput].forEach(element => element.disabled = !enabled);
+    }
+    function updateCoordinateDiagnostics() {
+        if (!coordinateDebugInput.checked || !character?.loaded || !character.skeleton) {
+            diagnosticOverlay.hidden = true;
+            return;
+        }
+        diagnosticOverlay.hidden = false;
+        const skeleton = character.skeleton;
+        const root = skeleton.rootBone;
+        const entry = character.animationState?.getCurrent(0);
+        const number = value => Number.isFinite(Number(value)) ? Number(value).toFixed(2) : "n/a";
+        diagnosticReadout.textContent = [
+            "ANCHOR: canvas center",
+            "CANVAS: " + canvas.width + " × " + canvas.height,
+            "ANCHOR PIXEL: (" + (canvas.width / 2).toFixed(1) + ", " + (canvas.height / 2).toFixed(1) + ")",
+            "SKELETON: x=" + number(skeleton.x) + " y=" + number(skeleton.y),
+            "SCALE: x=" + number(skeleton.scaleX) + " y=" + number(skeleton.scaleY),
+            "ROOT WORLD: x=" + number(root?.worldX) + " y=" + number(root?.worldY),
+            "ANIMATION: " + (entry?.animation?.name || "none"),
+            "TRACK TIME: " + number(entry?.trackTime)
+        ].join("\\n");
+    }
+    function startCoordinateDiagnostics() {
+        if (diagnosticFrame != null) return;
+        const render = () => {
+            diagnosticFrame = requestAnimationFrame(render);
+            updateCoordinateDiagnostics();
+        };
+        diagnosticFrame = requestAnimationFrame(render);
     }
     function renderGroupOptions() {
         groupSelect.innerHTML = "";
@@ -369,9 +407,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     loopInput.addEventListener("change",()=>{if(selectedAnimation)playAnimation(selectedAnimation);});
     debugInput.addEventListener("change",()=>manager?.setDebug(debugInput.checked));
+    coordinateDebugInput.addEventListener("change", updateCoordinateDiagnostics);
     window.addEventListener("resize",()=>manager?.resize());
-    window.addEventListener("beforeunload",()=>manager?.dispose());
+    window.addEventListener("beforeunload",()=>{
+        if (diagnosticFrame != null) cancelAnimationFrame(diagnosticFrame);
+        manager?.dispose();
+    });
 
+    startCoordinateDiagnostics();
     renderGroupOptions(); renderEffectList(); setControls(false);
     setStatus("Đã nạp " + (window.SPINE_EFFECT_CATALOG||[]).length + " effect asset.");
     persistDraft(); initializeMapping();
