@@ -113,6 +113,7 @@ public class BattleEffectProcessor {
                 source,
                 attacker,
                 effect.multiplier(),
+                effect.flatValue(),
                 effect.eventSkillCode() == null ? effect.effectCode() : effect.eventSkillCode(),
                 "COUNTER",
                 effect.damageType()
@@ -194,7 +195,7 @@ public class BattleEffectProcessor {
                 );
             }
             damageProcessor.executeDamage(
-                    battle, source, target, multiplier,
+                    battle, source, target, multiplier, effect.flatValue(),
                     effect.eventSkillCode() == null ? effect.effectCode() : effect.eventSkillCode(),
                     null, effect.damageType()
             );
