@@ -12,7 +12,7 @@ public class BattlePeriodicEffect {
     private final BattleEffectType effectType;
     private final String sourceTeam;
     private final Long sourceInstanceId;
-    private final BigDecimal amountPerTick;
+    private BigDecimal amountPerTick;
     private int remainingDuration;
 
     public BattlePeriodicEffect(
@@ -64,10 +64,14 @@ public class BattlePeriodicEffect {
     /**
      * Gia hạn đến thời hạn lớn hơn khi cùng nguồn tái áp dụng DOT/HOT.
      */
-    public void refreshDurationToMax(int duration) {
+    public void refresh(BigDecimal newAmountPerTick, int duration) {
+        if (newAmountPerTick == null || newAmountPerTick.signum() <= 0) {
+            throw new IllegalArgumentException("Periodic amount must be positive");
+        }
         if (duration <= 0) {
             throw new IllegalArgumentException("Duration must be positive");
         }
+        amountPerTick = newAmountPerTick;
         remainingDuration = Math.max(remainingDuration, duration);
     }
 
