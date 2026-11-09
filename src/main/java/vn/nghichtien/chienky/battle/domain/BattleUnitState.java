@@ -399,7 +399,10 @@ public class BattleUnitState {
      * @return tỷ lệ chí mạng.
      */
     public BigDecimal getCrit() {
-        BigDecimal effectiveCrit = calculateEffectiveStat(crit, BattleStatType.CRIT);
+        // CRIT là xác suất dạng ratio, modifier phải cộng trực tiếp vào tỷ lệ gốc.
+        BigDecimal effectiveCrit = crit.add(
+                statusEffectManager.getModifierPercent(BattleStatType.CRIT)
+        );
         if (isTankOrSupport()
                 && statusEffectManager.getModifierPercent(BattleStatType.KINGDOM_BLESSING)
                 .signum() > 0) {
@@ -420,9 +423,8 @@ public class BattleUnitState {
         BigDecimal baseCritDamage = critDamage.signum() > 0
                 ? critDamage
                 : new BigDecimal("1.5");
-        return calculateEffectiveStat(
-                baseCritDamage,
-                BattleStatType.CRIT_DAMAGE
+        return baseCritDamage.add(
+                statusEffectManager.getModifierPercent(BattleStatType.CRIT_DAMAGE)
         ).max(BigDecimal.ONE);
     }
 
@@ -432,10 +434,9 @@ public class BattleUnitState {
      * @return độ chính xác.
      */
     public BigDecimal getAccuracy() {
-        return calculateEffectiveStat(
-                accuracy,
-                BattleStatType.ACCURACY
-        );
+        return accuracy.add(
+                statusEffectManager.getModifierPercent(BattleStatType.ACCURACY)
+        ).max(BigDecimal.ZERO).min(BigDecimal.ONE);
     }
 
     /**
@@ -444,10 +445,9 @@ public class BattleUnitState {
      * @return kháng hiệu ứng.
      */
     public BigDecimal getResistance() {
-        return calculateEffectiveStat(
-                resistance,
-                BattleStatType.RESISTANCE
-        );
+        return resistance.add(
+                statusEffectManager.getModifierPercent(BattleStatType.RESISTANCE)
+        ).max(BigDecimal.ZERO).min(BigDecimal.ONE);
     }
 
     /**
@@ -468,10 +468,9 @@ public class BattleUnitState {
      * @return xuyên giáp phần trăm.
      */
     public BigDecimal getPenPercent() {
-        return calculateEffectiveStat(
-                penPercent,
-                BattleStatType.PEN_PERCENT
-        );
+        return penPercent.add(
+                statusEffectManager.getModifierPercent(BattleStatType.PEN_PERCENT)
+        ).max(BigDecimal.ZERO).min(BigDecimal.ONE);
     }
 
     /**
@@ -480,10 +479,9 @@ public class BattleUnitState {
      * @return tỷ lệ hút máu.
      */
     public BigDecimal getLifesteal() {
-        return calculateEffectiveStat(
-                lifesteal,
-                BattleStatType.LIFESTEAL
-        );
+        return lifesteal.add(
+                statusEffectManager.getModifierPercent(BattleStatType.LIFESTEAL)
+        ).max(BigDecimal.ZERO).min(BigDecimal.ONE);
     }
 
     /** Phần trăm sát thương bị giảm từ các hiệu ứng đang còn hiệu lực. */
@@ -515,7 +513,7 @@ public class BattleUnitState {
 
     public BigDecimal getControlDurationReductionPercent() {
         return statusEffectManager.getModifierPercent(BattleStatType.CONTROL_DURATION_REDUCTION)
-                .max(BigDecimal.ZERO).min(new BigDecimal("100"));
+                .max(BigDecimal.ZERO).min(BigDecimal.ONE);
     }
 
     /** Modifier sát thương nhận: DEBUFF -15% tương ứng chịu thêm 15% sát thương. */
