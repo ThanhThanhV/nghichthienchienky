@@ -30,9 +30,9 @@ public class BattleDamageProcessor {
      * Thứ tự xử lý:
      * 1. Tính phòng thủ sau xuyên giáp.
      * 2. Tính sát thương cơ bản.
-     * 3. Kiểm tra chí mạng.
-     * 4. Kiểm tra né tránh.
-     * 5. Kiểm tra miễn nhiễm sát thương.
+     * 3. Kiểm tra né tránh.
+     * 4. Kiểm tra miễn nhiễm sát thương.
+     * 5. Tung chí mạng và áp dụng hệ số chí mạng.
      * 6. Áp dụng BLOCK.
      * 7. Áp dụng SHIELD.
      * 8. Trừ HP và ghi nhận DAMAGE.
@@ -401,7 +401,7 @@ public class BattleDamageProcessor {
     private boolean isCritical(BattleUnitState source) {
         BigDecimal chance = source.getCrit()
                 .max(BigDecimal.ZERO)
-                .min(BigDecimal.valueOf(100));
+                .min(BigDecimal.ONE);
 
         double random = ThreadLocalRandom.current().nextDouble();
 
