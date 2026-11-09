@@ -170,6 +170,9 @@ public class BattleTurnProcessor {
                     "Character action started"
             );
 
+            // Thu cả DAMAGE/DEATH phát sinh từ BEFORE_ACTION và ON_ATTACK,
+            // không chỉ event của effect chính.
+            int eventStartIndex = collector.getEvents().size();
             skillExecutor.executePassives(
                     battle, unit, BattlePassiveTrigger.BEFORE_ACTION
             );
@@ -248,7 +251,6 @@ public class BattleTurnProcessor {
                 break;
             }
 
-            int eventStartIndex = collector.getEvents().size();
             skillExecutor.execute(battle, unit, actionType);
 
             skillExecutor.executePassives(
@@ -368,6 +370,8 @@ public class BattleTurnProcessor {
                 "Extra action started"
         );
 
+        // Bao gồm cả DAMAGE/DEATH từ BEFORE_ACTION và ON_ATTACK.
+        int eventStartIndex = collector.getEvents().size();
         skillExecutor.executePassives(
                 battle, unit, BattlePassiveTrigger.BEFORE_ACTION
         );
@@ -422,7 +426,6 @@ public class BattleTurnProcessor {
                 battle, unit, BattlePassiveTrigger.ON_ATTACK
         );
 
-        int eventStartIndex = collector.getEvents().size();
         if (!battle.isFinished() && unit.isAlive()) {
             skillExecutor.execute(battle, unit, actionType);
         }
