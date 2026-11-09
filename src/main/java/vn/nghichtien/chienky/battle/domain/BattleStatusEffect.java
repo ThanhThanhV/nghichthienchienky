@@ -89,6 +89,7 @@ public class BattleStatusEffect {
     public Long getSourceInstanceId() { return sourceInstanceId; }
     public BattleStatType getStatType() { return statType; }
     public BigDecimal getValuePercent() { return valuePercent; }
+    public BigDecimal getValuePerStack() { return valuePerStack; }
     public boolean isBuff() { return buff; }
     public int getDuration() { return duration; }
     public int getRemainingDuration() { return remainingDuration; }
