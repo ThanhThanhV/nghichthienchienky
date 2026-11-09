@@ -26,7 +26,7 @@ public class BattleUnitState {
     private final BigDecimal speed;
 
     private BigDecimal crit = BigDecimal.ZERO;
-    private BigDecimal critDamage = new BigDecimal("1.5");
+    private BigDecimal critDamage = BigDecimal.ZERO;
     private BigDecimal accuracy = BigDecimal.ZERO;
     private BigDecimal resistance = BigDecimal.ZERO;
     private BigDecimal penFlat = BigDecimal.ZERO;
