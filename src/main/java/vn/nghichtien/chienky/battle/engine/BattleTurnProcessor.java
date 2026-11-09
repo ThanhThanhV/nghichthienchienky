@@ -74,17 +74,18 @@ public class BattleTurnProcessor {
         int round = battle.nextRound();
         var collector = battle.getEventCollector();
 
-        // Chụp các hiệu ứng tồn tại ở đầu round. Hiệu ứng mới được áp dụng
-        // trong round này sẽ không bị trừ duration ngay ở cuối cùng round.
-        List<UnitDurationSnapshot> durationSnapshots = battle.getUnits().stream()
-                .map(BattleTurnProcessor::captureDurationSnapshot)
-                .toList();
-
         for (BattleUnitState unit : battle.getUnits()) {
             unit.resetExtraActionForRound();
         }
 
         initializeBattlePassives(battle);
+
+        // Chụp sau BATTLE_START để hiệu ứng mở trận được tính duration từ round 1.
+        // Các hiệu ứng phát sinh sau snapshot (ROUND_START/action) sẽ không bị
+        // giảm duration ngay trong round vừa áp dụng.
+        List<UnitDurationSnapshot> durationSnapshots = battle.getUnits().stream()
+                .map(BattleTurnProcessor::captureDurationSnapshot)
+                .toList();
 
         collector.record(
                 BattleEventType.ROUND_START,
