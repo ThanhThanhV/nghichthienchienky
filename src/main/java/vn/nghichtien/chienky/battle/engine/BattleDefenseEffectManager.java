@@ -30,9 +30,17 @@ public class BattleDefenseEffectManager {
             BigDecimal value,
             int duration
     ) {
-        boolean alreadyApplied = effects.stream()
-                .anyMatch(existing -> existing.getEffectCode().equals(effectCode));
-        if (alreadyApplied) {
+        BattleDefenseEffect existing = effects.stream()
+                .filter(item -> item.getEffectCode().equals(effectCode))
+                .findFirst()
+                .orElse(null);
+        if (existing != null) {
+            if (existing.getType() != type) {
+                throw new IllegalArgumentException(
+                        "Conflicting defense effect type: " + effectCode
+                );
+            }
+            existing.refresh(value, duration);
             return;
         }
 
