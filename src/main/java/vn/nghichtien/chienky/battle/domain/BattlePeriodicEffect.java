@@ -61,6 +61,17 @@ public class BattlePeriodicEffect {
         return remainingDuration <= 0;
     }
 
+    /**
+     * Gia hạn đến thời hạn lớn hơn khi cùng nguồn tái áp dụng DOT/HOT.
+     */
+    public void refreshDurationToMax(int duration) {
+        if (duration <= 0) {
+            throw new IllegalArgumentException("Duration must be positive");
+        }
+        remainingDuration = Math.max(remainingDuration, duration);
+    }
+
+
     public String getEffectCode() {
         return effectCode;
     }
