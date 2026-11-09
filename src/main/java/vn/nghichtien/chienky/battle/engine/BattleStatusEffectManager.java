@@ -177,16 +177,29 @@ public class BattleStatusEffectManager {
      * Giảm thời hạn trạng thái một round.
      */
     public void decreaseDurations() {
-        Iterator<BattleStatusEffect> iterator =
-                modifiers.iterator();
+        decreaseDurations(List.copyOf(modifiers), crowdControl);
+    }
+
+    /**
+     * Chỉ giảm thời hạn những hiệu ứng đã tồn tại tại thời điểm bắt đầu round.
+     * Hiệu ứng được áp dụng giữa round sẽ có hiệu lực trọn round kế tiếp.
+     */
+    public void decreaseDurations(
+            List<BattleStatusEffect> roundStartModifiers,
+            BattleCrowdControl roundStartCrowdControl
+    ) {
+        Iterator<BattleStatusEffect> iterator = modifiers.iterator();
 
         while (iterator.hasNext()) {
-            if (iterator.next().decreaseDuration()) {
+            BattleStatusEffect effect = iterator.next();
+            if (roundStartModifiers.contains(effect)
+                    && effect.decreaseDuration()) {
                 iterator.remove();
             }
         }
 
         if (crowdControl != null
+                && crowdControl == roundStartCrowdControl
                 && crowdControl.decreaseDuration()) {
             crowdControl = null;
         }
