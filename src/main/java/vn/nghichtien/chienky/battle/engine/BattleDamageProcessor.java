@@ -119,9 +119,10 @@ public class BattleDamageProcessor {
 
         BigDecimal dealtBonus = source.getDamageDealtPercent(damageType);
         if (dealtBonus.signum() != 0) {
-            calculatedDamage = calculatedDamage.multiply(BigDecimal.ONE.add(
-                    dealtBonus.divide(BigDecimal.valueOf(100), 8, RoundingMode.HALF_UP)
-            )).setScale(DAMAGE_SCALE, RoundingMode.HALF_UP);
+            // Modifier dùng ratio: 0.15 tương ứng tăng 15% sát thương.
+            calculatedDamage = calculatedDamage.multiply(
+                    BigDecimal.ONE.add(dealtBonus).max(BigDecimal.ZERO)
+            ).setScale(DAMAGE_SCALE, RoundingMode.HALF_UP);
         }
         if (calculatedDamage.signum() <= 0) {
             return;
@@ -174,19 +175,20 @@ public class BattleDamageProcessor {
         // 5. Giảm sát thương theo modifier (ví dụ Lục Nhãn của Gojo).
         BigDecimal reductionPercent = target.getDamageReductionPercent(damageType);
         if (reductionPercent.signum() > 0) {
+            // Damage reduction dùng ratio: 0.20 tương ứng giảm 20%.
+            BigDecimal reductionRate = reductionPercent
+                    .max(BigDecimal.ZERO).min(BigDecimal.ONE);
             calculatedDamage = calculatedDamage.multiply(
-                    BigDecimal.ONE.subtract(
-                            reductionPercent.divide(BigDecimal.valueOf(100), 8, RoundingMode.HALF_UP)
-                    )
+                    BigDecimal.ONE.subtract(reductionRate)
             ).setScale(DAMAGE_SCALE, RoundingMode.HALF_UP);
         }
         BigDecimal damageTakenModifier = target.getDamageTakenModifierPercent();
         if (damageTakenModifier.signum() != 0) {
             // DEBUFF DAMAGE_TAKEN có modifier âm: -15% => nhận thêm 15% sát thương.
+            // DAMAGE_TAKEN dương là giảm lượng nhận; âm là tăng lượng nhận.
             calculatedDamage = calculatedDamage.multiply(
-                    BigDecimal.ONE.subtract(
-                            damageTakenModifier.divide(BigDecimal.valueOf(100), 8, RoundingMode.HALF_UP)
-                    )
+                    BigDecimal.ONE.subtract(damageTakenModifier)
+                            .max(BigDecimal.ZERO)
             ).setScale(DAMAGE_SCALE, RoundingMode.HALF_UP);
         }
         if (calculatedDamage.signum() <= 0) return;
@@ -400,7 +402,7 @@ public class BattleDamageProcessor {
                 .max(BigDecimal.ZERO)
                 .min(BigDecimal.valueOf(100));
 
-        double random = ThreadLocalRandom.current().nextDouble(100);
+        double random = ThreadLocalRandom.current().nextDouble();
 
         return BigDecimal.valueOf(random).compareTo(chance) < 0;
     }
@@ -427,7 +429,6 @@ public class BattleDamageProcessor {
         }
 
         BigDecimal penPercent = source.getPenPercent()
-                .divide(BigDecimal.valueOf(100), 6, RoundingMode.HALF_UP)
                 .max(BigDecimal.ZERO)
                 .min(BigDecimal.ONE);
 
@@ -460,12 +461,9 @@ public class BattleDamageProcessor {
             BigDecimal actualDamage,
             BigDecimal lifesteal
     ) {
+        // LIFESTEAL dùng ratio: 0.10 tương ứng hồi 10% HP thực mất.
         return actualDamage.multiply(
-                lifesteal.divide(
-                        BigDecimal.valueOf(100),
-                        6,
-                        RoundingMode.HALF_UP
-                )
+                lifesteal.max(BigDecimal.ZERO).min(BigDecimal.ONE)
         ).setScale(6, RoundingMode.HALF_UP);
     }
 }
