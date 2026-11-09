@@ -270,7 +270,7 @@ public class BattleTurnProcessor {
             );
 
             dispatchActionEventPassives(battle, actionEvents);
-            dispatchEnemyActionPassives(battle, unit, actionEvents);
+            dispatchEnemyActionPassives(battle, unit);
 
             // EXTRA_ACTION phát sinh từ AFTER_ACTION hoặc nội tại đầu round.
             executePendingExtraAction(battle, unit);
@@ -445,33 +445,22 @@ public class BattleTurnProcessor {
         if (!actionEvents.isEmpty()) {
             dispatchActionEventPassives(battle, actionEvents);
         }
-        dispatchEnemyActionPassives(battle, unit, actionEvents);
+        dispatchEnemyActionPassives(battle, unit);
     }
 
     /**
-     * Chỉ phát trigger ON_ENEMY_ACTION khi actor vừa thực hiện một action có
-     * hit-resolution event. Buff, domain setup hoặc skip không kích hoạt phản kích;
-     * hit bị né, miễn nhiễm, chặn hoặc hấp thụ bởi khiên vẫn được tính.
-     *
-     * Snapshot actionEvents chỉ chứa event của action gốc; counter/reflect
-     * reaction được phát sau đó không được xem là một action tấn công mới.
-     */
-    /**
-     * TAB của Gojo ghi rõ Hách kích hoạt khi kẻ địch hành động, không chỉ khi
-     * đòn đánh gây DAMAGE. Vì vậy mọi action đã được thực thi (đánh, buff,
-     * debuff, hồi máu...) đều dispatch ON_ENEMY_ACTION đúng actor vừa hành động.
+     * Phát ON_ENEMY_ACTION sau mọi hành động thực sự đã được thực thi,
+     * kể cả khi action không tạo hit-resolution event (ví dụ không có mục tiêu
+     * hợp lệ hoặc effect không tạo thay đổi trạng thái).
      *
      * Action bị khóa hoặc bị khống chế bỏ lượt không đi vào nhánh này.
-     * Snapshot actionEvents chỉ chứa action gốc; phản kích không tạo chuỗi
-     * ON_ENEMY_ACTION đệ quy.
+     * Phản ứng được dispatch sau ACTION_END và không tự dispatch đệ quy.
      */
     private void dispatchEnemyActionPassives(
             BattleState battle,
-            BattleUnitState actor,
-            List<BattleEventDTO> actionEvents
+            BattleUnitState actor
     ) {
-        if (battle.isFinished() || actor == null || !actor.isAlive()
-                || actionEvents == null || actionEvents.isEmpty()) {
+        if (battle.isFinished() || actor == null || !actor.isAlive()) {
             return;
         }
 
