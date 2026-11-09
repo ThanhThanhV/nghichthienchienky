@@ -526,6 +526,9 @@ public class BattleTurnProcessor {
                                 BattlePassiveTrigger.ON_DAMAGED,
                                 event.sourceInstanceId()
                         );
+                        // Nếu phản ứng ON_DAMAGED (ví dụ COUNTER) hạ gục
+                        // người tấn công, vẫn phải kích hoạt ON_KILL cho nguồn phản ứng.
+                        dispatchReactionKillPassives(battle, eventStart);
 
                         battle.getEventCollector().record(
                                 BattleEventType.ACTION_END,
