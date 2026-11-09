@@ -512,12 +512,12 @@ public class BattleEffectProcessor {
             BigDecimal amount = source.getAttack()
                     .multiply(effect.multiplier())
                     .add(effect.flatValue());
+            // HEAL_RECEIVED dùng ratio: 0.15 = tăng 15% lượng hồi.
             BigDecimal healReceived = target.getHealReceivedPercent();
             if (healReceived.signum() != 0) {
-                amount = amount.multiply(BigDecimal.ONE.add(
-                        healReceived.divide(new BigDecimal("100"), 8,
-                                java.math.RoundingMode.HALF_UP)
-                ));
+                amount = amount.multiply(
+                        BigDecimal.ONE.add(healReceived).max(BigDecimal.ZERO)
+                );
             }
             BigDecimal actualHeal = target.heal(amount);
 
@@ -567,9 +567,13 @@ public class BattleEffectProcessor {
                 ? selectAllies(battle, source, effect.targetMode())
                 : targetSelector.selectTargets(battle, source, effect.targetMode());
 
-        BigDecimal value = effect.multiplier()
-                .multiply(new BigDecimal("100"))
-                .add(effect.flatValue());
+        // Các modifier chiến đấu thông thường dùng ratio thống nhất:
+        // 0.15 = 15%. Riêng MAX_HP dùng đơn vị phần trăm vì
+        // increaseMaxHpPercent() nhận 15 để tăng 15%.
+        BigDecimal value = effect.statType() == BattleStatType.MAX_HP
+                ? effect.multiplier().multiply(new BigDecimal("100"))
+                        .add(effect.flatValue())
+                : effect.multiplier().add(effect.flatValue());
 
         if (value.signum() <= 0) {
             return;
@@ -644,25 +648,21 @@ public class BattleEffectProcessor {
                 continue;
             }
 
-            // RESISTANCE dùng thang 0..100: mỗi điểm kháng giảm
-            // một điểm phần trăm xác suất trúng CC. Miễn nhiễm CC vẫn
-            // được kiểm tra riêng ở trên và luôn chặn hiệu ứng.
+            // RESISTANCE và CONTROL_DURATION_REDUCTION đều dùng ratio 0..1.
+            // Ví dụ 0.25 kháng 25% xác suất trúng CC; 0.20 giảm 20% thời lượng.
             BigDecimal resistance = target.getResistance()
                     .max(BigDecimal.ZERO)
-                    .min(new BigDecimal("100"));
-            BigDecimal applicationChance = new BigDecimal("100")
-                    .subtract(resistance);
+                    .min(BigDecimal.ONE);
+            BigDecimal applicationChance = BigDecimal.ONE.subtract(resistance);
 
             boolean resisted = applicationChance.signum() <= 0
-                    || BigDecimal.valueOf(
-                            ThreadLocalRandom.current().nextDouble(100)
-                    ).compareTo(applicationChance) >= 0;
+                    || BigDecimal.valueOf(ThreadLocalRandom.current().nextDouble())
+                            .compareTo(applicationChance) >= 0;
 
             int effectiveDuration = BigDecimal.valueOf(effect.duration())
                     .multiply(BigDecimal.ONE.subtract(
                             target.getControlDurationReductionPercent()
-                                    .divide(new BigDecimal("100"), 8,
-                                            java.math.RoundingMode.HALF_UP)
+                                    .max(BigDecimal.ZERO).min(BigDecimal.ONE)
                     ))
                     .setScale(0, java.math.RoundingMode.CEILING)
                     .intValue();
