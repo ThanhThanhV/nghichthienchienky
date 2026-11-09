@@ -20,10 +20,23 @@ public class BattlePeriodicEffectManager {
      */
     public void add(BattlePeriodicEffect effect) {
         Objects.requireNonNull(effect);
-        effects.removeIf(existing ->
-                existing.getEffectType() == effect.getEffectType()
-                        && existing.getEffectCode().equals(effect.getEffectCode())
-        );
+        BattlePeriodicEffect existing = effects.stream()
+                .filter(item -> item.getEffectType() == effect.getEffectType()
+                        && item.getEffectCode().equals(effect.getEffectCode())
+                        && item.getSourceTeam().equals(effect.getSourceTeam())
+                        && item.getSourceInstanceId().equals(effect.getSourceInstanceId()))
+                .findFirst()
+                .orElse(null);
+        if (existing != null) {
+            // Tái áp dụng từ cùng nguồn: cập nhật lượng tick theo cấu hình mới
+            // và làm mới duration, không tạo thêm bản sao DOT/HOT.
+            effects.remove(existing);
+            effects.add(effect);
+            return;
+        }
+
+        // Cùng mã từ nguồn khác nhau vẫn là các hiệu ứng độc lập để giữ
+        // attribution cho DAMAGE/HEAL và không ghi đè hiệu ứng của đồng đội.
         effects.add(effect);
     }
 
