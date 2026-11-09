@@ -71,6 +71,19 @@ public class BattleStatusEffect {
         return remainingDuration <= 0;
     }
 
+    /**
+     * Làm mới thời hạn khi cùng hiệu ứng được áp dụng lại.
+     * Không cộng dồn thời gian vượt quá duration cấu hình của lần áp dụng mới.
+     */
+    public void refreshDurationToMax(int duration) {
+        if (permanent) return;
+        if (duration <= 0) {
+            throw new IllegalArgumentException("Duration must be positive");
+        }
+        remainingDuration = Math.max(remainingDuration, duration);
+    }
+
+
     public String getEffectCode() { return effectCode; }
     public String getSourceTeam() { return sourceTeam; }
     public Long getSourceInstanceId() { return sourceInstanceId; }
