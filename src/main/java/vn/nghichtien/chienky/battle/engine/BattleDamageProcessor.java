@@ -109,26 +109,9 @@ public class BattleDamageProcessor {
             return;
         }
 
-        // 2. Kiểm tra chí mạng.
-        boolean critical = isCritical(source);
+        // 2. Kiểm tra né tránh trước khi tung xúc xắc chí mạng.
+        // Đòn bị né không được ghi nhận là chí mạng.
 
-        BigDecimal calculatedDamage = critical
-                ? baseDamage.multiply(source.getCritDamage())
-                .setScale(6, RoundingMode.HALF_UP)
-                : baseDamage;
-
-        BigDecimal dealtBonus = source.getDamageDealtPercent(damageType);
-        if (dealtBonus.signum() != 0) {
-            // Modifier dùng ratio: 0.15 tương ứng tăng 15% sát thương.
-            calculatedDamage = calculatedDamage.multiply(
-                    BigDecimal.ONE.add(dealtBonus).max(BigDecimal.ZERO)
-            ).setScale(DAMAGE_SCALE, RoundingMode.HALF_UP);
-        }
-        if (calculatedDamage.signum() <= 0) {
-            return;
-        }
-
-        // 3. Kiểm tra né tránh.
         if (target.getDefenseEffectManager().tryEvade(source.getAccuracy())) {
             battle.getEventCollector().record(
                     BattleEventType.EVASION,
@@ -138,7 +121,7 @@ public class BattleDamageProcessor {
                     target.getInstanceId(),
                     skillCode,
                     BigDecimal.ZERO,
-                    critical,
+                    false,
                     target.getCurrentHp(),
                     target.getMaxHp(),
                     target.isAlive(),
@@ -169,6 +152,24 @@ public class BattleDamageProcessor {
                     null,
                     "Damage immune"
             );
+            return;
+        }
+
+        // 3. Chỉ tính chí mạng sau khi đòn đánh đã trúng và không bị miễn nhiễm.
+        boolean critical = isCritical(source);
+        BigDecimal calculatedDamage = critical
+                ? baseDamage.multiply(source.getCritDamage())
+                        .setScale(DAMAGE_SCALE, RoundingMode.HALF_UP)
+                : baseDamage;
+
+        BigDecimal dealtBonus = source.getDamageDealtPercent(damageType);
+        if (dealtBonus.signum() != 0) {
+            // Modifier dùng ratio: 0.15 tương ứng tăng 15% sát thương.
+            calculatedDamage = calculatedDamage.multiply(
+                    BigDecimal.ONE.add(dealtBonus).max(BigDecimal.ZERO)
+            ).setScale(DAMAGE_SCALE, RoundingMode.HALF_UP);
+        }
+        if (calculatedDamage.signum() <= 0) {
             return;
         }
 
