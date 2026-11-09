@@ -13,7 +13,25 @@
         table{width:100%;border-collapse:collapse}th,td{padding:14px 16px;text-align:left;border-bottom:1px solid #283449}th{color:#8292aa;font-size:10px;letter-spacing:.1em}td{font-size:13px;color:#dce5f2}tbody tr{cursor:pointer;transition:background .15s}tbody tr:hover{background:#202d43}.rank{width:70px;color:#f4d58f;font-weight:800}.player{font-weight:700;color:#fff}.power{color:#f4d58f;font-weight:800;font-variant-numeric:tabular-nums}.team-size{color:#9eacc2}.empty,.error{padding:28px;text-align:center;color:#9eacc2}
         .modal{position:fixed;inset:0;z-index:30;display:none;align-items:center;justify-content:center;padding:18px;background:#030711d9}.modal.open{display:flex}.dialog{width:min(820px,100%);max-height:min(88vh,900px);overflow:auto;border:1px solid #8c744d;border-radius:14px;background:#101a2b;box-shadow:0 24px 90px #000b}.dialog-head{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 20px;background:#101a2b;border-bottom:1px solid #39465c}.dialog-head h2{margin:0;color:#f4d58f;font:700 20px Georgia,serif}.close{border:0;background:transparent;color:#cbd5e1;font-size:25px;cursor:pointer}.profile-summary{display:flex;justify-content:space-between;gap:16px;padding:18px 20px;border-bottom:1px solid #344158}.profile-summary strong{display:block;color:#fff;font-size:17px}.profile-summary span{display:block;margin-top:5px;color:#9eacc2;font-size:12px}.profile-power{color:#f4d58f!important;font-size:20px!important;font-weight:800}.formation-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(3,minmax(100px,auto));gap:8px;padding:18px 20px}.formation-cell{display:grid;place-items:center;min-width:0;padding:7px;border:1px solid #34445d;border-radius:9px;background:#121f33}.formation-cell.empty-cell{color:#65758d;font-size:10px;letter-spacing:.08em}.hero{display:flex;flex-direction:column;gap:6px;align-items:center;min-width:0;width:100%;padding:5px;text-align:center;border:0;background:transparent}.hero-avatar{display:grid;place-items:center;flex:0 0 48px;width:48px;height:58px;border:1px solid #806d4b;border-radius:6px;background:linear-gradient(145deg,#35445e,#171e2c);color:#f4d58f;font-weight:800}.hero-info{min-width:0}.hero-name{display:block;color:#f2e3bf;font-weight:700;overflow-wrap:anywhere}.hero-meta{display:block;margin-top:5px;color:#9eacc2;font-size:11px}.hero-power{display:block;margin-top:6px;color:#e9c77e;font-size:12px;font-weight:800}.dialog-actions{position:sticky;bottom:0;display:flex;justify-content:flex-end;gap:10px;padding:14px 20px;border-top:1px solid #344158;background:#101a2b}.challenge{padding:12px 22px;color:#21190d;border:1px solid #e4c77e;border-radius:7px;background:linear-gradient(135deg,#f4dfa9,#bd914e);font-weight:800;cursor:pointer}.challenge:disabled{opacity:.5;cursor:wait}.message{padding:0 20px 14px;color:#fca5a5;font-size:12px}
         @media(max-width:620px){body{padding:14px 10px}.top{align-items:flex-start}.panel-head{padding:14px}.panel-head h2{font-size:16px}th,td{padding:12px 8px;font-size:11px}th:nth-child(4),td:nth-child(4){display:none}.rank{width:40px}.profile-summary{padding:14px}.formation-list{padding:12px;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(3,minmax(82px,auto));gap:5px}.formation-cell{padding:3px}.hero-avatar{width:34px;height:38px;flex-basis:34px}.hero-meta{font-size:9px}.hero-name{font-size:10px}.hero-power{font-size:10px}.dialog-actions{padding:12px}.challenge{width:100%}}
-    </style>
+    
+.mobile-game-nav{display:none}
+@media(max-width:620px){
+html,body{width:100%;height:100%;min-height:0;overflow:hidden}
+body{height:100dvh;min-height:0;padding:max(8px,env(safe-area-inset-top)) 8px calc(58px + env(safe-area-inset-bottom))}
+.page{display:flex;flex-direction:column;width:100%;height:100%;min-height:0;overflow:hidden}
+.top{flex:0 0 auto;margin:0 0 8px}.top .back{font-size:9px}.eyebrow{margin-top:6px;font-size:8px}
+h1{margin:5px 0;font-size:20px;line-height:1.15}.sub{margin:0;font-size:9px;line-height:1.35}
+.page>.panel{display:flex;flex:1;flex-direction:column;min-height:0}
+.panel-head{flex:0 0 auto;padding:9px 10px}.panel-head h2{font-size:13px}.refresh{padding:6px 9px;font-size:9px}
+#ranking-state{flex:1;overflow:auto;padding:12px;font-size:10px}
+#ranking-table{display:block;flex:1;min-height:0;width:100%;overflow:hidden}#ranking-table[hidden]{display:none}
+#ranking-table thead,#ranking-table tbody{display:block;width:100%}#ranking-table thead{position:sticky;top:0;background:#101a2b}
+#ranking-table tbody{max-height:calc(100dvh - 190px);overflow-y:auto}
+#ranking-table tr{display:table;width:100%;table-layout:fixed}
+th,td{padding:9px 5px;font-size:9px}th:nth-child(4),td:nth-child(4){display:none}.rank{width:34px}
+.mobile-game-nav{position:fixed;z-index:40;left:0;right:0;bottom:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:3px;padding:6px 6px calc(6px + env(safe-area-inset-bottom));border-top:1px solid rgba(218,190,132,.2);background:rgba(5,9,17,.97);backdrop-filter:blur(14px)}
+.mobile-game-nav a{display:grid;min-width:0;min-height:34px;place-items:center;border-radius:6px;color:#9aa9c0;font-size:8px;font-weight:800;text-decoration:none}
+}</style>
 </head>
 <body>
 <main class="page">
@@ -29,6 +47,7 @@
         </table>
     </section>
 </main>
+<nav class="mobile-game-nav" aria-label="Điều hướng chính"><a th:href="@{/dashboard}">ĐẠI SẢNH</a><a th:href="@{/heroes}">NHÂN VẬT</a><a th:href="@{/formation}">ĐỘI HÌNH</a><a th:href="@{/battle}">CHIẾN ĐẤU</a></nav>
 <div id="player-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
     <section class="dialog">
         <header class="dialog-head"><h2 id="modal-title">ĐỘI HÌNH CHÍNH</h2><button id="close-modal" class="close" type="button" aria-label="Đóng">×</button></header>
