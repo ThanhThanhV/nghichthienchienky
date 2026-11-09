@@ -498,7 +498,7 @@ public class BattleUnitState {
                         ? BattleStatType.MAGIC_DAMAGE_REDUCTION
                         : BattleStatType.PHYSICAL_DAMAGE_REDUCTION
         ));
-        return reduction.max(BigDecimal.ZERO).min(new BigDecimal("100"));
+        return reduction.max(BigDecimal.ZERO).min(BigDecimal.ONE);
     }
 
     public BigDecimal getDamageDealtPercent(BattleDamageType damageType) {
