@@ -177,7 +177,8 @@ public class BattleStatusEffectManager {
      * Giảm thời hạn trạng thái một round.
      */
     public void decreaseDurations() {
-        decreaseDurations(List.copyOf(modifiers), crowdControl);
+        decreaseDurations(List.copyOf(modifiers), crowdControl,
+                crowdControl == null ? -1 : crowdControl.getRemainingDuration());
     }
 
     /**
