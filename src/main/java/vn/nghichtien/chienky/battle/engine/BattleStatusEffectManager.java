@@ -42,11 +42,27 @@ public class BattleStatusEffectManager {
         // Cùng một effectCode không được cộng dồn khi ACTIVE được gọi lại
         // trong chu kỳ ACTIVE -> ULTIMATE -> BASIC.
         BattleStatusEffect existing = modifiers.stream()
-                .filter(item -> item.getEffectCode().equals(effect.getEffectCode()))
+                .filter(item -> item.getEffectCode().equals(effect.getEffectCode())
+                        && Objects.equals(item.getSourceTeam(), effect.getSourceTeam())
+                        && Objects.equals(item.getSourceInstanceId(), effect.getSourceInstanceId()))
                 .findFirst()
                 .orElse(null);
         if (existing != null) {
+            // Cùng nguồn + cùng mã mới được cộng stack. Nếu cấu hình thay đổi
+            // trong runtime thì báo lỗi thay vì gộp hai hiệu ứng khác bản chất.
+            if (existing.getStatType() != effect.getStatType()
+                    || existing.isBuff() != effect.isBuff()
+                    || existing.isPermanent() != effect.isPermanent()
+                    || existing.getMaxStacks() != effect.getMaxStacks()
+                    || existing.getValuePerStack().compareTo(effect.getValuePerStack()) != 0) {
+                throw new IllegalArgumentException(
+                        "Conflicting status effect configuration: " + effect.getEffectCode()
+                );
+            }
             existing.addStacks(effect.getStackCount());
+            if (!existing.isPermanent()) {
+                existing.refreshDurationToMax(effect.getRemainingDuration());
+            }
             return;
         }
 
