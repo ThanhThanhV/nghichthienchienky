@@ -8,6 +8,7 @@ import vn.nghichtien.chienky.battle.domain.BattleImmunityType;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -76,12 +77,14 @@ public class BattleImmunityManager {
     /**
      * Chỉ giảm thời hạn miễn nhiễm đã tồn tại từ đầu round.
      */
-    public void decreaseDurations(List<BattleImmunityEffect> roundStartEffects) {
+    public void decreaseDurations(Map<BattleImmunityEffect, Integer> roundStartEffects) {
         Iterator<BattleImmunityEffect> iterator = effects.iterator();
 
         while (iterator.hasNext()) {
             BattleImmunityEffect effect = iterator.next();
-            if (roundStartEffects.contains(effect)
+            Integer durationAtRoundStart = roundStartEffects.get(effect);
+            if (durationAtRoundStart != null
+                    && effect.getRemainingDuration() == durationAtRoundStart
                     && effect.decreaseDuration()) {
                 iterator.remove();
             }
