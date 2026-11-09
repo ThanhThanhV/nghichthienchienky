@@ -419,13 +419,11 @@ public class BattleUnitState {
      * @return sát thương chí mạng.
      */
     public BigDecimal getCritDamage() {
-        // 1.5x là hệ số chí mạng mặc định; CRIT_DAMAGE là modifier dạng ratio.
-        BigDecimal baseCritDamage = critDamage.signum() > 0
-                ? critDamage
-                : new BigDecimal("1.5");
-        return baseCritDamage.add(
-                statusEffectManager.getModifierPercent(BattleStatType.CRIT_DAMAGE)
-        ).max(BigDecimal.ONE);
+        // CRIT_DAMAGE là phần cộng thêm dạng ratio; hệ số mặc định là 1.5x.
+        return new BigDecimal("1.5")
+                .add(critDamage.max(BigDecimal.ZERO))
+                .add(statusEffectManager.getModifierPercent(BattleStatType.CRIT_DAMAGE))
+                .max(BigDecimal.ONE);
     }
 
     /**
