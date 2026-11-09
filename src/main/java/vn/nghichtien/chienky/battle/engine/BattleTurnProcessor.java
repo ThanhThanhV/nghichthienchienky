@@ -170,12 +170,18 @@ public class BattleTurnProcessor {
                     "Character action started"
             );
 
-            // Thu cả DAMAGE/DEATH phát sinh từ BEFORE_ACTION và ON_ATTACK,
-            // không chỉ event của effect chính.
-            int eventStartIndex = collector.getEvents().size();
+            // Dispatch phản ứng BEFORE_ACTION trước khi chốt kết quả trận.
+            int beforeActionEventStartIndex = collector.getEvents().size();
             skillExecutor.executePassives(
                     battle, unit, BattlePassiveTrigger.BEFORE_ACTION
             );
+            List<BattleEventDTO> beforeActionEvents = List.copyOf(
+                    collector.getEvents().subList(
+                            beforeActionEventStartIndex, collector.getEvents().size()
+                    )
+            );
+            dispatchActionEventPassives(battle, beforeActionEvents);
+            int eventStartIndex = collector.getEvents().size();
 
             if (battle.checkFinished()) {
                 collector.record(
@@ -190,6 +196,7 @@ public class BattleTurnProcessor {
             }
 
             if (unit.isActionLocked(battle.getCurrentRound())) {
+                int afterActionEventStartIndex = collector.getEvents().size();
                 skillExecutor.executePassives(
                         battle, unit, BattlePassiveTrigger.AFTER_ACTION
                 );
@@ -199,7 +206,14 @@ public class BattleTurnProcessor {
                         null, null, null, null, null, null, null, null, null, null, null,
                         "Action locked by passive"
                 );
+                List<BattleEventDTO> afterActionEvents = List.copyOf(
+                        collector.getEvents().subList(
+                                afterActionEventStartIndex, collector.getEvents().size() - 1
+                        )
+                );
+                dispatchActionEventPassives(battle, afterActionEvents);
                 executePendingExtraAction(battle, unit);
+                if (battle.checkFinished()) break;
                 continue;
             }
 
@@ -211,6 +225,7 @@ public class BattleTurnProcessor {
                 String crowdControlType =
                         statusManager.getCrowdControl().getType().name();
 
+                int afterActionEventStartIndex = collector.getEvents().size();
                 skillExecutor.executePassives(
                         battle, unit, BattlePassiveTrigger.AFTER_ACTION
                 );
@@ -222,6 +237,12 @@ public class BattleTurnProcessor {
                         null, null, null, null, null, null, null,
                         "Action skipped: " + crowdControlType
                 );
+                List<BattleEventDTO> afterActionEvents = List.copyOf(
+                        collector.getEvents().subList(
+                                afterActionEventStartIndex, collector.getEvents().size() - 1
+                        )
+                );
+                dispatchActionEventPassives(battle, afterActionEvents);
                 executePendingExtraAction(battle, unit);
                 if (battle.checkFinished()) {
                     break;
@@ -234,10 +255,18 @@ public class BattleTurnProcessor {
                 actionType = BattleActionType.BASIC_ATTACK;
             }
 
-            // ON_ATTACK chạy trước effect chính để buff nội tại có tác dụng ngay đòn này.
+            // Dispatch phản ứng ON_ATTACK trước khi kiểm tra kết thúc trận.
+            int onAttackEventStartIndex = collector.getEvents().size();
             skillExecutor.executePassives(
                     battle, unit, BattlePassiveTrigger.ON_ATTACK
             );
+            List<BattleEventDTO> onAttackEvents = List.copyOf(
+                    collector.getEvents().subList(
+                            onAttackEventStartIndex, collector.getEvents().size()
+                    )
+            );
+            dispatchActionEventPassives(battle, onAttackEvents);
+            eventStartIndex = collector.getEvents().size();
 
             if (battle.checkFinished()) {
                 collector.record(
@@ -370,13 +399,20 @@ public class BattleTurnProcessor {
                 "Extra action started"
         );
 
-        // Bao gồm cả DAMAGE/DEATH từ BEFORE_ACTION và ON_ATTACK.
-        int eventStartIndex = collector.getEvents().size();
+        // Dispatch phản ứng BEFORE_ACTION trước khi xét trạng thái kết thúc.
+        int beforeActionEventStartIndex = collector.getEvents().size();
         skillExecutor.executePassives(
                 battle, unit, BattlePassiveTrigger.BEFORE_ACTION
         );
+        List<BattleEventDTO> beforeActionEvents = List.copyOf(
+                collector.getEvents().subList(
+                        beforeActionEventStartIndex, collector.getEvents().size()
+                )
+        );
+        dispatchActionEventPassives(battle, beforeActionEvents);
+        int eventStartIndex = collector.getEvents().size();
 
-        if (battle.isFinished()) {
+        if (battle.checkFinished()) {
             collector.record(
                     BattleEventType.ACTION_END,
                     unit.getTeam().name(),
@@ -389,6 +425,7 @@ public class BattleTurnProcessor {
         }
 
         if (unit.isActionLocked(battle.getCurrentRound())) {
+            int afterActionEventStartIndex = collector.getEvents().size();
             skillExecutor.executePassives(battle, unit, BattlePassiveTrigger.AFTER_ACTION);
             collector.record(
                     BattleEventType.ACTION_END,
@@ -396,6 +433,12 @@ public class BattleTurnProcessor {
                     null, null, null, null, null, null, null, null, null, null, null,
                     "Extra action locked by passive"
             );
+            List<BattleEventDTO> afterActionEvents = List.copyOf(
+                    collector.getEvents().subList(
+                            afterActionEventStartIndex, collector.getEvents().size() - 1
+                    )
+            );
+            dispatchActionEventPassives(battle, afterActionEvents);
             return;
         }
 
@@ -403,6 +446,7 @@ public class BattleTurnProcessor {
         if (statusManager.shouldSkipAction()) {
             String crowdControlType =
                     statusManager.getCrowdControl().getType().name();
+            int afterActionEventStartIndex = collector.getEvents().size();
             skillExecutor.executePassives(
                     battle, unit, BattlePassiveTrigger.AFTER_ACTION
             );
@@ -414,6 +458,12 @@ public class BattleTurnProcessor {
                     null, null, null, null, null, null, null,
                     "Extra action skipped: " + crowdControlType
             );
+            List<BattleEventDTO> afterActionEvents = List.copyOf(
+                    collector.getEvents().subList(
+                            afterActionEventStartIndex, collector.getEvents().size() - 1
+                    )
+            );
+            dispatchActionEventPassives(battle, afterActionEvents);
             return;
         }
 
@@ -422,11 +472,18 @@ public class BattleTurnProcessor {
             actionType = BattleActionType.BASIC_ATTACK;
         }
 
+        int onAttackEventStartIndex = collector.getEvents().size();
         skillExecutor.executePassives(
                 battle, unit, BattlePassiveTrigger.ON_ATTACK
         );
+        List<BattleEventDTO> onAttackEvents = List.copyOf(
+                collector.getEvents().subList(
+                        onAttackEventStartIndex, collector.getEvents().size()
+                )
+        );
+        dispatchActionEventPassives(battle, onAttackEvents);
 
-        if (!battle.isFinished() && unit.isAlive()) {
+        if (!battle.checkFinished() && unit.isAlive()) {
             skillExecutor.execute(battle, unit, actionType);
         }
 
