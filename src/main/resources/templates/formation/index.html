@@ -26,6 +26,7 @@
         </div>
     </header>
 
+    <nav class="mobile-workspace-tabs" aria-label="Khu vực đội hình"><button type="button" class="active" data-formation-view="board">TRẬN PHÁP</button><button type="button" data-formation-view="roster">TƯỚNG SỞ HỮU</button></nav>
     <div id="formation-message" class="formation-message" role="status" aria-live="polite" hidden></div>
 
     <section class="formation-layout">
@@ -74,6 +75,7 @@
     </section>
 
     <footer class="formation-footer">NGHỊCH THIÊN CHIẾN KÝ · THIÊN ĐỊA TRANH PHONG</footer>
+    <nav class="mobile-game-nav" aria-label="Điều hướng chính"><a th:href="@{/dashboard}">ĐẠI SẢNH</a><a th:href="@{/heroes}">NHÂN VẬT</a><a class="active" th:href="@{/formation}">ĐỘI HÌNH</a><a th:href="@{/battle}">CHIẾN ĐẤU</a></nav>
 </main>
 
 <script th:src="@{/lib/spine/spine-runtime-3.5/spine-ts/build/spine-webgl.js}"></script>
@@ -84,5 +86,6 @@
 <script th:src="@{/js/spine/SpineFormation.js}"></script>
 <script th:src="@{/js/formation/FormationSpinePreview.js}"></script>
 <script th:src="@{/js/formation/formation.js}"></script>
+<script>(()=>{const p=document.querySelector(".formation-page"),t=[...document.querySelectorAll("[data-formation-view]")];t.forEach(b=>b.addEventListener("click",()=>{p.dataset.mobileView=b.dataset.formationView;t.forEach(x=>x.classList.toggle("active",x===b));}));p.dataset.mobileView="board";})();</script>
 </body>
 </html>
