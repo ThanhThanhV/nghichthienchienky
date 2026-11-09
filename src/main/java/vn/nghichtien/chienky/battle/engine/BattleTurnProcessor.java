@@ -520,6 +520,8 @@ public class BattleTurnProcessor {
                                 "Damage reaction started"
                         );
 
+                        int reactionEventStart = battle.getEventCollector()
+                                .getEvents().size();
                         skillExecutor.executePassives(
                                 battle,
                                 damaged,
@@ -528,7 +530,7 @@ public class BattleTurnProcessor {
                         );
                         // Nếu phản ứng ON_DAMAGED (ví dụ COUNTER) hạ gục
                         // người tấn công, vẫn phải kích hoạt ON_KILL cho nguồn phản ứng.
-                        dispatchReactionKillPassives(battle, eventStart);
+                        dispatchReactionKillPassives(battle, reactionEventStart);
 
                         battle.getEventCollector().record(
                                 BattleEventType.ACTION_END,
