@@ -410,7 +410,7 @@ public class BattleUnitState {
                     statusEffectManager.getModifierPercent(BattleStatType.KINGDOM_BLESSING_CRIT)
             );
         }
-        return effectiveCrit;
+        return effectiveCrit.max(BigDecimal.ZERO).min(BigDecimal.ONE);
     }
 
     /**
@@ -482,7 +482,7 @@ public class BattleUnitState {
         ).max(BigDecimal.ZERO).min(BigDecimal.ONE);
     }
 
-    /** Phần trăm sát thương bị giảm từ các hiệu ứng đang còn hiệu lực. */
+    /** Tỷ lệ sát thương bị giảm từ các hiệu ứng đang còn hiệu lực (0..1). */
     public BigDecimal getDamageReductionPercent() {
         return getDamageReductionPercent(BattleDamageType.PHYSICAL);
     }
@@ -514,7 +514,7 @@ public class BattleUnitState {
                 .max(BigDecimal.ZERO).min(BigDecimal.ONE);
     }
 
-    /** Modifier sát thương nhận: DEBUFF -15% tương ứng chịu thêm 15% sát thương. */
+    /** Modifier sát thương nhận dùng ratio: -0.15 tương ứng chịu thêm 15% sát thương. */
     public BigDecimal getDamageTakenModifierPercent() {
         return statusEffectManager.getModifierPercent(BattleStatType.DAMAGE_TAKEN);
     }
