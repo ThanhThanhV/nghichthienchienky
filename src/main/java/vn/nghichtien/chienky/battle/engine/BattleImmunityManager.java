@@ -7,6 +7,7 @@ import vn.nghichtien.chienky.battle.domain.BattleImmunityType;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -71,7 +72,9 @@ public class BattleImmunityManager {
      * Giảm thời hạn các hiệu ứng miễn nhiễm.
      */
     public void decreaseDurations() {
-        decreaseDurations(List.copyOf(effects));
+        Map<BattleImmunityEffect, Integer> snapshot = new IdentityHashMap<>();
+        effects.forEach(effect -> snapshot.put(effect, effect.getRemainingDuration()));
+        decreaseDurations(snapshot);
     }
 
     /**
