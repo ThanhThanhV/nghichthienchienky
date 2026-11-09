@@ -13,7 +13,7 @@ public class BattleDefenseEffect {
 
     private final String effectCode;
 
-    private final BigDecimal value;
+    private BigDecimal value;
 
     private int remainingDuration;
 
@@ -59,6 +59,23 @@ public class BattleDefenseEffect {
     public boolean decreaseDuration() {
         remainingDuration--;
         return remainingDuration <= 0;
+    }
+
+    /**
+     * Làm mới thời hạn và giữ mức phòng thủ mạnh nhất khi tái áp dụng.
+     */
+    public void refresh(BigDecimal newValue, int duration) {
+        Objects.requireNonNull(newValue);
+        if (newValue.signum() < 0 || newValue.compareTo(BigDecimal.ONE) > 0) {
+            throw new IllegalArgumentException(
+                    "Defense effect value must be between 0 and 1"
+            );
+        }
+        if (duration <= 0) {
+            throw new IllegalArgumentException("Duration must be positive");
+        }
+        value = value.max(newValue);
+        remainingDuration = Math.max(remainingDuration, duration);
     }
 
     public BattleEffectType getType() {
