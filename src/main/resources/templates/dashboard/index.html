@@ -109,7 +109,22 @@
             .gift-code-row input { min-height: 42px; font-size: 12px; }
             .logout-button { width: 100%; min-height: 40px; }
         }
-</style>
+
+.mobile-game-nav,.mobile-gift-toggle{display:none}
+@media(max-width:600px){
+html,body{width:100%;height:100%;min-height:0;overflow:hidden}body{display:block;min-height:100dvh;padding:0}
+.container{display:flex;flex-direction:column;width:100vw;height:100dvh;min-height:0;margin:0;padding:max(8px,env(safe-area-inset-top)) 12px calc(62px + env(safe-area-inset-bottom));overflow:hidden;border:0;border-radius:0;text-align:left}
+.eyebrow{flex:0 0 auto;font-size:7px;letter-spacing:.16em;text-align:center}h1{flex:0 0 auto;margin:6px 0;font-size:clamp(20px,6vw,27px)}
+.welcome{flex:0 0 auto;margin:0 0 8px;font-size:10px;line-height:1.35}.player-overview{flex:0 0 auto;margin:6px 0;padding:9px}
+.player-overview-header{margin-bottom:7px}.player-overview-header h2{font-size:14px}.player-resource-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:5px}
+.player-resource{padding:7px 5px}.player-resource-label{font-size:8px}.player-resource-value{margin-top:3px;font-size:12px}.actions{display:none}
+.mobile-gift-toggle{display:block;flex:0 0 auto;align-self:center;margin:7px 0;padding:8px 18px;color:#f4dfa9;border:1px solid rgba(212,181,119,.4);border-radius:7px;background:#18243a;font-size:9px;font-weight:800}
+.gift-code-panel{display:none}.container.gift-code-open .gift-code-panel{position:fixed;z-index:50;left:12px;right:12px;top:50%;display:block;max-height:75dvh;margin:0;padding:14px;overflow:auto;transform:translateY(-50%);border-color:#b99456;background:#101a2b;box-shadow:0 0 0 100vmax rgba(0,0,0,.78)}
+.gift-code-panel h2{font-size:16px}.gift-code-panel p{font-size:10px}.gift-code-row{flex-direction:row;gap:6px}.gift-code-row input{min-height:38px;font-size:10px}.gift-code-row button{width:auto;min-height:38px;padding:7px 10px;font-size:9px}
+.logout-form{margin-top:auto;align-self:center}.logout-button{min-height:30px;padding:5px 12px;font-size:9px}
+.mobile-game-nav{position:fixed;z-index:40;left:0;right:0;bottom:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:3px;padding:6px 6px calc(6px + env(safe-area-inset-bottom));border-top:1px solid rgba(218,190,132,.2);background:rgba(5,9,17,.97);backdrop-filter:blur(14px)}
+.mobile-game-nav a{display:grid;min-width:0;min-height:34px;place-items:center;border-radius:6px;color:#9aa9c0;font-size:8px;font-weight:800;text-decoration:none}.mobile-game-nav a.active{color:#ffe7ad;background:rgba(181,139,68,.16)}
+}</style>
 </head>
 <body>
 <main class="container">
@@ -176,6 +191,13 @@
 </main>
 <script>
     (() => {
+        const container = document.querySelector(".container");
+        const toggle = document.getElementById("mobile-gift-toggle");
+        toggle?.addEventListener("click", () => {
+            const opened = container.classList.toggle("gift-code-open");
+            toggle.setAttribute("aria-expanded", String(opened));
+            if (opened) document.getElementById("gift-code-input")?.focus();
+        });
         const form = document.getElementById("gift-code-form");
         const input = document.getElementById("gift-code-input");
         const button = document.getElementById("gift-code-submit");
