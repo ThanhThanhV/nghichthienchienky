@@ -383,7 +383,18 @@ public class BattleTurnProcessor {
                 "Battle started"
         );
 
+        int battleStartEventIndex = battle.getEventCollector().getEvents().size();
         executePassivesForAllAlive(battle, BattlePassiveTrigger.BATTLE_START);
+
+        // Nội tại BATTLE_START cũng có thể gây DAMAGE/DEATH/REVIVE.
+        // Dispatch phản ứng trước khi initializeBattle() chốt kết quả.
+        List<BattleEventDTO> battleStartEvents = List.copyOf(
+                battle.getEventCollector().getEvents().subList(
+                        battleStartEventIndex,
+                        battle.getEventCollector().getEvents().size()
+                )
+        );
+        dispatchActionEventPassives(battle, battleStartEvents);
     }
 
     private void executePassivesForAllAlive(
