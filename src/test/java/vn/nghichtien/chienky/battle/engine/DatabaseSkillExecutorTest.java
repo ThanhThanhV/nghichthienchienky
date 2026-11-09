@@ -13,6 +13,7 @@ import vn.nghichtien.chienky.battle.domain.BattleUnitState;
 import vn.nghichtien.chienky.hero.domain.HeroSkillDefinition;
 import vn.nghichtien.chienky.hero.domain.HeroSkillEffect;
 import vn.nghichtien.chienky.hero.repository.HeroSkillDefinitionRepository;
+import vn.nghichtien.chienky.hero.repository.HeroInstanceSkillRepository;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -28,6 +29,9 @@ class DatabaseSkillExecutorTest {
 
     @Mock
     private HeroSkillDefinitionRepository skillRepository;
+
+    @Mock
+    private HeroInstanceSkillRepository instanceSkillRepository;
 
     @Mock
     private BattleEffectProcessor effectProcessor;
@@ -56,6 +60,7 @@ class DatabaseSkillExecutorTest {
     void setUp() {
         executor = new DatabaseSkillExecutor(
                 skillRepository,
+                instanceSkillRepository,
                 effectProcessor,
                 new com.fasterxml.jackson.databind.ObjectMapper()
         );
@@ -98,7 +103,7 @@ class DatabaseSkillExecutorTest {
     }
 
     @Test
-    void executeShouldFallbackToBasicWhenActiveSkillIsMissing() {
+    void executeShouldKeepRequestedActionWhenActiveSkillIsMissing() {
         when(basicSkill.getSkillType()).thenReturn("BASIC");
         when(basicSkill.getSkillCode()).thenReturn("HERO_001_BASIC");
         when(basicSkill.getSkillName()).thenReturn("Cơ bản");
@@ -116,12 +121,7 @@ class DatabaseSkillExecutorTest {
                 BattleActionType.ACTIVE_SKILL
         );
 
-        assertEquals(BattleActionType.BASIC_ATTACK, actual);
-        verify(effectProcessor).executeEffects(
-                eq(battle),
-                eq(source),
-                eq(List.of())
-        );
+        assertEquals(BattleActionType.ACTIVE_SKILL, actual);
     }
 
     @Test
