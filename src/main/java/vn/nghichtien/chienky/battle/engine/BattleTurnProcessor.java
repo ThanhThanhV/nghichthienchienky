@@ -462,7 +462,9 @@ public class BattleTurnProcessor {
             BattleState battle,
             BattleUnitState actor
     ) {
-        if (battle.isFinished() || actor == null || !actor.isAlive()) {
+        // Trigger gắn với việc hành động đã xảy ra, không phụ thuộc actor
+        // còn sống sau phản sát thương/reflect hay không.
+        if (battle.isFinished() || actor == null) {
             return;
         }
 
