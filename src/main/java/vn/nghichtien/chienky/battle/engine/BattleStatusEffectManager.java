@@ -23,10 +23,10 @@ public class BattleStatusEffectManager {
             new BigDecimal("100");
 
     private static final BigDecimal MAX_BUFF =
-            new BigDecimal("100");
+            BigDecimal.ONE;
 
     private static final BigDecimal MAX_DEBUFF =
-            new BigDecimal("-80");
+            new BigDecimal("-0.80");
 
     private final List<BattleStatusEffect> modifiers =
             new ArrayList<>();
@@ -54,7 +54,8 @@ public class BattleStatusEffectManager {
     }
 
     /**
-     * Tính phần trăm thay đổi của một chỉ số.
+     * Tính tỷ lệ thay đổi của một chỉ số.
+     * Giá trị dùng dạng ratio: 0.15 = +15%, -0.20 = -20%.
      * BUFF tối đa +100%, DEBUFF tối đa -80%.
      */
     public BigDecimal getModifierPercent(BattleStatType statType) {
@@ -97,10 +98,7 @@ public class BattleStatusEffectManager {
 
         BigDecimal modifier = getModifierPercent(statType);
 
-        BigDecimal multiplier = BigDecimal.ONE.add(
-                modifier.divide(ONE_HUNDRED, 8,
-                        java.math.RoundingMode.HALF_UP)
-        );
+        BigDecimal multiplier = BigDecimal.ONE.add(modifier);
 
         return baseValue.multiply(multiplier);
     }
