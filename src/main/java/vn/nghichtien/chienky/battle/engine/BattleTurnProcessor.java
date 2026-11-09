@@ -16,6 +16,8 @@ import vn.nghichtien.chienky.battle.dto.BattleEventDTO;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.IdentityHashMap;
+import java.util.Map;
 import java.util.List;
 import java.util.Set;
 
@@ -626,16 +628,30 @@ public class BattleTurnProcessor {
                 unit,
                 unit.getStatusEffectManager().getModifiers(),
                 unit.getStatusEffectManager().getCrowdControl(),
-                unit.getImmunityManager().getEffects(),
+                unit.getStatusEffectManager().getCrowdControl() == null
+                        ? -1
+                        : unit.getStatusEffectManager().getCrowdControl().getRemainingDuration(),
+                captureImmunityDurations(unit),
                 unit.getShieldManager().getShields(),
                 unit.getDefenseEffectManager().getEffects()
         );
     }
 
+    private static Map<BattleImmunityEffect, Integer> captureImmunityDurations(
+            BattleUnitState unit
+    ) {
+        Map<BattleImmunityEffect, Integer> durations = new IdentityHashMap<>();
+        unit.getImmunityManager().getEffects().forEach(
+                effect -> durations.put(effect, effect.getRemainingDuration())
+        );
+        return durations;
+    }
+
     private static void decreaseRoundStartDurations(UnitDurationSnapshot snapshot) {
         BattleUnitState unit = snapshot.unit();
         unit.getStatusEffectManager().decreaseDurations(
-                snapshot.modifiers(), snapshot.crowdControl()
+                snapshot.modifiers(), snapshot.crowdControl(),
+                snapshot.crowdControlDuration()
         );
         unit.getImmunityManager().decreaseDurations(snapshot.immunities());
         unit.getShieldManager().decreaseDurations(snapshot.shields());
@@ -646,7 +662,8 @@ public class BattleTurnProcessor {
             BattleUnitState unit,
             List<BattleStatusEffect> modifiers,
             BattleCrowdControl crowdControl,
-            List<BattleImmunityEffect> immunities,
+            int crowdControlDuration,
+            Map<BattleImmunityEffect, Integer> immunities,
             List<BattleShield> shields,
             List<BattleDefenseEffect> defenseEffects
     ) {
