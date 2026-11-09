@@ -52,7 +52,7 @@ public class BattleDefenseEffectManager {
     public boolean tryEvade(BigDecimal accuracy) {
         BigDecimal effectiveAccuracy = accuracy == null
                 ? BigDecimal.ZERO
-                : accuracy.max(BigDecimal.ZERO).min(new BigDecimal("100"));
+                : accuracy.max(BigDecimal.ZERO).min(BigDecimal.ONE);
 
         BigDecimal evasionChance = effects.stream()
                 .filter(effect ->
@@ -61,10 +61,9 @@ public class BattleDefenseEffectManager {
                 .reduce(BigDecimal.ZERO, BigDecimal::add)
                 .min(BigDecimal.ONE);
 
-        // ACCURACY/RESISTANCE/CRIT dùng thang 0..100; EVASION dùng 0..1.
-        // Mỗi 1 điểm ACCURACY triệt tiêu 1 điểm phần trăm né tránh.
-        BigDecimal accuracyChance = effectiveAccuracy
-                .divide(new BigDecimal("100"), 8, RoundingMode.HALF_UP);
+        // ACCURACY và EVASION đều dùng ratio 0..1.
+        // 0.10 ACCURACY triệt tiêu 10% tỷ lệ né tránh.
+        BigDecimal accuracyChance = effectiveAccuracy;
         BigDecimal finalChance = evasionChance
                 .subtract(accuracyChance)
                 .max(BigDecimal.ZERO)
