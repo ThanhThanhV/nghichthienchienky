@@ -572,6 +572,23 @@ public class BattleEffectProcessor {
             );
         }
 
+        // MAX_HP hiện được lưu trực tiếp vào BattleUnitState và không có
+        // cơ chế rollback theo round. Chỉ hỗ trợ tăng MAX_HP vĩnh viễn;
+        // từ chối DEBUFF/timed modifier thay vì âm thầm biến thành vĩnh viễn
+        // hoặc tăng MAX_HP của đối phương.
+        if (effect.statType() == BattleStatType.MAX_HP) {
+            if (!buff) {
+                throw new IllegalArgumentException(
+                        "MAX_HP debuff is not supported"
+                );
+            }
+            if (!effect.permanent()) {
+                throw new IllegalArgumentException(
+                        "MAX_HP modifier must be permanent"
+                );
+            }
+        }
+
         List<BattleUnitState> targets = buff
                 ? selectAllies(battle, source, effect.targetMode())
                 : targetSelector.selectTargets(battle, source, effect.targetMode());
