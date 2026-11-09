@@ -70,11 +70,19 @@ public class BattleImmunityManager {
      * Giảm thời hạn các hiệu ứng miễn nhiễm.
      */
     public void decreaseDurations() {
-        Iterator<BattleImmunityEffect> iterator =
-                effects.iterator();
+        decreaseDurations(List.copyOf(effects));
+    }
+
+    /**
+     * Chỉ giảm thời hạn miễn nhiễm đã tồn tại từ đầu round.
+     */
+    public void decreaseDurations(List<BattleImmunityEffect> roundStartEffects) {
+        Iterator<BattleImmunityEffect> iterator = effects.iterator();
 
         while (iterator.hasNext()) {
-            if (iterator.next().decreaseDuration()) {
+            BattleImmunityEffect effect = iterator.next();
+            if (roundStartEffects.contains(effect)
+                    && effect.decreaseDuration()) {
                 iterator.remove();
             }
         }
