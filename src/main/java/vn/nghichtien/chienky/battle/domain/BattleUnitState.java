@@ -26,7 +26,7 @@ public class BattleUnitState {
     private final BigDecimal speed;
 
     private BigDecimal crit = BigDecimal.ZERO;
-    private BigDecimal critDamage = BigDecimal.ZERO;
+    private BigDecimal critDamage = new BigDecimal("1.5");
     private BigDecimal accuracy = BigDecimal.ZERO;
     private BigDecimal resistance = BigDecimal.ZERO;
     private BigDecimal penFlat = BigDecimal.ZERO;
@@ -416,10 +416,14 @@ public class BattleUnitState {
      * @return sát thương chí mạng.
      */
     public BigDecimal getCritDamage() {
+        // 1.5x là hệ số chí mạng mặc định; CRIT_DAMAGE là modifier dạng ratio.
+        BigDecimal baseCritDamage = critDamage.signum() > 0
+                ? critDamage
+                : new BigDecimal("1.5");
         return calculateEffectiveStat(
-                critDamage,
+                baseCritDamage,
                 BattleStatType.CRIT_DAMAGE
-        );
+        ).max(BigDecimal.ONE);
     }
 
     /**
