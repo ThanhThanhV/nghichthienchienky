@@ -143,7 +143,7 @@ public class BattleDamageProcessor {
                     target.getInstanceId(),
                     skillCode,
                     BigDecimal.ZERO,
-                    critical,
+                    false,
                     target.getCurrentHp(),
                     target.getMaxHp(),
                     target.isAlive(),
