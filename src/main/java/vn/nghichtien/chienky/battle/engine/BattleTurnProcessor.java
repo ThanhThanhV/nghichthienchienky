@@ -251,13 +251,14 @@ public class BattleTurnProcessor {
             int eventStartIndex = collector.getEvents().size();
             skillExecutor.execute(battle, unit, actionType);
 
-            // Chụp event của action gốc trước khi dispatch phản ứng ON_DAMAGED.
-            List<BattleEventDTO> actionEvents = List.copyOf(collector.getEvents()
-                    .subList(eventStartIndex, collector.getEvents().size()));
-
             skillExecutor.executePassives(
                     battle, unit, BattlePassiveTrigger.AFTER_ACTION
             );
+
+            // Bao gồm cả DAMAGE/DEATH/REVIVE phát sinh từ AFTER_ACTION;
+            // nếu snapshot trước passive này thì ON_KILL/ON_REVIVE sẽ bị bỏ sót.
+            List<BattleEventDTO> actionEvents = List.copyOf(collector.getEvents()
+                    .subList(eventStartIndex, collector.getEvents().size()));
 
             // Frontend phải hoàn tất animation đòn gốc trước khi phát phản kích.
             collector.record(
@@ -421,17 +422,18 @@ public class BattleTurnProcessor {
                 battle, unit, BattlePassiveTrigger.ON_ATTACK
         );
 
-        List<BattleEventDTO> actionEvents = List.of();
+        int eventStartIndex = collector.getEvents().size();
         if (!battle.isFinished() && unit.isAlive()) {
-            int eventStartIndex = collector.getEvents().size();
             skillExecutor.execute(battle, unit, actionType);
-            actionEvents = List.copyOf(collector.getEvents()
-                    .subList(eventStartIndex, collector.getEvents().size()));
         }
 
         skillExecutor.executePassives(
                 battle, unit, BattlePassiveTrigger.AFTER_ACTION
         );
+
+        // Giống action thường: thu cả event phát sinh trong AFTER_ACTION.
+        List<BattleEventDTO> actionEvents = List.copyOf(collector.getEvents()
+                .subList(eventStartIndex, collector.getEvents().size()));
 
         collector.record(
                 BattleEventType.ACTION_END,
