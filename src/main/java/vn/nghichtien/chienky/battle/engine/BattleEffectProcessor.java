@@ -473,8 +473,16 @@ public class BattleEffectProcessor {
             BattleUnitState target,
             BattlePeriodicEffect effect
     ) {
-        BigDecimal actualHeal = target.heal(effect.getAmountPerTick());
+        BigDecimal healAmount = effect.getAmountPerTick();
+        BigDecimal healReceived = target.getHealReceivedPercent();
+        if (healReceived.signum() != 0) {
+            healAmount = healAmount.multiply(
+                    BigDecimal.ONE.add(healReceived).max(BigDecimal.ZERO)
+            );
+        }
+        BigDecimal actualHeal = target.heal(healAmount);
 
+        // HEAL_RECEIVED áp dụng nhất quán cho cả HOT, HEAL và LIFESTEAL.
         // Vẫn phát HEAL với amount=0 để frontend cập nhật duration khi mục tiêu đã đầy HP.
         battle.getEventCollector().record(
                 BattleEventType.HEAL,
