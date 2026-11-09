@@ -30,8 +30,7 @@ public class BattlePeriodicEffectManager {
         if (existing != null) {
             // Tái áp dụng từ cùng nguồn: cập nhật lượng tick theo cấu hình mới
             // và làm mới duration, không tạo thêm bản sao DOT/HOT.
-            effects.remove(existing);
-            effects.add(effect);
+            existing.refresh(effect.getAmountPerTick(), effect.getRemainingDuration());
             return;
         }
 
