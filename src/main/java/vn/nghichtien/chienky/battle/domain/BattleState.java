@@ -105,9 +105,27 @@ public class BattleState {
      *
      * @return true nếu trận đấu đã kết thúc.
      */
+    /**
+     * Kiểm tra điều kiện kết thúc mà không chốt trạng thái trận hoặc phát BATTLE_END.
+     * Dùng để cho các phản ứng ON_KILL/REVIVE xử lý xong trước khi xác nhận kết quả.
+     */
+    public boolean wouldFinish() {
+        boolean playerAlive = units.stream().anyMatch(
+                unit -> unit.getTeam() == BattleTeam.PLAYER && unit.isAlive()
+        );
+        boolean enemyAlive = units.stream().anyMatch(
+                unit -> unit.getTeam() == BattleTeam.ENEMY && unit.isAlive()
+        );
+        return !playerAlive || !enemyAlive;
+    }
+
     public boolean checkFinished() {
         if (finished) {
             return true;
+        }
+
+        if (!wouldFinish()) {
+            return false;
         }
 
         boolean playerAlive = units.stream().anyMatch(
@@ -116,10 +134,6 @@ public class BattleState {
         boolean enemyAlive = units.stream().anyMatch(
                 unit -> unit.getTeam() == BattleTeam.ENEMY && unit.isAlive()
         );
-
-        if (playerAlive && enemyAlive) {
-            return false;
-        }
 
         finished = true;
         if (playerAlive) {
