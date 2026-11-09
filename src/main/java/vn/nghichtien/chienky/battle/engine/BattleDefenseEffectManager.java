@@ -110,10 +110,19 @@ public class BattleDefenseEffectManager {
      * Giảm thời hạn các hiệu ứng phòng thủ.
      */
     public void decreaseDurations() {
+        decreaseDurations(List.copyOf(effects));
+    }
+
+    /**
+     * Chỉ giảm thời hạn hiệu ứng phòng thủ đã tồn tại từ đầu round.
+     */
+    public void decreaseDurations(List<BattleDefenseEffect> roundStartEffects) {
         Iterator<BattleDefenseEffect> iterator = effects.iterator();
 
         while (iterator.hasNext()) {
-            if (iterator.next().decreaseDuration()) {
+            BattleDefenseEffect effect = iterator.next();
+            if (roundStartEffects.contains(effect)
+                    && effect.decreaseDuration()) {
                 iterator.remove();
             }
         }
