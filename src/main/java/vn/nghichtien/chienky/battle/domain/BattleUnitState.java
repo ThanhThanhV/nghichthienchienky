@@ -150,6 +150,13 @@ public class BattleUnitState {
             currentHp = BigDecimal.ZERO;
             alive = false;
 
+            // Không giữ hành động bổ sung hoặc khóa hành động qua lần tử trận.
+            // extraActionUsedThisRound và actionCount được giữ nguyên để không
+            // cho hồi sinh tạo thêm EXTRA_ACTION trong cùng round và không reset
+            // chu kỳ ACTIVE -> ULTIMATE -> BASIC.
+            extraActionPending = false;
+            actionLockedUntilRound = 0;
+
             // Khi nhân vật tử trận, toàn bộ hiệu ứng đang gắn trên đơn vị
             // kết thúc. REVIVE đưa nhân vật trở lại với trạng thái sạch,
             // tránh mang theo khiên/miễn nhiễm/CC hoặc buff từ trước khi chết.
