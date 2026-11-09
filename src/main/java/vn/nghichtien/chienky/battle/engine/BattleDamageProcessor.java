@@ -80,14 +80,37 @@ public class BattleDamageProcessor {
             String damageEffectCategory,
             BattleDamageType damageType
     ) {
+        executeDamage(
+                battle, source, target, skillMultiplier, BigDecimal.ZERO,
+                skillCode, damageEffectCategory, damageType
+        );
+    }
+
+    /**
+     * Thực thi sát thương có cả hệ số ATK và sát thương cộng thêm cố định.
+     * Flat damage được cộng vào ATK * multiplier trước khi áp dụng DEF.
+     */
+    public void executeDamage(
+            BattleState battle,
+            BattleUnitState source,
+            BattleUnitState target,
+            BigDecimal skillMultiplier,
+            BigDecimal flatDamage,
+            String skillCode,
+            String damageEffectCategory,
+            BattleDamageType damageType
+    ) {
         Objects.requireNonNull(battle, "Battle must not be null");
         Objects.requireNonNull(source, "Source must not be null");
         Objects.requireNonNull(target, "Target must not be null");
         Objects.requireNonNull(skillMultiplier, "Skill multiplier must not be null");
+        Objects.requireNonNull(flatDamage, "Flat damage must not be null");
         Objects.requireNonNull(damageType, "Damage type must not be null");
 
-        if (skillMultiplier.signum() < 0) {
-            throw new IllegalArgumentException("Skill multiplier must not be negative");
+        if (skillMultiplier.signum() < 0 || flatDamage.signum() < 0) {
+            throw new IllegalArgumentException(
+                    "Damage multiplier and flat damage must not be negative"
+            );
         }
 
         if (!source.isAlive()
@@ -102,7 +125,7 @@ public class BattleDamageProcessor {
 
         // 1. Tính sát thương sau xuyên giáp.
         BigDecimal baseDamage = calculateBaseDamage(
-                source, target, skillMultiplier, damageType
+                source, target, skillMultiplier, flatDamage, damageType
         );
 
         if (baseDamage.signum() <= 0) {
@@ -421,13 +444,19 @@ public class BattleDamageProcessor {
             BattleUnitState source,
             BattleUnitState target,
             BigDecimal skillMultiplier,
+            BigDecimal flatDamage,
             BattleDamageType damageType
     ) {
+        // Flat damage được cộng trước DEF để sát thương vật lý vẫn chịu
+        // cùng công thức xuyên giáp/phòng thủ như phần sát thương theo ATK.
+        BigDecimal rawDamage = source.getAttack()
+                .multiply(skillMultiplier)
+                .add(flatDamage);
+
         // BattleUnitState hiện chỉ có DEF vật lý; sát thương MAGIC dùng ATK
         // trực tiếp và vẫn chịu DAMAGE_REDUCTION/MAGIC_DAMAGE_REDUCTION, khiên và miễn nhiễm.
         if (damageType == BattleDamageType.MAGIC) {
-            return source.getAttack().multiply(skillMultiplier)
-                    .setScale(6, RoundingMode.HALF_UP);
+            return rawDamage.setScale(6, RoundingMode.HALF_UP);
         }
 
         BigDecimal penPercent = source.getPenPercent()
@@ -446,8 +475,7 @@ public class BattleDamageProcessor {
                         RoundingMode.HALF_UP
                 );
 
-        return source.getAttack()
-                .multiply(skillMultiplier)
+        return rawDamage
                 .multiply(defenseFactor)
                 .setScale(6, RoundingMode.HALF_UP);
     }
