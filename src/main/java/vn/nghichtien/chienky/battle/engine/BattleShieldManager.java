@@ -68,10 +68,19 @@ public class BattleShieldManager {
      * Giảm thời hạn tất cả khiên.
      */
     public void decreaseDurations() {
+        decreaseDurations(List.copyOf(shields));
+    }
+
+    /**
+     * Chỉ giảm thời hạn khiên đã tồn tại từ đầu round.
+     */
+    public void decreaseDurations(List<BattleShield> roundStartShields) {
         Iterator<BattleShield> iterator = shields.iterator();
 
         while (iterator.hasNext()) {
-            if (iterator.next().decreaseDuration()) {
+            BattleShield shield = iterator.next();
+            if (roundStartShields.contains(shield)
+                    && shield.decreaseDuration()) {
                 iterator.remove();
             }
         }
