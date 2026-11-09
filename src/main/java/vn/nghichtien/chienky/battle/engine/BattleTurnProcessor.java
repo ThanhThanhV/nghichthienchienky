@@ -2,6 +2,11 @@ package vn.nghichtien.chienky.battle.engine;
 
 import org.springframework.stereotype.Component;
 import vn.nghichtien.chienky.battle.domain.BattleActionType;
+import vn.nghichtien.chienky.battle.domain.BattleCrowdControl;
+import vn.nghichtien.chienky.battle.domain.BattleDefenseEffect;
+import vn.nghichtien.chienky.battle.domain.BattleImmunityEffect;
+import vn.nghichtien.chienky.battle.domain.BattleShield;
+import vn.nghichtien.chienky.battle.domain.BattleStatusEffect;
 import vn.nghichtien.chienky.battle.domain.BattleEventType;
 import vn.nghichtien.chienky.battle.domain.BattlePassiveTrigger;
 import vn.nghichtien.chienky.battle.domain.BattleState;
@@ -67,13 +72,14 @@ public class BattleTurnProcessor {
         int round = battle.nextRound();
         var collector = battle.getEventCollector();
 
-        // Tick hiệu ứng cũ trước khi áp dụng nội tại đầu trận.
+        // Chụp các hiệu ứng tồn tại ở đầu round. Hiệu ứng mới được áp dụng
+        // trong round này sẽ không bị trừ duration ngay ở cuối cùng round.
+        List<UnitDurationSnapshot> durationSnapshots = battle.getUnits().stream()
+                .map(BattleTurnProcessor::captureDurationSnapshot)
+                .toList();
+
         for (BattleUnitState unit : battle.getUnits()) {
             unit.resetExtraActionForRound();
-            unit.getStatusEffectManager().decreaseDurations();
-            unit.getImmunityManager().decreaseDurations();
-            unit.getShieldManager().decreaseDurations();
-            unit.getDefenseEffectManager().decreaseDurations();
         }
 
         initializeBattlePassives(battle);
@@ -273,7 +279,13 @@ public class BattleTurnProcessor {
             }
         }
 
-        battle.checkFinished();
+        boolean finished = battle.checkFinished();
+        if (!finished) {
+            // Chỉ giảm duration sau khi các đơn vị đã hoàn tất round.
+            // Điều này giữ hiệu lực mới áp dụng qua lượt kế tiếp của mục tiêu,
+            // thay vì bị xóa ở đầu round trước khi mục tiêu kịp hành động.
+            durationSnapshots.forEach(BattleTurnProcessor::decreaseRoundStartDurations);
+        }
 
         collector.record(
                 BattleEventType.ROUND_END,
@@ -607,6 +619,37 @@ public class BattleTurnProcessor {
                 );
             }
         }
+    }
+
+    private static UnitDurationSnapshot captureDurationSnapshot(BattleUnitState unit) {
+        return new UnitDurationSnapshot(
+                unit,
+                unit.getStatusEffectManager().getModifiers(),
+                unit.getStatusEffectManager().getCrowdControl(),
+                unit.getImmunityManager().getEffects(),
+                unit.getShieldManager().getShields(),
+                unit.getDefenseEffectManager().getEffects()
+        );
+    }
+
+    private static void decreaseRoundStartDurations(UnitDurationSnapshot snapshot) {
+        BattleUnitState unit = snapshot.unit();
+        unit.getStatusEffectManager().decreaseDurations(
+                snapshot.modifiers(), snapshot.crowdControl()
+        );
+        unit.getImmunityManager().decreaseDurations(snapshot.immunities());
+        unit.getShieldManager().decreaseDurations(snapshot.shields());
+        unit.getDefenseEffectManager().decreaseDurations(snapshot.defenseEffects());
+    }
+
+    private record UnitDurationSnapshot(
+            BattleUnitState unit,
+            List<BattleStatusEffect> modifiers,
+            BattleCrowdControl crowdControl,
+            List<BattleImmunityEffect> immunities,
+            List<BattleShield> shields,
+            List<BattleDefenseEffect> defenseEffects
+    ) {
     }
 
     private record DamageReactionKey(
