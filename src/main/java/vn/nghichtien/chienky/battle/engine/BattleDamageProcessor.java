@@ -339,11 +339,12 @@ public class BattleDamageProcessor {
             );
 
             if (healAmount.signum() > 0) {
+                // HEAL_RECEIVED dùng ratio thống nhất: 0.15 = tăng 15%.
                 BigDecimal healReceived = source.getHealReceivedPercent();
                 if (healReceived.signum() != 0) {
-                    healAmount = healAmount.multiply(BigDecimal.ONE.add(
-                            healReceived.divide(BigDecimal.valueOf(100), 8, RoundingMode.HALF_UP)
-                    ));
+                    healAmount = healAmount.multiply(
+                            BigDecimal.ONE.add(healReceived).max(BigDecimal.ZERO)
+                    );
                 }
                 BigDecimal actualHeal = source.heal(healAmount);
 
