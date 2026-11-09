@@ -1346,3 +1346,41 @@ body {
         min-height: clamp(320px, 50dvh, 420px);
     }
 }
+
+
+.mobile-game-nav{display:none}
+@media(max-width:600px){
+html,body{width:100%;height:100%;min-height:0;overflow:hidden}body{min-height:100dvh}
+.battle-page{display:flex;flex-direction:column;width:100vw;height:100dvh;min-height:0;max-height:100dvh;margin:0;padding:max(4px,env(safe-area-inset-top)) 5px calc(56px + env(safe-area-inset-bottom));overflow:hidden}
+.battle-header{flex:0 0 auto;flex-direction:row;align-items:center;gap:5px;padding:4px 3px 6px}
+.battle-title h1{font-size:13px;letter-spacing:.04em}.battle-title span{margin-top:2px;font-size:6px;letter-spacing:.12em}
+.battle-information{flex:0 0 auto;width:auto;gap:3px}.info-item{min-width:0;padding:4px 5px}.info-label{font-size:6px}.info-item strong{font-size:10px}
+.campaign-panel{flex:0 0 auto;margin:5px 0;padding:6px}.campaign-panel h2{margin:0 0 5px;font-size:10px}
+.campaign-stage-list{display:flex;max-height:48px;gap:5px;overflow-x:auto;overflow-y:hidden}
+.campaign-stage{flex:0 0 142px;min-height:43px;gap:2px;padding:5px 7px}
+.campaign-stage strong{font-size:9px}.campaign-stage span,.campaign-stage small{font-size:7px}
+.battle-controls{flex:0 0 auto;flex-direction:row;align-items:center;gap:4px;margin:4px 0;padding:5px}
+.battle-control-left,.battle-control-right{width:auto;flex:1;flex-wrap:nowrap;gap:4px}
+.battle-control-left .control-button,.battle-control-right .control-button{min-height:29px;padding:4px 6px;font-size:7px;letter-spacing:0}
+.battle-control-left a{display:none!important}.control-label{display:none}.battle-control-right .control-button{flex:1}
+.turn-order-section{flex:0 0 36px;min-height:36px;flex-direction:row;align-items:center;gap:6px;padding:4px 6px;overflow:hidden}
+.turn-order-section h2{font-size:7px;letter-spacing:.04em}.turn-order-list{flex:1;width:0;gap:3px;overflow-x:auto}
+.turn-order-item{padding:3px 5px;font-size:7px}
+.battle-field{flex:1 1 0;min-height:0;height:auto;margin:5px auto;padding:0 3px;grid-template-columns:minmax(0,1fr) 20px minmax(0,1fr);column-gap:3px;align-items:stretch;overflow:hidden}
+.battle-team{display:flex;flex-direction:column;min-height:0}.team-heading{flex:0 0 auto;margin:0 0 4px;gap:2px}
+.team-heading h2{font-size:7px;letter-spacing:0}.team-side{padding:2px 3px;font-size:6px;letter-spacing:0}
+.battle-team .team-formation,.battle-spine-active .battle-team .team-formation{flex:1 1 0;width:100%;max-width:none;min-height:0;height:100%;margin:0;grid-template-rows:repeat(3,minmax(0,1fr));gap:3px;padding:3px}
+.unit-slot,.battle-spine-active .unit-slot{min-height:0;padding:2px;border-radius:5px}
+.unit-visual{top:4%;width:clamp(24px,8vw,42px);font-size:13px}
+.unit-info,.battle-spine-active .unit-info{top:auto;width:100%;padding:2px}
+.unit-name{font-size:7px}.unit-role,.hp-text{display:none}.hp-bar{height:4px;margin-top:2px}.unit-resource-bar{height:2px;margin-top:2px}
+.unit-level{top:2px;left:2px;font-size:6px}.battle-vs{display:grid;place-items:center;font-size:12px}
+.battle-bottom{display:block;flex:0 0 68px;min-height:68px;margin:3px 0 0;overflow:hidden}
+.battle-log-section{height:100%;padding:5px 7px;overflow:hidden}.battle-log-section .section-heading{margin-bottom:3px}
+.battle-log-section h2{font-size:7px}.small-button{padding:3px 5px;font-size:7px}
+.battle-log{max-height:42px;overflow-y:auto;font-size:7px;line-height:1.3}
+.battle-summary,.battle-footer{display:none}.battle-spine-status{flex:0 0 auto;min-height:0;max-height:15px;margin:0;overflow:hidden;font-size:7px}
+.mobile-game-nav{position:fixed;z-index:40;left:0;right:0;bottom:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:3px;padding:6px 6px calc(6px + env(safe-area-inset-bottom));border-top:1px solid rgba(218,190,132,.2);background:rgba(5,9,17,.97);backdrop-filter:blur(14px)}
+.mobile-game-nav a{display:grid;min-width:0;min-height:34px;place-items:center;border-radius:6px;color:#9aa9c0;font-size:8px;font-weight:800;text-decoration:none}
+.mobile-game-nav a.active{color:#ffe7ad;background:rgba(181,139,68,.16)}
+}
