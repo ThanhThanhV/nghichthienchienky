@@ -186,7 +186,8 @@ public class BattleStatusEffectManager {
      */
     public void decreaseDurations(
             List<BattleStatusEffect> roundStartModifiers,
-            BattleCrowdControl roundStartCrowdControl
+            BattleCrowdControl roundStartCrowdControl,
+            int roundStartCrowdControlDuration
     ) {
         Iterator<BattleStatusEffect> iterator = modifiers.iterator();
 
@@ -200,6 +201,7 @@ public class BattleStatusEffectManager {
 
         if (crowdControl != null
                 && crowdControl == roundStartCrowdControl
+                && crowdControl.getRemainingDuration() == roundStartCrowdControlDuration
                 && crowdControl.decreaseDuration()) {
             crowdControl = null;
         }
