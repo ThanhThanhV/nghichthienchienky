@@ -24,6 +24,7 @@
         </nav>
     </header>
 
+    <nav class="mobile-workspace-tabs" aria-label="Khu vực nhân vật"><button type="button" class="active" data-hero-view="overview">TỔNG QUAN</button><button type="button" data-hero-view="growth">BỒI DƯỠNG</button><button type="button" data-hero-view="skills">KỸ NĂNG</button><button type="button" data-hero-view="roster">DANH SÁCH</button></nav>
     <div id="hero-message" class="hero-message" role="status" aria-live="polite" hidden></div>
 
     <section class="hero-layout">
@@ -154,6 +155,7 @@
     </section>
 
     <footer class="hero-footer">NGHỊCH THIÊN CHIẾN KÝ · THIÊN ĐỊA TRANH PHONG</footer>
+    <nav class="mobile-game-nav" aria-label="Điều hướng chính"><a th:href="@{/dashboard}">ĐẠI SẢNH</a><a class="active" th:href="@{/heroes}">NHÂN VẬT</a><a th:href="@{/formation}">ĐỘI HÌNH</a><a th:href="@{/battle}">CHIẾN ĐẤU</a></nav>
 </main>
 
 <script th:src="@{/lib/spine/spine-runtime-3.5/spine-ts/build/spine-webgl.js}"></script>
@@ -164,5 +166,6 @@
 <script th:src="@{/js/spine/SpineFormation.js}"></script>
 <script th:src="@{/js/formation/FormationSpinePreview.js}"></script>
 <script th:src="@{/js/hero/hero.js}"></script>
+<script>(()=>{const p=document.querySelector(".hero-page"),t=[...document.querySelectorAll("[data-hero-view]")];t.forEach(b=>b.addEventListener("click",()=>{p.dataset.mobileView=b.dataset.heroView;t.forEach(x=>x.classList.toggle("active",x===b));}));p.dataset.mobileView="overview";})();</script>
 </body>
 </html>
