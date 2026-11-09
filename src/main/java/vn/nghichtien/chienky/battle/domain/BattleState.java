@@ -101,14 +101,10 @@ public class BattleState {
     }
 
     /**
-     * Kiểm tra điều kiện kết thúc trận và chỉ phát BATTLE_END một lần.
-     *
-     * @return true nếu trận đấu đã kết thúc.
-     */
-    /**
      * Kiểm tra điều kiện kết thúc mà không chốt trạng thái trận hoặc phát BATTLE_END.
      * Dùng để cho các phản ứng ON_KILL/REVIVE xử lý xong trước khi xác nhận kết quả.
      */
+
     public boolean wouldFinish() {
         boolean playerAlive = units.stream().anyMatch(
                 unit -> unit.getTeam() == BattleTeam.PLAYER && unit.isAlive()
